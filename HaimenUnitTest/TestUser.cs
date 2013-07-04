@@ -50,5 +50,24 @@ namespace HaimenUnitTest
             list = DBFactory.Query<User>(query_user).toList<User>();// User.Query(new User()).toList<User>();
             Assert.IsTrue(list.Count == count);
         }
+
+        [TestMethod]
+        public void TestUserSalt()
+        {
+            User u = new User();
+            u.Code = "test1";
+            u.Password = "test1";
+            int id = DBFactory.Create<User>(u);
+            Assert.IsTrue(id > 0);
+
+            User q = DBFactory.CreateQueryEntity<User>();
+            q.ID = id;
+            List<User> list = DBFactory.Query<User>(q).toList<User>();
+            Assert.IsTrue(1 == list.Count);
+            Assert.IsNotNull(list[0].Salt);
+            Assert.IsTrue(list[0].Verify(u.Code, u.Password));
+
+            DBFactory.Delete<User>(q);
+        }
     }
 }

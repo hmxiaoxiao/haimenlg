@@ -19,33 +19,21 @@ namespace Haimen.Entity
         [Field("ID")]
         public long ID { get; set; }
 
+        // 用来返回错误信息
+        // 字段放在key里面，错误信息value里面
+        public List<KeyValuePair<string, string>> Err_Info { get; set; }
 
-        public bool BeforeCreate()
+        virtual public bool BeforeCreate()
         {
             return true;
         }
 
-        public bool AfterCreate()
+        virtual public bool BeforeUpdate()
         {
             return true;
         }
 
-        public bool BeforeUpdate()
-        {
-            return true;
-        }
-
-        public bool AfterUpdate()
-        {
-            return true;
-        }
-
-        public bool BeforeDelete()
-        {
-            return true;
-        }
-
-        public bool AfterDelete()
+        virtual public bool BeforeDelete()
         {
             return true;
         }

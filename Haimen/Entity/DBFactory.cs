@@ -54,9 +54,12 @@ namespace Haimen.Entity
             List<KeyValuePair<string, dynamic>> list = new List<KeyValuePair<string, dynamic>>();
             foreach (PropertyInfo info in t.GetType().GetProperties())
             {
-
-                KeyValuePair<string, dynamic> kp = new KeyValuePair<string,dynamic>(GetFieldName(info), info.GetValue(t, null));
-                list.Add(kp);
+                string field = GetFieldName(info);
+                if (field != null && field != "")
+                {
+                    KeyValuePair<string, dynamic> kp = new KeyValuePair<string, dynamic>(GetFieldName(info), info.GetValue(t, null));
+                    list.Add(kp);
+                }
             }
             return list;
         }
@@ -186,8 +189,6 @@ namespace Haimen.Entity
                 MySqlTransaction trans = Conn.BeginTransaction();
                 cmd.ExecuteNonQuery();
                 trans.Commit();
-
-                t.AfterUpdate();
             }
         }
 
@@ -207,7 +208,6 @@ namespace Haimen.Entity
             cmd.CommandText = sql;
             cmd.Parameters.AddWithValue("@id", t.ID);
             cmd.ExecuteNonQuery();
-            t.AfterDelete();
         }
 
         /// <summary>
