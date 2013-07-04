@@ -36,7 +36,7 @@ namespace HaimenUnitTest
             User user = new User();
             user.Code = "Hello";
             user.Name = "World!";
-            int id = DBFactory.Create<User>(user);// User.Create<User>(user);
+            int id = DBFactory.Save<User>(user);// User.Create<User>(user);
             Assert.AreNotEqual<int>(0, id);
             //user.Create<User>(user);
 
@@ -57,7 +57,7 @@ namespace HaimenUnitTest
             User u = new User();
             u.Code = "test1";
             u.Password = "test1";
-            int id = DBFactory.Create<User>(u);
+            int id = DBFactory.Save<User>(u);
             Assert.IsTrue(id > 0);
 
             User q = DBFactory.CreateQueryEntity<User>();

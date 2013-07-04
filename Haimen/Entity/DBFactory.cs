@@ -88,7 +88,7 @@ namespace Haimen.Entity
         }
 
         // 创建保存
-        public static int Create<T>(T t) where T : BaseEntity
+        public static int Save<T>(T t) where T : BaseEntity
         {
             if (! t.BeforeCreate())
                 return 0;

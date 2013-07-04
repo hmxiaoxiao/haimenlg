@@ -27,7 +27,23 @@ namespace Haimen.Entity
 
         public string Password { get; set; }
 
+        // 用户初始化
+        // 第一次使用时，增加一个超级用户
+        public static void Init()
+        {
+            List<User> list = DBFactory.Query<User>().toList<User>();
+            if (list.Count == 0)
+            {
+                User admin = new User();
+                admin.Code = "admin";
+                admin.Name = "超级用户";
+                admin.Password = "qwer1234";
+                DBFactory.Save<User>(admin);
+            }
+        }
+
         // 传入用户的CODE以及密码，判断是否可以登录
+        // 这里是唯一不会返回错误原因的地方
         public bool Verify(string code, string password)
         {
             if (code == null || code == "")

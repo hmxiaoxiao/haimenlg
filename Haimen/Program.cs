@@ -8,6 +8,7 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 
 using Haimen.GUI;
+using Haimen.Entity;
 
 namespace Haimen
 {
@@ -22,6 +23,11 @@ namespace Haimen
             // 初始化
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+
+            // 初始化用户, 第一次使用时，没有用户时增加用户。
+            User.Init();
+
 
             // 显示登录窗口
             frmLogin win = new frmLogin();
