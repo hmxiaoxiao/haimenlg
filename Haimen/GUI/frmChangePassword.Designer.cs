@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,6 +39,8 @@
             this.txtPasswordConfirm = new System.Windows.Forms.TextBox();
             this.btnChangepassword = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -45,14 +48,14 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(23, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 12);
+            this.label1.Size = new System.Drawing.Size(89, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "当前登录用户";
+            this.label1.Text = "当前登录用户：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 53);
+            this.label2.Location = new System.Drawing.Point(59, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 1;
@@ -63,18 +66,18 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(59, 90);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 2;
-            this.label3.Text = "新密码";
+            this.label3.Text = "新密码：";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(35, 127);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.Size = new System.Drawing.Size(77, 12);
             this.label4.TabIndex = 3;
-            this.label4.Text = "重复新密码";
+            this.label4.Text = "重复新密码：";
             // 
             // txtUser
             // 
@@ -82,28 +85,34 @@
             this.txtUser.Location = new System.Drawing.Point(125, 12);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(149, 21);
-            this.txtUser.TabIndex = 4;
+            this.txtUser.TabIndex = 1;
             // 
             // txtOldPassword
             // 
             this.txtOldPassword.Location = new System.Drawing.Point(125, 49);
             this.txtOldPassword.Name = "txtOldPassword";
+            this.txtOldPassword.PasswordChar = '*';
             this.txtOldPassword.Size = new System.Drawing.Size(149, 21);
-            this.txtOldPassword.TabIndex = 4;
+            this.txtOldPassword.TabIndex = 2;
+            this.txtOldPassword.Leave += new System.EventHandler(this.txtOldPassword_Leave);
             // 
             // txtNewpassword
             // 
             this.txtNewpassword.Location = new System.Drawing.Point(125, 86);
             this.txtNewpassword.Name = "txtNewpassword";
+            this.txtNewpassword.PasswordChar = '*';
             this.txtNewpassword.Size = new System.Drawing.Size(149, 21);
-            this.txtNewpassword.TabIndex = 4;
+            this.txtNewpassword.TabIndex = 3;
+            this.txtNewpassword.Leave += new System.EventHandler(this.txtNewpassword_Leave);
             // 
             // txtPasswordConfirm
             // 
             this.txtPasswordConfirm.Location = new System.Drawing.Point(125, 123);
             this.txtPasswordConfirm.Name = "txtPasswordConfirm";
+            this.txtPasswordConfirm.PasswordChar = '*';
             this.txtPasswordConfirm.Size = new System.Drawing.Size(149, 21);
             this.txtPasswordConfirm.TabIndex = 4;
+            this.txtPasswordConfirm.Leave += new System.EventHandler(this.txtPasswordConfirm_Leave);
             // 
             // btnChangepassword
             // 
@@ -113,6 +122,7 @@
             this.btnChangepassword.TabIndex = 5;
             this.btnChangepassword.Text = "修改密码";
             this.btnChangepassword.UseVisualStyleBackColor = true;
+            this.btnChangepassword.Click += new System.EventHandler(this.btnChangepassword_Click);
             // 
             // btnExit
             // 
@@ -120,10 +130,14 @@
             this.btnExit.Location = new System.Drawing.Point(199, 172);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
-            this.btnExit.TabIndex = 5;
+            this.btnExit.TabIndex = 6;
             this.btnExit.Text = "放弃修改";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmChangePassword
             // 
@@ -147,6 +161,8 @@
             this.Name = "frmChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "修改密码";
+            this.Load += new System.EventHandler(this.frmChangePassword_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,6 +180,7 @@
         private System.Windows.Forms.TextBox txtPasswordConfirm;
         private System.Windows.Forms.Button btnChangepassword;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
 
     }
 }

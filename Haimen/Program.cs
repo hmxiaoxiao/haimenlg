@@ -33,7 +33,7 @@ namespace Haimen
             frmLogin win = new frmLogin();
             win.ShowDialog();
 
-            if (win.getVierfy())
+            if ( GlobalSet.Current_User != null)
             {
                 Application.Run(new frmMain());
             }

@@ -33,6 +33,8 @@
             this.menuUser = new System.Windows.Forms.ToolStripMenuItem();
             this.menuChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.通知ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBaseData = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCompanyAccountInfo = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,9 +63,7 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuEndInit = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.通知ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tssUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -100,26 +100,37 @@
             // menuUser
             // 
             this.menuUser.Name = "menuUser";
-            this.menuUser.Size = new System.Drawing.Size(152, 22);
+            this.menuUser.Size = new System.Drawing.Size(124, 22);
             this.menuUser.Text = "用户管理";
             this.menuUser.Click += new System.EventHandler(this.menuUser_Click_1);
             // 
             // menuChangePassword
             // 
             this.menuChangePassword.Name = "menuChangePassword";
-            this.menuChangePassword.Size = new System.Drawing.Size(152, 22);
+            this.menuChangePassword.Size = new System.Drawing.Size(124, 22);
             this.menuChangePassword.Text = "更改密码";
             this.menuChangePassword.Click += new System.EventHandler(this.menuChangePassword_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(121, 6);
+            // 
+            // 通知ToolStripMenuItem
+            // 
+            this.通知ToolStripMenuItem.Name = "通知ToolStripMenuItem";
+            this.通知ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.通知ToolStripMenuItem.Text = "通知";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(121, 6);
             // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(152, 22);
+            this.menuExit.Size = new System.Drawing.Size(124, 22);
             this.menuExit.Text = "退出";
             this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
             // 
@@ -318,29 +329,20 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.tssUser});
             this.statusStrip1.Location = new System.Drawing.Point(0, 389);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(548, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // tssUser
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(128, 17);
-            this.toolStripStatusLabel1.Text = "当前登录用户：admin";
-            // 
-            // 通知ToolStripMenuItem
-            // 
-            this.通知ToolStripMenuItem.Name = "通知ToolStripMenuItem";
-            this.通知ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.通知ToolStripMenuItem.Text = "通知";
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(149, 6);
+            this.tssUser.Image = global::Haimen.Properties.Resources.User;
+            this.tssUser.Name = "tssUser";
+            this.tssUser.Size = new System.Drawing.Size(144, 17);
+            this.tssUser.Text = "当前登录用户：admin";
+            this.tssUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmMain
             // 
@@ -354,6 +356,7 @@
             this.Name = "frmMain";
             this.Text = "海门临江财政资金管理系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -384,7 +387,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuHT;
         private System.Windows.Forms.ToolStripMenuItem menuDK;
         private System.Windows.Forms.ToolStripMenuItem menuReport;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel tssUser;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem menuCompanyAccountInfo;
         private System.Windows.Forms.ToolStripMenuItem 初始化ToolStripMenuItem;

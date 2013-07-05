@@ -170,11 +170,11 @@ namespace Haimen.Entity
                     case "CREATE_DATE":
                         break;
                     case "UPDATE_DATE":
-                        sets += " Set " + item.Key + "= @" + item.Key + ",";
+                        sets += item.Key + "= @" + item.Key + ",";
                         cmd.Parameters.AddWithValue("@" + item.Key, DateTime.Now);
                         break;
                     default:
-                        sets += " Set " + item.Key + "= @" + item.Key + ",";
+                        sets += item.Key + "= @" + item.Key + ",";
                         cmd.Parameters.AddWithValue("@" + item.Key, item.Value);
                         break;
                 }
@@ -182,7 +182,10 @@ namespace Haimen.Entity
 
             if (sets.Length > 0)
             {
-                sql += sets.Substring(0, sets.Length - 1);
+                sql += " Set " + sets.Substring(0, sets.Length - 1);
+                // 加上条件
+                sql += " Where id = @id";
+                cmd.Parameters.AddWithValue("@id",t.ID);
                 cmd.CommandText = sql;
 
                 Console.WriteLine(sql);
@@ -193,7 +196,7 @@ namespace Haimen.Entity
         }
 
 
-        // 删除数据库对象
+        // 删除数据库对象, 必须是真实存在的对象
         public static void Delete<T>(T t) where T : BaseEntity
         {
             if (! t.BeforeDelete())
@@ -207,7 +210,10 @@ namespace Haimen.Entity
             MySqlCommand cmd = Conn.CreateCommand();
             cmd.CommandText = sql;
             cmd.Parameters.AddWithValue("@id", t.ID);
+            MySqlTransaction trans = Conn.BeginTransaction();
             cmd.ExecuteNonQuery();
+            trans.Commit();
+
         }
 
         /// <summary>

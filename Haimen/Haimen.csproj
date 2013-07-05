@@ -116,6 +116,7 @@
     <Compile Include="Entity\DBFactory.cs" />
     <Compile Include="Entity\DataSet2List.cs" />
     <Compile Include="Entity\Field.cs" />
+    <Compile Include="Entity\GlobalSet.cs" />
     <Compile Include="Entity\Table.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="GUI\frmAccount.cs">

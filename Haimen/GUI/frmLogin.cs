@@ -14,13 +14,8 @@ namespace Haimen.GUI
 {
     public partial class frmLogin : Form
     {
-        private bool m_verify = false;
-        private User m_user = new User();
 
-        public bool getVierfy()
-        {
-            return m_verify;
-        }
+        private User m_user = new User();
 
         public frmLogin()
         {
@@ -33,9 +28,11 @@ namespace Haimen.GUI
             m_user.Code = txtCode.Text;
             m_user.Password = txtPassword.Text;
 
-            if (m_user.Verify(txtCode.Text, txtPassword.Text))
+
+            User LoginUser = User.Verify(txtCode.Text, txtPassword.Text);
+            if (LoginUser != null)
             {
-                m_verify = true;
+                GlobalSet.Current_User = LoginUser;
                 this.Close();
             }
             else

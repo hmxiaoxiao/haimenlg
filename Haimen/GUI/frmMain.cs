@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Haimen.GUI;
+using Haimen.Entity;
 
 namespace Haimen
 {
@@ -147,6 +148,13 @@ namespace Haimen
         {
             frmChangePassword win = new frmChangePassword();
             win.ShowDialog();
+        }
+
+        // 显示窗口时
+        private void frmMain_Shown(object sender, EventArgs e)
+        {
+            // 设置当前登录用户
+            this.tssUser.Text = GlobalSet.Current_User.Name;
         }
     }
 }

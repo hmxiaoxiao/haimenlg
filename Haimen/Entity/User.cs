@@ -44,19 +44,22 @@ namespace Haimen.Entity
 
         // 传入用户的CODE以及密码，判断是否可以登录
         // 这里是唯一不会返回错误原因的地方
-        public bool Verify(string code, string password)
+        public static User Verify(string code, string password)
         {
             if (code == null || code == "")
-                return false;
+                return null;
 
             User q = DBFactory.CreateQueryEntity<User>();
             q.Code = code;
             List<User> list = DBFactory.Query<User>(q).toList<User>();
 
             if (list.Count != 1)
-                return false;
+                return null;
 
-            return verifyMd5Hash(password, list[0].Salt);
+            if (verifyMd5Hash(code, password, list[0].Salt))
+                return list[0];
+            else
+                return null;
         }
 
         // 创建时的校验
@@ -89,21 +92,21 @@ namespace Haimen.Entity
             }
 
             // 将密码转换为hash后保存在hash字段里。
-            Salt = getMd5Hash(Password);
+            Salt = User.getMd5Hash(Password, Code);
             return true;
         }
 
 
         // Hash an input string and return the hash as
         // a 32 character hexadecimal string.
-        private string getMd5Hash(string input)
+        private static string getMd5Hash(string code, string password)
         {
             // Create a new instance of the MD5CryptoServiceProvider object.
             MD5 md5Hasher = MD5.Create();
 
             // Convert the input string to a byte array and compute the hash.
-            input = input + "hmxiaoxiao@gmail.com" + input + Code;
-            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(input));
+            password = password + "hmxiaoxiao@gmail.com" + password + code;
+            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(password));
 
             // Create a new Stringbuilder to collect the bytes
             // and create a string.
@@ -121,10 +124,10 @@ namespace Haimen.Entity
         }
 
         // Verify a hash against a string.
-        private bool verifyMd5Hash(string input, string hash)
+        private static bool verifyMd5Hash(string code, string password, string hash)
         {
             // Hash the input.
-            string hashOfInput = getMd5Hash(input);
+            string hashOfInput = getMd5Hash(code, password);
 
             // Create a StringComparer an comare the hashes.
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
