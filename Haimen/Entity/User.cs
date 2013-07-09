@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
-using MySql.Data;
-using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
 
 using Haimen.Entity;
@@ -66,7 +64,7 @@ namespace Haimen.Entity
         }
 
         // 创建时的校验
-        override public bool BeforeCreate()
+        override public bool BeforeSave()
         {
             // 初始化错误信息列表
             if (Err_Info == null)

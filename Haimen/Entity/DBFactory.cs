@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using MySql.Data;
-using MySql.Data.MySqlClient;
+//using MySql.Data;
+//using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using System.Reflection;
 using System.Diagnostics;
 using System.Data;
@@ -17,8 +18,8 @@ namespace Haimen.Entity
     public class DBFactory
     {
         // 数据库联接
-        private static MySqlConnection m_conn;
-        public static MySqlConnection Conn 
+        private static SqlConnection m_conn;
+        public static SqlConnection Connection 
         { 
             get
             { 
@@ -26,10 +27,6 @@ namespace Haimen.Entity
             } 
         }
 
-
-        public DBFactory()
-        {
-        }
 
         // 生成一个查询对象
         // 为了防止查询中0判断是输入，还是未输入，故特意加入此生成对象
@@ -39,28 +36,21 @@ namespace Haimen.Entity
             T t = new T();
             foreach (PropertyInfo info in t.GetType().GetProperties())
             {
-                FieldInfo fi = info.PropertyType.GetField("MinValue");
-                if (fi != null)
+                if (info.PropertyType == typeof(DateTime))
                 {
-                    info.SetValue(t, fi.GetValue(null), null);
+                    info.SetValue(t, System.Data.SqlTypes.SqlDateTime.MinValue.Value, null);
+                }
+                else
+                {
+                    FieldInfo fi = info.PropertyType.GetField("MinValue");
+                    if (fi != null)
+                    {
+                        info.SetValue(t, fi.GetValue(null), null);
+                    }
                 }
             }
             return t;
         }
-
-        //public static List<string> getFieldsName<T>()
-        //{
-        //    List<string> list = new List<string>();
-        //    foreach (PropertyInfo info in typeof(T).GetProperties())
-        //    {
-        //        string field = GetFieldName(info);
-        //        if (field != null && field != "")
-        //        {
-        //            list.Add(field);
-        //        }
-        //    }
-        //    return list;
-        //}
 
 
         // 返回当前对象对应数据库的字段以及值
@@ -88,28 +78,39 @@ namespace Haimen.Entity
             foreach (PropertyInfo info in t.GetType().GetProperties())
             {
                 FieldInfo fi = info.PropertyType.GetField("MinValue");
-                if (fi != null && info.GetValue(t, null).ToString() != fi.GetValue(null).ToString())
+                if (info.PropertyType == typeof(DateTime))
                 {
-                    KeyValuePair<string, dynamic> kp = new KeyValuePair<string, dynamic>(GetFieldName(info), info.GetValue(t, null));
-                    list.Add(kp);
+                    if (info.GetValue(t, null) != null && info.GetValue(t, null).ToString() != System.Data.SqlTypes.SqlDateTime.MinValue.ToSqlString())
+                    {
+                        KeyValuePair<string, dynamic> kp = new KeyValuePair<string, dynamic>(GetFieldName(info), info.GetValue(t, null));
+                        list.Add(kp);
+                    }
                 }
-                if ( fi == null && info.GetValue(t, null) != null)
+                else
                 {
-                    KeyValuePair<string, dynamic> kp = new KeyValuePair<string, dynamic>(GetFieldName(info), info.GetValue(t, null));
-                    list.Add(kp);
+                    if (fi != null && info.GetValue(t, null).ToString() != fi.GetValue(null).ToString())
+                    {
+                        KeyValuePair<string, dynamic> kp = new KeyValuePair<string, dynamic>(GetFieldName(info), info.GetValue(t, null));
+                        list.Add(kp);
+                    }
+                    if (fi == null && info.GetValue(t, null) != null)
+                    {
+                        KeyValuePair<string, dynamic> kp = new KeyValuePair<string, dynamic>(GetFieldName(info), info.GetValue(t, null));
+                        list.Add(kp);
+                    }
                 }
             }
             return list;
         }
 
         // 创建保存
-        public static ulong Save<T>(T t) where T : BaseEntity
+        public static long Save<T>(T t) where T : BaseEntity
         {
-            if (! t.BeforeCreate())
+            if (!t.BeforeSave())
                 return 0;
 
             List<KeyValuePair<string, dynamic>> list_fv = getFieldsAndValues(t);
-            MySqlCommand cmd = Conn.CreateCommand();
+            SqlCommand cmd = Connection.CreateCommand();
 
             string table_name = GetTableName(typeof(T));
             string sql = "Insert into " + table_name;
@@ -122,16 +123,19 @@ namespace Haimen.Entity
                 {
                     case "ID":  // 不处理,会自动生成！
                         break;
-                    case "CREATE_DATE":
-                    case "UPDATE_DATE":
+                    case "CREATED_DATE":
+                    case "UPDATED_DATE":
                         fields += item.Key + ",";
                         values += "@" + item.Key + ",";
                         cmd.Parameters.AddWithValue("@" + item.Key, DateTime.Now);
                         break;
                     default:
-                        fields += item.Key + ",";
-                        values += "@" + item.Key + ",";
-                        cmd.Parameters.AddWithValue("@" + item.Key, item.Value);
+                        if (item.Value != null)
+                        {
+                            fields += item.Key + ",";
+                            values += "@" + item.Key + ",";
+                            cmd.Parameters.AddWithValue("@" + item.Key, item.Value);
+                        }
                         break;
                 }
             }
@@ -140,22 +144,14 @@ namespace Haimen.Entity
             {
                 sql += "(" + fields.Substring(0, fields.Length - 1) + ") ";
                 sql += " values(" + values.Substring(0, values.Length - 1) + ")";
+                sql += "; select @@identity "; 
+                
                 cmd.CommandText = sql;
-
                 Console.WriteLine(sql);
-                MySqlTransaction trans = Conn.BeginTransaction();
-                cmd.ExecuteNonQuery();
+                SqlTransaction trans = Connection.BeginTransaction();
+                cmd.Transaction = trans;
+                long id = long.Parse(cmd.ExecuteScalar().ToString());
                 trans.Commit();
-                
-                sql = "Select last_insert_id() as id";
-                cmd.CommandText = sql;
-
-
-                MySqlDataAdapter dp = new MySqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                dp.Fill(ds);
-                ulong id = ulong.Parse( ds.Tables[0].Rows[0].ItemArray[0].ToString());
-                
                 return id;
             }
             else
@@ -172,7 +168,7 @@ namespace Haimen.Entity
                 return;
 
             List<KeyValuePair<string, dynamic>> list_fv = getFieldsAndValues(t);
-            MySqlCommand cmd = Conn.CreateCommand();
+            SqlCommand cmd = Connection.CreateCommand();
 
             string table_name = GetTableName(typeof(T));
             string sql = "Update " + table_name;
@@ -189,8 +185,11 @@ namespace Haimen.Entity
                         cmd.Parameters.AddWithValue("@" + item.Key, DateTime.Now);
                         break;
                     default:
-                        sets += item.Key + "= @" + item.Key + ",";
-                        cmd.Parameters.AddWithValue("@" + item.Key, item.Value);
+                        if (item.Value != null)
+                        {
+                            sets += item.Key + "= @" + item.Key + ",";
+                            cmd.Parameters.AddWithValue("@" + item.Key, item.Value);
+                        }
                         break;
                 }
             }
@@ -204,7 +203,8 @@ namespace Haimen.Entity
                 cmd.CommandText = sql;
 
                 Console.WriteLine(sql);
-                MySqlTransaction trans = Conn.BeginTransaction();
+                SqlTransaction trans = Connection.BeginTransaction();
+                cmd.Transaction = trans;
                 cmd.ExecuteNonQuery();
                 trans.Commit();
             }
@@ -222,10 +222,11 @@ namespace Haimen.Entity
 
             string sql = "Delete from " + table_name + " where id = @id";
             Console.WriteLine(sql);
-            MySqlCommand cmd = Conn.CreateCommand();
+            SqlCommand cmd = Connection.CreateCommand();
             cmd.CommandText = sql;
             cmd.Parameters.AddWithValue("@id", t.ID);
-            MySqlTransaction trans = Conn.BeginTransaction();
+            SqlTransaction trans = Connection.BeginTransaction();
+            cmd.Transaction = trans;
             cmd.ExecuteNonQuery();
             trans.Commit();
 
@@ -240,7 +241,7 @@ namespace Haimen.Entity
         /// <returns></returns>
         public static DataSet Query<T>(T from = null, T to = null) where T : BaseEntity, new()
         {
-            MySqlCommand cmd = Conn.CreateCommand();
+            SqlCommand cmd = Connection.CreateCommand();
             string table_name = GetTableName(typeof(T));
 
             string sql = "Select * from " + table_name;
@@ -292,7 +293,7 @@ namespace Haimen.Entity
 
             cmd.CommandText = sql;
             Console.WriteLine(sql);
-            MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adap = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             adap.Fill(ds); 
             return ds;
@@ -337,12 +338,12 @@ namespace Haimen.Entity
         }
 
 
-        private static MySqlConnection getConnection()
+        private static SqlConnection getConnection()
         {
-            string connStr = "server=localhost;uid=root;pwd=heroes22;database=haimen";
+            string connStr = @"Data Source=R400;Initial Catalog=haimen;User ID=sa;Password=heroes22";
             if (m_conn == null)
             {
-                m_conn = new MySqlConnection(connStr);
+                m_conn = new SqlConnection(connStr);
                 m_conn.Open();
             }
             return m_conn;

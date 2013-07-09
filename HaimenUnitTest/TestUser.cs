@@ -16,13 +16,9 @@ namespace HaimenUnitTest
         [TestMethod]
         public void TestUserQuery()
         {
-            User t = DBFactory.CreateQueryEntity<User>();
-            User from = new User();
+            User from = DBFactory.CreateQueryEntity<User>();
             from.ID = 999999;
-            //DataSet ds = DBFactory<User>.Query(from);
-            DataSet ds = DBFactory.Query<User>(from);
-
-            List<User> list = ds.toList<User>();
+            List<User> list = DBFactory.Query<User>(from).toList<User>();
             Assert.AreEqual<long>(0, list.Count);
 
         }
@@ -47,8 +43,8 @@ namespace HaimenUnitTest
             // 增加一个用户
             user.Code = "Hello";
             user.Name = "World!";
-            ulong id = DBFactory.Save<User>(user);// User.Create<User>(user);
-            Assert.AreNotEqual<ulong>(0, id);
+            long id = DBFactory.Save<User>(user);// User.Create<User>(user);
+            Assert.AreNotEqual(0, id);
             //user.Create<User>(user);
 
             // 已经在数据库里面
@@ -82,7 +78,7 @@ namespace HaimenUnitTest
             User u = new User();
             u.Code = "test1";
             u.Password = "test1";
-            ulong id = DBFactory.Save<User>(u);
+            long id = DBFactory.Save<User>(u);
             Assert.IsTrue(id > 0);
 
             User q = DBFactory.CreateQueryEntity<User>();
