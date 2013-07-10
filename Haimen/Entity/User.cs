@@ -24,7 +24,7 @@ namespace Haimen.Entity
         public string Salt { get; set; }
 
         [Field("admin")]
-        public string IsAdmin { get; set; }
+        public string Admin { get; set; }
 
         public string Password { get; set; }
 
@@ -39,6 +39,7 @@ namespace Haimen.Entity
                 admin.Code = "admin";
                 admin.Name = "超级用户";
                 admin.Password = "qwer1234";
+                admin.Admin = "X";
                 DBFactory.Save<User>(admin);
             }
         }
@@ -93,7 +94,8 @@ namespace Haimen.Entity
             }
 
             // 将密码转换为hash后保存在hash字段里。
-            Salt = User.getMd5Hash(Password, Code);
+            if (Password != null && Password != "")
+                Salt = User.getMd5Hash(Code, Password);
             return true;
         }
 

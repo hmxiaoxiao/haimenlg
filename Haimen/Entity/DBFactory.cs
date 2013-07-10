@@ -27,7 +27,6 @@ namespace Haimen.Entity
             } 
         }
 
-
         // 生成一个查询对象
         // 为了防止查询中0判断是输入，还是未输入，故特意加入此生成对象
         // 该对象中可以用MinValue的都用了MinValue.
@@ -178,9 +177,9 @@ namespace Haimen.Entity
                 switch (item.Key.ToUpper())
                 {
                     case "ID":  // 不处理
-                    case "CREATE_DATE":
+                    case "CREATED_DATE":
                         break;
-                    case "UPDATE_DATE":
+                    case "UPDATED_DATE":
                         sets += item.Key + "= @" + item.Key + ",";
                         cmd.Parameters.AddWithValue("@" + item.Key, DateTime.Now);
                         break;
@@ -299,6 +298,8 @@ namespace Haimen.Entity
             return ds;
         }
 
+
+
         /// <summary>
         /// 取得属性对应的表的字段
         /// </summary>
@@ -323,7 +324,7 @@ namespace Haimen.Entity
         /// </summary>
         /// <param name="t">类的typeof</param>
         /// <returns>对应的表名，没有找到为空</returns>
-        private static string GetTableName(Type t)
+        public static string GetTableName(Type t)
         {
             string name = "";
             foreach (Attribute attr in t.GetCustomAttributes(false))

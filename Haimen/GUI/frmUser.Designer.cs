@@ -131,6 +131,7 @@
             // 
             // txtCode
             // 
+            this.txtCode.Enabled = false;
             this.txtCode.Location = new System.Drawing.Point(95, 21);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(149, 21);
@@ -160,7 +161,7 @@
             // btnExit
             // 
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(299, 188);
+            this.btnExit.Location = new System.Drawing.Point(299, 71);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 7;

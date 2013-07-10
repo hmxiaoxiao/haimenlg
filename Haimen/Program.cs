@@ -4,9 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using MySql.Data;
-using MySql.Data.MySqlClient;
-
 using Haimen.GUI;
 using Haimen.Entity;
 
@@ -29,10 +26,11 @@ namespace Haimen
             User.Init();
 
 
-            // 显示登录窗口
-            frmLogin win = new frmLogin();
-            win.ShowDialog();
+            //// 显示登录窗口
+            //frmLogin win = new frmLogin();
+            //win.ShowDialog();
 
+            GlobalSet.Current_User = User.Verify("admin", "qwer1234");
             if ( GlobalSet.Current_User != null)
             {
                 Application.Run(new frmMain());

@@ -43,10 +43,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnQuery = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserAdmin = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Admin = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.toolStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -181,45 +182,51 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.UserID,
-            this.UserCode,
-            this.UserName,
-            this.UserAdmin});
+            this.col_selected,
+            this.col_id,
+            this.col_code,
+            this.col_name,
+            this.Admin});
             this.dataGridView1.Location = new System.Drawing.Point(13, 118);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(323, 194);
             this.dataGridView1.TabIndex = 8;
             // 
-            // ID
+            // col_selected
             // 
-            this.UserID.HeaderText = "编号";
-            this.UserID.Name = "ID";
-            this.UserID.ReadOnly = true;
+            this.col_selected.HeaderText = "选择";
+            this.col_selected.Name = "col_selected";
             // 
-            // Code
+            // col_id
             // 
-            this.UserCode.HeaderText = "登录名";
-            this.UserCode.Name = "Code";
-            this.UserCode.ReadOnly = true;
+            this.col_id.HeaderText = "编号";
+            this.col_id.Name = "col_id";
+            this.col_id.ReadOnly = true;
             // 
-            // Name
+            // col_code
             // 
-            this.UserName.HeaderText = "用户名";
-            this.UserName.Name = "Name";
-            this.UserName.ReadOnly = true;
+            this.col_code.HeaderText = "登录名";
+            this.col_code.Name = "col_code";
+            this.col_code.ReadOnly = true;
+            // 
+            // col_name
+            // 
+            this.col_name.HeaderText = "用户名";
+            this.col_name.Name = "col_name";
+            this.col_name.ReadOnly = true;
             // 
             // Admin
             // 
-            this.UserAdmin.HeaderText = "管理员";
-            this.UserAdmin.Name = "Admin";
-            this.UserAdmin.ReadOnly = true;
+            this.Admin.HeaderText = "管理员";
+            this.Admin.Name = "Admin";
+            this.Admin.ReadOnly = true;
             // 
             // frmUserList
             // 
@@ -233,7 +240,6 @@
             this.Name = "frmUserList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "用户管理";
-            this.Load += new System.EventHandler(this.frmUserList_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -265,6 +271,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewCheckBoxColumn UserAdmin;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn col_selected;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_name;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Admin;
 
     }
 }

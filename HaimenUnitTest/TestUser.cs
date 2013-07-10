@@ -77,7 +77,7 @@ namespace HaimenUnitTest
         {
             User u = new User();
             u.Code = "test1";
-            u.Password = "test1";
+            u.Password = "abcde";
             long id = DBFactory.Save<User>(u);
             Assert.IsTrue(id > 0);
 
