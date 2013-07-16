@@ -17,7 +17,7 @@ namespace Haimen.GUI
         // 校验老密码
         private bool verify_old_password()
         {
-            if (User.Verify(GlobalSet.Current_User.Code, txtOldPassword.Text) == null)
+            if (User.Login(GlobalSet.Current_User.Code, txtOldPassword.Text) == null)
             {
                 errorProvider1.SetError(txtOldPassword, "老密码不正确");
                 return false;
@@ -66,7 +66,7 @@ namespace Haimen.GUI
             if (verify_new_password() && verify_old_password())
             {
                 GlobalSet.Current_User.Password = txtNewpassword.Text;
-                DBFactory.Update(GlobalSet.Current_User);
+                GlobalSet.Current_User.Update();
 
                 MessageBox.Show("成功更新密码", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

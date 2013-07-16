@@ -49,7 +49,7 @@ namespace Haimen.GUI
             if (!Verify())
                 return;
             m_user.Password = txtNewpassword.Text;
-            DBFactory.Update(m_user);
+            m_user.Update();
             MessageBox.Show("设置密码成功！", "注意", MessageBoxButtons.OK);
         }
     }

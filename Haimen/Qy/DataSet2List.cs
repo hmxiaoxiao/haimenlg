@@ -6,7 +6,7 @@ using System.Text;
 using System.Reflection;
 using System.Data;
 
-namespace Haimen.Entity
+namespace Haimen.Qy
 {
     public static class DataSet2List
     {

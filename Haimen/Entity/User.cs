@@ -6,13 +6,14 @@ using System.Data;
 
 using System.Security.Cryptography;
 
-using Haimen.Entity;
+
+using Haimen.Qy;
 
 namespace Haimen.Entity
 {
     // 用户类
     [Table("m_user")]
-    public class User : BaseEntity
+    public class User : EntityFunction<User>
     {
         [Field("code")]
         public string Code { get; set; }
@@ -32,7 +33,7 @@ namespace Haimen.Entity
         // 第一次使用时，增加一个超级用户
         public static void Init()
         {
-            List<User> list = DBFactory.Query<User>().toList<User>();
+            List<User> list = Query();
             if (list.Count == 0)
             {
                 User admin = new User();
@@ -40,20 +41,18 @@ namespace Haimen.Entity
                 admin.Name = "超级用户";
                 admin.Password = "qwer1234";
                 admin.Admin = "X";
-                DBFactory.Save<User>(admin);
+                admin.Save();
             }
         }
 
         // 传入用户的CODE以及密码，判断是否可以登录
         // 这里是唯一不会返回错误原因的地方
-        public static User Verify(string code, string password)
+        public static User Login(string code, string password)
         {
             if (code == null || code == "")
                 return null;
 
-            User q = DBFactory.CreateQueryEntity<User>();
-            q.Code = code;
-            List<User> list = DBFactory.Query<User>(q).toList<User>();
+            List<User> list = User.Query("Code = '" + code + "'"); ;
 
             if (list.Count != 1)
                 return null;
@@ -64,32 +63,31 @@ namespace Haimen.Entity
                 return null;
         }
 
-        // 创建时的校验
-        override public bool BeforeSave()
+        // 校验
+        override public bool Verify()
         {
             // 初始化错误信息列表
-            if (Err_Info == null)
-                Err_Info = new List<KeyValuePair<string, string>>();
-            else
-                Err_Info.Clear();
+            Error_Info.Clear();
 
             // 判断代码是否为空
             string err = "";
             if (Code == null || Code == "")
             {
                 err = "用户代码不能为空！";
-                Err_Info.Add(new KeyValuePair<string,string>("Code", err));
+                Error_Info.Add(new KeyValuePair<string, string>("Code", err));
                 return false;
             }
 
             // 判断代码是否重复
-            User q = DBFactory.CreateQueryEntity<User>();
-            q.Code = Code;
-            List<User> users = DBFactory.Query<User>(q).toList<User>();
+            List<User> users;
+            if (ID > 0)
+                users = User.Query("Code = '" + Code + "' and id <> " + ID.ToString());
+            else
+                users = User.Query("Code = '" + Code + "'");
             if (users.Count > 0)
             {
-                err = "用户代码已经存在，请重新输入一个。";
-                Err_Info.Add(new KeyValuePair<string, string>("Code", err));
+                err = "用户代码已经存在，请重新输入。";
+                Error_Info.Add(new KeyValuePair<string, string>("Code", err));
                 return false;
             }
 

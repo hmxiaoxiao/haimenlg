@@ -29,7 +29,7 @@ namespace Haimen.GUI
             m_user.Password = txtPassword.Text;
 
 
-            User LoginUser = User.Verify(txtCode.Text, txtPassword.Text);
+            User LoginUser = User.Login(txtCode.Text, txtPassword.Text);
             if (LoginUser != null)
             {
                 GlobalSet.Current_User = LoginUser;

@@ -44,7 +44,7 @@ namespace Haimen.GUI
             {
                 if (m_user != null)
                 {
-                    if (User.Where<User>("Code = '" + txtCode.Text + "' and id <> " + m_user.ID.ToString()).ToList<User>().Count > 0)
+                    if (User.Query("Code = '" + txtCode.Text + "' and id <> " + m_user.ID.ToString()).Count > 0)
                     {
                         errorProvider1.SetError(txtCode, "用户代码已经存在");
                         verify = false;
@@ -55,9 +55,7 @@ namespace Haimen.GUI
                 else
                 {
                     //  新增用户时的判断
-                    User q = DBFactory.CreateQueryEntity<User>();
-                    q.Code = txtCode.Text;
-                    if (DBFactory.Query<User>(q).toList<User>().Count > 0)
+                    if (User.Query("Code = '" + txtCode.Text + "'").Count > 0)
                     {
                         errorProvider1.SetError(txtCode, "用户代码已经存在");
                         verify = false;
@@ -151,27 +149,23 @@ namespace Haimen.GUI
             }
             else
                 user.Password = txtPassword.Text;
+
             if (cbAdmin.Checked)
                 user.Admin = "X";
 
-            if (m_user != null)
-            {
-                DBFactory.Update(user);
-                MessageBox.Show("编辑用户保存成功!", "注意");
-            }
-            else
+
+            user.Save();
+            MessageBox.Show("编辑用户保存成功!", "注意");
+            if (m_user == null)
             {
                 // 如果保存成功，则清空输入框，等待增加新用户
-                if (0 < DBFactory.Save(user))
-                {
-                    MessageBox.Show("新增用户保存成功!", "注意");
-                    txtCode.Text = "";
-                    txtName.Text = "";
-                    txtPassword.Text = "";
-                    txtPasswordConfirm.Text = "";
-                    cbAdmin.Checked = false;
-                    txtCode.Focus();
-                }
+                MessageBox.Show("新增用户保存成功!", "注意");
+                txtCode.Text = "";
+                txtName.Text = "";
+                txtPassword.Text = "";
+                txtPasswordConfirm.Text = "";
+                cbAdmin.Checked = false;
+                txtCode.Focus();
             }
         }
     }

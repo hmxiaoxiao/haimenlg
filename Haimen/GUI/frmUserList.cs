@@ -34,7 +34,7 @@ namespace Haimen.GUI
             {
                 if (dataGridView1.Rows[i].Cells["col_selected"].EditedFormattedValue.ToString() == true.ToString())
                 {
-                    User user = User.Where<User>("id=" + dataGridView1.Rows[i].Cells["col_id"].Value.ToString())[0];
+                    User user = User.CreateByID( long.Parse(dataGridView1.Rows[i].Cells["col_id"].Value.ToString()));
                     frmUser win = new frmUser(user);
                     win.ShowDialog(this); int j = i;
                     return;
@@ -57,7 +57,7 @@ namespace Haimen.GUI
                 if (dataGridView1.Rows[i].Cells["col_selected"].EditedFormattedValue.ToString() == true.ToString())
                 {
                     int id = int.Parse(dataGridView1.Rows[i].Cells["col_id"].Value.ToString());
-                    frmResetPassword win = new frmResetPassword(User.New<User>(id));
+                    frmResetPassword win = new frmResetPassword(User.CreateByID(id));
                     win.ShowDialog(this);
                     return;
                 }
@@ -82,9 +82,7 @@ namespace Haimen.GUI
                 {
                     foreach (int id in delete_user_id_list)
                     {
-                        User del = User.New<User>(id);
-                        if (del != null)
-                            DBFactory.Delete<User>(del);
+                        User.Delete(id);
                     }
                     MessageBox.Show(this, "删除用户成功!", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     refreshGrid();
@@ -100,20 +98,23 @@ namespace Haimen.GUI
         // 刷新表格
         private void refreshGrid()
         {
-            User q = DBFactory.CreateQueryEntity<User>();
-            List<User> list = new List<User>();
-            if (txtCode.Text == "" && txtName.Text == "")
+            List<string> where = new List<string>();
+            if (txtCode.Text != "")
+                where.Add( " Code = '" + txtCode.Text + "' " );
+            if (txtName.Text != "")
+                where.Add( " Name = '" + txtName.Text + "' ");
+            
+            string sql = "";
+            foreach( string s in where)
             {
-                list = DBFactory.Query<User>().toList<User>();
-                List2Grid(list);
+                sql += s + " and ";
             }
-            else
-            {
-                q.Code = txtCode.Text;
-                q.Name = txtName.Text;
-                list = DBFactory.Query(q).toList<User>();
-                List2Grid(list);
-            }
+
+            if (sql.Length > 0)
+                sql = sql.Substring(0, sql.Length - 4);
+            
+            List<User> list = User.Query(sql);
+            List2Grid(list);
         }
 
         // 将列表影射到表格

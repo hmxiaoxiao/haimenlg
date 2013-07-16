@@ -16,10 +16,9 @@ namespace HaimenUnitTest
         [TestMethod]
         public void TestUserQuery()
         {
-            User from = DBFactory.CreateQueryEntity<User>();
-            from.ID = 999999;
-            List<User> list = DBFactory.Query<User>(from).toList<User>();
-            Assert.AreEqual<long>(0, list.Count);
+
+            User user = User.CreateByID(999999);
+            Assert.IsNull(user);
 
         }
 
@@ -27,48 +26,43 @@ namespace HaimenUnitTest
         public void TestUserCreateAndUpdate()
         {
             // 如果有以前的测试数据，先删除之
-            User user = DBFactory.CreateQueryEntity<User>();
-            user.Code = "Hello";
-            user.Name = "World!";
-            List<User> list = DBFactory.Query<User>(user).toList<User>();
+            List<User> list = User.Query("code = 'Hello' ");
             if (list.Count > 0)
             {
-                DBFactory.Delete(list[0]);
+                User.Delete(list[0].ID);
             }
 
             // 记录当前库里有多少条记录
-            list = DBFactory.Query<User>().toList<User>();
+            list = User.Query();
             int count = list.Count;
 
             // 增加一个用户
+            User user = new User();
             user.Code = "Hello";
-            user.Name = "World!";
-            long id = DBFactory.Save<User>(user);// User.Create<User>(user);
-            Assert.AreNotEqual(0, id);
+            user.Name = "World";
+            user.Insert();// User.Create<User>(user);
+            Assert.AreNotEqual(0, user.ID);
             //user.Create<User>(user);
 
             // 已经在数据库里面
-            list = DBFactory.Query<User>().toList<User>();
+            list = User.Query();
             Assert.AreEqual(list.Count, count + 1);
-            
+
             // 可以找到新增的记录
-            User query_user = DBFactory.CreateQueryEntity<User>();
-            query_user.Code = "Hello";
-            query_user.Name = "World!";
-            list = DBFactory.Query<User>(query_user).toList<User>();// User.Query(query_user).toList<User>();
+            list = User.Query("code = 'Hello' and name = 'World'");
             Assert.AreEqual(list.Count, 1);
 
             // 删除更新
             list[0].Name = "Changed!";
-            DBFactory.Update(list[0]);
+            list[0].Update();
 
             // 查找更新后的记录
-            list = DBFactory.Query<User>(list[0]).toList<User>();// User.Query(query_user).toList<User>();
+            list = User.Query("code = 'Hello' and name = 'Changed!'");
             Assert.AreEqual(1, list.Count);
 
             // 可以删除了。
-            DBFactory.Delete<User>(list[0]);  // User.Delete("Hello");
-            list = DBFactory.Query<User>().toList<User>();// User.Query(new User()).toList<User>();
+            User.Delete(list[0].ID);  // User.Delete("Hello");
+            list = User.Query();
             Assert.IsTrue(list.Count == count);
         }
 
@@ -78,17 +72,15 @@ namespace HaimenUnitTest
             User u = new User();
             u.Code = "test1";
             u.Password = "abcde";
-            long id = DBFactory.Save<User>(u);
-            Assert.IsTrue(id > 0);
+            u.Insert();
+            Assert.IsTrue(u.ID > 0);
 
-            User q = DBFactory.CreateQueryEntity<User>();
-            q.ID = id;
-            List<User> list = DBFactory.Query<User>(q).toList<User>();
-            Assert.IsTrue(1 == list.Count);
-            Assert.IsNotNull(list[0].Salt);
-            Assert.IsTrue(User.Verify(u.Code, u.Password) != null);
+            User dbUser = User.CreateByID(u.ID);
+            Assert.IsTrue(u.ID == dbUser.ID);
+            Assert.IsNotNull(dbUser.Salt);
+            Assert.IsTrue(User.Login(u.Code, u.Password) != null);
 
-            DBFactory.Delete<User>(q);
+            User.Delete(u.ID);
         }
     }
 }

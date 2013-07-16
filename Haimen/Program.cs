@@ -30,7 +30,7 @@ namespace Haimen
             //frmLogin win = new frmLogin();
             //win.ShowDialog();
 
-            GlobalSet.Current_User = User.Verify("admin", "qwer1234");
+            GlobalSet.Current_User = User.Login("admin", "qwer1234");
             if ( GlobalSet.Current_User != null)
             {
                 Application.Run(new frmMain());
