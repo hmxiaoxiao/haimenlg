@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboDept = new System.Windows.Forms.ComboBox();
+            this.cboBankParent = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,12 +38,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cboDept);
+            this.groupBox1.Controls.Add(this.cboBankParent);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.label2);
@@ -54,10 +57,11 @@
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             // 
-            // cboDept
+            // cboBankParent
             // 
-            this.cboDept.FormattingEnabled = true;
-            this.cboDept.Items.AddRange(new object[] {
+            this.cboBankParent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBankParent.FormattingEnabled = true;
+            this.cboBankParent.Items.AddRange(new object[] {
             "办公室",
             "综合科",
             "预算科",
@@ -69,10 +73,10 @@
             "社会保障科",
             "企业科",
             "会计管理科"});
-            this.cboDept.Location = new System.Drawing.Point(95, 105);
-            this.cboDept.Name = "cboDept";
-            this.cboDept.Size = new System.Drawing.Size(149, 20);
-            this.cboDept.TabIndex = 15;
+            this.cboBankParent.Location = new System.Drawing.Point(95, 105);
+            this.cboBankParent.Name = "cboBankParent";
+            this.cboBankParent.Size = new System.Drawing.Size(149, 20);
+            this.cboBankParent.TabIndex = 3;
             // 
             // label3
             // 
@@ -88,7 +92,7 @@
             this.txtName.Location = new System.Drawing.Point(95, 63);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(149, 21);
-            this.txtName.TabIndex = 13;
+            this.txtName.TabIndex = 2;
             // 
             // label2
             // 
@@ -104,7 +108,7 @@
             this.txtCode.Location = new System.Drawing.Point(95, 21);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(149, 21);
-            this.txtCode.TabIndex = 11;
+            this.txtCode.TabIndex = 1;
             // 
             // label1
             // 
@@ -117,10 +121,11 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(294, 140);
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnExit.Location = new System.Drawing.Point(294, 57);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
-            this.btnExit.TabIndex = 17;
+            this.btnExit.TabIndex = 5;
             this.btnExit.Text = "退出";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -130,9 +135,14 @@
             this.btnSave.Location = new System.Drawing.Point(294, 28);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 18;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmBank
             // 
@@ -148,6 +158,7 @@
             this.Text = "新增银行";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -155,7 +166,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cboDept;
+        private System.Windows.Forms.ComboBox cboBankParent;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
@@ -163,5 +174,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
