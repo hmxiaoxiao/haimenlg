@@ -58,6 +58,8 @@
     <Compile Include="TestUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestBank.cs" />
+    <Compile Include="TestFunds.cs" />
+    <Compile Include="TestCompany.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Haimen\Haimen.csproj">

@@ -13,8 +13,8 @@ namespace HaimenUnitTest
         {
             // 增加一个新银行
             Bank bank = new Bank();
-            bank.Code = "CCB";
-            bank.Name = "中国建设银行";
+            bank.Code = "CCB1234";
+            bank.Name = "中国建设银行1234";
             bank.Save();
             Assert.AreNotEqual(0, bank.ID);
 

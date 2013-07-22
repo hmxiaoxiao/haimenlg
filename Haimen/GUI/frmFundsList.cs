@@ -24,5 +24,11 @@ namespace Haimen.GUI
                 MessageBox.Show(this, "删除成功!", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void tsbNew_Click(object sender, EventArgs e)
+        {
+            frmFunds win = new frmFunds();
+            win.ShowDialog(this);
+        }
     }
 }

@@ -42,7 +42,7 @@
             treeNode5,
             treeNode6});
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
@@ -51,10 +51,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnQuery = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,12 +90,12 @@
             this.treeView1.Size = new System.Drawing.Size(151, 262);
             this.treeView1.TabIndex = 18;
             // 
-            // textBox2
+            // txtName
             // 
-            this.textBox2.Location = new System.Drawing.Point(78, 47);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(151, 21);
-            this.textBox2.TabIndex = 5;
+            this.txtName.Location = new System.Drawing.Point(78, 47);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(151, 21);
+            this.txtName.TabIndex = 5;
             // 
             // tsbExit
             // 
@@ -129,6 +129,7 @@
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(52, 22);
             this.tsbNew.Text = "新增";
+            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // toolStrip2
             // 
@@ -157,8 +158,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtCode);
+            this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 35);
@@ -167,12 +168,12 @@
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             // 
-            // textBox1
+            // txtCode
             // 
-            this.textBox1.Location = new System.Drawing.Point(78, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 21);
-            this.textBox1.TabIndex = 3;
+            this.txtCode.Location = new System.Drawing.Point(78, 20);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(151, 21);
+            this.txtCode.TabIndex = 3;
             // 
             // label1
             // 
@@ -192,14 +193,14 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "名称";
             // 
-            // button1
+            // btnQuery
             // 
-            this.button1.Location = new System.Drawing.Point(260, 80);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "查询";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnQuery.Location = new System.Drawing.Point(260, 80);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(75, 23);
+            this.btnQuery.TabIndex = 16;
+            this.btnQuery.Text = "查询";
+            this.btnQuery.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -256,7 +257,7 @@
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnQuery);
             this.Controls.Add(this.dataGridView1);
             this.Name = "frmFundsList";
             this.Text = "资金性质列表";
@@ -273,7 +274,7 @@
         #endregion
 
         private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.ToolStripButton tsbExit;
         private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.ToolStripButton tsbEdit;
@@ -282,10 +283,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
