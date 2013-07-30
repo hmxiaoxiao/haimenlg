@@ -8,7 +8,7 @@ using Haimen.Qy;
 namespace Haimen.Entity
 {
     [Table("m_bank")]
-    public class Bank : EntityFunction<Bank>
+    public class Bank : MEntityFunction<Bank>
     {
         [Field("code")]
         public string Code { get; set; }

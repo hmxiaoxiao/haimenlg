@@ -16,10 +16,8 @@ namespace HaimenUnitTest
         [TestMethod]
         public void TestUserQuery()
         {
-
             User user = User.CreateByID(999999);
             Assert.IsNull(user);
-
         }
 
         [TestMethod]
@@ -69,6 +67,14 @@ namespace HaimenUnitTest
         [TestMethod]
         public void TestUserSalt()
         {
+            List<User> list = User.Query("code = 'test1'");
+            if (list.Count > 0)
+            {
+                foreach (User s in list)
+                {
+                    s.Destory();
+                }
+            }
             User u = new User();
             u.Code = "test1";
             u.Password = "abcde";
@@ -77,7 +83,7 @@ namespace HaimenUnitTest
 
             User dbUser = User.CreateByID(u.ID);
             Assert.IsTrue(u.ID == dbUser.ID);
-            Assert.IsNotNull(dbUser.Salt);
+            Assert.IsNotNull(User.Login(u.Code, u.Password));
             Assert.IsTrue(User.Login(u.Code, u.Password) != null);
 
             User.Delete(u.ID);

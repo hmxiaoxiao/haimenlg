@@ -6,34 +6,57 @@ using System.Text;
 using System.Data;
 using System.Reflection;
 using System.Data.SqlClient;
+using System.Transactions;
 
 using Haimen.Qy;
 
 namespace Haimen.Qy
 {
-    public class EntityFunction<T> where T : new()
+    public class MEntityFunction<T> where T : new()
     {
+        /// <summary>
+        /// 每个实体类都有的ID值
+        /// </summary>
         [Field("id")]
         public long ID { get; set; }
 
+        /// <summary>
+        /// 创建时间
+        /// </summary>
         [Field("created_date")]
         public DateTime CreatedDate { get; set; }
 
+        /// <summary>
+        /// 更新时间
+        /// </summary>
         [Field("Updated_date")]
         public DateTime UpdatedDate { get; set; }
 
-
-        // 保存错误信息
+        /// <summary>
+        /// 用于保存错误信息
+        /// 如果与字段有关，则key为字段
+        /// 否则与调用的函数名有关，比如Verify等
+        /// 另外，每次调用方法后，都可能会改为上次的信息，故需及时处理
+        /// </summary>
         public List<KeyValuePair<string, string>> Error_Info = new List<KeyValuePair<string, string>>();
 
-        // 保存时校验
+
+        /// <summary>
+        /// 保存到数据时，校验数据是否正确
+        /// 注意无论是新增还是修改，都视为保存。
+        /// </summary>
+        /// <returns>true为成功，若失败，可以在Error_Info中查到</returns>
         public virtual bool Verify()
         {
             return true;
         }
 
-        // 返回当前对象对应数据库的字段以及值
-        private List<KeyValuePair<string, dynamic>> getFieldsAndValues()
+
+        /// <summary>
+        /// 取得当前对象对应数据库的字段以及值
+        /// </summary>
+        /// <returns>返回列表：每个列表的值为一个字典，key为字段名，Value为保存的值</returns>
+        private List<KeyValuePair<string, dynamic>> GetFieldsAndValues()
         {
             List<KeyValuePair<string, dynamic>> list = new List<KeyValuePair<string, dynamic>>();
             foreach (PropertyInfo info in typeof(T).GetProperties())
@@ -51,8 +74,8 @@ namespace Haimen.Qy
         /// <summary>
         /// 取得属性对应的表的字段
         /// </summary>
-        /// <param name="info"></param>
-        /// <returns></returns>
+        /// <param name="info">实体类的每个PropertyInfo</param>
+        /// <returns>该属性对应的字段</returns>
         private string GetFieldName(PropertyInfo info)
         {
             string name = "";
@@ -70,7 +93,6 @@ namespace Haimen.Qy
         /// <summary>
         /// 取得类对应的表名
         /// </summary>
-        /// <param name="t">类的typeof</param>
         /// <returns>对应的表名，没有找到为空</returns>
         private static string GetTableName()
         {
@@ -86,22 +108,31 @@ namespace Haimen.Qy
             return name;
         }
 
-        public void Save(bool hasTrans = false, bool needVerify = true)
+        /// <summary>
+        /// 保存当前的实体类
+        /// </summary>
+        /// <returns>保存成功为真，否则出错原因可在Error_Info中找到</returns>
+        public bool Save()
         {
             if (this.ID > 0)
-                Update();
+                return Update();
             else
-                Insert();
+                return Insert();
         }
-
-        public void Insert(bool hasTrans = false, bool needVerify = true)
+        /// <summary>
+        /// 插入新的实体类
+        /// 注意，校验由客户端处理，这里不做校验
+        /// </summary>
+        /// <returns>成功为真</returns>
+        public virtual bool Insert()
         {
-            if (needVerify && !Verify())
-                return;
+            // 清空错误信息
+            Error_Info.Clear();
 
-            List<KeyValuePair<string, dynamic>> list_fv = getFieldsAndValues();
+
+            // 生成插入的SQL语句
+            List<KeyValuePair<string, dynamic>> list_fv = GetFieldsAndValues();
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
-
             string table_name = GetTableName();
             string sql = "Insert into " + table_name;
             string fields = "";
@@ -129,26 +160,28 @@ namespace Haimen.Qy
                         break;
                 }
             }
-
-
             sql += "(" + fields.Substring(0, fields.Length - 1) + ") ";
             sql += " values(" + values.Substring(0, values.Length - 1) + ")";
             sql += "; select @@identity ";
 
-            cmd.CommandText = sql;
-            Console.WriteLine(sql);
-            SqlTransaction trans = DBFunction.Connection.BeginTransaction();
-            cmd.Transaction = trans;
-            this.ID = long.Parse(cmd.ExecuteScalar().ToString());
-            trans.Commit();
+            using (TransactionScope ts = new TransactionScope())
+            {
+                cmd.CommandText = sql;
+                this.ID = long.Parse(cmd.ExecuteScalar().ToString());
+
+                ts.Complete();
+            }
+            return true;
         }
 
-        public void Update(bool hasTrans = false, bool needVerify = true)
+        /// <summary>
+        /// 更新实体类
+        /// 注意，校验应由客户端调用，更新里不会去调用
+        /// </summary>
+        /// <returns>true 为成功</returns>
+        public virtual bool Update()
         {
-            if (needVerify && !Verify())
-                return;
-
-            List<KeyValuePair<string, dynamic>> list_fv = getFieldsAndValues();
+            List<KeyValuePair<string, dynamic>> list_fv = GetFieldsAndValues();
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
 
             string table_name = GetTableName();
@@ -181,17 +214,27 @@ namespace Haimen.Qy
                 // 加上条件
                 sql += " Where id = @id";
                 cmd.Parameters.AddWithValue("@id", this.ID);
-                cmd.CommandText = sql;
 
-                Console.WriteLine(sql);
-                SqlTransaction trans = DBFunction.Connection.BeginTransaction();
-                cmd.Transaction = trans;
-                cmd.ExecuteNonQuery();
-                trans.Commit();
+                using (TransactionScope ts = new TransactionScope())
+                {
+                    cmd.CommandText = sql;
+                    cmd.ExecuteNonQuery();
+
+                    ts.Complete();
+                }
+
             }
+            return true;
         }
 
-        public static List<T> Query(string where = "")
+        /// <summary>
+        /// 查找符合条件的实体类
+        /// 其实就是生成SQL语句中的Where语句，所以需要前端调用的人员对数据库有所了解
+        /// 必须是实例类调用
+        /// </summary>
+        /// <param name="where"> 除去where以外的where子句</param>
+        /// <returns>含实体类的列表</returns>
+        public List<T> Find(string where = "")
         {
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
             string table_name = GetTableName();
@@ -199,7 +242,31 @@ namespace Haimen.Qy
             string sql = "Select * from " + table_name;
             List<string> whereList = new List<string>();
 
+            // 生成SQL语句
+            if (where.Length > 0)
+                sql += " where " + where;
 
+            cmd.CommandText = sql;
+            SqlDataAdapter adap = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            adap.Fill(ds);
+            return ds.toList<T>();
+        }
+
+        /// <summary>
+        /// 查找符合条件的实体类
+        /// 其实就是生成SQL语句中的Where语句，所以需要前端调用的人员对数据库有所了解
+        /// 静态调用
+        /// </summary>
+        /// <param name="where"> 除去where以外的where子句</param>
+        /// <returns>含实体类的列表</returns>
+        public static List<T> Query(string where = "")
+        {
+            SqlCommand cmd = DBFunction.Connection.CreateCommand();
+            string table_name = GetTableName();
+
+            string sql = "Select * from " + table_name;
+            List<string> whereList = new List<string>();
 
             // 生成SQL语句
             if (where.Length > 0)
@@ -213,20 +280,49 @@ namespace Haimen.Qy
             return ds.toList<T>();
         }
 
+        /// <summary>
+        /// 删除实体类,这个只能删除一个实体类，如果要删除含明细的实体类，请使用Destory方法
+        /// 静态调用
+        /// </summary>
+        /// <param name="id">需要删除实体类的ID</param>
         public static void Delete(long id)
         {
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
             string table_name = GetTableName();
 
             string sql = "Delete from " + table_name + " where id = " + id.ToString();
-            SqlTransaction trans = DBFunction.Connection.BeginTransaction();
-            cmd.Transaction = trans;
-            cmd.CommandText = sql;
-            cmd.ExecuteNonQuery();
-            trans.Commit();
+
+            using (TransactionScope ts = new TransactionScope())
+            {
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+            }
         }
 
-        public static T CreateByID( long id)
+        /// <summary>
+        /// 删除实体类
+        /// 实例调用
+        /// </summary>
+        public virtual void Destory()
+        {
+            SqlCommand cmd = DBFunction.Connection.CreateCommand();
+            string table_name = GetTableName();
+
+            string sql = "Delete from " + table_name + " where id = " + this.ID.ToString();
+
+            using (TransactionScope ts = new TransactionScope())
+            {
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        /// <summary>
+        /// 通过ID生成实体类
+        /// </summary>
+        /// <param name="id">实体ID</param>
+        /// <returns>该ID对应的实体类</returns>
+        public static T CreateByID(long id)
         {
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
             string table_name = GetTableName();

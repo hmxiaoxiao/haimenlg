@@ -8,7 +8,7 @@ using Haimen.Qy;
 namespace Haimen.Entity
 {
     [Table("m_company")]
-    public class Company : EntityFunction<Company>
+    public class Company : MEntityFunction<Company>
     {
         [Field("code")]
         public string Code { get; set; }
@@ -46,10 +46,10 @@ namespace Haimen.Entity
         public string Input { get; set; }
 
         private long m_bank_id;
-
-        
         private Bank m_bank;
         public Bank Bank { get { return m_bank; } }
 
+
+        public List<CompanyDetail> Detail;
     }
 }

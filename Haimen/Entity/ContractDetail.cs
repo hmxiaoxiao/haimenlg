@@ -8,7 +8,7 @@ using Haimen.Qy;
 namespace Haimen.Entity
 {
     [Table("t_contract_detail")]
-    public class ContractDetail : EntityFunction<ContractDetail>
+    public class ContractDetail : MEntityFunction<ContractDetail>
     {
         [Field("contract_id")]
         public long ContractID { get; set; }

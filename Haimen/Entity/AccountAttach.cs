@@ -8,7 +8,7 @@ using Haimen.Qy;
 namespace Haimen.Entity
 {
     [Table("t_account_attach")]
-    public class AccountAttach : EntityFunction<AccountAttach>
+    public class AccountAttach : MEntityFunction<AccountAttach>
     {
         private long m_account_id;
         [Field("account_id")]

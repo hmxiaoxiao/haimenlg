@@ -13,7 +13,7 @@ namespace Haimen.Entity
 {
     // 用户类
     [Table("m_user")]
-    public class User : EntityFunction<User>
+    public class User : MEntityFunction<User>
     {
         [Field("code")]
         public string Code { get; set; }
@@ -63,6 +63,13 @@ namespace Haimen.Entity
                 return null;
         }
 
+        // 用户保存前，要将密码混淆
+        public override bool Insert()
+        {
+            Salt = User.getMd5Hash(Code, Password);
+            return base.Insert();
+        }
+
         // 校验
         override public bool Verify()
         {
@@ -90,10 +97,6 @@ namespace Haimen.Entity
                 Error_Info.Add(new KeyValuePair<string, string>("Code", err));
                 return false;
             }
-
-            // 将密码转换为hash后保存在hash字段里。
-            if (Password != null && Password != "")
-                Salt = User.getMd5Hash(Code, Password);
             return true;
         }
 

@@ -8,7 +8,7 @@ using Haimen.Qy;
 namespace Haimen.Entity
 {
     [Table("m_company_detail")]
-    public class CompanyDetail : EntityFunction<CompanyDetail>
+    public class CompanyDetail : MEntityFunction<CompanyDetail>
     {
         private long m_company_id;
 
