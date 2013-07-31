@@ -46,7 +46,10 @@ namespace HaimenUnitTest
             q.DetailList.RemoveAt(0);
             q.Save();
 
-            
+            list = q.Find("code = 'testcode'");
+            Assert.IsTrue(list.Count == 1);
+            Assert.IsTrue(list[0].DetailList.Count == 9);
+
 
             list = Company.Query();
             Assert.IsTrue(list.Count == count + 1);

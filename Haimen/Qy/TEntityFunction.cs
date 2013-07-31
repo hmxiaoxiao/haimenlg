@@ -193,13 +193,12 @@ namespace Haimen.Qy
             {
                 FieldInfo info = t.GetType().GetField("DetailList");
                 PropertyInfo pro = t.GetType().GetProperty("ID");
-                long id = 0;
-                pro.GetValue(id, null);
+                long id = (long) pro.GetValue(t, null);
                 List<U> detail = new U().Find("parent_id = " + id.ToString());
                 info.SetValue(t, detail);
             }
 
-            return ds.toList<T>();
+            return list;
         }
 
 
@@ -238,7 +237,7 @@ namespace Haimen.Qy
                 info.SetValue(t, detail);
             }
 
-            return ds.toList<T>();
+            return list;
         }
     }
 }
