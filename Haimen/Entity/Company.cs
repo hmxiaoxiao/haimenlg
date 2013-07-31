@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 
 using Haimen.Qy;
+using Haimen.Entity;
 
 namespace Haimen.Entity
 {
     [Table("m_company")]
-    public class Company : MEntityFunction<Company>
+    public class Company : TEntityFunction<Company, CompanyDetail>
     {
         [Field("code")]
         public string Code { get; set; }
@@ -17,21 +18,7 @@ namespace Haimen.Entity
         public string Name { get; set; }
 
         [Field("bank_id")]
-        public long Bank_ID 
-        {
-            get
-            {
-                return m_bank_id;
-            }
-            set
-            {
-                m_bank_id = value;
-                if (m_bank_id > 0)
-                {
-                    m_bank = Bank.CreateByID(m_bank_id);
-                }
-            } 
-        }
+        public long Bank_ID { get; set; }
 
         [Field("account")]
         public string Account { get; set; }
@@ -45,11 +32,19 @@ namespace Haimen.Entity
         [Field("input")]
         public string Input { get; set; }
 
-        private long m_bank_id;
         private Bank m_bank;
-        public Bank Bank { get { return m_bank; } }
+        public Bank Bank
+        {
+            get
+            {
+                if (m_bank == null && Bank_ID > 0)
+                {
+                    m_bank = Bank.CreateByID(Bank_ID);
+                }
+                return m_bank;
+            }
+        }
 
 
-        public List<CompanyDetail> Detail;
     }
 }

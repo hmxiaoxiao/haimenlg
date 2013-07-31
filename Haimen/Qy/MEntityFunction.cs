@@ -94,10 +94,10 @@ namespace Haimen.Qy
         /// 取得类对应的表名
         /// </summary>
         /// <returns>对应的表名，没有找到为空</returns>
-        private static string GetTableName()
+        public static string GetTableName(Type t)
         {
             string name = "";
-            foreach (Attribute attr in typeof(T).GetCustomAttributes(false))
+            foreach (Attribute attr in t.GetCustomAttributes(false))
             {
                 if (attr is Table)
                 {
@@ -133,7 +133,7 @@ namespace Haimen.Qy
             // 生成插入的SQL语句
             List<KeyValuePair<string, dynamic>> list_fv = GetFieldsAndValues();
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
-            string table_name = GetTableName();
+            string table_name = GetTableName(typeof(T));
             string sql = "Insert into " + table_name;
             string fields = "";
             string values = "";
@@ -184,7 +184,7 @@ namespace Haimen.Qy
             List<KeyValuePair<string, dynamic>> list_fv = GetFieldsAndValues();
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
 
-            string table_name = GetTableName();
+            string table_name = GetTableName(typeof(T));
             string sql = "Update " + table_name;
             string sets = "";
             foreach (KeyValuePair<string, dynamic> item in list_fv)
@@ -237,7 +237,7 @@ namespace Haimen.Qy
         public List<T> Find(string where = "")
         {
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
-            string table_name = GetTableName();
+            string table_name = GetTableName(typeof(T));
 
             string sql = "Select * from " + table_name;
             List<string> whereList = new List<string>();
@@ -263,7 +263,7 @@ namespace Haimen.Qy
         public static List<T> Query(string where = "")
         {
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
-            string table_name = GetTableName();
+            string table_name = GetTableName(typeof(T));
 
             string sql = "Select * from " + table_name;
             List<string> whereList = new List<string>();
@@ -288,7 +288,7 @@ namespace Haimen.Qy
         public static void Delete(long id)
         {
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
-            string table_name = GetTableName();
+            string table_name = GetTableName(typeof(T));
 
             string sql = "Delete from " + table_name + " where id = " + id.ToString();
 
@@ -296,6 +296,8 @@ namespace Haimen.Qy
             {
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
+
+                ts.Complete();
             }
         }
 
@@ -306,7 +308,7 @@ namespace Haimen.Qy
         public virtual void Destory()
         {
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
-            string table_name = GetTableName();
+            string table_name = GetTableName(typeof(T));
 
             string sql = "Delete from " + table_name + " where id = " + this.ID.ToString();
 
@@ -314,6 +316,8 @@ namespace Haimen.Qy
             {
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
+
+                ts.Complete();
             }
         }
 
@@ -325,7 +329,7 @@ namespace Haimen.Qy
         public static T CreateByID(long id)
         {
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
-            string table_name = GetTableName();
+            string table_name = GetTableName(typeof(T));
 
             string sql = "Select * from " + table_name;
             List<string> whereList = new List<string>();

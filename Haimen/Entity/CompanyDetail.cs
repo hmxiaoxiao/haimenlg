@@ -10,41 +10,12 @@ namespace Haimen.Entity
     [Table("m_company_detail")]
     public class CompanyDetail : MEntityFunction<CompanyDetail>
     {
-        private long m_company_id;
-
-        [Field("company_id")]
-        public long Company_ID
-        {
-            get
-            {
-                return m_company_id;
-            }
-            set
-            {
-                m_company_id = value;
-                Company = Company.CreateByID(m_company_id);
-            }
-        }
-
-        public Company Company { get; set; }
-
+        [Field("parent_id")]
+        public long Parent_ID { get; set; }
 
         private long m_bank_id;
         [Field("bank_id")]
-        public long Bank_ID
-        {
-            get
-            {
-                return m_bank_id;
-            }
-            set
-            {
-                m_bank_id = value;
-                Bank = Bank.CreateByID(m_bank_id);
-            }
-        }
-
-        public Bank Bank { get; set; }
+        public long Bank_ID { get; set; }
 
         [Field("account")]
         public string Account { get; set; }
@@ -54,5 +25,20 @@ namespace Haimen.Entity
 
         [Field("credit")]
         public decimal Credit { get; set; }
+
+        private Bank m_bank;
+        public Bank Bank 
+        {
+            get
+            {
+                if (m_bank == null)
+                {
+                    m_bank = Bank.CreateByID(Bank_ID);
+                }
+                return m_bank;
+            }
+        }
+
+
     }
 }
