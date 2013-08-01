@@ -4,28 +4,29 @@ using System.Linq;
 using System.Text;
 
 using Haimen.Qy;
+using Haimen.Entity;
 
 namespace Haimen.Entity
 {
     [Table("t_contract")]
-    public class Contract : MEntityFunction<Contract>
+    public class Contract : TEntityFunction<Contract, ContractDetail>
     {
         [Field("code")]
         public string Code { get; set; }
 
-        private long m_company_id;
-        public Company Company { get; set; }
         [Field("company_id")]
-        public long CompanyID
+        public long CompanyID { get; set; }
+        private Company m_company = null;
+        public Company Belong_Company
         {
             get
             {
-                return m_company_id;
-            }
-            set
-            {
-                m_company_id = value;
-                Company = Company.CreateByID(value);
+                if (CompanyID > 0)
+                {
+                    if (m_company == null || m_company.ID != CompanyID)
+                        m_company = Company.CreateByID(CompanyID);
+                }
+                return m_company;
             }
         }
 
@@ -59,25 +60,25 @@ namespace Haimen.Entity
         [Field("explanation")]
         public string Explanation { get; set; }
 
-        private long m_typ_user_id;
-        public User Typist;
         [Field("typist")]
-        public long TypUserID
+        public long TypUserID { get; set; }
+        private User m_typist = null;
+        public User Typist
         {
             get
             {
-                return m_typ_user_id;
-            }
-            set
-            {
-                m_typ_user_id = value;
-                Typist = User.CreateByID(value);
+                if (TypUserID > 0)
+                {
+                    if (m_typist == null || m_typist.ID != TypUserID)
+                        m_typist = User.CreateByID(TypUserID);
+                }
+                return m_typist;
             }
         }
 
 
         [Field("static")]
-        public int Static { get; set; }
+        public long Static { get; set; }
 
         [Field("memo")]
         public string Memo { get; set; }
