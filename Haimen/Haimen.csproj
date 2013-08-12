@@ -124,7 +124,6 @@
     <Compile Include="Entity\Contract.cs" />
     <Compile Include="Entity\ContractAttach.cs" />
     <Compile Include="Entity\ContractDetail.cs" />
-    <Compile Include="Entity\DBFactory.cs" />
     <Compile Include="Entity\Funds.cs" />
     <Compile Include="Qy\DataSet2List.cs" />
     <Compile Include="Qy\Field.cs" />
