@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBank));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboBankParent = new System.Windows.Forms.ComboBox();
+            this.lstBankParent = new C1.Win.C1List.C1Combo();
             this.label3 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,12 +41,13 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstBankParent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cboBankParent);
+            this.groupBox1.Controls.Add(this.lstBankParent);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.label2);
@@ -57,26 +59,29 @@
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             // 
-            // cboBankParent
+            // lstBankParent
             // 
-            this.cboBankParent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboBankParent.FormattingEnabled = true;
-            this.cboBankParent.Items.AddRange(new object[] {
-            "办公室",
-            "综合科",
-            "预算科",
-            "国库科",
-            "行政政法科",
-            "教科文科",
-            "经济建设科",
-            "农业科",
-            "社会保障科",
-            "企业科",
-            "会计管理科"});
-            this.cboBankParent.Location = new System.Drawing.Point(95, 105);
-            this.cboBankParent.Name = "cboBankParent";
-            this.cboBankParent.Size = new System.Drawing.Size(149, 20);
-            this.cboBankParent.TabIndex = 3;
+            this.lstBankParent.AddItemSeparator = ';';
+            this.lstBankParent.AllowColSelect = true;
+            this.lstBankParent.AutoCompletion = true;
+            this.lstBankParent.Caption = "";
+            this.lstBankParent.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.lstBankParent.DeadAreaBackColor = System.Drawing.Color.Empty;
+            this.lstBankParent.EditorBackColor = System.Drawing.SystemColors.Window;
+            this.lstBankParent.EditorFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lstBankParent.EditorForeColor = System.Drawing.SystemColors.WindowText;
+            this.lstBankParent.Images.Add(((System.Drawing.Image)(resources.GetObject("lstBankParent.Images"))));
+            this.lstBankParent.Location = new System.Drawing.Point(95, 104);
+            this.lstBankParent.MatchEntryTimeout = ((long)(2000));
+            this.lstBankParent.MaxDropDownItems = ((short)(5));
+            this.lstBankParent.MaxLength = 32767;
+            this.lstBankParent.MouseCursor = System.Windows.Forms.Cursors.Default;
+            this.lstBankParent.Name = "lstBankParent";
+            this.lstBankParent.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None;
+            this.lstBankParent.RowSubDividerColor = System.Drawing.Color.DarkGray;
+            this.lstBankParent.Size = new System.Drawing.Size(149, 22);
+            this.lstBankParent.TabIndex = 18;
+            this.lstBankParent.PropBag = resources.GetString("lstBankParent.PropBag");
             // 
             // label3
             // 
@@ -93,6 +98,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(149, 21);
             this.txtName.TabIndex = 2;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // label2
             // 
@@ -107,6 +113,7 @@
             // 
             this.txtCode.Location = new System.Drawing.Point(95, 21);
             this.txtCode.Name = "txtCode";
+            this.txtCode.ReadOnly = true;
             this.txtCode.Size = new System.Drawing.Size(149, 21);
             this.txtCode.TabIndex = 1;
             // 
@@ -155,9 +162,10 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSave);
             this.Name = "frmBank";
-            this.Text = "新增银行";
+            this.Text = "银行";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstBankParent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
@@ -166,7 +174,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cboBankParent;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
@@ -175,5 +182,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private C1.Win.C1List.C1Combo lstBankParent;
     }
 }

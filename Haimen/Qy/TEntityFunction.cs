@@ -170,7 +170,7 @@ namespace Haimen.Qy
         /// </summary>
         /// <param name="where"> 除去where以外的where子句</param>
         /// <returns>含实体类的列表</returns>
-        public List<T> Find(string where = "")
+        public override List<T> Find(string where = "")
         {
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
             string table_name = GetTableName(typeof(T));

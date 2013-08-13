@@ -1,0 +1,11 @@
+DevExpress.Patch.InMemoryPatch, DevExpress.Patch.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7fc7bfca2443de66
+C1.C1Excel.C1XLBook, C1.C1Excel.4, Version=4.1.20131.251, Culture=neutral, PublicKeyToken=79882d576c6336da
+C1.Win.C1Win7Pack.C1TaskbarButton, C1.Win.C1Win7Pack.4, Version=4.0.20131.28, Culture=neutral, PublicKeyToken=79882d576c6336da
+C1.Win.C1List.C1Combo, C1.Win.C1List.4, Version=4.1.20131.226, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc
+C1.Win.C1Input.C1TextBox, C1.Win.C1Input.4, Version=4.0.20131.33296, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a
+DevExpress.XtraBars.Docking.DockManager, DevExpress.XtraBars.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+C1.Win.C1Input.C1Label, C1.Win.C1Input.4, Version=4.0.20131.33296, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a
+DevExpress.XtraBars.Docking2010.DocumentManager, DevExpress.XtraBars.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+C1.Win.C1Input.C1DropDownControl, C1.Win.C1Input.4, Version=4.0.20131.33296, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a
+DevExpress.XtraBars.Ribbon.RibbonControl, DevExpress.XtraBars.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+C1.Win.C1Editor.C1Editor, C1.Win.C1Editor.4, Version=4.0.20131.199, Culture=neutral, PublicKeyToken=79882d576c6336da

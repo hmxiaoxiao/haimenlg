@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using Haimen.GUI;
 using Haimen.Entity;
 
+using Haimen.NewGUI;
+
 namespace Haimen
 {
     static class Program
@@ -30,11 +32,17 @@ namespace Haimen
             //frmLogin win = new frmLogin();
             //win.ShowDialog();
 
-            GlobalSet.Current_User = User.Login("admin", "qwer1234");
-            if ( GlobalSet.Current_User != null)
-            {
-                Application.Run(new frmMain());
-            }
+            //frmSplash fs = new frmSplash();
+            //fs.Show();
+
+            frmBank bank = new frmBank();
+            bank.ShowDialog();
+
+            //GlobalSet.Current_User = User.Login("admin", "qwer1234");
+            //if ( GlobalSet.Current_User != null)
+            //{
+            //    Application.Run(new frmMain());
+            //}
         }
     }
 }
