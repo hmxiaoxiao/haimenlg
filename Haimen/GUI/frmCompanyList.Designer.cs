@@ -28,16 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.account = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bank_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.单据字 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.付款 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.收款 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.所属单位 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grid = new System.Windows.Forms.DataGridView();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
@@ -45,96 +36,48 @@
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtQCode = new System.Windows.Forms.TextBox();
+            this.txtQName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnQuery = new System.Windows.Forms.Button();
+            this.col_selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_account = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_bank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_doc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_output = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_input = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.toolStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // grid
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grid.AllowUserToAddRows = false;
+            this.grid.AllowUserToDeleteRows = false;
+            this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.Code,
-            this.EName,
-            this.account,
-            this.Bank_id,
-            this.单据字,
-            this.付款,
-            this.收款,
-            this.所属单位});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 117);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(360, 224);
-            this.dataGridView1.TabIndex = 17;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // Code
-            // 
-            this.Code.HeaderText = "编号";
-            this.Code.Name = "Code";
-            this.Code.ReadOnly = true;
-            // 
-            // EName
-            // 
-            this.EName.HeaderText = "姓名";
-            this.EName.Name = "EName";
-            this.EName.ReadOnly = true;
-            // 
-            // account
-            // 
-            this.account.HeaderText = "银行帐号";
-            this.account.Name = "account";
-            this.account.ReadOnly = true;
-            // 
-            // Bank_id
-            // 
-            this.Bank_id.HeaderText = "开户行";
-            this.Bank_id.Name = "Bank_id";
-            this.Bank_id.ReadOnly = true;
-            // 
-            // 单据字
-            // 
-            this.单据字.HeaderText = "单据字";
-            this.单据字.Name = "单据字";
-            this.单据字.ReadOnly = true;
-            // 
-            // 付款
-            // 
-            this.付款.HeaderText = "付款";
-            this.付款.Name = "付款";
-            this.付款.ReadOnly = true;
-            // 
-            // 收款
-            // 
-            this.收款.HeaderText = "收款";
-            this.收款.Name = "收款";
-            this.收款.ReadOnly = true;
-            // 
-            // 所属单位
-            // 
-            this.所属单位.HeaderText = "所属单位";
-            this.所属单位.Name = "所属单位";
-            this.所属单位.ReadOnly = true;
+            this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_selected,
+            this.col_id,
+            this.col_code,
+            this.col_name,
+            this.col_account,
+            this.col_bank,
+            this.col_doc,
+            this.col_output,
+            this.col_input});
+            this.grid.Location = new System.Drawing.Point(12, 117);
+            this.grid.Name = "grid";
+            this.grid.RowTemplate.Height = 23;
+            this.grid.Size = new System.Drawing.Size(730, 351);
+            this.grid.TabIndex = 17;
             // 
             // toolStripSeparator2
             // 
@@ -184,7 +127,7 @@
             this.tsbExit});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(384, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(754, 25);
             this.toolStrip2.TabIndex = 14;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -197,19 +140,19 @@
             this.tsbExit.Text = "退出";
             this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
             // 
-            // textBox1
+            // txtQCode
             // 
-            this.textBox1.Location = new System.Drawing.Point(78, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 21);
-            this.textBox1.TabIndex = 3;
+            this.txtQCode.Location = new System.Drawing.Point(78, 20);
+            this.txtQCode.Name = "txtQCode";
+            this.txtQCode.Size = new System.Drawing.Size(151, 21);
+            this.txtQCode.TabIndex = 3;
             // 
-            // textBox2
+            // txtQName
             // 
-            this.textBox2.Location = new System.Drawing.Point(78, 47);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(151, 21);
-            this.textBox2.TabIndex = 5;
+            this.txtQName.Location = new System.Drawing.Point(78, 47);
+            this.txtQName.Name = "txtQName";
+            this.txtQName.Size = new System.Drawing.Size(151, 21);
+            this.txtQName.TabIndex = 5;
             // 
             // label1
             // 
@@ -231,8 +174,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtQCode);
+            this.groupBox1.Controls.Add(this.txtQName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 28);
@@ -241,27 +184,83 @@
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             // 
-            // button1
+            // btnQuery
             // 
-            this.button1.Location = new System.Drawing.Point(260, 78);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "查询";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnQuery.Location = new System.Drawing.Point(260, 78);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(75, 23);
+            this.btnQuery.TabIndex = 16;
+            this.btnQuery.Text = "查询";
+            this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // col_selected
+            // 
+            this.col_selected.HeaderText = "选择";
+            this.col_selected.Name = "col_selected";
+            // 
+            // col_id
+            // 
+            this.col_id.HeaderText = "ID";
+            this.col_id.Name = "col_id";
+            this.col_id.ReadOnly = true;
+            this.col_id.Visible = false;
+            // 
+            // col_code
+            // 
+            this.col_code.HeaderText = "编号";
+            this.col_code.Name = "col_code";
+            this.col_code.ReadOnly = true;
+            // 
+            // col_name
+            // 
+            this.col_name.HeaderText = "姓名";
+            this.col_name.Name = "col_name";
+            this.col_name.ReadOnly = true;
+            // 
+            // col_account
+            // 
+            this.col_account.HeaderText = "银行帐号";
+            this.col_account.Name = "col_account";
+            this.col_account.ReadOnly = true;
+            // 
+            // col_bank
+            // 
+            this.col_bank.HeaderText = "开户行";
+            this.col_bank.Name = "col_bank";
+            this.col_bank.ReadOnly = true;
+            // 
+            // col_doc
+            // 
+            this.col_doc.HeaderText = "单据字";
+            this.col_doc.Name = "col_doc";
+            this.col_doc.ReadOnly = true;
+            // 
+            // col_output
+            // 
+            this.col_output.HeaderText = "付款单位";
+            this.col_output.Name = "col_output";
+            this.col_output.ReadOnly = true;
+            // 
+            // col_input
+            // 
+            this.col_input.HeaderText = "收款单位";
+            this.col_input.Name = "col_input";
+            this.col_input.ReadOnly = true;
             // 
             // frmCompanyList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 353);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(754, 480);
+            this.Controls.Add(this.grid);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnQuery);
             this.Name = "frmCompanyList";
             this.Text = "单位列表";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmCompanyList_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -273,16 +272,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn account;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bank_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 单据字;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn 付款;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn 收款;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 所属单位;
+        private System.Windows.Forms.DataGridView grid;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.ToolStripButton tsbEdit;
@@ -290,11 +280,20 @@
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton tsbExit;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtQCode;
+        private System.Windows.Forms.TextBox txtQName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnQuery;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn col_selected;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_account;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_bank;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_doc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_output;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_input;
     }
 }

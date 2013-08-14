@@ -197,7 +197,6 @@ namespace Haimen.Qy
                 List<U> detail = new U().Find("parent_id = " + id.ToString());
                 info.SetValue(t, detail);
             }
-
             return list;
         }
 

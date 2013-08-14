@@ -13,8 +13,7 @@ using Haimen.Qy;
 namespace Haimen.Qy
 {
     [Serializable]
-    public class MEntityFunction<T> : MarshalByRefObject
-        where T : new()
+    public class MEntityFunction<T> where T : new()
     {
         /// <summary>
         /// 每个实体类都有的ID值

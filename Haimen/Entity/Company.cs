@@ -45,6 +45,25 @@ namespace Haimen.Entity
             }
         }
 
+        public override bool Verify()
+        {
+            Error_Info.Clear();
+            string err = "";
+            List<Company> list;
+
+            // 校验代码
+            if (ID == 0)
+                list = Company.Query("Code = '" + Code + "'");
+            else
+                list = Company.Query("Code = '" + Code + "' and id <> " + ID.ToString());
+            if (list.Count > 0)
+            {
+                err = "您输入的代码已经存在，请更改后再输入";
+                Error_Info.Add(new KeyValuePair<string, string>("Code",err));
+            }
+
+            return true;
+        }
 
     }
 }

@@ -35,7 +35,7 @@ namespace Haimen
             //frmSplash fs = new frmSplash();
             //fs.Show();
 
-            frmBank bank = new frmBank();
+            frmCompanyList bank = new frmCompanyList();
             bank.ShowDialog();
 
             //GlobalSet.Current_User = User.Login("admin", "qwer1234");

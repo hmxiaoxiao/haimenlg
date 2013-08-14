@@ -58,7 +58,7 @@ namespace Haimen.GUI
 
         private void tsbEdit_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < grid.RowCount - 1; i++)
+            for (int i = 0; i < grid.RowCount; i++)
             {
                 if (grid.Rows[i].Cells["col_selected"].EditedFormattedValue.ToString() == true.ToString())
                 {
@@ -85,7 +85,7 @@ namespace Haimen.GUI
         {
             if (MessageBox.Show(this, "是否要删除选中的银行？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
-                for (int i = 0; i < grid.RowCount - 1; i++)
+                for (int i = 0; i < grid.RowCount; i++)
                 {
                     if (grid.Rows[i].Cells["col_selected"].EditedFormattedValue.ToString() == true.ToString())
                     {
