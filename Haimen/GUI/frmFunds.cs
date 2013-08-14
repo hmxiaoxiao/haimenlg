@@ -35,12 +35,13 @@ namespace Haimen.GUI
 
         private void initParent()
         {
-            cboParent.Items.Clear();
+            cboParent.Text = "";
             List<Funds> list = Funds.Query();
-            foreach (Funds f in list)
-            {
-                cboParent.Items.Add(f.ID.ToString() + " | " + f.Name);
-            }
+            cboParent.DataSource = list;
+            cboParent.DisplayMember = "Name";
+            cboParent.ValueMember = "ID";
+            if (m_funds.Parent_ID > 0)
+                cboParent.SelectedValue = m_funds.Parent_ID;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -51,16 +52,10 @@ namespace Haimen.GUI
         private bool Verify()
         {
             m_funds.Name = txtName.Text;
-            long parent_id = 0;
-            if (cboParent.Text != "")
-            {
-                string parent = cboParent.Text;
-                parent_id = long.Parse(parent.Split('|')[0].Trim());
-                if (Funds.CreateByID(parent_id) != null)
-                    m_funds.Parent_ID = parent_id;
-                else
-                    m_funds.Parent_ID = 0;
-            }
+            if (cboParent.SelectedValue != null)
+                m_funds.Parent_ID = long.Parse(cboParent.SelectedValue.ToString());
+            else
+                m_funds.Parent_ID = 0;
 
             bool verify = m_funds.Verify();
             errorProvider1.SetError(txtName, "");
@@ -85,7 +80,10 @@ namespace Haimen.GUI
             long id = m_funds.ID;
             m_funds.Save();
             if (id > 0)
+            {
                 MessageBox.Show("资金性质更新成功！", "注意");
+                this.Close();
+            }
             else
             {
                 MessageBox.Show("资金性质新增成功！", "注意");
@@ -94,7 +92,6 @@ namespace Haimen.GUI
 
                 initParent();
             }
-
         }
     }
 }
