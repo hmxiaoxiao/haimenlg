@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.meuBank = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.meuBank = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +49,15 @@
             this.ribbonPage1});
             this.ribbon.Size = new System.Drawing.Size(442, 147);
             this.ribbon.StatusBar = this.ribbonStatusBar;
+            // 
+            // meuBank
+            // 
+            this.meuBank.Caption = "银行";
+            this.meuBank.Glyph = global::Haimen.Properties.Resources.About;
+            this.meuBank.Id = 1;
+            this.meuBank.Name = "meuBank";
+            this.meuBank.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // ribbonPage1
             // 
@@ -69,15 +78,6 @@
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
             this.ribbonStatusBar.Size = new System.Drawing.Size(442, 31);
-            // 
-            // meuBank
-            // 
-            this.meuBank.Caption = "银行";
-            this.meuBank.Glyph = global::Haimen.Properties.Resources.About;
-            this.meuBank.Id = 1;
-            this.meuBank.Name = "meuBank";
-            this.meuBank.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // DevMain
             // 

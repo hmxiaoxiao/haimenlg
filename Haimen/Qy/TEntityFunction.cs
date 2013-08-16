@@ -83,7 +83,7 @@ namespace Haimen.Qy
                     info.SetValue(u, this.ID, null);
 
                     // 保存
-                    if (u.Save())
+                    if (!u.Save())
                         returnVale = false;
                 }
 

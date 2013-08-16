@@ -28,183 +28,132 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("海门市兴临市政工程有限公司");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("海门市时运建筑工程有限公司");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("海门市兴临市政工程有限公司");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("海门江涌投资开发有限公司");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("海门市通江水业有限公司");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("海门临江生物医药科技创业园有限公司");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("南通临江新区滨江水务有限公司");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("海门沿江投资开发有限公司");
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("海门市兴临市政工程有限公司");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("海门市时运建筑工程有限公司");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("海门市兴临市政工程有限公司");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("海门江涌投资开发有限公司");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("海门市通江水业有限公司");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("海门临江生物医药科技创业园有限公司");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("南通临江新区滨江水务有限公司");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("海门沿江投资开发有限公司");
+            this.tree = new System.Windows.Forms.TreeView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.cboDept = new System.Windows.Forms.ComboBox();
+            this.txtDoc = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txtBank = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtAccount = new System.Windows.Forms.TextBox();
             this.txtCode = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.单位编号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.单位名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.银行编号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.银行名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.帐号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.联系人 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.联系电话 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.c_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.inplace_banks = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.c_bank = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_account = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_balance = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_credit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
-            this.tsbCancel = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inplace_banks)).BeginInit();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // treeView1
+            // tree
             // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tree.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.treeView1.Location = new System.Drawing.Point(12, 12);
-            this.treeView1.Name = "treeView1";
-            treeNode17.Name = "节点0";
-            treeNode17.Text = "海门市兴临市政工程有限公司";
-            treeNode18.Name = "节点1";
-            treeNode18.Text = "海门市时运建筑工程有限公司";
-            treeNode19.Name = "节点2";
-            treeNode19.Text = "海门市兴临市政工程有限公司";
-            treeNode20.Name = "节点3";
-            treeNode20.Text = "海门江涌投资开发有限公司";
-            treeNode21.Name = "节点4";
-            treeNode21.Text = "海门市通江水业有限公司";
-            treeNode22.Name = "节点5";
-            treeNode22.Text = "海门临江生物医药科技创业园有限公司";
-            treeNode23.Name = "节点6";
-            treeNode23.Text = "南通临江新区滨江水务有限公司";
-            treeNode24.Name = "节点7";
-            treeNode24.Text = "海门沿江投资开发有限公司";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode17,
-            treeNode18,
-            treeNode19,
-            treeNode20,
-            treeNode21,
-            treeNode22,
-            treeNode23,
-            treeNode24});
-            this.treeView1.Size = new System.Drawing.Size(231, 534);
-            this.treeView1.TabIndex = 0;
+            this.tree.Location = new System.Drawing.Point(12, 12);
+            this.tree.Name = "tree";
+            treeNode25.Name = "节点0";
+            treeNode25.Text = "海门市兴临市政工程有限公司";
+            treeNode26.Name = "节点1";
+            treeNode26.Text = "海门市时运建筑工程有限公司";
+            treeNode27.Name = "节点2";
+            treeNode27.Text = "海门市兴临市政工程有限公司";
+            treeNode28.Name = "节点3";
+            treeNode28.Text = "海门江涌投资开发有限公司";
+            treeNode29.Name = "节点4";
+            treeNode29.Text = "海门市通江水业有限公司";
+            treeNode30.Name = "节点5";
+            treeNode30.Text = "海门临江生物医药科技创业园有限公司";
+            treeNode31.Name = "节点6";
+            treeNode31.Text = "南通临江新区滨江水务有限公司";
+            treeNode32.Name = "节点7";
+            treeNode32.Text = "海门沿江投资开发有限公司";
+            this.tree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode25,
+            treeNode26,
+            treeNode27,
+            treeNode28,
+            treeNode29,
+            treeNode30,
+            treeNode31,
+            treeNode32});
+            this.tree.Size = new System.Drawing.Size(231, 534);
+            this.tree.TabIndex = 0;
+            this.tree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tree_NodeMouseClick);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkedListBox1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.cboDept);
+            this.groupBox1.Controls.Add(this.txtDoc);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.txtBank);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtAccount);
             this.groupBox1.Controls.Add(this.txtCode);
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(249, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(552, 178);
-            this.groupBox1.TabIndex = 21;
+            this.groupBox1.Size = new System.Drawing.Size(552, 128);
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
-            // checkedListBox1
+            // txtDoc
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "付款单位",
-            "收款单位"});
-            this.checkedListBox1.Location = new System.Drawing.Point(77, 128);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(167, 36);
-            this.checkedListBox1.TabIndex = 16;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "男",
-            "女"});
-            this.comboBox1.Location = new System.Drawing.Point(77, 75);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(167, 20);
-            this.comboBox1.TabIndex = 15;
-            // 
-            // cboDept
-            // 
-            this.cboDept.FormattingEnabled = true;
-            this.cboDept.Items.AddRange(new object[] {
-            "办公室",
-            "综合科",
-            "预算科",
-            "国库科",
-            "行政政法科",
-            "教科文科",
-            "经济建设科",
-            "农业科",
-            "社会保障科",
-            "企业科",
-            "会计管理科"});
-            this.cboDept.Location = new System.Drawing.Point(361, 21);
-            this.cboDept.Name = "cboDept";
-            this.cboDept.Size = new System.Drawing.Size(163, 20);
-            this.cboDept.TabIndex = 15;
+            this.txtDoc.Location = new System.Drawing.Point(361, 22);
+            this.txtDoc.Name = "txtDoc";
+            this.txtDoc.Size = new System.Drawing.Size(163, 21);
+            this.txtDoc.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(286, 25);
+            this.label3.Location = new System.Drawing.Point(298, 26);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "所属部门";
+            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "单据字";
             // 
-            // textBox1
+            // txtBank
             // 
-            this.textBox1.Location = new System.Drawing.Point(361, 75);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(163, 21);
-            this.textBox1.TabIndex = 13;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(298, 79);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "单据字";
+            this.txtBank.Location = new System.Drawing.Point(77, 74);
+            this.txtBank.Name = "txtBank";
+            this.txtBank.Size = new System.Drawing.Size(447, 21);
+            this.txtBank.TabIndex = 5;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(77, 48);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(447, 21);
-            this.txtName.TabIndex = 13;
+            this.txtName.TabIndex = 4;
             // 
             // label2
             // 
@@ -215,28 +164,19 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "名称";
             // 
-            // textBox2
+            // txtAccount
             // 
-            this.textBox2.Location = new System.Drawing.Point(77, 101);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(447, 21);
-            this.textBox2.TabIndex = 11;
+            this.txtAccount.Location = new System.Drawing.Point(77, 101);
+            this.txtAccount.Name = "txtAccount";
+            this.txtAccount.Size = new System.Drawing.Size(447, 21);
+            this.txtAccount.TabIndex = 6;
             // 
             // txtCode
             // 
             this.txtCode.Location = new System.Drawing.Point(77, 21);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(167, 21);
-            this.txtCode.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(30, 128);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 12);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "类型";
+            this.txtCode.TabIndex = 2;
             // 
             // label6
             // 
@@ -270,89 +210,101 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.gridControl1);
             this.panel1.Controls.Add(this.toolStrip2);
-            this.panel1.Location = new System.Drawing.Point(250, 197);
+            this.panel1.Location = new System.Drawing.Point(250, 146);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(551, 349);
+            this.panel1.Size = new System.Drawing.Size(551, 400);
             this.panel1.TabIndex = 22;
             // 
-            // dataGridView1
+            // gridControl1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.单位编号,
-            this.单位名称,
-            this.银行编号,
-            this.银行名称,
-            this.帐号,
-            this.联系人,
-            this.联系电话});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 25);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(551, 324);
-            this.dataGridView1.TabIndex = 12;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 25);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.inplace_banks});
+            this.gridControl1.Size = new System.Drawing.Size(551, 375);
+            this.gridControl1.TabIndex = 12;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
             // 
-            // 单位编号
+            // gridView1
             // 
-            this.单位编号.HeaderText = "单位编号";
-            this.单位编号.Name = "单位编号";
-            this.单位编号.ReadOnly = true;
-            this.单位编号.Visible = false;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.c_id,
+            this.c_bank,
+            this.c_account,
+            this.c_balance,
+            this.c_credit});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
-            // 单位名称
+            // c_id
             // 
-            this.单位名称.HeaderText = "单位名称";
-            this.单位名称.Name = "单位名称";
-            this.单位名称.ReadOnly = true;
+            this.c_id.Caption = "ID";
+            this.c_id.ColumnEdit = this.inplace_banks;
+            this.c_id.FieldName = "ID";
+            this.c_id.Name = "c_id";
+            this.c_id.Width = 20;
             // 
-            // 银行编号
+            // inplace_banks
             // 
-            this.银行编号.HeaderText = "银行编号";
-            this.银行编号.Name = "银行编号";
-            this.银行编号.ReadOnly = true;
-            this.银行编号.Visible = false;
+            this.inplace_banks.AutoHeight = false;
+            this.inplace_banks.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.inplace_banks.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
+            this.inplace_banks.Name = "inplace_banks";
             // 
-            // 银行名称
+            // c_bank
             // 
-            this.银行名称.HeaderText = "银行名称";
-            this.银行名称.Name = "银行名称";
-            this.银行名称.ReadOnly = true;
+            this.c_bank.Caption = "银行";
+            this.c_bank.ColumnEdit = this.inplace_banks;
+            this.c_bank.FieldName = "Bank_ID";
+            this.c_bank.Name = "c_bank";
+            this.c_bank.Visible = true;
+            this.c_bank.VisibleIndex = 0;
             // 
-            // 帐号
+            // c_account
             // 
-            this.帐号.HeaderText = "帐号";
-            this.帐号.Name = "帐号";
-            this.帐号.ReadOnly = true;
+            this.c_account.Caption = "帐号";
+            this.c_account.FieldName = "Account";
+            this.c_account.Name = "c_account";
+            this.c_account.Visible = true;
+            this.c_account.VisibleIndex = 0;
             // 
-            // 联系人
+            // c_balance
             // 
-            this.联系人.HeaderText = "联系人";
-            this.联系人.Name = "联系人";
-            this.联系人.ReadOnly = true;
+            this.c_balance.Caption = "余额";
+            this.c_balance.DisplayFormat.FormatString = "N";
+            this.c_balance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.c_balance.FieldName = "Balance";
+            this.c_balance.Name = "c_balance";
+            this.c_balance.Visible = true;
+            this.c_balance.VisibleIndex = 2;
             // 
-            // 联系电话
+            // c_credit
             // 
-            this.联系电话.HeaderText = "联系电话";
-            this.联系电话.Name = "联系电话";
-            this.联系电话.ReadOnly = true;
+            this.c_credit.Caption = "贷款";
+            this.c_credit.DisplayFormat.FormatString = "N";
+            this.c_credit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.c_credit.FieldName = "Credit";
+            this.c_credit.Name = "c_credit";
+            this.c_credit.Visible = true;
+            this.c_credit.VisibleIndex = 3;
             // 
             // toolStrip2
             // 
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNew,
             this.toolStripSeparator1,
-            this.tsbEdit,
             this.tsbDelete,
             this.tsbSave,
-            this.tsbCancel,
-            this.toolStripSeparator2,
-            this.tsbExit});
+            this.toolStripSeparator2});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(551, 25);
@@ -373,14 +325,6 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // tsbEdit
-            // 
-            this.tsbEdit.Image = global::Haimen.Properties.Resources.Edit;
-            this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEdit.Name = "tsbEdit";
-            this.tsbEdit.Size = new System.Drawing.Size(52, 22);
-            this.tsbEdit.Text = "修改";
-            // 
             // tsbDelete
             // 
             this.tsbDelete.Image = global::Haimen.Properties.Resources.Delete;
@@ -397,28 +341,12 @@
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(52, 22);
             this.tsbSave.Text = "保存";
-            // 
-            // tsbCancel
-            // 
-            this.tsbCancel.Image = global::Haimen.Properties.Resources.Undo;
-            this.tsbCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCancel.Name = "tsbCancel";
-            this.tsbCancel.Size = new System.Drawing.Size(52, 22);
-            this.tsbCancel.Text = "取消";
+            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbExit
-            // 
-            this.tsbExit.Image = global::Haimen.Properties.Resources.Exit;
-            this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbExit.Name = "tsbExit";
-            this.tsbExit.Size = new System.Drawing.Size(52, 22);
-            this.tsbExit.Text = "退出";
-            this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
             // 
             // frmCompanyDetailList
             // 
@@ -427,14 +355,17 @@
             this.ClientSize = new System.Drawing.Size(806, 558);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.tree);
             this.Name = "frmCompanyDetailList";
             this.Text = "单位帐号信息";
+            this.Load += new System.EventHandler(this.frmCompanyDetailList_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inplace_banks)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
@@ -443,39 +374,32 @@
 
         #endregion
 
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView tree;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox cboDept;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtAccount;
         private System.Windows.Forms.TextBox txtCode;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 单位编号;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 单位名称;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 银行编号;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 银行名称;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 帐号;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 联系人;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 联系电话;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsbEdit;
         private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsbExit;
         private System.Windows.Forms.ToolStripButton tsbSave;
-        private System.Windows.Forms.ToolStripButton tsbCancel;
+        private System.Windows.Forms.TextBox txtDoc;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtBank;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn c_id;
+        private DevExpress.XtraGrid.Columns.GridColumn c_bank;
+        private DevExpress.XtraGrid.Columns.GridColumn c_account;
+        private DevExpress.XtraGrid.Columns.GridColumn c_balance;
+        private DevExpress.XtraGrid.Columns.GridColumn c_credit;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit inplace_banks;
     }
 }

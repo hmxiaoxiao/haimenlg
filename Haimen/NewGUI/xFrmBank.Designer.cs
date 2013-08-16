@@ -35,12 +35,14 @@
             this.c1Label2 = new C1.Win.C1Input.C1Label();
             this.c1DropDownControl1 = new C1.Win.C1Input.C1DropDownControl();
             this.c1Label3 = new C1.Win.C1Input.C1Label();
+            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Label1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Label2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DropDownControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Label3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // c1TextBox1
@@ -58,7 +60,7 @@
             this.c1Label1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label1.Location = new System.Drawing.Point(42, 100);
             this.c1Label1.Name = "c1Label1";
-            this.c1Label1.Size = new System.Drawing.Size(67, 14);
+            this.c1Label1.Size = new System.Drawing.Size(55, 14);
             this.c1Label1.TabIndex = 1;
             this.c1Label1.Tag = null;
             // 
@@ -100,11 +102,21 @@
             this.c1Label3.TabIndex = 3;
             this.c1Label3.Tag = null;
             // 
+            // calcEdit1
+            // 
+            this.calcEdit1.Location = new System.Drawing.Point(51, 244);
+            this.calcEdit1.Name = "calcEdit1";
+            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit1.Size = new System.Drawing.Size(100, 20);
+            this.calcEdit1.TabIndex = 4;
+            // 
             // xFrmBank
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 332);
+            this.Controls.Add(this.calcEdit1);
             this.Controls.Add(this.c1Label3);
             this.Controls.Add(this.c1DropDownControl1);
             this.Controls.Add(this.c1Label2);
@@ -120,6 +132,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Label2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DropDownControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Label3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +147,7 @@
         private C1.Win.C1Input.C1Label c1Label2;
         private C1.Win.C1Input.C1DropDownControl c1DropDownControl1;
         private C1.Win.C1Input.C1Label c1Label3;
+        private DevExpress.XtraEditors.CalcEdit calcEdit1;
 
     }
 }
