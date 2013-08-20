@@ -17,7 +17,7 @@ namespace Haimen.Entity
         [Field("company_id")]
         public long CompanyID { get; set; }
         private Company m_company = null;
-        public Company Belong_Company
+        public Company Company
         {
             get
             {

@@ -38,35 +38,37 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtAccount = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtMoney = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtBeginDate = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtRate = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cboInterestDate = new System.Windows.Forms.ComboBox();
+            this.cbo = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.还款日 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.还款金额 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.lueCompany = new DevExpress.XtraEditors.LookUpEdit();
+            this.lueBank = new DevExpress.XtraEditors.LookUpEdit();
             this.toolStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueCompany.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueBank.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip2
@@ -154,12 +156,12 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "编号";
             // 
-            // textBox1
+            // txtCode
             // 
-            this.textBox1.Location = new System.Drawing.Point(73, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(181, 21);
-            this.textBox1.TabIndex = 12;
+            this.txtCode.Location = new System.Drawing.Point(73, 29);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(181, 21);
+            this.txtCode.TabIndex = 12;
             // 
             // label2
             // 
@@ -170,14 +172,6 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "贷款银行";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(73, 55);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(181, 20);
-            this.comboBox1.TabIndex = 14;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -187,12 +181,12 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "帐号";
             // 
-            // textBox2
+            // txtAccount
             // 
-            this.textBox2.Location = new System.Drawing.Point(348, 55);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(181, 21);
-            this.textBox2.TabIndex = 16;
+            this.txtAccount.Location = new System.Drawing.Point(348, 55);
+            this.txtAccount.Name = "txtAccount";
+            this.txtAccount.Size = new System.Drawing.Size(181, 21);
+            this.txtAccount.TabIndex = 16;
             // 
             // label4
             // 
@@ -203,14 +197,6 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "单位";
             // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(348, 29);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(181, 20);
-            this.comboBox2.TabIndex = 14;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -220,12 +206,12 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "贷款金额";
             // 
-            // textBox4
+            // txtMoney
             // 
-            this.textBox4.Location = new System.Drawing.Point(348, 82);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(122, 21);
-            this.textBox4.TabIndex = 12;
+            this.txtMoney.Location = new System.Drawing.Point(348, 82);
+            this.txtMoney.Name = "txtMoney";
+            this.txtMoney.Size = new System.Drawing.Size(122, 21);
+            this.txtMoney.TabIndex = 12;
             // 
             // label8
             // 
@@ -236,19 +222,19 @@
             this.label8.TabIndex = 17;
             this.label8.Text = "贷款到期";
             // 
-            // dateTimePicker1
+            // dtEndDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(73, 109);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(181, 21);
-            this.dateTimePicker1.TabIndex = 18;
+            this.dtEndDate.Location = new System.Drawing.Point(73, 109);
+            this.dtEndDate.Name = "dtEndDate";
+            this.dtEndDate.Size = new System.Drawing.Size(181, 21);
+            this.dtEndDate.TabIndex = 18;
             // 
-            // dateTimePicker2
+            // dtBeginDate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(73, 82);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(181, 21);
-            this.dateTimePicker2.TabIndex = 20;
+            this.dtBeginDate.Location = new System.Drawing.Point(73, 82);
+            this.dtBeginDate.Name = "dtBeginDate";
+            this.dtBeginDate.Size = new System.Drawing.Size(181, 21);
+            this.dtBeginDate.TabIndex = 20;
             // 
             // label9
             // 
@@ -277,12 +263,12 @@
             this.label11.TabIndex = 11;
             this.label11.Text = "利率";
             // 
-            // textBox6
+            // txtRate
             // 
-            this.textBox6.Location = new System.Drawing.Point(348, 109);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(181, 21);
-            this.textBox6.TabIndex = 12;
+            this.txtRate.Location = new System.Drawing.Point(348, 109);
+            this.txtRate.Name = "txtRate";
+            this.txtRate.Size = new System.Drawing.Size(181, 21);
+            this.txtRate.TabIndex = 12;
             // 
             // label5
             // 
@@ -293,10 +279,10 @@
             this.label5.TabIndex = 22;
             this.label5.Text = "结息日";
             // 
-            // comboBox3
+            // cboInterestDate
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.cboInterestDate.FormattingEnabled = true;
+            this.cboInterestDate.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -328,15 +314,15 @@
             "29",
             "30",
             "31"});
-            this.comboBox3.Location = new System.Drawing.Point(73, 136);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(117, 20);
-            this.comboBox3.TabIndex = 23;
+            this.cboInterestDate.Location = new System.Drawing.Point(73, 136);
+            this.cboInterestDate.Name = "cboInterestDate";
+            this.cboInterestDate.Size = new System.Drawing.Size(117, 20);
+            this.cboInterestDate.TabIndex = 23;
             // 
-            // comboBox4
+            // cbo
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.cbo.FormattingEnabled = true;
+            this.cbo.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -368,10 +354,10 @@
             "29",
             "30",
             "31"});
-            this.comboBox4.Location = new System.Drawing.Point(348, 136);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(122, 20);
-            this.comboBox4.TabIndex = 25;
+            this.cbo.Location = new System.Drawing.Point(348, 136);
+            this.cbo.Name = "cbo";
+            this.cbo.Size = new System.Drawing.Size(122, 20);
+            this.cbo.TabIndex = 25;
             // 
             // label7
             // 
@@ -402,69 +388,76 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.gridControl1);
             this.groupBox1.Location = new System.Drawing.Point(12, 163);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(764, 324);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "还款计划";
             // 
-            // dataGridView1
+            // gridControl1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.还款日,
-            this.还款金额});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 13);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(752, 305);
-            this.dataGridView1.TabIndex = 28;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(3, 17);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(758, 304);
+            this.gridControl1.TabIndex = 0;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
             // 
-            // 还款日
+            // gridView1
             // 
-            this.还款日.HeaderText = "还款日";
-            this.还款日.Name = "还款日";
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
-            // 还款金额
+            // lueCompany
             // 
-            this.还款金额.HeaderText = "还款金额";
-            this.还款金额.Name = "还款金额";
+            this.lueCompany.Location = new System.Drawing.Point(348, 29);
+            this.lueCompany.Name = "lueCompany";
+            this.lueCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueCompany.Size = new System.Drawing.Size(181, 20);
+            this.lueCompany.TabIndex = 28;
+            // 
+            // lueBank
+            // 
+            this.lueBank.Location = new System.Drawing.Point(73, 55);
+            this.lueBank.Name = "lueBank";
+            this.lueBank.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueBank.Size = new System.Drawing.Size(181, 20);
+            this.lueBank.TabIndex = 29;
             // 
             // frmCredit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 499);
+            this.Controls.Add(this.lueBank);
+            this.Controls.Add(this.lueCompany);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.cbo);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.cboInterestDate);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dtBeginDate);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtEndDate);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtAccount);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtMoney);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtRate);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCode);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.toolStrip2);
             this.Name = "frmCredit";
@@ -472,7 +465,10 @@
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueCompany.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueBank.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,33 +484,32 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsbExit;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtAccount;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtMoney;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtEndDate;
+        private System.Windows.Forms.DateTimePicker dtBeginDate;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtRate;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cboInterestDate;
+        private System.Windows.Forms.ComboBox cbo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 还款日;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 还款金额;
         private System.Windows.Forms.ToolStripButton tsbAuto;
         private System.Windows.Forms.ToolStripButton tsbNew;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.LookUpEdit lueCompany;
+        private DevExpress.XtraEditors.LookUpEdit lueBank;
     }
 }

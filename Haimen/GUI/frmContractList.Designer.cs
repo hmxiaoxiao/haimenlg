@@ -28,16 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.状态 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.利率 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.贷款余额 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.贷款金额 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.帐号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.银行 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.单位 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.编号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.到期 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -54,82 +44,26 @@
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.tsbExit = new System.Windows.Forms.ToolStripButton();
-            this.tsbGene = new System.Windows.Forms.ToolStripButton();
-            this.tsbVerify = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tsbVerify = new System.Windows.Forms.ToolStripButton();
+            this.tsbGene = new System.Windows.Forms.ToolStripButton();
+            this.tsbExit = new System.Windows.Forms.ToolStripButton();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // 状态
-            // 
-            this.状态.HeaderText = "状态";
-            this.状态.Name = "状态";
-            // 
-            // 利率
-            // 
-            this.利率.HeaderText = "利率";
-            this.利率.Name = "利率";
-            // 
-            // 贷款余额
-            // 
-            this.贷款余额.HeaderText = "贷款余额";
-            this.贷款余额.Name = "贷款余额";
-            // 
-            // 贷款金额
-            // 
-            this.贷款金额.HeaderText = "贷款金额";
-            this.贷款金额.Name = "贷款金额";
-            // 
-            // 帐号
-            // 
-            this.帐号.HeaderText = "帐号";
-            this.帐号.Name = "帐号";
-            // 
-            // 银行
-            // 
-            this.银行.HeaderText = "银行";
-            this.银行.Name = "银行";
-            // 
-            // 单位
-            // 
-            this.单位.HeaderText = "单位";
-            this.单位.Name = "单位";
-            this.单位.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // 编号
-            // 
-            this.编号.HeaderText = "编号";
-            this.编号.Name = "编号";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.编号,
-            this.单位,
-            this.银行,
-            this.帐号,
-            this.贷款金额,
-            this.贷款余额,
-            this.利率,
-            this.到期,
-            this.状态});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 120);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(771, 420);
-            this.dataGridView1.TabIndex = 23;
-            // 
-            // 到期
-            // 
-            this.到期.HeaderText = "到期";
-            this.到期.Name = "到期";
             // 
             // button1
             // 
@@ -282,22 +216,10 @@
             this.tsbDelete.Text = "删除";
             this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
-            // tsbExit
+            // toolStripSeparator4
             // 
-            this.tsbExit.Image = global::Haimen.Properties.Resources.Exit;
-            this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbExit.Name = "tsbExit";
-            this.tsbExit.Size = new System.Drawing.Size(52, 22);
-            this.tsbExit.Text = "退出";
-            this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
-            // 
-            // tsbGene
-            // 
-            this.tsbGene.Image = global::Haimen.Properties.Resources.Card_New;
-            this.tsbGene.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbGene.Name = "tsbGene";
-            this.tsbGene.Size = new System.Drawing.Size(100, 22);
-            this.tsbGene.Text = "生成支付凭证";
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbVerify
             // 
@@ -308,27 +230,144 @@
             this.tsbVerify.Text = "审核";
             this.tsbVerify.Click += new System.EventHandler(this.tsbVerify_Click);
             // 
-            // toolStripSeparator4
+            // tsbGene
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            this.tsbGene.Image = global::Haimen.Properties.Resources.Card_New;
+            this.tsbGene.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbGene.Name = "tsbGene";
+            this.tsbGene.Size = new System.Drawing.Size(100, 22);
+            this.tsbGene.Text = "生成支付凭证";
+            // 
+            // tsbExit
+            // 
+            this.tsbExit.Image = global::Haimen.Properties.Resources.Exit;
+            this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbExit.Name = "tsbExit";
+            this.tsbExit.Size = new System.Drawing.Size(52, 22);
+            this.tsbExit.Text = "退出";
+            this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridControl1.Location = new System.Drawing.Point(12, 121);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(771, 419);
+            this.gridControl1.TabIndex = 23;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            this.gridControl1.DoubleClick += new System.EventHandler(this.gridControl1_DoubleClick);
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn9});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "合同编号";
+            this.gridColumn1.FieldName = "Code";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "单位";
+            this.gridColumn2.FieldName = "Company.Name";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "签订日期";
+            this.gridColumn3.FieldName = "SignedDate";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "开始日期";
+            this.gridColumn4.FieldName = "BeginDate";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "结束日期";
+            this.gridColumn5.FieldName = "EndDate";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 4;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "合同名称";
+            this.gridColumn6.FieldName = "Name";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 5;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "金额";
+            this.gridColumn7.FieldName = "Money";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 6;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "保证金";
+            this.gridColumn8.FieldName = "Security";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 7;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "支付比例";
+            this.gridColumn9.FieldName = "PaymentRatio";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 8;
             // 
             // frmContractList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(795, 552);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip2);
             this.Name = "frmContractList";
             this.Text = "合同列表";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmContractList_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,16 +375,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridViewTextBoxColumn 状态;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 利率;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 贷款余额;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 贷款金额;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 帐号;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 银行;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 单位;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 编号;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 到期;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox2;
@@ -366,5 +395,16 @@
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton tsbVerify;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
     }
 }
