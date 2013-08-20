@@ -120,10 +120,20 @@ namespace Haimen.Entity
         [Field("attachment")]
         public long Attachment { get; set; }
 
+        // 支出签证
         [Field("direct_input")]
         public string DirectInput { get; set; }
 
+        // 支出凭证
         [Field("direct_output")]
         public string DirectOutput { get; set; }
+
+        // 签订日期
+        [Field("signed_date")]
+        public DateTime SignedDate { get; set; }
+
+        // 备注
+        [Field("memo")]
+        public string Memo { get; set; }
     }
 }

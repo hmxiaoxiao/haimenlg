@@ -28,7 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.accountBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_outcompany = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_outcompany_bank = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_outcompany_account = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_incompany = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_incompany_bank = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_incompany_account = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_memo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_signed = new DevExpress.XtraGrid.Columns.GridColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -50,35 +67,165 @@
             this.tsbNewOut = new System.Windows.Forms.ToolStripButton();
             this.tsbVerify = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.编号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.付款单位 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.收款单位 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.帐号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.状态 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.附件张数 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // gridView2
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn11,
+            this.gridColumn12});
+            this.gridView2.GridControl = this.gridControl1;
+            this.gridView2.Name = "gridView2";
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "资金性质";
+            this.gridColumn11.FieldName = "Funds.Name";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 0;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "金额";
+            this.gridColumn12.FieldName = "Money";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 1;
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.编号,
-            this.付款单位,
-            this.收款单位,
-            this.帐号,
-            this.状态,
-            this.附件张数});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 120);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(721, 241);
-            this.dataGridView1.TabIndex = 23;
+            this.gridControl1.DataSource = this.accountBindingSource;
+            this.gridControl1.Location = new System.Drawing.Point(3, 17);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(542, 371);
+            this.gridControl1.TabIndex = 23;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1,
+            this.gridView2});
+            this.gridControl1.DoubleClick += new System.EventHandler(this.gridControl1_DoubleClick);
+            // 
+            // accountBindingSource
+            // 
+            this.accountBindingSource.DataSource = typeof(Haimen.Entity.Account);
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.col_id,
+            this.col_code,
+            this.col_outcompany,
+            this.col_outcompany_bank,
+            this.col_outcompany_account,
+            this.col_incompany,
+            this.col_incompany_bank,
+            this.col_incompany_account,
+            this.col_memo,
+            this.col_signed});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
+            // 
+            // col_id
+            // 
+            this.col_id.Caption = "ID";
+            this.col_id.FieldName = "ID";
+            this.col_id.Name = "col_id";
+            this.col_id.Visible = true;
+            this.col_id.VisibleIndex = 0;
+            // 
+            // col_code
+            // 
+            this.col_code.Caption = "单据字";
+            this.col_code.FieldName = "Code";
+            this.col_code.Name = "col_code";
+            this.col_code.Visible = true;
+            this.col_code.VisibleIndex = 1;
+            // 
+            // col_outcompany
+            // 
+            this.col_outcompany.Caption = "付款单位";
+            this.col_outcompany.FieldName = "OutCompany.Name";
+            this.col_outcompany.Name = "col_outcompany";
+            this.col_outcompany.Visible = true;
+            this.col_outcompany.VisibleIndex = 2;
+            // 
+            // col_outcompany_bank
+            // 
+            this.col_outcompany_bank.Caption = "开户行";
+            this.col_outcompany_bank.FieldName = "OutCompany.Bank.Name";
+            this.col_outcompany_bank.Name = "col_outcompany_bank";
+            this.col_outcompany_bank.Visible = true;
+            this.col_outcompany_bank.VisibleIndex = 3;
+            // 
+            // col_outcompany_account
+            // 
+            this.col_outcompany_account.Caption = "帐号";
+            this.col_outcompany_account.FieldName = "OutCompany.Account";
+            this.col_outcompany_account.Name = "col_outcompany_account";
+            this.col_outcompany_account.Visible = true;
+            this.col_outcompany_account.VisibleIndex = 4;
+            // 
+            // col_incompany
+            // 
+            this.col_incompany.Caption = "收款单位";
+            this.col_incompany.FieldName = "InCompany.Name";
+            this.col_incompany.Name = "col_incompany";
+            this.col_incompany.Visible = true;
+            this.col_incompany.VisibleIndex = 5;
+            // 
+            // col_incompany_bank
+            // 
+            this.col_incompany_bank.Caption = "开户行";
+            this.col_incompany_bank.FieldName = "InCompnay.Bank.Name";
+            this.col_incompany_bank.Name = "col_incompany_bank";
+            this.col_incompany_bank.Visible = true;
+            this.col_incompany_bank.VisibleIndex = 6;
+            // 
+            // col_incompany_account
+            // 
+            this.col_incompany_account.Caption = "帐号";
+            this.col_incompany_account.FieldName = "InCompany.Account";
+            this.col_incompany_account.Name = "col_incompany_account";
+            this.col_incompany_account.Visible = true;
+            this.col_incompany_account.VisibleIndex = 7;
+            // 
+            // col_memo
+            // 
+            this.col_memo.Caption = "备注";
+            this.col_memo.FieldName = "Memo";
+            this.col_memo.Name = "col_memo";
+            this.col_memo.Visible = true;
+            this.col_memo.VisibleIndex = 8;
+            // 
+            // col_signed
+            // 
+            this.col_signed.Caption = "签订日期";
+            this.col_signed.FieldName = "SignedDate";
+            this.col_signed.Name = "col_signed";
+            this.col_signed.Visible = true;
+            this.col_signed.VisibleIndex = 9;
             // 
             // button1
             // 
@@ -248,7 +395,7 @@
             this.tsbExit});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(745, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(848, 25);
             this.toolStrip2.TabIndex = 20;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -275,53 +422,92 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // 编号
+            // groupBox2
             // 
-            this.编号.HeaderText = "编号";
-            this.编号.Name = "编号";
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.gridControl2);
+            this.groupBox2.Controls.Add(this.gridControl1);
+            this.groupBox2.Location = new System.Drawing.Point(12, 120);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(824, 391);
+            this.groupBox2.TabIndex = 24;
+            this.groupBox2.TabStop = false;
             // 
-            // 付款单位
+            // gridControl2
             // 
-            this.付款单位.HeaderText = "付款单位";
-            this.付款单位.Name = "付款单位";
-            this.付款单位.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            gridLevelNode2.RelationName = "Level1";
+            this.gridControl2.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode2});
+            this.gridControl2.Location = new System.Drawing.Point(551, 17);
+            this.gridControl2.MainView = this.gridView3;
+            this.gridControl2.Name = "gridControl2";
+            this.gridControl2.Size = new System.Drawing.Size(273, 371);
+            this.gridControl2.TabIndex = 25;
+            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
             // 
-            // 收款单位
+            // gridView3
             // 
-            this.收款单位.HeaderText = "收款单位";
-            this.收款单位.Name = "收款单位";
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn15,
+            this.gridColumn13,
+            this.gridColumn14});
+            this.gridView3.GridControl = this.gridControl2;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsBehavior.Editable = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
             // 
-            // 帐号
+            // gridColumn15
             // 
-            this.帐号.HeaderText = "帐号";
-            this.帐号.Name = "帐号";
+            this.gridColumn15.Caption = "资金性质";
+            this.gridColumn15.FieldName = "Funds.Name";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 2;
             // 
-            // 状态
+            // gridColumn13
             // 
-            this.状态.HeaderText = "状态";
-            this.状态.Name = "状态";
+            this.gridColumn13.Caption = "金额";
+            this.gridColumn13.FieldName = "Money";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 0;
             // 
-            // 附件张数
+            // gridColumn14
             // 
-            this.附件张数.HeaderText = "附件张数";
-            this.附件张数.Name = "附件张数";
+            this.gridColumn14.Caption = "用途";
+            this.gridColumn14.FieldName = "Usage";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 1;
             // 
             // frmAccountList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(745, 373);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(848, 523);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip2);
             this.Name = "frmAccountList";
             this.Text = "资金查询";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmAccountList_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,7 +515,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox2;
@@ -351,12 +536,28 @@
         private System.Windows.Forms.ToolStripButton tsbNewOut;
         private System.Windows.Forms.ToolStripButton tsbVerify;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 编号;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 付款单位;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 收款单位;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 帐号;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 状态;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 附件张数;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private DevExpress.XtraGrid.Columns.GridColumn col_id;
+        private DevExpress.XtraGrid.Columns.GridColumn col_code;
+        private DevExpress.XtraGrid.Columns.GridColumn col_outcompany;
+        private DevExpress.XtraGrid.Columns.GridColumn col_outcompany_bank;
+        private DevExpress.XtraGrid.Columns.GridColumn col_outcompany_account;
+        private DevExpress.XtraGrid.Columns.GridColumn col_incompany;
+        private DevExpress.XtraGrid.Columns.GridColumn col_incompany_bank;
+        private DevExpress.XtraGrid.Columns.GridColumn col_incompany_account;
+        private DevExpress.XtraGrid.Columns.GridColumn col_memo;
+        private DevExpress.XtraGrid.Columns.GridColumn col_signed;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private System.Windows.Forms.BindingSource accountBindingSource;
+        private DevExpress.XtraGrid.GridControl gridControl2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
 
     }
 }

@@ -8,10 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Haimen.Entity;
+
 namespace Haimen.GUI
 {
     public partial class frmAccountList: Form
     {
+
+        private List<Account> m_accounts;
+
         public frmAccountList()
         {
             InitializeComponent();
@@ -36,8 +41,24 @@ namespace Haimen.GUI
 
         private void tsbEdit_Click(object sender, EventArgs e)
         {
-            frmAccount win = new frmAccount();
-            win.ShowDialog();
+            EditAccount();
+        }
+
+        private void EditAccount()
+        {
+            if (gridView1.FocusedRowHandle < 0)
+                return;
+
+            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
+            foreach (Account a in m_accounts)
+            {
+                if(a.ID == id)
+                {
+                    frmAccount win = new frmAccount(a);
+                    win.ShowDialog();
+                    return;
+                }
+            }
         }
 
         private void tsbDelete_Click(object sender, EventArgs e)
@@ -52,6 +73,31 @@ namespace Haimen.GUI
         {
             frmAccount win = new frmAccount();
             win.ShowDialog();
+        }
+
+        private void frmAccountList_Load(object sender, EventArgs e)
+        {
+            m_accounts = Account.Query();
+            gridControl1.DataSource = m_accounts;
+        }
+
+        private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            long id = 0;
+            if (e.RowHandle >= 0)
+                id = long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString());
+
+
+            foreach (Account a in m_accounts)
+            {
+                if (id == a.ID)
+                    gridControl2.DataSource = a.DetailList;
+            }
+        }
+
+        private void gridControl1_DoubleClick(object sender, EventArgs e)
+        {
+            EditAccount();
         }
     }
 }

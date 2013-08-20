@@ -43,11 +43,6 @@ namespace Haimen.GUI
         private void tsbDelete_Click(object sender, EventArgs e)
         {
             gridView1.DeleteRow(gridView1.FocusedRowHandle);
-            //if (MessageBox.Show(this, "是否要删除指定单位的帐户信息？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
-            //{
-            //    gridView1.DeleteRow(gridView1.FocusedRowHandle);
-            //    MessageBox.Show(this, "删除成功!", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
         }
 
         private void frmCompanyDetailList_Load(object sender, EventArgs e)
