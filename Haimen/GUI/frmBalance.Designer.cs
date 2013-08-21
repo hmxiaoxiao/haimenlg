@@ -1,6 +1,6 @@
 ﻿namespace Haimen.GUI
 {
-    partial class frmCredit
+    partial class frmBalance
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,8 @@
         private void InitializeComponent()
         {
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.tsbAuto = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
-            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCode = new System.Windows.Forms.TextBox();
@@ -54,47 +49,46 @@
             this.txtRate = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cboInterestDate = new System.Windows.Forms.ComboBox();
-            this.cbo = new System.Windows.Forms.ComboBox();
+            this.cboRepayDate = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbNew = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lueCompany = new DevExpress.XtraEditors.LookUpEdit();
             this.lueBank = new DevExpress.XtraEditors.LookUpEdit();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.toolStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBank.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip2
             // 
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbAuto,
             this.tsbSave,
             this.toolStripSeparator1,
-            this.tsbNew,
-            this.tsbEdit,
-            this.tsbDelete,
-            this.toolStripSeparator2,
             this.tsbExit});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(788, 25);
             this.toolStrip2.TabIndex = 10;
             this.toolStrip2.Text = "toolStrip2";
-            // 
-            // tsbAuto
-            // 
-            this.tsbAuto.Image = global::Haimen.Properties.Resources.Calculator;
-            this.tsbAuto.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAuto.Name = "tsbAuto";
-            this.tsbAuto.Size = new System.Drawing.Size(124, 22);
-            this.tsbAuto.Text = "自动生成还款计划";
             // 
             // tsbSave
             // 
@@ -103,40 +97,12 @@
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(52, 22);
             this.tsbSave.Text = "保存";
+            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbNew
-            // 
-            this.tsbNew.Image = global::Haimen.Properties.Resources.New;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(100, 22);
-            this.tsbNew.Text = "新增还款计划";
-            // 
-            // tsbEdit
-            // 
-            this.tsbEdit.Image = global::Haimen.Properties.Resources.Edit;
-            this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEdit.Name = "tsbEdit";
-            this.tsbEdit.Size = new System.Drawing.Size(100, 22);
-            this.tsbEdit.Text = "修改还款计划";
-            // 
-            // tsbDelete
-            // 
-            this.tsbDelete.Image = global::Haimen.Properties.Resources.Delete;
-            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(100, 22);
-            this.tsbDelete.Text = "删除还款计划";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbExit
             // 
@@ -319,10 +285,10 @@
             this.cboInterestDate.Size = new System.Drawing.Size(117, 20);
             this.cboInterestDate.TabIndex = 23;
             // 
-            // cbo
+            // cboRepayDate
             // 
-            this.cbo.FormattingEnabled = true;
-            this.cbo.Items.AddRange(new object[] {
+            this.cboRepayDate.FormattingEnabled = true;
+            this.cboRepayDate.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -354,10 +320,10 @@
             "29",
             "30",
             "31"});
-            this.cbo.Location = new System.Drawing.Point(348, 136);
-            this.cbo.Name = "cbo";
-            this.cbo.Size = new System.Drawing.Size(122, 20);
-            this.cbo.TabIndex = 25;
+            this.cboRepayDate.Location = new System.Drawing.Point(348, 136);
+            this.cboRepayDate.Name = "cboRepayDate";
+            this.cboRepayDate.Size = new System.Drawing.Size(122, 20);
+            this.cboRepayDate.TabIndex = 25;
             // 
             // label7
             // 
@@ -388,6 +354,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.toolStrip1);
             this.groupBox1.Controls.Add(this.gridControl1);
             this.groupBox1.Location = new System.Drawing.Point(12, 163);
             this.groupBox1.Name = "groupBox1";
@@ -395,22 +362,97 @@
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNew,
+            this.toolStripSeparator3,
+            this.tsbDelete,
+            this.toolStripButton3,
+            this.toolStripSeparator4});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 17);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(758, 25);
+            this.toolStrip1.TabIndex = 12;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsbNew
+            // 
+            this.tsbNew.Image = global::Haimen.Properties.Resources.New;
+            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNew.Name = "tsbNew";
+            this.tsbNew.Size = new System.Drawing.Size(52, 22);
+            this.tsbNew.Text = "新增";
+            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbDelete
+            // 
+            this.tsbDelete.Image = global::Haimen.Properties.Resources.Delete;
+            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDelete.Name = "tsbDelete";
+            this.tsbDelete.Size = new System.Drawing.Size(52, 22);
+            this.tsbDelete.Text = "删除";
+            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.Image = global::Haimen.Properties.Resources.Save;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton3.Text = "保存";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
             // gridControl1
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(3, 17);
+            this.gridControl1.Location = new System.Drawing.Point(3, 45);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(758, 304);
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemDateEdit1});
+            this.gridControl1.Size = new System.Drawing.Size(758, 276);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "日期";
+            this.gridColumn1.ColumnEdit = this.repositoryItemDateEdit1;
+            this.gridColumn1.DisplayFormat.FormatString = "d";
+            this.gridColumn1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn1.FieldName = "PayDate";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "付款金额";
+            this.gridColumn2.DisplayFormat.FormatString = "N";
+            this.gridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn2.FieldName = "Money";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
             // 
             // lueCompany
             // 
@@ -418,6 +460,10 @@
             this.lueCompany.Name = "lueCompany";
             this.lueCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
+            this.lueCompany.Properties.NullText = "请选择单位";
             this.lueCompany.Size = new System.Drawing.Size(181, 20);
             this.lueCompany.TabIndex = 28;
             // 
@@ -427,8 +473,23 @@
             this.lueBank.Name = "lueBank";
             this.lueBank.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueBank.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
+            this.lueBank.Properties.NullText = "请选择银行";
             this.lueBank.Size = new System.Drawing.Size(181, 20);
             this.lueBank.TabIndex = 29;
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeProperties.CloseUpKey = new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F4);
+            this.repositoryItemDateEdit1.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.Default;
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
             // frmCredit
             // 
@@ -440,7 +501,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.cbo);
+            this.Controls.Add(this.cboRepayDate);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cboInterestDate);
             this.Controls.Add(this.label5);
@@ -462,13 +523,19 @@
             this.Controls.Add(this.toolStrip2);
             this.Name = "frmCredit";
             this.Text = "贷款表";
+            this.Load += new System.EventHandler(this.frmCredit_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueCompany.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBank.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,9 +546,6 @@
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton tsbSave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsbEdit;
-        private System.Windows.Forms.ToolStripButton tsbDelete;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsbExit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCode;
@@ -500,16 +564,23 @@
         private System.Windows.Forms.TextBox txtRate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cboInterestDate;
-        private System.Windows.Forms.ComboBox cbo;
+        private System.Windows.Forms.ComboBox cboRepayDate;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ToolStripButton tsbAuto;
-        private System.Windows.Forms.ToolStripButton tsbNew;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.LookUpEdit lueCompany;
         private DevExpress.XtraEditors.LookUpEdit lueBank;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton tsbNew;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton tsbDelete;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
     }
 }

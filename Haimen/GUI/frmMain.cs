@@ -35,22 +35,6 @@ namespace Haimen
             win.Show();
         }
 
-        private void menuEmployee_Click(object sender, EventArgs e)
-        {
-            frmEmployeeList win = new frmEmployeeList();
-            win.MdiParent = this;
-            win.WindowState = FormWindowState.Maximized;
-            win.Show();
-        }
-
-        private void menuDept_Click(object sender, EventArgs e)
-        {
-            frmDeptList win = new frmDeptList();
-            win.MdiParent = this;
-            win.WindowState = FormWindowState.Maximized;
-            win.Show();
-        }
-
         private void menuBank_Click(object sender, EventArgs e)
         {
             frmBankList win = new frmBankList();
@@ -93,7 +77,7 @@ namespace Haimen
 
         private void menuCreditList_Click(object sender, EventArgs e)
         {
-            frmCreditList win = new frmCreditList();
+            frmBalanceList win = new frmBalanceList();
             win.MdiParent = this;
             win.WindowState = FormWindowState.Maximized;
             win.Show();
@@ -101,7 +85,7 @@ namespace Haimen
 
         private void menuCreditVerify_Click(object sender, EventArgs e)
         {
-            frmCreditList win = new frmCreditList();
+            frmBalanceList win = new frmBalanceList();
             win.MdiParent = this;
             win.WindowState = FormWindowState.Maximized;
             win.Show();

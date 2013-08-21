@@ -39,8 +39,6 @@
             this.menuBaseData = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCompanyAccountInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuDept = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEmployee = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBank = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCompany = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFunds = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,8 +137,6 @@
             this.menuBaseData.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuCompanyAccountInfo,
             this.toolStripMenuItem2,
-            this.menuDept,
-            this.menuEmployee,
             this.menuBank,
             this.menuCompany,
             this.menuFunds});
@@ -151,47 +147,33 @@
             // menuCompanyAccountInfo
             // 
             this.menuCompanyAccountInfo.Name = "menuCompanyAccountInfo";
-            this.menuCompanyAccountInfo.Size = new System.Drawing.Size(148, 22);
+            this.menuCompanyAccountInfo.Size = new System.Drawing.Size(152, 22);
             this.menuCompanyAccountInfo.Text = "单位帐户信息";
             this.menuCompanyAccountInfo.Click += new System.EventHandler(this.menuCompanyAccountInfo_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(145, 6);
-            // 
-            // menuDept
-            // 
-            this.menuDept.Name = "menuDept";
-            this.menuDept.Size = new System.Drawing.Size(148, 22);
-            this.menuDept.Text = "部门管理";
-            this.menuDept.Click += new System.EventHandler(this.menuDept_Click);
-            // 
-            // menuEmployee
-            // 
-            this.menuEmployee.Name = "menuEmployee";
-            this.menuEmployee.Size = new System.Drawing.Size(148, 22);
-            this.menuEmployee.Text = "员工信息";
-            this.menuEmployee.Click += new System.EventHandler(this.menuEmployee_Click);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
             // 
             // menuBank
             // 
             this.menuBank.Name = "menuBank";
-            this.menuBank.Size = new System.Drawing.Size(148, 22);
+            this.menuBank.Size = new System.Drawing.Size(152, 22);
             this.menuBank.Text = "银行";
             this.menuBank.Click += new System.EventHandler(this.menuBank_Click);
             // 
             // menuCompany
             // 
             this.menuCompany.Name = "menuCompany";
-            this.menuCompany.Size = new System.Drawing.Size(148, 22);
+            this.menuCompany.Size = new System.Drawing.Size(152, 22);
             this.menuCompany.Text = "单位";
             this.menuCompany.Click += new System.EventHandler(this.menuCompany_Click);
             // 
             // menuFunds
             // 
             this.menuFunds.Name = "menuFunds";
-            this.menuFunds.Size = new System.Drawing.Size(148, 22);
+            this.menuFunds.Size = new System.Drawing.Size(152, 22);
             this.menuFunds.Text = "资金性质";
             this.menuFunds.Click += new System.EventHandler(this.menuFunds_Click);
             // 
@@ -376,8 +358,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem menuExit;
         private System.Windows.Forms.ToolStripMenuItem menuBaseData;
-        private System.Windows.Forms.ToolStripMenuItem menuDept;
-        private System.Windows.Forms.ToolStripMenuItem menuEmployee;
         private System.Windows.Forms.ToolStripMenuItem menuBank;
         private System.Windows.Forms.ToolStripMenuItem menuCompany;
         private System.Windows.Forms.ToolStripMenuItem menuFunds;

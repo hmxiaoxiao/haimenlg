@@ -143,6 +143,7 @@
     <Compile Include="Entity\AccountAttach.cs" />
     <Compile Include="Entity\AccountDetail.cs" />
     <Compile Include="Entity\Balance.cs" />
+    <Compile Include="Entity\BalanceDetail.cs" />
     <Compile Include="Entity\Bank.cs" />
     <Compile Include="Entity\Company.cs" />
     <Compile Include="Entity\CompanyDetail.cs" />
@@ -267,17 +268,17 @@
     <Compile Include="GUI\frmContractList.Designer.cs">
       <DependentUpon>frmContractList.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmCredit.cs">
+    <Compile Include="GUI\frmBalance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\frmCredit.Designer.cs">
-      <DependentUpon>frmCredit.cs</DependentUpon>
+    <Compile Include="GUI\frmBalance.Designer.cs">
+      <DependentUpon>frmBalance.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmCreditList.cs">
+    <Compile Include="GUI\frmBalanceList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\frmCreditList.Designer.cs">
-      <DependentUpon>frmCreditList.cs</DependentUpon>
+    <Compile Include="GUI\frmBalanceList.Designer.cs">
+      <DependentUpon>frmBalanceList.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\frmDept.cs">
       <SubType>Form</SubType>
@@ -389,11 +390,11 @@
     <EmbeddedResource Include="GUI\frmContractList.resx">
       <DependentUpon>frmContractList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\frmCredit.resx">
-      <DependentUpon>frmCredit.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\frmBalance.resx">
+      <DependentUpon>frmBalance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\frmCreditList.resx">
-      <DependentUpon>frmCreditList.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\frmBalanceList.resx">
+      <DependentUpon>frmBalanceList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmDept.resx">
       <DependentUpon>frmDept.cs</DependentUpon>

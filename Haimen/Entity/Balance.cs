@@ -8,7 +8,7 @@ using Haimen.Qy;
 namespace Haimen.Entity
 {
     [Table("t_balance")]
-    public class Balance : MEntityFunction<Balance>
+    public class Balance : TEntityFunction<Balance, BalanceDetail>
     {
         [Field("code")]
         public string Code { get; set; }
@@ -51,8 +51,11 @@ namespace Haimen.Entity
         [Field("money")]
         public decimal Money { get; set; }
 
-        [Field("balance")]
-        public decimal Bal { get; set; }
+        [Field("remaining")]
+        public decimal Remaining { get; set; }
+
+        [Field("begin_date")]
+        public DateTime BeginDate { get; set; }
 
         [Field("end_date")]
         public DateTime EndDate { get; set; }
@@ -64,9 +67,12 @@ namespace Haimen.Entity
         public decimal TotalInterest { get; set; }
 
         [Field("interest_date")]
-        public DateTime InterestDate { get; set; }
+        public int InterestDate { get; set; }
 
-        [Field("month_intereset")]
+        [Field("repay_date")]
+        public int RepayDate { get; set; }
+
+        [Field("month_interest")]
         public decimal MonthIntereset { get; set; }
 
         [Field("already_interest")]

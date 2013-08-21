@@ -13,7 +13,6 @@ namespace Haimen.Entity
         [Field("parent_id")]
         public long Parent_ID { get; set; }
 
-        private long m_bank_id;
         [Field("bank_id")]
         public long Bank_ID { get; set; }
 

@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Haimen", "Haimen\Haimen.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaimenUnitTest", "HaimenUnitTest\HaimenUnitTest.csproj", "{DA191DF0-EFDE-498C-A001-42CE06ACC014}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaimenEntity", "HaimenEntity\HaimenEntity.csproj", "{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -81,31 +79,6 @@ Global
 		{DA191DF0-EFDE-498C-A001-42CE06ACC014}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{DA191DF0-EFDE-498C-A001-42CE06ACC014}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
 		{DA191DF0-EFDE-498C-A001-42CE06ACC014}.SingleImage|x86.ActiveCfg = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.CD_ROM|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.CD_ROM|Mixed Platforms.Build.0 = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.CD_ROM|x86.ActiveCfg = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.DVD-5|Mixed Platforms.Build.0 = Debug|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.DVD-5|x86.ActiveCfg = Debug|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.Release|x86.ActiveCfg = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
-		{82A9A98F-1959-4ACB-AD23-B963DE47CFD2}.SingleImage|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

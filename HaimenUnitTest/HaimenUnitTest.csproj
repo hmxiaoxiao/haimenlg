@@ -62,6 +62,7 @@
     <Compile Include="TestCompany.cs" />
     <Compile Include="TestAccount.cs" />
     <Compile Include="TestContract.cs" />
+    <Compile Include="TestBalance.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Haimen\Haimen.csproj">

@@ -24,25 +24,25 @@ namespace Haimen
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            // 初始化用户, 第一次使用时，没有用户时增加用户。
+             //初始化用户, 第一次使用时，没有用户时增加用户。
             User.Init();
 
 
-            //// 显示登录窗口
-            //frmLogin win = new frmLogin();
-            //win.ShowDialog();
+            // 显示登录窗口
+            frmLogin win = new frmLogin();
+            win.ShowDialog();
 
             //frmSplash fs = new frmSplash();
             //fs.Show();
 
-            frmContractList bank = new frmContractList();
-            bank.ShowDialog();
+            //frmBalanceList bank = new frmBalanceList();
+            //bank.ShowDialog();
 
-            //GlobalSet.Current_User = User.Login("admin", "qwer1234");
-            //if ( GlobalSet.Current_User != null)
-            //{
-            //    Application.Run(new frmMain());
-            //}
+            GlobalSet.Current_User = User.Login("admin", "qwer1234");
+            if (GlobalSet.Current_User != null)
+            {
+                Application.Run(new frmMain());
+            }
         }
     }
 }

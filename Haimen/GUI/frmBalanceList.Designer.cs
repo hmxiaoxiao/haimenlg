@@ -1,6 +1,6 @@
 ﻿namespace Haimen.GUI
 {
-    partial class frmCreditList
+    partial class frmBalanceList
     {
         /// <summary>
         /// Required designer variable.

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Haimen.GUI
 {
-    public partial class frmCreditList : Form
+    public partial class frmBalanceList : Form
     {
-        public frmCreditList()
+        public frmBalanceList()
         {
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace Haimen.GUI
 
         private void tsbNew_Click(object sender, EventArgs e)
         {
-            frmCredit win = new frmCredit();
+            frmBalance win = new frmBalance();
             win.ShowDialog();
         }
 
@@ -43,7 +43,7 @@ namespace Haimen.GUI
 
         private void tsbEdit_Click(object sender, EventArgs e)
         {
-            frmCredit win = new frmCredit();
+            frmBalance win = new frmBalance();
             win.ShowDialog();
         }
     }
