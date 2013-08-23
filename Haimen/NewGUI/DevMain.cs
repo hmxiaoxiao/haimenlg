@@ -15,5 +15,12 @@ namespace Haimen.NewGUI
         {
             InitializeComponent();
         }
+
+        private void mnuBank_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            DevBankList list = new DevBankList();
+            list.MdiParent = this;
+            list.Show();
+        }
     }
 }
