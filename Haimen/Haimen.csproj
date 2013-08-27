@@ -154,11 +154,78 @@
     <Compile Include="Entity\ContractDetail.cs" />
     <Compile Include="Entity\Funds.cs" />
     <Compile Include="Helper\PinyinHelper.cs" />
+    <Compile Include="Helper\WinStatus.cs" />
+    <Compile Include="NewGUI\DevAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevAccount.Designer.cs">
+      <DependentUpon>DevAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevAccountList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevAccountList.Designer.cs">
+      <DependentUpon>DevAccountList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevAttach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevAttach.Designer.cs">
+      <DependentUpon>DevAttach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevBalance.Designer.cs">
+      <DependentUpon>DevBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevBalanceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevBalanceList.Designer.cs">
+      <DependentUpon>DevBalanceList.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewGUI\DevBankList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NewGUI\DevBankList.Designer.cs">
       <DependentUpon>DevBankList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevChangePassword.Designer.cs">
+      <DependentUpon>DevChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevCompany.Designer.cs">
+      <DependentUpon>DevCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevCompanyList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevCompanyList.Designer.cs">
+      <DependentUpon>DevCompanyList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevContract.Designer.cs">
+      <DependentUpon>DevContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevContractList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevContractList.Designer.cs">
+      <DependentUpon>DevContractList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevFundsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevFundsList.Designer.cs">
+      <DependentUpon>DevFundsList.cs</DependentUpon>
     </Compile>
     <Compile Include="NewGUI\DevLogin.cs">
       <SubType>Form</SubType>
@@ -171,6 +238,18 @@
     </Compile>
     <Compile Include="NewGUI\DevMain.Designer.cs">
       <DependentUpon>DevMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevUser.Designer.cs">
+      <DependentUpon>DevUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevUserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevUserList.Designer.cs">
+      <DependentUpon>DevUserList.cs</DependentUpon>
     </Compile>
     <Compile Include="NewGUI\frmSplash.cs">
       <SubType>Form</SubType>
@@ -415,6 +494,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevBankList.resx">
       <DependentUpon>DevBankList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevChangePassword.resx">
+      <DependentUpon>DevChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevFundsList.resx">
+      <DependentUpon>DevFundsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevLogin.resx">
       <DependentUpon>DevLogin.cs</DependentUpon>

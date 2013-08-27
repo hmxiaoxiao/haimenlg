@@ -21,25 +21,6 @@ namespace Haimen.NewGUI
         private List<Bank> m_banks = new List<Bank>();
         private Bank m_bank;        // 当前编辑(新增)的银行
 
-        // 当前的状态
-        private enum winStatus
-        {
-            /// <summary>
-            /// 查看
-            /// </summary>
-            View,
-
-            /// <summary>
-            ///  新增
-            /// </summary>
-            New,
-
-            /// <summary>
-            /// 编辑
-            /// </summary>
-            Edit,
-        }
-
         private winStatus m_status;
 
         // 设置当前窗口状态，也就是控制几个按钮的状态
@@ -107,7 +88,7 @@ namespace Haimen.NewGUI
             ShowBank2Grid();
         }
 
-        // 在列表中显示当前树结点对应的银行以及子结点。
+        // 在列表中显示当前树结点对应的资金性质以及子结点。
         private void ShowBank2Grid()
         {
             if (tree.FocusedNode == null)
@@ -145,15 +126,8 @@ namespace Haimen.NewGUI
             gridView1.OptionsBehavior.Editable = true;
 
             setWinStatus(winStatus.New);
-            //SetEditRowColor();
         }
 
-        // 设置编辑的颜色
-        private void SetEditRowColor()
-        {
-            gridView1.FocusedRowHandle = gridView1.RowCount - 1;
-            gridView1.SelectCell(gridView1.RowCount - 1, col_code);
-        }
 
         // 保存
         private void tsbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

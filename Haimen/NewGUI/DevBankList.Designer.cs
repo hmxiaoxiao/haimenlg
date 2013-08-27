@@ -52,6 +52,7 @@
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tsbSave = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -65,7 +66,6 @@
             this.node_name = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.node_id = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_layoutViewColumn1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_layoutViewColumn2)).BeginInit();
@@ -255,6 +255,7 @@
             this.bar1.DockCol = 0;
             this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.FloatLocation = new System.Drawing.Point(291, 137);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbNew, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
@@ -307,6 +308,14 @@
             this.tsbExit.Id = 3;
             this.tsbExit.Name = "tsbExit";
             this.tsbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbExit_ItemClick);
+            // 
+            // tsbRefresh
+            // 
+            this.tsbRefresh.Caption = "刷新";
+            this.tsbRefresh.Glyph = global::Haimen.Properties.Resources.Refresh_hot;
+            this.tsbRefresh.Id = 6;
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -376,7 +385,7 @@
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 0);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
             this.c1SplitterPanel1.Size = new System.Drawing.Size(140, 470);
-            this.c1SplitterPanel1.SizeRatio = 20D;
+            this.c1SplitterPanel1.SizeRatio = 19.943D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Width = 140;
             // 
@@ -431,14 +440,6 @@
             this.c1SplitterPanel2.Name = "c1SplitterPanel2";
             this.c1SplitterPanel2.Size = new System.Drawing.Size(562, 470);
             this.c1SplitterPanel2.TabIndex = 1;
-            // 
-            // tsbRefresh
-            // 
-            this.tsbRefresh.Caption = "刷新";
-            this.tsbRefresh.Glyph = global::Haimen.Properties.Resources.Refresh_hot;
-            this.tsbRefresh.Id = 6;
-            this.tsbRefresh.Name = "tsbRefresh";
-            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
             // 
             // DevBankList
             // 
