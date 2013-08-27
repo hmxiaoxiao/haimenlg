@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtPassword = new C1.Win.C1Input.C1TextBox();
             this.txtUser = new C1.Win.C1Input.C1TextBox();
@@ -41,6 +42,7 @@
             this.btnSave = new C1.Win.C1Input.C1Button();
             this.btnExit = new C1.Win.C1Input.C1Button();
             this.btnTest = new C1.Win.C1Input.C1Button();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword)).BeginInit();
@@ -236,6 +238,7 @@
         private C1.Win.C1Input.C1Button btnSave;
         private C1.Win.C1Input.C1Button btnExit;
         private C1.Win.C1Input.C1Button btnTest;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
 
 
     }

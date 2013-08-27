@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lueCode = new DevExpress.XtraEditors.LookUpEdit();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueCode.Properties)).BeginInit();
             this.SuspendLayout();
@@ -145,6 +146,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraEditors.LookUpEdit lueCode;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
 
     }
 }

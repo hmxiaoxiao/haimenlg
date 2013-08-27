@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 using Haimen.Entity;
+using Haimen.Helper;
 
 namespace Haimen.NewGUI
 {
@@ -61,6 +62,10 @@ namespace Haimen.NewGUI
             lueCode.Properties.DataSource = users;
             lueCode.Properties.ValueMember = "Code";
             lueCode.Properties.DisplayMember = "Code";
+
+            // 设置皮肤
+            CustomerINI.SetFormSkin();
+            
         }
 
         // 关闭窗口

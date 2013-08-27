@@ -22,8 +22,8 @@ namespace Haimen.DBConfig
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //BonusSkins.Register();
-            //SkinManager.EnableFormSkins();
+            BonusSkins.Register();
+            SkinManager.EnableFormSkins();
             //UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
             Application.Run(new DevDBConfig());
         }
