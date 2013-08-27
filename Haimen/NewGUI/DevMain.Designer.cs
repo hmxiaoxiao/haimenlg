@@ -147,6 +147,7 @@
             this.mnuAccountList.Name = "mnuAccountList";
             this.mnuAccountList.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuAccountList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuAccountList_ItemClick);
             // 
             // mnuAccount
             // 
@@ -155,8 +156,7 @@
             this.mnuAccount.Glyph = global::Haimen.Properties.Resources.Bullets_2_hot;
             this.mnuAccount.Id = 8;
             this.mnuAccount.Name = "mnuAccount";
-            this.mnuAccount.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuAccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuAccount_ItemClick);
             // 
             // mnuContractList
             // 

@@ -73,5 +73,27 @@ namespace Haimen.NewGUI
                 list.Show();
             }
         }
+
+        private void mnuAccountList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // 检查是否已经存在
+            if (!FormAlreadyOpen(typeof(DevAccount)))
+            {
+                DevAccount list = new DevAccount();
+                list.MdiParent = this;
+                list.Show();
+            }
+        }
+
+        private void mnuAccount_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // 检查是否已经存在
+            if (!FormAlreadyOpen(typeof(DevAccount)))
+            {
+                DevAccount list = new DevAccount();
+                list.MdiParent = this;
+                list.Show();
+            }
+        }
     }
 }

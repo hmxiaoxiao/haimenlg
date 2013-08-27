@@ -203,6 +203,12 @@
     <Compile Include="NewGUI\DevCompany.Designer.cs">
       <DependentUpon>DevCompany.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewGUI\DevCompanyDetailList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevCompanyDetailList.Designer.cs">
+      <DependentUpon>DevCompanyDetailList.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewGUI\DevCompanyList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -492,11 +498,35 @@
     <EmbeddedResource Include="GUI\frmInit.resx">
       <DependentUpon>frmInit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevAccount.resx">
+      <DependentUpon>DevAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevAccountList.resx">
+      <DependentUpon>DevAccountList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevBalance.resx">
+      <DependentUpon>DevBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevBalanceList.resx">
+      <DependentUpon>DevBalanceList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevBankList.resx">
       <DependentUpon>DevBankList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevChangePassword.resx">
       <DependentUpon>DevChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevCompany.resx">
+      <DependentUpon>DevCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevCompanyDetailList.resx">
+      <DependentUpon>DevCompanyDetailList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevCompanyList.resx">
+      <DependentUpon>DevCompanyList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevContract.resx">
+      <DependentUpon>DevContract.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevFundsList.resx">
       <DependentUpon>DevFundsList.cs</DependentUpon>
