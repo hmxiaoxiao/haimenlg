@@ -14,6 +14,9 @@ namespace Haimen.NewGUI
     // 用户登录
     public partial class DevLogin : DevExpress.XtraEditors.XtraForm
     {
+        // 重试次数，超过三次就退出系统
+        private int m_retry = 0;
+
         public DevLogin()
         {
             InitializeComponent();
@@ -36,9 +39,18 @@ namespace Haimen.NewGUI
             }
             else
             {
-                MessageBox.Show("用户代码或密码不正确，请重新输入");
-                txtPassword.SelectAll();
-                txtPassword.Focus();
+                m_retry++;
+                if (m_retry < 3)
+                {
+                    MessageBox.Show("用户代码或密码不正确，请重新输入");
+                    txtPassword.SelectAll();
+                    txtPassword.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("密码输入错误超过三次，系统退出！", "出错了!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                }
             }
         }
 
