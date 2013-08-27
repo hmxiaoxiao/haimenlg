@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using System.Data.SqlClient;
+using Haimen.Helper;
 
 namespace Haimen.Qy
 {
@@ -21,7 +22,8 @@ namespace Haimen.Qy
 
         private static SqlConnection getConnection()
         {
-            string connStr = @"Data Source=R400;Initial Catalog=haimen;User ID=sa;Password=heroes22";
+            string connStr = CustomerINI.GetConnectionString();
+                //@"Data Source=R400;Initial Catalog=haimen;User ID=sa;Password=heroes22";
             if (m_conn == null)
             {
                 m_conn = new SqlConnection(connStr);
