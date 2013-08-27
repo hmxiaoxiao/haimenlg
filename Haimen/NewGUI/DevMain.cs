@@ -9,6 +9,7 @@ using DevExpress.XtraBars;
 using DevExpress.Skins;
 
 using Haimen.Entity;
+using Haimen.Helper;
 
 using DevExpress.XtraBars.Helpers;
 
@@ -21,6 +22,7 @@ namespace Haimen.NewGUI
             InitializeComponent();
         }
 
+        // 当前窗口的初始化设置
         private void myInitialze()
         {
             statusText.Caption = "当前登录用户为：" + GlobalSet.Current_User.Name;
@@ -32,6 +34,8 @@ namespace Haimen.NewGUI
 
             SkinHelper.InitSkinGallery(rbSkins, true);
             rbSkins.Gallery.ImageSize = new Size(24, 24);
+
+            CustomerINI.SetFormSkin();
         }
 
         // 打开银行管理
@@ -105,6 +109,12 @@ namespace Haimen.NewGUI
                 list.MdiParent = this;
                 list.Show();
             }
+        }
+
+        // 选择皮肤的同时，将选择的皮肤记录到文件里，以便下一次使用。
+        private void rbSkins_GalleryItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
+        {
+            CustomerINI.WriteSkinName(e.Item.Caption);
         }
     }
 }

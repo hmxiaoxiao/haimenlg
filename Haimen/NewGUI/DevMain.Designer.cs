@@ -44,7 +44,7 @@
             this.mnuChangePassword = new DevExpress.XtraBars.BarButtonItem();
             this.mnuNotify = new DevExpress.XtraBars.BarButtonItem();
             this.statusText = new DevExpress.XtraBars.BarStaticItem();
-            this.mnuComboSkins = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.rbSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -58,10 +58,10 @@
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.mnuComboSkins = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.rbSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -241,12 +241,18 @@
             this.statusText.Name = "statusText";
             this.statusText.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
-            // mnuComboSkins
+            // rbSkins
             // 
-            this.mnuComboSkins.AutoHeight = false;
-            this.mnuComboSkins.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.mnuComboSkins.Name = "mnuComboSkins";
+            this.rbSkins.Caption = "皮肤";
+            // 
+            // 
+            // 
+            this.rbSkins.Gallery.ColumnCount = 4;
+            this.rbSkins.Gallery.ImageSize = new System.Drawing.Size(12, 12);
+            this.rbSkins.Gallery.RowCount = 4;
+            this.rbSkins.Id = 25;
+            this.rbSkins.Name = "rbSkins";
+            this.rbSkins.GalleryItemClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.rbSkins_GalleryItemClick);
             // 
             // ribbonPage1
             // 
@@ -346,6 +352,13 @@
             this.ribbonPage4.Name = "ribbonPage4";
             this.ribbonPage4.Text = "报表";
             // 
+            // mnuComboSkins
+            // 
+            this.mnuComboSkins.AutoHeight = false;
+            this.mnuComboSkins.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.mnuComboSkins.Name = "mnuComboSkins";
+            // 
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.statusText);
@@ -361,18 +374,6 @@
             // mdiManager
             // 
             this.mdiManager.MdiParent = this;
-            // 
-            // rbSkins
-            // 
-            this.rbSkins.Caption = "皮肤";
-            // 
-            // 
-            // 
-            this.rbSkins.Gallery.ColumnCount = 4;
-            this.rbSkins.Gallery.ImageSize = new System.Drawing.Size(12, 12);
-            this.rbSkins.Gallery.RowCount = 4;
-            this.rbSkins.Id = 25;
-            this.rbSkins.Name = "rbSkins";
             // 
             // DevMain
             // 

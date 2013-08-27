@@ -153,6 +153,8 @@
     <Compile Include="Entity\ContractAttach.cs" />
     <Compile Include="Entity\ContractDetail.cs" />
     <Compile Include="Entity\Funds.cs" />
+    <Compile Include="Helper\CustomerINI.cs" />
+    <Compile Include="Helper\INIFile.cs" />
     <Compile Include="Helper\PinyinHelper.cs" />
     <Compile Include="Helper\WinStatus.cs" />
     <Compile Include="NewGUI\DevAccount.cs">
