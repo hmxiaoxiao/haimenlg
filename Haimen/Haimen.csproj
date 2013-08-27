@@ -245,6 +245,12 @@
     <Compile Include="NewGUI\DevMain.Designer.cs">
       <DependentUpon>DevMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewGUI\DevResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevResetPassword.Designer.cs">
+      <DependentUpon>DevResetPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewGUI\DevUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -528,6 +534,9 @@
     <EmbeddedResource Include="NewGUI\DevContract.resx">
       <DependentUpon>DevContract.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevContractList.resx">
+      <DependentUpon>DevContractList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevFundsList.resx">
       <DependentUpon>DevFundsList.cs</DependentUpon>
     </EmbeddedResource>
@@ -536,6 +545,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevMain.resx">
       <DependentUpon>DevMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevResetPassword.resx">
+      <DependentUpon>DevResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevUser.resx">
+      <DependentUpon>DevUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevUserList.resx">
+      <DependentUpon>DevUserList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>

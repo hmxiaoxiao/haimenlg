@@ -11,6 +11,7 @@ using Haimen.Entity;
 
 namespace Haimen.NewGUI
 {
+    // 用户登录
     public partial class DevLogin : DevExpress.XtraEditors.XtraForm
     {
         public DevLogin()

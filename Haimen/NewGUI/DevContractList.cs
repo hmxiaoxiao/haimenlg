@@ -46,13 +46,13 @@ namespace Haimen.NewGUI
 
         private void tsbNew_Click(object sender, EventArgs e)
         {
-            DevContract win = new DevContract(c);
+            DevContract win = new DevContract();
             win.ShowDialog();
         }
 
         private void tsbVerify_Click(object sender, EventArgs e)
         {
-            DevContract win = new DevContract(c);
+            DevContract win = new DevContract();
             win.ShowDialog();
         }
 

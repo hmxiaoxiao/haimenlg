@@ -25,6 +25,9 @@ namespace Haimen
 
             // 系统初始化
             GlobalSet.SystemName = "临江财政资金管理系统";
+            DevExpress.UserSkins.BonusSkins.Register();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             //初始化用户, 第一次使用时，没有用户时增加用户。
             //User.Init();
 

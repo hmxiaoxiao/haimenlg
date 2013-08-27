@@ -6,8 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
+using DevExpress.Skins;
 
 using Haimen.Entity;
+
+using DevExpress.XtraBars.Helpers;
 
 namespace Haimen.NewGUI
 {
@@ -21,6 +24,14 @@ namespace Haimen.NewGUI
         private void myInitialze()
         {
             statusText.Caption = "当前登录用户为：" + GlobalSet.Current_User.Name;
+            foreach (SkinContainer cnt in SkinManager.Default.Skins)
+            {
+                //comboBoxEdit1.Properties.Items.Add(cnt.SkinName);
+                mnuComboSkins.Items.Add(cnt.SkinName);
+            }
+
+            SkinHelper.InitSkinGallery(rbSkins, true);
+            rbSkins.Gallery.ImageSize = new Size(24, 24);
         }
 
         // 打开银行管理
