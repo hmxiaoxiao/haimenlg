@@ -215,7 +215,7 @@ namespace Haimen.NewGUI
         // 关闭窗口退出
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_bank != null)
+            if (m_status != winStatus.View)
             {
                 if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
                         MessageBoxButtons.YesNo,
