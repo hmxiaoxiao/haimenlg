@@ -34,8 +34,8 @@ namespace Haimen
 
 
             // 显示登录窗口
-            DevLogin win = new DevLogin();
-            win.ShowDialog();
+            //DevLogin win = new DevLogin();
+            //win.ShowDialog();
 
             //frmSplash fs = new frmSplash();
             //fs.Show();

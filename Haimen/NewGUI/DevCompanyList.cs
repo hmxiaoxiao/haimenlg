@@ -13,15 +13,105 @@ namespace Haimen.NewGUI
 {
     public partial class DevCompanyList : DevExpress.XtraEditors.XtraForm
     {
+        List<Company> m_companies;
+
+        // 刷新界面
+        private void myRefresh()
+        {
+            m_companies = Company.Query();
+            gridControl1.DataSource = null;
+            gridControl1.DataSource = m_companies;
+        }
+
         public DevCompanyList()
         {
             InitializeComponent();
         }
 
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        // 增加
+        private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DevCompany win = new DevCompany();
-            win.ShowDialog();
+            DevMain main = (DevMain)this.ParentForm;
+            main.OpenForm(new DevCompany());
+        }
+
+        // 退出
+        private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+
+        // 删除
+        private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (gridView1.FocusedRowHandle < 0)
+                return;
+
+            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
+            Company.Delete(id);
+            gridView1.DeleteRow(gridView1.FocusedRowHandle);
+
+        }
+
+        // 载入刷新界面
+        private void DevCompanyList_Load(object sender, EventArgs e)
+        {
+            myRefresh();
+        }
+
+        // 刷新
+        private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            myRefresh();
+        }
+
+        // 修改
+        private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (gridView1.FocusedRowHandle < 0)
+                return;
+
+            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
+            Company com = Company.CreateByID(id);
+
+            DevMain main = (DevMain)this.ParentForm;
+            main.OpenForm(new DevCompany(com));
+        }
+
+        private void tsbQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DevCompanyQuery query_win = new DevCompanyQuery();
+            if (query_win.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            {
+                // 生成查询字符串
+                string qcode = query_win.Q_Code;
+                string qname = query_win.Q_Name;
+                string qaccount = query_win.Q_Account;
+                string qbankid = query_win.Q_BankID;
+
+                List<string> filters = new List<string>();
+                if (qcode.Length > 0)
+                    filters.Add(" Code like '%" + qcode + "%' ");
+                if (qname.Length > 0)
+                    filters.Add(" Name like '%" + qname + "%' ");
+                if (qaccount.Length > 0)
+                    filters.Add(" Account like '%" + qaccount + "%' ");
+                if (qbankid.Length > 0)
+                    filters.Add(" Bank_ID = " + qbankid + " ");
+
+                string where = "";
+                foreach (string filter in filters)
+                {
+                    where += filter + " and ";
+                }
+
+                if (where.Length > 0)
+                    where = where.Substring(0, where.Length - 4);
+
+                // 刷新界面
+                gridControl1.DataSource = null;
+                gridControl1.DataSource = Company.Query(where);
+            }
         }
     }
 }

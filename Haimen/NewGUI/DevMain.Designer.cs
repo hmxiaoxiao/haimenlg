@@ -33,7 +33,7 @@
             this.mnuBank = new DevExpress.XtraBars.BarButtonItem();
             this.mnuCompany = new DevExpress.XtraBars.BarButtonItem();
             this.mnuFouds = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuCompanyDetail = new DevExpress.XtraBars.BarButtonItem();
             this.mnuAccountList = new DevExpress.XtraBars.BarButtonItem();
             this.mnuAccount = new DevExpress.XtraBars.BarButtonItem();
             this.mnuContractList = new DevExpress.XtraBars.BarButtonItem();
@@ -75,7 +75,7 @@
             this.mnuBank,
             this.mnuCompany,
             this.mnuFouds,
-            this.barButtonItem1,
+            this.mnuCompanyDetail,
             this.mnuAccountList,
             this.mnuAccount,
             this.mnuContractList,
@@ -123,6 +123,7 @@
             this.mnuCompany.Name = "mnuCompany";
             this.mnuCompany.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuCompany.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuCompany_ItemClick);
             // 
             // mnuFouds
             // 
@@ -135,15 +136,16 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.mnuFouds.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuFouds_ItemClick);
             // 
-            // barButtonItem1
+            // mnuCompanyDetail
             // 
-            this.barButtonItem1.Caption = "单位帐户信息";
-            this.barButtonItem1.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.barButtonItem1.Glyph = global::Haimen.Properties.Resources.Calendar_hot;
-            this.barButtonItem1.Id = 5;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            this.mnuCompanyDetail.Caption = "单位帐户信息";
+            this.mnuCompanyDetail.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuCompanyDetail.Glyph = global::Haimen.Properties.Resources.Calendar_hot;
+            this.mnuCompanyDetail.Id = 5;
+            this.mnuCompanyDetail.Name = "mnuCompanyDetail";
+            this.mnuCompanyDetail.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuCompanyDetail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuCompanyDetail_ItemClick);
             // 
             // mnuAccountList
             // 
@@ -212,6 +214,7 @@
             this.mnuUserList.Name = "mnuUserList";
             this.mnuUserList.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuUserList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuUserList_ItemClick);
             // 
             // mnuChangePassword
             // 
@@ -276,8 +279,7 @@
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.AllowTextClipping = false;
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup2.ItemLinks.Add(this.mnuCompanyDetail);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.ShowCaptionButton = false;
             // 
@@ -314,7 +316,7 @@
             // ribbonPageGroup3
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.mnuContractList);
-            this.ribbonPageGroup3.ItemLinks.Add(this.mnuContractList);
+            this.ribbonPageGroup3.ItemLinks.Add(this.mnuContract);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.ShowCaptionButton = false;
             // 
@@ -405,7 +407,7 @@
         private DevExpress.XtraBars.BarButtonItem mnuBank;
         private DevExpress.XtraBars.BarButtonItem mnuCompany;
         private DevExpress.XtraBars.BarButtonItem mnuFouds;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem mnuCompanyDetail;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager mdiManager;

@@ -40,16 +40,17 @@
             this.col_output = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_input = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -79,6 +80,7 @@
             this.col_input});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // col_id
@@ -86,8 +88,6 @@
             this.col_id.Caption = "ID";
             this.col_id.FieldName = "ID";
             this.col_id.Name = "col_id";
-            this.col_id.Visible = true;
-            this.col_id.VisibleIndex = 0;
             // 
             // col_code
             // 
@@ -95,7 +95,7 @@
             this.col_code.FieldName = "Code";
             this.col_code.Name = "col_code";
             this.col_code.Visible = true;
-            this.col_code.VisibleIndex = 1;
+            this.col_code.VisibleIndex = 0;
             // 
             // col_name
             // 
@@ -103,7 +103,7 @@
             this.col_name.FieldName = "Name";
             this.col_name.Name = "col_name";
             this.col_name.Visible = true;
-            this.col_name.VisibleIndex = 2;
+            this.col_name.VisibleIndex = 1;
             // 
             // col_account
             // 
@@ -111,15 +111,15 @@
             this.col_account.FieldName = "Account";
             this.col_account.Name = "col_account";
             this.col_account.Visible = true;
-            this.col_account.VisibleIndex = 3;
+            this.col_account.VisibleIndex = 2;
             // 
             // col_bank
             // 
-            this.col_bank.Caption = "银行";
+            this.col_bank.Caption = "开户行";
             this.col_bank.FieldName = "Bank.Name";
             this.col_bank.Name = "col_bank";
             this.col_bank.Visible = true;
-            this.col_bank.VisibleIndex = 4;
+            this.col_bank.VisibleIndex = 3;
             // 
             // col_doc
             // 
@@ -127,7 +127,7 @@
             this.col_doc.FieldName = "Doc";
             this.col_doc.Name = "col_doc";
             this.col_doc.Visible = true;
-            this.col_doc.VisibleIndex = 5;
+            this.col_doc.VisibleIndex = 4;
             // 
             // col_output
             // 
@@ -135,7 +135,7 @@
             this.col_output.FieldName = "Output";
             this.col_output.Name = "col_output";
             this.col_output.Visible = true;
-            this.col_output.VisibleIndex = 6;
+            this.col_output.VisibleIndex = 5;
             // 
             // col_input
             // 
@@ -143,7 +143,7 @@
             this.col_input.FieldName = "Input";
             this.col_input.Name = "col_input";
             this.col_input.Visible = true;
-            this.col_input.VisibleIndex = 7;
+            this.col_input.VisibleIndex = 6;
             // 
             // barManager1
             // 
@@ -155,12 +155,76 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem1,
-            this.barButtonItem2,
-            this.barButtonItem3,
-            this.barButtonItem4,
-            this.barButtonItem5});
-            this.barManager1.MaxItemId = 5;
+            this.tsbNew,
+            this.tsbEdit,
+            this.tsbDelete,
+            this.tsbQuery,
+            this.tsbExit,
+            this.tsbRefresh});
+            this.barManager1.MaxItemId = 6;
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Tools";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbNew, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.bar1.Text = "Tools";
+            // 
+            // tsbNew
+            // 
+            this.tsbNew.Caption = "新增";
+            this.tsbNew.Glyph = global::Haimen.Properties.Resources.New_hot;
+            this.tsbNew.Id = 0;
+            this.tsbNew.Name = "tsbNew";
+            this.tsbNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbNew_ItemClick);
+            // 
+            // tsbEdit
+            // 
+            this.tsbEdit.Caption = "修改";
+            this.tsbEdit.Glyph = global::Haimen.Properties.Resources.Edit_hot;
+            this.tsbEdit.Id = 1;
+            this.tsbEdit.Name = "tsbEdit";
+            this.tsbEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbEdit_ItemClick);
+            // 
+            // tsbDelete
+            // 
+            this.tsbDelete.Caption = "删除";
+            this.tsbDelete.Glyph = global::Haimen.Properties.Resources.Delete_hot;
+            this.tsbDelete.Id = 2;
+            this.tsbDelete.Name = "tsbDelete";
+            this.tsbDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbDelete_ItemClick);
+            // 
+            // tsbQuery
+            // 
+            this.tsbQuery.Caption = "查询";
+            this.tsbQuery.Glyph = global::Haimen.Properties.Resources.Search_hot;
+            this.tsbQuery.Id = 3;
+            this.tsbQuery.Name = "tsbQuery";
+            this.tsbQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbQuery_ItemClick);
+            // 
+            // tsbRefresh
+            // 
+            this.tsbRefresh.Caption = "刷新";
+            this.tsbRefresh.Glyph = global::Haimen.Properties.Resources.Refresh_hot;
+            this.tsbRefresh.Id = 5;
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
+            // 
+            // tsbExit
+            // 
+            this.tsbExit.Caption = "退出";
+            this.tsbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.tsbExit.Id = 4;
+            this.tsbExit.Name = "tsbExit";
+            this.tsbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbExit_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -190,55 +254,6 @@
             this.barDockControlRight.Location = new System.Drawing.Point(751, 37);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 485);
             // 
-            // bar1
-            // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem2, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem3, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem4, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem5, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar1.Text = "Tools";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "新增";
-            this.barButtonItem1.Glyph = global::Haimen.Properties.Resources.New_hot;
-            this.barButtonItem1.Id = 0;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "修改";
-            this.barButtonItem2.Glyph = global::Haimen.Properties.Resources.Edit_hot;
-            this.barButtonItem2.Id = 1;
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "删除";
-            this.barButtonItem3.Glyph = global::Haimen.Properties.Resources.Delete_hot;
-            this.barButtonItem3.Id = 2;
-            this.barButtonItem3.Name = "barButtonItem3";
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "查询";
-            this.barButtonItem4.Glyph = global::Haimen.Properties.Resources.Search_hot;
-            this.barButtonItem4.Id = 3;
-            this.barButtonItem4.Name = "barButtonItem4";
-            // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "退出";
-            this.barButtonItem5.Glyph = global::Haimen.Properties.Resources.Exit_hot;
-            this.barButtonItem5.Id = 4;
-            this.barButtonItem5.Name = "barButtonItem5";
-            // 
             // DevCompanyList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -250,7 +265,8 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "DevCompanyList";
-            this.Text = "DevCompanyList";
+            this.Text = "单位列表";
+            this.Load += new System.EventHandler(this.DevCompanyList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -272,15 +288,16 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_input;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem tsbNew;
+        private DevExpress.XtraBars.BarButtonItem tsbEdit;
+        private DevExpress.XtraBars.BarButtonItem tsbDelete;
+        private DevExpress.XtraBars.BarButtonItem tsbQuery;
+        private DevExpress.XtraBars.BarButtonItem tsbExit;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.BarButtonItem tsbRefresh;
 
     }
 }

@@ -12,7 +12,7 @@ using Haimen.Entity;
 using Haimen.Helper;
 
 using DevExpress.XtraBars.Helpers;
-
+using DevExpress.XtraEditors;
 namespace Haimen.NewGUI
 {
     public partial class DevMain : DevExpress.XtraBars.Ribbon.RibbonForm
@@ -20,6 +20,16 @@ namespace Haimen.NewGUI
         public DevMain()
         {
             InitializeComponent();
+        }
+
+        public void OpenForm(XtraForm winForm)
+        {
+           // 检查是否已经存在
+            if (!FormAlreadyOpen(winForm.GetType()))
+            {
+                winForm.MdiParent = this;
+                winForm.Show();
+            }
         }
 
         // 当前窗口的初始化设置
@@ -115,6 +125,40 @@ namespace Haimen.NewGUI
         private void rbSkins_GalleryItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
             CustomerINI.WriteSkinName(e.Item.Caption);
+        }
+
+        // 打开银行
+        private void mnuCompany_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // 检查是否已经存在
+            if (!FormAlreadyOpen(typeof(DevCompanyList)))
+            {
+                DevCompanyList list = new DevCompanyList();
+                list.MdiParent = this;
+                list.Show();
+            }
+        }
+
+        private void mnuCompanyDetail_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // 检查是否已经存在
+            if (!FormAlreadyOpen(typeof(DevCompanyDetailList)))
+            {
+                DevCompanyDetailList list = new DevCompanyDetailList();
+                list.MdiParent = this;
+                list.Show();
+            }
+        }
+
+        private void mnuUserList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // 检查是否已经存在
+            if (!FormAlreadyOpen(typeof(DevUserList)))
+            {
+                DevUserList list = new DevUserList();
+                list.MdiParent = this;
+                list.Show();
+            }
         }
     }
 }

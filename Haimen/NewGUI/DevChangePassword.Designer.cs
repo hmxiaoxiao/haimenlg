@@ -91,8 +91,10 @@
             // 
             this.txtUser.Location = new System.Drawing.Point(155, 37);
             this.txtUser.Name = "txtUser";
+            this.txtUser.ReadOnly = true;
             this.txtUser.Size = new System.Drawing.Size(149, 22);
             this.txtUser.TabIndex = 17;
+            this.txtUser.TabStop = false;
             this.txtUser.Tag = null;
             // 
             // txtOldPassword
@@ -101,7 +103,7 @@
             this.txtOldPassword.Name = "txtOldPassword";
             this.txtOldPassword.PasswordChar = '*';
             this.txtOldPassword.Size = new System.Drawing.Size(149, 22);
-            this.txtOldPassword.TabIndex = 18;
+            this.txtOldPassword.TabIndex = 1;
             this.txtOldPassword.Tag = null;
             this.txtOldPassword.Leave += new System.EventHandler(this.txtOldPassword_Leave);
             // 
@@ -111,7 +113,7 @@
             this.txtNewpassword.Name = "txtNewpassword";
             this.txtNewpassword.PasswordChar = '*';
             this.txtNewpassword.Size = new System.Drawing.Size(149, 22);
-            this.txtNewpassword.TabIndex = 19;
+            this.txtNewpassword.TabIndex = 2;
             this.txtNewpassword.Tag = null;
             this.txtNewpassword.Leave += new System.EventHandler(this.txtNewpassword_Leave);
             // 
@@ -121,7 +123,7 @@
             this.txtPasswordConfirm.Name = "txtPasswordConfirm";
             this.txtPasswordConfirm.PasswordChar = '*';
             this.txtPasswordConfirm.Size = new System.Drawing.Size(149, 22);
-            this.txtPasswordConfirm.TabIndex = 20;
+            this.txtPasswordConfirm.TabIndex = 3;
             this.txtPasswordConfirm.Tag = null;
             this.txtPasswordConfirm.Leave += new System.EventHandler(this.txtPasswordConfirm_Leave);
             // 
@@ -130,7 +132,7 @@
             this.btnChangepassword.Location = new System.Drawing.Point(133, 194);
             this.btnChangepassword.Name = "btnChangepassword";
             this.btnChangepassword.Size = new System.Drawing.Size(75, 23);
-            this.btnChangepassword.TabIndex = 21;
+            this.btnChangepassword.TabIndex = 4;
             this.btnChangepassword.Text = "修改密码";
             this.btnChangepassword.UseVisualStyleBackColor = true;
             this.btnChangepassword.Click += new System.EventHandler(this.btnChangepassword_Click);
@@ -141,7 +143,7 @@
             this.btnExit.Location = new System.Drawing.Point(229, 194);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
-            this.btnExit.TabIndex = 22;
+            this.btnExit.TabIndex = 5;
             this.btnExit.Text = "放弃修改";
             this.btnExit.UseVisualStyleBackColor = true;
             // 

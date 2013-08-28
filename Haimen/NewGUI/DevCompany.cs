@@ -15,8 +15,44 @@ namespace Haimen.NewGUI
     public partial class DevCompany : DevExpress.XtraEditors.XtraForm
     {
         private Company m_company;
-        private bool m_isEdit;
+        private winStatus m_status;
 
+        /// <summary>
+        /// 根据是编辑 还是新增，设置按钮的状态
+        /// </summary>
+        /// <param name="status"></param>
+        public void SetFormStatus(winStatus status)
+        {
+            m_status = status;
+            switch (status)
+            {
+                case winStatus.New:
+                    tsbNew.Enabled = false;
+                    tsbEdit.Enabled = false;
+                    tsbSave.Enabled = true;
+
+                    this.Text = " 单位管理 - 新增 ";
+                    break;
+                case winStatus.Edit:
+                    tsbNew.Enabled = false;
+                    tsbEdit.Enabled = false;
+                    tsbSave.Enabled = true;
+
+                    this.Text = " 单位管理 - 编辑 ";
+                    break;
+                case winStatus.View:
+                    tsbNew.Enabled = true;
+                    tsbEdit.Enabled = true;
+                    tsbSave.Enabled = false;
+
+                    this.Text = " 单位管理 - 查看 ";
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 初始化银行下拉框
+        /// </summary>
         private void initBankList()
         {
             List<Bank> banks = Bank.Query();
@@ -28,7 +64,7 @@ namespace Haimen.NewGUI
         // 校验数据是否正确
         private bool Verify()
         {
-            SetObjectValue();
+            Form2Object();
 
             // 调用校验对象
             if (m_company.Verify())
@@ -39,6 +75,9 @@ namespace Haimen.NewGUI
             return false;
         }
 
+        /// <summary>
+        /// 显示错误信息
+        /// </summary>
         private void SetErrorInfo()
         {
             errorProvider1.SetError(txtCode, "");
@@ -64,7 +103,10 @@ namespace Haimen.NewGUI
             }
         }
 
-        private void GetObjectValue()
+        /// <summary>
+        /// 将对象显示到界面上
+        /// </summary>
+        private void Object2Form()
         {
             initBankList();
             cboBankList.Text = "";
@@ -74,17 +116,22 @@ namespace Haimen.NewGUI
             txtDoc.Text = m_company.Doc;
             txtName.Text = m_company.Name;
             txtAccount.Text = m_company.Account;
+
             if (m_company.Input == "X")
                 cbInput.Checked = true;
             else
                 cbInput.Checked = false;
+
             if (m_company.Output == "X")
                 cbOutput.Checked = true;
             else
                 cbOutput.Checked = false;
         }
 
-        private void SetObjectValue()
+        /// <summary>
+        /// 将界面的内容保存到对象里
+        /// </summary>
+        private void Form2Object()
         {
             // 将输入的值保存到对象里
             if (cboBankList.SelectedValue != null)
@@ -108,30 +155,34 @@ namespace Haimen.NewGUI
             m_company.Account = txtAccount.Text;
         }
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="company"></param>
         public DevCompany(Company company = null)
         {
             InitializeComponent();
             if (company != null)
             {
-                m_isEdit = true;
+                SetFormStatus(winStatus.Edit);
                 m_company = company;
             }
             else
             {
-                m_isEdit = false;
+                SetFormStatus(winStatus.New);
                 m_company = new Company();
             }
         }
 
+        /// <summary>
+        /// 载入时，初始化界面，并将对象赋值到界面上。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DevCompany_Load(object sender, EventArgs e)
         {
-            if (m_isEdit)
-                this.Text += " - 编辑";
-            else
-                this.Text += " - 新增";
-
             initBankList();
-            GetObjectValue();
+            Object2Form();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
@@ -140,7 +191,7 @@ namespace Haimen.NewGUI
             txtCode.Text = PinyinHelper.GetShortPinyin(txtName.Text).ToUpper();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void tsbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!Verify())
                 return;
@@ -151,22 +202,38 @@ namespace Haimen.NewGUI
                 return;
             }
 
-            if (m_isEdit)
-            {
-                MessageBox.Show("编辑成功！", "注意");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("保存成功，请继续新增.", "注意");
-                m_company = new Company();
-                GetObjectValue();
-            }
+            MessageBox.Show("保存成功，请继续新增.", "注意",MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            SetFormStatus(winStatus.View);
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (m_status != winStatus.View)
+            {
+                if (MessageBox.Show("现在退出，当前的数据将会丢失，是否要退出？", "注意！",
+                                    MessageBoxButtons.YesNo,
+                                    MessageBoxIcon.Question,
+                                    MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                    return;
+            }
             this.Close();
+        }
+
+        // 新增单位
+        private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            m_company = new Company();
+            initBankList();
+            Object2Form();
+            SetFormStatus(winStatus.New);
+        }
+
+        private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            initBankList();
+            Object2Form();
+            SetFormStatus(winStatus.New);
         }
 
 
