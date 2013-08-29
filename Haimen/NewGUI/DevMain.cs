@@ -102,9 +102,9 @@ namespace Haimen.NewGUI
         private void mnuAccountList_ItemClick(object sender, ItemClickEventArgs e)
         {
             // 检查是否已经存在
-            if (!FormAlreadyOpen(typeof(DevAccount)))
+            if (!FormAlreadyOpen(typeof(DevAccountList)))
             {
-                DevAccount list = new DevAccount();
+                DevAccountList list = new DevAccountList();
                 list.MdiParent = this;
                 list.Show();
             }
@@ -156,6 +156,50 @@ namespace Haimen.NewGUI
             if (!FormAlreadyOpen(typeof(DevUserList)))
             {
                 DevUserList list = new DevUserList();
+                list.MdiParent = this;
+                list.Show();
+            }
+        }
+
+        private void mnuContractList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // 检查是否已经存在
+            if (!FormAlreadyOpen(typeof(DevContractList)))
+            {
+                DevContractList list = new DevContractList();
+                list.MdiParent = this;
+                list.Show();
+            }
+        }
+
+        private void mnuContract_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // 检查是否已经存在
+            if (!FormAlreadyOpen(typeof(DevContract)))
+            {
+                DevContract list = new DevContract();
+                list.MdiParent = this;
+                list.Show();
+            }
+        }
+
+        private void mnuBalanceList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // 检查是否已经存在
+            if (!FormAlreadyOpen(typeof(DevBalanceList)))
+            {
+                DevBalanceList list = new DevBalanceList();
+                list.MdiParent = this;
+                list.Show();
+            }
+        }
+
+        private void mnuBalance_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // 检查是否已经存在
+            if (!FormAlreadyOpen(typeof(DevBalance)))
+            {
+                DevBalance list = new DevBalance();
                 list.MdiParent = this;
                 list.Show();
             }

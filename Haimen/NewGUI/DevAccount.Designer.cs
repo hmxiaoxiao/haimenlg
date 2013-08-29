@@ -33,27 +33,16 @@
             this.lookUpEdit6 = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEdit5 = new DevExpress.XtraEditors.LookUpEdit();
             this.lueOutCompany = new DevExpress.XtraEditors.LookUpEdit();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbAttachNew = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbAttachDelete = new System.Windows.Forms.ToolStripButton();
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.inplace_funds = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
+            this.col_funds_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.luefunds = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.col_money = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_usage = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label10 = new System.Windows.Forms.Label();
             this.dtSigned = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
@@ -69,28 +58,43 @@
             this.txtOutCompanyBank = new System.Windows.Forms.TextBox();
             this.txtOutComapnyAccount = new System.Windows.Forms.TextBox();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.tbNew = new DevExpress.XtraBars.BarButtonItem();
+            this.tbEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.tbDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.tbSave = new DevExpress.XtraBars.BarButtonItem();
+            this.tbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
+            this.c1SplitterPanel1 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.tsbNew = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
+            this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.tsbAttachNew = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbAttachDelete = new System.Windows.Forms.ToolStripButton();
+            this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit6.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueOutCompany.Properties)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inplace_funds)).BeginInit();
-            this.toolStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.luefunds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
+            this.c1SplitContainer1.SuspendLayout();
+            this.c1SplitterPanel1.SuspendLayout();
+            this.toolStrip3.SuspendLayout();
+            this.c1SplitterPanel2.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lueInCompany
@@ -141,61 +145,6 @@
             this.lueOutCompany.TabIndex = 30;
             this.lueOutCompany.EditValueChanged += new System.EventHandler(this.lueOutCompany_EditValueChanged);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.treeView1);
-            this.groupBox2.Controls.Add(this.toolStrip1);
-            this.groupBox2.Location = new System.Drawing.Point(501, 212);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(213, 307);
-            this.groupBox2.TabIndex = 42;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "附件";
-            // 
-            // treeView1
-            // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(3, 43);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(207, 261);
-            this.treeView1.TabIndex = 17;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbAttachNew,
-            this.toolStripSeparator2,
-            this.tsbAttachDelete});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 18);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(207, 25);
-            this.toolStrip1.TabIndex = 16;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tsbAttachNew
-            // 
-            this.tsbAttachNew.Image = global::Haimen.Properties.Resources.New;
-            this.tsbAttachNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAttachNew.Name = "tsbAttachNew";
-            this.tsbAttachNew.Size = new System.Drawing.Size(52, 22);
-            this.tsbAttachNew.Text = "新增";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbAttachDelete
-            // 
-            this.tsbAttachDelete.Image = global::Haimen.Properties.Resources.Delete;
-            this.tsbAttachDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAttachDelete.Name = "tsbAttachDelete";
-            this.tsbAttachDelete.Size = new System.Drawing.Size(52, 22);
-            this.tsbAttachDelete.Text = "删除";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -232,28 +181,15 @@
             this.label7.TabIndex = 50;
             this.label7.Text = "帐户";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this.gridControl1);
-            this.groupBox1.Controls.Add(this.toolStrip2);
-            this.groupBox1.Location = new System.Drawing.Point(3, 212);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(492, 307);
-            this.groupBox1.TabIndex = 41;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "明细";
-            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(3, 43);
+            this.gridControl1.Location = new System.Drawing.Point(0, 25);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.inplace_funds});
-            this.gridControl1.Size = new System.Drawing.Size(486, 261);
+            this.luefunds});
+            this.gridControl1.Size = new System.Drawing.Size(534, 259);
             this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -261,82 +197,48 @@
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3});
+            this.col_id,
+            this.col_funds_id,
+            this.col_money,
+            this.col_usage});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
-            // gridColumn1
+            // col_funds_id
             // 
-            this.gridColumn1.Caption = "资金性质";
-            this.gridColumn1.ColumnEdit = this.inplace_funds;
-            this.gridColumn1.FieldName = "Funds_ID";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.col_funds_id.Caption = "资金性质";
+            this.col_funds_id.ColumnEdit = this.luefunds;
+            this.col_funds_id.FieldName = "Funds_ID";
+            this.col_funds_id.Name = "col_funds_id";
+            this.col_funds_id.Visible = true;
+            this.col_funds_id.VisibleIndex = 0;
             // 
-            // inplace_funds
+            // luefunds
             // 
-            this.inplace_funds.AutoHeight = false;
-            this.inplace_funds.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.luefunds.AutoHeight = false;
+            this.luefunds.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.inplace_funds.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.luefunds.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
-            this.inplace_funds.Name = "inplace_funds";
-            this.inplace_funds.NullText = "请选择资金性质";
+            this.luefunds.Name = "luefunds";
+            this.luefunds.NullText = "请选择资金性质";
             // 
-            // gridColumn2
+            // col_money
             // 
-            this.gridColumn2.Caption = "金额";
-            this.gridColumn2.FieldName = "Money";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.col_money.Caption = "金额";
+            this.col_money.FieldName = "Money";
+            this.col_money.Name = "col_money";
+            this.col_money.Visible = true;
+            this.col_money.VisibleIndex = 1;
             // 
-            // gridColumn3
+            // col_usage
             // 
-            this.gridColumn3.Caption = "用途";
-            this.gridColumn3.FieldName = "Usage";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNew,
-            this.toolStripSeparator1,
-            this.tsbDelete});
-            this.toolStrip2.Location = new System.Drawing.Point(3, 18);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(486, 25);
-            this.toolStrip2.TabIndex = 15;
-            this.toolStrip2.Text = "toolStrip2";
-            // 
-            // tsbNew
-            // 
-            this.tsbNew.Image = global::Haimen.Properties.Resources.New;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(52, 22);
-            this.tsbNew.Text = "新增";
-            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbDelete
-            // 
-            this.tsbDelete.Image = global::Haimen.Properties.Resources.Delete;
-            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(52, 22);
-            this.tsbDelete.Text = "删除";
-            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
+            this.col_usage.Caption = "用途";
+            this.col_usage.FieldName = "Usage";
+            this.col_usage.Name = "col_usage";
+            this.col_usage.Visible = true;
+            this.col_usage.VisibleIndex = 2;
             // 
             // label10
             // 
@@ -468,12 +370,65 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem1,
-            this.barButtonItem2,
-            this.barButtonItem3,
-            this.barButtonItem4,
-            this.barButtonItem5});
+            this.tbSave,
+            this.tbExit,
+            this.tbNew,
+            this.tbEdit,
+            this.tbDelete});
             this.barManager1.MaxItemId = 5;
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Tools";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbNew, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbSave, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.bar1.Text = "Tools";
+            // 
+            // tbNew
+            // 
+            this.tbNew.Caption = "新增";
+            this.tbNew.Glyph = global::Haimen.Properties.Resources.New_hot;
+            this.tbNew.Id = 2;
+            this.tbNew.Name = "tbNew";
+            this.tbNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbNew_ItemClick);
+            // 
+            // tbEdit
+            // 
+            this.tbEdit.Caption = "编辑";
+            this.tbEdit.Glyph = global::Haimen.Properties.Resources.Edit_hot;
+            this.tbEdit.Id = 3;
+            this.tbEdit.Name = "tbEdit";
+            this.tbEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbEdit_ItemClick);
+            // 
+            // tbDelete
+            // 
+            this.tbDelete.Caption = "删除";
+            this.tbDelete.Glyph = global::Haimen.Properties.Resources.Delete_hot;
+            this.tbDelete.Id = 4;
+            this.tbDelete.Name = "tbDelete";
+            this.tbDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbDelete_ItemClick);
+            // 
+            // tbSave
+            // 
+            this.tbSave.Caption = "保存";
+            this.tbSave.Glyph = global::Haimen.Properties.Resources.Save_hot;
+            this.tbSave.Id = 0;
+            this.tbSave.Name = "tbSave";
+            this.tbSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbSave_ItemClick);
+            // 
+            // tbExit
+            // 
+            this.tbExit.Caption = "退出";
+            this.tbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.tbExit.Id = 1;
+            this.tbExit.Name = "tbExit";
             // 
             // barDockControlTop
             // 
@@ -503,70 +458,138 @@
             this.barDockControlRight.Location = new System.Drawing.Point(723, 37);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 492);
             // 
-            // bar1
+            // c1SplitContainer1
             // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem3, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem4, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem5, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem2, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar1.Text = "Tools";
+            this.c1SplitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(150)))));
+            this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.c1SplitContainer1.Location = new System.Drawing.Point(12, 212);
+            this.c1SplitContainer1.Name = "c1SplitContainer1";
+            this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel1);
+            this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel2);
+            this.c1SplitContainer1.Size = new System.Drawing.Size(699, 305);
+            this.c1SplitContainer1.TabIndex = 58;
             // 
-            // barButtonItem1
+            // c1SplitterPanel1
             // 
-            this.barButtonItem1.Caption = "保存";
-            this.barButtonItem1.Glyph = global::Haimen.Properties.Resources.Save_hot;
-            this.barButtonItem1.Id = 0;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            this.c1SplitterPanel1.Controls.Add(this.gridControl1);
+            this.c1SplitterPanel1.Controls.Add(this.toolStrip3);
+            this.c1SplitterPanel1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
+            this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
+            this.c1SplitterPanel1.Name = "c1SplitterPanel1";
+            this.c1SplitterPanel1.Size = new System.Drawing.Size(534, 284);
+            this.c1SplitterPanel1.SizeRatio = 76.835D;
+            this.c1SplitterPanel1.TabIndex = 0;
+            this.c1SplitterPanel1.Text = "明细";
+            this.c1SplitterPanel1.Width = 534;
             // 
-            // barButtonItem2
+            // toolStrip3
             // 
-            this.barButtonItem2.Caption = "退出";
-            this.barButtonItem2.Glyph = global::Haimen.Properties.Resources.Exit_hot;
-            this.barButtonItem2.Id = 1;
-            this.barButtonItem2.Name = "barButtonItem2";
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNew,
+            this.toolStripSeparator3,
+            this.tsbDelete});
+            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.Size = new System.Drawing.Size(534, 25);
+            this.toolStrip3.TabIndex = 42;
+            this.toolStrip3.Text = "toolStrip3";
             // 
-            // barButtonItem3
+            // tsbNew
             // 
-            this.barButtonItem3.Caption = "新增";
-            this.barButtonItem3.Glyph = global::Haimen.Properties.Resources.New_hot;
-            this.barButtonItem3.Id = 2;
-            this.barButtonItem3.Name = "barButtonItem3";
+            this.tsbNew.Image = global::Haimen.Properties.Resources.New_hot;
+            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNew.Name = "tsbNew";
+            this.tsbNew.Size = new System.Drawing.Size(52, 22);
+            this.tsbNew.Text = "新增";
+            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
-            // barButtonItem4
+            // toolStripSeparator3
             // 
-            this.barButtonItem4.Caption = "编辑";
-            this.barButtonItem4.Glyph = global::Haimen.Properties.Resources.Edit_hot;
-            this.barButtonItem4.Id = 3;
-            this.barButtonItem4.Name = "barButtonItem4";
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // barButtonItem5
+            // tsbDelete
             // 
-            this.barButtonItem5.Caption = "删除";
-            this.barButtonItem5.Glyph = global::Haimen.Properties.Resources.Delete_hot;
-            this.barButtonItem5.Id = 4;
-            this.barButtonItem5.Name = "barButtonItem5";
+            this.tsbDelete.Image = global::Haimen.Properties.Resources.Delete_hot;
+            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDelete.Name = "tsbDelete";
+            this.tsbDelete.Size = new System.Drawing.Size(52, 22);
+            this.tsbDelete.Text = "删除";
+            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
+            // 
+            // c1SplitterPanel2
+            // 
+            this.c1SplitterPanel2.Controls.Add(this.treeView1);
+            this.c1SplitterPanel2.Controls.Add(this.toolStrip2);
+            this.c1SplitterPanel2.Height = 100;
+            this.c1SplitterPanel2.Location = new System.Drawing.Point(538, 21);
+            this.c1SplitterPanel2.Name = "c1SplitterPanel2";
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(161, 284);
+            this.c1SplitterPanel2.TabIndex = 1;
+            this.c1SplitterPanel2.Text = "附件";
+            // 
+            // treeView1
+            // 
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.Location = new System.Drawing.Point(0, 25);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(161, 259);
+            this.treeView1.TabIndex = 17;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbAttachNew,
+            this.toolStripSeparator1,
+            this.tsbAttachDelete});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(161, 25);
+            this.toolStrip2.TabIndex = 43;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // tsbAttachNew
+            // 
+            this.tsbAttachNew.Image = global::Haimen.Properties.Resources.New_hot;
+            this.tsbAttachNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAttachNew.Name = "tsbAttachNew";
+            this.tsbAttachNew.Size = new System.Drawing.Size(52, 22);
+            this.tsbAttachNew.Text = "新增";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbAttachDelete
+            // 
+            this.tsbAttachDelete.Image = global::Haimen.Properties.Resources.Delete_hot;
+            this.tsbAttachDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAttachDelete.Name = "tsbAttachDelete";
+            this.tsbAttachDelete.Size = new System.Drawing.Size(52, 22);
+            this.tsbAttachDelete.Text = "删除";
+            // 
+            // col_id
+            // 
+            this.col_id.Caption = "ID";
+            this.col_id.FieldName = "ID";
+            this.col_id.Name = "col_id";
             // 
             // DevAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 529);
+            this.Controls.Add(this.c1SplitContainer1);
             this.Controls.Add(this.lueInCompany);
             this.Controls.Add(this.lookUpEdit6);
             this.Controls.Add(this.lookUpEdit5);
             this.Controls.Add(this.lueOutCompany);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dtSigned);
             this.Controls.Add(this.label6);
@@ -592,18 +615,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit6.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueOutCompany.Properties)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inplace_funds)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luefunds)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).EndInit();
+            this.c1SplitContainer1.ResumeLayout(false);
+            this.c1SplitterPanel1.ResumeLayout(false);
+            this.c1SplitterPanel1.PerformLayout();
+            this.toolStrip3.ResumeLayout(false);
+            this.toolStrip3.PerformLayout();
+            this.c1SplitterPanel2.ResumeLayout(false);
+            this.c1SplitterPanel2.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -615,27 +640,16 @@
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit6;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit5;
         private DevExpress.XtraEditors.LookUpEdit lueOutCompany;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsbAttachNew;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsbAttachDelete;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox groupBox1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit inplace_funds;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton tsbNew;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsbDelete;
+        private DevExpress.XtraGrid.Columns.GridColumn col_funds_id;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit luefunds;
+        private DevExpress.XtraGrid.Columns.GridColumn col_money;
+        private DevExpress.XtraGrid.Columns.GridColumn col_usage;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dtSigned;
         private System.Windows.Forms.Label label6;
@@ -652,14 +666,27 @@
         private System.Windows.Forms.TextBox txtOutComapnyAccount;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem tbNew;
+        private DevExpress.XtraBars.BarButtonItem tbEdit;
+        private DevExpress.XtraBars.BarButtonItem tbDelete;
+        private DevExpress.XtraBars.BarButtonItem tbSave;
+        private DevExpress.XtraBars.BarButtonItem tbExit;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private C1.Win.C1SplitContainer.C1SplitContainer c1SplitContainer1;
+        private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel1;
+        private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel2;
+        private System.Windows.Forms.ToolStrip toolStrip3;
+        private System.Windows.Forms.ToolStripButton tsbNew;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton tsbDelete;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton tsbAttachNew;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton tsbAttachDelete;
+        private DevExpress.XtraGrid.Columns.GridColumn col_id;
     }
 }

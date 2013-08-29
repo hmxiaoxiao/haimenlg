@@ -14,11 +14,12 @@ namespace Haimen.NewGUI
     public partial class DevContractList : DevExpress.XtraEditors.XtraForm
     {
         private List<Contract> m_contracts;
+        private DevMain m_main;
 
-        private void EditContract()
+        private Contract CurrentSelectedObject()
         {
             if (gridView1.FocusedRowHandle < 0)
-                return;
+                return null;
 
             long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
 
@@ -26,11 +27,17 @@ namespace Haimen.NewGUI
             {
                 if (c.ID == id)
                 {
-                    DevContract win = new DevContract(c);
-                    win.ShowDialog();
-                    return;
+                    return c;
                 }
             }
+            return null;
+        }
+
+        private void MyRefresh(string where = "")
+        {
+            m_contracts = Contract.Query(where);
+            gridControl1.DataSource = null;
+            gridControl1.DataSource = m_contracts;
         }
 
         public DevContractList()
@@ -40,30 +47,73 @@ namespace Haimen.NewGUI
 
         private void DevContractList_Load(object sender, EventArgs e)
         {
+            m_main = (DevMain)this.ParentForm;
+
+            MyRefresh();
+        }
+
+        private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            m_main.OpenForm(new DevContract());
+        }
+
+        private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Contract ct = CurrentSelectedObject();
+            if (ct != null)
+                m_main.OpenForm(new DevContract(ct));
+        }
+
+        private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Contract ct = CurrentSelectedObject();
+            if (ct != null)
+                m_main.OpenForm(new DevContract(ct));
+
             m_contracts = Contract.Query();
-            gridControl1.DataSource = m_contracts;
+            MyRefresh();
         }
 
-        private void tsbNew_Click(object sender, EventArgs e)
+        private void tsbCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DevContract win = new DevContract();
-            win.ShowDialog();
+            Contract ct = CurrentSelectedObject();
+            if (ct != null)
+                m_main.OpenForm(new DevContract(ct));
         }
 
-        private void tsbVerify_Click(object sender, EventArgs e)
+        private void tsbQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DevContract win = new DevContract();
-            win.ShowDialog();
+
         }
 
-        private void tsbEdit_Click(object sender, EventArgs e)
+        private void tsbGen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            EditContract();
+            DevContractQuery bq = new DevContractQuery();
+            if (bq.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            {
+                // 生成SQL语句
+                List<string> filters = new List<string>();
+                if (bq.Q_Code.Length > 0)
+                    filters.Add(" code like '%" + bq.Q_Code + "%' ");
+                if (bq.Q_company_ID.Length > 0)
+                    filters.Add(" company_id = " + bq.Q_company_ID + " ");
+
+                // 生成where
+                string where = "";
+                foreach (string filter in filters)
+                {
+                    where += filter + " and ";
+                }
+                if (where.Length > 0)
+                    where = where.Substring(0, where.Length - 4);
+
+                MyRefresh(where);
+            }
         }
 
-        private void tsbEdit_DoubleClick(object sender, EventArgs e)
+        private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            EditContract();
+            this.Close();
         }
     }
 }

@@ -160,11 +160,13 @@
             // 
             // mnuAccount
             // 
-            this.mnuAccount.Caption = "资金管理";
+            this.mnuAccount.Caption = "资金新增";
             this.mnuAccount.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
             this.mnuAccount.Glyph = global::Haimen.Properties.Resources.Bullets_2_hot;
             this.mnuAccount.Id = 8;
             this.mnuAccount.Name = "mnuAccount";
+            this.mnuAccount.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.mnuAccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuAccount_ItemClick);
             // 
             // mnuContractList
@@ -176,14 +178,18 @@
             this.mnuContractList.Name = "mnuContractList";
             this.mnuContractList.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuContractList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuContractList_ItemClick);
             // 
             // mnuContract
             // 
-            this.mnuContract.Caption = "合同管理";
+            this.mnuContract.Caption = "合同新增";
             this.mnuContract.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
             this.mnuContract.Glyph = global::Haimen.Properties.Resources.Preview_hot;
             this.mnuContract.Id = 10;
             this.mnuContract.Name = "mnuContract";
+            this.mnuContract.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuContract.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuContract_ItemClick);
             // 
             // mnuBalanceList
             // 
@@ -194,16 +200,18 @@
             this.mnuBalanceList.Name = "mnuBalanceList";
             this.mnuBalanceList.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuBalanceList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuBalanceList_ItemClick);
             // 
             // mnuBalance
             // 
-            this.mnuBalance.Caption = "贷款管理";
+            this.mnuBalance.Caption = "贷款新增";
             this.mnuBalance.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
             this.mnuBalance.Glyph = global::Haimen.Properties.Resources.Header_Previous_hot;
             this.mnuBalance.Id = 12;
             this.mnuBalance.Name = "mnuBalance";
             this.mnuBalance.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuBalance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuBalance_ItemClick);
             // 
             // mnuUserList
             // 

@@ -169,6 +169,12 @@
     <Compile Include="NewGUI\DevAccountList.Designer.cs">
       <DependentUpon>DevAccountList.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewGUI\DevAccountQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevAccountQuery.Designer.cs">
+      <DependentUpon>DevAccountQuery.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewGUI\DevAttach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,12 @@
     </Compile>
     <Compile Include="NewGUI\DevBalanceList.Designer.cs">
       <DependentUpon>DevBalanceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevBalanceQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevBalanceQuery.Designer.cs">
+      <DependentUpon>DevBalanceQuery.cs</DependentUpon>
     </Compile>
     <Compile Include="NewGUI\DevBankList.cs">
       <SubType>Form</SubType>
@@ -234,6 +246,12 @@
     </Compile>
     <Compile Include="NewGUI\DevContractList.Designer.cs">
       <DependentUpon>DevContractList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\DevContractQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevContractQuery.Designer.cs">
+      <DependentUpon>DevContractQuery.cs</DependentUpon>
     </Compile>
     <Compile Include="NewGUI\DevFundsList.cs">
       <SubType>Form</SubType>
@@ -518,11 +536,17 @@
     <EmbeddedResource Include="NewGUI\DevAccountList.resx">
       <DependentUpon>DevAccountList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevAccountQuery.resx">
+      <DependentUpon>DevAccountQuery.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevBalance.resx">
       <DependentUpon>DevBalance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevBalanceList.resx">
       <DependentUpon>DevBalanceList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevBalanceQuery.resx">
+      <DependentUpon>DevBalanceQuery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevBankList.resx">
       <DependentUpon>DevBankList.cs</DependentUpon>
@@ -547,6 +571,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevContractList.resx">
       <DependentUpon>DevContractList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevContractQuery.resx">
+      <DependentUpon>DevContractQuery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevFundsList.resx">
       <DependentUpon>DevFundsList.cs</DependentUpon>
