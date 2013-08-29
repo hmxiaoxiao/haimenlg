@@ -154,6 +154,7 @@
     <Compile Include="Entity\ContractDetail.cs" />
     <Compile Include="Entity\Funds.cs" />
     <Compile Include="Helper\CustomerINI.cs" />
+    <Compile Include="Helper\FTPClient.cs" />
     <Compile Include="Helper\INIFile.cs" />
     <Compile Include="Helper\PinyinHelper.cs" />
     <Compile Include="Helper\WinStatus.cs" />
@@ -538,6 +539,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevAccountQuery.resx">
       <DependentUpon>DevAccountQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevAttach.resx">
+      <DependentUpon>DevAttach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevBalance.resx">
       <DependentUpon>DevBalance.cs</DependentUpon>
