@@ -135,5 +135,7 @@ namespace Haimen.Entity
         // 备注
         [Field("memo")]
         public string Memo { get; set; }
+
+
     }
 }

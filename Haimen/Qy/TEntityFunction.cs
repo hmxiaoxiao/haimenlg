@@ -8,6 +8,8 @@ using System.Reflection;
 using System.Transactions;
 using System.Data;
 
+using Haimen.Entity;
+
 namespace Haimen.Qy
 {
     // T为主表类型，U为明细类型
@@ -19,6 +21,9 @@ namespace Haimen.Qy
         // 明细列表
         public List<U> DetailList = new List<U>();
 
+        // 附件列表
+        public List<Attach> AttachList = new List<Attach>();
+
         public override bool Insert()
         {
             bool returnVale;
@@ -26,10 +31,11 @@ namespace Haimen.Qy
             // 使用范围事务
             using (TransactionScope ts = new TransactionScope())
             {
+                // 先保存主数据
                 returnVale = base.Insert();
-                //ba.Insert();
                 if (this.ID > 0)
                 {
+                    // 保存明细数据
                     foreach (U u in DetailList)
                     {
                         // 明细类必须有parent_id的属性
@@ -41,6 +47,13 @@ namespace Haimen.Qy
                         // 保存
                         if (!u.Insert())
                             returnVale = false;
+                    }
+
+                    // 保存附件信息
+                    foreach (Attach a in AttachList)
+                    {
+                        a.Parent_ID = this.ID;
+                        a.Save();
                     }
                 }
 
@@ -73,6 +86,20 @@ namespace Haimen.Qy
                     }
                 }
 
+                // 附件明细的删除
+                List<Attach> attaches = Attach.Query("parent_id = " + this.ID);
+                foreach(Attach old in attaches)
+                {
+                    bool finded = false;
+                    foreach (Attach b in attaches)
+                    {
+                        if (b.ID == old.ID)
+                            finded = true;
+                    }
+                    if (!finded)
+                        old.Destory();
+                }
+
                 returnVale = base.Update();
                 foreach (U u in DetailList)
                 {
@@ -87,11 +114,21 @@ namespace Haimen.Qy
                         returnVale = false;
                 }
 
+                foreach (Attach a in AttachList)
+                {
+                    a.Parent_ID = this.ID;
+                    if (!a.Save())
+                        returnVale = false;
+                }
+
                 ts.Complete();
             }
             return returnVale;
         }
 
+        /// <summary>
+        /// 删除对象
+        /// </summary>
         public override void Destory()
         {
             using (TransactionScope ts = new TransactionScope())
@@ -100,6 +137,11 @@ namespace Haimen.Qy
                 foreach (U u in DetailList)
                 {
                     u.Destory();
+                }
+
+                foreach (Attach a in AttachList)
+                {
+                    a.Destory();
                 }
                 ts.Complete();
             }
@@ -135,6 +177,11 @@ namespace Haimen.Qy
             List<U> detail = new U().Find("parent_id = " + id.ToString());
             info.SetValue(t, detail);
 
+            // 取得所有的附件记录
+            FieldInfo ainfo = t.GetType().GetField("AttachList");
+            List<Attach> attaches = Attach.Query("parent_id = " + id.ToString());
+            ainfo.SetValue(t, attaches);
+
             return t;
         }
 
@@ -150,12 +197,16 @@ namespace Haimen.Qy
 
             string sql = "Delete from " + table_name + " where id = " + id.ToString();
             string detail_sql = "Delete from " + GetTableName(typeof(U)) + " where parent_id = " + id.ToString();
+            string attach_sql = "Delete from Attach where parent_id = " + id.ToString();
             using (TransactionScope ts = new TransactionScope())
             {
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
 
                 cmd.CommandText = detail_sql;
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = attach_sql;
                 cmd.ExecuteNonQuery();
 
                 ts.Complete();
@@ -196,6 +247,10 @@ namespace Haimen.Qy
                 long id = (long) pro.GetValue(t, null);
                 List<U> detail = new U().Find("parent_id = " + id.ToString());
                 info.SetValue(t, detail);
+
+                FieldInfo ainfo = t.GetType().GetField("AttachList");
+                List<Attach> attaches = Attach.Query("parent_id = " + id.ToString());
+                ainfo.SetValue(t, attaches);
             }
             return list;
         }
@@ -234,6 +289,10 @@ namespace Haimen.Qy
                 long id = (long) pro.GetValue(t, null);
                 List<U> detail = new U().Find("parent_id = " + id.ToString());
                 info.SetValue(t, detail);
+
+                FieldInfo ainfo = t.GetType().GetField("AttachList");
+                List<Attach> attaches = Attach.Query("parent_id = " + id.ToString());
+                ainfo.SetValue(t, attaches);
             }
 
             return list;

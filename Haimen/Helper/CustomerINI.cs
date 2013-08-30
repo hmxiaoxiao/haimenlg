@@ -10,6 +10,7 @@ namespace Haimen.Helper
     public static class  CustomerINI
     {
         private static INIFile m_ini;
+        private static FTPClient m_ftp;
 
         static CustomerINI()
         {
@@ -44,6 +45,13 @@ namespace Haimen.Helper
                 DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle(skin_name);
         }
 
+        /// <summary>
+        /// 将数据库的联接参数写入配置文件
+        /// </summary>
+        /// <param name="host">服务器地址</param>
+        /// <param name="db_name">数据库名</param>
+        /// <param name="user_name">用户名</param>
+        /// <param name="password">密码</param>
         public static void WriteDBConfig(string host, string db_name, string user_name, string password)
         {
             m_ini.IniWriteValue("connection", "host", host);
@@ -52,6 +60,10 @@ namespace Haimen.Helper
             m_ini.IniWriteValue("connection", "password", password);
         }
 
+        /// <summary>
+        /// 根据配置文件生成数据库的联接字符串
+        /// </summary>
+        /// <returns>数据库的联接字符串</returns>
         public static string GetConnectionString()
         {
             string host = m_ini.IniReadValue("connection", "host");
@@ -62,5 +74,82 @@ namespace Haimen.Helper
             return connStr;
         }
 
+        /// <summary>
+        /// 写入FTP的配置文件
+        /// </summary>
+        /// <param name="host"></param>
+        /// <param name="user"></param>
+        /// <param name="password"></param>
+        public static void WriteFTPConfig(string host, string user, string password)
+        {
+            m_ini.IniWriteValue("FTP", "host", host);
+            m_ini.IniWriteValue("FTP", "user", user);
+            m_ini.IniWriteValue("FTP", "password", password);
+        }
+
+
+        /// <summary>
+        /// 从配置文件中取得已经配置好的FTPClient类
+        /// </summary>
+        /// <returns>已经配置好的FTPClient类</returns>
+        public static FTPClient GetFTPClient()
+        {
+            if (m_ftp == null)
+            {
+                m_ftp = new FTPClient(m_ini.IniReadValue("FTP", "host"),
+                                      m_ini.IniReadValue("FTP", "user"),
+                                      m_ini.IniReadValue("FTP", "password"));
+            }
+            return m_ftp;
+        }
+
+        /// <summary>
+        /// 取得<B>数据库配置文件</B>中配置的值
+        /// </summary>
+        /// <param name="key">配置</param>
+        /// <returns>值</returns>
+        public static string GetDBConfigValue(INIDBKey key)
+        {
+            string val = "";
+            switch (key)
+            {
+                case INIDBKey.Host:
+                    val = m_ini.IniReadValue("connection", "host");
+                    break;
+                case INIDBKey.DB:
+                    val = m_ini.IniReadValue("connection", "db");
+                    break;
+                case INIDBKey.User:
+                    val = m_ini.IniReadValue("connection", "user");
+                    break;
+                case INIDBKey.Password:
+                    val = m_ini.IniReadValue("connection", "password");
+                    break;
+            }
+            return val;
+        }
+
+        /// <summary>
+        /// 取得<B>FTP配置文件</B>中配置的值
+        /// </summary>
+        /// <param name="key">配置</param>
+        /// <returns>值</returns>
+        public static string GetFTPConfigValue(INIFTPKey key)
+        {
+            string val = "";
+            switch (key)
+            {
+                case INIFTPKey.Host:
+                    val = m_ini.IniReadValue("FTP", "host");
+                    break;
+                case INIFTPKey.User:
+                    val = m_ini.IniReadValue("FTP", "user");
+                    break;
+                case INIFTPKey.Password:
+                    val = m_ini.IniReadValue("FTP", "password");
+                    break;
+            }
+            return val;
+        }
     }
 }

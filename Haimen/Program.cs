@@ -40,18 +40,15 @@ namespace Haimen
             //frmSplash fs = new frmSplash();
             //fs.Show();
 
-            DevAttach attach = new DevAttach();
-            attach.ShowDialog();
-
             //frmBalanceList bank = new frmBalanceList();
             //bank.ShowDialog();
             //CustomerINI.WriteDBConfig("r400", "haimen", "sa", "heroes22");
 
-            //GlobalSet.Current_User = User.Login("admin", "qwer1234");
-            //if (GlobalSet.Current_User != null)
-            //{
-            //    Application.Run(new DevMain());
-            //}
+            GlobalSet.Current_User = User.Login("admin", "qwer1234");
+            if (GlobalSet.Current_User != null)
+            {
+                Application.Run(new DevMain());
+            }
         }
     }
 }

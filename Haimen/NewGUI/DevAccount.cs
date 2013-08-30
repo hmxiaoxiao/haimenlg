@@ -9,6 +9,7 @@ using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 using Haimen.Helper;
+using System.IO;
 
 namespace Haimen.NewGUI
 {
@@ -252,6 +253,28 @@ namespace Haimen.NewGUI
         {
             if (m_account.ID > 0)
                 m_account.Destory();
+        }
+
+        private void tsbAttachNew_Click(object sender, EventArgs e)
+        {
+            FTPClient ftp = new FTPClient("localhost", "", "");
+            OpenFileDialog fd = new OpenFileDialog();
+            fd.Title = "请选择需要上传的文件";
+            fd.ValidateNames = true;
+            fd.CheckFileExists = true;
+            fd.CheckPathExists = true;
+
+            if (fd.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            {
+                FileInfo fi = new FileInfo(fd.FileName);
+                // 先保存到数据库里
+                Attach att = new Attach();
+                att.FileName = fi.Name;
+                att.FileType = fi.Extension;
+                att.Save();
+
+                ftp.fileUpload(fi, @"\", att.ID.ToString() + "." + fi.Extension);
+            }
         }
     }
 }

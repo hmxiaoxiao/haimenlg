@@ -23,6 +23,15 @@ namespace Haimen.DBConfig
         private void DevDBConfig_Load(object sender, EventArgs e)
         {
             CustomerINI.SetFormSkin();
+
+            txtHost.Text = CustomerINI.GetDBConfigValue(INIDBKey.Host);
+            txtDB.Text = CustomerINI.GetDBConfigValue(INIDBKey.DB);
+            txtUser.Text = CustomerINI.GetDBConfigValue(INIDBKey.User);
+            txtPassword.Text = CustomerINI.GetDBConfigValue(INIDBKey.Password);
+
+            txtFTPURL.Text = CustomerINI.GetFTPConfigValue(INIFTPKey.Host);
+            txtFTPName.Text = CustomerINI.GetFTPConfigValue(INIFTPKey.User);
+            txtFTPPassword.Text = CustomerINI.GetFTPConfigValue(INIFTPKey.Password);
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -46,7 +55,8 @@ namespace Haimen.DBConfig
         private void btnSave_Click(object sender, EventArgs e)
         {
             CustomerINI.WriteDBConfig(txtHost.Text, txtDB.Text, txtUser.Text, txtPassword.Text);
-            MessageBox.Show("保存成功！");
+            CustomerINI.WriteFTPConfig(txtFTPURL.Text, txtFTPName.Text, txtFTPPassword.Text);
+            MessageBox.Show("参数设置保存成功！", "注意");
         }
 
         private void btnExit_Click(object sender, EventArgs e)
