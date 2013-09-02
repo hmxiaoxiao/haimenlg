@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevAccount));
             this.lueInCompany = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEdit6 = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEdit5 = new DevExpress.XtraEditors.LookUpEdit();
@@ -76,7 +77,8 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.lstFiles = new DevExpress.XtraEditors.ImageListBoxControl();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tsbAttachNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -94,6 +96,7 @@
             this.c1SplitterPanel1.SuspendLayout();
             this.toolStrip3.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstFiles)).BeginInit();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -435,6 +438,7 @@
             this.tbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
             this.tbExit.Id = 1;
             this.tbExit.Name = "tbExit";
+            this.tbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbExit_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -466,6 +470,9 @@
             // 
             // c1SplitContainer1
             // 
+            this.c1SplitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.c1SplitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(150)))));
             this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -474,7 +481,9 @@
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel1);
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel2);
             this.c1SplitContainer1.Size = new System.Drawing.Size(699, 305);
+            this.c1SplitContainer1.SplitterColor = System.Drawing.Color.Transparent;
             this.c1SplitContainer1.TabIndex = 58;
+            this.c1SplitContainer1.UseParentVisualStyle = false;
             // 
             // c1SplitterPanel1
             // 
@@ -526,7 +535,8 @@
             // 
             // c1SplitterPanel2
             // 
-            this.c1SplitterPanel2.Controls.Add(this.treeView1);
+            this.c1SplitterPanel2.BorderColor = System.Drawing.Color.Transparent;
+            this.c1SplitterPanel2.Controls.Add(this.lstFiles);
             this.c1SplitterPanel2.Controls.Add(this.toolStrip2);
             this.c1SplitterPanel2.Height = 100;
             this.c1SplitterPanel2.Location = new System.Drawing.Point(538, 21);
@@ -535,13 +545,43 @@
             this.c1SplitterPanel2.TabIndex = 1;
             this.c1SplitterPanel2.Text = "附件";
             // 
-            // treeView1
+            // lstFiles
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(0, 25);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(161, 259);
-            this.treeView1.TabIndex = 17;
+            this.lstFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstFiles.ImageList = this.imageList1;
+            this.lstFiles.ItemHeight = 32;
+            this.lstFiles.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageListBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageListBoxItem("asdfasdf", 1)});
+            this.lstFiles.Location = new System.Drawing.Point(0, 25);
+            this.lstFiles.Name = "lstFiles";
+            this.lstFiles.Size = new System.Drawing.Size(161, 259);
+            this.lstFiles.TabIndex = 63;
+            this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "ADOBE PSD.ico");
+            this.imageList1.Images.SetKeyName(1, "AIF.ico");
+            this.imageList1.Images.SetKeyName(2, "APF.ico");
+            this.imageList1.Images.SetKeyName(3, "AU.ico");
+            this.imageList1.Images.SetKeyName(4, "AVI.ico");
+            this.imageList1.Images.SetKeyName(5, "AVIJ.ico");
+            this.imageList1.Images.SetKeyName(6, "BINDER 002.ico");
+            this.imageList1.Images.SetKeyName(7, "BLANK WORD DOC.ico");
+            this.imageList1.Images.SetKeyName(8, "BMP.ico");
+            this.imageList1.Images.SetKeyName(9, "BMP2.ico");
+            this.imageList1.Images.SetKeyName(10, "BUDDY LIST FILE.ico");
+            this.imageList1.Images.SetKeyName(11, "CDAJ.ico");
+            this.imageList1.Images.SetKeyName(12, "CLASS.ico");
+            this.imageList1.Images.SetKeyName(13, "CONFIGURATION .ico");
+            this.imageList1.Images.SetKeyName(14, "CSS.ico");
+            this.imageList1.Images.SetKeyName(15, "DEFAULT ICON.ico");
+            this.imageList1.Images.SetKeyName(16, "DIVX.ico");
+            this.imageList1.Images.SetKeyName(17, "DIVXJ.ico");
+            this.imageList1.Images.SetKeyName(18, "DREAMWEAVER XP.ico");
+            this.imageList1.Images.SetKeyName(19, "ERASER.ico");
             // 
             // toolStrip2
             // 
@@ -576,6 +616,7 @@
             this.tsbAttachDelete.Name = "tsbAttachDelete";
             this.tsbAttachDelete.Size = new System.Drawing.Size(52, 22);
             this.tsbAttachDelete.Text = "删除";
+            this.tsbAttachDelete.Click += new System.EventHandler(this.tsbAttachDelete_Click);
             // 
             // DevAccount
             // 
@@ -628,6 +669,7 @@
             this.toolStrip3.PerformLayout();
             this.c1SplitterPanel2.ResumeLayout(false);
             this.c1SplitterPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstFiles)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
@@ -683,11 +725,12 @@
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbDelete;
-        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton tsbAttachNew;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsbAttachDelete;
         private DevExpress.XtraGrid.Columns.GridColumn col_id;
+        private DevExpress.XtraEditors.ImageListBoxControl lstFiles;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

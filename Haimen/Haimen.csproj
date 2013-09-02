@@ -142,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\Account.cs" />
-    <Compile Include="Entity\AccountAttach.cs" />
     <Compile Include="Entity\AccountDetail.cs" />
     <Compile Include="Entity\Attach.cs" />
     <Compile Include="Entity\Balance.cs" />
@@ -151,7 +150,6 @@
     <Compile Include="Entity\Company.cs" />
     <Compile Include="Entity\CompanyDetail.cs" />
     <Compile Include="Entity\Contract.cs" />
-    <Compile Include="Entity\ContractAttach.cs" />
     <Compile Include="Entity\ContractDetail.cs" />
     <Compile Include="Entity\Funds.cs" />
     <Compile Include="Helper\CustomerINI.cs" />
@@ -168,9 +166,7 @@
     <Compile Include="NewGUI\DevAccountList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevAccountList.Designer.cs">
-      <DependentUpon>DevAccountList.cs</DependentUpon>
-    </Compile>
+    <Compile Include="NewGUI\DevAccountList.Designer.cs" />
     <Compile Include="NewGUI\DevAccountQuery.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -535,9 +531,7 @@
     <EmbeddedResource Include="NewGUI\DevAccount.resx">
       <DependentUpon>DevAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevAccountList.resx">
-      <DependentUpon>DevAccountList.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevAccountList.resx" />
     <EmbeddedResource Include="NewGUI\DevAccountQuery.resx">
       <DependentUpon>DevAccountQuery.cs</DependentUpon>
     </EmbeddedResource>

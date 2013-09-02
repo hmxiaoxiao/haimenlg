@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Haimen.Qy;
+using Haimen.Helper;
 
 namespace Haimen.Entity
 {
@@ -18,5 +19,6 @@ namespace Haimen.Entity
 
         [Field("filetype")]
         public string FileType { get; set; }
+
     }
 }

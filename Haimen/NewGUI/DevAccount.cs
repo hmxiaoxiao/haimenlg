@@ -10,6 +10,7 @@ using DevExpress.XtraEditors;
 using Haimen.Entity;
 using Haimen.Helper;
 using System.IO;
+using System.Diagnostics;
 
 namespace Haimen.NewGUI
 {
@@ -107,6 +108,12 @@ namespace Haimen.NewGUI
             luefunds.DataSource = m_funds;
             luefunds.DisplayMember = "Name";
             luefunds.ValueMember = "ID";
+
+            lstFiles.Items.Clear();
+            foreach (Attach a in m_account.AttachList)
+            {
+                lstFiles.Items.Add(a.ID.ToString() + "." + a.FileName, 2);
+            }
         }
 
         /// <summary>
@@ -257,7 +264,6 @@ namespace Haimen.NewGUI
 
         private void tsbAttachNew_Click(object sender, EventArgs e)
         {
-            FTPClient ftp = new FTPClient("localhost", "", "");
             OpenFileDialog fd = new OpenFileDialog();
             fd.Title = "请选择需要上传的文件";
             fd.ValidateNames = true;
@@ -273,7 +279,78 @@ namespace Haimen.NewGUI
                 att.FileType = fi.Extension;
                 att.Save();
 
-                ftp.fileUpload(fi, @"\", att.ID.ToString() + "." + fi.Extension);
+                FTPClient ftp = CustomerINI.GetFTPClient();
+                ftp.fileUpload(fi, @"\", att.ID.ToString() + fi.Extension);
+
+                m_account.AttachList.Add(att);
+
+                // 加入列表
+                lstFiles.Items.Add(att.ID.ToString() + "." +  fi.Name, 2);
+            }
+        }
+
+        /// <summary>
+        /// 关闭窗口
+        /// 如果当前属新增或者编辑，则提示是否真的退出，只能选择了是才能退出。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (m_status != winStatus.View)
+            {
+                if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
+                                   "警告",
+                                   MessageBoxButtons.YesNoCancel,
+                                   MessageBoxIcon.Warning,
+                                   MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes)
+                    return;
+            }
+            this.Close();
+        }
+
+        /// <summary>
+        /// 删除附件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbAttachDelete_Click(object sender, EventArgs e)
+        {
+            string[] temp = lstFiles.Items[lstFiles.SelectedIndex].Value.ToString().Split('.');
+            if (temp.Length > 0)
+            {
+                long id = long.Parse(temp[0]);
+                Attach att = Attach.CreateByID(id);
+
+                FTPClient ftp = CustomerINI.GetFTPClient();
+                ftp.fileDelete(@"\", att.FileName);
+
+                att.Destory();
+
+                lstFiles.Items.Remove(lstFiles.Items[lstFiles.SelectedIndex]);
+
+            }
+        }
+
+        private void lstFiles_DoubleClick(object sender, EventArgs e)
+        {
+            string[] temp = lstFiles.Items[lstFiles.SelectedIndex].Value.ToString().Split('.');
+            if (temp.Length > 0)
+            {
+                long id = long.Parse(temp[0]);
+                Attach att = Attach.CreateByID(id);
+
+                FTPClient ftp = CustomerINI.GetFTPClient();
+                string tempPath = Path.GetTempPath();
+                if (ftp.fileDownload(tempPath, att.FileName, @"\", att.ID.ToString() + att.FileType))
+                {
+                    Process.Start(Path.Combine(tempPath, att.FileName));
+                }
+                else
+                {
+                    MessageBox.Show("下载附件失败！");
+                }
+
             }
         }
     }

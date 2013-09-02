@@ -10,6 +10,9 @@ using DevExpress.XtraEditors;
 using Haimen.Entity;
 using Haimen.Helper;
 
+using System.IO;
+using System.Diagnostics;
+
 namespace Haimen.NewGUI
 {
     public partial class DevContract : DevExpress.XtraEditors.XtraForm
@@ -82,6 +85,12 @@ namespace Haimen.NewGUI
             }
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_contract.DetailList;
+
+            lstFiles.Items.Clear();
+            foreach (Attach a in m_contract.AttachList)
+            {
+                lstFiles.Items.Add(a.ID.ToString() + "." + a.FileName, 2);
+            }
         }
 
         private bool Verify()
@@ -174,7 +183,84 @@ namespace Haimen.NewGUI
 
         private void tbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (m_status != winStatus.View)
+            {
+                if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
+                                   "警告",
+                                   MessageBoxButtons.YesNoCancel,
+                                   MessageBoxIcon.Warning,
+                                   MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes)
+                    return;
+            }
             this.Close();
         }
+
+        private void tsbAttachNew_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fd = new OpenFileDialog();
+            fd.Title = "请选择需要上传的文件";
+            fd.ValidateNames = true;
+            fd.CheckFileExists = true;
+            fd.CheckPathExists = true;
+
+            if (fd.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            {
+                FileInfo fi = new FileInfo(fd.FileName);
+                // 先保存到数据库里
+                Attach att = new Attach();
+                att.FileName = fi.Name;
+                att.FileType = fi.Extension;
+                att.Save();
+
+                FTPClient ftp = CustomerINI.GetFTPClient();
+                ftp.fileUpload(fi, @"\", att.ID.ToString() + fi.Extension);
+
+                m_contract.AttachList.Add(att);
+
+                // 加入列表
+                lstFiles.Items.Add(att.ID.ToString() + "." + fi.Name, 2);
+            }
+        }
+
+        private void tsbAttachDelete_Click(object sender, EventArgs e)
+        {
+            string[] temp = lstFiles.Items[lstFiles.SelectedIndex].Value.ToString().Split('.');
+            if (temp.Length > 0)
+            {
+                long id = long.Parse(temp[0]);
+                Attach att = Attach.CreateByID(id);
+
+                FTPClient ftp = CustomerINI.GetFTPClient();
+                ftp.fileDelete(@"\", att.FileName);
+
+                att.Destory();
+
+                lstFiles.Items.Remove(lstFiles.Items[lstFiles.SelectedIndex]);
+
+            }
+        }
+
+        private void lstFiles_DoubleClick(object sender, EventArgs e)
+        {
+            string[] temp = lstFiles.Items[lstFiles.SelectedIndex].Value.ToString().Split('.');
+            if (temp.Length > 0)
+            {
+                long id = long.Parse(temp[0]);
+                Attach att = Attach.CreateByID(id);
+
+                FTPClient ftp = CustomerINI.GetFTPClient();
+                string tempPath = Path.GetTempPath();
+                if (ftp.fileDownload(tempPath, att.FileName, @"\", att.ID.ToString() + att.FileType))
+                {
+                    Process.Start(Path.Combine(tempPath, att.FileName));
+                }
+                else
+                {
+                    MessageBox.Show("下载附件失败！");
+                }
+
+            }
+        }
+
     }
 }

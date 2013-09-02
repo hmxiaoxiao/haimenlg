@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevContract));
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.lueCompany = new DevExpress.XtraEditors.LookUpEdit();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -78,6 +78,8 @@
             this.tsbAttachNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbAttachDelete = new System.Windows.Forms.ToolStripButton();
+            this.lstFiles = new DevExpress.XtraEditors.ImageListBoxControl();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
@@ -90,6 +92,7 @@
             this.toolStrip3.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
             this.toolStrip4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstFiles)).BeginInit();
             this.SuspendLayout();
             // 
             // gridView1
@@ -145,15 +148,6 @@
             this.gridControl1.TabIndex = 16;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            // 
-            // listView1
-            // 
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Location = new System.Drawing.Point(0, 25);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(179, 208);
-            this.listView1.TabIndex = 17;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // lueCompany
             // 
@@ -433,6 +427,9 @@
             // 
             // c1SplitContainer1
             // 
+            this.c1SplitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.c1SplitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(150)))));
             this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -493,7 +490,7 @@
             // 
             // c1SplitterPanel2
             // 
-            this.c1SplitterPanel2.Controls.Add(this.listView1);
+            this.c1SplitterPanel2.Controls.Add(this.lstFiles);
             this.c1SplitterPanel2.Controls.Add(this.toolStrip4);
             this.c1SplitterPanel2.Height = 100;
             this.c1SplitterPanel2.Location = new System.Drawing.Point(629, 21);
@@ -521,6 +518,7 @@
             this.tsbAttachNew.Name = "tsbAttachNew";
             this.tsbAttachNew.Size = new System.Drawing.Size(52, 22);
             this.tsbAttachNew.Text = "新增";
+            this.tsbAttachNew.Click += new System.EventHandler(this.tsbAttachNew_Click);
             // 
             // toolStripSeparator2
             // 
@@ -534,6 +532,41 @@
             this.tsbAttachDelete.Name = "tsbAttachDelete";
             this.tsbAttachDelete.Size = new System.Drawing.Size(52, 22);
             this.tsbAttachDelete.Text = "删除";
+            this.tsbAttachDelete.Click += new System.EventHandler(this.tsbAttachDelete_Click);
+            // 
+            // lstFiles
+            // 
+            this.lstFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstFiles.Location = new System.Drawing.Point(0, 25);
+            this.lstFiles.Name = "lstFiles";
+            this.lstFiles.Size = new System.Drawing.Size(179, 208);
+            this.lstFiles.TabIndex = 1;
+            this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "ADOBE PSD.ico");
+            this.imageList1.Images.SetKeyName(1, "AIF.ico");
+            this.imageList1.Images.SetKeyName(2, "APF.ico");
+            this.imageList1.Images.SetKeyName(3, "AU.ico");
+            this.imageList1.Images.SetKeyName(4, "AVI.ico");
+            this.imageList1.Images.SetKeyName(5, "AVIJ.ico");
+            this.imageList1.Images.SetKeyName(6, "BINDER 002.ico");
+            this.imageList1.Images.SetKeyName(7, "BLANK WORD DOC.ico");
+            this.imageList1.Images.SetKeyName(8, "BMP.ico");
+            this.imageList1.Images.SetKeyName(9, "BMP2.ico");
+            this.imageList1.Images.SetKeyName(10, "BUDDY LIST FILE.ico");
+            this.imageList1.Images.SetKeyName(11, "CDAJ.ico");
+            this.imageList1.Images.SetKeyName(12, "CLASS.ico");
+            this.imageList1.Images.SetKeyName(13, "CONFIGURATION .ico");
+            this.imageList1.Images.SetKeyName(14, "CSS.ico");
+            this.imageList1.Images.SetKeyName(15, "DEFAULT ICON.ico");
+            this.imageList1.Images.SetKeyName(16, "DIVX.ico");
+            this.imageList1.Images.SetKeyName(17, "DIVXJ.ico");
+            this.imageList1.Images.SetKeyName(18, "DREAMWEAVER XP.ico");
+            this.imageList1.Images.SetKeyName(19, "ERASER.ico");
             // 
             // DevContract
             // 
@@ -584,6 +617,7 @@
             this.c1SplitterPanel2.PerformLayout();
             this.toolStrip4.ResumeLayout(false);
             this.toolStrip4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstFiles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -596,7 +630,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.GridControl gridControl1;
-        private System.Windows.Forms.ListView listView1;
         private DevExpress.XtraEditors.LookUpEdit lueCompany;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -640,5 +673,7 @@
         private System.Windows.Forms.ToolStripButton tsbAttachNew;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsbAttachDelete;
+        private DevExpress.XtraEditors.ImageListBoxControl lstFiles;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
