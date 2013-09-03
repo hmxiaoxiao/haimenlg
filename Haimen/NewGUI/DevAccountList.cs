@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 using Haimen.Entity;
+using Haimen.Helper;
 
 namespace Haimen.NewGUI
 {
@@ -21,7 +22,7 @@ namespace Haimen.NewGUI
         /// <summary>
         /// 编辑资金
         /// </summary>
-        private void EditAccount()
+        private void EditAccount(winStatus status = winStatus.Edit)
         {
             if (gridView1.FocusedRowHandle < 0)
                 return;
@@ -32,11 +33,36 @@ namespace Haimen.NewGUI
                 if (a.ID == id)
                 {
                     DevMain main = (DevMain)this.ParentForm;
-                    main.OpenForm(new DevAccount(a));
+                    main.OpenForm(new DevAccount(status, a));
                     return;
                 }
             }
         }
+
+        /// <summary>
+        /// 刷新当前的界面
+        /// </summary>
+        private void MyRefresh()
+        {
+            // 取得所有的数据
+            m_accounts = Account.Query();
+
+            // 绑定到表格中
+            gridControl1.DataSource = null;
+            gridControl1.DataSource = m_accounts;
+            gridView1.BestFitColumns();
+
+            // 显示明细
+            ShowDetail();
+            gridView2.BestFitColumns();
+
+            // 显示数据源
+            lueStatus.DataSource = null;
+            lueStatus.DataSource = GlobalSet.CheckList;
+            lueStatus.DisplayMember = "Name";
+            lueStatus.ValueMember = "ValueInt";
+        }
+
 
         /// <summary>
         ///  显示当前列表的明细
@@ -55,58 +81,94 @@ namespace Haimen.NewGUI
             }
         }
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public DevAccountList()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 退出当前窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
         }
 
-        private void tsbNewOutput_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            DevMain main = (DevMain)this.ParentForm;
-            main.OpenForm(new DevAccount());
-        }
-
-        private void tsbNewInput_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            DevMain main = (DevMain)this.ParentForm;
-            main.OpenForm(new DevAccount());
-        }
-
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             EditAccount();
         }
 
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (MessageBox.Show(this, "是否要删除指定的资金凭证？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
-                MessageBox.Show(this, "删除资金凭证成功!", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                long id = 0;
+                if (gridView1.FocusedRowHandle >= 0)
+                    id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
+                Account acc = Account.CreateByID(id);
+                if (acc != null)
+                {
+                    acc.Destory();
+                    MessageBox.Show(this, "删除资金凭证成功!", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    // 去掉当前行
+                    gridView1.DeleteRow(gridView1.FocusedRowHandle);
+                }
             }
         }
 
+        /// <summary>
+        /// 载入窗口时，设置数据库绑定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DevAccountList_Load(object sender, EventArgs e)
         {
-            m_accounts = Account.Query();
-            gridControl1.DataSource = m_accounts;
-            ShowDetail();
+            MyRefresh();
         }
 
-        private void tsbVerify_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+
+        /// <summary>
+        /// 审核当前的资金
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            EditAccount();
+            EditAccount(winStatus.Check);
         }
 
+        /// <summary>
+        /// 双击查看当前资金
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
-            EditAccount();
+            EditAccount(winStatus.OnlyView);
         }
 
+        /// <summary>
+        /// 因为没有办法显示主从表，故只能手动显示明细
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             ShowDetail();
@@ -146,6 +208,26 @@ namespace Haimen.NewGUI
             }
         }
 
+        /// <summary>
+        /// 新增资金收入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DevMain main = (DevMain)this.ParentForm;
+            main.OpenForm(new DevAccount(winStatus.New));
+        }
 
+
+        /// <summary>
+        /// 刷新界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MyRefresh();
+        }
     }
 }

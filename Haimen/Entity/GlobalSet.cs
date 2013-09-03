@@ -32,5 +32,8 @@ namespace Haimen.Entity
                 return Path.Combine(path, "config.ini");
             } 
         }
+
+        public static List<Dict> CheckList = Dict.Query("belong = 'Check'");
+
     }
 }

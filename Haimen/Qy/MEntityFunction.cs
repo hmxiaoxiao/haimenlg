@@ -58,6 +58,11 @@ namespace Haimen.Qy
         }
 
         /// <summary>
+        /// 当前对象指定的排序字段
+        /// </summary>
+        public static string OrderBy = " Order By ID Desc";
+
+        /// <summary>
         /// 保存到数据时，校验数据是否正确
         /// 注意无论是新增还是修改，都视为保存。
         /// </summary>
@@ -262,6 +267,10 @@ namespace Haimen.Qy
             if (where.Length > 0)
                 sql += " where " + where;
 
+            // 按生成的ID降序排列
+            sql += OrderBy;
+
+
             cmd.CommandText = sql;
             SqlDataAdapter adap = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
@@ -287,6 +296,10 @@ namespace Haimen.Qy
             // 生成SQL语句
             if (where.Length > 0)
                 sql += " where " + where;
+
+            // 按生成的ID降序排列
+            sql += OrderBy;
+
 
             cmd.CommandText = sql;
             Console.WriteLine(sql);

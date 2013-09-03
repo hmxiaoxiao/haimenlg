@@ -115,7 +115,7 @@ namespace Haimen.NewGUI
             // 检查是否已经存在
             if (!FormAlreadyOpen(typeof(DevAccount)))
             {
-                DevAccount list = new DevAccount();
+                DevAccount list = new DevAccount(winStatus.New);
                 list.MdiParent = this;
                 list.Show();
             }

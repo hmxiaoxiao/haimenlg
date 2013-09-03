@@ -38,36 +38,36 @@
             this.c_credit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.tree = new DevExpress.XtraTreeList.TreeList();
+            this.node_name = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.node_id = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.c1SplitterPanel1 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.c1SplitterPanel3 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.txtCode = new C1.Win.C1Input.C1TextBox();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtDoc = new C1.Win.C1Input.C1TextBox();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtName = new C1.Win.C1Input.C1TextBox();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtAccount = new C1.Win.C1Input.C1TextBox();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtBank = new C1.Win.C1Input.C1TextBox();
+            this.txtAccount = new C1.Win.C1Input.C1TextBox();
+            this.txtName = new C1.Win.C1Input.C1TextBox();
+            this.txtDoc = new C1.Win.C1Input.C1TextBox();
+            this.txtCode = new C1.Win.C1Input.C1TextBox();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.c1SplitterPanel3 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
             this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbSave = new DevExpress.XtraBars.BarButtonItem();
             this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
-            this.node_name = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.node_id = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.tsbSave = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             ((System.ComponentModel.ISupportInitialize)(this.lueBanks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -76,20 +76,20 @@
             this.c1SplitContainer1.SuspendLayout();
             this.c1SplitterPanel1.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
-            this.c1SplitterPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDoc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAccount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            this.c1SplitterPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,7 +171,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueBanks});
-            this.gridControl1.Size = new System.Drawing.Size(651, 325);
+            this.gridControl1.Size = new System.Drawing.Size(651, 326);
             this.gridControl1.TabIndex = 12;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -188,10 +188,24 @@
             this.tree.OptionsView.ShowColumns = false;
             this.tree.OptionsView.ShowIndentAsRowStyle = true;
             this.tree.OptionsView.ShowIndicator = false;
-            this.tree.Size = new System.Drawing.Size(163, 491);
+            this.tree.Size = new System.Drawing.Size(163, 493);
             this.tree.TabIndex = 26;
             this.tree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tree_FocusedNodeChanged);
             this.tree.Click += new System.EventHandler(this.treeList1_Click);
+            // 
+            // node_name
+            // 
+            this.node_name.Caption = "名称";
+            this.node_name.FieldName = "Name";
+            this.node_name.Name = "node_name";
+            this.node_name.Visible = true;
+            this.node_name.VisibleIndex = 0;
+            // 
+            // node_id
+            // 
+            this.node_id.Caption = "ID";
+            this.node_id.FieldName = "ID";
+            this.node_id.Name = "node_id";
             // 
             // c1SplitContainer1
             // 
@@ -199,12 +213,12 @@
             this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(150)))));
             this.c1SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 39);
+            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 37);
             this.c1SplitContainer1.Name = "c1SplitContainer1";
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel1);
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel2);
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel3);
-            this.c1SplitContainer1.Size = new System.Drawing.Size(818, 512);
+            this.c1SplitContainer1.Size = new System.Drawing.Size(818, 514);
             this.c1SplitContainer1.TabIndex = 27;
             // 
             // c1SplitterPanel1
@@ -213,7 +227,7 @@
             this.c1SplitterPanel1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
-            this.c1SplitterPanel1.Size = new System.Drawing.Size(163, 491);
+            this.c1SplitterPanel1.Size = new System.Drawing.Size(163, 493);
             this.c1SplitterPanel1.SizeRatio = 20D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "单位列表";
@@ -222,24 +236,14 @@
             // c1SplitterPanel2
             // 
             this.c1SplitterPanel2.Controls.Add(this.layoutControl1);
-            this.c1SplitterPanel2.Height = 165;
+            this.c1SplitterPanel2.Height = 166;
             this.c1SplitterPanel2.Location = new System.Drawing.Point(167, 21);
             this.c1SplitterPanel2.Name = "c1SplitterPanel2";
             this.c1SplitterPanel2.Resizable = false;
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(651, 144);
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(651, 145);
             this.c1SplitterPanel2.SizeRatio = 32.283D;
             this.c1SplitterPanel2.TabIndex = 1;
             this.c1SplitterPanel2.Text = "单位详情";
-            // 
-            // c1SplitterPanel3
-            // 
-            this.c1SplitterPanel3.Controls.Add(this.gridControl1);
-            this.c1SplitterPanel3.Height = 100;
-            this.c1SplitterPanel3.Location = new System.Drawing.Point(167, 187);
-            this.c1SplitterPanel3.Name = "c1SplitterPanel3";
-            this.c1SplitterPanel3.Size = new System.Drawing.Size(651, 325);
-            this.c1SplitterPanel3.TabIndex = 2;
-            this.c1SplitterPanel3.Text = "明细帐";
             // 
             // layoutControl1
             // 
@@ -252,9 +256,49 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(651, 144);
+            this.layoutControl1.Size = new System.Drawing.Size(651, 145);
             this.layoutControl1.TabIndex = 28;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // txtBank
+            // 
+            this.txtBank.Location = new System.Drawing.Point(66, 75);
+            this.txtBank.Name = "txtBank";
+            this.txtBank.Size = new System.Drawing.Size(570, 22);
+            this.txtBank.TabIndex = 9;
+            this.txtBank.Tag = null;
+            // 
+            // txtAccount
+            // 
+            this.txtAccount.Location = new System.Drawing.Point(66, 105);
+            this.txtAccount.Name = "txtAccount";
+            this.txtAccount.Size = new System.Drawing.Size(570, 22);
+            this.txtAccount.TabIndex = 8;
+            this.txtAccount.Tag = null;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(66, 45);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(570, 22);
+            this.txtName.TabIndex = 6;
+            this.txtName.Tag = null;
+            // 
+            // txtDoc
+            // 
+            this.txtDoc.Location = new System.Drawing.Point(380, 15);
+            this.txtDoc.Name = "txtDoc";
+            this.txtDoc.Size = new System.Drawing.Size(256, 22);
+            this.txtDoc.TabIndex = 5;
+            this.txtDoc.Tag = null;
+            // 
+            // txtCode
+            // 
+            this.txtCode.Location = new System.Drawing.Point(66, 15);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(253, 22);
+            this.txtCode.TabIndex = 4;
+            this.txtCode.Tag = null;
             // 
             // layoutControlGroup1
             // 
@@ -269,17 +313,9 @@
             this.layoutControlItem6});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(651, 144);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(651, 145);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
-            // 
-            // txtCode
-            // 
-            this.txtCode.Location = new System.Drawing.Point(67, 15);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(252, 22);
-            this.txtCode.TabIndex = 4;
-            this.txtCode.Tag = null;
             // 
             // layoutControlItem1
             // 
@@ -292,14 +328,6 @@
             this.layoutControlItem1.Text = "代码：";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // txtDoc
-            // 
-            this.txtDoc.Location = new System.Drawing.Point(381, 15);
-            this.txtDoc.Name = "txtDoc";
-            this.txtDoc.Size = new System.Drawing.Size(255, 22);
-            this.txtDoc.TabIndex = 5;
-            this.txtDoc.Tag = null;
-            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtDoc;
@@ -310,14 +338,6 @@
             this.layoutControlItem2.Size = new System.Drawing.Size(317, 30);
             this.layoutControlItem2.Text = "单据字：";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(67, 45);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(569, 22);
-            this.txtName.TabIndex = 6;
-            this.txtName.Tag = null;
             // 
             // layoutControlItem3
             // 
@@ -330,14 +350,6 @@
             this.layoutControlItem3.Text = "名称：";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // txtAccount
-            // 
-            this.txtAccount.Location = new System.Drawing.Point(67, 105);
-            this.txtAccount.Name = "txtAccount";
-            this.txtAccount.Size = new System.Drawing.Size(569, 22);
-            this.txtAccount.TabIndex = 8;
-            this.txtAccount.Tag = null;
-            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.txtAccount;
@@ -345,17 +357,9 @@
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 90);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem5.Size = new System.Drawing.Size(631, 34);
+            this.layoutControlItem5.Size = new System.Drawing.Size(631, 35);
             this.layoutControlItem5.Text = "帐号：";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // txtBank
-            // 
-            this.txtBank.Location = new System.Drawing.Point(67, 75);
-            this.txtBank.Name = "txtBank";
-            this.txtBank.Size = new System.Drawing.Size(569, 22);
-            this.txtBank.TabIndex = 9;
-            this.txtBank.Tag = null;
             // 
             // layoutControlItem6
             // 
@@ -367,6 +371,16 @@
             this.layoutControlItem6.Size = new System.Drawing.Size(631, 30);
             this.layoutControlItem6.Text = "开户行：";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // c1SplitterPanel3
+            // 
+            this.c1SplitterPanel3.Controls.Add(this.gridControl1);
+            this.c1SplitterPanel3.Height = 100;
+            this.c1SplitterPanel3.Location = new System.Drawing.Point(167, 188);
+            this.c1SplitterPanel3.Name = "c1SplitterPanel3";
+            this.c1SplitterPanel3.Size = new System.Drawing.Size(651, 326);
+            this.c1SplitterPanel3.TabIndex = 2;
+            this.c1SplitterPanel3.Text = "明细帐";
             // 
             // barManager1
             // 
@@ -385,34 +399,6 @@
             this.tsbExit,
             this.tsbSave});
             this.barManager1.MaxItemId = 6;
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(818, 39);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 551);
-            this.barDockControlBottom.Size = new System.Drawing.Size(818, 0);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 512);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(818, 39);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 512);
             // 
             // bar1
             // 
@@ -453,6 +439,14 @@
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbDelete_ItemClick);
             // 
+            // tsbSave
+            // 
+            this.tsbSave.Caption = "保存";
+            this.tsbSave.Glyph = global::Haimen.Properties.Resources.Save_hot;
+            this.tsbSave.Id = 5;
+            this.tsbSave.Name = "tsbSave";
+            this.tsbSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbSave_ItemClick);
+            // 
             // tsbRefresh
             // 
             this.tsbRefresh.Caption = "刷新";
@@ -469,27 +463,33 @@
             this.tsbExit.Name = "tsbExit";
             this.tsbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbExit_ItemClick);
             // 
-            // node_name
+            // barDockControlTop
             // 
-            this.node_name.Caption = "名称";
-            this.node_name.FieldName = "Name";
-            this.node_name.Name = "node_name";
-            this.node_name.Visible = true;
-            this.node_name.VisibleIndex = 0;
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(818, 37);
             // 
-            // node_id
+            // barDockControlBottom
             // 
-            this.node_id.Caption = "ID";
-            this.node_id.FieldName = "ID";
-            this.node_id.Name = "node_id";
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 551);
+            this.barDockControlBottom.Size = new System.Drawing.Size(818, 0);
             // 
-            // tsbSave
+            // barDockControlLeft
             // 
-            this.tsbSave.Caption = "保存";
-            this.tsbSave.Glyph = global::Haimen.Properties.Resources.Save_hot;
-            this.tsbSave.Id = 5;
-            this.tsbSave.Name = "tsbSave";
-            this.tsbSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbSave_ItemClick);
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 37);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 514);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(818, 37);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 514);
             // 
             // DevCompanyDetailList
             // 
@@ -512,20 +512,20 @@
             this.c1SplitContainer1.ResumeLayout(false);
             this.c1SplitterPanel1.ResumeLayout(false);
             this.c1SplitterPanel2.ResumeLayout(false);
-            this.c1SplitterPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDoc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAccount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            this.c1SplitterPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
 

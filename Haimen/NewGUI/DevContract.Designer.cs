@@ -74,11 +74,11 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.lstFiles = new DevExpress.XtraEditors.ImageListBoxControl();
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
             this.tsbAttachNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbAttachDelete = new System.Windows.Forms.ToolStripButton();
-            this.lstFiles = new DevExpress.XtraEditors.ImageListBoxControl();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
@@ -91,8 +91,8 @@
             this.c1SplitterPanel1.SuspendLayout();
             this.toolStrip3.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
-            this.toolStrip4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstFiles)).BeginInit();
+            this.toolStrip4.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridView1
@@ -402,7 +402,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(832, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(832, 37);
             // 
             // barDockControlBottom
             // 
@@ -415,15 +415,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 516);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 37);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 518);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(832, 39);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 516);
+            this.barDockControlRight.Location = new System.Drawing.Point(832, 37);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 518);
             // 
             // c1SplitContainer1
             // 
@@ -499,6 +499,15 @@
             this.c1SplitterPanel2.TabIndex = 1;
             this.c1SplitterPanel2.Text = "附件";
             // 
+            // lstFiles
+            // 
+            this.lstFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstFiles.Location = new System.Drawing.Point(0, 25);
+            this.lstFiles.Name = "lstFiles";
+            this.lstFiles.Size = new System.Drawing.Size(179, 208);
+            this.lstFiles.TabIndex = 1;
+            this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
+            // 
             // toolStrip4
             // 
             this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -533,15 +542,6 @@
             this.tsbAttachDelete.Size = new System.Drawing.Size(52, 22);
             this.tsbAttachDelete.Text = "删除";
             this.tsbAttachDelete.Click += new System.EventHandler(this.tsbAttachDelete_Click);
-            // 
-            // lstFiles
-            // 
-            this.lstFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstFiles.Location = new System.Drawing.Point(0, 25);
-            this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(179, 208);
-            this.lstFiles.TabIndex = 1;
-            this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
             // 
             // imageList1
             // 
@@ -615,9 +615,9 @@
             this.toolStrip3.PerformLayout();
             this.c1SplitterPanel2.ResumeLayout(false);
             this.c1SplitterPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstFiles)).EndInit();
             this.toolStrip4.ResumeLayout(false);
             this.toolStrip4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstFiles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

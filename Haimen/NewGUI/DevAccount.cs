@@ -39,20 +39,67 @@ namespace Haimen.NewGUI
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
                     tbSave.Enabled = true;
+                    tbCheckFaild.Enabled = false;
+                    tbCheckPassed.Enabled = false;
+                    SetEditorStatus(true);
                     break;
                 case winStatus.Edit:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
                     tbSave.Enabled = true;
+                    tbCheckFaild.Enabled = false;
+                    tbCheckPassed.Enabled = false;
+                    SetEditorStatus(true);
                     break;
                 case winStatus.View:
                     tbNew.Enabled = true;
                     tbEdit.Enabled = true;
                     tbDelete.Enabled = true;
                     tbSave.Enabled = false;
+                    tbCheckFaild.Enabled = false;
+                    tbCheckPassed.Enabled = false;
+                    SetEditorStatus(false);
+                    break;
+                case winStatus.Check:
+                    tbNew.Enabled = false;
+                    tbEdit.Enabled = false;
+                    tbDelete.Enabled = false;
+                    tbSave.Enabled = false;
+                    tbCheckFaild.Enabled = true;
+                    tbCheckPassed.Enabled = true;
+                    SetEditorStatus(false);
+                    break;
+                case winStatus.OnlyView:
+                    tbNew.Enabled = false;
+                    tbEdit.Enabled = false;
+                    tbDelete.Enabled = false;
+                    tbSave.Enabled = false;
+                    tbCheckFaild.Enabled = false;
+                    tbCheckPassed.Enabled = false;
+                    SetEditorStatus(false);
                     break;
             }
+        }
+
+        /// <summary>
+        /// 设置当前输入控件是否可用。
+        /// </summary>
+        /// <param name="status"></param>
+        private void SetEditorStatus(bool status)
+        {
+            dtSigned.Properties.ReadOnly = !status;
+            txtCode.Properties.ReadOnly = !status;
+            lueInCompany.Properties.ReadOnly = !status;
+            lueOutCompany.Properties.ReadOnly = !status;
+            txtMemo.Properties.ReadOnly = !status;
+
+            tsbNew.Enabled = status;
+            tsbDelete.Enabled = status;
+            gridView1.OptionsBehavior.ReadOnly = !status;
+
+            tsbAttachDelete.Enabled = status;
+            tsbAttachNew.Enabled = status;
         }
 
         /// <summary>
@@ -62,7 +109,7 @@ namespace Haimen.NewGUI
         {
             if (m_account.ID > 0)
             {
-                dtSigned.Value = m_account.SignedDate;
+                dtSigned.EditValue = m_account.SignedDate;
                 txtCode.Text = m_account.Code;
                 lueInCompany.EditValue = m_account.In_Company_ID;
                 lueOutCompany.EditValue = m_account.Out_Company_ID;
@@ -76,7 +123,7 @@ namespace Haimen.NewGUI
             }
             else
             {
-                dtSigned.Value = DateTime.Now;
+                dtSigned.EditValue = DateTime.Now;
                 txtCode.Text = "";
                 lueInCompany.EditValue = null;
                 lueOutCompany.EditValue = null;
@@ -87,6 +134,17 @@ namespace Haimen.NewGUI
                 txtInCompanyBank.Text = "";
 
                 txtMemo.Text = "";
+            }
+            switch (m_account.Status)
+            {
+                case 2:
+                    picPass.Visible = true;
+                    picCheckFaild.Visible = false;
+                    break;
+                case 3:
+                    picPass.Visible = false;
+                    picCheckFaild.Visible = true;
+                    break;
             }
         }
 
@@ -122,7 +180,7 @@ namespace Haimen.NewGUI
         /// <returns></returns>
         private bool Verify()
         {
-            m_account.SignedDate = dtSigned.Value;
+            m_account.SignedDate = DateTime.Parse( dtSigned.EditValue.ToString());
             //TODO: 未完成
             return true;
         }
@@ -131,20 +189,15 @@ namespace Haimen.NewGUI
         /// 构造函数
         /// </summary>
         /// <param name="account"></param>
-        public DevAccount(Account account = null)
+        public DevAccount(winStatus status, Account account = null)
         {
             InitializeComponent();
 
+            SetFormStatus(status);
             if (account != null)
-            {
                 m_account = account;
-                SetFormStatus(winStatus.Edit);
-            }
             else
-            {
                 m_account = new Account();
-                SetFormStatus(winStatus.New);
-            }
         }
 
         private void DevAccount_Load(object sender, EventArgs e)
@@ -162,9 +215,14 @@ namespace Haimen.NewGUI
         private void lueOutCompany_EditValueChanged(object sender, EventArgs e)
         {
             if (lueOutCompany.EditValue != null)
+            {
                 m_account.Out_Company_ID = long.Parse(lueOutCompany.EditValue.ToString());
-            txtOutCompanyBank.Text = m_account.OutCompany.Bank.Name;
-            txtOutComapnyAccount.Text = m_account.OutCompany.Account;
+                txtOutCompanyBank.Text = m_account.OutCompany.Bank.Name;
+                txtOutComapnyAccount.Text = m_account.OutCompany.Account;
+            }
+            
+            // 生成单据字
+            txtCode.Text = m_account.OutCompany.NextDoc();
         }
 
         /// <summary>
@@ -175,14 +233,16 @@ namespace Haimen.NewGUI
         private void lueInCompany_EditValueChanged(object sender, EventArgs e)
         {
             if (lueInCompany.EditValue != null)
+            {
                 m_account.In_Company_ID = long.Parse(lueInCompany.EditValue.ToString());
-            txtInCompanyBank.Text = m_account.InCompany.Bank.Name;
-            txtInCompanyAccount.Text = m_account.InCompany.Account;
+                txtInCompanyBank.Text = m_account.InCompany.Bank.Name;
+                txtInCompanyAccount.Text = m_account.InCompany.Account;
+            }
         }
 
         private void dtSigned_ValueChanged(object sender, EventArgs e)
         {
-            m_account.SignedDate = dtSigned.Value;
+            m_account.SignedDate = DateTime.Parse( dtSigned.EditValue.ToString());
         }
 
         private void txtCode_TextChanged(object sender, EventArgs e)
@@ -195,6 +255,11 @@ namespace Haimen.NewGUI
             m_account.Memo = txtMemo.Text;
         }
 
+        /// <summary>
+        /// 增加明细
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbNew_Click(object sender, EventArgs e)
         {
             m_account.DetailList.Add(new AccountDetail());
@@ -202,8 +267,19 @@ namespace Haimen.NewGUI
             gridControl1.DataSource = m_account.DetailList;
         }
 
+        /// <summary>
+        /// 删除明细
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbDelete_Click(object sender, EventArgs e)
         {
+            //if (gridView1.FocusedRowHandle < 0)
+            //    return;
+
+            //long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
+
+
             gridView1.DeleteRow(gridView1.FocusedRowHandle);
         }
 
@@ -259,9 +335,17 @@ namespace Haimen.NewGUI
         private void tbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (m_account.ID > 0)
+            {
                 m_account.Destory();
+                m_account = null;
+            }
         }
 
+        /// <summary>
+        /// 上传文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbAttachNew_Click(object sender, EventArgs e)
         {
             OpenFileDialog fd = new OpenFileDialog();
@@ -297,7 +381,7 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void tbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatus.View)
+            if (!(m_status == winStatus.View || m_status == winStatus.OnlyView))
             {
                 if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
                                    "警告",
@@ -332,6 +416,12 @@ namespace Haimen.NewGUI
             }
         }
 
+
+        /// <summary>
+        /// 双击附件，显示附件内容
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstFiles_DoubleClick(object sender, EventArgs e)
         {
             string[] temp = lstFiles.Items[lstFiles.SelectedIndex].Value.ToString().Split('.');

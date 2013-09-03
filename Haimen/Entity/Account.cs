@@ -5,6 +5,7 @@ using System.Text;
 
 using Haimen.Qy;
 using Haimen.Entity;
+using Haimen.Helper;
 
 namespace Haimen.Entity
 {

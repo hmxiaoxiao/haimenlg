@@ -15,5 +15,10 @@ namespace Haimen.NewGUI
         {
             InitializeComponent();
         }
+
+        private void tsbNew_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

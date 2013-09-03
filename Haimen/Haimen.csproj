@@ -151,6 +151,7 @@
     <Compile Include="Entity\CompanyDetail.cs" />
     <Compile Include="Entity\Contract.cs" />
     <Compile Include="Entity\ContractDetail.cs" />
+    <Compile Include="Entity\Dict.cs" />
     <Compile Include="Entity\Funds.cs" />
     <Compile Include="Helper\CustomerINI.cs" />
     <Compile Include="Helper\FTPClient.cs" />
@@ -166,7 +167,9 @@
     <Compile Include="NewGUI\DevAccountList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevAccountList.Designer.cs" />
+    <Compile Include="NewGUI\DevAccountList.Designer.cs">
+      <DependentUpon>DevAccountList.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewGUI\DevAccountQuery.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -531,7 +534,9 @@
     <EmbeddedResource Include="NewGUI\DevAccount.resx">
       <DependentUpon>DevAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevAccountList.resx" />
+    <EmbeddedResource Include="NewGUI\DevAccountList.resx">
+      <DependentUpon>DevAccountList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevAccountQuery.resx">
       <DependentUpon>DevAccountQuery.cs</DependentUpon>
     </EmbeddedResource>

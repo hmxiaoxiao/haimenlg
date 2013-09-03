@@ -276,7 +276,7 @@
             // 
             // tsbEdit
             // 
-            this.tsbEdit.Caption = "修改";
+            this.tsbEdit.Caption = "编辑";
             this.tsbEdit.Glyph = global::Haimen.Properties.Resources.Edit_hot;
             this.tsbEdit.GlyphDisabled = global::Haimen.Properties.Resources.Edit_disabled;
             this.tsbEdit.Id = 1;

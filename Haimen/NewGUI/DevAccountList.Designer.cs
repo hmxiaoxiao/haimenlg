@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -46,6 +46,8 @@
             this.col_incompany = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_incompany_bank = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_incompany_account = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lueStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.col_memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_signed = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -53,17 +55,18 @@
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.tsbNewOutput = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbNewInput = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
             this.tsbModify = new DevExpress.XtraBars.BarButtonItem();
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbVerify = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbCheck = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.tsbNewInput = new DevExpress.XtraBars.BarButtonItem();
             this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.c1SplitterPanel1 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
@@ -72,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
@@ -91,9 +95,9 @@
             // gridControl2
             // 
             this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl2.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView3;
             this.gridControl2.Name = "gridControl2";
@@ -136,6 +140,8 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.lueStatus});
             this.gridControl1.Size = new System.Drawing.Size(563, 500);
             this.gridControl1.TabIndex = 23;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -158,11 +164,14 @@
             this.col_incompany,
             this.col_incompany_bank,
             this.col_incompany_account,
-            this.col_memo,
-            this.col_signed});
+            this.col_status,
+            this.col_signed,
+            this.col_memo});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsNavigation.EnterMoveNextColumn = true;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
             // 
@@ -228,13 +237,31 @@
             this.col_incompany_account.Visible = true;
             this.col_incompany_account.VisibleIndex = 6;
             // 
+            // col_status
+            // 
+            this.col_status.Caption = "状态";
+            this.col_status.ColumnEdit = this.lueStatus;
+            this.col_status.FieldName = "Status";
+            this.col_status.Name = "col_status";
+            this.col_status.Visible = true;
+            this.col_status.VisibleIndex = 7;
+            // 
+            // lueStatus
+            // 
+            this.lueStatus.AutoHeight = false;
+            this.lueStatus.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueStatus.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
+            this.lueStatus.Name = "lueStatus";
+            // 
             // col_memo
             // 
             this.col_memo.Caption = "备注";
             this.col_memo.FieldName = "Memo";
             this.col_memo.Name = "col_memo";
             this.col_memo.Visible = true;
-            this.col_memo.VisibleIndex = 7;
+            this.col_memo.VisibleIndex = 9;
             // 
             // col_signed
             // 
@@ -278,14 +305,15 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.tsbNewOutput,
+            this.tsbNew,
             this.tsbNewInput,
             this.tsbModify,
             this.tsbDelete,
-            this.tsbVerify,
+            this.tsbCheck,
             this.tsbQuery,
-            this.tsbExit});
-            this.barManager1.MaxItemId = 7;
+            this.tsbExit,
+            this.tsbRefresh});
+            this.barManager1.MaxItemId = 9;
             // 
             // bar1
             // 
@@ -294,33 +322,26 @@
             this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbNewOutput, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbNew, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbModify, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbVerify, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
-            // tsbNewOutput
+            // tsbNew
             // 
-            this.tsbNewOutput.Caption = "新增";
-            this.tsbNewOutput.Glyph = global::Haimen.Properties.Resources.New_hot;
-            this.tsbNewOutput.Id = 0;
-            this.tsbNewOutput.Name = "tsbNewOutput";
-            this.tsbNewOutput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbNewOutput_ItemClick);
-            // 
-            // tsbNewInput
-            // 
-            this.tsbNewInput.Caption = "新增收入";
-            this.tsbNewInput.Glyph = global::Haimen.Properties.Resources.Note_Add_hot;
-            this.tsbNewInput.Id = 1;
-            this.tsbNewInput.Name = "tsbNewInput";
-            this.tsbNewInput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbNewInput_ItemClick);
+            this.tsbNew.Caption = "新增";
+            this.tsbNew.Glyph = global::Haimen.Properties.Resources.New_hot;
+            this.tsbNew.Id = 0;
+            this.tsbNew.Name = "tsbNew";
+            this.tsbNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbNew_ItemClick);
             // 
             // tsbModify
             // 
-            this.tsbModify.Caption = "修改";
+            this.tsbModify.Caption = "编辑";
             this.tsbModify.Glyph = global::Haimen.Properties.Resources.Edit_hot;
             this.tsbModify.Id = 2;
             this.tsbModify.Name = "tsbModify";
@@ -334,13 +355,13 @@
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbDelete_ItemClick);
             // 
-            // tsbVerify
+            // tsbCheck
             // 
-            this.tsbVerify.Caption = "审核";
-            this.tsbVerify.Glyph = global::Haimen.Properties.Resources.Close_hot;
-            this.tsbVerify.Id = 4;
-            this.tsbVerify.Name = "tsbVerify";
-            this.tsbVerify.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbVerify_ItemClick);
+            this.tsbCheck.Caption = "审核";
+            this.tsbCheck.Glyph = global::Haimen.Properties.Resources.Close_hot;
+            this.tsbCheck.Id = 4;
+            this.tsbCheck.Name = "tsbCheck";
+            this.tsbCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbCheck_ItemClick);
             // 
             // tsbQuery
             // 
@@ -349,6 +370,14 @@
             this.tsbQuery.Id = 5;
             this.tsbQuery.Name = "tsbQuery";
             this.tsbQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbQuery_ItemClick);
+            // 
+            // tsbRefresh
+            // 
+            this.tsbRefresh.Caption = "刷新";
+            this.tsbRefresh.Glyph = global::Haimen.Properties.Resources.Refresh_hot;
+            this.tsbRefresh.Id = 8;
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
             // 
             // tsbExit
             // 
@@ -386,6 +415,11 @@
             this.barDockControlRight.Location = new System.Drawing.Point(744, 37);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 521);
             // 
+            // tsbNewInput
+            // 
+            this.tsbNewInput.Id = 7;
+            this.tsbNewInput.Name = "tsbNewInput";
+            // 
             // c1SplitContainer1
             // 
             this.c1SplitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -397,7 +431,9 @@
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel1);
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel2);
             this.c1SplitContainer1.Size = new System.Drawing.Size(744, 521);
+            this.c1SplitContainer1.SplitterColor = System.Drawing.Color.Transparent;
             this.c1SplitContainer1.TabIndex = 33;
+            this.c1SplitContainer1.UseParentVisualStyle = false;
             // 
             // c1SplitterPanel1
             // 
@@ -439,6 +475,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).EndInit();
@@ -474,11 +511,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.BarButtonItem tsbNewOutput;
+        private DevExpress.XtraBars.BarButtonItem tsbNew;
         private DevExpress.XtraBars.BarButtonItem tsbNewInput;
         private DevExpress.XtraBars.BarButtonItem tsbModify;
         private DevExpress.XtraBars.BarButtonItem tsbDelete;
-        private DevExpress.XtraBars.BarButtonItem tsbVerify;
+        private DevExpress.XtraBars.BarButtonItem tsbCheck;
         private DevExpress.XtraBars.BarButtonItem tsbQuery;
         private DevExpress.XtraBars.BarButtonItem tsbExit;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
@@ -488,5 +525,8 @@
         private C1.Win.C1SplitContainer.C1SplitContainer c1SplitContainer1;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel1;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel2;
+        private DevExpress.XtraGrid.Columns.GridColumn col_status;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueStatus;
+        private DevExpress.XtraBars.BarButtonItem tsbRefresh;
     }
 }

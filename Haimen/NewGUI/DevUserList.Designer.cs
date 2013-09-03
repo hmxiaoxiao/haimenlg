@@ -205,6 +205,7 @@
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(52, 22);
             this.tsbNew.Text = "新增";
+            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // toolStrip2
             // 

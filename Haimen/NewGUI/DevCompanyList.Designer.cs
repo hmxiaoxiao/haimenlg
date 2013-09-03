@@ -188,7 +188,7 @@
             // 
             // tsbEdit
             // 
-            this.tsbEdit.Caption = "修改";
+            this.tsbEdit.Caption = "编辑";
             this.tsbEdit.Glyph = global::Haimen.Properties.Resources.Edit_hot;
             this.tsbEdit.Id = 1;
             this.tsbEdit.Name = "tsbEdit";

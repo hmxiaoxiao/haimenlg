@@ -22,8 +22,21 @@ namespace Haimen.Helper
         /// 编辑
         /// </summary>
         Edit,
+
+        /// <summary>
+        /// 审核
+        /// </summary>
+        Check,
+
+        /// <summary>
+        /// 只是查看
+        /// </summary>
+        OnlyView,
     }
 
+    /// <summary>
+    /// 在INI中关于数据库的KEY
+    /// </summary>
     public enum INIDBKey
     {
         /// <summary>
@@ -47,6 +60,9 @@ namespace Haimen.Helper
         Password,
     }
 
+    /// <summary>
+    /// INI中关于FTP的配置KEY
+    /// </summary>
     public enum INIFTPKey
     {
         /// <summary>
@@ -63,5 +79,13 @@ namespace Haimen.Helper
         /// 密码
         /// </summary>
         Password,
+    }
+
+    public enum CheckStatus
+    {
+        WaitCheck = 1,
+        Checked ,
+        Paying ,
+        Done
     }
 }

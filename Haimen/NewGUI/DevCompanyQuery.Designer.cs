@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.lueBanks = new DevExpress.XtraEditors.LookUpEdit();
             this.txtAccount = new C1.Win.C1Input.C1TextBox();
             this.txtName = new C1.Win.C1Input.C1TextBox();
             this.txtCode = new C1.Win.C1Input.C1TextBox();
@@ -36,12 +37,12 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.btnQuery = new C1.Win.C1Input.C1Button();
             this.btnExit = new C1.Win.C1Input.C1Button();
-            this.lueBanks = new DevExpress.XtraEditors.LookUpEdit();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lueBanks.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
@@ -49,7 +50,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueBanks.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,6 +66,20 @@
             this.layoutControl1.Size = new System.Drawing.Size(342, 184);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // lueBanks
+            // 
+            this.lueBanks.Location = new System.Drawing.Point(70, 140);
+            this.lueBanks.Name = "lueBanks";
+            this.lueBanks.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueBanks.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
+            this.lueBanks.Properties.NullText = "";
+            this.lueBanks.Size = new System.Drawing.Size(252, 20);
+            this.lueBanks.StyleController = this.layoutControl1;
+            this.lueBanks.TabIndex = 7;
             // 
             // txtAccount
             // 
@@ -141,6 +155,17 @@
             this.layoutControlItem3.Text = "帐号：";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
             // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.lueBanks;
+            this.layoutControlItem4.CustomizationFormText = "开户行：";
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
+            this.layoutControlItem4.Size = new System.Drawing.Size(322, 44);
+            this.layoutControlItem4.Text = "开户行：";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
+            // 
             // btnQuery
             // 
             this.btnQuery.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -163,31 +188,6 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // lueBanks
-            // 
-            this.lueBanks.Location = new System.Drawing.Point(70, 140);
-            this.lueBanks.Name = "lueBanks";
-            this.lueBanks.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueBanks.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
-            this.lueBanks.Properties.NullText = "";
-            this.lueBanks.Size = new System.Drawing.Size(252, 20);
-            this.lueBanks.StyleController = this.layoutControl1;
-            this.lueBanks.TabIndex = 7;
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.lueBanks;
-            this.layoutControlItem4.CustomizationFormText = "开户行：";
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 120);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem4.Size = new System.Drawing.Size(322, 44);
-            this.layoutControlItem4.Text = "开户行：";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
-            // 
             // DevCompanyQuery
             // 
             this.AcceptButton = this.btnQuery;
@@ -204,6 +204,7 @@
             this.Load += new System.EventHandler(this.DevCompanyQuery_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lueBanks.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAccount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode)).EndInit();
@@ -211,7 +212,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueBanks.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
 

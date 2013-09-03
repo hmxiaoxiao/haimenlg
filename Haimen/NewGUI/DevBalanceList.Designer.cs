@@ -102,7 +102,7 @@
             // 
             // tsbEdit
             // 
-            this.tsbEdit.Caption = "修改";
+            this.tsbEdit.Caption = "编辑";
             this.tsbEdit.Glyph = global::Haimen.Properties.Resources.Edit_hot;
             this.tsbEdit.Id = 1;
             this.tsbEdit.Name = "tsbEdit";
@@ -153,7 +153,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(799, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(799, 37);
             // 
             // barDockControlBottom
             // 
@@ -166,24 +166,24 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 441);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 37);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 443);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(799, 39);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 441);
+            this.barDockControlRight.Location = new System.Drawing.Point(799, 37);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 443);
             // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 39);
+            this.gridControl1.Location = new System.Drawing.Point(0, 37);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(799, 441);
+            this.gridControl1.Size = new System.Drawing.Size(799, 443);
             this.gridControl1.TabIndex = 28;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});

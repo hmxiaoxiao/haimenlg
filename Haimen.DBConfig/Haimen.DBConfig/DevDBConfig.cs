@@ -48,7 +48,7 @@ namespace Haimen.DBConfig
             }
             catch(Exception err)
             {
-                MessageBox.Show("参数不正确，请重新设置");
+                MessageBox.Show("参数不正确，请重新设置: \n\r" + err.Message, "注意");
             }
         }
 

@@ -65,5 +65,60 @@ namespace Haimen.Entity
             return true;
         }
 
+        [Field("doc_date")]
+        public string DocDate { get; set; }
+
+        [Field("gen_doc")]
+        public long GenDoc { get; set; }
+        
+
+        public string NextDoc()
+        {
+            //            sql += "(" + fields.Substring(0, fields.Length - 1) + ") ";
+            //sql += " values(" + values.Substring(0, values.Length - 1) + ")";
+            //sql += "; select @@identity ";
+
+            //using (TransactionScope ts = new TransactionScope())
+            //{
+            //    cmd.CommandText = sql;
+            //    this.ID = long.Parse(cmd.ExecuteScalar().ToString());
+
+            //    ts.Complete();
+            //}
+            //return true;
+
+            string relVal = "";
+            // 如果不需要单据字，则直接退出
+            if (string.IsNullOrEmpty(this.Doc))
+                return relVal;
+
+
+            // 因为在内存的对象可能是很久以前的数据，
+            // 所以要重新从数据库里面取一次。
+            Company com = Company.CreateByID(this.ID);
+            if (string.IsNullOrEmpty(this.DocDate))
+            {
+                com.DocDate = string.Format("{0:yyyyMMdd}", DateTime.Now);
+                com.GenDoc = 1;
+                com.Save();
+            }
+            else
+            {
+                if (com.DocDate == string.Format("{0:yyyyMMdd}", DateTime.Now))
+                {
+                    com.GenDoc += 1;
+                    com.Save();
+                }
+                else
+                {
+                    com.DocDate = string.Format("{0:yyyyMMdd}", DateTime.Now);
+                    com.GenDoc = 1;
+                    com.Save();
+                }
+            }
+            relVal = com.Doc + com.DocDate + string.Format("{0:000}",com.GenDoc);
+            return relVal;
+        }
+
     }
 }
