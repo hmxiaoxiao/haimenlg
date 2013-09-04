@@ -6,6 +6,7 @@ using System.Text;
 using Haimen.Qy;
 using Haimen.Entity;
 using Haimen.Helper;
+using System.Transactions;
 
 namespace Haimen.Entity
 {
@@ -137,6 +138,78 @@ namespace Haimen.Entity
         [Field("memo")]
         public string Memo { get; set; }
 
+        /// <summary>
+        /// 审核通过
+        /// </summary>
+        public void CheckPass()
+        {
+            using (TransactionScope ts = new TransactionScope())
+            {
+                // 改标志为已审核
+                this.Status = 1;
 
+                Company inCom = Company.CreateByID(this.In_Company_ID);
+                Company outCom = Company.CreateByID(this.Out_Company_ID);
+
+                // 加入一个查找标记
+                bool finded = false;
+
+                // 先处理收入单位
+                foreach (CompanyDetail cd in inCom.DetailList)
+                {
+                    // 如果找到了，更新该单位的银行资金
+                    if (cd.Bank_ID == InCompany.Bank_ID && cd.Account == InCompany.Account)
+                    {
+                        finded = true;
+                        foreach (AccountDetail ad in this.DetailList)
+                            cd.Balance += ad.Money;
+                    }
+                }
+                // 如果没有找到，则在单位帐号表里面增加一条记录
+                if (!finded)
+                {
+                    CompanyDetail cde = new CompanyDetail();
+                    cde.Bank_ID = this.InCompany.Bank_ID;
+                    cde.Account = this.InCompany.Account;
+                    foreach (AccountDetail ad in this.DetailList)
+                    {
+                        cde.Balance += ad.Money;
+                    }
+                    inCom.DetailList.Add(cde);
+                }
+
+                //-------------------
+                // 再处理支出单位
+                finded = false;
+                foreach (CompanyDetail cd in outCom.DetailList)
+                {
+                    // 如果找到了，更新该单位的银行资金
+                    if (cd.Bank_ID == OutCompany.Bank_ID && cd.Account == OutCompany.Account)
+                    {
+                        finded = true;
+                        foreach (AccountDetail ad in this.DetailList)
+                            cd.Balance -= ad.Money;
+                    }
+                }
+                // 如果没有找到，则在单位帐号表里面增加一条记录
+                if (!finded)
+                {
+                    CompanyDetail cde = new CompanyDetail();
+                    cde.Bank_ID = this.OutCompany.Bank_ID;
+                    cde.Account = this.OutCompany.Account;
+                    foreach (AccountDetail ad in this.DetailList)
+                    {
+                        cde.Balance -= ad.Money;
+                    }
+                    outCom.DetailList.Add(cde);
+                }
+
+                inCom.Save();       // 保存收入单位帐号余额
+                outCom.Save();      // 保存支出单位的帐号余额
+                this.Save();        // 保存审核标记
+
+                ts.Complete();
+            }
+        }
     }
 }

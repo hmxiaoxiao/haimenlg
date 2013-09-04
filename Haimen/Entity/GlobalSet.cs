@@ -33,7 +33,24 @@ namespace Haimen.Entity
             } 
         }
 
-        public static List<Dict> CheckList = Dict.Query("belong = 'Check'");
+        private static List<Dict> m_list;
+        public static List<Dict> CheckList
+        {
+            get
+            {
+                if (m_list == null)
+                {
+                    m_list = new List<Dict>();
+                    m_list.Add(new Dict("未审核", 0));
+                    m_list.Add(new Dict("审核通过", 1));
+                    m_list.Add(new Dict("审核未通过", 2));
+                    m_list.Add(new Dict("再次审核", 3));
+                    m_list.Add(new Dict("支付中", 4));
+                    m_list.Add(new Dict("关闭", 5));
+                }
+                return m_list;
+            }
+        }
 
     }
 }

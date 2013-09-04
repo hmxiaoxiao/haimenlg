@@ -7,19 +7,22 @@ using Haimen.Qy;
 
 namespace Haimen.Entity
 {
-    [Table("m_dict")]
-    public class Dict : MEntityFunction<Dict>
+
+    public class Dict
     {
-        [Field("name")]
+        public Dict()
+        {
+        }
+
+        public Dict(string name, long value)
+        {
+            Name = name;
+            ValueInt = value;
+        }
+
         public string Name { get; set; }
 
-        [Field("value_int")]
         public long ValueInt { get; set; }
-
-        [Field("value_string")]
-        public string ValueString { get; set; }
-
-        [Field("belong")]
-        public string Belong { get; set; }
     }
+
 }

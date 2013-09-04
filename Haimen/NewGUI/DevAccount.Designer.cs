@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevAccount));
             this.lueInCompany = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.txtCode = new DevExpress.XtraEditors.TextEdit();
+            this.txtMemo = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.tbNew = new DevExpress.XtraBars.BarButtonItem();
@@ -49,6 +49,7 @@
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemPictureEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
+            this.txtCode = new DevExpress.XtraEditors.TextEdit();
             this.dtSigned = new DevExpress.XtraEditors.DateEdit();
             this.lookUpEdit5 = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEdit6 = new DevExpress.XtraEditors.LookUpEdit();
@@ -68,6 +69,7 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -90,15 +92,14 @@
             this.tsbAttachDelete = new System.Windows.Forms.ToolStripButton();
             this.picPass = new DevExpress.XtraEditors.PictureEdit();
             this.picCheckFaild = new DevExpress.XtraEditors.PictureEdit();
-            this.txtMemo = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMemo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtSigned.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtSigned.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit5.Properties)).BeginInit();
@@ -115,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luefunds)).BeginInit();
@@ -127,8 +129,6 @@
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMemo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             this.SuspendLayout();
             // 
             // lueInCompany
@@ -166,14 +166,14 @@
             this.layoutControl1.TabIndex = 69;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // txtCode
+            // txtMemo
             // 
-            this.txtCode.Location = new System.Drawing.Point(342, 10);
-            this.txtCode.MenuManager = this.barManager1;
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(212, 20);
-            this.txtCode.StyleController = this.layoutControl1;
-            this.txtCode.TabIndex = 5;
+            this.txtMemo.Location = new System.Drawing.Point(60, 154);
+            this.txtMemo.MenuManager = this.barManager1;
+            this.txtMemo.Name = "txtMemo";
+            this.txtMemo.Size = new System.Drawing.Size(494, 20);
+            this.txtMemo.StyleController = this.layoutControl1;
+            this.txtMemo.TabIndex = 40;
             // 
             // barManager1
             // 
@@ -252,6 +252,7 @@
             this.tbCheckPassed.Glyph = global::Haimen.Properties.Resources.Tick_hot;
             this.tbCheckPassed.Id = 5;
             this.tbCheckPassed.Name = "tbCheckPassed";
+            this.tbCheckPassed.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbCheckPassed_ItemClick);
             // 
             // tbCheckFaild
             // 
@@ -273,7 +274,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(846, 37);
+            this.barDockControlTop.Size = new System.Drawing.Size(846, 39);
             // 
             // barDockControlBottom
             // 
@@ -286,15 +287,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 37);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 545);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 543);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(846, 37);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 545);
+            this.barDockControlRight.Location = new System.Drawing.Point(846, 39);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 543);
             // 
             // barEditItem1
             // 
@@ -311,6 +312,15 @@
             // repositoryItemPictureEdit1
             // 
             this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
+            // 
+            // txtCode
+            // 
+            this.txtCode.Location = new System.Drawing.Point(342, 10);
+            this.txtCode.MenuManager = this.barManager1;
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(212, 20);
+            this.txtCode.StyleController = this.layoutControl1;
+            this.txtCode.TabIndex = 5;
             // 
             // dtSigned
             // 
@@ -531,6 +541,17 @@
             this.layoutControlItem11.Size = new System.Drawing.Size(281, 38);
             this.layoutControlItem11.Text = "合同编号";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.Control = this.txtMemo;
+            this.layoutControlItem12.CustomizationFormText = "备注";
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 144);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Padding = new DevExpress.XtraLayout.Utils.Padding(8, 8, 8, 8);
+            this.layoutControlItem12.Size = new System.Drawing.Size(560, 36);
+            this.layoutControlItem12.Text = "备注";
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(48, 14);
             // 
             // gridControl1
             // 
@@ -773,26 +794,6 @@
             this.picCheckFaild.TabIndex = 64;
             this.picCheckFaild.Visible = false;
             // 
-            // txtMemo
-            // 
-            this.txtMemo.Location = new System.Drawing.Point(60, 154);
-            this.txtMemo.MenuManager = this.barManager1;
-            this.txtMemo.Name = "txtMemo";
-            this.txtMemo.Size = new System.Drawing.Size(494, 20);
-            this.txtMemo.StyleController = this.layoutControl1;
-            this.txtMemo.TabIndex = 40;
-            // 
-            // layoutControlItem12
-            // 
-            this.layoutControlItem12.Control = this.txtMemo;
-            this.layoutControlItem12.CustomizationFormText = "备注";
-            this.layoutControlItem12.Location = new System.Drawing.Point(0, 144);
-            this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Padding = new DevExpress.XtraLayout.Utils.Padding(8, 8, 8, 8);
-            this.layoutControlItem12.Size = new System.Drawing.Size(560, 36);
-            this.layoutControlItem12.Text = "备注";
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(48, 14);
-            // 
             // DevAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -812,10 +813,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMemo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtSigned.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtSigned.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit5.Properties)).EndInit();
@@ -832,6 +834,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luefunds)).EndInit();
@@ -848,8 +851,6 @@
             this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMemo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             this.ResumeLayout(false);
 
         }

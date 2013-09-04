@@ -135,13 +135,18 @@ namespace Haimen.NewGUI
 
                 txtMemo.Text = "";
             }
+            ShowCheckPic();
+        }
+
+        private void ShowCheckPic()
+        {
             switch (m_account.Status)
             {
-                case 2:
+                case 1:
                     picPass.Visible = true;
                     picCheckFaild.Visible = false;
                     break;
-                case 3:
+                case 2:
                     picPass.Visible = false;
                     picCheckFaild.Visible = true;
                     break;
@@ -222,7 +227,8 @@ namespace Haimen.NewGUI
             }
             
             // 生成单据字
-            txtCode.Text = m_account.OutCompany.NextDoc();
+            if (string.IsNullOrEmpty(txtCode.Text))
+                txtCode.Text = m_account.OutCompany.NextDoc();
         }
 
         /// <summary>
@@ -442,6 +448,19 @@ namespace Haimen.NewGUI
                 }
 
             }
+        }
+
+
+        /// <summary>
+        /// 审核通过
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbCheckPassed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            m_account.CheckPass();
+            SetFormStatus(winStatus.OnlyView);      //审核通过后，只能看。
+            ShowCheckPic();
         }
     }
 }
