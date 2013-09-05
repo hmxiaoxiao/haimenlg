@@ -77,10 +77,24 @@ namespace Haimen.Entity
         }
 
 
-        [Field("static")]
-        public long Static { get; set; }
+        [Field("status")]
+        public long Status { get; set; }
 
         [Field("memo")]
         public string Memo { get; set; }
+
+        // 审核通过
+        public void CheckPassed()
+        {
+            this.Status = (long)MyCheckStatus.Checked;
+            this.Save();
+        }
+
+        // 审核不通过
+        public void CheckFaild()
+        {
+            this.Status = (long)MyCheckStatus.Unpass;
+            this.Save();
+        }
     }
 }

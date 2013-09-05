@@ -8,22 +8,30 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 using Haimen.Entity;
+using Haimen.Helper;
 
 namespace Haimen.NewGUI
 {
     public partial class DevBalanceList : DevExpress.XtraEditors.XtraForm
     {
+        /// <summary>
+        /// 当前的货款列表
+        /// </summary>
         private List<Balance> m_balances;
-        private DevMain m_main ;
+
+        /// <summary>
+        /// 主窗口用来打开MDI窗口
+        /// </summary>
+        private DevMain m_main_window ;
 
         /// <summary>
         /// 编辑当前的行对象
         /// </summary>
-        private void OpenEditForm()
+        private void EditBalance()
         {
             Balance bal = CurrentSelectObject();
             if (bal != null)
-                m_main.OpenForm(new DevBalance(bal));
+                m_main_window.OpenForm(new DevBalance(winStatus.Edit, bal));
             return;
         }
 
@@ -40,15 +48,14 @@ namespace Haimen.NewGUI
             foreach (Balance bl in m_balances)
             {
                 if (bl.ID == id)
-                {
                     return bl;
-                }
             }
             return null;
         }
 
         /// <summary>
-        /// 自定义更新
+        /// 自定义刷新
+        /// 这里刷新会把以前的条件全部去掉，即显示全部对象
         /// </summary>
         private void MyRefresh()
         {
@@ -65,22 +72,39 @@ namespace Haimen.NewGUI
 
         private void DevBalanceList_Load(object sender, EventArgs e)
         {
-            m_main = (DevMain)this.ParentForm;
+            // 设置父结窗口
+            m_main_window = (DevMain)this.ParentForm;
 
+            // 刷新窗口
             MyRefresh();
         }
 
+        /// <summary>
+        /// 新增
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DevMain main = (DevMain)this.ParentForm;
-            main.OpenForm(new DevBalance());
+            main.OpenForm(new DevBalance(winStatus.New));
         }
 
+        /// <summary>
+        /// 编辑
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            OpenEditForm();
+            EditBalance();
         }
 
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Balance bal = CurrentSelectObject();
@@ -91,17 +115,34 @@ namespace Haimen.NewGUI
             }
         }
 
+        /// <summary>
+        /// 生成凭证
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbGene_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
         }
 
-        private void tsbVerify_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        
+        /// <summary>
+        /// 审核
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DevMain main = (DevMain)this.ParentForm;
-            main.OpenForm(new DevBalance());
+            Balance bal = CurrentSelectObject();
+            if (bal != null)
+                m_main_window.OpenForm(new DevBalance(winStatus.Check, bal));
         }
 
+        /// <summary>
+        /// 查询 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DevBalanceQuery query = new DevBalanceQuery();
@@ -115,6 +156,8 @@ namespace Haimen.NewGUI
                     filters.Add(" bank_id = " + query.Q_Bank_ID + " ");
                 if (query.Q_Company_ID.Length > 0)
                     filters.Add(" Company_id = " + query.Q_Company_ID + " ");
+                if (query.Q_Status.Length > 0)
+                    filters.Add(" status = " + query.Q_Status);
 
                 string where = "";
                 foreach (string filter in filters)
@@ -130,6 +173,11 @@ namespace Haimen.NewGUI
             }
         }
 
+        /// <summary>
+        /// 关闭窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();

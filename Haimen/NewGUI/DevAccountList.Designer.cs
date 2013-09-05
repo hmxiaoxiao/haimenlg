@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -48,8 +48,8 @@
             this.col_incompany_account = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lueStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.col_memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_signed = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -95,9 +95,9 @@
             // gridControl2
             // 
             this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.gridControl2.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView3;
             this.gridControl2.Name = "gridControl2";
@@ -255,14 +255,6 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
             this.lueStatus.Name = "lueStatus";
             // 
-            // col_memo
-            // 
-            this.col_memo.Caption = "备注";
-            this.col_memo.FieldName = "Memo";
-            this.col_memo.Name = "col_memo";
-            this.col_memo.Visible = true;
-            this.col_memo.VisibleIndex = 9;
-            // 
             // col_signed
             // 
             this.col_signed.Caption = "签订日期";
@@ -270,6 +262,14 @@
             this.col_signed.Name = "col_signed";
             this.col_signed.Visible = true;
             this.col_signed.VisibleIndex = 8;
+            // 
+            // col_memo
+            // 
+            this.col_memo.Caption = "备注";
+            this.col_memo.FieldName = "Memo";
+            this.col_memo.Name = "col_memo";
+            this.col_memo.Visible = true;
+            this.col_memo.VisibleIndex = 9;
             // 
             // gridView2
             // 

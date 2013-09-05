@@ -79,14 +79,6 @@ namespace Haimen.NewGUI
             myInitialze();
         }
 
-
-        // 打开修改密码窗口
-        private void mnuChangePassword_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            DevChangePassword win = new DevChangePassword();
-            win.ShowDialog();
-        }
-
         // 资金性质
         private void mnuFouds_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -177,7 +169,7 @@ namespace Haimen.NewGUI
             // 检查是否已经存在
             if (!FormAlreadyOpen(typeof(DevContract)))
             {
-                DevContract list = new DevContract();
+                DevContract list = new DevContract(winStatus.New);
                 list.MdiParent = this;
                 list.Show();
             }
@@ -199,7 +191,7 @@ namespace Haimen.NewGUI
             // 检查是否已经存在
             if (!FormAlreadyOpen(typeof(DevBalance)))
             {
-                DevBalance list = new DevBalance();
+                DevBalance list = new DevBalance(winStatus.New);
                 list.MdiParent = this;
                 list.Show();
             }

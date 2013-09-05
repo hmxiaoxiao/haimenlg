@@ -15,6 +15,7 @@ namespace Haimen.NewGUI
     {
         public string Q_Code = "";
         public string Q_company_ID = "";
+        public string Q_Check = "";
 
         private List<Company> m_companies = Company.Query();
 
@@ -28,6 +29,10 @@ namespace Haimen.NewGUI
             lueCompany.Properties.DataSource = m_companies;
             lueCompany.Properties.DisplayMember = "Name";
             lueCompany.Properties.ValueMember = "ID";
+
+            lueCheck.Properties.DataSource = GlobalSet.CheckList;
+            lueCheck.Properties.DisplayMember = "Name";
+            lueCheck.Properties.ValueMember = "ValueInt";
         }
 
         private void btnQuery_Click(object sender, EventArgs e)
@@ -35,6 +40,8 @@ namespace Haimen.NewGUI
             Q_Code = txtCode.Text;
             if (lueCompany.EditValue != null)
                 Q_company_ID = lueCompany.EditValue.ToString();
+            if (lueCheck.EditValue != null)
+                Q_Check = lueCheck.EditValue.ToString();
             this.Close();
         }
 

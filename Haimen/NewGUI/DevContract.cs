@@ -28,33 +28,92 @@ namespace Haimen.NewGUI
             switch (status)
             {
                 case winStatus.New:
-                    tbNew.Enabled = false;
-                    tbEdit.Enabled = false;
-                    tbDelete.Enabled = false;
-                    tbSave.Enabled = true;
-                    break;
                 case winStatus.Edit:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
                     tbSave.Enabled = true;
+                    tbCheckPassed.Enabled = false;
+                    tbCheckFaild.Enabled = false;
+
+                    SetControlStatus(true);
                     break;
                 case winStatus.View:
                     tbNew.Enabled = true;
                     tbEdit.Enabled = true;
                     tbDelete.Enabled = true;
                     tbSave.Enabled = false;
+                    tbCheckPassed.Enabled = false;
+                    tbCheckFaild.Enabled = false;
+
+                    SetControlStatus(false);
+                    break;
+                case winStatus.Check:
+                    tbNew.Enabled = false;
+                    tbEdit.Enabled = false;
+                    tbDelete.Enabled = false;
+                    tbSave.Enabled = false;
+                    tbCheckPassed.Enabled = true;
+                    tbCheckFaild.Enabled = true;
+
+                    SetControlStatus(false);
+                    break;
+                case winStatus.OnlyView:
+                    tbNew.Enabled = true;
+                    tbEdit.Enabled = false;
+                    tbDelete.Enabled = false;
+                    tbSave.Enabled = false;
+                    tbCheckPassed.Enabled = false;
+                    tbCheckFaild.Enabled = false;
+
+                    SetControlStatus(false);
                     break;
             }
         }
 
-        private void InitGUI()
+        // 设置输入控件的可用与否
+        private void SetControlStatus(bool enabled)
         {
-            lueCompany.Properties.DataSource = m_companies;
-            lueCompany.Properties.DisplayMember = "Name";
-            lueCompany.Properties.ValueMember = "ID";
+            txtCode.Enabled = enabled;
+            txtName.Enabled = enabled;
+            lueCompany.Enabled = enabled;
+            dtSignedDate.Enabled = enabled;
+            dtBeginDate.Enabled = enabled;
+            dtEndDate.Enabled = enabled;
+            txtMemo.Enabled = enabled;
+            txtMoney.Enabled = enabled;
+            txtPayment_ratio.Enabled = enabled;
+            txtSecurity.Enabled = enabled;
+
+            tsbNew.Enabled = enabled;
+            tsbDelete.Enabled = enabled;
+
+            tsbAttachDelete.Enabled = enabled;
+            tsbAttachNew.Enabled = enabled;
+
+            gridView1.OptionsBehavior.Editable = enabled;
         }
 
+        /// <summary>
+        /// 将界面上的数据映射到对象里
+        /// </summary>
+        private void Form2Object()
+        {
+            m_contract.Code= txtCode.Text;
+            m_contract.Name = txtName.Text;
+            m_contract.CompanyID = long.Parse(lueCompany.EditValue.ToString());
+            m_contract.SignedDate = DateTime.Parse(dtSignedDate.EditValue.ToString());
+            m_contract.BeginDate = DateTime.Parse(dtBeginDate.EditValue.ToString());
+            m_contract.EndDate = DateTime.Parse(dtEndDate.EditValue.ToString());
+            m_contract.Memo = txtMemo.Text;
+            m_contract.Money = decimal.Parse(txtMoney.Text);
+            m_contract.PaymentRatio = decimal.Parse(txtPayment_ratio.Text);
+            m_contract.Security = decimal.Parse(txtSecurity.Text);
+        }
+
+        /// <summary>
+        /// 将对象映射到界面上
+        /// </summary>
         private void Object2Form()
         {
             if (m_contract.ID > 0)
@@ -62,9 +121,9 @@ namespace Haimen.NewGUI
                 txtCode.Text = m_contract.Code;
                 txtName.Text = m_contract.Name;
                 lueCompany.EditValue = m_contract.CompanyID;
-                dtSignedDate.Value = m_contract.SignedDate;
-                dtBeginDate.Value = m_contract.BeginDate;
-                dtEndDate.Value = m_contract.EndDate;
+                dtSignedDate.EditValue = m_contract.SignedDate;
+                dtBeginDate.EditValue = m_contract.BeginDate;
+                dtEndDate.EditValue = m_contract.EndDate;
                 txtMemo.Text = m_contract.Memo;
                 txtMoney.Text = m_contract.Money.ToString();
                 txtPayment_ratio.Text = m_contract.PaymentRatio.ToString();
@@ -75,14 +134,20 @@ namespace Haimen.NewGUI
                 txtCode.Text = "";
                 txtName.Text = "";
                 lueCompany.EditValue = null;
-                dtSignedDate.Value = DateTime.Now;
-                dtBeginDate.Value = DateTime.Now;
-                dtEndDate.Value = DateTime.Now;
+                dtSignedDate.EditValue = DateTime.Now;
+                dtBeginDate.EditValue = DateTime.Now;
+                dtEndDate.EditValue = DateTime.Now;
                 txtMemo.Text = "";
                 txtMoney.Text = "";
                 txtPayment_ratio.Text = "";
                 txtSecurity.Text = "";
             }
+
+            lueCompany.Properties.DataSource = null;
+            lueCompany.Properties.DataSource = m_companies;
+            lueCompany.Properties.DisplayMember = "Name";
+            lueCompany.Properties.ValueMember = "ID";
+
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_contract.DetailList;
 
@@ -91,45 +156,56 @@ namespace Haimen.NewGUI
             {
                 lstFiles.Items.Add(a.ID.ToString() + "." + a.FileName, 2);
             }
+
+            switch (m_contract.Status)
+            {
+                case (long)MyCheckStatus.Uncheck:
+                    picPass.Visible = false;
+                    picCheckFaild.Visible = false;
+                    break;
+                case (long)MyCheckStatus.Unpass:
+                    picCheckFaild.Visible = true;
+                    picPass.Visible = false;
+                    break;
+                case (long)MyCheckStatus.Checked:
+                case (long)MyCheckStatus.Paying:
+                case (long)MyCheckStatus.Close:
+                    picCheckFaild.Visible = false;
+                    picPass.Visible = true;
+                    break;
+            }
         }
 
+        /// <summary>
+        /// 校验
+        /// </summary>
+        /// <returns></returns>
         private bool Verify()
         {
-            m_contract.Code = txtCode.Text;
-            m_contract.Name = txtName.Text;
-            m_contract.CompanyID = long.Parse(lueCompany.EditValue.ToString());
-            m_contract.SignedDate = dtSignedDate.Value;
-            m_contract.BeginDate = dtBeginDate.Value;
-            m_contract.EndDate = dtEndDate.Value;
-            m_contract.Memo = txtMemo.Text;
-            m_contract.Money = decimal.Parse(txtMoney.Text);
-            m_contract.PaymentRatio = decimal.Parse(txtPayment_ratio.Text);
-            m_contract.Security = decimal.Parse(txtSecurity.Text);
+            Form2Object();
 
             return true;
         }
 
-        public DevContract(Contract con = null)
+        public DevContract(winStatus status, Contract con = null)
         {
             InitializeComponent();
             if (con != null)
-            {
                 m_contract = con;
-                SetFormStatus(winStatus.Edit);
-            }
             else
-            {
                 m_contract = new Contract();
-                SetFormStatus(winStatus.New);
-            }
+
+            SetFormStatus(status);
         }
 
+
+        // 载入时，显示对象
         private void DevContract_Load(object sender, EventArgs e)
         {
-            InitGUI();
             Object2Form();
         }
 
+        // 增加明细
         private void tsbNew_Click(object sender, EventArgs e)
         {
             m_contract.DetailList.Add(new ContractDetail());
@@ -137,11 +213,13 @@ namespace Haimen.NewGUI
             gridControl1.DataSource = m_contract.DetailList;
         }
 
+        // 删除明细
         private void tsbDelete_Click(object sender, EventArgs e)
         {
             gridView1.DeleteRow(gridView1.FocusedRowHandle);
         }
 
+        // 保存
         private void tbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!Verify())
@@ -149,41 +227,43 @@ namespace Haimen.NewGUI
 
             m_contract.Save();
             MessageBox.Show("保存成功！");
+            SetFormStatus(winStatus.View);
         }
 
+
+        // 新增
         private void tbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_contract = new Contract();
-            InitGUI();
             Object2Form();
             SetFormStatus(winStatus.New);
         }
 
+        // 编辑对象
         private void tbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (m_contract != null && m_contract.ID > 0)
             {
-                InitGUI();
                 Object2Form();
                 SetFormStatus(winStatus.Edit);
             }
         }
 
+        // 删除对象
         private void tbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (m_contract != null && m_contract.ID > 0)
+            {
                 m_contract.Destory();
-            SetFormStatus(winStatus.View);
-        }
-
-        private void tbCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
+                m_contract = new Contract();
+                Object2Form();
+                SetFormStatus(winStatus.View);
+            }
         }
 
         private void tbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatus.View)
+            if (!(m_status == winStatus.View || m_status == winStatus.OnlyView))
             {
                 if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
                                    "警告",
@@ -260,6 +340,20 @@ namespace Haimen.NewGUI
                 }
 
             }
+        }
+
+        // 审核通过
+        private void tbCheckPassed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            m_contract.CheckPassed();
+            SetFormStatus(winStatus.OnlyView);
+        }
+
+        // 审核不通过
+        private void tbCheckFaild_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            m_contract.CheckFaild();
+            SetFormStatus(winStatus.View);
         }
 
     }

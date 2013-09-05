@@ -211,5 +211,14 @@ namespace Haimen.Entity
                 ts.Complete();
             }
         }
+
+        /// <summary>
+        /// 审核不通过
+        /// </summary>
+        public void CheckFaild()
+        {
+            this.Status = (long)MyCheckStatus.Unpass;
+            this.Save();
+        }
     }
 }

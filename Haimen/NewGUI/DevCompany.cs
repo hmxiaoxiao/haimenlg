@@ -56,9 +56,10 @@ namespace Haimen.NewGUI
         private void initBankList()
         {
             List<Bank> banks = Bank.Query();
-            cboBankList.DataSource = banks;
-            cboBankList.DisplayMember = "Name";
-            cboBankList.ValueMember = "ID";
+            cboBankList.Properties.DataSource = null;
+            cboBankList.Properties.DataSource = banks;
+            cboBankList.Properties.DisplayMember = "Name";
+            cboBankList.Properties.ValueMember = "ID";
         }
 
         // 校验数据是否正确
@@ -111,7 +112,7 @@ namespace Haimen.NewGUI
             initBankList();
             cboBankList.Text = "";
             if (m_company.Bank_ID > 0)
-                cboBankList.SelectedValue = m_company.Bank_ID;
+                cboBankList.EditValue = m_company.Bank_ID;
             txtCode.Text = m_company.Code;
             txtDoc.Text = m_company.Doc;
             txtName.Text = m_company.Name;
@@ -134,8 +135,8 @@ namespace Haimen.NewGUI
         private void Form2Object()
         {
             // 将输入的值保存到对象里
-            if (cboBankList.SelectedValue != null)
-                m_company.Bank_ID = long.Parse(cboBankList.SelectedValue.ToString());
+            if (cboBankList.EditValue != null)
+                m_company.Bank_ID = long.Parse(cboBankList.EditValue.ToString());
             else
                 m_company.Bank_ID = 0;
 
@@ -234,6 +235,18 @@ namespace Haimen.NewGUI
             initBankList();
             Object2Form();
             SetFormStatus(winStatus.New);
+        }
+
+        private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (m_company.ID > 0)
+            {
+                m_company.Destory();
+                m_company = new Company();
+                initBankList();
+                Object2Form();
+                SetFormStatus(winStatus.New);
+            }
         }
 
 

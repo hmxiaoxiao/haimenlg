@@ -176,12 +176,6 @@
     <Compile Include="NewGUI\DevAccountQuery.Designer.cs">
       <DependentUpon>DevAccountQuery.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevAttach.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewGUI\DevAttach.Designer.cs">
-      <DependentUpon>DevAttach.cs</DependentUpon>
-    </Compile>
     <Compile Include="NewGUI\DevBalance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,12 +199,6 @@
     </Compile>
     <Compile Include="NewGUI\DevBankList.Designer.cs">
       <DependentUpon>DevBankList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NewGUI\DevChangePassword.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewGUI\DevChangePassword.Designer.cs">
-      <DependentUpon>DevChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="NewGUI\DevCompany.cs">
       <SubType>Form</SubType>
@@ -271,12 +259,6 @@
     </Compile>
     <Compile Include="NewGUI\DevMain.Designer.cs">
       <DependentUpon>DevMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NewGUI\DevResetPassword.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewGUI\DevResetPassword.Designer.cs">
-      <DependentUpon>DevResetPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="NewGUI\DevUser.cs">
       <SubType>Form</SubType>
@@ -540,9 +522,6 @@
     <EmbeddedResource Include="NewGUI\DevAccountQuery.resx">
       <DependentUpon>DevAccountQuery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevAttach.resx">
-      <DependentUpon>DevAttach.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevBalance.resx">
       <DependentUpon>DevBalance.cs</DependentUpon>
     </EmbeddedResource>
@@ -554,9 +533,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevBankList.resx">
       <DependentUpon>DevBankList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevChangePassword.resx">
-      <DependentUpon>DevChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevCompany.resx">
       <DependentUpon>DevCompany.cs</DependentUpon>
@@ -587,9 +563,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevMain.resx">
       <DependentUpon>DevMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevResetPassword.resx">
-      <DependentUpon>DevResetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevUser.resx">
       <DependentUpon>DevUser.cs</DependentUpon>

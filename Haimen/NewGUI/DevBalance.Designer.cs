@@ -29,35 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevBalance));
             this.lueCompany = new DevExpress.XtraEditors.LookUpEdit();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtCode = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtRate = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtMoney = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtAccount = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
-            this.label9 = new System.Windows.Forms.Label();
-            this.dtBeginDate = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lueBank = new DevExpress.XtraEditors.LookUpEdit();
-            this.cboInterestDate = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cboRepayDate = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.cboRepayDate = new DevExpress.XtraEditors.ComboBoxEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnNew = new DevExpress.XtraBars.BarButtonItem();
@@ -70,30 +45,85 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.cboInterestDate = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtRate = new DevExpress.XtraEditors.CalcEdit();
+            this.txtMoney = new DevExpress.XtraEditors.CalcEdit();
+            this.dtEndDate = new DevExpress.XtraEditors.DateEdit();
+            this.dtBeginDate = new DevExpress.XtraEditors.DateEdit();
+            this.txtAccount = new DevExpress.XtraEditors.TextEdit();
+            this.txtCode = new DevExpress.XtraEditors.TextEdit();
+            this.lueBank = new DevExpress.XtraEditors.LookUpEdit();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.c1SplitterPanel1 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
+            this.picCheckFaild = new DevExpress.XtraEditors.PictureEdit();
+            this.picPass = new DevExpress.XtraEditors.PictureEdit();
+            this.btnCheckFaild = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.lueCompany.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboRepayDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboInterestDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMoney.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtBeginDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtBeginDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBank.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
             this.c1SplitContainer1.SuspendLayout();
             this.c1SplitterPanel1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lueCompany
             // 
-            this.lueCompany.Location = new System.Drawing.Point(343, 43);
+            this.lueCompany.Location = new System.Drawing.Point(339, 2);
             this.lueCompany.Name = "lueCompany";
             this.lueCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -101,144 +131,237 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
             this.lueCompany.Properties.NullText = "请选择单位";
-            this.lueCompany.Size = new System.Drawing.Size(181, 20);
+            this.lueCompany.Size = new System.Drawing.Size(229, 20);
+            this.lueCompany.StyleController = this.layoutControl1;
             this.lueCompany.TabIndex = 53;
             // 
-            // label1
+            // layoutControl1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 14);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "编号";
+            this.layoutControl1.Controls.Add(this.cboRepayDate);
+            this.layoutControl1.Controls.Add(this.cboInterestDate);
+            this.layoutControl1.Controls.Add(this.txtRate);
+            this.layoutControl1.Controls.Add(this.txtMoney);
+            this.layoutControl1.Controls.Add(this.dtEndDate);
+            this.layoutControl1.Controls.Add(this.dtBeginDate);
+            this.layoutControl1.Controls.Add(this.txtAccount);
+            this.layoutControl1.Controls.Add(this.txtCode);
+            this.layoutControl1.Controls.Add(this.lueCompany);
+            this.layoutControl1.Controls.Add(this.lueBank);
+            this.layoutControl1.Location = new System.Drawing.Point(12, 45);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.Root = this.layoutControlGroup1;
+            this.layoutControl1.Size = new System.Drawing.Size(570, 184);
+            this.layoutControl1.TabIndex = 67;
+            this.layoutControl1.Text = "layoutControl1";
             // 
-            // txtCode
+            // cboRepayDate
             // 
-            this.txtCode.Location = new System.Drawing.Point(68, 43);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(181, 22);
-            this.txtCode.TabIndex = 34;
+            this.cboRepayDate.Location = new System.Drawing.Point(339, 130);
+            this.cboRepayDate.MenuManager = this.barManager1;
+            this.cboRepayDate.Name = "cboRepayDate";
+            this.cboRepayDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboRepayDate.Size = new System.Drawing.Size(217, 20);
+            this.cboRepayDate.StyleController = this.layoutControl1;
+            this.cboRepayDate.TabIndex = 61;
             // 
-            // label11
+            // barManager1
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(308, 127);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(31, 14);
-            this.label11.TabIndex = 31;
-            this.label11.Text = "利率";
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar1});
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.btnNew,
+            this.btnEdit,
+            this.btnDelete,
+            this.btnCheck,
+            this.btnExit,
+            this.btnSave,
+            this.btnCheckFaild});
+            this.barManager1.MaxItemId = 7;
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Tools";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnNew, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSave, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCheckFaild, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.bar1.Text = "Tools";
+            // 
+            // btnNew
+            // 
+            this.btnNew.Caption = "新增";
+            this.btnNew.Glyph = global::Haimen.Properties.Resources.New_hot;
+            this.btnNew.Id = 0;
+            this.btnNew.Name = "btnNew";
+            this.btnNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNew_ItemClick);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Caption = "编辑";
+            this.btnEdit.Glyph = global::Haimen.Properties.Resources.Edit_hot;
+            this.btnEdit.Id = 1;
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEdit_ItemClick);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Caption = "删除";
+            this.btnDelete.Glyph = global::Haimen.Properties.Resources.Delete_hot;
+            this.btnDelete.Id = 2;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDelete_ItemClick);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Caption = "保存";
+            this.btnSave.Glyph = global::Haimen.Properties.Resources.Save_hot;
+            this.btnSave.Id = 5;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
+            // 
+            // btnCheck
+            // 
+            this.btnCheck.Caption = "通过";
+            this.btnCheck.Glyph = global::Haimen.Properties.Resources.Tick_hot;
+            this.btnCheck.Id = 3;
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCheck_ItemClick);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Caption = "退出";
+            this.btnExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.btnExit.Id = 4;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExit_ItemClick);
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(775, 39);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 506);
+            this.barDockControlBottom.Size = new System.Drawing.Size(775, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 467);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(775, 39);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 467);
+            // 
+            // cboInterestDate
+            // 
+            this.cboInterestDate.Location = new System.Drawing.Point(65, 130);
+            this.cboInterestDate.MenuManager = this.barManager1;
+            this.cboInterestDate.Name = "cboInterestDate";
+            this.cboInterestDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboInterestDate.Size = new System.Drawing.Size(219, 20);
+            this.cboInterestDate.StyleController = this.layoutControl1;
+            this.cboInterestDate.TabIndex = 60;
             // 
             // txtRate
             // 
-            this.txtRate.Location = new System.Drawing.Point(343, 123);
+            this.txtRate.Location = new System.Drawing.Point(339, 74);
+            this.txtRate.MenuManager = this.barManager1;
             this.txtRate.Name = "txtRate";
-            this.txtRate.Size = new System.Drawing.Size(181, 22);
-            this.txtRate.TabIndex = 35;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(284, 100);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 14);
-            this.label6.TabIndex = 32;
-            this.label6.Text = "贷款金额";
+            this.txtRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtRate.Size = new System.Drawing.Size(229, 20);
+            this.txtRate.StyleController = this.layoutControl1;
+            this.txtRate.TabIndex = 59;
             // 
             // txtMoney
             // 
-            this.txtMoney.Location = new System.Drawing.Point(343, 96);
+            this.txtMoney.Location = new System.Drawing.Point(339, 50);
+            this.txtMoney.MenuManager = this.barManager1;
             this.txtMoney.Name = "txtMoney";
-            this.txtMoney.Size = new System.Drawing.Size(122, 22);
-            this.txtMoney.TabIndex = 36;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 14);
-            this.label2.TabIndex = 37;
-            this.label2.Text = "贷款银行";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(308, 47);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 14);
-            this.label4.TabIndex = 38;
-            this.label4.Text = "单位";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(308, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 14);
-            this.label3.TabIndex = 39;
-            this.label3.Text = "帐号";
-            // 
-            // txtAccount
-            // 
-            this.txtAccount.Location = new System.Drawing.Point(343, 69);
-            this.txtAccount.Name = "txtAccount";
-            this.txtAccount.Size = new System.Drawing.Size(181, 22);
-            this.txtAccount.TabIndex = 40;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 127);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 14);
-            this.label8.TabIndex = 41;
-            this.label8.Text = "贷款到期";
+            this.txtMoney.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtMoney.Size = new System.Drawing.Size(229, 20);
+            this.txtMoney.StyleController = this.layoutControl1;
+            this.txtMoney.TabIndex = 58;
             // 
             // dtEndDate
             // 
-            this.dtEndDate.Location = new System.Drawing.Point(68, 123);
+            this.dtEndDate.EditValue = null;
+            this.dtEndDate.Location = new System.Drawing.Point(53, 74);
+            this.dtEndDate.MenuManager = this.barManager1;
             this.dtEndDate.Name = "dtEndDate";
-            this.dtEndDate.Size = new System.Drawing.Size(181, 22);
-            this.dtEndDate.TabIndex = 42;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 100);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(55, 14);
-            this.label9.TabIndex = 43;
-            this.label9.Text = "贷款日期";
+            this.dtEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtEndDate.Properties.CalendarTimeProperties.CloseUpKey = new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F4);
+            this.dtEndDate.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.Default;
+            this.dtEndDate.Size = new System.Drawing.Size(231, 20);
+            this.dtEndDate.StyleController = this.layoutControl1;
+            this.dtEndDate.TabIndex = 57;
             // 
             // dtBeginDate
             // 
-            this.dtBeginDate.Location = new System.Drawing.Point(68, 96);
+            this.dtBeginDate.EditValue = null;
+            this.dtBeginDate.Location = new System.Drawing.Point(53, 50);
+            this.dtBeginDate.MenuManager = this.barManager1;
             this.dtBeginDate.Name = "dtBeginDate";
-            this.dtBeginDate.Size = new System.Drawing.Size(181, 22);
-            this.dtBeginDate.TabIndex = 44;
+            this.dtBeginDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtBeginDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtBeginDate.Properties.CalendarTimeProperties.CloseUpKey = new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F4);
+            this.dtBeginDate.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.Default;
+            this.dtBeginDate.Size = new System.Drawing.Size(231, 20);
+            this.dtBeginDate.StyleController = this.layoutControl1;
+            this.dtBeginDate.TabIndex = 56;
             // 
-            // label10
+            // txtAccount
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(471, 100);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 14);
-            this.label10.TabIndex = 45;
-            this.label10.Text = "（万元）";
+            this.txtAccount.Location = new System.Drawing.Point(339, 26);
+            this.txtAccount.MenuManager = this.barManager1;
+            this.txtAccount.Name = "txtAccount";
+            this.txtAccount.Size = new System.Drawing.Size(229, 20);
+            this.txtAccount.StyleController = this.layoutControl1;
+            this.txtAccount.TabIndex = 55;
             // 
-            // label5
+            // txtCode
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 154);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 14);
-            this.label5.TabIndex = 46;
-            this.label5.Text = "结息日";
+            this.txtCode.Location = new System.Drawing.Point(53, 2);
+            this.txtCode.MenuManager = this.barManager1;
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(231, 20);
+            this.txtCode.StyleController = this.layoutControl1;
+            this.txtCode.TabIndex = 4;
             // 
             // lueBank
             // 
-            this.lueBank.Location = new System.Drawing.Point(68, 69);
+            this.lueBank.Location = new System.Drawing.Point(53, 26);
             this.lueBank.Name = "lueBank";
             this.lueBank.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -246,115 +369,142 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
             this.lueBank.Properties.NullText = "请选择银行";
-            this.lueBank.Size = new System.Drawing.Size(181, 20);
+            this.lueBank.Size = new System.Drawing.Size(231, 20);
+            this.lueBank.StyleController = this.layoutControl1;
             this.lueBank.TabIndex = 54;
             // 
-            // cboInterestDate
+            // layoutControlGroup1
             // 
-            this.cboInterestDate.FormattingEnabled = true;
-            this.cboInterestDate.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31"});
-            this.cboInterestDate.Location = new System.Drawing.Point(68, 150);
-            this.cboInterestDate.Name = "cboInterestDate";
-            this.cboInterestDate.Size = new System.Drawing.Size(117, 22);
-            this.cboInterestDate.TabIndex = 47;
+            this.layoutControlGroup1.CustomizationFormText = "layoutControlGroup1";
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2,
+            this.layoutControlItem3,
+            this.layoutControlItem4,
+            this.layoutControlItem5,
+            this.layoutControlItem6,
+            this.layoutControlItem7,
+            this.layoutControlItem8,
+            this.layoutControlGroup2});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(570, 184);
+            this.layoutControlGroup1.Text = "layoutControlGroup1";
+            this.layoutControlGroup1.TextVisible = false;
             // 
-            // label7
+            // layoutControlItem1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(296, 154);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 14);
-            this.label7.TabIndex = 48;
-            this.label7.Text = "还款日";
+            this.layoutControlItem1.Control = this.txtCode;
+            this.layoutControlItem1.CustomizationFormText = "编号";
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(286, 24);
+            this.layoutControlItem1.Text = "编号";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // cboRepayDate
+            // layoutControlItem2
             // 
-            this.cboRepayDate.FormattingEnabled = true;
-            this.cboRepayDate.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31"});
-            this.cboRepayDate.Location = new System.Drawing.Point(343, 150);
-            this.cboRepayDate.Name = "cboRepayDate";
-            this.cboRepayDate.Size = new System.Drawing.Size(122, 22);
-            this.cboRepayDate.TabIndex = 49;
+            this.layoutControlItem2.Control = this.lueCompany;
+            this.layoutControlItem2.CustomizationFormText = "单位";
+            this.layoutControlItem2.Location = new System.Drawing.Point(286, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(284, 24);
+            this.layoutControlItem2.Text = "单位";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // label12
+            // layoutControlItem3
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(471, 154);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(55, 14);
-            this.label12.TabIndex = 50;
-            this.label12.Text = "（每月）";
+            this.layoutControlItem3.Control = this.lueBank;
+            this.layoutControlItem3.CustomizationFormText = "贷款银行";
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(286, 24);
+            this.layoutControlItem3.Text = "贷款银行";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // label13
+            // layoutControlItem4
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(196, 154);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(55, 14);
-            this.label13.TabIndex = 51;
-            this.label13.Text = "（每月）";
+            this.layoutControlItem4.Control = this.txtAccount;
+            this.layoutControlItem4.CustomizationFormText = "帐号";
+            this.layoutControlItem4.Location = new System.Drawing.Point(286, 24);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(284, 24);
+            this.layoutControlItem4.Text = "帐号";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.dtBeginDate;
+            this.layoutControlItem5.CustomizationFormText = "贷款日期";
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(286, 24);
+            this.layoutControlItem5.Text = "贷款日期";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.dtEndDate;
+            this.layoutControlItem6.CustomizationFormText = "贷款到期";
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(286, 24);
+            this.layoutControlItem6.Text = "贷款到期";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.txtMoney;
+            this.layoutControlItem7.CustomizationFormText = "贷款金额";
+            this.layoutControlItem7.Location = new System.Drawing.Point(286, 48);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(284, 24);
+            this.layoutControlItem7.Text = "贷款金额";
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.txtRate;
+            this.layoutControlItem8.CustomizationFormText = "利率";
+            this.layoutControlItem8.Location = new System.Drawing.Point(286, 72);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(284, 24);
+            this.layoutControlItem8.Text = "利率";
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlGroup2
+            // 
+            this.layoutControlGroup2.CustomizationFormText = "每月";
+            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem10,
+            this.layoutControlItem9});
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 96);
+            this.layoutControlGroup2.Name = "layoutControlGroup2";
+            this.layoutControlGroup2.Size = new System.Drawing.Size(570, 88);
+            this.layoutControlGroup2.Text = "每月";
+            // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.Control = this.cboRepayDate;
+            this.layoutControlItem10.CustomizationFormText = "还款日";
+            this.layoutControlItem10.Location = new System.Drawing.Point(274, 0);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(272, 44);
+            this.layoutControlItem10.Text = "还款日";
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.cboInterestDate;
+            this.layoutControlItem9.CustomizationFormText = "结息日";
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(274, 44);
+            this.layoutControlItem9.Text = "结息日";
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(48, 14);
             // 
             // gridControl1
             // 
@@ -422,114 +572,6 @@
             this.repositoryItemDateEdit1.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.Default;
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
-            // barManager1
-            // 
-            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1});
-            this.barManager1.DockControls.Add(this.barDockControlTop);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.Form = this;
-            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.btnNew,
-            this.btnEdit,
-            this.btnDelete,
-            this.btnCheck,
-            this.btnExit,
-            this.btnSave});
-            this.barManager1.MaxItemId = 6;
-            // 
-            // bar1
-            // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnNew, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSave, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar1.Text = "Tools";
-            // 
-            // btnNew
-            // 
-            this.btnNew.Caption = "新增";
-            this.btnNew.Glyph = global::Haimen.Properties.Resources.New_hot;
-            this.btnNew.Id = 0;
-            this.btnNew.Name = "btnNew";
-            this.btnNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNew_ItemClick);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Caption = "编辑";
-            this.btnEdit.Glyph = global::Haimen.Properties.Resources.Edit_hot;
-            this.btnEdit.Id = 1;
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEdit_ItemClick);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Caption = "删除";
-            this.btnDelete.Glyph = global::Haimen.Properties.Resources.Delete_hot;
-            this.btnDelete.Id = 2;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDelete_ItemClick);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Caption = "保存";
-            this.btnSave.Glyph = global::Haimen.Properties.Resources.Save_hot;
-            this.btnSave.Id = 5;
-            this.btnSave.Name = "btnSave";
-            this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
-            // 
-            // btnCheck
-            // 
-            this.btnCheck.Caption = "审核";
-            this.btnCheck.Glyph = global::Haimen.Properties.Resources.Close_hot;
-            this.btnCheck.Id = 3;
-            this.btnCheck.Name = "btnCheck";
-            // 
-            // btnExit
-            // 
-            this.btnExit.Caption = "退出";
-            this.btnExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
-            this.btnExit.Id = 4;
-            this.btnExit.Name = "btnExit";
-            this.btnExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExit_ItemClick);
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(775, 37);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 506);
-            this.barDockControlBottom.Size = new System.Drawing.Size(775, 0);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 37);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 469);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(775, 37);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 469);
-            // 
             // c1SplitContainer1
             // 
             this.c1SplitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -538,10 +580,10 @@
             this.c1SplitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(150)))));
             this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.c1SplitContainer1.Location = new System.Drawing.Point(12, 178);
+            this.c1SplitContainer1.Location = new System.Drawing.Point(12, 227);
             this.c1SplitContainer1.Name = "c1SplitContainer1";
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel1);
-            this.c1SplitContainer1.Size = new System.Drawing.Size(751, 316);
+            this.c1SplitContainer1.Size = new System.Drawing.Size(751, 267);
             this.c1SplitContainer1.TabIndex = 59;
             // 
             // c1SplitterPanel1
@@ -551,7 +593,7 @@
             this.c1SplitterPanel1.Height = 100;
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
-            this.c1SplitterPanel1.Size = new System.Drawing.Size(751, 295);
+            this.c1SplitterPanel1.Size = new System.Drawing.Size(751, 246);
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "明细";
             // 
@@ -590,35 +632,49 @@
             this.tsbDelete.Text = "删除";
             this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
+            // picCheckFaild
+            // 
+            this.picCheckFaild.EditValue = ((object)(resources.GetObject("picCheckFaild.EditValue")));
+            this.picCheckFaild.Location = new System.Drawing.Point(576, 45);
+            this.picCheckFaild.MenuManager = this.barManager1;
+            this.picCheckFaild.Name = "picCheckFaild";
+            this.picCheckFaild.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.picCheckFaild.Properties.Appearance.Options.UseBackColor = true;
+            this.picCheckFaild.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.picCheckFaild.Size = new System.Drawing.Size(204, 61);
+            this.picCheckFaild.TabIndex = 66;
+            this.picCheckFaild.Visible = false;
+            // 
+            // picPass
+            // 
+            this.picPass.EditValue = ((object)(resources.GetObject("picPass.EditValue")));
+            this.picPass.Location = new System.Drawing.Point(576, 45);
+            this.picPass.MenuManager = this.barManager1;
+            this.picPass.Name = "picPass";
+            this.picPass.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.picPass.Properties.Appearance.Options.UseBackColor = true;
+            this.picPass.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.picPass.Size = new System.Drawing.Size(204, 61);
+            this.picPass.TabIndex = 65;
+            this.picPass.Visible = false;
+            // 
+            // btnCheckFaild
+            // 
+            this.btnCheckFaild.Caption = "不通过";
+            this.btnCheckFaild.Glyph = global::Haimen.Properties.Resources.Stop_hot;
+            this.btnCheckFaild.Id = 6;
+            this.btnCheckFaild.Name = "btnCheckFaild";
+            this.btnCheckFaild.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCheckFaild_ItemClick);
+            // 
             // DevBalance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(775, 506);
+            this.Controls.Add(this.layoutControl1);
+            this.Controls.Add(this.picCheckFaild);
+            this.Controls.Add(this.picPass);
             this.Controls.Add(this.c1SplitContainer1);
-            this.Controls.Add(this.lueCompany);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.cboRepayDate);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.cboInterestDate);
-            this.Controls.Add(this.lueBank);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.dtBeginDate);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.dtEndDate);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtAccount);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtMoney);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtRate);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.txtCode);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -627,50 +683,54 @@
             this.Text = "贷款管理";
             this.Load += new System.EventHandler(this.DevBalance_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lueCompany.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboRepayDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboInterestDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMoney.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtBeginDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtBeginDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBank.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).EndInit();
             this.c1SplitContainer1.ResumeLayout(false);
             this.c1SplitterPanel1.ResumeLayout(false);
             this.c1SplitterPanel1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private DevExpress.XtraEditors.LookUpEdit lueCompany;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCode;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtRate;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtMoney;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtAccount;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dtEndDate;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dtBeginDate;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label5;
         private DevExpress.XtraEditors.LookUpEdit lueBank;
-        private System.Windows.Forms.ComboBox cboInterestDate;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cboRepayDate;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
@@ -695,6 +755,30 @@
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsbDelete;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private DevExpress.XtraEditors.TextEdit txtCode;
+        private DevExpress.XtraEditors.PictureEdit picCheckFaild;
+        private DevExpress.XtraEditors.PictureEdit picPass;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraEditors.ComboBoxEdit cboRepayDate;
+        private DevExpress.XtraEditors.ComboBoxEdit cboInterestDate;
+        private DevExpress.XtraEditors.CalcEdit txtRate;
+        private DevExpress.XtraEditors.CalcEdit txtMoney;
+        private DevExpress.XtraEditors.DateEdit dtEndDate;
+        private DevExpress.XtraEditors.DateEdit dtBeginDate;
+        private DevExpress.XtraEditors.TextEdit txtAccount;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
+        private DevExpress.XtraBars.BarButtonItem btnCheckFaild;
 
     }
 }

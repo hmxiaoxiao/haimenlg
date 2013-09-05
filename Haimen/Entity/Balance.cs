@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Haimen.Qy;
+using System.Transactions;
 
 namespace Haimen.Entity
 {
@@ -81,5 +82,56 @@ namespace Haimen.Entity
         [Field("memo")]
         public string Memo { get; set; }
 
+        [Field("status")]
+        public long Status { get; set; }
+
+
+        /// <summary>
+        /// 审核通过
+        /// </summary>
+        public void CheckPass()
+        {
+            using (TransactionScope ts = new TransactionScope())
+            {
+                // 改标志为已审核
+                this.Status = (long)MyCheckStatus.Checked;
+
+                Company cor = Company.CreateByID(this.CompanyID);
+
+                // 加入一个查找标记
+                bool finded = false;
+                foreach (CompanyDetail cd in cor.DetailList)
+                {
+                    // 如果找到了，更新该单位的银行资金
+                    if (cd.Bank_ID == this.BankID && cd.Account == this.Account)
+                    {
+                        finded = true;
+                        cd.Credit += this.Money;
+                    }
+                }
+                // 如果没有找到，则在单位帐号表里面增加一条记录
+                if (!finded)
+                {
+                    CompanyDetail cde = new CompanyDetail();
+                    cde.Bank_ID = this.BankID;
+                    cde.Account = this.Account;
+                    cde.Credit += this.Money;
+                }
+
+                cor.Save();      
+                this.Save();        // 保存审核标记
+
+                ts.Complete();
+            }
+        }
+
+        /// <summary>
+        /// 审核不通过
+        /// </summary>
+        public void CheckFaild()
+        {
+            this.Status = (long)MyCheckStatus.Unpass;
+            this.Save();
+        }
     }
 }

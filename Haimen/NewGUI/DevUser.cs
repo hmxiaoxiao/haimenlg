@@ -8,16 +8,27 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 using Haimen.Entity;
+using Haimen.Helper;
 
 namespace Haimen.NewGUI
 {
     public partial class DevUser : DevExpress.XtraEditors.XtraForm
     {
-        private User m_user;
+
+        // 当前编辑的对象
+        private User m_user = null;
+
+         // 当前窗口状态
+        private winStatus m_status;
 
         // 校验所有的数据是否正确输入
         private bool verifyData()
         {
+            if (cbAdmin.Checked)
+                m_user.Admin = "X";
+            else
+                m_user.Admin = null;
+
             bool verify = true;
             // 用户代码
             if (txtCode.Text == "")
@@ -71,45 +82,140 @@ namespace Haimen.NewGUI
             return verify;
         }
 
-        public DevUser()
+        // 设置当前窗口状态
+        private void SetFormStatus()
         {
-            InitializeComponent();
+            switch (m_status)
+            {
+                case winStatus.New:
+                case winStatus.Edit:
+                    tsbNew.Enabled = false;
+                    tsbEdit.Enabled = false;
+                    tsbDelete.Enabled = false;
+                    tsbSave.Enabled = true;
+
+                    txtCode.Enabled = true;
+                    txtName.Enabled = true;
+                    txtPassword.Enabled = true;
+                    txtPasswordConfirm.Enabled = true;
+                    break;
+                case winStatus.View:
+                    tsbNew.Enabled = true;
+                    tsbEdit.Enabled = true;
+                    tsbDelete.Enabled = true;
+                    tsbSave.Enabled = false;
+
+                    txtCode.Enabled = false;
+                    txtName.Enabled = false;
+                    txtPassword.Enabled = false;
+                    txtPasswordConfirm.Enabled = false;
+                    break;
+            }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        // 将对象映射到窗口
+        private void SetBindings()
+        {
+            txtCode.DataBindings.Clear();
+            txtName.DataBindings.Clear();
+            
+            txtCode.DataBindings.Add("Text", m_user, "Code");
+            txtName.DataBindings.Add("Text", m_user, "Name");
+
+            if (m_user.Admin == "X")
+                cbAdmin.Checked = true;
+            else
+                cbAdmin.Checked = false;
+
+        }
+
+        // 刷新界面
+        private void MyRefresh()
+        {
+            // 先控制按钮的状态
+            SetFormStatus();
+            SetBindings();
+        }
+
+        // 构造函数
+        public DevUser(User user = null)
+        {
+            InitializeComponent();
+            if (user != null)
+            {
+                m_user = user;
+                m_status = winStatus.Edit;
+            }
+            else
+            {
+                m_user = new User();
+                m_status = winStatus.New;
+            }
+        }
+
+        // 载入时更新界面
+        private void DevUser_Load(object sender, EventArgs e)
+        {
+            MyRefresh();
+        }
+
+        private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            m_user = new User();
+            m_status = winStatus.New;
+
+            MyRefresh();
+        }
+
+        private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (m_user != null)
+            {
+                m_status = winStatus.Edit;
+                MyRefresh();
+            }
+        }
+
+        private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (m_user != null && m_user.ID > 0)
+            {
+                m_user.Destory();
+                m_user = new User();
+                m_status = winStatus.View;
+                MyRefresh();
+            }
+
+        }
+
+        private void tsbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // 如果校验不通过，直接返回
             if (!verifyData())
                 return;
 
-            User user = new User();
-            user.Code = txtCode.Text;
-            user.Name = txtName.Text;
-            if (m_user != null)
+            // 如果设置了密码，则加上
+            if (!string.IsNullOrEmpty(txtPassword.Text))
+                m_user.Password = txtPassword.Text;
+
+            m_user.Save();
+            MessageBox.Show("用户保存成功!", "注意");
+            m_status = winStatus.View;
+            MyRefresh();
+        }
+
+        private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (m_status != winStatus.View)
             {
-                user.Password = null;
-                user.ID = m_user.ID;
+                if (MessageBox.Show("当前正在编辑数据，这时退出会丢失当前的数据，是否真的要退出？",
+                                "注意",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question,
+                                MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                    return;
             }
-            else
-                user.Password = txtPassword.Text;
-
-            if (cbAdmin.Checked)
-                user.Admin = "X";
-
-
-            user.Save();
-            MessageBox.Show("编辑用户保存成功!", "注意");
-            if (m_user == null)
-            {
-                // 如果保存成功，则清空输入框，等待增加新用户
-                MessageBox.Show("新增用户保存成功!", "注意");
-                txtCode.Text = "";
-                txtName.Text = "";
-                txtPassword.Text = "";
-                txtPasswordConfirm.Text = "";
-                cbAdmin.Checked = false;
-                txtCode.Focus();
-            }
+            this.Close();
         }
     }
 }

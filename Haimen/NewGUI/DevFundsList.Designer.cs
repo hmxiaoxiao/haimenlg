@@ -93,8 +93,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbSave, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
             // tsbNew
@@ -150,7 +150,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(691, 37);
+            this.barDockControlTop.Size = new System.Drawing.Size(691, 39);
             // 
             // barDockControlBottom
             // 
@@ -163,15 +163,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 37);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 452);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 450);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(691, 37);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 452);
+            this.barDockControlRight.Location = new System.Drawing.Point(691, 39);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 450);
             // 
             // c1SplitContainer1
             // 
@@ -180,11 +180,11 @@
             this.c1SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.c1SplitContainer1.LineBelowHeader = false;
-            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 37);
+            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 39);
             this.c1SplitContainer1.Name = "c1SplitContainer1";
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel1);
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel2);
-            this.c1SplitContainer1.Size = new System.Drawing.Size(691, 452);
+            this.c1SplitContainer1.Size = new System.Drawing.Size(691, 450);
             this.c1SplitContainer1.TabIndex = 4;
             // 
             // c1SplitterPanel1
@@ -193,7 +193,7 @@
             this.c1SplitterPanel1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 0);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
-            this.c1SplitterPanel1.Size = new System.Drawing.Size(137, 452);
+            this.c1SplitterPanel1.Size = new System.Drawing.Size(137, 450);
             this.c1SplitterPanel1.SizeRatio = 20D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Width = 137;
@@ -212,7 +212,7 @@
             this.tree.OptionsView.ShowIndicator = false;
             this.tree.OptionsView.ShowVertLines = false;
             this.tree.ParentFieldName = "Parent_ID";
-            this.tree.Size = new System.Drawing.Size(137, 452);
+            this.tree.Size = new System.Drawing.Size(137, 450);
             this.tree.TabIndex = 0;
             this.tree.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Light;
             this.tree.Click += new System.EventHandler(this.tree_Click);
@@ -237,7 +237,7 @@
             this.c1SplitterPanel2.Height = 100;
             this.c1SplitterPanel2.Location = new System.Drawing.Point(141, 0);
             this.c1SplitterPanel2.Name = "c1SplitterPanel2";
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(550, 452);
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(550, 450);
             this.c1SplitterPanel2.TabIndex = 1;
             // 
             // gridControl1
@@ -249,7 +249,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueFunds});
-            this.gridControl1.Size = new System.Drawing.Size(550, 452);
+            this.gridControl1.Size = new System.Drawing.Size(550, 450);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});

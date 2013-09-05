@@ -47,7 +47,7 @@
             this.col_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Admin = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_admin = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.toolStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -65,7 +65,7 @@
             this.tsbExit});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(350, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(456, 25);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -192,11 +192,11 @@
             this.col_id,
             this.col_code,
             this.col_name,
-            this.Admin});
+            this.col_admin});
             this.dataGridView1.Location = new System.Drawing.Point(13, 118);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(323, 194);
+            this.dataGridView1.Size = new System.Drawing.Size(429, 192);
             this.dataGridView1.TabIndex = 8;
             // 
             // col_selected
@@ -222,17 +222,17 @@
             this.col_name.Name = "col_name";
             this.col_name.ReadOnly = true;
             // 
-            // Admin
+            // col_admin
             // 
-            this.Admin.HeaderText = "管理员";
-            this.Admin.Name = "Admin";
-            this.Admin.ReadOnly = true;
+            this.col_admin.HeaderText = "管理员";
+            this.col_admin.Name = "col_admin";
+            this.col_admin.ReadOnly = true;
             // 
             // frmUserList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 324);
+            this.ClientSize = new System.Drawing.Size(456, 322);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnQuery);
             this.Controls.Add(this.groupBox1);
@@ -267,15 +267,11 @@
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.ToolStripButton tsbResetPassword;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn UserAdmin;
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_selected;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_code;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_name;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Admin;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn col_admin;
 
     }
 }

@@ -41,19 +41,17 @@
             this.mnuBalanceList = new DevExpress.XtraBars.BarButtonItem();
             this.mnuBalance = new DevExpress.XtraBars.BarButtonItem();
             this.mnuUserList = new DevExpress.XtraBars.BarButtonItem();
-            this.mnuChangePassword = new DevExpress.XtraBars.BarButtonItem();
             this.mnuNotify = new DevExpress.XtraBars.BarButtonItem();
             this.statusText = new DevExpress.XtraBars.BarStaticItem();
             this.rbSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -62,6 +60,8 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -83,7 +83,6 @@
             this.mnuBalanceList,
             this.mnuBalance,
             this.mnuUserList,
-            this.mnuChangePassword,
             this.mnuNotify,
             this.statusText,
             this.rbSkins});
@@ -97,10 +96,11 @@
             this.ribbonPage4});
             this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.mnuComboSkins});
+            this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbon.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.True;
             this.ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbon.ShowToolbarCustomizeItem = false;
-            this.ribbon.Size = new System.Drawing.Size(781, 149);
+            this.ribbon.Size = new System.Drawing.Size(787, 147);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             this.ribbon.Toolbar.ShowCustomizeItem = false;
             // 
@@ -224,17 +224,6 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.mnuUserList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuUserList_ItemClick);
             // 
-            // mnuChangePassword
-            // 
-            this.mnuChangePassword.Caption = "更改密码";
-            this.mnuChangePassword.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuChangePassword.Glyph = global::Haimen.Properties.Resources.User_Password;
-            this.mnuChangePassword.Id = 14;
-            this.mnuChangePassword.Name = "mnuChangePassword";
-            this.mnuChangePassword.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.mnuChangePassword.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuChangePassword_ItemClick);
-            // 
             // mnuNotify
             // 
             this.mnuNotify.Caption = "通知";
@@ -265,12 +254,46 @@
             this.rbSkins.Name = "rbSkins";
             this.rbSkins.GalleryItemClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.rbSkins_GalleryItemClick);
             // 
+            // ribbonPage2
+            // 
+            this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup5,
+            this.ribbonPageGroup3,
+            this.ribbonPageGroup4,
+            this.ribbonPageGroup8});
+            this.ribbonPage2.Name = "ribbonPage2";
+            this.ribbonPage2.Text = "业务管理";
+            // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.mnuAccountList);
+            this.ribbonPageGroup5.ItemLinks.Add(this.mnuAccount);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.ShowCaptionButton = false;
+            this.ribbonPageGroup5.Text = "资金";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.mnuContractList);
+            this.ribbonPageGroup3.ItemLinks.Add(this.mnuContract);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.ShowCaptionButton = false;
+            this.ribbonPageGroup3.Text = "合同";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.Glyph = global::Haimen.Properties.Resources.About;
+            this.ribbonPageGroup4.ItemLinks.Add(this.mnuBalanceList);
+            this.ribbonPageGroup4.ItemLinks.Add(this.mnuBalance);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.ShowCaptionButton = false;
+            this.ribbonPageGroup4.Text = "贷款";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
             this.ribbonPageGroup2,
-            this.ribbonPageGroup8,
             this.ribbonPageGroup9});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "基础数据";
@@ -283,6 +306,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.mnuFouds);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
+            this.ribbonPageGroup1.Text = "字典";
             // 
             // ribbonPageGroup2
             // 
@@ -290,72 +314,37 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.mnuCompanyDetail);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.ShowCaptionButton = false;
-            // 
-            // ribbonPageGroup8
-            // 
-            this.ribbonPageGroup8.AllowTextClipping = false;
-            this.ribbonPageGroup8.ItemLinks.Add(this.mnuChangePassword);
-            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
-            this.ribbonPageGroup8.ShowCaptionButton = false;
+            this.ribbonPageGroup2.Text = "设置";
             // 
             // ribbonPageGroup9
             // 
             this.ribbonPageGroup9.ItemLinks.Add(this.rbSkins);
             this.ribbonPageGroup9.Name = "ribbonPageGroup9";
             this.ribbonPageGroup9.ShowCaptionButton = false;
-            // 
-            // ribbonPage2
-            // 
-            this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup5,
-            this.ribbonPageGroup3,
-            this.ribbonPageGroup4});
-            this.ribbonPage2.Name = "ribbonPage2";
-            this.ribbonPage2.Text = "业务管理";
-            // 
-            // ribbonPageGroup5
-            // 
-            this.ribbonPageGroup5.AllowTextClipping = false;
-            this.ribbonPageGroup5.ItemLinks.Add(this.mnuAccountList);
-            this.ribbonPageGroup5.ItemLinks.Add(this.mnuAccount);
-            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
-            this.ribbonPageGroup5.ShowCaptionButton = false;
-            // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.mnuContractList);
-            this.ribbonPageGroup3.ItemLinks.Add(this.mnuContract);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.ShowCaptionButton = false;
-            // 
-            // ribbonPageGroup4
-            // 
-            this.ribbonPageGroup4.Glyph = global::Haimen.Properties.Resources.About;
-            this.ribbonPageGroup4.ItemLinks.Add(this.mnuBalanceList);
-            this.ribbonPageGroup4.ItemLinks.Add(this.mnuBalance);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.ShowCaptionButton = false;
+            this.ribbonPageGroup9.Text = "外观";
             // 
             // ribbonPage3
             // 
             this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup6,
-            this.ribbonPageGroup7});
+            this.ribbonPageGroup7,
+            this.ribbonPageGroup10});
             this.ribbonPage3.Name = "ribbonPage3";
             this.ribbonPage3.Text = "系统管理";
             // 
             // ribbonPageGroup6
             // 
             this.ribbonPageGroup6.ItemLinks.Add(this.mnuUserList);
-            this.ribbonPageGroup6.ItemLinks.Add(this.mnuChangePassword);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             this.ribbonPageGroup6.ShowCaptionButton = false;
+            this.ribbonPageGroup6.Text = "用户";
             // 
             // ribbonPageGroup7
             // 
             this.ribbonPageGroup7.ItemLinks.Add(this.mnuNotify);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             this.ribbonPageGroup7.ShowCaptionButton = false;
+            this.ribbonPageGroup7.Text = "通知";
             // 
             // ribbonPage4
             // 
@@ -372,24 +361,32 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.statusText);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 469);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 473);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(781, 35);
-            // 
-            // defaultLookAndFeel1
-            // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Seven Classic";
+            this.ribbonStatusBar.Size = new System.Drawing.Size(787, 31);
             // 
             // mdiManager
             // 
             this.mdiManager.MdiParent = this;
             // 
+            // ribbonPageGroup8
+            // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.rbSkins);
+            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
+            this.ribbonPageGroup8.Text = "外观";
+            // 
+            // ribbonPageGroup10
+            // 
+            this.ribbonPageGroup10.ItemLinks.Add(this.rbSkins);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            this.ribbonPageGroup10.Text = "外观";
+            // 
             // DevMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(781, 504);
+            this.ClientSize = new System.Drawing.Size(787, 504);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.IsMdiContainer = true;
@@ -426,9 +423,7 @@
         private DevExpress.XtraBars.BarButtonItem mnuBalanceList;
         private DevExpress.XtraBars.BarButtonItem mnuBalance;
         private DevExpress.XtraBars.BarButtonItem mnuUserList;
-        private DevExpress.XtraBars.BarButtonItem mnuChangePassword;
         private DevExpress.XtraBars.BarButtonItem mnuNotify;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
@@ -441,5 +436,7 @@
         private DevExpress.XtraBars.BarStaticItem statusText;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox mnuComboSkins;
         private DevExpress.XtraBars.RibbonGalleryBarItem rbSkins;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
     }
 }

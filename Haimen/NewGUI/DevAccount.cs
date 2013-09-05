@@ -462,5 +462,16 @@ namespace Haimen.NewGUI
             SetFormStatus(winStatus.OnlyView);      //审核通过后，只能看。
             ShowCheckPic();
         }
+
+        /// <summary>
+        /// 审核不通过
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbCheckFaild_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            m_account.CheckFaild();
+            SetFormStatus(winStatus.View);      
+        }
     }
 }

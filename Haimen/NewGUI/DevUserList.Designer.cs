@@ -28,243 +28,216 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Admin = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.col_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.col_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnQuery = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtCode = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tsbExit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.tsbResetPassword = new System.Windows.Forms.ToolStripButton();
-            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
+            this.components = new System.ComponentModel.Container();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbReset = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // Admin
+            // barManager1
             // 
-            this.Admin.HeaderText = "管理员";
-            this.Admin.Name = "Admin";
-            this.Admin.ReadOnly = true;
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar1});
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.tsbNew,
+            this.tsbEdit,
+            this.tsbDelete,
+            this.tsbReset,
+            this.tsbExit,
+            this.tsbRefresh});
+            this.barManager1.MaxItemId = 6;
             // 
-            // col_code
+            // bar1
             // 
-            this.col_code.HeaderText = "登录名";
-            this.col_code.Name = "col_code";
-            this.col_code.ReadOnly = true;
-            // 
-            // col_id
-            // 
-            this.col_id.HeaderText = "编号";
-            this.col_id.Name = "col_id";
-            this.col_id.ReadOnly = true;
-            // 
-            // col_selected
-            // 
-            this.col_selected.HeaderText = "选择";
-            this.col_selected.Name = "col_selected";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col_selected,
-            this.col_id,
-            this.col_code,
-            this.col_name,
-            this.Admin});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 126);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(469, 197);
-            this.dataGridView1.TabIndex = 12;
-            // 
-            // col_name
-            // 
-            this.col_name.HeaderText = "用户名";
-            this.col_name.Name = "col_name";
-            this.col_name.ReadOnly = true;
-            // 
-            // btnQuery
-            // 
-            this.btnQuery.Location = new System.Drawing.Point(260, 80);
-            this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(75, 23);
-            this.btnQuery.TabIndex = 11;
-            this.btnQuery.Text = "查询";
-            this.btnQuery.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtCode);
-            this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(11, 36);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(242, 83);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            // 
-            // txtCode
-            // 
-            this.txtCode.Location = new System.Drawing.Point(78, 20);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(151, 22);
-            this.txtCode.TabIndex = 3;
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(78, 47);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(151, 22);
-            this.txtName.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 14);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "登录名";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 14);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "姓名：";
-            // 
-            // tsbExit
-            // 
-            this.tsbExit.Image = global::Haimen.Properties.Resources.Exit;
-            this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbExit.Name = "tsbExit";
-            this.tsbExit.Size = new System.Drawing.Size(52, 22);
-            this.tsbExit.Text = "退出";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbDelete
-            // 
-            this.tsbDelete.Image = global::Haimen.Properties.Resources.Delete;
-            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(52, 22);
-            this.tsbDelete.Text = "删除";
-            // 
-            // tsbResetPassword
-            // 
-            this.tsbResetPassword.Image = global::Haimen.Properties.Resources.Key;
-            this.tsbResetPassword.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbResetPassword.Name = "tsbResetPassword";
-            this.tsbResetPassword.Size = new System.Drawing.Size(76, 22);
-            this.tsbResetPassword.Text = "重置密码";
-            // 
-            // tsbEdit
-            // 
-            this.tsbEdit.Image = global::Haimen.Properties.Resources.Edit;
-            this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEdit.Name = "tsbEdit";
-            this.tsbEdit.Size = new System.Drawing.Size(52, 22);
-            this.tsbEdit.Text = "修改";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.bar1.BarName = "Tools";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbNew, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.bar1.Text = "Tools";
             // 
             // tsbNew
             // 
-            this.tsbNew.Image = global::Haimen.Properties.Resources.New;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNew.Caption = "新增";
+            this.tsbNew.Glyph = global::Haimen.Properties.Resources.New_hot;
+            this.tsbNew.Id = 0;
             this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(52, 22);
-            this.tsbNew.Text = "新增";
-            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
+            this.tsbNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbNew_ItemClick);
             // 
-            // toolStrip2
+            // tsbEdit
             // 
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNew,
-            this.toolStripSeparator1,
-            this.tsbEdit,
-            this.tsbResetPassword,
-            this.tsbDelete,
-            this.toolStripSeparator2,
-            this.tsbExit});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(493, 25);
-            this.toolStrip2.TabIndex = 9;
-            this.toolStrip2.Text = "toolStrip2";
+            this.tsbEdit.Caption = "编辑";
+            this.tsbEdit.Glyph = global::Haimen.Properties.Resources.Edit_hot;
+            this.tsbEdit.Id = 1;
+            this.tsbEdit.Name = "tsbEdit";
+            this.tsbEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbEdit_ItemClick);
+            // 
+            // tsbDelete
+            // 
+            this.tsbDelete.Caption = "删除";
+            this.tsbDelete.Glyph = global::Haimen.Properties.Resources.Delete_hot;
+            this.tsbDelete.Id = 2;
+            this.tsbDelete.Name = "tsbDelete";
+            this.tsbDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbDelete_ItemClick);
+            // 
+            // tsbRefresh
+            // 
+            this.tsbRefresh.Caption = "刷新";
+            this.tsbRefresh.Glyph = global::Haimen.Properties.Resources.Refresh_hot;
+            this.tsbRefresh.Id = 5;
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
+            // 
+            // tsbExit
+            // 
+            this.tsbExit.Caption = "退出";
+            this.tsbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.tsbExit.Id = 4;
+            this.tsbExit.Name = "tsbExit";
+            this.tsbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbExit_ItemClick);
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(573, 39);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 476);
+            this.barDockControlBottom.Size = new System.Drawing.Size(573, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 437);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(573, 39);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 437);
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 39);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.MenuManager = this.barManager1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(573, 437);
+            this.gridControl1.TabIndex = 17;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            this.gridControl1.DoubleClick += new System.EventHandler(this.gridControl1_DoubleClick);
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.col_id,
+            this.col_code,
+            this.col_name});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // col_id
+            // 
+            this.col_id.Caption = "编号";
+            this.col_id.FieldName = "ID";
+            this.col_id.Name = "col_id";
+            this.col_id.Visible = true;
+            this.col_id.VisibleIndex = 0;
+            // 
+            // col_code
+            // 
+            this.col_code.Caption = "登录代码";
+            this.col_code.FieldName = "Code";
+            this.col_code.Name = "col_code";
+            this.col_code.Visible = true;
+            this.col_code.VisibleIndex = 1;
+            // 
+            // col_name
+            // 
+            this.col_name.Caption = "姓名";
+            this.col_name.FieldName = "Name";
+            this.col_name.Name = "col_name";
+            this.col_name.Visible = true;
+            this.col_name.VisibleIndex = 2;
             // 
             // DevUserList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 335);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnQuery);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.toolStrip2);
+            this.ClientSize = new System.Drawing.Size(573, 476);
+            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Name = "DevUserList";
-            this.Text = "DevUserList";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
+            this.Text = "用户列表";
+            this.Load += new System.EventHandler(this.DevUserList_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Admin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_code;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_id;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn col_selected;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_name;
-        private System.Windows.Forms.Button btnQuery;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtCode;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ToolStripButton tsbExit;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsbDelete;
-        private System.Windows.Forms.ToolStripButton tsbResetPassword;
-        private System.Windows.Forms.ToolStripButton tsbEdit;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsbNew;
-        private System.Windows.Forms.ToolStrip toolStrip2;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.BarButtonItem tsbNew;
+        private DevExpress.XtraBars.BarButtonItem tsbEdit;
+        private DevExpress.XtraBars.BarButtonItem tsbDelete;
+        private DevExpress.XtraBars.BarButtonItem tsbReset;
+        private DevExpress.XtraBars.BarButtonItem tsbExit;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn col_id;
+        private DevExpress.XtraGrid.Columns.GridColumn col_code;
+        private DevExpress.XtraGrid.Columns.GridColumn col_name;
+        private DevExpress.XtraBars.BarButtonItem tsbRefresh;
     }
 }

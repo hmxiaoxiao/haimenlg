@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 using Haimen.Entity;
+using Haimen.Helper;
 
 namespace Haimen.NewGUI
 {
@@ -16,6 +17,7 @@ namespace Haimen.NewGUI
         public string Q_Code = "";
         public string Q_Bank_ID = "";
         public string Q_Company_ID = "";
+        public string Q_Status = "";
 
         private List<Bank> m_banks;
         private List<Company> m_companies;
@@ -32,6 +34,9 @@ namespace Haimen.NewGUI
                 Q_Bank_ID = lueBank.EditValue.ToString();
             if (lueCompany.EditValue != null)
                 Q_Company_ID = lueCompany.EditValue.ToString();
+            if (lueCheck.EditValue != null)
+                Q_Status = lueCheck.EditValue.ToString();
+            this.Close();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -51,6 +56,10 @@ namespace Haimen.NewGUI
             lueCompany.Properties.DataSource = m_companies;
             lueCompany.Properties.DisplayMember = "Name";
             lueCompany.Properties.ValueMember = "ID";
+
+            lueCheck.Properties.DataSource = GlobalSet.CheckList;
+            lueCheck.Properties.DisplayMember = "Name";
+            lueCheck.Properties.ValueMember = "ValueInt";
         }
     }
 }

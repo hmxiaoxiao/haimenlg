@@ -51,6 +51,41 @@ namespace Haimen.Entity
                 return m_list;
             }
         }
+    }
 
+    /// <summary>
+    /// 审核进度的状态
+    /// </summary>
+    public enum MyCheckStatus :long
+    {
+        /// <summary>
+        /// 未审核
+        /// </summary>
+        Uncheck = 0,
+
+        /// <summary>
+        /// 审核通过
+        /// </summary>
+        Checked,
+
+        /// <summary>
+        /// 审核未通过
+        /// </summary>
+        Unpass,
+
+        /// <summary>
+        /// 再次审核
+        /// </summary>
+        ReCheck,
+
+        /// <summary>
+        /// 支付中
+        /// </summary>
+        Paying,
+
+        /// <summary>
+        /// 已关闭
+        /// </summary>
+        Close
     }
 }

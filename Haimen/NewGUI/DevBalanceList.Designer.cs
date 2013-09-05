@@ -35,7 +35,7 @@
             this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tsbGene = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbVerify = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbCheck = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -71,7 +71,7 @@
             this.tsbEdit,
             this.tsbDelete,
             this.tsbGene,
-            this.tsbVerify,
+            this.tsbCheck,
             this.tsbExit,
             this.tsbQuery});
             this.barManager1.MaxItemId = 7;
@@ -86,8 +86,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbNew, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbGene, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbVerify, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbGene, "", true, true, false, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
@@ -124,13 +124,13 @@
             this.tsbGene.Name = "tsbGene";
             this.tsbGene.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbGene_ItemClick);
             // 
-            // tsbVerify
+            // tsbCheck
             // 
-            this.tsbVerify.Caption = "审核";
-            this.tsbVerify.Glyph = global::Haimen.Properties.Resources.Close_hot;
-            this.tsbVerify.Id = 4;
-            this.tsbVerify.Name = "tsbVerify";
-            this.tsbVerify.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbVerify_ItemClick);
+            this.tsbCheck.Caption = "审核";
+            this.tsbCheck.Glyph = global::Haimen.Properties.Resources.Close_hot;
+            this.tsbCheck.Id = 4;
+            this.tsbCheck.Name = "tsbCheck";
+            this.tsbCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbCheck_ItemClick);
             // 
             // tsbQuery
             // 
@@ -153,7 +153,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(799, 37);
+            this.barDockControlTop.Size = new System.Drawing.Size(799, 39);
             // 
             // barDockControlBottom
             // 
@@ -166,24 +166,24 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 37);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 443);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 441);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(799, 37);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 443);
+            this.barDockControlRight.Location = new System.Drawing.Point(799, 39);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 441);
             // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 37);
+            this.gridControl1.Location = new System.Drawing.Point(0, 39);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(799, 443);
+            this.gridControl1.Size = new System.Drawing.Size(799, 441);
             this.gridControl1.TabIndex = 28;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -202,6 +202,7 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // col_id
@@ -294,7 +295,7 @@
         private DevExpress.XtraBars.BarButtonItem tsbEdit;
         private DevExpress.XtraBars.BarButtonItem tsbDelete;
         private DevExpress.XtraBars.BarButtonItem tsbGene;
-        private DevExpress.XtraBars.BarButtonItem tsbVerify;
+        private DevExpress.XtraBars.BarButtonItem tsbCheck;
         private DevExpress.XtraBars.BarButtonItem tsbExit;
         private DevExpress.XtraBars.BarButtonItem tsbQuery;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
