@@ -15,32 +15,32 @@ namespace Haimen.NewGUI
     public partial class DevCompany : DevExpress.XtraEditors.XtraForm
     {
         private Company m_company;
-        private winStatus m_status;
+        private winStatusEnum m_status;
 
         /// <summary>
         /// 根据是编辑 还是新增，设置按钮的状态
         /// </summary>
         /// <param name="status"></param>
-        public void SetFormStatus(winStatus status)
+        public void SetFormStatus(winStatusEnum status)
         {
             m_status = status;
             switch (status)
             {
-                case winStatus.New:
+                case winStatusEnum.New:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbSave.Enabled = true;
 
                     this.Text = " 单位管理 - 新增 ";
                     break;
-                case winStatus.Edit:
+                case winStatusEnum.Edit:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbSave.Enabled = true;
 
                     this.Text = " 单位管理 - 编辑 ";
                     break;
-                case winStatus.View:
+                case winStatusEnum.View:
                     tsbNew.Enabled = true;
                     tsbEdit.Enabled = true;
                     tsbSave.Enabled = false;
@@ -165,12 +165,12 @@ namespace Haimen.NewGUI
             InitializeComponent();
             if (company != null)
             {
-                SetFormStatus(winStatus.Edit);
+                SetFormStatus(winStatusEnum.Edit);
                 m_company = company;
             }
             else
             {
-                SetFormStatus(winStatus.New);
+                SetFormStatus(winStatusEnum.New);
                 m_company = new Company();
             }
         }
@@ -205,12 +205,12 @@ namespace Haimen.NewGUI
 
             MessageBox.Show("保存成功，请继续新增.", "注意",MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            SetFormStatus(winStatus.View);
+            SetFormStatus(winStatusEnum.View);
         }
 
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatus.View)
+            if (m_status != winStatusEnum.View)
             {
                 if (MessageBox.Show("现在退出，当前的数据将会丢失，是否要退出？", "注意！",
                                     MessageBoxButtons.YesNo,
@@ -227,14 +227,14 @@ namespace Haimen.NewGUI
             m_company = new Company();
             initBankList();
             Object2Form();
-            SetFormStatus(winStatus.New);
+            SetFormStatus(winStatusEnum.New);
         }
 
         private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             initBankList();
             Object2Form();
-            SetFormStatus(winStatus.New);
+            SetFormStatus(winStatusEnum.New);
         }
 
         private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -245,7 +245,7 @@ namespace Haimen.NewGUI
                 m_company = new Company();
                 initBankList();
                 Object2Form();
-                SetFormStatus(winStatus.New);
+                SetFormStatus(winStatusEnum.New);
             }
         }
 

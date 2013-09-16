@@ -75,7 +75,7 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            m_main.OpenForm(new DevContract(winStatus.New));
+            m_main.OpenForm(new DevContract(winStatusEnum.New));
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Haimen.NewGUI
         {
             Contract ct = CurrentSelectedObject();
             if (ct != null)
-                m_main.OpenForm(new DevContract(winStatus.Edit, ct));
+                m_main.OpenForm(new DevContract(winStatusEnum.Edit, ct));
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Haimen.NewGUI
         {
             Contract ct = CurrentSelectedObject();
             if (ct != null)
-                m_main.OpenForm(new DevContract(winStatus.Check, ct));
+                m_main.OpenForm(new DevContract(winStatusEnum.Check, ct));
         }
 
         /// <summary>

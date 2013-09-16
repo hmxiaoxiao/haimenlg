@@ -23,18 +23,18 @@ namespace Haimen.NewGUI
         private List<Company> m_companies = Company.Query();
         private List<Funds> m_funds = Funds.Query();
 
-        private winStatus m_status;
+        private winStatusEnum m_status;
 
         /// <summary>
         /// 设置当前的状态，是新增，编辑，还是查看
         /// </summary>
         /// <param name="status"></param>
-        private void SetFormStatus(winStatus status)
+        private void SetFormStatus(winStatusEnum status)
         {
             m_status = status;
             switch (status)
             {
-                case winStatus.New:
+                case winStatusEnum.New:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -43,7 +43,7 @@ namespace Haimen.NewGUI
                     tbCheckPassed.Enabled = false;
                     SetEditorStatus(true);
                     break;
-                case winStatus.Edit:
+                case winStatusEnum.Edit:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -52,7 +52,7 @@ namespace Haimen.NewGUI
                     tbCheckPassed.Enabled = false;
                     SetEditorStatus(true);
                     break;
-                case winStatus.View:
+                case winStatusEnum.View:
                     tbNew.Enabled = true;
                     tbEdit.Enabled = true;
                     tbDelete.Enabled = true;
@@ -61,7 +61,7 @@ namespace Haimen.NewGUI
                     tbCheckPassed.Enabled = false;
                     SetEditorStatus(false);
                     break;
-                case winStatus.Check:
+                case winStatusEnum.Check:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -70,7 +70,7 @@ namespace Haimen.NewGUI
                     tbCheckPassed.Enabled = true;
                     SetEditorStatus(false);
                     break;
-                case winStatus.OnlyView:
+                case winStatusEnum.OnlyView:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -194,7 +194,7 @@ namespace Haimen.NewGUI
         /// 构造函数
         /// </summary>
         /// <param name="account"></param>
-        public DevAccount(winStatus status, Account account = null)
+        public DevAccount(winStatusEnum status, Account account = null)
         {
             InitializeComponent();
 
@@ -302,7 +302,7 @@ namespace Haimen.NewGUI
             if (m_account.Save())
             {
                 MessageBox.Show("保存成功！");
-                SetFormStatus(winStatus.View);
+                SetFormStatus(winStatusEnum.View);
             }
         }
 
@@ -315,7 +315,7 @@ namespace Haimen.NewGUI
         {
             m_account = new Account();
             Object2form();
-            SetFormStatus(winStatus.New);
+            SetFormStatus(winStatusEnum.New);
         }
 
 
@@ -330,7 +330,7 @@ namespace Haimen.NewGUI
                 return;
 
             Object2form();
-            SetFormStatus(winStatus.Edit);
+            SetFormStatus(winStatusEnum.Edit);
         }
 
         /// <summary>
@@ -387,7 +387,7 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void tbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(m_status == winStatus.View || m_status == winStatus.OnlyView))
+            if (!(m_status == winStatusEnum.View || m_status == winStatusEnum.OnlyView))
             {
                 if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
                                    "警告",
@@ -459,7 +459,7 @@ namespace Haimen.NewGUI
         private void tbCheckPassed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_account.CheckPass();
-            SetFormStatus(winStatus.OnlyView);      //审核通过后，只能看。
+            SetFormStatus(winStatusEnum.OnlyView);      //审核通过后，只能看。
             ShowCheckPic();
         }
 
@@ -471,7 +471,7 @@ namespace Haimen.NewGUI
         private void tbCheckFaild_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_account.CheckFaild();
-            SetFormStatus(winStatus.View);      
+            SetFormStatus(winStatusEnum.View);      
         }
     }
 }

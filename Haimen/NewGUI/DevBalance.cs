@@ -18,19 +18,19 @@ namespace Haimen.NewGUI
         private List<Bank> m_banks = Bank.Query();
         private List<Company> m_companies = Company.Query();
 
-        private winStatus m_status;
+        private winStatusEnum m_status;
 
         /// <summary>
         /// 设置窗口的状态
         /// </summary>
         /// <param name="status"></param>
-        private void SetFromStatus(winStatus status)
+        private void SetFromStatus(winStatusEnum status)
         {
             m_status = status;
             switch (status)
             {
-                case winStatus.New:
-                case winStatus.Edit: 
+                case winStatusEnum.New:
+                case winStatusEnum.Edit: 
                     btnNew.Enabled = false;
                     btnEdit.Enabled = false;
                     btnDelete.Enabled = false;
@@ -40,7 +40,7 @@ namespace Haimen.NewGUI
 
                     SetControlStatus(true);
                     break;
-                case winStatus.View:
+                case winStatusEnum.View:
                     btnNew.Enabled = false;
                     btnEdit.Enabled = false;
                     btnDelete.Enabled = false;
@@ -50,7 +50,7 @@ namespace Haimen.NewGUI
 
                     SetControlStatus(false);
                     break;
-                case winStatus.Check:
+                case winStatusEnum.Check:
                     btnNew.Enabled = false;
                     btnEdit.Enabled = false;
                     btnDelete.Enabled = false;
@@ -60,7 +60,7 @@ namespace Haimen.NewGUI
 
                     SetControlStatus(false);
                     break;
-                case winStatus.OnlyView:
+                case winStatusEnum.OnlyView:
                     btnNew.Enabled = true;
                     btnEdit.Enabled = false;
                     btnDelete.Enabled = false;
@@ -168,7 +168,7 @@ namespace Haimen.NewGUI
         /// </summary>
         /// <param name="status"></param>
         /// <param name="balance"></param>
-        public DevBalance(winStatus status, Balance balance = null)
+        public DevBalance(winStatusEnum status, Balance balance = null)
         {
             InitializeComponent();
             if (balance != null)
@@ -210,7 +210,7 @@ namespace Haimen.NewGUI
                 return;
 
             m_balance.Save();
-            SetFromStatus(winStatus.View);
+            SetFromStatus(winStatusEnum.View);
             MessageBox.Show("保存成功");
         }
 
@@ -240,7 +240,7 @@ namespace Haimen.NewGUI
         {
             m_balance = new Balance();
             Object2Form();
-            SetFromStatus(winStatus.New);
+            SetFromStatus(winStatusEnum.New);
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace Haimen.NewGUI
                 return;
 
             Object2Form();
-            SetFromStatus(winStatus.Edit);
+            SetFromStatus(winStatusEnum.Edit);
         }
 
         /// <summary>
@@ -268,7 +268,7 @@ namespace Haimen.NewGUI
             {
                 m_balance.Destory();
                 m_balance = new Balance();
-                SetFromStatus(winStatus.View);
+                SetFromStatus(winStatusEnum.View);
             }
         }
 
@@ -279,7 +279,7 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void btnExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(m_status == winStatus.View || m_status == winStatus.OnlyView))
+            if (!(m_status == winStatusEnum.View || m_status == winStatusEnum.OnlyView))
             {
                 if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
                                    "警告",
@@ -299,7 +299,7 @@ namespace Haimen.NewGUI
         private void btnCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_balance.CheckPass();
-            SetFromStatus(winStatus.OnlyView);
+            SetFromStatus(winStatusEnum.OnlyView);
         }
 
         /// <summary>
@@ -310,7 +310,7 @@ namespace Haimen.NewGUI
         private void btnCheckFaild_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_balance.CheckFaild();
-            SetFromStatus(winStatus.View);
+            SetFromStatus(winStatusEnum.View);
         }
 
 

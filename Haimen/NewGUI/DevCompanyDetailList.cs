@@ -17,26 +17,26 @@ namespace Haimen.NewGUI
         private List<Bank> banks = Bank.Query();
         private Company m_company;
         private CompanyDetail m_detail;
-        private winStatus m_status;
+        private winStatusEnum m_status;
 
-        private void SetFormStatus(winStatus status)
+        private void SetFormStatus(winStatusEnum status)
         {
             m_status = status;
             switch (status)
             {
-                case winStatus.View:
+                case winStatusEnum.View:
                     tsbNew.Enabled = true;
                     tsbEdit.Enabled = true;
                     tsbDelete.Enabled = true;
                     tsbSave.Enabled = false;
                     break;
-                case winStatus.Edit:
+                case winStatusEnum.Edit:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbDelete.Enabled = false;
                     tsbSave.Enabled = true;
                     break;
-                case winStatus.New:
+                case winStatusEnum.New:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbDelete.Enabled = false;
@@ -64,7 +64,7 @@ namespace Haimen.NewGUI
         private void DevCompanyDetailList_Load(object sender, EventArgs e)
         {
             Ower_refresh();
-            SetFormStatus(winStatus.View);
+            SetFormStatus(winStatusEnum.View);
         }
 
         private void treeList1_Click(object sender, EventArgs e)
@@ -120,7 +120,7 @@ namespace Haimen.NewGUI
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_company.DetailList;
 
-            SetFormStatus(winStatus.New);
+            SetFormStatus(winStatusEnum.New);
         }
 
         private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -148,13 +148,13 @@ namespace Haimen.NewGUI
             else
             {
                 MessageBox.Show("保存成功！", "注意");
-                SetFormStatus(winStatus.View);
+                SetFormStatus(winStatusEnum.View);
             }
         }
 
         private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            if (m_status == winStatus.New || m_status == winStatus.Edit)
+            if (m_status == winStatusEnum.New || m_status == winStatusEnum.Edit)
             {
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_detail.ID)
                     e.Appearance.BackColor = Color.LightSteelBlue;
@@ -163,7 +163,7 @@ namespace Haimen.NewGUI
 
         private void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
         {
-            if (m_status == winStatus.New || m_status == winStatus.Edit)
+            if (m_status == winStatusEnum.New || m_status == winStatusEnum.Edit)
             {
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_detail.ID)
                     e.Allow = false;
@@ -172,7 +172,7 @@ namespace Haimen.NewGUI
 
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatus.View)
+            if (m_status != winStatusEnum.View)
             {
                 if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
                         MessageBoxButtons.YesNo,
@@ -198,12 +198,12 @@ namespace Haimen.NewGUI
                     m_detail = cd;
             }
             gridView1.OptionsBehavior.Editable = true;
-            SetFormStatus(winStatus.Edit);
+            SetFormStatus(winStatusEnum.Edit);
         }
 
         private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatus.View)
+            if (m_status != winStatusEnum.View)
             {
                 if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
                         MessageBoxButtons.YesNo,
@@ -214,7 +214,7 @@ namespace Haimen.NewGUI
                 }
             }
             Ower_refresh();
-            SetFormStatus(winStatus.View);
+            SetFormStatus(winStatusEnum.View);
         }
     }
 }

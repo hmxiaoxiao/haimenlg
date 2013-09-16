@@ -21,14 +21,14 @@ namespace Haimen.NewGUI
         private Contract m_contract;
         private List<Company> m_companies = Company.Query();
 
-        private winStatus m_status;
-        private void SetFormStatus(winStatus status)
+        private winStatusEnum m_status;
+        private void SetFormStatus(winStatusEnum status)
         {
             m_status = status;
             switch (status)
             {
-                case winStatus.New:
-                case winStatus.Edit:
+                case winStatusEnum.New:
+                case winStatusEnum.Edit:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -38,7 +38,7 @@ namespace Haimen.NewGUI
 
                     SetControlStatus(true);
                     break;
-                case winStatus.View:
+                case winStatusEnum.View:
                     tbNew.Enabled = true;
                     tbEdit.Enabled = true;
                     tbDelete.Enabled = true;
@@ -48,7 +48,7 @@ namespace Haimen.NewGUI
 
                     SetControlStatus(false);
                     break;
-                case winStatus.Check:
+                case winStatusEnum.Check:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -58,7 +58,7 @@ namespace Haimen.NewGUI
 
                     SetControlStatus(false);
                     break;
-                case winStatus.OnlyView:
+                case winStatusEnum.OnlyView:
                     tbNew.Enabled = true;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -187,7 +187,7 @@ namespace Haimen.NewGUI
             return true;
         }
 
-        public DevContract(winStatus status, Contract con = null)
+        public DevContract(winStatusEnum status, Contract con = null)
         {
             InitializeComponent();
             if (con != null)
@@ -227,7 +227,7 @@ namespace Haimen.NewGUI
 
             m_contract.Save();
             MessageBox.Show("保存成功！");
-            SetFormStatus(winStatus.View);
+            SetFormStatus(winStatusEnum.View);
         }
 
 
@@ -236,7 +236,7 @@ namespace Haimen.NewGUI
         {
             m_contract = new Contract();
             Object2Form();
-            SetFormStatus(winStatus.New);
+            SetFormStatus(winStatusEnum.New);
         }
 
         // 编辑对象
@@ -245,7 +245,7 @@ namespace Haimen.NewGUI
             if (m_contract != null && m_contract.ID > 0)
             {
                 Object2Form();
-                SetFormStatus(winStatus.Edit);
+                SetFormStatus(winStatusEnum.Edit);
             }
         }
 
@@ -257,13 +257,13 @@ namespace Haimen.NewGUI
                 m_contract.Destory();
                 m_contract = new Contract();
                 Object2Form();
-                SetFormStatus(winStatus.View);
+                SetFormStatus(winStatusEnum.View);
             }
         }
 
         private void tbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(m_status == winStatus.View || m_status == winStatus.OnlyView))
+            if (!(m_status == winStatusEnum.View || m_status == winStatusEnum.OnlyView))
             {
                 if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
                                    "警告",
@@ -346,14 +346,14 @@ namespace Haimen.NewGUI
         private void tbCheckPassed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_contract.CheckPassed();
-            SetFormStatus(winStatus.OnlyView);
+            SetFormStatus(winStatusEnum.OnlyView);
         }
 
         // 审核不通过
         private void tbCheckFaild_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_contract.CheckFaild();
-            SetFormStatus(winStatus.View);
+            SetFormStatus(winStatusEnum.View);
         }
 
     }

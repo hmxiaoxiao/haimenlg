@@ -107,7 +107,7 @@ namespace Haimen.NewGUI
             // 检查是否已经存在
             if (!FormAlreadyOpen(typeof(DevAccount)))
             {
-                DevAccount list = new DevAccount(winStatus.New);
+                DevAccount list = new DevAccount(winStatusEnum.New);
                 list.MdiParent = this;
                 list.Show();
             }
@@ -169,7 +169,7 @@ namespace Haimen.NewGUI
             // 检查是否已经存在
             if (!FormAlreadyOpen(typeof(DevContract)))
             {
-                DevContract list = new DevContract(winStatus.New);
+                DevContract list = new DevContract(winStatusEnum.New);
                 list.MdiParent = this;
                 list.Show();
             }
@@ -191,7 +191,23 @@ namespace Haimen.NewGUI
             // 检查是否已经存在
             if (!FormAlreadyOpen(typeof(DevBalance)))
             {
-                DevBalance list = new DevBalance(winStatus.New);
+                DevBalance list = new DevBalance(winStatusEnum.New);
+                list.MdiParent = this;
+                list.Show();
+            }
+        }
+
+        /// <summary>
+        /// 权限
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuAccess_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // 检查是否已经存在
+            if (!FormAlreadyOpen(typeof(DevAccess)))
+            {
+                DevAccess list = new DevAccess();
                 list.MdiParent = this;
                 list.Show();
             }

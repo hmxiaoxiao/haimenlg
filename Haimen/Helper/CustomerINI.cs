@@ -108,21 +108,21 @@ namespace Haimen.Helper
         /// </summary>
         /// <param name="key">配置</param>
         /// <returns>值</returns>
-        public static string GetDBConfigValue(INIDBKey key)
+        public static string GetDBConfigValue(INIDBKeyEnum key)
         {
             string val = "";
             switch (key)
             {
-                case INIDBKey.Host:
+                case INIDBKeyEnum.Host:
                     val = m_ini.IniReadValue("connection", "host");
                     break;
-                case INIDBKey.DB:
+                case INIDBKeyEnum.DB:
                     val = m_ini.IniReadValue("connection", "db");
                     break;
-                case INIDBKey.User:
+                case INIDBKeyEnum.User:
                     val = m_ini.IniReadValue("connection", "user");
                     break;
-                case INIDBKey.Password:
+                case INIDBKeyEnum.Password:
                     val = m_ini.IniReadValue("connection", "password");
                     break;
             }
@@ -134,18 +134,18 @@ namespace Haimen.Helper
         /// </summary>
         /// <param name="key">配置</param>
         /// <returns>值</returns>
-        public static string GetFTPConfigValue(INIFTPKey key)
+        public static string GetFTPConfigValue(INIFTPKeyEnum key)
         {
             string val = "";
             switch (key)
             {
-                case INIFTPKey.Host:
+                case INIFTPKeyEnum.Host:
                     val = m_ini.IniReadValue("FTP", "host");
                     break;
-                case INIFTPKey.User:
+                case INIFTPKeyEnum.User:
                     val = m_ini.IniReadValue("FTP", "user");
                     break;
-                case INIFTPKey.Password:
+                case INIFTPKeyEnum.Password:
                     val = m_ini.IniReadValue("FTP", "password");
                     break;
             }

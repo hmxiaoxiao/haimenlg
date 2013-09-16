@@ -24,14 +24,14 @@ namespace Haimen.DBConfig
         {
             CustomerINI.SetFormSkin();
 
-            txtHost.Text = CustomerINI.GetDBConfigValue(INIDBKey.Host);
-            txtDB.Text = CustomerINI.GetDBConfigValue(INIDBKey.DB);
-            txtUser.Text = CustomerINI.GetDBConfigValue(INIDBKey.User);
-            txtPassword.Text = CustomerINI.GetDBConfigValue(INIDBKey.Password);
+            txtHost.Text = CustomerINI.GetDBConfigValue(INIDBKeyEnum.Host);
+            txtDB.Text = CustomerINI.GetDBConfigValue(INIDBKeyEnum.DB);
+            txtUser.Text = CustomerINI.GetDBConfigValue(INIDBKeyEnum.User);
+            txtPassword.Text = CustomerINI.GetDBConfigValue(INIDBKeyEnum.Password);
 
-            txtFTPURL.Text = CustomerINI.GetFTPConfigValue(INIFTPKey.Host);
-            txtFTPName.Text = CustomerINI.GetFTPConfigValue(INIFTPKey.User);
-            txtFTPPassword.Text = CustomerINI.GetFTPConfigValue(INIFTPKey.Password);
+            txtFTPURL.Text = CustomerINI.GetFTPConfigValue(INIFTPKeyEnum.Host);
+            txtFTPName.Text = CustomerINI.GetFTPConfigValue(INIFTPKeyEnum.User);
+            txtFTPPassword.Text = CustomerINI.GetFTPConfigValue(INIFTPKeyEnum.Password);
         }
 
         private void btnTest_Click(object sender, EventArgs e)

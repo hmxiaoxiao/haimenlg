@@ -27,6 +27,9 @@ namespace Haimen.Entity
         [Field("admin")]
         public string Admin { get; set; }
 
+        [Field("ugroup")]
+        public long UserGroupID { get; set; }
+
         public string Password { get; set; }
 
         // 用户初始化

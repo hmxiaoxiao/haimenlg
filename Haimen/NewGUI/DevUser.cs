@@ -18,8 +18,11 @@ namespace Haimen.NewGUI
         // 当前编辑的对象
         private User m_user = null;
 
+        // 用户组
+        private List<UserGroup> m_usergroups = UserGroup.Query();
+
          // 当前窗口状态
-        private winStatus m_status;
+        private winStatusEnum m_status;
 
         // 校验所有的数据是否正确输入
         private bool verifyData()
@@ -30,6 +33,19 @@ namespace Haimen.NewGUI
                 m_user.Admin = null;
 
             bool verify = true;
+
+
+            if (!string.IsNullOrEmpty(lueUserGroup.EditValue.ToString()))
+            {
+                m_user.UserGroupID = long.Parse(lueUserGroup.EditValue.ToString());
+            }
+
+            if (m_user.UserGroupID <= 0)
+            {
+                errorProvider1.SetError(lueUserGroup, "必须选择所属的用户组");
+                verify = false;
+            }
+
             // 用户代码
             if (txtCode.Text == "")
             {
@@ -87,8 +103,8 @@ namespace Haimen.NewGUI
         {
             switch (m_status)
             {
-                case winStatus.New:
-                case winStatus.Edit:
+                case winStatusEnum.New:
+                case winStatusEnum.Edit:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbDelete.Enabled = false;
@@ -99,7 +115,7 @@ namespace Haimen.NewGUI
                     txtPassword.Enabled = true;
                     txtPasswordConfirm.Enabled = true;
                     break;
-                case winStatus.View:
+                case winStatusEnum.View:
                     tsbNew.Enabled = true;
                     tsbEdit.Enabled = true;
                     tsbDelete.Enabled = true;
@@ -127,6 +143,13 @@ namespace Haimen.NewGUI
             else
                 cbAdmin.Checked = false;
 
+            lueUserGroup.Properties.DataSource = null;
+            lueUserGroup.Properties.DataSource = m_usergroups;
+            lueUserGroup.Properties.DisplayMember = "Name";
+            lueUserGroup.Properties.ValueMember = "Code";
+
+            lueUserGroup.EditValue = m_user.UserGroupID;
+
         }
 
         // 刷新界面
@@ -144,12 +167,12 @@ namespace Haimen.NewGUI
             if (user != null)
             {
                 m_user = user;
-                m_status = winStatus.Edit;
+                m_status = winStatusEnum.Edit;
             }
             else
             {
                 m_user = new User();
-                m_status = winStatus.New;
+                m_status = winStatusEnum.New;
             }
         }
 
@@ -162,7 +185,7 @@ namespace Haimen.NewGUI
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_user = new User();
-            m_status = winStatus.New;
+            m_status = winStatusEnum.New;
 
             MyRefresh();
         }
@@ -171,7 +194,7 @@ namespace Haimen.NewGUI
         {
             if (m_user != null)
             {
-                m_status = winStatus.Edit;
+                m_status = winStatusEnum.Edit;
                 MyRefresh();
             }
         }
@@ -182,7 +205,7 @@ namespace Haimen.NewGUI
             {
                 m_user.Destory();
                 m_user = new User();
-                m_status = winStatus.View;
+                m_status = winStatusEnum.View;
                 MyRefresh();
             }
 
@@ -200,13 +223,13 @@ namespace Haimen.NewGUI
 
             m_user.Save();
             MessageBox.Show("用户保存成功!", "注意");
-            m_status = winStatus.View;
+            m_status = winStatusEnum.View;
             MyRefresh();
         }
 
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatus.View)
+            if (m_status != winStatusEnum.View)
             {
                 if (MessageBox.Show("当前正在编辑数据，这时退出会丢失当前的数据，是否真的要退出？",
                                 "注意",

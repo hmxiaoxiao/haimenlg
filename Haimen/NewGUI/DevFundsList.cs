@@ -18,27 +18,27 @@ namespace Haimen.NewGUI
         private List<Funds> m_fundses = new List<Funds>();
         private Funds m_funds;        // 当前编辑(新增)的银行
 
-        private winStatus m_status;
+        private winStatusEnum m_status;
 
         // 设置当前窗口状态，也就是控制几个按钮的状态
-        private void setWinStatus(winStatus status)
+        private void setWinStatus(winStatusEnum status)
         {
             m_status = status;
             switch (status)
             {
-                case winStatus.View:
+                case winStatusEnum.View:
                     tsbDelete.Enabled = true;
                     tsbEdit.Enabled = true;
                     tsbNew.Enabled = true;
                     tsbSave.Enabled = false;
                     break;
-                case winStatus.Edit:
+                case winStatusEnum.Edit:
                     tsbDelete.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbNew.Enabled = false;
                     tsbSave.Enabled = true;
                     break;
-                case winStatus.New:
+                case winStatusEnum.New:
                     tsbDelete.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbNew.Enabled = false;
@@ -96,7 +96,7 @@ namespace Haimen.NewGUI
         {
             initTree();
             ShowFunds2Grid();
-            setWinStatus(winStatus.View);       // 当前的状态为浏览
+            setWinStatus(winStatusEnum.View);       // 当前的状态为浏览
         }
 
         private void tree_Click(object sender, EventArgs e)
@@ -112,7 +112,7 @@ namespace Haimen.NewGUI
             gridControl1.DataSource = m_fundses;
             gridView1.OptionsBehavior.Editable = true;
 
-            setWinStatus(winStatus.New);
+            setWinStatus(winStatusEnum.New);
         }
 
         private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -128,7 +128,7 @@ namespace Haimen.NewGUI
                     m_funds = bk;
             }
             gridView1.OptionsBehavior.Editable = true;
-            setWinStatus(winStatus.Edit);
+            setWinStatus(winStatusEnum.Edit);
         }
 
         private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -136,7 +136,7 @@ namespace Haimen.NewGUI
             if (gridView1.FocusedRowHandle < 0)
                 return;
 
-            if (m_status != winStatus.View)
+            if (m_status != winStatusEnum.View)
                 return;
 
             if (MessageBox.Show("要删除指定的资金性质，是否要继续？", "注意",
@@ -167,7 +167,7 @@ namespace Haimen.NewGUI
 
             m_funds = null;
             gridView1.OptionsBehavior.Editable = false;
-            setWinStatus(winStatus.View);
+            setWinStatus(winStatusEnum.View);
         }
 
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -198,14 +198,14 @@ namespace Haimen.NewGUI
                 }
             }
             m_funds = null;
-            setWinStatus(winStatus.View);
+            setWinStatus(winStatusEnum.View);
             initTree();
             ShowFunds2Grid();
         }
 
         private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            if (m_status == winStatus.New || m_status == winStatus.Edit)
+            if (m_status == winStatusEnum.New || m_status == winStatusEnum.Edit)
             {
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_funds.ID)
                     e.Appearance.BackColor = Color.LightSteelBlue;
@@ -214,7 +214,7 @@ namespace Haimen.NewGUI
 
         private void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
         {
-            if (m_status == winStatus.New || m_status == winStatus.Edit)
+            if (m_status == winStatusEnum.New || m_status == winStatusEnum.Edit)
             {
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_funds.ID)
                     e.Allow = false;
