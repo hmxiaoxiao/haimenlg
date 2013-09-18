@@ -11,22 +11,33 @@ using System.Data.SqlClient;
 
 namespace Haimen.Entity
 {
+    /// <summary>
+    /// 将权限转换成一个对象
+    /// </summary>
     public class FAccess
     {
+        // 业务名称
         public string Name { get; set; }
 
+        // 是否可以查看
         public bool View { get; set; }
 
+        // 是否可以新增
         public bool New { get; set; }
 
+        // 是否可以编辑
         public bool Edit { get; set; }
 
+        // 是否可以删除
         public bool Delete { get; set; }
 
+        // 是否可以校验
         public bool Check { get; set; }
 
+        // 所属用户
         public long UserID { get; set; }
 
+        // 所属用户组
         public long GroupID { get; set; }
     }
 
@@ -68,6 +79,11 @@ namespace Haimen.Entity
         public byte CanAccess { get; set; }
 
 
+        /// <summary>
+        /// 将指定的用户的权限转为对象
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public static List<FAccess> UserAccess2List(User user)
         {
             List<FAccess> rtn_list = new List<FAccess>();
@@ -87,6 +103,11 @@ namespace Haimen.Entity
             return rtn_list;
         }
 
+        /// <summary>
+        /// 将指定的用户组的权限转为对象
+        /// </summary>
+        /// <param name="usergroup_id"></param>
+        /// <returns></returns>
         public static List<FAccess> UserGroupAccess2List(long usergroup_id)
         {
             List<FAccess> rtn_list = new List<FAccess>();
@@ -107,6 +128,14 @@ namespace Haimen.Entity
         }
 
 
+        /// <summary>
+        /// 取得指定用户的业务权限
+        /// </summary>
+        /// <param name="user_id">用户ID</param>
+        /// <param name="group_id">用户组</param>
+        /// <param name="ft">业务</param>
+        /// <param name="at">操作</param>
+        /// <returns></returns>
         public static bool getUserAccess(long user_id, long group_id, long ft, long at)
         {
             string sql = " user_id = " + user_id + 
@@ -117,9 +146,17 @@ namespace Haimen.Entity
                 return list[0].CanAccess != 0;
             else
                 return GetUserGroupAccess(group_id, ft, at);
-
         }
 
+
+        /// <summary>
+        /// 取得指定用户组的业务权限
+        /// </summary>
+        /// <param name="user_id">用户ID</param>
+        /// <param name="group_id">用户组</param>
+        /// <param name="ft">业务</param>
+        /// <param name="at">操作</param>
+        /// <returns></returns>
         public static bool GetUserGroupAccess(long usergroup_id, long ft, long at)
         {
             string sql = " ugroup_id = " + usergroup_id +
@@ -210,6 +247,8 @@ namespace Haimen.Entity
             }
         }
 
+
+        // 保存用户权限到表里
         public static void SaveGroupAccess(long group_id, long fction, long act)
         {
             using (TransactionScope ts = new TransactionScope())
@@ -224,6 +263,8 @@ namespace Haimen.Entity
             }
         }
 
+
+        // 保存用户组权限到表里
         public static void SaveUserAccess(long user_id, long group_id, long fction, long act, bool use_acc)
         {
             using (TransactionScope ts = new TransactionScope())

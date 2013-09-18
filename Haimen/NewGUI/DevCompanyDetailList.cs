@@ -19,6 +19,25 @@ namespace Haimen.NewGUI
         private CompanyDetail m_detail;
         private winStatusEnum m_status;
 
+        /// <summary>
+        /// 根据用户的权限设置控件的可用与否
+        /// </summary>
+        private void SetControlAccess()
+        {
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位帐户明细, (long)ActionEnum.New))
+            {
+                if (tsbNew.Enabled == true) tsbNew.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位帐户明细, (long)ActionEnum.Edit))
+            {
+                if (tsbEdit.Enabled == true) tsbEdit.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位帐户明细, (long)ActionEnum.Delete))
+            {
+                if (tsbDelete.Enabled == true) tsbDelete.Enabled = false;
+            }
+        }
+
         private void SetFormStatus(winStatusEnum status)
         {
             m_status = status;
@@ -65,6 +84,7 @@ namespace Haimen.NewGUI
         {
             Ower_refresh();
             SetFormStatus(winStatusEnum.View);
+            SetControlAccess();
         }
 
         private void treeList1_Click(object sender, EventArgs e)

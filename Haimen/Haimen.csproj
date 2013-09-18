@@ -160,7 +160,7 @@
     <Compile Include="Helper\FTPClient.cs" />
     <Compile Include="Helper\INIFile.cs" />
     <Compile Include="Helper\PinyinHelper.cs" />
-    <Compile Include="Helper\WinStatus.cs" />
+    <Compile Include="Helper\HMEnum.cs" />
     <Compile Include="NewGUI\DevAccess.cs">
       <SubType>Form</SubType>
     </Compile>

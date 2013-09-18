@@ -56,7 +56,7 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbModify = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tsbCheck = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
@@ -101,7 +101,7 @@
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView3;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(177, 500);
+            this.gridControl2.Size = new System.Drawing.Size(177, 498);
             this.gridControl2.TabIndex = 25;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -142,7 +142,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueStatus});
-            this.gridControl1.Size = new System.Drawing.Size(563, 500);
+            this.gridControl1.Size = new System.Drawing.Size(563, 498);
             this.gridControl1.TabIndex = 23;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -307,7 +307,7 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.tsbNew,
             this.tsbNewInput,
-            this.tsbModify,
+            this.tsbEdit,
             this.tsbDelete,
             this.tsbCheck,
             this.tsbQuery,
@@ -323,7 +323,7 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbNew, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbModify, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
@@ -339,13 +339,13 @@
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbNew_ItemClick);
             // 
-            // tsbModify
+            // tsbEdit
             // 
-            this.tsbModify.Caption = "编辑";
-            this.tsbModify.Glyph = global::Haimen.Properties.Resources.Edit_hot;
-            this.tsbModify.Id = 2;
-            this.tsbModify.Name = "tsbModify";
-            this.tsbModify.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbEdit_ItemClick);
+            this.tsbEdit.Caption = "编辑";
+            this.tsbEdit.Glyph = global::Haimen.Properties.Resources.Edit_hot;
+            this.tsbEdit.Id = 2;
+            this.tsbEdit.Name = "tsbEdit";
+            this.tsbEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbEdit_ItemClick);
             // 
             // tsbDelete
             // 
@@ -392,7 +392,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(744, 37);
+            this.barDockControlTop.Size = new System.Drawing.Size(744, 39);
             // 
             // barDockControlBottom
             // 
@@ -405,15 +405,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 37);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 521);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 519);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(744, 37);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 521);
+            this.barDockControlRight.Location = new System.Drawing.Point(744, 39);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 519);
             // 
             // tsbNewInput
             // 
@@ -426,11 +426,11 @@
             this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(150)))));
             this.c1SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 37);
+            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 39);
             this.c1SplitContainer1.Name = "c1SplitContainer1";
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel1);
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel2);
-            this.c1SplitContainer1.Size = new System.Drawing.Size(744, 521);
+            this.c1SplitContainer1.Size = new System.Drawing.Size(744, 519);
             this.c1SplitContainer1.SplitterColor = System.Drawing.Color.Transparent;
             this.c1SplitContainer1.TabIndex = 33;
             this.c1SplitContainer1.UseParentVisualStyle = false;
@@ -441,7 +441,7 @@
             this.c1SplitterPanel1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
-            this.c1SplitterPanel1.Size = new System.Drawing.Size(563, 500);
+            this.c1SplitterPanel1.Size = new System.Drawing.Size(563, 498);
             this.c1SplitterPanel1.SizeRatio = 76.081D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "列表";
@@ -453,7 +453,7 @@
             this.c1SplitterPanel2.Height = 100;
             this.c1SplitterPanel2.Location = new System.Drawing.Point(567, 21);
             this.c1SplitterPanel2.Name = "c1SplitterPanel2";
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(177, 500);
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(177, 498);
             this.c1SplitterPanel2.TabIndex = 1;
             this.c1SplitterPanel2.Text = "明细";
             // 
@@ -513,7 +513,7 @@
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarButtonItem tsbNew;
         private DevExpress.XtraBars.BarButtonItem tsbNewInput;
-        private DevExpress.XtraBars.BarButtonItem tsbModify;
+        private DevExpress.XtraBars.BarButtonItem tsbEdit;
         private DevExpress.XtraBars.BarButtonItem tsbDelete;
         private DevExpress.XtraBars.BarButtonItem tsbCheck;
         private DevExpress.XtraBars.BarButtonItem tsbQuery;

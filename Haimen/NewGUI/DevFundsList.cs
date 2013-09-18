@@ -20,6 +20,25 @@ namespace Haimen.NewGUI
 
         private winStatusEnum m_status;
 
+        /// <summary>
+        /// 根据用户的权限设置控件的可用与否
+        /// </summary>
+        private void SetControlAccess()
+        {
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金性质, (long)ActionEnum.New))
+            {
+                if (tsbNew.Enabled == true) tsbNew.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金性质, (long)ActionEnum.Edit))
+            {
+                if (tsbEdit.Enabled == true) tsbEdit.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金性质, (long)ActionEnum.Delete))
+            {
+                if (tsbDelete.Enabled == true) tsbDelete.Enabled = false;
+            }
+        }
+
         // 设置当前窗口状态，也就是控制几个按钮的状态
         private void setWinStatus(winStatusEnum status)
         {
@@ -97,6 +116,7 @@ namespace Haimen.NewGUI
             initTree();
             ShowFunds2Grid();
             setWinStatus(winStatusEnum.View);       // 当前的状态为浏览
+            SetControlAccess();
         }
 
         private void tree_Click(object sender, EventArgs e)

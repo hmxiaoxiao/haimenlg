@@ -192,6 +192,9 @@ namespace Haimen.Helper
         /// 通知
         /// </summary>
         通知,
+
+
+        权限,
     }
 
 }

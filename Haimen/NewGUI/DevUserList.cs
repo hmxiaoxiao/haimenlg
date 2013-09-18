@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 using Haimen.Entity;
+using Haimen.Helper;
 
 namespace Haimen.NewGUI
 {
@@ -19,6 +20,27 @@ namespace Haimen.NewGUI
         // 主窗口
         private DevMain m_main_window;
 
+
+        /// <summary>
+        /// 根据用户的权限设置控件的可用与否
+        /// </summary>
+        private void SetControlAccess()
+        {
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.用户, (long)ActionEnum.New))
+            {
+                if (tsbNew.Enabled == true) tsbNew.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.用户, (long)ActionEnum.Edit))
+            {
+                if (tsbEdit.Enabled == true) tsbEdit.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.用户, (long)ActionEnum.Delete))
+            {
+                if (tsbDelete.Enabled == true) tsbDelete.Enabled = false;
+            }
+        }
+
+
         // 刷新界面
         private void MyRefresh()
         {
@@ -27,6 +49,8 @@ namespace Haimen.NewGUI
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_users;
             gridView1.BestFitColumns();
+
+            SetControlAccess();
         }
 
         // 取得当前行对应的对象

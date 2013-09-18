@@ -21,6 +21,32 @@ namespace Haimen.NewGUI
         private Contract m_contract;
         private List<Company> m_companies = Company.Query();
 
+
+        /// <summary>
+        /// 根据用户的权限设置控件的可用与否
+        /// </summary>
+        private void SetControlAccess()
+        {
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.New))
+            {
+                if (tbNew.Enabled == true) tbNew.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.Edit))
+            {
+                if (tbEdit.Enabled == true) tbEdit.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.Delete))
+            {
+                if (tbDelete.Enabled == true) tbDelete.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.Check))
+            {
+                if (tbCheckPassed.Enabled == true) tbCheckPassed.Enabled = false;
+                if (tbCheckFaild.Enabled == true) tbCheckFaild.Enabled = false;
+            }
+        }
+
+
         private winStatusEnum m_status;
         private void SetFormStatus(winStatusEnum status)
         {
@@ -203,6 +229,7 @@ namespace Haimen.NewGUI
         private void DevContract_Load(object sender, EventArgs e)
         {
             Object2Form();
+            SetControlAccess();
         }
 
         // 增加明细

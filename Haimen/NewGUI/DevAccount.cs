@@ -26,6 +26,30 @@ namespace Haimen.NewGUI
         private winStatusEnum m_status;
 
         /// <summary>
+        /// 根据用户的权限设置控件的可用与否
+        /// </summary>
+        private void SetControlAccess()
+        {
+            if(!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.New))
+            {
+                if (tbNew.Enabled == true) tbNew.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.Edit))
+            {
+                if (tbEdit.Enabled == true) tbEdit.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.Delete))
+            {
+                if (tbDelete.Enabled == true) tbDelete.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.Check))
+            {
+                if (tbCheckPassed.Enabled == true) tbCheckPassed.Enabled = false;
+                if (tbCheckFaild.Enabled == true) tbCheckFaild.Enabled = false;
+            }
+        }
+
+        /// <summary>
         /// 设置当前的状态，是新增，编辑，还是查看
         /// </summary>
         /// <param name="status"></param>
@@ -210,6 +234,8 @@ namespace Haimen.NewGUI
             // 初始化界面
             InitList();
             Object2form();
+
+            SetControlAccess();
         }
 
         /// <summary>

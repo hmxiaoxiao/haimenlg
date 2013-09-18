@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 using Haimen.Entity;
-
+using Haimen.Helper;
 
 namespace Haimen.NewGUI
 {
@@ -26,6 +26,17 @@ namespace Haimen.NewGUI
             cboUType.Properties.Items.Add("用户");
             cboUType.Properties.Items.Add("用户组");
             cboUType.SelectedIndex = 0;
+
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.New) ||
+                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.New) ||
+                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.New))
+            {
+                btnSave.Enabled = true;
+            }
+            else
+            {
+                btnSave.Enabled = false;
+            }
         }
 
         public DevAccess()

@@ -21,6 +21,30 @@ namespace Haimen.NewGUI
         private winStatusEnum m_status;
 
         /// <summary>
+        /// 根据用户的权限设置控件的可用与否
+        /// </summary>
+        private void SetControlAccess()
+        {
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.New))
+            {
+                if (btnNew.Enabled == true) btnNew.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.Edit))
+            {
+                if (btnEdit.Enabled == true) btnEdit.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.Delete))
+            {
+                if (btnDelete.Enabled == true) btnDelete.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.Check))
+            {
+                if (btnCheck.Enabled == true) btnCheck.Enabled = false;
+                if (btnCheckFaild.Enabled == true) btnCheckFaild.Enabled = false;
+            }
+        }
+
+        /// <summary>
         /// 设置窗口的状态
         /// </summary>
         /// <param name="status"></param>
@@ -197,6 +221,7 @@ namespace Haimen.NewGUI
         private void DevBalance_Load(object sender, EventArgs e)
         {
             Object2Form();
+            SetControlAccess();
         }
 
         /// <summary>

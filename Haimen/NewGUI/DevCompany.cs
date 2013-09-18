@@ -18,6 +18,25 @@ namespace Haimen.NewGUI
         private winStatusEnum m_status;
 
         /// <summary>
+        /// 根据用户的权限设置控件的可用与否
+        /// </summary>
+        private void SetControlAccess()
+        {
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位, (long)ActionEnum.New))
+            {
+                if (tsbNew.Enabled == true) tsbNew.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位, (long)ActionEnum.Edit))
+            {
+                if (tsbEdit.Enabled == true) tsbEdit.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位, (long)ActionEnum.Delete))
+            {
+                if (tsbDelete.Enabled == true) tsbDelete.Enabled = false;
+            }
+        }
+
+        /// <summary>
         /// 根据是编辑 还是新增，设置按钮的状态
         /// </summary>
         /// <param name="status"></param>
@@ -184,6 +203,7 @@ namespace Haimen.NewGUI
         {
             initBankList();
             Object2Form();
+            SetControlAccess();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

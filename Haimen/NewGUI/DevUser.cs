@@ -24,6 +24,25 @@ namespace Haimen.NewGUI
          // 当前窗口状态
         private winStatusEnum m_status;
 
+        /// <summary>
+        /// 根据用户的权限设置控件的可用与否
+        /// </summary>
+        private void SetControlAccess()
+        {
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.用户, (long)ActionEnum.New))
+            {
+                if (tsbNew.Enabled == true) tsbNew.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.用户, (long)ActionEnum.Edit))
+            {
+                if (tsbEdit.Enabled == true) tsbEdit.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.用户, (long)ActionEnum.Delete))
+            {
+                if (tsbDelete.Enabled == true) tsbDelete.Enabled = false;
+            }
+        }
+
         // 校验所有的数据是否正确输入
         private bool verifyData()
         {
@@ -101,6 +120,7 @@ namespace Haimen.NewGUI
         // 设置当前窗口状态
         private void SetFormStatus()
         {
+            SetControlAccess();
             switch (m_status)
             {
                 case winStatusEnum.New:

@@ -20,6 +20,29 @@ namespace Haimen.NewGUI
         private List<Account> m_accounts;
 
         /// <summary>
+        /// 根据用户的权限设置控件的可用与否
+        /// </summary>
+        private void SetControlAccess()
+        {
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.New))
+            {
+                if (tsbNew.Enabled == true) tsbNew.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.Edit))
+            {
+                if (tsbEdit.Enabled == true) tsbEdit.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.Delete))
+            {
+                if (tsbDelete.Enabled == true) tsbDelete.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.Check))
+            {
+                if (tsbCheck.Enabled == true) tsbCheck.Enabled = false;
+            }
+        }
+
+        /// <summary>
         /// 编辑资金
         /// </summary>
         private void EditAccount(winStatusEnum status = winStatusEnum.Edit)
@@ -141,6 +164,7 @@ namespace Haimen.NewGUI
         private void DevAccountList_Load(object sender, EventArgs e)
         {
             MyRefresh();
+            SetControlAccess();
         }
 
 
