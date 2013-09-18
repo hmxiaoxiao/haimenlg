@@ -48,13 +48,13 @@ namespace Haimen.GUI
             {
                 dtSigned.Value = m_account.SignedDate;
                 txtCode.Text = m_account.Code;
-                lueInCompany.EditValue = m_account.In_Company_ID;
-                lueOutCompany.EditValue = m_account.Out_Company_ID;
-                txtOutComapnyAccount.Text = m_account.OutCompany.Account;
-                txtOutCompanyBank.Text = m_account.OutCompany.Bank.Name;
+                lueInCompany.EditValue = m_account.In_CompanyDetail_ID;
+                lueOutCompany.EditValue = m_account.Out_CompanyDetail_ID;
+                txtOutComapnyAccount.Text = m_account.OutCompanyDetail.Account;
+                txtOutCompanyBank.Text = m_account.OutCompanyDetail.Bank.Name;
 
-                txtInCompanyAccount.Text = m_account.InCompany.Account;
-                txtInCompanyBank.Text = m_account.InCompany.Bank.Name;
+                txtInCompanyAccount.Text = m_account.InCompanyDetail.Account;
+                txtInCompanyBank.Text = m_account.InCompanyDetail.Bank.Name;
 
                 txtMemo.Text = m_account.Memo;            
             }
@@ -89,17 +89,17 @@ namespace Haimen.GUI
         private void lueOutCompany_EditValueChanged(object sender, EventArgs e)
         {
             if (lueOutCompany.EditValue != null)
-                m_account.Out_Company_ID = long.Parse(lueOutCompany.EditValue.ToString());
-            txtOutCompanyBank.Text = m_account.OutCompany.Bank.Name;
-            txtOutComapnyAccount.Text = m_account.OutCompany.Account;
+                m_account.Out_CompanyDetail_ID = long.Parse(lueOutCompany.EditValue.ToString());
+            txtOutCompanyBank.Text = m_account.OutCompanyDetail.Bank.Name;
+            txtOutComapnyAccount.Text = m_account.OutCompanyDetail.Account;
         }
 
         private void lueInCompany_EditValueChanged(object sender, EventArgs e)
         {
             if (lueInCompany.EditValue != null)
-                m_account.In_Company_ID = long.Parse(lueInCompany.EditValue.ToString());
-            txtInCompanyBank.Text = m_account.InCompany.Bank.Name;
-            txtInCompanyAccount.Text = m_account.InCompany.Account;
+                m_account.In_CompanyDetail_ID = long.Parse(lueInCompany.EditValue.ToString());
+            txtInCompanyBank.Text = m_account.InCompanyDetail.Bank.Name;
+            txtInCompanyAccount.Text = m_account.InCompanyDetail.Account;
         }
 
         private void dtSigned_ValueChanged(object sender, EventArgs e)

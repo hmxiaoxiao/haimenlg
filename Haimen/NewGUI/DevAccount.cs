@@ -135,13 +135,24 @@ namespace Haimen.NewGUI
             {
                 dtSigned.EditValue = m_account.SignedDate;
                 txtCode.Text = m_account.Code;
-                lueInCompany.EditValue = m_account.In_Company_ID;
-                lueOutCompany.EditValue = m_account.Out_Company_ID;
-                txtOutComapnyAccount.Text = m_account.OutCompany.Account;
-                txtOutCompanyBank.Text = m_account.OutCompany.Bank.Name;
 
-                txtInCompanyAccount.Text = m_account.InCompany.Account;
-                txtInCompanyBank.Text = m_account.InCompany.Bank.Name;
+                lueOutCompany.EditValue = m_account.OutCompanyDetail.Parent_ID;
+                List<CompanyDetail> out_list = CompanyDetail.Query("parent_id = " + m_account.OutCompanyDetail.Parent_ID);
+                lueOutAccount.Properties.DataSource = null;
+                lueOutAccount.Properties.DataSource = out_list;
+                lueOutAccount.Properties.DisplayMember = "Account";
+                lueOutAccount.Properties.ValueMember = "ID";
+                lueOutAccount.EditValue = m_account.Out_CompanyDetail_ID;
+                txtOutBank.Text = m_account.OutCompanyDetail.Bank.Name;
+
+                lueInCompany.EditValue = m_account.InCompanyDetail.Parent_ID;
+                List<CompanyDetail> in_list = CompanyDetail.Query("parent_id = " + m_account.InCompanyDetail.Parent_ID);
+                lueInAccount.Properties.DataSource = null;
+                lueInAccount.Properties.DataSource = in_list;
+                lueInAccount.Properties.DisplayMember = "Account";
+                lueInAccount.Properties.ValueMember = "ID";
+                lueInAccount.EditValue = m_account.In_CompanyDetail_ID;
+                txtInBank.Text = m_account.InCompanyDetail.Bank.Name;
 
                 txtMemo.Text = m_account.Memo;
             }
@@ -150,12 +161,12 @@ namespace Haimen.NewGUI
                 dtSigned.EditValue = DateTime.Now;
                 txtCode.Text = "";
                 lueInCompany.EditValue = null;
-                lueOutCompany.EditValue = null;
-                txtOutComapnyAccount.Text = "";
-                txtOutCompanyBank.Text = "";
+                lueInAccount.EditValue = null;
+                txtOutBank.Text = "";
 
-                txtInCompanyAccount.Text = "";
-                txtInCompanyBank.Text = "";
+                lueOutCompany.EditValue = null;
+                lueOutAccount.EditValue = null;
+                txtInBank.Text = "";
 
                 txtMemo.Text = "";
             }
@@ -247,14 +258,16 @@ namespace Haimen.NewGUI
         {
             if (lueOutCompany.EditValue != null)
             {
-                m_account.Out_Company_ID = long.Parse(lueOutCompany.EditValue.ToString());
-                txtOutCompanyBank.Text = m_account.OutCompany.Bank.Name;
-                txtOutComapnyAccount.Text = m_account.OutCompany.Account;
+                m_account.Out_CompanyDetail_ID = long.Parse(lueOutCompany.EditValue.ToString());
+                List<CompanyDetail> cd = CompanyDetail.Query("parent_id = " + m_account.Out_CompanyDetail_ID.ToString());
+                lueOutAccount.Properties.DataSource = cd;
+                lueOutAccount.Properties.DisplayMember = "Account";
+                lueOutAccount.Properties.ValueMember = "ID";
             }
             
             // 生成单据字
             if (string.IsNullOrEmpty(txtCode.Text))
-                txtCode.Text = m_account.OutCompany.NextDoc();
+                txtCode.Text = Company.CreateByID( m_account.OutCompanyDetail.Parent_ID).NextDoc();
         }
 
         /// <summary>
@@ -266,9 +279,11 @@ namespace Haimen.NewGUI
         {
             if (lueInCompany.EditValue != null)
             {
-                m_account.In_Company_ID = long.Parse(lueInCompany.EditValue.ToString());
-                txtInCompanyBank.Text = m_account.InCompany.Bank.Name;
-                txtInCompanyAccount.Text = m_account.InCompany.Account;
+                m_account.In_CompanyDetail_ID = long.Parse(lueInCompany.EditValue.ToString());
+                List<CompanyDetail> cd = CompanyDetail.Query("parent_id = " + m_account.Out_CompanyDetail_ID.ToString());
+                lueInAccount.Properties.DataSource = cd;
+                lueInAccount.Properties.DisplayMember = "Account";
+                lueInAccount.Properties.ValueMember = "ID";
             }
         }
 
@@ -498,6 +513,33 @@ namespace Haimen.NewGUI
         {
             m_account.CheckFaild();
             SetFormStatus(winStatusEnum.View);      
+        }
+
+
+        /// <summary>
+        /// 选择帐户
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lueOutAccount_EditValueChanged(object sender, EventArgs e)
+        {
+            if (lueOutAccount.EditValue == null)
+                return;
+
+            long CD_id = long.Parse(lueOutAccount.EditValue.ToString());
+            //CompanyDetail cd = CompanyDetail.CreateByID(CD_id);
+            m_account.Out_CompanyDetail_ID = CD_id;
+            txtOutBank.Text = m_account.OutCompanyDetail.Bank.Name;
+        }
+
+        private void lueInAccount_EditValueChanged(object sender, EventArgs e)
+        {
+            if (lueInAccount.EditValue == null)
+                return;
+
+            long id = long.Parse(lueInAccount.EditValue.ToString());
+            m_account.In_CompanyDetail_ID = id;
+            txtInBank.Text = m_account.InCompanyDetail.Bank.Name;
         }
     }
 }

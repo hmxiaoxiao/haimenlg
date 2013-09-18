@@ -17,34 +17,34 @@ namespace Haimen.Entity
         public string Code { get; set; }
 
 
-        [Field("out_company_id")]
-        public long Out_Company_ID { get; set; }
-        private Company m_outCompnay = null;
-        public Company OutCompany
+        [Field("out_companydetail_id")]
+        public long Out_CompanyDetail_ID { get; set; }
+        private CompanyDetail m_outCompnay = null;
+        public CompanyDetail OutCompanyDetail
         {
             get
             {
-                if (Out_Company_ID > 0)
+                if (Out_CompanyDetail_ID > 0)
                 {
-                    if (m_outCompnay == null || m_outCompnay.ID != Out_Company_ID)
-                        m_outCompnay = Company.CreateByID(Out_Company_ID);
+                    if (m_outCompnay == null || m_outCompnay.ID != Out_CompanyDetail_ID)
+                        m_outCompnay = CompanyDetail.CreateByID(Out_CompanyDetail_ID);
                 }
                 return m_outCompnay;
             }
         }
 
 
-        [Field("in_company_id")]
-        public long In_Company_ID { get; set; }
-        private Company m_inComanpy = null;
-        public Company InCompany
+        [Field("in_companydetail_id")]
+        public long In_CompanyDetail_ID { get; set; }
+        private CompanyDetail m_inComanpy = null;
+        public CompanyDetail InCompanyDetail
         {
             get
             {
-                if (In_Company_ID > 0)
+                if (In_CompanyDetail_ID > 0)
                 {
-                    if (m_inComanpy == null || m_inComanpy.ID != Out_Company_ID)
-                        m_inComanpy = Company.CreateByID(In_Company_ID);
+                    if (m_inComanpy == null || m_inComanpy.ID != Out_CompanyDetail_ID)
+                        m_inComanpy = CompanyDetail.CreateByID(In_CompanyDetail_ID);
                 }
                 return m_inComanpy;
             }
@@ -148,8 +148,8 @@ namespace Haimen.Entity
                 // 改标志为已审核
                 this.Status = 1;
 
-                Company inCom = Company.CreateByID(this.In_Company_ID);
-                Company outCom = Company.CreateByID(this.Out_Company_ID);
+                Company inCom = Company.CreateByID(this.In_CompanyDetail_ID);
+                Company outCom = Company.CreateByID(this.Out_CompanyDetail_ID);
 
                 // 加入一个查找标记
                 bool finded = false;
@@ -158,7 +158,7 @@ namespace Haimen.Entity
                 foreach (CompanyDetail cd in inCom.DetailList)
                 {
                     // 如果找到了，更新该单位的银行资金
-                    if (cd.Bank_ID == InCompany.Bank_ID && cd.Account == InCompany.Account)
+                    if (cd.Bank_ID == InCompanyDetail.Bank_ID && cd.Account == InCompanyDetail.Account)
                     {
                         finded = true;
                         foreach (AccountDetail ad in this.DetailList)
@@ -169,8 +169,8 @@ namespace Haimen.Entity
                 if (!finded)
                 {
                     CompanyDetail cde = new CompanyDetail();
-                    cde.Bank_ID = this.InCompany.Bank_ID;
-                    cde.Account = this.InCompany.Account;
+                    cde.Bank_ID = this.InCompanyDetail.Bank_ID;
+                    cde.Account = this.InCompanyDetail.Account;
                     foreach (AccountDetail ad in this.DetailList)
                     {
                         cde.Balance += ad.Money;
@@ -184,7 +184,7 @@ namespace Haimen.Entity
                 foreach (CompanyDetail cd in outCom.DetailList)
                 {
                     // 如果找到了，更新该单位的银行资金
-                    if (cd.Bank_ID == OutCompany.Bank_ID && cd.Account == OutCompany.Account)
+                    if (cd.Bank_ID == OutCompanyDetail.Bank_ID && cd.Account == OutCompanyDetail.Account)
                     {
                         finded = true;
                         foreach (AccountDetail ad in this.DetailList)
@@ -195,8 +195,8 @@ namespace Haimen.Entity
                 if (!finded)
                 {
                     CompanyDetail cde = new CompanyDetail();
-                    cde.Bank_ID = this.OutCompany.Bank_ID;
-                    cde.Account = this.OutCompany.Account;
+                    cde.Bank_ID = this.OutCompanyDetail.Bank_ID;
+                    cde.Account = this.OutCompanyDetail.Account;
                     foreach (AccountDetail ad in this.DetailList)
                     {
                         cde.Balance -= ad.Money;
