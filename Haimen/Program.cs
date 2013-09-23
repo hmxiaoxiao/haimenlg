@@ -21,7 +21,7 @@ namespace Haimen
         static void Main()
         {
             // 系统初始化
-            GlobalSet.SystemName = "临江财政资金管理系统";
+            GlobalSet.SystemName = "资金管理系统";
             DevExpress.UserSkins.BonusSkins.Register();
             DevExpress.UserSkins.BonusSkins.Register();
             Application.EnableVisualStyles();

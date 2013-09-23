@@ -35,10 +35,13 @@
             this.col_end_date = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_begin_date = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_signed_date = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_company = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_outcompany = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_securigy = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lueCheckStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -53,13 +56,13 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.col_status = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lueCheckStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.col_incompany = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_partyb = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_partya = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueCheckStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueCheckStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // col_payment_ration
@@ -68,7 +71,7 @@
             this.col_payment_ration.FieldName = "PaymentRatio";
             this.col_payment_ration.Name = "col_payment_ration";
             this.col_payment_ration.Visible = true;
-            this.col_payment_ration.VisibleIndex = 8;
+            this.col_payment_ration.VisibleIndex = 11;
             // 
             // col_money
             // 
@@ -76,7 +79,7 @@
             this.col_money.FieldName = "Money";
             this.col_money.Name = "col_money";
             this.col_money.Visible = true;
-            this.col_money.VisibleIndex = 6;
+            this.col_money.VisibleIndex = 9;
             // 
             // col_name
             // 
@@ -92,7 +95,7 @@
             this.col_end_date.FieldName = "EndDate";
             this.col_end_date.Name = "col_end_date";
             this.col_end_date.Visible = true;
-            this.col_end_date.VisibleIndex = 5;
+            this.col_end_date.VisibleIndex = 8;
             // 
             // col_begin_date
             // 
@@ -100,7 +103,7 @@
             this.col_begin_date.FieldName = "BeginDate";
             this.col_begin_date.Name = "col_begin_date";
             this.col_begin_date.Visible = true;
-            this.col_begin_date.VisibleIndex = 4;
+            this.col_begin_date.VisibleIndex = 7;
             // 
             // col_signed_date
             // 
@@ -108,15 +111,15 @@
             this.col_signed_date.FieldName = "SignedDate";
             this.col_signed_date.Name = "col_signed_date";
             this.col_signed_date.Visible = true;
-            this.col_signed_date.VisibleIndex = 3;
+            this.col_signed_date.VisibleIndex = 6;
             // 
-            // col_company
+            // col_outcompany
             // 
-            this.col_company.Caption = "单位";
-            this.col_company.FieldName = "Company.Name";
-            this.col_company.Name = "col_company";
-            this.col_company.Visible = true;
-            this.col_company.VisibleIndex = 2;
+            this.col_outcompany.Caption = "付款单位";
+            this.col_outcompany.FieldName = "OutCompany.Name";
+            this.col_outcompany.Name = "col_outcompany";
+            this.col_outcompany.Visible = true;
+            this.col_outcompany.VisibleIndex = 4;
             // 
             // col_code
             // 
@@ -132,7 +135,10 @@
             this.col_id,
             this.col_code,
             this.col_name,
-            this.col_company,
+            this.col_partya,
+            this.col_partyb,
+            this.col_outcompany,
+            this.col_incompany,
             this.col_signed_date,
             this.col_begin_date,
             this.col_end_date,
@@ -146,13 +152,37 @@
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
+            // col_id
+            // 
+            this.col_id.Caption = "ID";
+            this.col_id.FieldName = "Name";
+            this.col_id.Name = "col_id";
+            // 
             // col_securigy
             // 
             this.col_securigy.Caption = "保证金";
             this.col_securigy.FieldName = "Security";
             this.col_securigy.Name = "col_securigy";
             this.col_securigy.Visible = true;
-            this.col_securigy.VisibleIndex = 7;
+            this.col_securigy.VisibleIndex = 10;
+            // 
+            // col_status
+            // 
+            this.col_status.Caption = "审核进度";
+            this.col_status.ColumnEdit = this.lueCheckStatus;
+            this.col_status.FieldName = "Status";
+            this.col_status.Name = "col_status";
+            this.col_status.Visible = true;
+            this.col_status.VisibleIndex = 12;
+            // 
+            // lueCheckStatus
+            // 
+            this.lueCheckStatus.AutoHeight = false;
+            this.lueCheckStatus.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueCheckStatus.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
+            this.lueCheckStatus.Name = "lueCheckStatus";
             // 
             // gridControl1
             // 
@@ -198,7 +228,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbGen, "", false, true, false, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbGen, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
@@ -286,29 +316,29 @@
             this.barDockControlRight.Location = new System.Drawing.Point(744, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
             // 
-            // col_status
+            // col_incompany
             // 
-            this.col_status.Caption = "审核进度";
-            this.col_status.ColumnEdit = this.lueCheckStatus;
-            this.col_status.FieldName = "Status";
-            this.col_status.Name = "col_status";
-            this.col_status.Visible = true;
-            this.col_status.VisibleIndex = 9;
+            this.col_incompany.Caption = "收款单位";
+            this.col_incompany.FieldName = "InCompany.Name";
+            this.col_incompany.Name = "col_incompany";
+            this.col_incompany.Visible = true;
+            this.col_incompany.VisibleIndex = 5;
             // 
-            // col_id
+            // col_partyb
             // 
-            this.col_id.Caption = "ID";
-            this.col_id.FieldName = "Name";
-            this.col_id.Name = "col_id";
+            this.col_partyb.Caption = "乙方";
+            this.col_partyb.FieldName = "PartyB.Name";
+            this.col_partyb.Name = "col_partyb";
+            this.col_partyb.Visible = true;
+            this.col_partyb.VisibleIndex = 3;
             // 
-            // lueCheckStatus
+            // col_partya
             // 
-            this.lueCheckStatus.AutoHeight = false;
-            this.lueCheckStatus.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueCheckStatus.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
-            this.lueCheckStatus.Name = "lueCheckStatus";
+            this.col_partya.Caption = "甲方";
+            this.col_partya.FieldName = "PartyA.Name";
+            this.col_partya.Name = "col_partya";
+            this.col_partya.Visible = true;
+            this.col_partya.VisibleIndex = 2;
             // 
             // DevContractList
             // 
@@ -324,9 +354,9 @@
             this.Text = "合同列表";
             this.Load += new System.EventHandler(this.DevContractList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueCheckStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueCheckStatus)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -339,7 +369,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_end_date;
         private DevExpress.XtraGrid.Columns.GridColumn col_begin_date;
         private DevExpress.XtraGrid.Columns.GridColumn col_signed_date;
-        private DevExpress.XtraGrid.Columns.GridColumn col_company;
+        private DevExpress.XtraGrid.Columns.GridColumn col_outcompany;
         private DevExpress.XtraGrid.Columns.GridColumn col_code;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn col_securigy;
@@ -360,5 +390,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_id;
         private DevExpress.XtraGrid.Columns.GridColumn col_status;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueCheckStatus;
+        private DevExpress.XtraGrid.Columns.GridColumn col_partya;
+        private DevExpress.XtraGrid.Columns.GridColumn col_partyb;
+        private DevExpress.XtraGrid.Columns.GridColumn col_incompany;
     }
 }

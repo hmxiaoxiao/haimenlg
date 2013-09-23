@@ -192,23 +192,23 @@
             // col_outcompany
             // 
             this.col_outcompany.Caption = "付款单位";
-            this.col_outcompany.FieldName = "OutCompany.Name";
+            this.col_outcompany.FieldName = "OutCompanyDetail.Parent.Name";
             this.col_outcompany.Name = "col_outcompany";
             this.col_outcompany.Visible = true;
             this.col_outcompany.VisibleIndex = 1;
             // 
             // col_outcompany_bank
             // 
-            this.col_outcompany_bank.Caption = "开户行";
-            this.col_outcompany_bank.FieldName = "OutCompany.Bank.Name";
+            this.col_outcompany_bank.Caption = "付款银行";
+            this.col_outcompany_bank.FieldName = "OutCompanyDetail.Bank.Name";
             this.col_outcompany_bank.Name = "col_outcompany_bank";
             this.col_outcompany_bank.Visible = true;
             this.col_outcompany_bank.VisibleIndex = 2;
             // 
             // col_outcompany_account
             // 
-            this.col_outcompany_account.Caption = "帐号";
-            this.col_outcompany_account.FieldName = "OutCompany.Account";
+            this.col_outcompany_account.Caption = "付款帐号";
+            this.col_outcompany_account.FieldName = "OutCompanyDetail.Account";
             this.col_outcompany_account.Name = "col_outcompany_account";
             this.col_outcompany_account.Visible = true;
             this.col_outcompany_account.VisibleIndex = 3;
@@ -216,23 +216,23 @@
             // col_incompany
             // 
             this.col_incompany.Caption = "收款单位";
-            this.col_incompany.FieldName = "InCompany.Name";
+            this.col_incompany.FieldName = "InCompanyDetail.Parent.Name";
             this.col_incompany.Name = "col_incompany";
             this.col_incompany.Visible = true;
             this.col_incompany.VisibleIndex = 4;
             // 
             // col_incompany_bank
             // 
-            this.col_incompany_bank.Caption = "开户行";
-            this.col_incompany_bank.FieldName = "InCompnay.Bank.Name";
+            this.col_incompany_bank.Caption = "收款银行";
+            this.col_incompany_bank.FieldName = "InCompanyDetail.Bank.Name";
             this.col_incompany_bank.Name = "col_incompany_bank";
             this.col_incompany_bank.Visible = true;
             this.col_incompany_bank.VisibleIndex = 5;
             // 
             // col_incompany_account
             // 
-            this.col_incompany_account.Caption = "帐号";
-            this.col_incompany_account.FieldName = "InCompany.Account";
+            this.col_incompany_account.Caption = "收款帐号";
+            this.col_incompany_account.FieldName = "InCompanyDetail.Account";
             this.col_incompany_account.Name = "col_incompany_account";
             this.col_incompany_account.Visible = true;
             this.col_incompany_account.VisibleIndex = 6;

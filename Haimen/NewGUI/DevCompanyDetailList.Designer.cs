@@ -171,7 +171,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueBanks});
-            this.gridControl1.Size = new System.Drawing.Size(651, 326);
+            this.gridControl1.Size = new System.Drawing.Size(651, 325);
             this.gridControl1.TabIndex = 12;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -188,7 +188,7 @@
             this.tree.OptionsView.ShowColumns = false;
             this.tree.OptionsView.ShowIndentAsRowStyle = true;
             this.tree.OptionsView.ShowIndicator = false;
-            this.tree.Size = new System.Drawing.Size(163, 493);
+            this.tree.Size = new System.Drawing.Size(163, 491);
             this.tree.TabIndex = 26;
             this.tree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tree_FocusedNodeChanged);
             this.tree.Click += new System.EventHandler(this.treeList1_Click);
@@ -213,12 +213,12 @@
             this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(150)))));
             this.c1SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 37);
+            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 39);
             this.c1SplitContainer1.Name = "c1SplitContainer1";
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel1);
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel2);
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel3);
-            this.c1SplitContainer1.Size = new System.Drawing.Size(818, 514);
+            this.c1SplitContainer1.Size = new System.Drawing.Size(818, 512);
             this.c1SplitContainer1.TabIndex = 27;
             // 
             // c1SplitterPanel1
@@ -227,7 +227,7 @@
             this.c1SplitterPanel1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
-            this.c1SplitterPanel1.Size = new System.Drawing.Size(163, 493);
+            this.c1SplitterPanel1.Size = new System.Drawing.Size(163, 491);
             this.c1SplitterPanel1.SizeRatio = 20D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "单位列表";
@@ -236,11 +236,11 @@
             // c1SplitterPanel2
             // 
             this.c1SplitterPanel2.Controls.Add(this.layoutControl1);
-            this.c1SplitterPanel2.Height = 166;
+            this.c1SplitterPanel2.Height = 165;
             this.c1SplitterPanel2.Location = new System.Drawing.Point(167, 21);
             this.c1SplitterPanel2.Name = "c1SplitterPanel2";
             this.c1SplitterPanel2.Resizable = false;
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(651, 145);
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(651, 144);
             this.c1SplitterPanel2.SizeRatio = 32.283D;
             this.c1SplitterPanel2.TabIndex = 1;
             this.c1SplitterPanel2.Text = "单位详情";
@@ -256,7 +256,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(651, 145);
+            this.layoutControl1.Size = new System.Drawing.Size(651, 144);
             this.layoutControl1.TabIndex = 28;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -313,7 +313,7 @@
             this.layoutControlItem6});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(651, 145);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(651, 144);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -357,7 +357,7 @@
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 90);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem5.Size = new System.Drawing.Size(631, 35);
+            this.layoutControlItem5.Size = new System.Drawing.Size(631, 34);
             this.layoutControlItem5.Text = "帐号：";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -376,9 +376,9 @@
             // 
             this.c1SplitterPanel3.Controls.Add(this.gridControl1);
             this.c1SplitterPanel3.Height = 100;
-            this.c1SplitterPanel3.Location = new System.Drawing.Point(167, 188);
+            this.c1SplitterPanel3.Location = new System.Drawing.Point(167, 187);
             this.c1SplitterPanel3.Name = "c1SplitterPanel3";
-            this.c1SplitterPanel3.Size = new System.Drawing.Size(651, 326);
+            this.c1SplitterPanel3.Size = new System.Drawing.Size(651, 325);
             this.c1SplitterPanel3.TabIndex = 2;
             this.c1SplitterPanel3.Text = "明细帐";
             // 
@@ -468,7 +468,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(818, 37);
+            this.barDockControlTop.Size = new System.Drawing.Size(818, 39);
             // 
             // barDockControlBottom
             // 
@@ -481,15 +481,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 37);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 514);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 512);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(818, 37);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 514);
+            this.barDockControlRight.Location = new System.Drawing.Point(818, 39);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 512);
             // 
             // DevCompanyDetailList
             // 
@@ -502,7 +502,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "DevCompanyDetailList";
-            this.Text = "DevCompanyDetailList";
+            this.Text = "单位帐户明细";
             this.Load += new System.EventHandler(this.DevCompanyDetailList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lueBanks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

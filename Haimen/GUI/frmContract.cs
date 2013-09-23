@@ -58,7 +58,7 @@ namespace Haimen.GUI
 
             txtCode.Text = m_contract.Code;
             txtName.Text = m_contract.Name;
-            lueCompany.EditValue = m_contract.CompanyID;
+            lueCompany.EditValue = m_contract.OutCompanyID;
             dtSignedDate.Value = m_contract.SignedDate;
             dtBeginDate.Value = m_contract.BeginDate;
             dtEndDate.Value = m_contract.EndDate;
@@ -74,7 +74,7 @@ namespace Haimen.GUI
         {
             m_contract.Code = txtCode.Text ;
             m_contract.Name = txtName.Text;
-            m_contract.CompanyID = long.Parse(lueCompany.EditValue.ToString());
+            m_contract.OutCompanyID = long.Parse(lueCompany.EditValue.ToString());
             m_contract.SignedDate = dtSignedDate.Value;
             m_contract.BeginDate = dtBeginDate.Value;
             m_contract.EndDate = dtEndDate.Value;

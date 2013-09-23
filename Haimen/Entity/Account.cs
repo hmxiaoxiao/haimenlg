@@ -67,6 +67,8 @@ namespace Haimen.Entity
             }
         }
 
+        [Field("balance_id")]
+        public long Balance_ID { get; set; }
 
         [Field("applicant")]
         public long AppUserID { get; set; }

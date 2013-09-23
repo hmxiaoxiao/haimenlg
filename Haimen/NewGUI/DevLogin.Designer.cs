@@ -130,7 +130,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "临江财政资金管理系统";
+            this.Text = "资金管理系统";
             this.Load += new System.EventHandler(this.DevLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lueCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();

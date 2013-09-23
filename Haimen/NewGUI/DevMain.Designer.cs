@@ -407,7 +407,7 @@
             this.Name = "DevMain";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "财政资金管理系统";
+            this.Text = "资金管理系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DevMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();

@@ -222,7 +222,7 @@ namespace Haimen.NewGUI
                 return;
             }
 
-            MessageBox.Show("保存成功，请继续新增.", "注意",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("保存成功！", "注意",MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             SetFormStatus(winStatusEnum.View);
         }

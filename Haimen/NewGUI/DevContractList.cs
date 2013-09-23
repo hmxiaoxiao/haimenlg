@@ -179,7 +179,9 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void tsbGen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            Contract ct = CurrentSelectedObject();
+            if (ct != null)
+                m_main.OpenForm(new DevAccount(winStatusEnum.New, null, ct.ID));
         }
 
         /// <summary>

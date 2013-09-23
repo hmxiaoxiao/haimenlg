@@ -233,7 +233,7 @@ namespace Haimen.NewGUI
                 }
             }
 
-            return dxErrorProvider1.HasErrors;
+            return !dxErrorProvider1.HasErrors;
         }
 
         /// <summary>

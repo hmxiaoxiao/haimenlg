@@ -137,16 +137,19 @@ namespace Haimen.Qy
         {
             using (TransactionScope ts = new TransactionScope())
             {
-                base.Destory();
+                // 先删除明细
                 foreach (U u in DetailList)
                 {
                     u.Destory();
                 }
 
+                // 删除附件
                 foreach (Attach a in AttachList)
                 {
                     a.Destory();
                 }
+                // 再删除主记录
+                base.Destory();
                 ts.Complete();
             }
         }

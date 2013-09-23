@@ -227,6 +227,9 @@
             this.cboBankList.Name = "cboBankList";
             this.cboBankList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboBankList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "编号"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
             this.cboBankList.Properties.NullText = "";
             this.cboBankList.Size = new System.Drawing.Size(367, 20);
             this.cboBankList.StyleController = this.layoutControl1;

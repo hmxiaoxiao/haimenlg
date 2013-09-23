@@ -12,6 +12,16 @@ namespace Haimen.Entity
     {
         [Field("parent_id")]
         public long Parent_ID { get; set; }
+        public Company m_parent;
+        public Company Parent
+        {
+            get
+            {
+                if (m_parent == null)
+                    m_parent = Company.CreateByID(Parent_ID);
+                return m_parent;
+            }
+        }
 
         [Field("bank_id")]
         public long Bank_ID { get; set; }
@@ -35,6 +45,17 @@ namespace Haimen.Entity
                     m_bank = Bank.CreateByID(Bank_ID);
                 }
                 return m_bank;
+            }
+        }
+
+        // for lookupedit控件
+        public string BankName
+        {
+            get
+            {
+                if (m_bank == null)
+                    m_bank = Bank.CreateByID(Bank_ID);
+                return m_bank.Name;
             }
         }
 

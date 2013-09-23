@@ -21,6 +21,17 @@ namespace Haimen.NewGUI
         private Contract m_contract;
         private List<Company> m_companies = Company.Query();
 
+        /// <summary>
+        /// 设置保证金，自动计算
+        /// </summary>
+        private void SetSecurity()
+        {
+            decimal total = txtMoney.Value;
+            decimal rate = txtPayment_ratio.Value;
+
+            txtSecurity.Value = decimal.Round(total * rate / 100, 4);
+        }
+
 
         /// <summary>
         /// 根据用户的权限设置控件的可用与否
@@ -102,7 +113,11 @@ namespace Haimen.NewGUI
         {
             txtCode.Enabled = enabled;
             txtName.Enabled = enabled;
-            lueCompany.Enabled = enabled;
+            lueOutCompany.Enabled = enabled;
+            lueInCompany.Enabled = enabled;
+            luePartyA.Enabled = enabled;
+            luePartyB.Enabled = enabled;
+
             dtSignedDate.Enabled = enabled;
             dtBeginDate.Enabled = enabled;
             dtEndDate.Enabled = enabled;
@@ -110,6 +125,7 @@ namespace Haimen.NewGUI
             txtMoney.Enabled = enabled;
             txtPayment_ratio.Enabled = enabled;
             txtSecurity.Enabled = enabled;
+            txtCheckMoney.Enabled = enabled;
 
             tsbNew.Enabled = enabled;
             tsbDelete.Enabled = enabled;
@@ -127,14 +143,18 @@ namespace Haimen.NewGUI
         {
             m_contract.Code= txtCode.Text;
             m_contract.Name = txtName.Text;
-            m_contract.CompanyID = long.Parse(lueCompany.EditValue.ToString());
+            m_contract.OutCompanyID = long.Parse(lueOutCompany.EditValue.ToString());
+            m_contract.InCompanyID = long.Parse(lueInCompany.EditValue.ToString());
+            m_contract.PartyA_ID = long.Parse(luePartyA.EditValue.ToString());
+            m_contract.PartyB_ID = long.Parse(luePartyB.EditValue.ToString());
             m_contract.SignedDate = DateTime.Parse(dtSignedDate.EditValue.ToString());
             m_contract.BeginDate = DateTime.Parse(dtBeginDate.EditValue.ToString());
             m_contract.EndDate = DateTime.Parse(dtEndDate.EditValue.ToString());
             m_contract.Memo = txtMemo.Text;
-            m_contract.Money = decimal.Parse(txtMoney.Text);
-            m_contract.PaymentRatio = decimal.Parse(txtPayment_ratio.Text);
-            m_contract.Security = decimal.Parse(txtSecurity.Text);
+            m_contract.Money = txtMoney.Value;
+            m_contract.CheckMoney = txtCheckMoney.Value;
+            m_contract.PaymentRatio = txtPayment_ratio.Value;
+            m_contract.Security = txtSecurity.Value;
         }
 
         /// <summary>
@@ -146,33 +166,57 @@ namespace Haimen.NewGUI
             {
                 txtCode.Text = m_contract.Code;
                 txtName.Text = m_contract.Name;
-                lueCompany.EditValue = m_contract.CompanyID;
+                lueOutCompany.EditValue = m_contract.OutCompanyID;
+                lueInCompany.EditValue = m_contract.InCompanyID;
+                luePartyA.EditValue = m_contract.PartyA_ID;
+                luePartyB.EditValue = m_contract.PartyB_ID;
+
                 dtSignedDate.EditValue = m_contract.SignedDate;
                 dtBeginDate.EditValue = m_contract.BeginDate;
                 dtEndDate.EditValue = m_contract.EndDate;
                 txtMemo.Text = m_contract.Memo;
-                txtMoney.Text = m_contract.Money.ToString();
-                txtPayment_ratio.Text = m_contract.PaymentRatio.ToString();
-                txtSecurity.Text = m_contract.Security.ToString();
+                txtMoney.Value = m_contract.Money;
+                txtCheckMoney.Value = m_contract.CheckMoney;
+                txtPayment_ratio.Value = m_contract.PaymentRatio;
+                txtSecurity.Value = m_contract.Security;
             }
             else
             {
                 txtCode.Text = "";
                 txtName.Text = "";
-                lueCompany.EditValue = null;
+                lueOutCompany.EditValue = null;
+                lueInCompany.EditValue = null;
+                luePartyA.EditValue = null;
+                luePartyB.EditValue = null;
                 dtSignedDate.EditValue = DateTime.Now;
                 dtBeginDate.EditValue = DateTime.Now;
                 dtEndDate.EditValue = DateTime.Now;
                 txtMemo.Text = "";
-                txtMoney.Text = "";
-                txtPayment_ratio.Text = "";
-                txtSecurity.Text = "";
+                txtMoney.Value = 0;
+                txtCheckMoney.Value = 0;
+                txtPayment_ratio.Value = 0;
+                txtSecurity.Value = 0;
             }
 
-            lueCompany.Properties.DataSource = null;
-            lueCompany.Properties.DataSource = m_companies;
-            lueCompany.Properties.DisplayMember = "Name";
-            lueCompany.Properties.ValueMember = "ID";
+            lueOutCompany.Properties.DataSource = null;
+            lueOutCompany.Properties.DataSource = m_companies;
+            lueOutCompany.Properties.DisplayMember = "Name";
+            lueOutCompany.Properties.ValueMember = "ID";
+
+            lueInCompany.Properties.DataSource = null;
+            lueInCompany.Properties.DataSource = m_companies;
+            lueInCompany.Properties.DisplayMember = "Name";
+            lueInCompany.Properties.ValueMember = "ID";
+
+            luePartyA.Properties.DataSource = null;
+            luePartyA.Properties.DataSource = m_companies;
+            luePartyA.Properties.DisplayMember = "Name";
+            luePartyA.Properties.ValueMember = "ID";
+
+            luePartyB.Properties.DataSource = null;
+            luePartyB.Properties.DataSource = m_companies;
+            luePartyB.Properties.DisplayMember = "Name";
+            luePartyB.Properties.ValueMember = "ID";
 
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_contract.DetailList;
@@ -218,14 +262,23 @@ namespace Haimen.NewGUI
                     case "Code":
                         dxErrorProvider1.SetError(txtCode, kv.Value);
                         break;
-                    case "CompanyID":
-                        dxErrorProvider1.SetError(lueCompany, kv.Value);
+                    case "OutCompanyID":
+                        dxErrorProvider1.SetError(lueOutCompany, kv.Value);
+                        break;
+                    case "InCompanyID":
+                        dxErrorProvider1.SetError(lueInCompany, kv.Value);
+                        break;
+                    case "PartyA_ID":
+                        dxErrorProvider1.SetError(luePartyA, kv.Value);
+                        break;
+                    case "PartyB_ID":
+                        dxErrorProvider1.SetError(luePartyB, kv.Value);
                         break;
                 }
             }
 
 
-            return dxErrorProvider1.HasErrors;
+            return !dxErrorProvider1.HasErrors;
         }
 
         public DevContract(winStatusEnum status, Contract con = null)
@@ -399,6 +452,21 @@ namespace Haimen.NewGUI
         {
             m_contract.CheckFaild();
             SetFormStatus(winStatusEnum.View);
+        }
+
+        /// <summary>
+        /// 支付比例修改后，保证金自动调整
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtPayment_ratio_EditValueChanged(object sender, EventArgs e)
+        {
+            SetSecurity();
+        }
+
+        private void txtMoney_EditValueChanged(object sender, EventArgs e)
+        {
+            SetSecurity();
         }
 
     }

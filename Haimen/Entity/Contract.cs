@@ -11,24 +11,116 @@ namespace Haimen.Entity
     [Table("t_contract")]
     public class Contract : TEntityFunction<Contract, ContractDetail>
     {
+        /// <summary>
+        /// 编号
+        /// </summary>
         [Field("code")]
         public string Code { get; set; }
 
-        [Field("company_id")]
-        public long CompanyID { get; set; }
-        private Company m_company = null;
-        public Company Company
+        /// <summary>
+        /// 付款单位
+        /// </summary>
+        [Field("out_company_id")]
+        public long OutCompanyID { get; set; }
+        private Company m_out_company = null;
+        public Company OutCompany
         {
             get
             {
-                if (CompanyID > 0)
+                if (OutCompanyID > 0)
                 {
-                    if (m_company == null || m_company.ID != CompanyID)
-                        m_company = Company.CreateByID(CompanyID);
+                    if (m_out_company == null || m_out_company.ID != OutCompanyID)
+                        m_out_company = Company.CreateByID(OutCompanyID);
                 }
-                return m_company;
+                return m_out_company;
             }
         }
+
+
+        /// <summary>
+        /// 收款单位
+        /// </summary>
+        [Field("in_company_id")]
+        public long InCompanyID { get; set; }
+        private Company m_in_company = null;
+        public Company InCompany
+        {
+            get
+            {
+                if (InCompanyID > 0)
+                {
+                    if (m_in_company == null || m_in_company.ID != InCompanyID)
+                        m_in_company = Company.CreateByID(InCompanyID);
+                }
+                return m_in_company;
+            }
+        }
+
+        /// <summary>
+        /// 甲方
+        /// </summary>
+        [Field("partya")]
+        public long PartyA_ID { get; set; }
+        private Company m_partya = null;
+        public Company PartyA
+        {
+            get
+            {
+                if (PartyA_ID > 0)
+                {
+                    if (m_partya == null || m_partya.ID != PartyA_ID)
+                        m_partya = Company.CreateByID(PartyA_ID);
+                }
+                return m_partya;
+            }
+        }
+
+        // 以下二个属性，只为lue控件使用
+        public string PartyAName
+        {
+            get
+            {
+                if (PartyA_ID > 0)
+                {
+                    if (m_partya == null || m_partya.ID != PartyA_ID)
+                        m_partya = Company.CreateByID(PartyA_ID);
+                }
+                return m_partya.Name;
+            }
+        }
+        public string PartyBName
+        {
+            get
+            {
+                if (PartyB_ID > 0)
+                {
+                    if (m_partyb == null || m_partyb.ID != PartyB_ID)
+                        m_partyb = Company.CreateByID(PartyB_ID);
+                }
+                return m_partyb.Name;
+            }
+        }
+
+        /// <summary>
+        /// 乙方
+        /// </summary>
+        [Field("partyb")]
+        public long PartyB_ID { get; set; }
+        private Company m_partyb = null;
+        public Company PartyB
+        {
+            get
+            {
+                if (PartyB_ID > 0)
+                {
+                    if (m_partyb == null || m_partyb.ID != PartyB_ID)
+                        m_partyb = Company.CreateByID(PartyB_ID);
+                }
+                return m_partyb;
+            }
+        }
+
+
 
         [Field("signed_date")]
         public DateTime SignedDate { get; set; }
@@ -42,9 +134,21 @@ namespace Haimen.Entity
         [Field("name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// 决算价
+        /// </summary>
         [Field("money")]
         public decimal Money { get; set; }
 
+        /// <summary>
+        /// 审计价
+        /// </summary>
+        [Field("checkmoney")]
+        public decimal CheckMoney { get; set; }
+
+        /// <summary>
+        /// 保证金
+        /// </summary>
         [Field("security")]
         public decimal Security { get; set; }
 
@@ -97,6 +201,10 @@ namespace Haimen.Entity
             this.Save();
         }
 
+        /// <summary>
+        /// 校验数据是否正确
+        /// </summary>
+        /// <returns></returns>
         public override bool Verify()
         {
             Error_Info.Clear();
@@ -104,8 +212,17 @@ namespace Haimen.Entity
             if (string.IsNullOrEmpty(this.Code))
                 Error_Info.Add(new KeyValuePair<string, string>("Code", "代码不能为空"));
 
-            if (this.CompanyID <= 0)
-                Error_Info.Add(new KeyValuePair<string, string>("CompanyID", "请选择签合同的单位!"));
+            if (this.OutCompanyID <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("OutCompanyID", "请选择签合同的付款单位!"));
+
+            if (this.InCompanyID <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("IntCompanyID", "请选择签合同的收款单位!"));
+            
+            if (this.PartyA_ID <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("PartyA_ID", "请选择签合同的甲方!"));
+
+            if (this.PartyB_ID <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("PartyB_ID", "请选择签合同的乙方!"));
 
 
             if (Error_Info.Count > 0)

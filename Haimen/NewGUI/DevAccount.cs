@@ -18,10 +18,15 @@ namespace Haimen.NewGUI
     {
 
         private Account m_account;
+        private long m_contract_id = -1;        // 关联的合同ID
+        private long m_balance_id = -1;         // 关联的贷款ID
 
         private List<Bank> m_banks = Bank.Query();
         private List<Company> m_companies = Company.Query();
         private List<Funds> m_funds = Funds.Query();
+        private List<Contract> m_contracts = Contract.Query();  // 所有的合同
+        private List<Balance> m_balances = Balance.Query();     // 所有的贷款
+
 
         private winStatusEnum m_status;
 
@@ -126,6 +131,22 @@ namespace Haimen.NewGUI
             tsbAttachNew.Enabled = status;
         }
 
+        private void form2object()
+        {
+            m_account.SignedDate = dtSigned.DateTime;
+            m_account.Code = txtCode.Text;
+
+            if (this.lueOutAccount.EditValue != null)
+                m_account.Out_CompanyDetail_ID = long.Parse(lueOutAccount.EditValue.ToString());
+
+            if (lueInAccount.EditValue != null)
+                m_account.In_CompanyDetail_ID = long.Parse(lueInAccount.EditValue.ToString());
+
+            m_account.Balance_ID = m_balance_id;
+            m_account.Contract_ID = m_contract_id;
+            m_account.Memo = txtMemo.Text;
+        }
+
         /// <summary>
         /// 将对象印射到窗口上
         /// </summary>
@@ -133,8 +154,13 @@ namespace Haimen.NewGUI
         {
             if (m_account.ID > 0)
             {
-                dtSigned.EditValue = m_account.SignedDate;
+                dtSigned.DateTime = m_account.SignedDate;
                 txtCode.Text = m_account.Code;
+
+                lueOutCompany.Properties.LockEvents();
+                lueInCompany.Properties.LockEvents();
+                lueInAccount.Properties.LockEvents();
+                lueOutAccount.Properties.LockEvents();
 
                 lueOutCompany.EditValue = m_account.OutCompanyDetail.Parent_ID;
                 List<CompanyDetail> out_list = CompanyDetail.Query("parent_id = " + m_account.OutCompanyDetail.Parent_ID);
@@ -142,7 +168,7 @@ namespace Haimen.NewGUI
                 lueOutAccount.Properties.DataSource = out_list;
                 lueOutAccount.Properties.DisplayMember = "Account";
                 lueOutAccount.Properties.ValueMember = "ID";
-                lueOutAccount.EditValue = m_account.Out_CompanyDetail_ID;
+                lueOutAccount.EditValue = m_account.OutCompanyDetail.ID;
                 txtOutBank.Text = m_account.OutCompanyDetail.Bank.Name;
 
                 lueInCompany.EditValue = m_account.InCompanyDetail.Parent_ID;
@@ -151,8 +177,27 @@ namespace Haimen.NewGUI
                 lueInAccount.Properties.DataSource = in_list;
                 lueInAccount.Properties.DisplayMember = "Account";
                 lueInAccount.Properties.ValueMember = "ID";
-                lueInAccount.EditValue = m_account.In_CompanyDetail_ID;
+                lueInAccount.EditValue = m_account.InCompanyDetail.ID;
                 txtInBank.Text = m_account.InCompanyDetail.Bank.Name;
+
+                lueOutCompany.Properties.UnLockEvents();
+                lueInCompany.Properties.UnLockEvents();
+                lueInAccount.Properties.UnLockEvents();
+                lueOutAccount.Properties.UnLockEvents();
+
+                // 显示关联信息
+                if (m_account.Contract_ID > 0)
+                {
+                    lueBalance.Enabled = false;
+                    lueContract.Enabled = true;
+                    lueContract.Properties.DataSource = null;
+                    lueContract.Properties.DataSource = Contract.Query();
+                    lueContract.Properties.DisplayMember = "Name";
+                    lueContract.Properties.ValueMember = "ID";
+
+                    lueContract.EditValue = m_account.Contract_ID;
+                    lueContract.Enabled = false;
+                }
 
                 txtMemo.Text = m_account.Memo;
             }
@@ -170,7 +215,39 @@ namespace Haimen.NewGUI
 
                 txtMemo.Text = "";
             }
+
+            // 显示审核标志
             ShowCheckPic();
+
+            // 显示关联信息
+            if (m_contract_id > 0)
+            {
+                lueBalance.Enabled = false;
+                lueContract.Enabled = true;
+                lueContract.Properties.DataSource = null;
+                lueContract.Properties.DataSource = m_contracts;
+                lueContract.Properties.DisplayMember = "Name";
+                lueContract.Properties.ValueMember = "ID";
+
+                lueContract.EditValue = m_contract_id;
+                lueContract.Enabled = false;
+                Contract c = Contract.CreateByID(m_contract_id);
+                lueInCompany.EditValue = c.InCompanyID;
+                lueOutCompany.EditValue = c.OutCompanyID;
+                lueInCompany.Enabled = false;
+                lueOutCompany.Enabled = false;
+            }
+            else if (m_balance_id > 0)
+            {
+                lueContract.Enabled = false;
+                lueBalance.Enabled = true;
+                lueBalance.Properties.DataSource = null;
+                lueBalance.Properties.DataSource = m_balances;
+                lueBalance.Properties.DisplayMember = "Code";
+                lueBalance.Properties.ValueMember = "ID";
+
+                lueBalance.EditValue = m_balance_id;
+            }
         }
 
         private void ShowCheckPic()
@@ -220,7 +297,7 @@ namespace Haimen.NewGUI
         /// <returns></returns>
         private bool Verify()
         {
-            m_account.SignedDate = DateTime.Parse( dtSigned.EditValue.ToString());
+            form2object();
 
             dxErrorProvider1.ClearErrors();
             m_account.Verify();
@@ -236,14 +313,14 @@ namespace Haimen.NewGUI
                         break;
                 }
             }
-            return dxErrorProvider1.HasErrors;
+            return !dxErrorProvider1.HasErrors;
         }
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="account"></param>
-        public DevAccount(winStatusEnum status, Account account = null)
+        public DevAccount(winStatusEnum status, Account account = null, long ContractID = 0, long BalanceID = 0)
         {
             InitializeComponent();
 
@@ -252,6 +329,14 @@ namespace Haimen.NewGUI
                 m_account = account;
             else
                 m_account = new Account();
+
+            // 保存传过来的对应的贷款或合同ID
+            if (ContractID > 0)
+                m_contract_id = ContractID;
+
+            if (BalanceID > 0)
+                m_balance_id = BalanceID;
+
         }
 
         private void DevAccount_Load(object sender, EventArgs e)
@@ -274,14 +359,11 @@ namespace Haimen.NewGUI
             {
                 m_account.Out_CompanyDetail_ID = long.Parse(lueOutCompany.EditValue.ToString());
                 List<CompanyDetail> cd = CompanyDetail.Query("parent_id = " + m_account.Out_CompanyDetail_ID.ToString());
+                lueOutAccount.Properties.DataSource = null;
                 lueOutAccount.Properties.DataSource = cd;
                 lueOutAccount.Properties.DisplayMember = "Account";
                 lueOutAccount.Properties.ValueMember = "ID";
             }
-            
-            // 生成单据字
-            if (string.IsNullOrEmpty(txtCode.Text))
-                txtCode.Text = Company.CreateByID( m_account.OutCompanyDetail.Parent_ID).NextDoc();
         }
 
         /// <summary>
@@ -294,7 +376,8 @@ namespace Haimen.NewGUI
             if (lueInCompany.EditValue != null)
             {
                 m_account.In_CompanyDetail_ID = long.Parse(lueInCompany.EditValue.ToString());
-                List<CompanyDetail> cd = CompanyDetail.Query("parent_id = " + m_account.Out_CompanyDetail_ID.ToString());
+                List<CompanyDetail> cd = CompanyDetail.Query("parent_id = " + m_account.In_CompanyDetail_ID.ToString());
+                lueInAccount.Properties.DataSource = null;
                 lueInAccount.Properties.DataSource = cd;
                 lueInAccount.Properties.DisplayMember = "Account";
                 lueInAccount.Properties.ValueMember = "ID";
@@ -547,6 +630,10 @@ namespace Haimen.NewGUI
             //CompanyDetail cd = CompanyDetail.CreateByID(CD_id);
             m_account.Out_CompanyDetail_ID = CD_id;
             txtOutBank.Text = m_account.OutCompanyDetail.Bank.Name;
+
+            // 生成单据字
+            if (string.IsNullOrEmpty(txtCode.Text))
+                txtCode.Text = Company.CreateByID(m_account.OutCompanyDetail.Parent_ID).NextDoc();
         }
 
         private void lueInAccount_EditValueChanged(object sender, EventArgs e)

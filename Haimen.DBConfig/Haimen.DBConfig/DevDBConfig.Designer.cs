@@ -341,7 +341,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabControl1);
             this.Name = "DevDBConfig";
-            this.Text = "临江财政资金管理-数据库设置";
+            this.Text = "资金管理系统-数据库设置";
             this.Load += new System.EventHandler(this.DevDBConfig_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
