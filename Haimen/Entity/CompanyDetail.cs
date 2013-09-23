@@ -39,5 +39,18 @@ namespace Haimen.Entity
         }
 
 
+        public override bool Verify()
+        {
+            Error_Info.Clear();
+
+            if (Bank_ID <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("", ""));
+
+            if (Error_Info.Count > 0)
+                return false;
+            else
+                return true;
+        }
+
     }
 }

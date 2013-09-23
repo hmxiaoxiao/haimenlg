@@ -221,8 +221,22 @@ namespace Haimen.NewGUI
         private bool Verify()
         {
             m_account.SignedDate = DateTime.Parse( dtSigned.EditValue.ToString());
-            //TODO: 未完成
-            return true;
+
+            dxErrorProvider1.ClearErrors();
+            m_account.Verify();
+            foreach (KeyValuePair<string, string> kv in m_account.Error_Info)
+            {
+                switch (kv.Key)
+                {
+                    case "In_CompanyDetail_ID":
+                        dxErrorProvider1.SetError(lueInAccount, kv.Value);
+                        break;
+                    case "Out_CompanyDetail_ID":
+                        dxErrorProvider1.SetError(lueOutAccount, kv.Value);
+                        break;
+                }
+            }
+            return dxErrorProvider1.HasErrors;
         }
 
         /// <summary>
@@ -337,6 +351,9 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void tbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            txtMemo.Focus();
+            txtCode.Focus();
+            
             if (!Verify())
                 return;
 

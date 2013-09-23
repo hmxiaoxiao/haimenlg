@@ -210,7 +210,30 @@ namespace Haimen.NewGUI
         private bool Verify()
         {
             Form2Object();
-            return true;
+
+            dxErrorProvider1.ClearErrors();
+
+            m_balance.Verify();
+            foreach (KeyValuePair<string, string> kv in m_balance.Error_Info)
+            {
+                switch (kv.Key)
+                {
+                    case "Code":
+                        dxErrorProvider1.SetError(txtCode, kv.Value);
+                        break;
+                    case "CompanyID":
+                        dxErrorProvider1.SetError(lueCompany, kv.Value);
+                        break;
+                    case "BankID":
+                        dxErrorProvider1.SetError(lueBank, kv.Value);
+                        break;
+                    case "Account":
+                        dxErrorProvider1.SetError(txtAccount, kv.Value);
+                        break;
+                }
+            }
+
+            return dxErrorProvider1.HasErrors;
         }
 
         /// <summary>
@@ -231,6 +254,9 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            txtMoney.Focus();
+            txtCode.Focus();
+            
             if (!Verify())
                 return;
 

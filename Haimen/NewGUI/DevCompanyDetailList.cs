@@ -150,6 +150,9 @@ namespace Haimen.NewGUI
 
         private void tsbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            gridView1.Focus();
+            txtCode.Focus();
+
             if (m_company == null || m_company.Code != txtCode.Text)
                 return;
 

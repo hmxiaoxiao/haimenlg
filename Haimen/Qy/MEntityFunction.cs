@@ -37,7 +37,7 @@ namespace Haimen.Qy
         /// 用于保存错误信息
         /// 如果与字段有关，则key为字段
         /// 否则与调用的函数名有关，比如Verify等
-        /// 另外，每次调用方法后，都可能会改为上次的信息，故需及时处理
+        /// 另外，每次调用方法后，都可能会清空上次的信息，故需及时处理
         /// </summary>
         public List<KeyValuePair<string, string>> Error_Info = new List<KeyValuePair<string, string>>();
 

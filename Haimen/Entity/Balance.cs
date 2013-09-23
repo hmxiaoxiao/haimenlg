@@ -133,5 +133,27 @@ namespace Haimen.Entity
             this.Status = (long)MyCheckStatus.Unpass;
             this.Save();
         }
+
+        public override bool Verify()
+        {
+            Error_Info.Clear();
+
+            if (string.IsNullOrEmpty(this.Code))
+                Error_Info.Add(new KeyValuePair<string, string>("Code", "代码不能为空"));
+
+            if (this.CompanyID <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("CompanyID", "请选择贷款单位"));
+
+            if (this.BankID <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("BankID", "请选择贷款银行"));
+
+            if (string.IsNullOrEmpty(this.Account))
+                Error_Info.Add(new KeyValuePair<string, string>("Account", "请输入贷款帐号"));
+
+            if (Error_Info.Count > 0)
+                return false;
+            else
+                return true;
+        }
     }
 }

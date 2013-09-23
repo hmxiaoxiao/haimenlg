@@ -91,7 +91,7 @@ namespace Haimen.NewGUI
                 return true;
 
             // 错误处理
-
+            SetErrorInfo();
             return false;
         }
 
@@ -100,24 +100,20 @@ namespace Haimen.NewGUI
         /// </summary>
         private void SetErrorInfo()
         {
-            errorProvider1.SetError(txtCode, "");
-            errorProvider1.SetError(txtDoc, "");
-            errorProvider1.SetError(txtName, "");
-            errorProvider1.SetError(cboBankList, "");
-            errorProvider1.SetError(txtAccount, "");
+            dxErrorProvider1.ClearErrors();
 
             foreach (KeyValuePair<string, string> val in m_company.Error_Info)
             {
                 switch (val.Key.ToLower())
                 {
                     case "code":
-                        errorProvider1.SetError(txtCode, val.Value);
+                        dxErrorProvider1.SetError(txtCode, val.Value);
                         break;
                     case "name":
-                        errorProvider1.SetError(txtName, val.Value);
+                        dxErrorProvider1.SetError(txtName, val.Value);
                         break; ;
                     case "doc":
-                        errorProvider1.SetError(txtDoc, val.Value);
+                        dxErrorProvider1.SetError(txtDoc, val.Value);
                         break;
                 }
             }
@@ -214,6 +210,9 @@ namespace Haimen.NewGUI
 
         private void tsbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            txtCode.Focus();
+            txtName.Focus();
+            
             if (!Verify())
                 return;
 

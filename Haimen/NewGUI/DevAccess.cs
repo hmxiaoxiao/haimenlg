@@ -29,7 +29,8 @@ namespace Haimen.NewGUI
 
             if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.New) ||
                 Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.New) ||
-                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.New))
+                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.New) ||
+                GlobalSet.Current_User.Admin == "X" )
             {
                 btnSave.Enabled = true;
             }
@@ -101,7 +102,7 @@ namespace Haimen.NewGUI
         // 保存权限
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // 切换一下焦点
+            // 切换一下焦点,保证不会丢失数据
             cboUType.Focus();
             lueList.Focus();
 

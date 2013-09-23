@@ -45,8 +45,8 @@
             this.tbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tbSave = new DevExpress.XtraBars.BarButtonItem();
             this.tbCheckPassed = new DevExpress.XtraBars.BarButtonItem();
-            this.tbExit = new DevExpress.XtraBars.BarButtonItem();
             this.tbCheckFaild = new DevExpress.XtraBars.BarButtonItem();
+            this.tbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -85,6 +85,7 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.picCheckFaild = new DevExpress.XtraEditors.PictureEdit();
             this.picPass = new DevExpress.XtraEditors.PictureEdit();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
@@ -125,6 +126,7 @@
             this.toolStrip4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridView1
@@ -299,14 +301,6 @@
             this.tbCheckPassed.Name = "tbCheckPassed";
             this.tbCheckPassed.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbCheckPassed_ItemClick);
             // 
-            // tbExit
-            // 
-            this.tbExit.Caption = "退出";
-            this.tbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
-            this.tbExit.Id = 5;
-            this.tbExit.Name = "tbExit";
-            this.tbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbExit_ItemClick);
-            // 
             // tbCheckFaild
             // 
             this.tbCheckFaild.Caption = "不通过";
@@ -314,6 +308,14 @@
             this.tbCheckFaild.Id = 6;
             this.tbCheckFaild.Name = "tbCheckFaild";
             this.tbCheckFaild.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbCheckFaild_ItemClick);
+            // 
+            // tbExit
+            // 
+            this.tbExit.Caption = "退出";
+            this.tbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.tbExit.Id = 5;
+            this.tbExit.Name = "tbExit";
+            this.tbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbExit_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -735,6 +737,10 @@
             this.picPass.TabIndex = 65;
             this.picPass.Visible = false;
             // 
+            // dxErrorProvider1
+            // 
+            this.dxErrorProvider1.ContainerControl = this;
+            // 
             // DevContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -795,6 +801,7 @@
             this.toolStrip4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -856,5 +863,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private DevExpress.XtraBars.BarButtonItem tbCheckFaild;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
     }
 }

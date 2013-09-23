@@ -209,8 +209,23 @@ namespace Haimen.NewGUI
         private bool Verify()
         {
             Form2Object();
+            dxErrorProvider1.ClearErrors();
+            m_contract.Verify();
+            foreach (KeyValuePair<string, string> kv in m_contract.Error_Info)
+            {
+                switch (kv.Key)
+                {
+                    case "Code":
+                        dxErrorProvider1.SetError(txtCode, kv.Value);
+                        break;
+                    case "CompanyID":
+                        dxErrorProvider1.SetError(lueCompany, kv.Value);
+                        break;
+                }
+            }
 
-            return true;
+
+            return dxErrorProvider1.HasErrors;
         }
 
         public DevContract(winStatusEnum status, Contract con = null)
@@ -249,6 +264,9 @@ namespace Haimen.NewGUI
         // 保存
         private void tbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            txtCode.Focus();
+            txtName.Focus();
+            
             if (!Verify())
                 return;
 

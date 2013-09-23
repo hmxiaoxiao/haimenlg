@@ -133,7 +133,7 @@ namespace Haimen.NewGUI
         private void mnuCompany_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.银行, (long)ActionEnum.View))
-                OpenForm(new DevBankList());
+                OpenForm(new DevCompanyList());
             else
                 MessageBox.Show("您无权限使用该功能");
         }
@@ -189,6 +189,8 @@ namespace Haimen.NewGUI
         private void mnuAccess_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.View))
+                OpenForm(new DevAccess());
+            if (GlobalSet.Current_User.Admin == "X")
                 OpenForm(new DevAccess());
             else
                 MessageBox.Show("您无权限使用该功能");

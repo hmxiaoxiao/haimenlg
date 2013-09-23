@@ -96,5 +96,22 @@ namespace Haimen.Entity
             this.Status = (long)MyCheckStatus.Unpass;
             this.Save();
         }
+
+        public override bool Verify()
+        {
+            Error_Info.Clear();
+
+            if (string.IsNullOrEmpty(this.Code))
+                Error_Info.Add(new KeyValuePair<string, string>("Code", "代码不能为空"));
+
+            if (this.CompanyID <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("CompanyID", "请选择签合同的单位!"));
+
+
+            if (Error_Info.Count > 0)
+                return false;
+            else
+                return true;
+        }
     }
 }

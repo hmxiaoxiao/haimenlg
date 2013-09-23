@@ -40,6 +40,7 @@
             this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
             this.btnCheck = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCheckFaild = new DevExpress.XtraBars.BarButtonItem();
             this.btnExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -79,7 +80,7 @@
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.picCheckFaild = new DevExpress.XtraEditors.PictureEdit();
             this.picPass = new DevExpress.XtraEditors.PictureEdit();
-            this.btnCheckFaild = new DevExpress.XtraBars.BarButtonItem();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.lueCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -119,6 +120,7 @@
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lueCompany
@@ -239,6 +241,14 @@
             this.btnCheck.Id = 3;
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCheck_ItemClick);
+            // 
+            // btnCheckFaild
+            // 
+            this.btnCheckFaild.Caption = "不通过";
+            this.btnCheckFaild.Glyph = global::Haimen.Properties.Resources.Stop_hot;
+            this.btnCheckFaild.Id = 6;
+            this.btnCheckFaild.Name = "btnCheckFaild";
+            this.btnCheckFaild.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCheckFaild_ItemClick);
             // 
             // btnExit
             // 
@@ -658,13 +668,9 @@
             this.picPass.TabIndex = 65;
             this.picPass.Visible = false;
             // 
-            // btnCheckFaild
+            // dxErrorProvider1
             // 
-            this.btnCheckFaild.Caption = "不通过";
-            this.btnCheckFaild.Glyph = global::Haimen.Properties.Resources.Stop_hot;
-            this.btnCheckFaild.Id = 6;
-            this.btnCheckFaild.Name = "btnCheckFaild";
-            this.btnCheckFaild.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCheckFaild_ItemClick);
+            this.dxErrorProvider1.ContainerControl = this;
             // 
             // DevBalance
             // 
@@ -723,6 +729,7 @@
             this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -779,6 +786,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraBars.BarButtonItem btnCheckFaild;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
 
     }
 }

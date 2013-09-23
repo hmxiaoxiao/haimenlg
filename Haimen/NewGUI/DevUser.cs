@@ -233,6 +233,9 @@ namespace Haimen.NewGUI
 
         private void tsbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            txtCode.Focus();
+            txtName.Focus();
+            
             // 如果校验不通过，直接返回
             if (!verifyData())
                 return;

@@ -158,62 +158,6 @@ namespace Haimen.Entity
                 inCD.Balance += money;
                 outCD.Balance -= money;
 
-                //Company inCom = Company.CreateByID(this.InCompanyDetail.Parent_ID);
-                //Company outCom = Company.CreateByID(this.OutCompanyDetail.Parent_ID);
-
-                //// 加入一个查找标记
-                //bool finded = false;
-
-                //// 先处理收入单位
-                //foreach (CompanyDetail cd in inCom.DetailList)
-                //{
-                //    // 如果找到了，更新该单位的银行资金
-                //    if (cd.Bank_ID == InCompanyDetail.Bank_ID && cd.Account == InCompanyDetail.Account)
-                //    {
-                //        finded = true;
-                //        foreach (AccountDetail ad in this.DetailList)
-                //            cd.Balance += ad.Money;
-                //    }
-                //}
-                //// 如果没有找到，则在单位帐号表里面增加一条记录
-                //if (!finded)
-                //{
-                //    CompanyDetail cde = new CompanyDetail();
-                //    cde.Bank_ID = this.InCompanyDetail.Bank_ID;
-                //    cde.Account = this.InCompanyDetail.Account;
-                //    foreach (AccountDetail ad in this.DetailList)
-                //    {
-                //        cde.Balance += ad.Money;
-                //    }
-                //    inCom.DetailList.Add(cde);
-                //}
-
-                ////-------------------
-                //// 再处理支出单位
-                //finded = false;
-                //foreach (CompanyDetail cd in outCom.DetailList)
-                //{
-                //    // 如果找到了，更新该单位的银行资金
-                //    if (cd.Bank_ID == OutCompanyDetail.Bank_ID && cd.Account == OutCompanyDetail.Account)
-                //    {
-                //        finded = true;
-                //        foreach (AccountDetail ad in this.DetailList)
-                //            cd.Balance -= ad.Money;
-                //    }
-                //}
-                //// 如果没有找到，则在单位帐号表里面增加一条记录
-                //if (!finded)
-                //{
-                //    CompanyDetail cde = new CompanyDetail();
-                //    cde.Bank_ID = this.OutCompanyDetail.Bank_ID;
-                //    cde.Account = this.OutCompanyDetail.Account;
-                //    foreach (AccountDetail ad in this.DetailList)
-                //    {
-                //        cde.Balance -= ad.Money;
-                //    }
-                //    outCom.DetailList.Add(cde);
-                //}
-
                 inCD.Save();       // 保存收入单位帐号余额
                 outCD.Save();      // 保存支出单位的帐号余额
                 this.Save();        // 保存审核标记
@@ -229,6 +173,23 @@ namespace Haimen.Entity
         {
             this.Status = (long)MyCheckStatus.Unpass;
             this.Save();
+        }
+
+        public override bool Verify()
+        {
+            Error_Info.Clear();
+            if (this.In_CompanyDetail_ID <= 0)
+            {
+                Error_Info.Add(new KeyValuePair<string, string>("In_CompanyDetail_ID", "请选择收入单位帐号！"));
+            }
+
+            if (this.Out_CompanyDetail_ID <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("Out_CompanyDetail_ID", "请选择支出单位的帐号"));
+
+            if (Error_Info.Count > 0)
+                return false;
+            else
+                return true;
         }
     }
 }
