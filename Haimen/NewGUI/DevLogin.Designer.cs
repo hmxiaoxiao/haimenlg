@@ -89,7 +89,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            //this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.btnLogin.Location = new System.Drawing.Point(108, 143);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
@@ -109,7 +109,6 @@
             // 
             // DevLogin
             // 
-            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Stretch;

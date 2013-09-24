@@ -43,9 +43,9 @@ namespace Haimen.NewGUI
                 m_retry++;
                 if (m_retry < 3)
                 {
-                    MessageBox.Show("用户代码或密码不正确，请重新输入");
-                    txtPassword.SelectAll();
+                    MessageBox.Show("用户代码或密码不正确，请重新输入", "错误！", MessageBoxButtons.OK,MessageBoxIcon.Error);
                     txtPassword.Focus();
+                    txtPassword.SelectAll();
                 }
                 else
                 {
