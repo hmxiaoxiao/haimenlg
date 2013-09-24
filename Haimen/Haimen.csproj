@@ -64,7 +64,7 @@
     <ManifestKeyFile>Haimen_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -92,22 +92,13 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Network 1.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
-    <Reference Include="C1.C1Excel.4, Version=4.1.20131.251, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Command.4, Version=4.0.20131.19559, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Editor.4, Version=4.0.20131.199, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1FlexGrid.4, Version=4.6.20131.765, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1FlexGrid.Classic.4, Version=4.6.20131.765, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Input.4, Version=4.0.20131.33296, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1InputPanel.4, Version=4.0.20131.160, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1List.4, Version=4.1.20131.226, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1SplitContainer.4, Version=4.0.20131.41, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Win7Pack.4, Version=4.0.20131.28, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.BonusSkins.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.ExpressApp.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -292,15 +283,11 @@
     <Compile Include="Entity\GlobalSet.cs" />
     <Compile Include="Qy\Table.cs" />
     <Compile Include="Entity\User.cs" />
-    <Compile Include="GUI\frmAccount.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="GUI\frmAccount.cs" />
     <Compile Include="GUI\frmAccount.Designer.cs">
       <DependentUpon>frmAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmAccountList.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="GUI\frmAccountList.cs" />
     <Compile Include="GUI\frmAccountList.Designer.cs">
       <DependentUpon>frmAccountList.cs</DependentUpon>
     </Compile>
@@ -310,15 +297,11 @@
     <Compile Include="GUI\frmAttach.Designer.cs">
       <DependentUpon>frmAttach.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmBank.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="GUI\frmBank.cs" />
     <Compile Include="GUI\frmBank.Designer.cs">
       <DependentUpon>frmBank.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmBankList.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="GUI\frmBankList.cs" />
     <Compile Include="GUI\frmBankList.Designer.cs">
       <DependentUpon>frmBankList.cs</DependentUpon>
     </Compile>
@@ -328,9 +311,7 @@
     <Compile Include="GUI\frmChangePassword.Designer.cs">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmCompany.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="GUI\frmCompany.cs" />
     <Compile Include="GUI\frmCompany.Designer.cs">
       <DependentUpon>frmCompany.cs</DependentUpon>
     </Compile>
@@ -340,9 +321,7 @@
     <Compile Include="GUI\frmCompanyDetailList.Designer.cs">
       <DependentUpon>frmCompanyDetailList.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmCompanyList.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="GUI\frmCompanyList.cs" />
     <Compile Include="GUI\frmCompanyList.Designer.cs">
       <DependentUpon>frmCompanyList.cs</DependentUpon>
     </Compile>
@@ -394,15 +373,11 @@
     <Compile Include="GUI\frmEmployeeList.Designer.cs">
       <DependentUpon>frmEmployeeList.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmFunds.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="GUI\frmFunds.cs" />
     <Compile Include="GUI\frmFunds.Designer.cs">
       <DependentUpon>frmFunds.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmFundsList.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="GUI\frmFundsList.cs" />
     <Compile Include="GUI\frmFundsList.Designer.cs">
       <DependentUpon>frmFundsList.cs</DependentUpon>
     </Compile>
@@ -412,9 +387,7 @@
     <Compile Include="GUI\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="GUI\frmMain.cs" />
     <Compile Include="GUI\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
@@ -458,6 +431,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmBank.resx">
       <DependentUpon>frmBank.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmBankList.resx">
       <DependentUpon>frmBankList.cs</DependentUpon>

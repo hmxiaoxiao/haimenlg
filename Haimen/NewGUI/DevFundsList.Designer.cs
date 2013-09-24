@@ -35,18 +35,16 @@
             this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tsbSave = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
-            this.c1SplitterPanel1 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.tree = new DevExpress.XtraTreeList.TreeList();
             this.node_id = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.node_name = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -54,11 +52,9 @@
             this.col_parent = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lueFunds = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
-            this.c1SplitContainer1.SuspendLayout();
-            this.c1SplitterPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tree)).BeginInit();
-            this.c1SplitterPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueFunds)).BeginInit();
@@ -129,14 +125,6 @@
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbSave_ItemClick);
             // 
-            // tsbExit
-            // 
-            this.tsbExit.Caption = "退出";
-            this.tsbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
-            this.tsbExit.Id = 4;
-            this.tsbExit.Name = "tsbExit";
-            this.tsbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbExit_ItemClick);
-            // 
             // tsbRefresh
             // 
             this.tsbRefresh.Caption = "刷新";
@@ -144,6 +132,14 @@
             this.tsbRefresh.Id = 5;
             this.tsbRefresh.Name = "tsbRefresh";
             this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
+            // 
+            // tsbExit
+            // 
+            this.tsbExit.Caption = "退出";
+            this.tsbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.tsbExit.Id = 4;
+            this.tsbExit.Name = "tsbExit";
+            this.tsbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbExit_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -173,30 +169,19 @@
             this.barDockControlRight.Location = new System.Drawing.Point(691, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 450);
             // 
-            // c1SplitContainer1
+            // splitContainerControl1
             // 
-            this.c1SplitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(150)))));
-            this.c1SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.c1SplitContainer1.LineBelowHeader = false;
-            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 39);
-            this.c1SplitContainer1.Name = "c1SplitContainer1";
-            this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel1);
-            this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel2);
-            this.c1SplitContainer1.Size = new System.Drawing.Size(691, 450);
-            this.c1SplitContainer1.TabIndex = 4;
-            // 
-            // c1SplitterPanel1
-            // 
-            this.c1SplitterPanel1.Controls.Add(this.tree);
-            this.c1SplitterPanel1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
-            this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 0);
-            this.c1SplitterPanel1.Name = "c1SplitterPanel1";
-            this.c1SplitterPanel1.Size = new System.Drawing.Size(137, 450);
-            this.c1SplitterPanel1.SizeRatio = 20D;
-            this.c1SplitterPanel1.TabIndex = 0;
-            this.c1SplitterPanel1.Width = 137;
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 39);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.tree);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.gridControl1);
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(691, 450);
+            this.splitContainerControl1.SplitterPosition = 152;
+            this.splitContainerControl1.TabIndex = 9;
+            this.splitContainerControl1.Text = "splitContainerControl1";
             // 
             // tree
             // 
@@ -212,10 +197,9 @@
             this.tree.OptionsView.ShowIndicator = false;
             this.tree.OptionsView.ShowVertLines = false;
             this.tree.ParentFieldName = "Parent_ID";
-            this.tree.Size = new System.Drawing.Size(137, 450);
-            this.tree.TabIndex = 0;
+            this.tree.Size = new System.Drawing.Size(152, 450);
+            this.tree.TabIndex = 1;
             this.tree.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Light;
-            this.tree.Click += new System.EventHandler(this.tree_Click);
             // 
             // node_id
             // 
@@ -231,15 +215,6 @@
             this.node_name.Visible = true;
             this.node_name.VisibleIndex = 0;
             // 
-            // c1SplitterPanel2
-            // 
-            this.c1SplitterPanel2.Controls.Add(this.gridControl1);
-            this.c1SplitterPanel2.Height = 100;
-            this.c1SplitterPanel2.Location = new System.Drawing.Point(141, 0);
-            this.c1SplitterPanel2.Name = "c1SplitterPanel2";
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(550, 450);
-            this.c1SplitterPanel2.TabIndex = 1;
-            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -249,8 +224,8 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueFunds});
-            this.gridControl1.Size = new System.Drawing.Size(550, 450);
-            this.gridControl1.TabIndex = 0;
+            this.gridControl1.Size = new System.Drawing.Size(534, 450);
+            this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
@@ -263,8 +238,6 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView1_CustomDrawCell);
-            this.gridView1.BeforeLeaveRow += new DevExpress.XtraGrid.Views.Base.RowAllowEventHandler(this.gridView1_BeforeLeaveRow);
             // 
             // col_id
             // 
@@ -306,7 +279,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 489);
-            this.Controls.Add(this.c1SplitContainer1);
+            this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -315,11 +288,9 @@
             this.Text = "资金性质列表";
             this.Load += new System.EventHandler(this.DevFundsList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).EndInit();
-            this.c1SplitContainer1.ResumeLayout(false);
-            this.c1SplitterPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tree)).EndInit();
-            this.c1SplitterPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueFunds)).EndInit();
@@ -341,17 +312,15 @@
         private DevExpress.XtraBars.BarButtonItem tsbSave;
         private DevExpress.XtraBars.BarButtonItem tsbExit;
         private DevExpress.XtraBars.BarButtonItem tsbRefresh;
-        private C1.Win.C1SplitContainer.C1SplitContainer c1SplitContainer1;
-        private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel1;
-        private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel2;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraTreeList.TreeList tree;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn node_id;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn node_name;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn col_id;
         private DevExpress.XtraGrid.Columns.GridColumn col_name;
         private DevExpress.XtraGrid.Columns.GridColumn col_parent;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueFunds;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn node_id;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn node_name;
     }
 }

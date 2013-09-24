@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.cbOutput = new C1.Win.C1Input.C1CheckBox();
-            this.cbInput = new C1.Win.C1Input.C1CheckBox();
+            this.cbOutput = new DevExpress.XtraEditors.CheckEdit();
+            this.cbInput = new DevExpress.XtraEditors.CheckEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
@@ -44,7 +44,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.cboBankList = new DevExpress.XtraEditors.LookUpEdit();
+            this.lueBank = new DevExpress.XtraEditors.LookUpEdit();
             this.txtDoc = new DevExpress.XtraEditors.TextEdit();
             this.txtAccount = new DevExpress.XtraEditors.TextEdit();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
@@ -61,7 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboBankList.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueBank.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
@@ -79,24 +79,24 @@
             // 
             // cbOutput
             // 
-            this.cbOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            //this.cbOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cbOutput.Location = new System.Drawing.Point(70, 260);
             this.cbOutput.Name = "cbOutput";
             this.cbOutput.Size = new System.Drawing.Size(367, 20);
             this.cbOutput.TabIndex = 6;
             this.cbOutput.Text = "支出单位";
-            this.cbOutput.Value = null;
+            //this.cbOutput.Value = null;
             // 
             // cbInput
             // 
-            this.cbInput.BorderColor = System.Drawing.Color.Transparent;
-            this.cbInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            //this.cbInput.BorderColor = System.Drawing.Color.Transparent;
+            //this.cbInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cbInput.Location = new System.Drawing.Point(70, 220);
             this.cbInput.Name = "cbInput";
             this.cbInput.Size = new System.Drawing.Size(367, 20);
             this.cbInput.TabIndex = 5;
             this.cbInput.Text = "收入单位";
-            this.cbInput.Value = null;
+            //this.cbInput.Value = null;
             // 
             // barManager1
             // 
@@ -206,7 +206,7 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.cboBankList);
+            this.layoutControl1.Controls.Add(this.lueBank);
             this.layoutControl1.Controls.Add(this.txtDoc);
             this.layoutControl1.Controls.Add(this.txtAccount);
             this.layoutControl1.Controls.Add(this.txtName);
@@ -221,21 +221,21 @@
             this.layoutControl1.TabIndex = 14;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // cboBankList
+            // lueBank
             // 
-            this.cboBankList.EnterMoveNextControl = true;
-            this.cboBankList.Location = new System.Drawing.Point(70, 180);
-            this.cboBankList.MenuManager = this.barManager1;
-            this.cboBankList.Name = "cboBankList";
-            this.cboBankList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lueBank.EnterMoveNextControl = true;
+            this.lueBank.Location = new System.Drawing.Point(70, 180);
+            this.lueBank.MenuManager = this.barManager1;
+            this.lueBank.Name = "lueBank";
+            this.lueBank.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboBankList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.lueBank.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "编号"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
-            this.cboBankList.Properties.NullText = "";
-            this.cboBankList.Size = new System.Drawing.Size(367, 20);
-            this.cboBankList.StyleController = this.layoutControl1;
-            this.cboBankList.TabIndex = 5;
+            this.lueBank.Properties.NullText = "";
+            this.lueBank.Size = new System.Drawing.Size(367, 20);
+            this.lueBank.StyleController = this.layoutControl1;
+            this.lueBank.TabIndex = 5;
             // 
             // txtDoc
             // 
@@ -364,7 +364,7 @@
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.cboBankList;
+            this.layoutControlItem1.Control = this.lueBank;
             this.layoutControlItem1.CustomizationFormText = "开户行:";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 160);
             this.layoutControlItem1.Name = "layoutControlItem1";
@@ -393,7 +393,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cboBankList.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueBank.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
@@ -413,8 +413,8 @@
 
         #endregion
 
-        private C1.Win.C1Input.C1CheckBox cbOutput;
-        private C1.Win.C1Input.C1CheckBox cbInput;
+        private DevExpress.XtraEditors.CheckEdit cbOutput;
+        private DevExpress.XtraEditors.CheckEdit cbInput;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -430,7 +430,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private DevExpress.XtraEditors.LookUpEdit cboBankList;
+        private DevExpress.XtraEditors.LookUpEdit lueBank;
         private DevExpress.XtraBars.BarButtonItem tsbDelete;
         private DevExpress.XtraEditors.TextEdit txtDoc;
         private DevExpress.XtraEditors.TextEdit txtAccount;

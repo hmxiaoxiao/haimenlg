@@ -61,14 +61,14 @@ namespace Haimen.NewGUI
 
             if (m_user.UserGroupID <= 0)
             {
-                errorProvider1.SetError(lueUserGroup, "必须选择所属的用户组");
+                dxErrorProvider1.SetError(lueUserGroup, "必须选择所属的用户组");
                 verify = false;
             }
 
             // 用户代码
             if (txtCode.Text == "")
             {
-                errorProvider1.SetError(txtCode, "用户代码不能为空");
+                dxErrorProvider1.SetError(txtCode, "用户代码不能为空");
                 verify = false;
             }
             else
@@ -77,42 +77,42 @@ namespace Haimen.NewGUI
                 {
                     if (User.Query("Code = '" + txtCode.Text + "' and id <> " + m_user.ID.ToString()).Count > 0)
                     {
-                        errorProvider1.SetError(txtCode, "用户代码已经存在");
+                        dxErrorProvider1.SetError(txtCode, "用户代码已经存在");
                         verify = false;
                     }
                     else
-                        errorProvider1.SetError(txtCode, "");
+                        dxErrorProvider1.SetError(txtCode, "");
                 }
                 else
                 {
                     //  新增用户时的判断
                     if (User.Query("Code = '" + txtCode.Text + "'").Count > 0)
                     {
-                        errorProvider1.SetError(txtCode, "用户代码已经存在");
+                        dxErrorProvider1.SetError(txtCode, "用户代码已经存在");
                         verify = false;
                     }
                     else
-                        errorProvider1.SetError(txtCode, "");
+                        dxErrorProvider1.SetError(txtCode, "");
                 }
             }
 
             // 用户名称
             if (txtName.Text == "")
             {
-                errorProvider1.SetError(txtName, "用户名称不能为空");
+                dxErrorProvider1.SetError(txtName, "用户名称不能为空");
                 verify = false;
             }
             else
-                errorProvider1.SetError(txtName, "");
+                dxErrorProvider1.SetError(txtName, "");
 
             // 密码
             if (txtPassword.Text != txtPasswordConfirm.Text)
             {
-                errorProvider1.SetError(txtPasswordConfirm, "密码前后不一致");
+                dxErrorProvider1.SetError(txtPasswordConfirm, "密码前后不一致");
                 verify = false;
             }
             else
-                errorProvider1.SetError(txtPasswordConfirm, "");
+                dxErrorProvider1.SetError(txtPasswordConfirm, "");
 
             return verify;
         }

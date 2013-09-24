@@ -36,8 +36,8 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnExit = new C1.Win.C1Input.C1Button();
-            this.btnQuery = new C1.Win.C1Input.C1Button();
+            this.btnExit = new DevExpress.XtraEditors.SimpleButton();
+            this.btnQuery = new DevExpress.XtraEditors.SimpleButton();
             this.txtCode = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -161,13 +161,13 @@
             // 
             // btnExit
             // 
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            //this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Location = new System.Drawing.Point(287, 192);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "退出";
-            this.btnExit.UseVisualStyleBackColor = true;
+            //this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnQuery
@@ -178,7 +178,7 @@
             this.btnQuery.Size = new System.Drawing.Size(75, 23);
             this.btnQuery.TabIndex = 5;
             this.btnQuery.Text = "查询";
-            this.btnQuery.UseVisualStyleBackColor = true;
+            //this.btnQuery.UseVisualStyleBackColor = true;
             this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
             // txtCode
@@ -235,8 +235,8 @@
         private DevExpress.XtraEditors.LookUpEdit lueInCompany;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private C1.Win.C1Input.C1Button btnExit;
-        private C1.Win.C1Input.C1Button btnQuery;
+        private DevExpress.XtraEditors.SimpleButton btnExit;
+        private DevExpress.XtraEditors.SimpleButton btnQuery;
         private DevExpress.XtraEditors.LookUpEdit lueOutCompany;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;

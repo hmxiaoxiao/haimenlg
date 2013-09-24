@@ -37,10 +37,25 @@ namespace Haimen.NewGUI
         }
 
         /// <summary>
+        /// 设置窗口的控件是否可用
+        /// </summary>
+        /// <param name="enabled"></param>
+        private void SetControlStatus(bool enabled)
+        {
+            txtCode.Enabled = enabled;
+            txtName.Enabled = enabled;
+            txtAccount.Enabled = enabled;
+            txtDoc.Enabled = enabled;
+            lueBank.Enabled = enabled;
+            cbInput.Enabled = enabled;
+            cbOutput.Enabled = enabled;
+        }
+
+        /// <summary>
         /// 根据是编辑 还是新增，设置按钮的状态
         /// </summary>
         /// <param name="status"></param>
-        public void SetFormStatus(winStatusEnum status)
+        private void SetFormStatus(winStatusEnum status)
         {
             m_status = status;
             switch (status)
@@ -49,22 +64,19 @@ namespace Haimen.NewGUI
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbSave.Enabled = true;
-
-                    this.Text = " 单位管理 - 新增 ";
+                    SetControlStatus(true);     //  控件可用
                     break;
                 case winStatusEnum.Edit:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbSave.Enabled = true;
-
-                    this.Text = " 单位管理 - 编辑 ";
+                    SetControlStatus(true);     //  控件可用
                     break;
                 case winStatusEnum.View:
                     tsbNew.Enabled = true;
                     tsbEdit.Enabled = true;
                     tsbSave.Enabled = false;
-
-                    this.Text = " 单位管理 - 查看 ";
+                    SetControlStatus(false);    //  控件不可使用
                     break;
             }
         }
@@ -75,10 +87,10 @@ namespace Haimen.NewGUI
         private void initBankList()
         {
             List<Bank> banks = Bank.Query();
-            cboBankList.Properties.DataSource = null;
-            cboBankList.Properties.DataSource = banks;
-            cboBankList.Properties.DisplayMember = "Name";
-            cboBankList.Properties.ValueMember = "ID";
+            lueBank.Properties.DataSource = null;
+            lueBank.Properties.DataSource = banks;
+            lueBank.Properties.DisplayMember = "Name";
+            lueBank.Properties.ValueMember = "ID";
         }
 
         // 校验数据是否正确
@@ -125,9 +137,9 @@ namespace Haimen.NewGUI
         private void Object2Form()
         {
             initBankList();
-            cboBankList.Text = "";
+            lueBank.Text = "";
             if (m_company.Bank_ID > 0)
-                cboBankList.EditValue = m_company.Bank_ID;
+                lueBank.EditValue = m_company.Bank_ID;
             txtCode.Text = m_company.Code;
             txtDoc.Text = m_company.Doc;
             txtName.Text = m_company.Name;
@@ -150,8 +162,8 @@ namespace Haimen.NewGUI
         private void Form2Object()
         {
             // 将输入的值保存到对象里
-            if (cboBankList.EditValue != null)
-                m_company.Bank_ID = long.Parse(cboBankList.EditValue.ToString());
+            if (lueBank.EditValue != null)
+                m_company.Bank_ID = long.Parse(lueBank.EditValue.ToString());
             else
                 m_company.Bank_ID = 0;
 
@@ -212,7 +224,7 @@ namespace Haimen.NewGUI
         {
             txtCode.Focus();
             txtName.Focus();
-            
+
             if (!Verify())
                 return;
 
@@ -222,7 +234,7 @@ namespace Haimen.NewGUI
                 return;
             }
 
-            MessageBox.Show("保存成功！", "注意",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("保存成功！", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             SetFormStatus(winStatusEnum.View);
         }

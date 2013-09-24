@@ -35,7 +35,7 @@ namespace Haimen.NewGUI
         /// </summary>
         private void SetControlAccess()
         {
-            if(!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.New))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.New))
             {
                 if (tbNew.Enabled == true) tbNew.Enabled = false;
             }
@@ -387,7 +387,7 @@ namespace Haimen.NewGUI
 
         private void dtSigned_ValueChanged(object sender, EventArgs e)
         {
-            m_account.SignedDate = DateTime.Parse( dtSigned.EditValue.ToString());
+            m_account.SignedDate = DateTime.Parse(dtSigned.EditValue.ToString());
         }
 
         private void txtCode_TextChanged(object sender, EventArgs e)
@@ -437,7 +437,7 @@ namespace Haimen.NewGUI
         {
             txtMemo.Focus();
             txtCode.Focus();
-            
+
             if (!Verify())
                 return;
 
@@ -517,7 +517,7 @@ namespace Haimen.NewGUI
                 m_account.AttachList.Add(att);
 
                 // 加入列表
-                lstFiles.Items.Add(att.ID.ToString() + "." +  fi.Name, 2);
+                lstFiles.Items.Add(att.ID.ToString() + "." + fi.Name, 2);
             }
         }
 
@@ -613,7 +613,7 @@ namespace Haimen.NewGUI
         private void tbCheckFaild_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_account.CheckFaild();
-            SetFormStatus(winStatusEnum.View);      
+            SetFormStatus(winStatusEnum.View);
         }
 
 

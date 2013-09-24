@@ -72,6 +72,11 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.picPass = new DevExpress.XtraEditors.PictureEdit();
+            this.picCheckFaild = new DevExpress.XtraEditors.PictureEdit();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -79,22 +84,15 @@
             this.luefunds = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.col_money = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_usage = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
-            this.c1SplitterPanel1 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.lstFiles = new DevExpress.XtraEditors.ImageListBoxControl();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tsbAttachNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbAttachDelete = new System.Windows.Forms.ToolStripButton();
-            this.picPass = new DevExpress.XtraEditors.PictureEdit();
-            this.picCheckFaild = new DevExpress.XtraEditors.PictureEdit();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -126,25 +124,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.luefunds)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
-            this.c1SplitContainer1.SuspendLayout();
-            this.c1SplitterPanel1.SuspendLayout();
-            this.toolStrip3.SuspendLayout();
-            this.c1SplitterPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstFiles)).BeginInit();
-            this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luefunds)).BeginInit();
+            this.toolStrip3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstFiles)).BeginInit();
+            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lueInCompany
             // 
             this.lueInCompany.EnterMoveNextControl = true;
-            this.lueInCompany.Location = new System.Drawing.Point(384, 60);
+            this.lueInCompany.Location = new System.Drawing.Point(392, 60);
             this.lueInCompany.Name = "lueInCompany";
             this.lueInCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -152,7 +148,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
             this.lueInCompany.Properties.NullText = "请选择收款单位";
-            this.lueInCompany.Size = new System.Drawing.Size(235, 20);
+            this.lueInCompany.Size = new System.Drawing.Size(242, 20);
             this.lueInCompany.StyleController = this.layoutControl1;
             this.lueInCompany.TabIndex = 6;
             this.lueInCompany.EditValueChanged += new System.EventHandler(this.lueInCompany_EditValueChanged);
@@ -174,7 +170,7 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsFocus.EnableAutoTabOrder = false;
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(635, 198);
+            this.layoutControl1.Size = new System.Drawing.Size(650, 198);
             this.layoutControl1.TabIndex = 69;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -182,10 +178,10 @@
             // 
             this.txtInBank.Enabled = false;
             this.txtInBank.EnterMoveNextControl = true;
-            this.txtInBank.Location = new System.Drawing.Point(384, 108);
+            this.txtInBank.Location = new System.Drawing.Point(392, 108);
             this.txtInBank.MenuManager = this.barManager1;
             this.txtInBank.Name = "txtInBank";
-            this.txtInBank.Size = new System.Drawing.Size(235, 20);
+            this.txtInBank.Size = new System.Drawing.Size(242, 20);
             this.txtInBank.StyleController = this.layoutControl1;
             this.txtInBank.TabIndex = 8;
             // 
@@ -335,14 +331,14 @@
             this.txtOutBank.Location = new System.Drawing.Point(66, 108);
             this.txtOutBank.MenuManager = this.barManager1;
             this.txtOutBank.Name = "txtOutBank";
-            this.txtOutBank.Size = new System.Drawing.Size(240, 20);
+            this.txtOutBank.Size = new System.Drawing.Size(248, 20);
             this.txtOutBank.StyleController = this.layoutControl1;
             this.txtOutBank.TabIndex = 5;
             // 
             // lueInAccount
             // 
             this.lueInAccount.EnterMoveNextControl = true;
-            this.lueInAccount.Location = new System.Drawing.Point(384, 84);
+            this.lueInAccount.Location = new System.Drawing.Point(392, 84);
             this.lueInAccount.MenuManager = this.barManager1;
             this.lueInAccount.Name = "lueInAccount";
             this.lueInAccount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -354,7 +350,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Credit", "贷款")});
             this.lueInAccount.Properties.NullText = "";
             this.lueInAccount.Properties.PopupWidth = 500;
-            this.lueInAccount.Size = new System.Drawing.Size(235, 20);
+            this.lueInAccount.Size = new System.Drawing.Size(242, 20);
             this.lueInAccount.StyleController = this.layoutControl1;
             this.lueInAccount.TabIndex = 7;
             this.lueInAccount.EditValueChanged += new System.EventHandler(this.lueInAccount_EditValueChanged);
@@ -374,7 +370,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Credit", "贷款")});
             this.lueOutAccount.Properties.NullText = "";
             this.lueOutAccount.Properties.PopupWidth = 500;
-            this.lueOutAccount.Size = new System.Drawing.Size(240, 20);
+            this.lueOutAccount.Size = new System.Drawing.Size(248, 20);
             this.lueOutAccount.StyleController = this.layoutControl1;
             this.lueOutAccount.TabIndex = 4;
             this.lueOutAccount.EditValueChanged += new System.EventHandler(this.lueOutAccount_EditValueChanged);
@@ -385,17 +381,17 @@
             this.txtMemo.Location = new System.Drawing.Point(54, 144);
             this.txtMemo.MenuManager = this.barManager1;
             this.txtMemo.Name = "txtMemo";
-            this.txtMemo.Size = new System.Drawing.Size(577, 20);
+            this.txtMemo.Size = new System.Drawing.Size(592, 20);
             this.txtMemo.StyleController = this.layoutControl1;
             this.txtMemo.TabIndex = 9;
             // 
             // txtCode
             // 
             this.txtCode.EnterMoveNextControl = true;
-            this.txtCode.Location = new System.Drawing.Point(372, 4);
+            this.txtCode.Location = new System.Drawing.Point(380, 4);
             this.txtCode.MenuManager = this.barManager1;
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(259, 20);
+            this.txtCode.Size = new System.Drawing.Size(266, 20);
             this.txtCode.StyleController = this.layoutControl1;
             this.txtCode.TabIndex = 2;
             // 
@@ -412,7 +408,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtSigned.Properties.CalendarTimeProperties.CloseUpKey = new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F4);
             this.dtSigned.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.Default;
-            this.dtSigned.Size = new System.Drawing.Size(264, 20);
+            this.dtSigned.Size = new System.Drawing.Size(272, 20);
             this.dtSigned.StyleController = this.layoutControl1;
             this.dtSigned.TabIndex = 1;
             // 
@@ -425,7 +421,7 @@
             this.lueBalance.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueBalance.Properties.NullText = "请选择代码编号";
-            this.lueBalance.Size = new System.Drawing.Size(265, 20);
+            this.lueBalance.Size = new System.Drawing.Size(273, 20);
             this.lueBalance.StyleController = this.layoutControl1;
             this.lueBalance.TabIndex = 10;
             // 
@@ -433,7 +429,7 @@
             // 
             this.lueContract.Enabled = false;
             this.lueContract.EnterMoveNextControl = true;
-            this.lueContract.Location = new System.Drawing.Point(373, 168);
+            this.lueContract.Location = new System.Drawing.Point(381, 168);
             this.lueContract.Name = "lueContract";
             this.lueContract.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -442,7 +438,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("PartyAName", "甲方"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("PartyBName", "乙方")});
             this.lueContract.Properties.NullText = "请选择合同号";
-            this.lueContract.Size = new System.Drawing.Size(258, 20);
+            this.lueContract.Size = new System.Drawing.Size(265, 20);
             this.lueContract.StyleController = this.layoutControl1;
             this.lueContract.TabIndex = 11;
             // 
@@ -457,7 +453,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
             this.lueOutCompany.Properties.NullText = "请选择付款单位";
-            this.lueOutCompany.Size = new System.Drawing.Size(240, 20);
+            this.lueOutCompany.Size = new System.Drawing.Size(248, 20);
             this.lueOutCompany.StyleController = this.layoutControl1;
             this.lueOutCompany.TabIndex = 3;
             this.lueOutCompany.EditValueChanged += new System.EventHandler(this.lueOutCompany_EditValueChanged);
@@ -479,7 +475,7 @@
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.OptionsItemText.TextToControlDistance = 2;
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(635, 198);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(650, 198);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -489,7 +485,7 @@
             this.layoutControlItem1.CustomizationFormText = "签订日期";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(318, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(326, 24);
             this.layoutControlItem1.Text = "签订日期";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -497,9 +493,9 @@
             // 
             this.layoutControlItem2.Control = this.txtCode;
             this.layoutControlItem2.CustomizationFormText = "单据字";
-            this.layoutControlItem2.Location = new System.Drawing.Point(318, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(326, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(313, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(320, 24);
             this.layoutControlItem2.Text = "单据字";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -509,7 +505,7 @@
             this.layoutControlItem10.CustomizationFormText = "贷款编号";
             this.layoutControlItem10.Location = new System.Drawing.Point(0, 164);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(319, 30);
+            this.layoutControlItem10.Size = new System.Drawing.Size(327, 30);
             this.layoutControlItem10.Text = "贷款编号";
             this.layoutControlItem10.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -517,9 +513,9 @@
             // 
             this.layoutControlItem11.Control = this.lueContract;
             this.layoutControlItem11.CustomizationFormText = "合同编号";
-            this.layoutControlItem11.Location = new System.Drawing.Point(319, 164);
+            this.layoutControlItem11.Location = new System.Drawing.Point(327, 164);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(312, 30);
+            this.layoutControlItem11.Size = new System.Drawing.Size(319, 30);
             this.layoutControlItem11.Text = "合同编号";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -529,7 +525,7 @@
             this.layoutControlItem12.CustomizationFormText = "备注";
             this.layoutControlItem12.Location = new System.Drawing.Point(0, 140);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(631, 24);
+            this.layoutControlItem12.Size = new System.Drawing.Size(646, 24);
             this.layoutControlItem12.Text = "备注";
             this.layoutControlItem12.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -542,7 +538,7 @@
             this.layoutControlItem7});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(318, 116);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(326, 116);
             this.layoutControlGroup2.Text = "付款单位";
             // 
             // layoutControlItem3
@@ -551,7 +547,7 @@
             this.layoutControlItem3.CustomizationFormText = "付款单位";
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(294, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(302, 24);
             this.layoutControlItem3.Text = "名称";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -561,7 +557,7 @@
             this.layoutControlItem13.CustomizationFormText = "layoutControlItem13";
             this.layoutControlItem13.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(294, 24);
+            this.layoutControlItem13.Size = new System.Drawing.Size(302, 24);
             this.layoutControlItem13.Text = "帐户";
             this.layoutControlItem13.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -571,7 +567,7 @@
             this.layoutControlItem7.CustomizationFormText = "开户行";
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(294, 24);
+            this.layoutControlItem7.Size = new System.Drawing.Size(302, 24);
             this.layoutControlItem7.Text = "开户行";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -582,9 +578,9 @@
             this.layoutControlItem4,
             this.layoutControlItem6,
             this.layoutControlItem8});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(318, 24);
+            this.layoutControlGroup3.Location = new System.Drawing.Point(326, 24);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(313, 116);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(320, 116);
             this.layoutControlGroup3.Text = "收款单位";
             // 
             // layoutControlItem4
@@ -593,7 +589,7 @@
             this.layoutControlItem4.CustomizationFormText = "收款单位";
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(289, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(296, 24);
             this.layoutControlItem4.Text = "名称";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -603,7 +599,7 @@
             this.layoutControlItem6.CustomizationFormText = "帐户";
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(289, 24);
+            this.layoutControlItem6.Size = new System.Drawing.Size(296, 24);
             this.layoutControlItem6.Text = "帐户";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -613,9 +609,84 @@
             this.layoutControlItem8.CustomizationFormText = "开户行";
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(289, 24);
+            this.layoutControlItem8.Size = new System.Drawing.Size(296, 24);
             this.layoutControlItem8.Text = "开户行";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "ADOBE PSD.ico");
+            this.imageList1.Images.SetKeyName(1, "AIF.ico");
+            this.imageList1.Images.SetKeyName(2, "APF.ico");
+            this.imageList1.Images.SetKeyName(3, "AU.ico");
+            this.imageList1.Images.SetKeyName(4, "AVI.ico");
+            this.imageList1.Images.SetKeyName(5, "AVIJ.ico");
+            this.imageList1.Images.SetKeyName(6, "BINDER 002.ico");
+            this.imageList1.Images.SetKeyName(7, "BLANK WORD DOC.ico");
+            this.imageList1.Images.SetKeyName(8, "BMP.ico");
+            this.imageList1.Images.SetKeyName(9, "BMP2.ico");
+            this.imageList1.Images.SetKeyName(10, "BUDDY LIST FILE.ico");
+            this.imageList1.Images.SetKeyName(11, "CDAJ.ico");
+            this.imageList1.Images.SetKeyName(12, "CLASS.ico");
+            this.imageList1.Images.SetKeyName(13, "CONFIGURATION .ico");
+            this.imageList1.Images.SetKeyName(14, "CSS.ico");
+            this.imageList1.Images.SetKeyName(15, "DEFAULT ICON.ico");
+            this.imageList1.Images.SetKeyName(16, "DIVX.ico");
+            this.imageList1.Images.SetKeyName(17, "DIVXJ.ico");
+            this.imageList1.Images.SetKeyName(18, "DREAMWEAVER XP.ico");
+            this.imageList1.Images.SetKeyName(19, "ERASER.ico");
+            // 
+            // picPass
+            // 
+            this.picPass.EditValue = ((object)(resources.GetObject("picPass.EditValue")));
+            this.picPass.Location = new System.Drawing.Point(649, 45);
+            this.picPass.MenuManager = this.barManager1;
+            this.picPass.Name = "picPass";
+            this.picPass.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.picPass.Properties.Appearance.Options.UseBackColor = true;
+            this.picPass.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.picPass.Size = new System.Drawing.Size(204, 61);
+            this.picPass.TabIndex = 63;
+            this.picPass.Visible = false;
+            // 
+            // picCheckFaild
+            // 
+            this.picCheckFaild.EditValue = ((object)(resources.GetObject("picCheckFaild.EditValue")));
+            this.picCheckFaild.Location = new System.Drawing.Point(649, 45);
+            this.picCheckFaild.MenuManager = this.barManager1;
+            this.picCheckFaild.Name = "picCheckFaild";
+            this.picCheckFaild.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.picCheckFaild.Properties.Appearance.Options.UseBackColor = true;
+            this.picCheckFaild.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.picCheckFaild.Size = new System.Drawing.Size(204, 61);
+            this.picCheckFaild.TabIndex = 64;
+            this.picCheckFaild.Visible = false;
+            // 
+            // dxErrorProvider1
+            // 
+            this.dxErrorProvider1.ContainerControl = this;
+            // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainerControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.splitContainerControl1.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
+            this.splitContainerControl1.Location = new System.Drawing.Point(12, 247);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.gridControl1);
+            this.splitContainerControl1.Panel1.Controls.Add(this.toolStrip3);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.lstFiles);
+            this.splitContainerControl1.Panel2.Controls.Add(this.toolStrip2);
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(822, 323);
+            this.splitContainerControl1.SplitterPosition = 148;
+            this.splitContainerControl1.TabIndex = 74;
+            this.splitContainerControl1.Text = "splitContainerControl1";
             // 
             // gridControl1
             // 
@@ -625,8 +696,8 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.luefunds});
-            this.gridControl1.Size = new System.Drawing.Size(629, 277);
-            this.gridControl1.TabIndex = 13;
+            this.gridControl1.Size = new System.Drawing.Size(669, 298);
+            this.gridControl1.TabIndex = 44;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
@@ -682,36 +753,6 @@
             this.col_usage.Visible = true;
             this.col_usage.VisibleIndex = 2;
             // 
-            // c1SplitContainer1
-            // 
-            this.c1SplitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.c1SplitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(150)))));
-            this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.c1SplitContainer1.Location = new System.Drawing.Point(12, 247);
-            this.c1SplitContainer1.Name = "c1SplitContainer1";
-            this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel1);
-            this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel2);
-            this.c1SplitContainer1.Size = new System.Drawing.Size(822, 323);
-            this.c1SplitContainer1.SplitterColor = System.Drawing.Color.Transparent;
-            this.c1SplitContainer1.TabIndex = 58;
-            this.c1SplitContainer1.UseParentVisualStyle = false;
-            // 
-            // c1SplitterPanel1
-            // 
-            this.c1SplitterPanel1.Controls.Add(this.gridControl1);
-            this.c1SplitterPanel1.Controls.Add(this.toolStrip3);
-            this.c1SplitterPanel1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
-            this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
-            this.c1SplitterPanel1.Name = "c1SplitterPanel1";
-            this.c1SplitterPanel1.Size = new System.Drawing.Size(629, 302);
-            this.c1SplitterPanel1.SizeRatio = 76.835D;
-            this.c1SplitterPanel1.TabIndex = 0;
-            this.c1SplitterPanel1.Text = "明细";
-            this.c1SplitterPanel1.Width = 629;
-            // 
             // toolStrip3
             // 
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -720,8 +761,8 @@
             this.tsbDelete});
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(629, 25);
-            this.toolStrip3.TabIndex = 42;
+            this.toolStrip3.Size = new System.Drawing.Size(669, 25);
+            this.toolStrip3.TabIndex = 43;
             this.toolStrip3.Text = "toolStrip3";
             // 
             // tsbNew
@@ -731,7 +772,6 @@
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(52, 22);
             this.tsbNew.Text = "新增";
-            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // toolStripSeparator3
             // 
@@ -745,19 +785,6 @@
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(52, 22);
             this.tsbDelete.Text = "删除";
-            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
-            // 
-            // c1SplitterPanel2
-            // 
-            this.c1SplitterPanel2.BorderColor = System.Drawing.Color.Transparent;
-            this.c1SplitterPanel2.Controls.Add(this.lstFiles);
-            this.c1SplitterPanel2.Controls.Add(this.toolStrip2);
-            this.c1SplitterPanel2.Height = 100;
-            this.c1SplitterPanel2.Location = new System.Drawing.Point(633, 21);
-            this.c1SplitterPanel2.Name = "c1SplitterPanel2";
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(189, 302);
-            this.c1SplitterPanel2.TabIndex = 1;
-            this.c1SplitterPanel2.Text = "附件";
             // 
             // lstFiles
             // 
@@ -768,34 +795,8 @@
             new DevExpress.XtraEditors.Controls.ImageListBoxItem("asdfasdf", 1)});
             this.lstFiles.Location = new System.Drawing.Point(0, 25);
             this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(189, 277);
-            this.lstFiles.TabIndex = 63;
-            this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "ADOBE PSD.ico");
-            this.imageList1.Images.SetKeyName(1, "AIF.ico");
-            this.imageList1.Images.SetKeyName(2, "APF.ico");
-            this.imageList1.Images.SetKeyName(3, "AU.ico");
-            this.imageList1.Images.SetKeyName(4, "AVI.ico");
-            this.imageList1.Images.SetKeyName(5, "AVIJ.ico");
-            this.imageList1.Images.SetKeyName(6, "BINDER 002.ico");
-            this.imageList1.Images.SetKeyName(7, "BLANK WORD DOC.ico");
-            this.imageList1.Images.SetKeyName(8, "BMP.ico");
-            this.imageList1.Images.SetKeyName(9, "BMP2.ico");
-            this.imageList1.Images.SetKeyName(10, "BUDDY LIST FILE.ico");
-            this.imageList1.Images.SetKeyName(11, "CDAJ.ico");
-            this.imageList1.Images.SetKeyName(12, "CLASS.ico");
-            this.imageList1.Images.SetKeyName(13, "CONFIGURATION .ico");
-            this.imageList1.Images.SetKeyName(14, "CSS.ico");
-            this.imageList1.Images.SetKeyName(15, "DEFAULT ICON.ico");
-            this.imageList1.Images.SetKeyName(16, "DIVX.ico");
-            this.imageList1.Images.SetKeyName(17, "DIVXJ.ico");
-            this.imageList1.Images.SetKeyName(18, "DREAMWEAVER XP.ico");
-            this.imageList1.Images.SetKeyName(19, "ERASER.ico");
+            this.lstFiles.Size = new System.Drawing.Size(148, 298);
+            this.lstFiles.TabIndex = 64;
             // 
             // toolStrip2
             // 
@@ -805,8 +806,8 @@
             this.tsbAttachDelete});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(189, 25);
-            this.toolStrip2.TabIndex = 43;
+            this.toolStrip2.Size = new System.Drawing.Size(148, 25);
+            this.toolStrip2.TabIndex = 44;
             this.toolStrip2.Text = "toolStrip2";
             // 
             // tsbAttachNew
@@ -816,7 +817,6 @@
             this.tsbAttachNew.Name = "tsbAttachNew";
             this.tsbAttachNew.Size = new System.Drawing.Size(52, 22);
             this.tsbAttachNew.Text = "新增";
-            this.tsbAttachNew.Click += new System.EventHandler(this.tsbAttachNew_Click);
             // 
             // toolStripSeparator1
             // 
@@ -830,37 +830,6 @@
             this.tsbAttachDelete.Name = "tsbAttachDelete";
             this.tsbAttachDelete.Size = new System.Drawing.Size(52, 22);
             this.tsbAttachDelete.Text = "删除";
-            this.tsbAttachDelete.Click += new System.EventHandler(this.tsbAttachDelete_Click);
-            // 
-            // picPass
-            // 
-            this.picPass.EditValue = ((object)(resources.GetObject("picPass.EditValue")));
-            this.picPass.Location = new System.Drawing.Point(649, 45);
-            this.picPass.MenuManager = this.barManager1;
-            this.picPass.Name = "picPass";
-            this.picPass.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.picPass.Properties.Appearance.Options.UseBackColor = true;
-            this.picPass.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.picPass.Size = new System.Drawing.Size(204, 61);
-            this.picPass.TabIndex = 63;
-            this.picPass.Visible = false;
-            // 
-            // picCheckFaild
-            // 
-            this.picCheckFaild.EditValue = ((object)(resources.GetObject("picCheckFaild.EditValue")));
-            this.picCheckFaild.Location = new System.Drawing.Point(649, 45);
-            this.picCheckFaild.MenuManager = this.barManager1;
-            this.picCheckFaild.Name = "picCheckFaild";
-            this.picCheckFaild.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.picCheckFaild.Properties.Appearance.Options.UseBackColor = true;
-            this.picCheckFaild.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.picCheckFaild.Size = new System.Drawing.Size(204, 61);
-            this.picCheckFaild.TabIndex = 64;
-            this.picCheckFaild.Visible = false;
-            // 
-            // dxErrorProvider1
-            // 
-            this.dxErrorProvider1.ContainerControl = this;
             // 
             // DevAccount
             // 
@@ -869,10 +838,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 582);
+            this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.picCheckFaild);
             this.Controls.Add(this.picPass);
-            this.Controls.Add(this.c1SplitContainer1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -911,23 +880,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.luefunds)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).EndInit();
-            this.c1SplitContainer1.ResumeLayout(false);
-            this.c1SplitterPanel1.ResumeLayout(false);
-            this.c1SplitterPanel1.PerformLayout();
-            this.toolStrip3.ResumeLayout(false);
-            this.toolStrip3.PerformLayout();
-            this.c1SplitterPanel2.ResumeLayout(false);
-            this.c1SplitterPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstFiles)).EndInit();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luefunds)).EndInit();
+            this.toolStrip3.ResumeLayout(false);
+            this.toolStrip3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstFiles)).EndInit();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -938,12 +903,6 @@
         private DevExpress.XtraEditors.LookUpEdit lueContract;
         private DevExpress.XtraEditors.LookUpEdit lueBalance;
         private DevExpress.XtraEditors.LookUpEdit lueOutCompany;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn col_funds_id;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit luefunds;
-        private DevExpress.XtraGrid.Columns.GridColumn col_money;
-        private DevExpress.XtraGrid.Columns.GridColumn col_usage;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarButtonItem tbNew;
@@ -955,19 +914,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private C1.Win.C1SplitContainer.C1SplitContainer c1SplitContainer1;
-        private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel1;
-        private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel2;
-        private System.Windows.Forms.ToolStrip toolStrip3;
-        private System.Windows.Forms.ToolStripButton tsbNew;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton tsbDelete;
-        private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton tsbAttachNew;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsbAttachDelete;
-        private DevExpress.XtraGrid.Columns.GridColumn col_id;
-        private DevExpress.XtraEditors.ImageListBoxControl lstFiles;
         private System.Windows.Forms.ImageList imageList1;
         private DevExpress.XtraBars.BarButtonItem tbCheckPassed;
         private DevExpress.XtraBars.BarButtonItem tbCheckFaild;
@@ -999,5 +945,22 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn col_id;
+        private DevExpress.XtraGrid.Columns.GridColumn col_funds_id;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit luefunds;
+        private DevExpress.XtraGrid.Columns.GridColumn col_money;
+        private DevExpress.XtraGrid.Columns.GridColumn col_usage;
+        private System.Windows.Forms.ToolStrip toolStrip3;
+        private System.Windows.Forms.ToolStripButton tsbNew;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton tsbDelete;
+        private DevExpress.XtraEditors.ImageListBoxControl lstFiles;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton tsbAttachNew;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton tsbAttachDelete;
     }
 }

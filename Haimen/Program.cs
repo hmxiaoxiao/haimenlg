@@ -33,9 +33,9 @@ namespace Haimen
             User.Init();
 
 
-            // 显示登录窗口
-            DevLogin win = new DevLogin();
-            win.ShowDialog();
+            //// 显示登录窗口
+            //DevLogin win = new DevLogin();
+            //win.ShowDialog();
 
             //frmSplash fs = new frmSplash();
             //fs.Show();
@@ -44,7 +44,7 @@ namespace Haimen
             //bank.ShowDialog();
             //CustomerINI.WriteDBConfig("r400", "haimen", "sa", "heroes22");
 
-            //GlobalSet.Current_User = User.Login("admin", "qwer1234");
+            GlobalSet.Current_User = User.Login("admin", "qwer1234");
             if (GlobalSet.Current_User != null)
             {
                 Application.Run(new DevMain());
