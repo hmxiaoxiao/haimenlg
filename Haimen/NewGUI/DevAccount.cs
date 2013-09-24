@@ -236,6 +236,7 @@ namespace Haimen.NewGUI
                 lueOutCompany.EditValue = c.OutCompanyID;
                 lueInCompany.Enabled = false;
                 lueOutCompany.Enabled = false;
+                txtMemo.Text = "本单据通过合同生成。";
             }
             else if (m_balance_id > 0)
             {

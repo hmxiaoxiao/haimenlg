@@ -215,6 +215,7 @@
             this.layoutControl1.Controls.Add(this.cbInput);
             this.layoutControl1.Location = new System.Drawing.Point(0, 37);
             this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsFocus.EnableAutoTabOrder = false;
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(457, 367);
             this.layoutControl1.TabIndex = 14;
@@ -222,6 +223,7 @@
             // 
             // cboBankList
             // 
+            this.cboBankList.EnterMoveNextControl = true;
             this.cboBankList.Location = new System.Drawing.Point(70, 180);
             this.cboBankList.MenuManager = this.barManager1;
             this.cboBankList.Name = "cboBankList";
@@ -233,43 +235,47 @@
             this.cboBankList.Properties.NullText = "";
             this.cboBankList.Size = new System.Drawing.Size(367, 20);
             this.cboBankList.StyleController = this.layoutControl1;
-            this.cboBankList.TabIndex = 11;
+            this.cboBankList.TabIndex = 5;
             // 
             // txtDoc
             // 
+            this.txtDoc.EnterMoveNextControl = true;
             this.txtDoc.Location = new System.Drawing.Point(70, 140);
             this.txtDoc.MenuManager = this.barManager1;
             this.txtDoc.Name = "txtDoc";
             this.txtDoc.Size = new System.Drawing.Size(367, 20);
             this.txtDoc.StyleController = this.layoutControl1;
-            this.txtDoc.TabIndex = 10;
+            this.txtDoc.TabIndex = 4;
             // 
             // txtAccount
             // 
+            this.txtAccount.EnterMoveNextControl = true;
             this.txtAccount.Location = new System.Drawing.Point(70, 100);
             this.txtAccount.MenuManager = this.barManager1;
             this.txtAccount.Name = "txtAccount";
             this.txtAccount.Size = new System.Drawing.Size(367, 20);
             this.txtAccount.StyleController = this.layoutControl1;
-            this.txtAccount.TabIndex = 9;
+            this.txtAccount.TabIndex = 3;
             // 
             // txtName
             // 
+            this.txtName.EnterMoveNextControl = true;
             this.txtName.Location = new System.Drawing.Point(70, 60);
             this.txtName.MenuManager = this.barManager1;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(367, 20);
             this.txtName.StyleController = this.layoutControl1;
-            this.txtName.TabIndex = 8;
+            this.txtName.TabIndex = 2;
             // 
             // txtCode
             // 
+            this.txtCode.EnterMoveNextControl = true;
             this.txtCode.Location = new System.Drawing.Point(70, 20);
             this.txtCode.MenuManager = this.barManager1;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(367, 20);
             this.txtCode.StyleController = this.layoutControl1;
-            this.txtCode.TabIndex = 7;
+            this.txtCode.TabIndex = 1;
             // 
             // layoutControlGroup1
             // 

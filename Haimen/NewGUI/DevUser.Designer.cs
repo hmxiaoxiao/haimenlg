@@ -183,6 +183,7 @@
             this.layoutControl1.Controls.Add(this.txtCode);
             this.layoutControl1.Location = new System.Drawing.Point(12, 45);
             this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsFocus.EnableAutoTabOrder = false;
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(403, 259);
             this.layoutControl1.TabIndex = 18;
@@ -190,6 +191,7 @@
             // 
             // lueUserGroup
             // 
+            this.lueUserGroup.EnterMoveNextControl = true;
             this.lueUserGroup.Location = new System.Drawing.Point(83, 180);
             this.lueUserGroup.MenuManager = this.barManager1;
             this.lueUserGroup.Name = "lueUserGroup";
@@ -200,7 +202,7 @@
             this.lueUserGroup.Properties.NullText = "";
             this.lueUserGroup.Size = new System.Drawing.Size(300, 20);
             this.lueUserGroup.StyleController = this.layoutControl1;
-            this.lueUserGroup.TabIndex = 9;
+            this.lueUserGroup.TabIndex = 5;
             // 
             // cbAdmin
             // 
@@ -213,45 +215,49 @@
             this.cbAdmin.Properties.ValueUnchecked = "";
             this.cbAdmin.Size = new System.Drawing.Size(300, 19);
             this.cbAdmin.StyleController = this.layoutControl1;
-            this.cbAdmin.TabIndex = 8;
+            this.cbAdmin.TabIndex = 6;
             // 
             // txtPasswordConfirm
             // 
+            this.txtPasswordConfirm.EnterMoveNextControl = true;
             this.txtPasswordConfirm.Location = new System.Drawing.Point(83, 140);
             this.txtPasswordConfirm.MenuManager = this.barManager1;
             this.txtPasswordConfirm.Name = "txtPasswordConfirm";
             this.txtPasswordConfirm.Properties.PasswordChar = '●';
             this.txtPasswordConfirm.Size = new System.Drawing.Size(300, 20);
             this.txtPasswordConfirm.StyleController = this.layoutControl1;
-            this.txtPasswordConfirm.TabIndex = 7;
+            this.txtPasswordConfirm.TabIndex = 4;
             // 
             // txtPassword
             // 
+            this.txtPassword.EnterMoveNextControl = true;
             this.txtPassword.Location = new System.Drawing.Point(83, 100);
             this.txtPassword.MenuManager = this.barManager1;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(300, 20);
             this.txtPassword.StyleController = this.layoutControl1;
-            this.txtPassword.TabIndex = 6;
+            this.txtPassword.TabIndex = 3;
             // 
             // txtName
             // 
+            this.txtName.EnterMoveNextControl = true;
             this.txtName.Location = new System.Drawing.Point(83, 60);
             this.txtName.MenuManager = this.barManager1;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(300, 20);
             this.txtName.StyleController = this.layoutControl1;
-            this.txtName.TabIndex = 5;
+            this.txtName.TabIndex = 2;
             // 
             // txtCode
             // 
+            this.txtCode.EnterMoveNextControl = true;
             this.txtCode.Location = new System.Drawing.Point(83, 20);
             this.txtCode.MenuManager = this.barManager1;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(300, 20);
             this.txtCode.StyleController = this.layoutControl1;
-            this.txtCode.TabIndex = 4;
+            this.txtCode.TabIndex = 1;
             // 
             // layoutControlGroup1
             // 

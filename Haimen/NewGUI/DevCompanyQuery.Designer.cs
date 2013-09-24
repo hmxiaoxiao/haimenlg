@@ -29,30 +29,30 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnExit = new DevExpress.XtraEditors.SimpleButton();
+            this.btnQuery = new DevExpress.XtraEditors.SimpleButton();
+            this.txtAccount = new DevExpress.XtraEditors.TextEdit();
+            this.txtName = new DevExpress.XtraEditors.TextEdit();
+            this.txtCode = new DevExpress.XtraEditors.TextEdit();
             this.lueBanks = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtCode = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtAccount = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.btnQuery = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnExit = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBanks.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -70,13 +70,64 @@
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsFocus.EnableAutoTabOrder = false;
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(372, 210);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // btnExit
+            // 
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnExit.Location = new System.Drawing.Point(296, 172);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(56, 22);
+            this.btnExit.StyleController = this.layoutControl1;
+            this.btnExit.TabIndex = 6;
+            this.btnExit.Text = "退出";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnQuery
+            // 
+            this.btnQuery.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnQuery.Location = new System.Drawing.Point(196, 172);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(80, 22);
+            this.btnQuery.StyleController = this.layoutControl1;
+            this.btnQuery.TabIndex = 5;
+            this.btnQuery.Text = "查询";
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // txtAccount
+            // 
+            this.txtAccount.EnterMoveNextControl = true;
+            this.txtAccount.Location = new System.Drawing.Point(70, 100);
+            this.txtAccount.Name = "txtAccount";
+            this.txtAccount.Size = new System.Drawing.Size(282, 20);
+            this.txtAccount.StyleController = this.layoutControl1;
+            this.txtAccount.TabIndex = 3;
+            // 
+            // txtName
+            // 
+            this.txtName.EnterMoveNextControl = true;
+            this.txtName.Location = new System.Drawing.Point(70, 60);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(282, 20);
+            this.txtName.StyleController = this.layoutControl1;
+            this.txtName.TabIndex = 2;
+            // 
+            // txtCode
+            // 
+            this.txtCode.EnterMoveNextControl = true;
+            this.txtCode.Location = new System.Drawing.Point(70, 20);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(282, 20);
+            this.txtCode.StyleController = this.layoutControl1;
+            this.txtCode.TabIndex = 1;
+            // 
             // lueBanks
             // 
+            this.lueBanks.EnterMoveNextControl = true;
             this.lueBanks.Location = new System.Drawing.Point(70, 140);
             this.lueBanks.Name = "lueBanks";
             this.lueBanks.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -87,7 +138,7 @@
             this.lueBanks.Properties.NullText = "";
             this.lueBanks.Size = new System.Drawing.Size(282, 20);
             this.lueBanks.StyleController = this.layoutControl1;
-            this.lueBanks.TabIndex = 7;
+            this.lueBanks.TabIndex = 4;
             // 
             // layoutControlGroup1
             // 
@@ -120,14 +171,6 @@
             this.layoutControlItem4.Text = "开户行：";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // txtCode
-            // 
-            this.txtCode.Location = new System.Drawing.Point(70, 20);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(282, 20);
-            this.txtCode.StyleController = this.layoutControl1;
-            this.txtCode.TabIndex = 8;
-            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.txtCode;
@@ -139,14 +182,6 @@
             this.layoutControlItem5.Text = "代码：";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(70, 60);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(282, 20);
-            this.txtName.StyleController = this.layoutControl1;
-            this.txtName.TabIndex = 9;
-            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.txtName;
@@ -157,14 +192,6 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(352, 40);
             this.layoutControlItem1.Text = "名称：";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // txtAccount
-            // 
-            this.txtAccount.Location = new System.Drawing.Point(70, 100);
-            this.txtAccount.Name = "txtAccount";
-            this.txtAccount.Size = new System.Drawing.Size(282, 20);
-            this.txtAccount.StyleController = this.layoutControl1;
-            this.txtAccount.TabIndex = 10;
             // 
             // layoutControlItem6
             // 
@@ -187,17 +214,6 @@
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // btnQuery
-            // 
-            this.btnQuery.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnQuery.Location = new System.Drawing.Point(196, 172);
-            this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(80, 22);
-            this.btnQuery.StyleController = this.layoutControl1;
-            this.btnQuery.TabIndex = 11;
-            this.btnQuery.Text = "查询";
-            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
-            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.btnQuery;
@@ -210,17 +226,6 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextToControlDistance = 0;
             this.layoutControlItem2.TextVisible = false;
-            // 
-            // btnExit
-            // 
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(296, 172);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(56, 22);
-            this.btnExit.StyleController = this.layoutControl1;
-            this.btnExit.TabIndex = 12;
-            this.btnExit.Text = "退出";
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // layoutControlItem3
             // 
@@ -247,14 +252,14 @@
             this.Load += new System.EventHandler(this.DevCompanyQuery_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBanks.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();

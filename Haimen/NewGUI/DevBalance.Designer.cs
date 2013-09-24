@@ -125,6 +125,7 @@
             // 
             // lueCompany
             // 
+            this.lueCompany.EnterMoveNextControl = true;
             this.lueCompany.Location = new System.Drawing.Point(339, 2);
             this.lueCompany.Name = "lueCompany";
             this.lueCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -135,7 +136,7 @@
             this.lueCompany.Properties.NullText = "请选择单位";
             this.lueCompany.Size = new System.Drawing.Size(229, 20);
             this.lueCompany.StyleController = this.layoutControl1;
-            this.lueCompany.TabIndex = 53;
+            this.lueCompany.TabIndex = 2;
             // 
             // layoutControl1
             // 
@@ -151,6 +152,7 @@
             this.layoutControl1.Controls.Add(this.lueBank);
             this.layoutControl1.Location = new System.Drawing.Point(12, 45);
             this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsFocus.EnableAutoTabOrder = false;
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(570, 184);
             this.layoutControl1.TabIndex = 67;
@@ -158,6 +160,7 @@
             // 
             // cboRepayDate
             // 
+            this.cboRepayDate.EnterMoveNextControl = true;
             this.cboRepayDate.Location = new System.Drawing.Point(339, 130);
             this.cboRepayDate.MenuManager = this.barManager1;
             this.cboRepayDate.Name = "cboRepayDate";
@@ -165,7 +168,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboRepayDate.Size = new System.Drawing.Size(217, 20);
             this.cboRepayDate.StyleController = this.layoutControl1;
-            this.cboRepayDate.TabIndex = 61;
+            this.cboRepayDate.TabIndex = 10;
             // 
             // barManager1
             // 
@@ -288,6 +291,7 @@
             // 
             // cboInterestDate
             // 
+            this.cboInterestDate.EnterMoveNextControl = true;
             this.cboInterestDate.Location = new System.Drawing.Point(65, 130);
             this.cboInterestDate.MenuManager = this.barManager1;
             this.cboInterestDate.Name = "cboInterestDate";
@@ -295,10 +299,11 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboInterestDate.Size = new System.Drawing.Size(219, 20);
             this.cboInterestDate.StyleController = this.layoutControl1;
-            this.cboInterestDate.TabIndex = 60;
+            this.cboInterestDate.TabIndex = 9;
             // 
             // txtRate
             // 
+            this.txtRate.EnterMoveNextControl = true;
             this.txtRate.Location = new System.Drawing.Point(339, 74);
             this.txtRate.MenuManager = this.barManager1;
             this.txtRate.Name = "txtRate";
@@ -306,10 +311,11 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtRate.Size = new System.Drawing.Size(229, 20);
             this.txtRate.StyleController = this.layoutControl1;
-            this.txtRate.TabIndex = 59;
+            this.txtRate.TabIndex = 8;
             // 
             // txtMoney
             // 
+            this.txtMoney.EnterMoveNextControl = true;
             this.txtMoney.Location = new System.Drawing.Point(339, 50);
             this.txtMoney.MenuManager = this.barManager1;
             this.txtMoney.Name = "txtMoney";
@@ -317,11 +323,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtMoney.Size = new System.Drawing.Size(229, 20);
             this.txtMoney.StyleController = this.layoutControl1;
-            this.txtMoney.TabIndex = 58;
+            this.txtMoney.TabIndex = 6;
             // 
             // dtEndDate
             // 
             this.dtEndDate.EditValue = null;
+            this.dtEndDate.EnterMoveNextControl = true;
             this.dtEndDate.Location = new System.Drawing.Point(53, 74);
             this.dtEndDate.MenuManager = this.barManager1;
             this.dtEndDate.Name = "dtEndDate";
@@ -333,11 +340,12 @@
             this.dtEndDate.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.Default;
             this.dtEndDate.Size = new System.Drawing.Size(231, 20);
             this.dtEndDate.StyleController = this.layoutControl1;
-            this.dtEndDate.TabIndex = 57;
+            this.dtEndDate.TabIndex = 7;
             // 
             // dtBeginDate
             // 
             this.dtBeginDate.EditValue = null;
+            this.dtBeginDate.EnterMoveNextControl = true;
             this.dtBeginDate.Location = new System.Drawing.Point(53, 50);
             this.dtBeginDate.MenuManager = this.barManager1;
             this.dtBeginDate.Name = "dtBeginDate";
@@ -349,28 +357,31 @@
             this.dtBeginDate.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.Default;
             this.dtBeginDate.Size = new System.Drawing.Size(231, 20);
             this.dtBeginDate.StyleController = this.layoutControl1;
-            this.dtBeginDate.TabIndex = 56;
+            this.dtBeginDate.TabIndex = 5;
             // 
             // txtAccount
             // 
+            this.txtAccount.EnterMoveNextControl = true;
             this.txtAccount.Location = new System.Drawing.Point(339, 26);
             this.txtAccount.MenuManager = this.barManager1;
             this.txtAccount.Name = "txtAccount";
             this.txtAccount.Size = new System.Drawing.Size(229, 20);
             this.txtAccount.StyleController = this.layoutControl1;
-            this.txtAccount.TabIndex = 55;
+            this.txtAccount.TabIndex = 4;
             // 
             // txtCode
             // 
+            this.txtCode.EnterMoveNextControl = true;
             this.txtCode.Location = new System.Drawing.Point(53, 2);
             this.txtCode.MenuManager = this.barManager1;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(231, 20);
             this.txtCode.StyleController = this.layoutControl1;
-            this.txtCode.TabIndex = 4;
+            this.txtCode.TabIndex = 1;
             // 
             // lueBank
             // 
+            this.lueBank.EnterMoveNextControl = true;
             this.lueBank.Location = new System.Drawing.Point(53, 26);
             this.lueBank.Name = "lueBank";
             this.lueBank.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -381,7 +392,7 @@
             this.lueBank.Properties.NullText = "请选择银行";
             this.lueBank.Size = new System.Drawing.Size(231, 20);
             this.lueBank.StyleController = this.layoutControl1;
-            this.lueBank.TabIndex = 54;
+            this.lueBank.TabIndex = 3;
             // 
             // layoutControlGroup1
             // 

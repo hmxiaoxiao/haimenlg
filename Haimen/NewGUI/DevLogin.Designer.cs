@@ -127,8 +127,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DevLogin";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "资金管理系统";
             this.Load += new System.EventHandler(this.DevLogin_Load);
