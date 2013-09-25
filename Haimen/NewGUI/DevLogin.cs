@@ -65,6 +65,9 @@ namespace Haimen.NewGUI
 
             // 设置皮肤
             CustomerINI.SetFormSkin();
+
+            // 设置标题
+            this.Text = GlobalSet.SystemName;
             
         }
 

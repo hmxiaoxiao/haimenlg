@@ -21,7 +21,8 @@ namespace Haimen
         static void Main()
         {
             // 系统初始化
-            GlobalSet.SystemName = "资金管理系统";
+            string version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            GlobalSet.SystemName = "资金管理系统 - (" + version + ")";
             DevExpress.UserSkins.BonusSkins.Register();
             DevExpress.UserSkins.BonusSkins.Register();
             Application.EnableVisualStyles();
@@ -33,9 +34,9 @@ namespace Haimen
             User.Init();
 
 
-            //// 显示登录窗口
-            //DevLogin win = new DevLogin();
-            //win.ShowDialog();
+            // 显示登录窗口
+            DevLogin win = new DevLogin();
+            win.ShowDialog();
 
             //frmSplash fs = new frmSplash();
             //fs.Show();
@@ -44,7 +45,7 @@ namespace Haimen
             //bank.ShowDialog();
             //CustomerINI.WriteDBConfig("r400", "haimen", "sa", "heroes22");
 
-            GlobalSet.Current_User = User.Login("admin", "qwer1234");
+            //GlobalSet.Current_User = User.Login("admin", "qwer1234");
             if (GlobalSet.Current_User != null)
             {
                 Application.Run(new DevMain());

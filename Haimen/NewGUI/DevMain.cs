@@ -96,6 +96,9 @@ namespace Haimen.NewGUI
         private void DevMain_Load(object sender, EventArgs e)
         {
             myInitialze();
+
+            // 设置标题
+            this.Text = GlobalSet.SystemName;
         }
 
         // 资金性质
@@ -192,6 +195,22 @@ namespace Haimen.NewGUI
                 OpenForm(new DevAccess());
             if (GlobalSet.Current_User.Admin == "X")
                 OpenForm(new DevAccess());
+            else
+                MessageBox.Show("您无权限使用该功能");
+        }
+
+        private void mnuAcceptanceBill_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.承兑汇票, (long)ActionEnum.New))
+                OpenForm(new DevAcceptanceBill(winStatusEnum.New));
+            else
+                MessageBox.Show("您无权限使用该功能");
+        }
+
+        private void mnuAcceptanceBillList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.承兑汇票, (long)ActionEnum.View))
+                OpenForm(new DevAcceptanceBillList());
             else
                 MessageBox.Show("您无权限使用该功能");
         }

@@ -193,7 +193,7 @@ namespace Haimen.Helper
         /// </summary>
         通知,
 
-
+        承兑汇票,
         权限,
     }
 

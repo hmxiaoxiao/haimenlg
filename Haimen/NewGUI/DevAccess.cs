@@ -103,9 +103,6 @@ namespace Haimen.NewGUI
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // 切换一下焦点,保证不会丢失数据
-            cboUType.Focus();
-            lueList.Focus();
-
             if (lueList.EditValue == null)
                 return;
 
