@@ -160,6 +160,12 @@
     <Compile Include="NewGUI\DevAcceptanceBill.Designer.cs">
       <DependentUpon>DevAcceptanceBill.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewGUI\DevAcceptanceBillFinish.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\DevAcceptanceBillFinish.Designer.cs">
+      <DependentUpon>DevAcceptanceBillFinish.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewGUI\DevAcceptanceBillList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +291,12 @@
     </Compile>
     <Compile Include="NewGUI\DevUserList.Designer.cs">
       <DependentUpon>DevUserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewGUI\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGUI\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="NewGUI\frmSplash.cs">
       <SubType>Form</SubType>
@@ -513,6 +525,9 @@
     <EmbeddedResource Include="NewGUI\DevAcceptanceBill.resx">
       <DependentUpon>DevAcceptanceBill.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\DevAcceptanceBillFinish.resx">
+      <DependentUpon>DevAcceptanceBillFinish.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevAcceptanceBillList.resx">
       <DependentUpon>DevAcceptanceBillList.cs</DependentUpon>
     </EmbeddedResource>
@@ -575,6 +590,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\DevUserList.resx">
       <DependentUpon>DevUserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGUI\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGUI\frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>

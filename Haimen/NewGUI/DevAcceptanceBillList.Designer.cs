@@ -35,12 +35,13 @@
             this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbFinish = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbFinish = new DevExpress.XtraBars.BarButtonItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,7 +56,8 @@
             this.col_money = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_enddate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_tradecode = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.col_status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_movecompany = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -128,6 +130,30 @@
             this.tsbQuery.Name = "tsbQuery";
             this.tsbQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbQuery_ItemClick);
             // 
+            // tsbFinish
+            // 
+            this.tsbFinish.Caption = "完结";
+            this.tsbFinish.Glyph = global::Haimen.Properties.Resources.Fill_Up_hot;
+            this.tsbFinish.Id = 5;
+            this.tsbFinish.Name = "tsbFinish";
+            this.tsbFinish.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbFinish_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "刷新";
+            this.barButtonItem1.Glyph = global::Haimen.Properties.Resources.Refresh_hot;
+            this.barButtonItem1.Id = 6;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // tsbExit
+            // 
+            this.tsbExit.Caption = "退出";
+            this.tsbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.tsbExit.Id = 4;
+            this.tsbExit.Name = "tsbExit";
+            this.tsbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbExit_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -156,22 +182,6 @@
             this.barDockControlRight.Location = new System.Drawing.Point(628, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 421);
             // 
-            // tsbExit
-            // 
-            this.tsbExit.Caption = "退出";
-            this.tsbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
-            this.tsbExit.Id = 4;
-            this.tsbExit.Name = "tsbExit";
-            this.tsbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbExit_ItemClick);
-            // 
-            // tsbFinish
-            // 
-            this.tsbFinish.Caption = "完结";
-            this.tsbFinish.Glyph = global::Haimen.Properties.Resources.Fill_Up_hot;
-            this.tsbFinish.Id = 5;
-            this.tsbFinish.Name = "tsbFinish";
-            this.tsbFinish.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbFinish_ItemClick);
-            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -198,7 +208,9 @@
             this.col_incompany_account,
             this.col_money,
             this.col_enddate,
-            this.col_tradecode});
+            this.col_tradecode,
+            this.col_status,
+            this.col_movecompany});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -298,13 +310,21 @@
             this.col_tradecode.Visible = true;
             this.col_tradecode.VisibleIndex = 10;
             // 
-            // barButtonItem1
+            // col_status
             // 
-            this.barButtonItem1.Caption = "刷新";
-            this.barButtonItem1.Glyph = global::Haimen.Properties.Resources.Refresh_hot;
-            this.barButtonItem1.Id = 6;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            this.col_status.Caption = "完结状态";
+            this.col_status.FieldName = "Status";
+            this.col_status.Name = "col_status";
+            this.col_status.Visible = true;
+            this.col_status.VisibleIndex = 11;
+            // 
+            // col_movecompany
+            // 
+            this.col_movecompany.Caption = "背书单位";
+            this.col_movecompany.FieldName = "MoveCompanyDetail.Parent.Name";
+            this.col_movecompany.Name = "col_movecompany";
+            this.col_movecompany.Visible = true;
+            this.col_movecompany.VisibleIndex = 12;
             // 
             // DevAcceptanceBillList
             // 
@@ -355,5 +375,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_enddate;
         private DevExpress.XtraGrid.Columns.GridColumn col_tradecode;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraGrid.Columns.GridColumn col_status;
+        private DevExpress.XtraGrid.Columns.GridColumn col_movecompany;
     }
 }

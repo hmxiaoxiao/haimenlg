@@ -187,7 +187,7 @@ namespace Haimen.NewGUI
         {
             m_acceptance_bill.DrawDate = DateTime.Parse( dtDrawDate.EditValue.ToString());
             m_acceptance_bill.Code = txtCode.Text;
-            m_acceptance_bill.InCompanyDetailID = long.Parse(lueOutCompanyDetail.EditValue.ToString());
+            m_acceptance_bill.InCompanyDetailID = long.Parse(lueInCompanyDetail.EditValue.ToString());
             m_acceptance_bill.OutCompanyDetailID = long.Parse(lueOutCompanyDetail.EditValue.ToString());
             m_acceptance_bill.Money = clMoney.Value;
             m_acceptance_bill.EndDate = DateTime.Parse(dtEndDate.EditValue.ToString());

@@ -51,7 +51,7 @@ namespace Haimen.NewGUI
             long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
             foreach (AcceptanceBill a in m_lists)
             {
-                if (a.ID == id)
+                if (a.ID == id && a.Status == 0)
                 {
                     DevMain main = (DevMain)this.ParentForm;
                     main.OpenForm(new DevAcceptanceBill(winStatusEnum.Edit, a));
@@ -68,7 +68,7 @@ namespace Haimen.NewGUI
                 if (gridView1.FocusedRowHandle >= 0)
                     id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
                 AcceptanceBill acc = AcceptanceBill.CreateByID(id);
-                if (acc != null)
+                if (acc != null && acc.Status == 0)
                 {
                     acc.Destory();
                     MessageBox.Show(this, "删除承兑汇票成功!", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -86,7 +86,19 @@ namespace Haimen.NewGUI
 
         private void tsbFinish_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (gridView1.FocusedRowHandle < 0)
+                return;
 
+            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
+            foreach (AcceptanceBill a in m_lists)
+            {
+                if (a.ID == id && a.Status == 0)
+                {
+                    DevMain main = (DevMain)this.ParentForm;
+                    main.OpenForm(new DevAcceptanceBillFinish(a));
+                    return;
+                }
+            }
         }
 
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
