@@ -67,6 +67,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.tsbNewInput = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.col_money = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -155,6 +156,7 @@
             this.col_incompany_account,
             this.col_status,
             this.col_signed,
+            this.col_money,
             this.col_memo});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
@@ -258,7 +260,7 @@
             this.col_memo.FieldName = "Memo";
             this.col_memo.Name = "col_memo";
             this.col_memo.Visible = true;
-            this.col_memo.VisibleIndex = 9;
+            this.col_memo.VisibleIndex = 10;
             // 
             // gridView2
             // 
@@ -424,6 +426,14 @@
             this.splitContainerControl1.TabIndex = 38;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
+            // col_money
+            // 
+            this.col_money.Caption = "总金额";
+            this.col_money.FieldName = "Money";
+            this.col_money.Name = "col_money";
+            this.col_money.Visible = true;
+            this.col_money.VisibleIndex = 9;
+            // 
             // DevAccountList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -489,5 +499,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueStatus;
         private DevExpress.XtraBars.BarButtonItem tsbRefresh;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraGrid.Columns.GridColumn col_money;
     }
 }

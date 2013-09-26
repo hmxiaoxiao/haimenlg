@@ -31,6 +31,21 @@ namespace Haimen.NewGUI
         private winStatusEnum m_status;
 
         /// <summary>
+        /// 计算总金额
+        /// </summary>
+        private void CalcMoney()
+        {
+            decimal money = 0;
+            foreach (AccountDetail ad in m_account.DetailList)
+            {
+                money += ad.Money;
+            }
+            txtMoney.Text = money.ToString();
+        }
+
+
+
+        /// <summary>
         /// 根据用户的权限设置控件的可用与否
         /// </summary>
         private void SetControlAccess()
@@ -117,11 +132,13 @@ namespace Haimen.NewGUI
         /// <param name="status"></param>
         private void SetEditorStatus(bool status)
         {
-            dtSigned.Properties.ReadOnly = !status;
-            txtCode.Properties.ReadOnly = !status;
-            lueInCompany.Properties.ReadOnly = !status;
-            lueOutCompany.Properties.ReadOnly = !status;
-            txtMemo.Properties.ReadOnly = !status;
+            dtSigned.Enabled = status;
+            txtCode.Enabled = status;
+            lueInCompany.Enabled = status;
+            lueOutCompany.Enabled = status;
+            lueInAccount.Enabled = status;
+            lueOutAccount.Enabled = status;
+            txtMemo.Enabled = status;
 
             tsbNew.Enabled = status;
             tsbDelete.Enabled = status;
@@ -145,6 +162,10 @@ namespace Haimen.NewGUI
             m_account.Balance_ID = m_balance_id;
             m_account.Contract_ID = m_contract_id;
             m_account.Memo = txtMemo.Text;
+            if (string.IsNullOrEmpty(txtMoney.Text))
+                m_account.Money = 0;
+            else
+                m_account.Money = decimal.Parse(txtMoney.Text);
         }
 
         /// <summary>
@@ -156,6 +177,7 @@ namespace Haimen.NewGUI
             {
                 dtSigned.DateTime = m_account.SignedDate;
                 txtCode.Text = m_account.Code;
+                txtMoney.Text = m_account.Money.ToString();
 
                 lueOutCompany.Properties.LockEvents();
                 lueInCompany.Properties.LockEvents();
@@ -419,13 +441,8 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void tsbDelete_Click(object sender, EventArgs e)
         {
-            //if (gridView1.FocusedRowHandle < 0)
-            //    return;
-
-            //long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
-
-
             gridView1.DeleteRow(gridView1.FocusedRowHandle);
+            CalcMoney();
         }
 
         /// <summary>
@@ -435,8 +452,9 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void tbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            txtMemo.Focus();
-            txtCode.Focus();
+            // 更新编辑中的数据
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
 
             if (!Verify())
                 return;
@@ -645,6 +663,20 @@ namespace Haimen.NewGUI
             long id = long.Parse(lueInAccount.EditValue.ToString());
             m_account.In_CompanyDetail_ID = id;
             txtInBank.Text = m_account.InCompanyDetail.Bank.Name;
+        }
+
+        // 更新金额
+        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (e.Column.Name == "col_money")
+            {
+                CalcMoney();
+            }
+        }
+
+        private void txtMoney_TextChanged(object sender, EventArgs e)
+        {
+            txtCMoney.Text = Haimen.Helper.Helper.ConvertToChinese( double.Parse(txtMoney.Text) );
         }
     }
 }

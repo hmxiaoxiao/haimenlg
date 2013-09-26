@@ -16,6 +16,9 @@ namespace Haimen.Entity
         [Field("code")]
         public string Code { get; set; }
 
+        [Field("money")]
+        public decimal Money { get; set; }
+
 
         [Field("out_companydetail_id")]
         public long Out_CompanyDetail_ID { get; set; }
@@ -149,6 +152,7 @@ namespace Haimen.Entity
             {
                 // 改标志为已审核
                 this.Status = 1;
+                this.RevUserID = GlobalSet.Current_User.ID;
 
                 CompanyDetail inCD = CompanyDetail.CreateByID(this.In_CompanyDetail_ID);
                 CompanyDetail outCD = CompanyDetail.CreateByID(this.Out_CompanyDetail_ID);
@@ -173,6 +177,7 @@ namespace Haimen.Entity
         /// </summary>
         public void CheckFaild()
         {
+            this.RevUserID = GlobalSet.Current_User.ID;
             this.Status = (long)MyCheckStatus.Unpass;
             this.Save();
         }
@@ -193,5 +198,17 @@ namespace Haimen.Entity
             else
                 return true;
         }
+
+
+        /// <summary>
+        /// 新增时，当前用户作为制作 人
+        /// </summary>
+        /// <returns></returns>
+        public override bool Insert()
+        {
+            this.AppUserID = GlobalSet.Current_User.ID;
+            return base.Insert();
+        }
+
     }
 }
