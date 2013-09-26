@@ -41,17 +41,15 @@ namespace Haimen.Qy
         /// </summary>
         public List<KeyValuePair<string, string>> Error_Info = new List<KeyValuePair<string, string>>();
 
-        private string m_errorstring = "";
+        //private string m_errorstring = "";
         public string ErrorString
         {
             get
             {
-                if (m_errorstring == "")
+                string m_errorstring = "";
+                foreach (KeyValuePair<string, string> kv in Error_Info)
                 {
-                    foreach (KeyValuePair<string, string> kv in Error_Info)
-                    {
-                        m_errorstring += kv.Value;
-                    }
+                    m_errorstring += kv.Value;
                 }
                 return m_errorstring;
             }

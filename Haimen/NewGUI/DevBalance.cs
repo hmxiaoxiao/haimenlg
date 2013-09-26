@@ -254,8 +254,9 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            txtMoney.Focus();
-            txtCode.Focus();
+            // 同步表格数据
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
             
             if (!Verify())
                 return;

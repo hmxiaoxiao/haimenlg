@@ -10,26 +10,41 @@ namespace Haimen.Entity
     [Table("m_bank")]
     public class Bank : MEntityFunction<Bank>
     {
+        /// <summary>
+        /// 银行代码
+        /// </summary>
         [Field("code")]
         public string Code { get; set; }
 
+
+        /// <summary>
+        /// 银行名称
+        /// </summary>
         [Field("name")]
         public string Name { get; set; }
 
 
-        private long m_parentid;
-        public Bank ParentBank { get; set; }
+
         [Field("parent_id")]
-        public long ParentID 
+        public long ParentID { get; set; }
+
+        private Bank m_parent_bank;
+        public Bank ParentBank
         {
             get
             {
-                return m_parentid;
-            }
-            set 
-            {
-                m_parentid = value;
-                ParentBank = Bank.CreateByID(m_parentid);
+                if (m_parent_bank == null)
+                {
+                    if (ID > 0)
+                    {
+                        m_parent_bank = Bank.CreateByID(ID);
+                        return m_parent_bank;
+                    }
+                    else
+                        return null;
+                }
+                else
+                    return m_parent_bank;
             }
         }
 
@@ -41,13 +56,19 @@ namespace Haimen.Entity
             return list;
         }
 
+        /// <summary>
+        /// 校验
+        /// </summary>
+        /// <returns></returns>
         public override bool Verify()
         {
+            // 清空以前的错误信息
             Error_Info.Clear();
 
+            // 判断代码输入的可用性
             string code_errinfo = "";
             List<Bank> list;
-            if (Code == "")
+            if (string.IsNullOrEmpty(Code))
             {
                 code_errinfo += "代码不可以为空!" + Environment.NewLine;
             }
@@ -63,9 +84,9 @@ namespace Haimen.Entity
             if (code_errinfo.Length > 0)
                 Error_Info.Add(new KeyValuePair<string, string>("Code", code_errinfo));
 
-
+            // 判断名称的有效性
             string name_errinfo = "";
-            if (Name == "")
+            if (string.IsNullOrEmpty(Name))
             {
                 name_errinfo += "名称不可以为空!" + Environment.NewLine;
             }
@@ -81,18 +102,15 @@ namespace Haimen.Entity
             if (name_errinfo.Length > 0)
                 Error_Info.Add(new KeyValuePair<string, string>("Name", name_errinfo));
 
-            if (m_parentid > 0)
+            // 校验上级银行
+            if (ParentID > 0)
             {
-                ParentBank = Bank.CreateByID(m_parentid);
                 if (ParentBank == null)
                     Error_Info.Add(new KeyValuePair<string, string>("parent_id", "设置的上级银行不存在！"));
             }
 
-            // return
-            if (Error_Info.Count > 0)
-                return false;
-            else
-                return true;
+            // 返回校验成功与否
+            return Error_Info.Count == 0;
         }
 
     }

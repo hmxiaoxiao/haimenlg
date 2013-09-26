@@ -179,7 +179,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(691, 450);
-            this.splitContainerControl1.SplitterPosition = 195;
+            this.splitContainerControl1.SplitterPosition = 247;
             this.splitContainerControl1.TabIndex = 9;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -197,7 +197,7 @@
             this.tree.OptionsView.ShowIndicator = false;
             this.tree.OptionsView.ShowVertLines = false;
             this.tree.ParentFieldName = "Parent_ID";
-            this.tree.Size = new System.Drawing.Size(195, 450);
+            this.tree.Size = new System.Drawing.Size(247, 450);
             this.tree.TabIndex = 1;
             this.tree.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Light;
             this.tree.Click += new System.EventHandler(this.tree_Click);
@@ -225,7 +225,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueFunds});
-            this.gridControl1.Size = new System.Drawing.Size(491, 450);
+            this.gridControl1.Size = new System.Drawing.Size(439, 450);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -289,6 +289,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "DevFundsList";
             this.Text = "资金性质列表";
+            this.Activated += new System.EventHandler(this.DevFundsList_Activated);
             this.Load += new System.EventHandler(this.DevFundsList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();

@@ -102,7 +102,7 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(494, 141);
+            this.layoutControl1.Size = new System.Drawing.Size(492, 141);
             this.layoutControl1.TabIndex = 28;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -110,7 +110,7 @@
             // 
             this.txtBank.Location = new System.Drawing.Point(56, 65);
             this.txtBank.Name = "txtBank";
-            this.txtBank.Size = new System.Drawing.Size(433, 20);
+            this.txtBank.Size = new System.Drawing.Size(431, 20);
             this.txtBank.StyleController = this.layoutControl1;
             this.txtBank.TabIndex = 9;
             // 
@@ -118,7 +118,7 @@
             // 
             this.txtAccount.Location = new System.Drawing.Point(56, 95);
             this.txtAccount.Name = "txtAccount";
-            this.txtAccount.Size = new System.Drawing.Size(433, 20);
+            this.txtAccount.Size = new System.Drawing.Size(431, 20);
             this.txtAccount.StyleController = this.layoutControl1;
             this.txtAccount.TabIndex = 8;
             // 
@@ -126,15 +126,15 @@
             // 
             this.txtName.Location = new System.Drawing.Point(56, 35);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(433, 20);
+            this.txtName.Size = new System.Drawing.Size(431, 20);
             this.txtName.StyleController = this.layoutControl1;
             this.txtName.TabIndex = 6;
             // 
             // txtDoc
             // 
-            this.txtDoc.Location = new System.Drawing.Point(302, 5);
+            this.txtDoc.Location = new System.Drawing.Point(301, 5);
             this.txtDoc.Name = "txtDoc";
-            this.txtDoc.Size = new System.Drawing.Size(187, 20);
+            this.txtDoc.Size = new System.Drawing.Size(186, 20);
             this.txtDoc.StyleController = this.layoutControl1;
             this.txtDoc.TabIndex = 5;
             // 
@@ -142,7 +142,7 @@
             // 
             this.txtCode.Location = new System.Drawing.Point(56, 5);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(185, 20);
+            this.txtCode.Size = new System.Drawing.Size(184, 20);
             this.txtCode.StyleController = this.layoutControl1;
             this.txtCode.TabIndex = 4;
             // 
@@ -160,7 +160,7 @@
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 3);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(494, 141);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(492, 141);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -171,7 +171,7 @@
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem1.Size = new System.Drawing.Size(246, 30);
+            this.layoutControlItem1.Size = new System.Drawing.Size(245, 30);
             this.layoutControlItem1.Text = "代码：";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -179,10 +179,10 @@
             // 
             this.layoutControlItem2.Control = this.txtDoc;
             this.layoutControlItem2.CustomizationFormText = "单据字：";
-            this.layoutControlItem2.Location = new System.Drawing.Point(246, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(245, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem2.Size = new System.Drawing.Size(248, 30);
+            this.layoutControlItem2.Size = new System.Drawing.Size(247, 30);
             this.layoutControlItem2.Text = "单据字：";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -193,7 +193,7 @@
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 30);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem3.Size = new System.Drawing.Size(494, 30);
+            this.layoutControlItem3.Size = new System.Drawing.Size(492, 30);
             this.layoutControlItem3.Text = "名称：";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -204,7 +204,7 @@
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 90);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem5.Size = new System.Drawing.Size(494, 48);
+            this.layoutControlItem5.Size = new System.Drawing.Size(492, 48);
             this.layoutControlItem5.Text = "帐号：";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -215,7 +215,7 @@
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 60);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem6.Size = new System.Drawing.Size(494, 30);
+            this.layoutControlItem6.Size = new System.Drawing.Size(492, 30);
             this.layoutControlItem6.Text = "开户行：";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -338,7 +338,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.splitContainerControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(658, 460);
-            this.splitContainerControl1.SplitterPosition = 159;
+            this.splitContainerControl1.SplitterPosition = 161;
             this.splitContainerControl1.TabIndex = 32;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -354,7 +354,7 @@
             this.tree.OptionsView.ShowColumns = false;
             this.tree.OptionsView.ShowIndentAsRowStyle = true;
             this.tree.OptionsView.ShowIndicator = false;
-            this.tree.Size = new System.Drawing.Size(159, 460);
+            this.tree.Size = new System.Drawing.Size(161, 460);
             this.tree.TabIndex = 27;
             this.tree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tree_FocusedNodeChanged);
             this.tree.Click += new System.EventHandler(this.treeList1_Click);
@@ -383,7 +383,7 @@
             this.splitContainerControl2.Panel1.Text = "Panel1";
             this.splitContainerControl2.Panel2.Controls.Add(this.gridControl1);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(494, 460);
+            this.splitContainerControl2.Size = new System.Drawing.Size(492, 460);
             this.splitContainerControl2.SplitterPosition = 141;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -396,7 +396,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueBanks});
-            this.gridControl1.Size = new System.Drawing.Size(494, 314);
+            this.gridControl1.Size = new System.Drawing.Size(492, 314);
             this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -438,7 +438,7 @@
             // 
             this.c_bank.Caption = "银行";
             this.c_bank.ColumnEdit = this.lueBanks;
-            this.c_bank.FieldName = "Bank_ID";
+            this.c_bank.FieldName = "BankID";
             this.c_bank.Name = "c_bank";
             this.c_bank.Visible = true;
             this.c_bank.VisibleIndex = 0;

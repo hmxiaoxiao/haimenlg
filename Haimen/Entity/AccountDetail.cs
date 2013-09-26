@@ -12,19 +12,19 @@ namespace Haimen.Entity
     public class AccountDetail : MEntityFunction<AccountDetail>
     {
         [Field("parent_id")]
-        public long Parent_ID { get; set; }
+        public long ParentID { get; set; }
 
         [Field("funds_id")]
-        public long Funds_ID { get; set; }
+        public long FundsID { get; set; }
         private Funds m_funds = null;
         public Funds Funds
         {
             get
             {
-                if (Funds_ID > 0)
+                if (FundsID > 0)
                 {
-                    if (m_funds == null || m_funds.ID != Funds_ID)
-                        m_funds = Funds.CreateByID(Funds_ID);
+                    if (m_funds == null || m_funds.ID != FundsID)
+                        m_funds = Funds.CreateByID(FundsID);
                 }
                 return m_funds;
             }

@@ -76,6 +76,11 @@ namespace Haimen.NewGUI
 
         private bool Verify()
         {
+            if (!m_detail.Verify())
+            {
+                MessageBox.Show(m_detail.ErrorString, "出错了！", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             return true;
         }
 

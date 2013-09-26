@@ -103,7 +103,7 @@ namespace Haimen.Entity
                 foreach (CompanyDetail cd in cor.DetailList)
                 {
                     // 如果找到了，更新该单位的银行资金
-                    if (cd.Bank_ID == this.BankID && cd.Account == this.Account)
+                    if (cd.BankID == this.BankID && cd.Account == this.Account)
                     {
                         finded = true;
                         cd.Credit += this.Money;
@@ -113,7 +113,7 @@ namespace Haimen.Entity
                 if (!finded)
                 {
                     CompanyDetail cde = new CompanyDetail();
-                    cde.Bank_ID = this.BankID;
+                    cde.BankID = this.BankID;
                     cde.Account = this.Account;
                     cde.Credit += this.Money;
                 }

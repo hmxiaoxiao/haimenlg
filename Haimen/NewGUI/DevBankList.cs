@@ -153,8 +153,10 @@ namespace Haimen.NewGUI
         // 保存
         private void tsbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            // 更新数据
             gridView1.CloseEditor();
             gridView1.UpdateCurrentRow();
+
             if (!m_bank.Verify())
             {
                 MessageBox.Show(m_bank.ErrorString, "出错了！", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -219,6 +221,14 @@ namespace Haimen.NewGUI
         // 刷新界面，就是重建树
         private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            MyRefresh();
+        }
+
+        /// <summary>
+        /// 刷新界面
+        /// </summary>
+        private void MyRefresh()
+        {
             if (m_bank != null)
             {
                 if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
@@ -263,6 +273,11 @@ namespace Haimen.NewGUI
                 bk.Destory();
                 gridView1.DeleteRow(gridView1.FocusedRowHandle);
             }
+        }
+
+        private void DevBankList_Activated(object sender, EventArgs e)
+        {
+            MyRefresh();
         }
     }
 }

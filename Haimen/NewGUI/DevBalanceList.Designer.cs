@@ -278,7 +278,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "DevBalanceList";
-            this.Text = "DevBalanceList";
+            this.Text = "贷款列表";
             this.Load += new System.EventHandler(this.DevBalanceList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

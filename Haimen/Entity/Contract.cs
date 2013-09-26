@@ -60,16 +60,16 @@ namespace Haimen.Entity
         /// 甲方
         /// </summary>
         [Field("partya")]
-        public long PartyA_ID { get; set; }
+        public long PartyAID { get; set; }
         private Company m_partya = null;
         public Company PartyA
         {
             get
             {
-                if (PartyA_ID > 0)
+                if (PartyAID > 0)
                 {
-                    if (m_partya == null || m_partya.ID != PartyA_ID)
-                        m_partya = Company.CreateByID(PartyA_ID);
+                    if (m_partya == null || m_partya.ID != PartyAID)
+                        m_partya = Company.CreateByID(PartyAID);
                 }
                 return m_partya;
             }
@@ -80,10 +80,10 @@ namespace Haimen.Entity
         {
             get
             {
-                if (PartyA_ID > 0)
+                if (PartyAID > 0)
                 {
-                    if (m_partya == null || m_partya.ID != PartyA_ID)
-                        m_partya = Company.CreateByID(PartyA_ID);
+                    if (m_partya == null || m_partya.ID != PartyAID)
+                        m_partya = Company.CreateByID(PartyAID);
                 }
                 return m_partya.Name;
             }
@@ -92,10 +92,10 @@ namespace Haimen.Entity
         {
             get
             {
-                if (PartyB_ID > 0)
+                if (PartyBID > 0)
                 {
-                    if (m_partyb == null || m_partyb.ID != PartyB_ID)
-                        m_partyb = Company.CreateByID(PartyB_ID);
+                    if (m_partyb == null || m_partyb.ID != PartyBID)
+                        m_partyb = Company.CreateByID(PartyBID);
                 }
                 return m_partyb.Name;
             }
@@ -105,16 +105,16 @@ namespace Haimen.Entity
         /// 乙方
         /// </summary>
         [Field("partyb")]
-        public long PartyB_ID { get; set; }
+        public long PartyBID { get; set; }
         private Company m_partyb = null;
         public Company PartyB
         {
             get
             {
-                if (PartyB_ID > 0)
+                if (PartyBID > 0)
                 {
-                    if (m_partyb == null || m_partyb.ID != PartyB_ID)
-                        m_partyb = Company.CreateByID(PartyB_ID);
+                    if (m_partyb == null || m_partyb.ID != PartyBID)
+                        m_partyb = Company.CreateByID(PartyBID);
                 }
                 return m_partyb;
             }
@@ -218,10 +218,10 @@ namespace Haimen.Entity
             if (this.InCompanyID <= 0)
                 Error_Info.Add(new KeyValuePair<string, string>("IntCompanyID", "请选择签合同的收款单位!"));
             
-            if (this.PartyA_ID <= 0)
+            if (this.PartyAID <= 0)
                 Error_Info.Add(new KeyValuePair<string, string>("PartyA_ID", "请选择签合同的甲方!"));
 
-            if (this.PartyB_ID <= 0)
+            if (this.PartyBID <= 0)
                 Error_Info.Add(new KeyValuePair<string, string>("PartyB_ID", "请选择签合同的乙方!"));
 
 

@@ -620,7 +620,7 @@
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 120);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(317, 24);
-            this.layoutControlItem7.Text = "决算价（元）";
+            this.layoutControlItem7.Text = "合同价（元）";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(96, 14);
             // 
             // layoutControlItem9
@@ -713,6 +713,7 @@
             this.splitContainerControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainerControl1.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
             this.splitContainerControl1.Location = new System.Drawing.Point(7, 273);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.gridControl1);
@@ -722,7 +723,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.toolStrip4);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(744, 249);
-            this.splitContainerControl1.SplitterPosition = 598;
+            this.splitContainerControl1.SplitterPosition = 159;
             this.splitContainerControl1.TabIndex = 72;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -734,7 +735,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(598, 224);
+            this.gridControl1.Size = new System.Drawing.Size(580, 224);
             this.gridControl1.TabIndex = 17;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -746,6 +747,7 @@
             this.gridColumn2});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
@@ -777,6 +779,8 @@
             this.gridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn2.FieldName = "Money";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             // 
@@ -788,7 +792,7 @@
             this.tsbDelete});
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(598, 25);
+            this.toolStrip3.Size = new System.Drawing.Size(580, 25);
             this.toolStrip3.TabIndex = 1;
             this.toolStrip3.Text = "toolStrip3";
             // 
@@ -799,6 +803,7 @@
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(52, 22);
             this.tsbNew.Text = "新增";
+            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // toolStripSeparator1
             // 
@@ -812,14 +817,16 @@
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(52, 22);
             this.tsbDelete.Text = "删除";
+            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
             // lstFiles
             // 
             this.lstFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstFiles.Location = new System.Drawing.Point(0, 25);
             this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(141, 224);
+            this.lstFiles.Size = new System.Drawing.Size(159, 224);
             this.lstFiles.TabIndex = 2;
+            this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
             // 
             // toolStrip4
             // 
@@ -829,7 +836,7 @@
             this.tsbAttachDelete});
             this.toolStrip4.Location = new System.Drawing.Point(0, 0);
             this.toolStrip4.Name = "toolStrip4";
-            this.toolStrip4.Size = new System.Drawing.Size(141, 25);
+            this.toolStrip4.Size = new System.Drawing.Size(159, 25);
             this.toolStrip4.TabIndex = 1;
             this.toolStrip4.Text = "toolStrip4";
             // 
@@ -840,6 +847,7 @@
             this.tsbAttachNew.Name = "tsbAttachNew";
             this.tsbAttachNew.Size = new System.Drawing.Size(52, 22);
             this.tsbAttachNew.Text = "新增";
+            this.tsbAttachNew.Click += new System.EventHandler(this.tsbAttachNew_Click);
             // 
             // toolStripSeparator2
             // 
@@ -853,6 +861,7 @@
             this.tsbAttachDelete.Name = "tsbAttachDelete";
             this.tsbAttachDelete.Size = new System.Drawing.Size(52, 22);
             this.tsbAttachDelete.Text = "删除";
+            this.tsbAttachDelete.Click += new System.EventHandler(this.tsbAttachDelete_Click);
             // 
             // DevContract
             // 

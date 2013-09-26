@@ -19,7 +19,7 @@ namespace Haimen.NewGUI
     {
 
         private Contract m_contract;
-        private List<Company> m_companies = Company.Query();
+        //private List<Company> m_companies = Company.Query();
 
         /// <summary>
         /// 设置保证金，自动计算
@@ -143,10 +143,14 @@ namespace Haimen.NewGUI
         {
             m_contract.Code= txtCode.Text;
             m_contract.Name = txtName.Text;
-            m_contract.OutCompanyID = long.Parse(lueOutCompany.EditValue.ToString());
-            m_contract.InCompanyID = long.Parse(lueInCompany.EditValue.ToString());
-            m_contract.PartyA_ID = long.Parse(luePartyA.EditValue.ToString());
-            m_contract.PartyB_ID = long.Parse(luePartyB.EditValue.ToString());
+            if (lueOutCompany.EditValue != null)
+                m_contract.OutCompanyID = long.Parse(lueOutCompany.EditValue.ToString());
+            if (lueInCompany.EditValue != null)
+                m_contract.InCompanyID = long.Parse(lueInCompany.EditValue.ToString());
+            if(luePartyA.EditValue != null)
+                m_contract.PartyAID = long.Parse(luePartyA.EditValue.ToString());
+            if(luePartyB.EditValue != null)
+                m_contract.PartyBID = long.Parse(luePartyB.EditValue.ToString());
             m_contract.SignedDate = DateTime.Parse(dtSignedDate.EditValue.ToString());
             m_contract.BeginDate = DateTime.Parse(dtBeginDate.EditValue.ToString());
             m_contract.EndDate = DateTime.Parse(dtEndDate.EditValue.ToString());
@@ -168,8 +172,8 @@ namespace Haimen.NewGUI
                 txtName.Text = m_contract.Name;
                 lueOutCompany.EditValue = m_contract.OutCompanyID;
                 lueInCompany.EditValue = m_contract.InCompanyID;
-                luePartyA.EditValue = m_contract.PartyA_ID;
-                luePartyB.EditValue = m_contract.PartyB_ID;
+                luePartyA.EditValue = m_contract.PartyAID;
+                luePartyB.EditValue = m_contract.PartyBID;
 
                 dtSignedDate.EditValue = m_contract.SignedDate;
                 dtBeginDate.EditValue = m_contract.BeginDate;
@@ -198,23 +202,27 @@ namespace Haimen.NewGUI
                 txtSecurity.Value = 0;
             }
 
+            // 设置收支单位的数据来源
+            List<Company> outlist = Company.Query("output = 'X'");
+            List<Company> inlist = Company.Query("input = 'X'"); 
+            
             lueOutCompany.Properties.DataSource = null;
-            lueOutCompany.Properties.DataSource = m_companies;
+            lueOutCompany.Properties.DataSource = outlist;
             lueOutCompany.Properties.DisplayMember = "Name";
             lueOutCompany.Properties.ValueMember = "ID";
 
             lueInCompany.Properties.DataSource = null;
-            lueInCompany.Properties.DataSource = m_companies;
+            lueInCompany.Properties.DataSource = inlist;
             lueInCompany.Properties.DisplayMember = "Name";
             lueInCompany.Properties.ValueMember = "ID";
 
             luePartyA.Properties.DataSource = null;
-            luePartyA.Properties.DataSource = m_companies;
+            luePartyA.Properties.DataSource = outlist;
             luePartyA.Properties.DisplayMember = "Name";
             luePartyA.Properties.ValueMember = "ID";
 
             luePartyB.Properties.DataSource = null;
-            luePartyB.Properties.DataSource = m_companies;
+            luePartyB.Properties.DataSource = inlist;
             luePartyB.Properties.DisplayMember = "Name";
             luePartyB.Properties.ValueMember = "ID";
 
@@ -317,8 +325,10 @@ namespace Haimen.NewGUI
         // 保存
         private void tbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            txtCode.Focus();
-            txtName.Focus();
+
+            // 同步输入
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
             
             if (!Verify())
                 return;

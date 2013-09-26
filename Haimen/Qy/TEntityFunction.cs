@@ -42,8 +42,8 @@ namespace Haimen.Qy
                     // 保存明细数据
                     foreach (U u in DetailList)
                     {
-                        // 明细类必须有parent_id的属性
-                        PropertyInfo info = u.GetType().GetProperty("Parent_ID");
+                        // 明细类必须有ParentID的属性
+                        PropertyInfo info = u.GetType().GetProperty("ParentID");
 
                         // 设置值
                         info.SetValue(u, this.ID, null);
@@ -56,7 +56,7 @@ namespace Haimen.Qy
                     // 保存附件信息
                     foreach (Attach a in AttachList)
                     {
-                        a.Parent_ID = this.ID;
+                        a.ParentID = this.ID;
                         a.Save();
                     }
                 }
@@ -108,7 +108,7 @@ namespace Haimen.Qy
                 foreach (U u in DetailList)
                 {
                     // 明细类必须有parent_id的属性
-                    PropertyInfo info = u.GetType().GetProperty("Parent_ID");
+                    PropertyInfo info = u.GetType().GetProperty("ParentID");
 
                     // 设置值
                     info.SetValue(u, this.ID, null);
@@ -120,7 +120,7 @@ namespace Haimen.Qy
 
                 foreach (Attach a in AttachList)
                 {
-                    a.Parent_ID = this.ID;
+                    a.ParentID = this.ID;
                     if (!a.Save())
                         returnVale = false;
                 }

@@ -138,5 +138,10 @@ namespace Haimen.NewGUI
                 gridControl1.DataSource = Company.Query(where);
             }
         }
+
+        private void DevCompanyList_Activated(object sender, EventArgs e)
+        {
+            myRefresh();
+        }
     }
 }

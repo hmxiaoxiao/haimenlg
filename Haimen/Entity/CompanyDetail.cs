@@ -14,14 +14,14 @@ namespace Haimen.Entity
         /// 父对象
         /// </summary>
         [Field("parent_id")]
-        public long Parent_ID { get; set; }
-        public Company m_parent;
+        public long ParentID { get; set; }
+        private Company m_parent;
         public Company Parent
         {
             get
             {
                 if (m_parent == null)
-                    m_parent = Company.CreateByID(Parent_ID);
+                    m_parent = Company.CreateByID(ParentID);
                 return m_parent;
             }
         }
@@ -34,7 +34,7 @@ namespace Haimen.Entity
             get
             {
                 if (m_parent == null)
-                    m_parent = Company.CreateByID(Parent_ID);
+                    m_parent = Company.CreateByID(ParentID);
                 return m_parent.Name;
             }
         }
@@ -43,7 +43,7 @@ namespace Haimen.Entity
         /// 银行ID
         /// </summary>
         [Field("bank_id")]
-        public long Bank_ID { get; set; }
+        public long BankID { get; set; }
 
         /// <summary>
         /// 帐号
@@ -82,9 +82,7 @@ namespace Haimen.Entity
             get
             {
                 if (m_bank == null)
-                {
-                    m_bank = Bank.CreateByID(Bank_ID);
-                }
+                    m_bank = Bank.CreateByID(BankID);
                 return m_bank;
             }
         }
@@ -95,7 +93,7 @@ namespace Haimen.Entity
             get
             {
                 if (m_bank == null)
-                    m_bank = Bank.CreateByID(Bank_ID);
+                    m_bank = Bank.CreateByID(BankID);
                 return m_bank.Name;
             }
         }
@@ -109,13 +107,17 @@ namespace Haimen.Entity
         {
             Error_Info.Clear();
 
-            if (Bank_ID <= 0)
-                Error_Info.Add(new KeyValuePair<string, string>("", ""));
+            if (BankID <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("BankID", "银行不能为空"));
 
-            if (Error_Info.Count > 0)
-                return false;
-            else
-                return true;
+            if (string.IsNullOrEmpty(Account))
+                Error_Info.Add(new KeyValuePair<string, string>("Account", "帐户不能为空"));
+            List<CompanyDetail> list;
+            list = CompanyDetail.Query(" account = '" + Account + "' and id <> " + ID.ToString());
+            if (list.Count > 0)
+                Error_Info.Add(new KeyValuePair<string,string>("Account", "您输入的帐户已经存在，请检查后再输入。"));
+
+            return Error_Info.Count == 0;
         }
 
         /// <summary>

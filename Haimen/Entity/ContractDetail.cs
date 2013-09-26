@@ -11,7 +11,7 @@ namespace Haimen.Entity
     public class ContractDetail : MEntityFunction<ContractDetail>
     {
         [Field("parent_id")]
-        public long Parent_ID { get; set; }
+        public long ParentID { get; set; }
 
         [Field("pay_date")]
         public DateTime PayDate { get; set; }

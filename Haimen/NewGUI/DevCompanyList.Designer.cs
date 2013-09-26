@@ -59,10 +59,10 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 37);
+            this.gridControl1.Location = new System.Drawing.Point(0, 39);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(751, 485);
+            this.gridControl1.Size = new System.Drawing.Size(751, 483);
             this.gridControl1.TabIndex = 19;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -231,7 +231,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(751, 37);
+            this.barDockControlTop.Size = new System.Drawing.Size(751, 39);
             // 
             // barDockControlBottom
             // 
@@ -244,15 +244,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 37);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 485);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 483);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(751, 37);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 485);
+            this.barDockControlRight.Location = new System.Drawing.Point(751, 39);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 483);
             // 
             // DevCompanyList
             // 
@@ -266,6 +266,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "DevCompanyList";
             this.Text = "单位列表";
+            this.Activated += new System.EventHandler(this.DevCompanyList_Activated);
             this.Load += new System.EventHandler(this.DevCompanyList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

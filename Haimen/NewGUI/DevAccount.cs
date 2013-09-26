@@ -22,8 +22,8 @@ namespace Haimen.NewGUI
         private long m_balance_id = -1;         // 关联的贷款ID
 
         private List<Bank> m_banks = Bank.Query();
-        private List<Company> m_companies = Company.Query();
-        private List<Funds> m_funds = Funds.Query();
+        //private List<Company> m_companies = Company.Query();
+        //private List<Funds> m_funds = Funds.Query();
         private List<Contract> m_contracts = Contract.Query();  // 所有的合同
         private List<Balance> m_balances = Balance.Query();     // 所有的贷款
 
@@ -184,8 +184,8 @@ namespace Haimen.NewGUI
                 lueInAccount.Properties.LockEvents();
                 lueOutAccount.Properties.LockEvents();
 
-                lueOutCompany.EditValue = m_account.OutCompanyDetail.Parent_ID;
-                List<CompanyDetail> out_list = CompanyDetail.Query("parent_id = " + m_account.OutCompanyDetail.Parent_ID);
+                lueOutCompany.EditValue = m_account.OutCompanyDetail.ParentID;
+                List<CompanyDetail> out_list = CompanyDetail.Query("parent_id = " + m_account.OutCompanyDetail.ParentID);
                 lueOutAccount.Properties.DataSource = null;
                 lueOutAccount.Properties.DataSource = out_list;
                 lueOutAccount.Properties.DisplayMember = "Account";
@@ -193,8 +193,8 @@ namespace Haimen.NewGUI
                 lueOutAccount.EditValue = m_account.OutCompanyDetail.ID;
                 txtOutBank.Text = m_account.OutCompanyDetail.Bank.Name;
 
-                lueInCompany.EditValue = m_account.InCompanyDetail.Parent_ID;
-                List<CompanyDetail> in_list = CompanyDetail.Query("parent_id = " + m_account.InCompanyDetail.Parent_ID);
+                lueInCompany.EditValue = m_account.InCompanyDetail.ParentID;
+                List<CompanyDetail> in_list = CompanyDetail.Query("parent_id = " + m_account.InCompanyDetail.ParentID);
                 lueInAccount.Properties.DataSource = null;
                 lueInAccount.Properties.DataSource = in_list;
                 lueInAccount.Properties.DisplayMember = "Account";
@@ -293,17 +293,25 @@ namespace Haimen.NewGUI
         /// </summary>
         private void InitList()
         {
-            lueInCompany.Properties.DataSource = m_companies;
+            List<Company> outlist = Company.Query("output = 'X'");
+            List<Company> inlist = Company.Query("input = 'X'");
+
+            List<CompanyDetail> outDetails = CompanyDetail.Query(" parent_id in ( select id from m_company where output = 'X')");
+            List<CompanyDetail> inDetails = CompanyDetail.Query(" parent_id in (select id from m_company where input = 'X')");
+
+            lueInCompany.Properties.DataSource = inlist;
             lueInCompany.Properties.DisplayMember = "Name";
             lueInCompany.Properties.ValueMember = "ID";
 
-            lueOutCompany.Properties.DataSource = m_companies;
+            lueOutCompany.Properties.DataSource = outlist;
             lueOutCompany.Properties.DisplayMember = "Name";
             lueOutCompany.Properties.ValueMember = "ID";
 
             gridControl1.DataSource = m_account.DetailList;
 
-            luefunds.DataSource = m_funds;
+            List<Funds> fundslist = Funds.Query();
+
+            luefunds.DataSource = fundslist;
             luefunds.DisplayMember = "Name";
             luefunds.ValueMember = "ID";
 
@@ -652,7 +660,7 @@ namespace Haimen.NewGUI
 
             // 生成单据字
             if (string.IsNullOrEmpty(txtCode.Text))
-                txtCode.Text = Company.CreateByID(m_account.OutCompanyDetail.Parent_ID).NextDoc();
+                txtCode.Text = Company.CreateByID(m_account.OutCompanyDetail.ParentID).NextDoc();
         }
 
         private void lueInAccount_EditValueChanged(object sender, EventArgs e)

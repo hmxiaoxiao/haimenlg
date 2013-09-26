@@ -123,7 +123,13 @@ namespace Haimen.NewGUI
                         break;
                     case "name":
                         dxErrorProvider1.SetError(txtName, val.Value);
-                        break; ;
+                        break;
+                    case "account":
+                        dxErrorProvider1.SetError(txtAccount, val.Value);
+                        break;
+                    case "bankid":
+                        dxErrorProvider1.SetError(lueBank, val.Value);
+                        break;
                     case "doc":
                         dxErrorProvider1.SetError(txtDoc, val.Value);
                         break;
@@ -137,8 +143,8 @@ namespace Haimen.NewGUI
         private void Object2Form()
         {
             initBankList();
-            if (m_company.Bank_ID > 0)
-                lueBank.EditValue = m_company.Bank_ID;
+            if (m_company.BankID > 0)
+                lueBank.EditValue = m_company.BankID;
             txtCode.Text = m_company.Code;
             txtDoc.Text = m_company.Doc;
             txtName.Text = m_company.Name;
@@ -162,9 +168,9 @@ namespace Haimen.NewGUI
         {
             // 将输入的值保存到对象里
             if (lueBank.EditValue != null)
-                m_company.Bank_ID = long.Parse(lueBank.EditValue.ToString());
+                m_company.BankID = long.Parse(lueBank.EditValue.ToString());
             else
-                m_company.Bank_ID = 0;
+                m_company.BankID = 0;
 
             m_company.Code = txtCode.Text;
             m_company.Name = txtName.Text;

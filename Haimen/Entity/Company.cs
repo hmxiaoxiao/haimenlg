@@ -18,7 +18,7 @@ namespace Haimen.Entity
         public string Name { get; set; }
 
         [Field("bank_id")]
-        public long Bank_ID { get; set; }
+        public long BankID { get; set; }
 
         [Field("account")]
         public string Account { get; set; }
@@ -37,14 +37,18 @@ namespace Haimen.Entity
         {
             get
             {
-                if (m_bank == null && Bank_ID > 0)
+                if (m_bank == null && BankID > 0)
                 {
-                    m_bank = Bank.CreateByID(Bank_ID);
+                    m_bank = Bank.CreateByID(BankID);
                 }
                 return m_bank;
             }
         }
 
+        /// <summary>
+        /// 单位的数据校验
+        /// </summary>
+        /// <returns></returns>
         public override bool Verify()
         {
             Error_Info.Clear();
@@ -52,17 +56,36 @@ namespace Haimen.Entity
             List<Company> list;
 
             // 校验代码
+            if (string.IsNullOrEmpty(Code))
+                Error_Info.Add(new KeyValuePair<string, string>("Code", "代码不能为空！"));
             if (ID == 0)
-                list = Company.Query("Code = '" + Code + "'");
+                list = Company.Query("code = '" + Code + "'");
             else
-                list = Company.Query("Code = '" + Code + "' and id <> " + ID.ToString());
+                list = Company.Query("code = '" + Code + "' and id <> " + ID.ToString());
             if (list.Count > 0)
-            {
-                err = "您输入的代码已经存在，请更改后再输入";
-                Error_Info.Add(new KeyValuePair<string, string>("Code",err));
-            }
+                Error_Info.Add(new KeyValuePair<string, string>("Code","您输入的代码已经存在，请重新输入"));
 
-            return true;
+            // 校验名称
+            if (string.IsNullOrEmpty(Name))
+                Error_Info.Add(new KeyValuePair<string, string>("Name", "名称不能为空"));
+
+            list = Company.Query("name = '" + Name + "' and id <> " + ID.ToString()); // 如果ID为0，也没有问题
+            if (list.Count > 0)
+                Error_Info.Add(new KeyValuePair<string, string>("Name", "您输入的名称已经存在，请重新输入"));
+
+            // 校验帐号
+            if (string.IsNullOrEmpty(Account))
+                Error_Info.Add(new KeyValuePair<string, string>("Account", "帐号不能为空"));
+            list = Company.Query("account = '" + Account + "' and id <> " + ID.ToString());
+            if (list.Count > 0)
+                Error_Info.Add(new KeyValuePair<string, string>("Account", "您输入的帐号已经存在，请重新输入!"));
+
+            // 校验开户行
+            if (BankID== 0)
+                Error_Info.Add(new KeyValuePair<string,string>("BankID", "开户行不能为空"));
+
+
+            return Error_Info.Count == 0;
         }
 
         [Field("doc_date")]
@@ -117,7 +140,7 @@ namespace Haimen.Entity
         public override bool Insert()
         {
             CompanyDetail cd = new CompanyDetail();
-            cd.Bank_ID = Bank_ID;
+            cd.BankID = BankID;
             cd.Account = Account;
 
             DetailList.Add(cd);

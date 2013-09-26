@@ -37,7 +37,12 @@
             this.layoutViewColumn3 = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
             this.layoutViewField_layoutViewColumn3 = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_parentid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lueBanks = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -58,16 +63,12 @@
             this.node_code = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.node_name = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.node_id = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_name = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_parentid = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_layoutViewColumn1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_layoutViewColumn2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_layoutViewColumn3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBanks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -75,7 +76,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tree)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutView1
@@ -144,16 +144,62 @@
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.lueBanks});
-            this.gridControl1.Size = new System.Drawing.Size(467, 468);
+            this.gridControl1.Size = new System.Drawing.Size(365, 468);
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.layoutView1,
-            this.gridView1});
+            this.gridView1,
+            this.layoutView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.col_id,
+            this.col_name,
+            this.col_code,
+            this.col_parentid});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.FocusLeaveOnTab = true;
+            this.gridView1.OptionsBehavior.KeepFocusedRowOnUpdate = false;
+            this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView1_CustomDrawCell);
+            this.gridView1.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanging);
+            this.gridView1.BeforeLeaveRow += new DevExpress.XtraGrid.Views.Base.RowAllowEventHandler(this.gridView1_BeforeLeaveRow);
+            // 
+            // col_id
+            // 
+            this.col_id.Caption = "ID";
+            this.col_id.FieldName = "ID";
+            this.col_id.Name = "col_id";
+            // 
+            // col_name
+            // 
+            this.col_name.Caption = "名称";
+            this.col_name.ColumnEdit = this.repositoryItemTextEdit1;
+            this.col_name.FieldName = "Name";
+            this.col_name.Name = "col_name";
+            this.col_name.Visible = true;
+            this.col_name.VisibleIndex = 0;
             // 
             // repositoryItemTextEdit1
             // 
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
+            // col_code
+            // 
+            this.col_code.Caption = "代码";
+            this.col_code.ColumnEdit = this.repositoryItemTextEdit1;
+            this.col_code.FieldName = "Code";
+            this.col_code.Name = "col_code";
+            this.col_code.Visible = true;
+            this.col_code.VisibleIndex = 1;
+            // 
+            // col_parentid
+            // 
+            this.col_parentid.Caption = "所属银行";
+            this.col_parentid.ColumnEdit = this.lueBanks;
+            this.col_parentid.FieldName = "ParentID";
+            this.col_parentid.Name = "col_parentid";
             // 
             // lueBanks
             // 
@@ -313,7 +359,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(706, 468);
-            this.splitContainerControl1.SplitterPosition = 234;
+            this.splitContainerControl1.SplitterPosition = 336;
             this.splitContainerControl1.TabIndex = 14;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -328,7 +374,7 @@
             this.tree.Name = "tree";
             this.tree.OptionsView.ShowColumns = false;
             this.tree.OptionsView.ShowIndicator = false;
-            this.tree.Size = new System.Drawing.Size(234, 468);
+            this.tree.Size = new System.Drawing.Size(336, 468);
             this.tree.TabIndex = 1;
             this.tree.Click += new System.EventHandler(this.tree_Click);
             // 
@@ -360,54 +406,6 @@
             this.node_id.OptionsColumn.AllowEdit = false;
             this.node_id.OptionsColumn.AllowMove = false;
             // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.col_id,
-            this.col_name,
-            this.col_code,
-            this.col_parentid});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.FocusLeaveOnTab = true;
-            this.gridView1.OptionsBehavior.KeepFocusedRowOnUpdate = false;
-            this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView1_CustomDrawCell);
-            this.gridView1.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanging);
-            this.gridView1.BeforeLeaveRow += new DevExpress.XtraGrid.Views.Base.RowAllowEventHandler(this.gridView1_BeforeLeaveRow);
-            // 
-            // col_id
-            // 
-            this.col_id.Caption = "ID";
-            this.col_id.FieldName = "ID";
-            this.col_id.Name = "col_id";
-            // 
-            // col_code
-            // 
-            this.col_code.Caption = "代码";
-            this.col_code.ColumnEdit = this.repositoryItemTextEdit1;
-            this.col_code.FieldName = "Code";
-            this.col_code.Name = "col_code";
-            this.col_code.Visible = true;
-            this.col_code.VisibleIndex = 1;
-            // 
-            // col_name
-            // 
-            this.col_name.Caption = "名称";
-            this.col_name.ColumnEdit = this.repositoryItemTextEdit1;
-            this.col_name.FieldName = "Name";
-            this.col_name.Name = "col_name";
-            this.col_name.Visible = true;
-            this.col_name.VisibleIndex = 0;
-            // 
-            // col_parentid
-            // 
-            this.col_parentid.Caption = "所属银行";
-            this.col_parentid.ColumnEdit = this.lueBanks;
-            this.col_parentid.FieldName = "ParentID";
-            this.col_parentid.Name = "col_parentid";
-            this.col_parentid.Visible = true;
-            this.col_parentid.VisibleIndex = 2;
-            // 
             // DevBankList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -420,12 +418,14 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "DevBankList";
             this.Text = "银行列表";
+            this.Activated += new System.EventHandler(this.DevBankList_Activated);
             this.Load += new System.EventHandler(this.DevBankList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_layoutViewColumn1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_layoutViewColumn2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewField_layoutViewColumn3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBanks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -433,7 +433,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tree)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -211,6 +211,11 @@ namespace Haimen.NewGUI
 
         private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            MyRefresh();
+        }
+
+        private void MyRefresh()
+        {
             if (m_funds != null)
             {
                 if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
@@ -243,6 +248,11 @@ namespace Haimen.NewGUI
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_funds.ID)
                     e.Allow = false;
             }
+        }
+
+        private void DevFundsList_Activated(object sender, EventArgs e)
+        {
+            MyRefresh();
         }
 
 

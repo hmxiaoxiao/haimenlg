@@ -103,6 +103,9 @@ namespace Haimen.NewGUI
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // 切换一下焦点,保证不会丢失数据
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
+
             if (lueList.EditValue == null)
                 return;
 

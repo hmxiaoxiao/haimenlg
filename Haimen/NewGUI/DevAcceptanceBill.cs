@@ -155,8 +155,8 @@ namespace Haimen.NewGUI
             {
                 dtDrawDate.EditValue = m_acceptance_bill.DrawDate;
                 txtCode.Text = m_acceptance_bill.Code;
-                lueInCompany.EditValue = m_acceptance_bill.InCompanyDetail.Parent_ID;
-                lueOutCompany.EditValue = m_acceptance_bill.OutCompanyDetail.Parent_ID;
+                lueInCompany.EditValue = m_acceptance_bill.InCompanyDetail.ParentID;
+                lueOutCompany.EditValue = m_acceptance_bill.OutCompanyDetail.ParentID;
                 lueInCompanyDetail.EditValue = m_acceptance_bill.InCompanyDetailID;
                 lueOutCompanyDetail.EditValue = m_acceptance_bill.OutCompanyDetailID;
                 txtInBank.Text = m_acceptance_bill.InCompanyDetail.Bank.Name;
@@ -306,7 +306,7 @@ namespace Haimen.NewGUI
             CompanyDetail cd = CompanyDetail.CreateByID(id);
 
             // 设置单位
-            lueOutCompany.EditValue = cd.Parent_ID;
+            lueOutCompany.EditValue = cd.ParentID;
 
             // 设置银行
             txtOutBank.Text = cd.BankName;
@@ -370,7 +370,7 @@ namespace Haimen.NewGUI
             CompanyDetail cd = CompanyDetail.CreateByID(id);
 
             // 设置单位
-            lueInCompany.EditValue = cd.Parent_ID;
+            lueInCompany.EditValue = cd.ParentID;
 
             // 设置银行
             txtInBank.Text = cd.BankName;

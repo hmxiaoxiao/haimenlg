@@ -12,7 +12,7 @@ namespace Haimen.Entity
     public class Attach : MEntityFunction<Attach>
     {
         [Field("parent_id")]
-        public long Parent_ID { get; set; }
+        public long ParentID { get; set; }
 
         [Field("filename")]
         public string FileName { get; set; }
