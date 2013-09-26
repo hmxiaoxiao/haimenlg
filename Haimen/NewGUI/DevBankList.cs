@@ -153,6 +153,8 @@ namespace Haimen.NewGUI
         // 保存
         private void tsbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
             if (!m_bank.Verify())
             {
                 MessageBox.Show(m_bank.ErrorString, "出错了！", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -204,12 +206,13 @@ namespace Haimen.NewGUI
             }
         }
 
-        // 新增时，代码自动从名称中转换过来。
+        // 新增和编辑时，代码自动从名称中转换过来。
         private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            if (m_status == winStatusEnum.New && e.Column.Name == "col_name")
+            if ((m_status == winStatusEnum.New || m_status == winStatusEnum.Edit) && e.Column.Name == "col_name")
             {
                 gridView1.SetRowCellValue(e.RowHandle, "Code", PinyinHelper.GetShortPinyin(e.Value.ToString()).ToUpper());
+                //m_bank.Name = e.Value.ToString();
             }
         }
 
@@ -247,6 +250,19 @@ namespace Haimen.NewGUI
                 }
             }
             this.Close();
+        }
+
+        private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (gridView1.FocusedRowHandle < 0)
+                return;
+            if (MessageBox.Show(this, "是否要删除指定的银行？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            {
+                long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
+                Bank bk = Bank.CreateByID(id);
+                bk.Destory();
+                gridView1.DeleteRow(gridView1.FocusedRowHandle);
+            }
         }
     }
 }

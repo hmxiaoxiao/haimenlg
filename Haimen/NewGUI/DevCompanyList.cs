@@ -69,9 +69,12 @@ namespace Haimen.NewGUI
             if (gridView1.FocusedRowHandle < 0)
                 return;
 
-            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
-            Company.Delete(id);
-            gridView1.DeleteRow(gridView1.FocusedRowHandle);
+            if (MessageBox.Show(this, "是否要删除指定的单位？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            {
+                long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
+                Company.Delete(id);
+                gridView1.DeleteRow(gridView1.FocusedRowHandle);
+            }
 
         }
 

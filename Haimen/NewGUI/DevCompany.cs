@@ -103,14 +103,14 @@ namespace Haimen.NewGUI
                 return true;
 
             // 错误处理
-            SetErrorInfo();
+            ShowErrorInfo();
             return false;
         }
 
         /// <summary>
         /// 显示错误信息
         /// </summary>
-        private void SetErrorInfo()
+        private void ShowErrorInfo()
         {
             dxErrorProvider1.ClearErrors();
 
@@ -137,7 +137,6 @@ namespace Haimen.NewGUI
         private void Object2Form()
         {
             initBankList();
-            lueBank.Text = "";
             if (m_company.Bank_ID > 0)
                 lueBank.EditValue = m_company.Bank_ID;
             txtCode.Text = m_company.Code;
@@ -209,7 +208,6 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void DevCompany_Load(object sender, EventArgs e)
         {
-            initBankList();
             Object2Form();
             SetControlAccess();
         }
@@ -222,15 +220,12 @@ namespace Haimen.NewGUI
 
         private void tsbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            txtCode.Focus();
-            txtName.Focus();
-
             if (!Verify())
                 return;
 
             if (!m_company.Save())
             {
-                SetErrorInfo();
+                ShowErrorInfo();
                 return;
             }
 
@@ -274,12 +269,9 @@ namespace Haimen.NewGUI
             {
                 m_company.Destory();
                 m_company = new Company();
-                initBankList();
                 Object2Form();
                 SetFormStatus(winStatusEnum.New);
             }
         }
-
-
     }
 }

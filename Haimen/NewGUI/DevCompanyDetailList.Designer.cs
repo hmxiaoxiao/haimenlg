@@ -64,8 +64,8 @@
             this.lueBanks = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.c_bank = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_account = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.c_balance = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.c_credit = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_obalance = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_ocredit = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank.Properties)).BeginInit();
@@ -356,6 +356,8 @@
             this.tree.OptionsView.ShowIndicator = false;
             this.tree.Size = new System.Drawing.Size(159, 460);
             this.tree.TabIndex = 27;
+            this.tree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tree_FocusedNodeChanged);
+            this.tree.Click += new System.EventHandler(this.treeList1_Click);
             // 
             // node_name
             // 
@@ -405,11 +407,13 @@
             this.c_id,
             this.c_bank,
             this.c_account,
-            this.c_balance,
-            this.c_credit});
+            this.c_obalance,
+            this.c_ocredit});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView1_CustomDrawCell);
+            this.gridView1.BeforeLeaveRow += new DevExpress.XtraGrid.Views.Base.RowAllowEventHandler(this.gridView1_BeforeLeaveRow);
             // 
             // c_id
             // 
@@ -447,25 +451,25 @@
             this.c_account.Visible = true;
             this.c_account.VisibleIndex = 1;
             // 
-            // c_balance
+            // c_obalance
             // 
-            this.c_balance.Caption = "余额";
-            this.c_balance.DisplayFormat.FormatString = "N";
-            this.c_balance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.c_balance.FieldName = "Balance";
-            this.c_balance.Name = "c_balance";
-            this.c_balance.Visible = true;
-            this.c_balance.VisibleIndex = 2;
+            this.c_obalance.Caption = "余额";
+            this.c_obalance.DisplayFormat.FormatString = "N";
+            this.c_obalance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.c_obalance.FieldName = "OBalance";
+            this.c_obalance.Name = "c_obalance";
+            this.c_obalance.Visible = true;
+            this.c_obalance.VisibleIndex = 2;
             // 
-            // c_credit
+            // c_ocredit
             // 
-            this.c_credit.Caption = "贷款";
-            this.c_credit.DisplayFormat.FormatString = "N";
-            this.c_credit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.c_credit.FieldName = "Credit";
-            this.c_credit.Name = "c_credit";
-            this.c_credit.Visible = true;
-            this.c_credit.VisibleIndex = 3;
+            this.c_ocredit.Caption = "贷款";
+            this.c_ocredit.DisplayFormat.FormatString = "N";
+            this.c_ocredit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.c_ocredit.FieldName = "OCredit";
+            this.c_ocredit.Name = "c_ocredit";
+            this.c_ocredit.Visible = true;
+            this.c_ocredit.VisibleIndex = 3;
             // 
             // DevCompanyDetailList
             // 
@@ -543,7 +547,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueBanks;
         private DevExpress.XtraGrid.Columns.GridColumn c_bank;
         private DevExpress.XtraGrid.Columns.GridColumn c_account;
-        private DevExpress.XtraGrid.Columns.GridColumn c_balance;
-        private DevExpress.XtraGrid.Columns.GridColumn c_credit;
+        private DevExpress.XtraGrid.Columns.GridColumn c_obalance;
+        private DevExpress.XtraGrid.Columns.GridColumn c_ocredit;
     }
 }

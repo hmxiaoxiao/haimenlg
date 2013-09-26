@@ -71,22 +71,12 @@ namespace Haimen.Entity
         [Field("gen_doc")]
         public long GenDoc { get; set; }
         
-
+        /// <summary>
+        /// 生成单据字
+        /// </summary>
+        /// <returns></returns>
         public string NextDoc()
         {
-            //            sql += "(" + fields.Substring(0, fields.Length - 1) + ") ";
-            //sql += " values(" + values.Substring(0, values.Length - 1) + ")";
-            //sql += "; select @@identity ";
-
-            //using (TransactionScope ts = new TransactionScope())
-            //{
-            //    cmd.CommandText = sql;
-            //    this.ID = long.Parse(cmd.ExecuteScalar().ToString());
-
-            //    ts.Complete();
-            //}
-            //return true;
-
             string relVal = "";
             // 如果不需要单据字，则直接退出
             if (string.IsNullOrEmpty(this.Doc))
@@ -118,6 +108,21 @@ namespace Haimen.Entity
             }
             relVal = com.Doc + com.DocDate + string.Format("{0:000}",com.GenDoc);
             return relVal;
+        }
+
+        /// <summary>
+        /// 新增单位时，自动增加一个明细，为开户银行
+        /// </summary>
+        /// <returns></returns>
+        public override bool Insert()
+        {
+            CompanyDetail cd = new CompanyDetail();
+            cd.Bank_ID = Bank_ID;
+            cd.Account = Account;
+
+            DetailList.Add(cd);
+
+            return base.Insert();
         }
 
     }

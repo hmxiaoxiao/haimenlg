@@ -48,23 +48,27 @@ namespace Haimen.NewGUI
                     tsbEdit.Enabled = true;
                     tsbDelete.Enabled = true;
                     tsbSave.Enabled = false;
+
+                    gridView1.OptionsBehavior.Editable = false;
                     break;
                 case winStatusEnum.Edit:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbDelete.Enabled = false;
                     tsbSave.Enabled = true;
+                    gridView1.OptionsBehavior.Editable = true;
                     break;
                 case winStatusEnum.New:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbDelete.Enabled = false;
                     tsbSave.Enabled = true;
+                    gridView1.OptionsBehavior.Editable = true;
                     break;
             }
         }
 
-        private void Ower_refresh()
+        private void MyRefresh()
         {
             List<Company> companies = Company.Query();
             tree.DataSource = companies;
@@ -82,7 +86,7 @@ namespace Haimen.NewGUI
 
         private void DevCompanyDetailList_Load(object sender, EventArgs e)
         {
-            Ower_refresh();
+            MyRefresh();
             SetFormStatus(winStatusEnum.View);
             SetControlAccess();
         }
@@ -128,11 +132,17 @@ namespace Haimen.NewGUI
             m_company = com;
         }
 
+
         private void tree_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             ShowCompanyDetail();
         }
 
+        /// <summary>
+        ///  新增
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_detail = new CompanyDetail();
@@ -143,15 +153,33 @@ namespace Haimen.NewGUI
             SetFormStatus(winStatusEnum.New);
         }
 
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            gridView1.DeleteRow(gridView1.FocusedRowHandle);
+            if (gridView1.FocusedRowHandle < 0)
+                return;
+            if (MessageBox.Show(this, "是否要删除指定的资金凭证？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            {
+                gridView1.DeleteRow(gridView1.FocusedRowHandle);
+                m_company.Save();
+            }
         }
 
+
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            gridView1.Focus();
-            txtCode.Focus();
+            // 更新编辑中的数据
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
 
             if (m_company == null || m_company.Code != txtCode.Text)
                 return;
@@ -193,6 +221,11 @@ namespace Haimen.NewGUI
             }
         }
 
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (m_status != winStatusEnum.View)
@@ -208,6 +241,11 @@ namespace Haimen.NewGUI
             this.Close();
         }
 
+        /// <summary>
+        /// 编辑
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (gridView1.FocusedRowHandle < 0)
@@ -220,10 +258,15 @@ namespace Haimen.NewGUI
                 if (cd.ID == id)
                     m_detail = cd;
             }
-            gridView1.OptionsBehavior.Editable = true;
             SetFormStatus(winStatusEnum.Edit);
         }
 
+
+        /// <summary>
+        /// 刷新
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (m_status != winStatusEnum.View)
@@ -236,7 +279,7 @@ namespace Haimen.NewGUI
                     return;
                 }
             }
-            Ower_refresh();
+            MyRefresh();
             SetFormStatus(winStatusEnum.View);
         }
     }

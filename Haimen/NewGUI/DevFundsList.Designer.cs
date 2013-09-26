@@ -179,7 +179,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(691, 450);
-            this.splitContainerControl1.SplitterPosition = 152;
+            this.splitContainerControl1.SplitterPosition = 195;
             this.splitContainerControl1.TabIndex = 9;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -197,9 +197,10 @@
             this.tree.OptionsView.ShowIndicator = false;
             this.tree.OptionsView.ShowVertLines = false;
             this.tree.ParentFieldName = "Parent_ID";
-            this.tree.Size = new System.Drawing.Size(152, 450);
+            this.tree.Size = new System.Drawing.Size(195, 450);
             this.tree.TabIndex = 1;
             this.tree.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Light;
+            this.tree.Click += new System.EventHandler(this.tree_Click);
             // 
             // node_id
             // 
@@ -224,7 +225,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueFunds});
-            this.gridControl1.Size = new System.Drawing.Size(534, 450);
+            this.gridControl1.Size = new System.Drawing.Size(491, 450);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -238,6 +239,8 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView1_CustomDrawCell);
+            this.gridView1.BeforeLeaveRow += new DevExpress.XtraGrid.Views.Base.RowAllowEventHandler(this.gridView1_BeforeLeaveRow);
             // 
             // col_id
             // 

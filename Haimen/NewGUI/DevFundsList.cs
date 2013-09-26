@@ -177,6 +177,10 @@ namespace Haimen.NewGUI
 
         private void tsbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            // 更新数据
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
+
             if (!m_funds.Verify())
             {
                 MessageBox.Show(m_funds.ErrorString, "出错了！", MessageBoxButtons.OK, MessageBoxIcon.Error);

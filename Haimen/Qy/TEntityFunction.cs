@@ -204,16 +204,16 @@ namespace Haimen.Qy
 
             string sql = "Delete from " + table_name + " where id = " + id.ToString();
             string detail_sql = "Delete from " + GetTableName(typeof(U)) + " where parent_id = " + id.ToString();
-            string attach_sql = "Delete from Attach where parent_id = " + id.ToString();
+            string attach_sql = "Delete from m_attach where parent_id = " + id.ToString();
             using (TransactionScope ts = new TransactionScope())
             {
-                cmd.CommandText = sql;
-                cmd.ExecuteNonQuery();
-
                 cmd.CommandText = detail_sql;
                 cmd.ExecuteNonQuery();
 
                 cmd.CommandText = attach_sql;
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
 
                 ts.Complete();

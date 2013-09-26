@@ -63,6 +63,19 @@ namespace Haimen.Entity
         [Field("credit")]
         public decimal Credit { get; set; }
 
+        /// <summary>
+        /// 原始余额
+        /// </summary>
+        [Field("obalance")]
+        public decimal OBalance { get; set; }
+
+        /// <summary>
+        /// 原始贷款
+        /// </summary>
+        [Field("ocredit")]
+        public decimal OCredit { get; set; }
+
+        
         private Bank m_bank;
         public Bank Bank 
         {
@@ -103,6 +116,36 @@ namespace Haimen.Entity
                 return false;
             else
                 return true;
+        }
+
+        /// <summary>
+        /// 新增时，将余额，与原始余额保持一致。贷款也一样
+        /// </summary>
+        /// <returns></returns>
+        public override bool Insert()
+        {
+            Balance = OBalance;
+            Credit = OCredit;
+            return base.Insert();
+        }
+
+        /// <summary>
+        /// 修改时，要将原始余额的差异保持到余额上，贷款也一样。
+        /// </summary>
+        /// <returns></returns>
+        public override bool Update()
+        {
+            // 先取得原始记录
+            CompanyDetail ocom = CompanyDetail.CreateByID(ID);
+            
+            // 再取得差异, 并将差异保持到余额上
+            decimal def = this.OBalance - ocom.OBalance;
+            this.Balance += def;
+
+            def = this.OCredit - ocom.OCredit;
+            this.Credit += def;
+
+            return base.Update();
         }
 
     }
