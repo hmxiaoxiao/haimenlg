@@ -54,13 +54,14 @@
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tsbCheck = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.tsbGen = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbAccept = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -249,8 +250,9 @@
             this.tsbQuery,
             this.tsbGen,
             this.tsbExit,
-            this.tsbRefresh});
-            this.barManager1.MaxItemId = 8;
+            this.tsbRefresh,
+            this.tsbAccept});
+            this.barManager1.MaxItemId = 9;
             // 
             // bar1
             // 
@@ -266,6 +268,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbGen, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbAccept, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
@@ -308,6 +311,14 @@
             this.tsbQuery.Id = 4;
             this.tsbQuery.Name = "tsbQuery";
             this.tsbQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbQuery_ItemClick);
+            // 
+            // tsbRefresh
+            // 
+            this.tsbRefresh.Caption = "刷新";
+            this.tsbRefresh.Glyph = global::Haimen.Properties.Resources.Refresh_hot;
+            this.tsbRefresh.Id = 7;
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
             // 
             // tsbGen
             // 
@@ -353,13 +364,13 @@
             this.barDockControlRight.Location = new System.Drawing.Point(744, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
             // 
-            // tsbRefresh
+            // tsbAccept
             // 
-            this.tsbRefresh.Caption = "刷新";
-            this.tsbRefresh.Glyph = global::Haimen.Properties.Resources.Refresh_hot;
-            this.tsbRefresh.Id = 7;
-            this.tsbRefresh.Name = "tsbRefresh";
-            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
+            this.tsbAccept.Caption = "验收";
+            this.tsbAccept.Glyph = global::Haimen.Properties.Resources.Slide_Show_hot;
+            this.tsbAccept.Id = 8;
+            this.tsbAccept.Name = "tsbAccept";
+            this.tsbAccept.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbAccept_ItemClick);
             // 
             // DevContractList
             // 
@@ -416,5 +427,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_incompany;
         private DevExpress.XtraGrid.Columns.GridColumn col_pay;
         private DevExpress.XtraBars.BarButtonItem tsbRefresh;
+        private DevExpress.XtraBars.BarButtonItem tsbAccept;
     }
 }

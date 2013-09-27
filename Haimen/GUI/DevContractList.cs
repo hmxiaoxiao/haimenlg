@@ -9,6 +9,7 @@ using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 using Haimen.Helper;
+using Haimen.GUI;
 
 namespace Haimen.NewGUI
 {
@@ -175,7 +176,7 @@ namespace Haimen.NewGUI
         }
 
         /// <summary>
-        /// 生成支付凭证，暂缓
+        /// 生成支付凭证
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -199,6 +200,14 @@ namespace Haimen.NewGUI
         private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MyRefresh();
+        }
+
+        // 合同验收
+        private void tsbAccept_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Contract ct = CurrentSelectedObject();
+            if (ct != null)
+                m_main.OpenForm(new DevContractAccept(ct));
         }
     }
 }

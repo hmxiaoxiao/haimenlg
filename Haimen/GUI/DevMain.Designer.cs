@@ -45,10 +45,13 @@
             this.statusText = new DevExpress.XtraBars.BarStaticItem();
             this.rbSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
             this.mnuAccess = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuAcceptanceBillList = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuAcceptanceBill = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -63,9 +66,7 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.mnuAcceptanceBillList = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.mnuAcceptanceBill = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuContractAcceptList = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -92,9 +93,10 @@
             this.rbSkins,
             this.mnuAccess,
             this.mnuAcceptanceBillList,
-            this.mnuAcceptanceBill});
+            this.mnuAcceptanceBill,
+            this.mnuContractAcceptList});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 36;
+            this.ribbon.MaxItemId = 37;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -272,6 +274,28 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.mnuAccess.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuAccess_ItemClick);
             // 
+            // mnuAcceptanceBillList
+            // 
+            this.mnuAcceptanceBillList.Caption = "承兑汇票列表";
+            this.mnuAcceptanceBillList.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuAcceptanceBillList.Glyph = global::Haimen.Properties.Resources.Summary_hot;
+            this.mnuAcceptanceBillList.Id = 34;
+            this.mnuAcceptanceBillList.Name = "mnuAcceptanceBillList";
+            this.mnuAcceptanceBillList.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuAcceptanceBillList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuAcceptanceBillList_ItemClick);
+            // 
+            // mnuAcceptanceBill
+            // 
+            this.mnuAcceptanceBill.Caption = "承兑汇票新增";
+            this.mnuAcceptanceBill.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuAcceptanceBill.Glyph = global::Haimen.Properties.Resources.Work_Sheet_New_hot;
+            this.mnuAcceptanceBill.Id = 35;
+            this.mnuAcceptanceBill.Name = "mnuAcceptanceBill";
+            this.mnuAcceptanceBill.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuAcceptanceBill.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuAcceptanceBill_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -307,6 +331,13 @@
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.ShowCaptionButton = false;
             this.ribbonPageGroup4.Text = "贷款";
+            // 
+            // ribbonPageGroup11
+            // 
+            this.ribbonPageGroup11.ItemLinks.Add(this.mnuAcceptanceBillList);
+            this.ribbonPageGroup11.ItemLinks.Add(this.mnuAcceptanceBill);
+            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
+            this.ribbonPageGroup11.Text = "承兑汇票";
             // 
             // ribbonPageGroup8
             // 
@@ -402,34 +433,12 @@
             // 
             this.mdiManager.MdiParent = this;
             // 
-            // mnuAcceptanceBillList
+            // mnuContractAcceptList
             // 
-            this.mnuAcceptanceBillList.Caption = "承兑汇票列表";
-            this.mnuAcceptanceBillList.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuAcceptanceBillList.Glyph = global::Haimen.Properties.Resources.Summary_hot;
-            this.mnuAcceptanceBillList.Id = 34;
-            this.mnuAcceptanceBillList.Name = "mnuAcceptanceBillList";
-            this.mnuAcceptanceBillList.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.mnuAcceptanceBillList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuAcceptanceBillList_ItemClick);
-            // 
-            // ribbonPageGroup11
-            // 
-            this.ribbonPageGroup11.ItemLinks.Add(this.mnuAcceptanceBillList);
-            this.ribbonPageGroup11.ItemLinks.Add(this.mnuAcceptanceBill);
-            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
-            this.ribbonPageGroup11.Text = "承兑汇票";
-            // 
-            // mnuAcceptanceBill
-            // 
-            this.mnuAcceptanceBill.Caption = "承兑汇票新增";
-            this.mnuAcceptanceBill.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuAcceptanceBill.Glyph = global::Haimen.Properties.Resources.Work_Sheet_New_hot;
-            this.mnuAcceptanceBill.Id = 35;
-            this.mnuAcceptanceBill.Name = "mnuAcceptanceBill";
-            this.mnuAcceptanceBill.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.mnuAcceptanceBill.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuAcceptanceBill_ItemClick);
+            this.mnuContractAcceptList.Caption = "合同验收列表";
+            this.mnuContractAcceptList.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuContractAcceptList.Id = 36;
+            this.mnuContractAcceptList.Name = "mnuContractAcceptList";
             // 
             // DevMain
             // 
@@ -491,5 +500,6 @@
         private DevExpress.XtraBars.BarButtonItem mnuAcceptanceBillList;
         private DevExpress.XtraBars.BarButtonItem mnuAcceptanceBill;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
+        private DevExpress.XtraBars.BarButtonItem mnuContractAcceptList;
     }
 }
