@@ -39,6 +39,9 @@
             this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_partya = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_partyb = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_incompany = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_securigy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lueCheckStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -56,9 +59,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.col_incompany = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_partyb = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_partya = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_pay = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueCheckStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -71,7 +72,7 @@
             this.col_payment_ration.FieldName = "PaymentRatio";
             this.col_payment_ration.Name = "col_payment_ration";
             this.col_payment_ration.Visible = true;
-            this.col_payment_ration.VisibleIndex = 11;
+            this.col_payment_ration.VisibleIndex = 12;
             // 
             // col_money
             // 
@@ -143,6 +144,7 @@
             this.col_begin_date,
             this.col_end_date,
             this.col_money,
+            this.col_pay,
             this.col_securigy,
             this.col_payment_ration,
             this.col_status});
@@ -158,13 +160,37 @@
             this.col_id.FieldName = "Name";
             this.col_id.Name = "col_id";
             // 
+            // col_partya
+            // 
+            this.col_partya.Caption = "甲方";
+            this.col_partya.FieldName = "PartyA.Name";
+            this.col_partya.Name = "col_partya";
+            this.col_partya.Visible = true;
+            this.col_partya.VisibleIndex = 2;
+            // 
+            // col_partyb
+            // 
+            this.col_partyb.Caption = "乙方";
+            this.col_partyb.FieldName = "PartyB.Name";
+            this.col_partyb.Name = "col_partyb";
+            this.col_partyb.Visible = true;
+            this.col_partyb.VisibleIndex = 3;
+            // 
+            // col_incompany
+            // 
+            this.col_incompany.Caption = "收款单位";
+            this.col_incompany.FieldName = "InCompany.Name";
+            this.col_incompany.Name = "col_incompany";
+            this.col_incompany.Visible = true;
+            this.col_incompany.VisibleIndex = 5;
+            // 
             // col_securigy
             // 
             this.col_securigy.Caption = "保证金";
             this.col_securigy.FieldName = "Security";
             this.col_securigy.Name = "col_securigy";
             this.col_securigy.Visible = true;
-            this.col_securigy.VisibleIndex = 10;
+            this.col_securigy.VisibleIndex = 11;
             // 
             // col_status
             // 
@@ -173,7 +199,7 @@
             this.col_status.FieldName = "Status";
             this.col_status.Name = "col_status";
             this.col_status.Visible = true;
-            this.col_status.VisibleIndex = 12;
+            this.col_status.VisibleIndex = 13;
             // 
             // lueCheckStatus
             // 
@@ -316,29 +342,13 @@
             this.barDockControlRight.Location = new System.Drawing.Point(744, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
             // 
-            // col_incompany
+            // col_pay
             // 
-            this.col_incompany.Caption = "收款单位";
-            this.col_incompany.FieldName = "InCompany.Name";
-            this.col_incompany.Name = "col_incompany";
-            this.col_incompany.Visible = true;
-            this.col_incompany.VisibleIndex = 5;
-            // 
-            // col_partyb
-            // 
-            this.col_partyb.Caption = "乙方";
-            this.col_partyb.FieldName = "PartyB.Name";
-            this.col_partyb.Name = "col_partyb";
-            this.col_partyb.Visible = true;
-            this.col_partyb.VisibleIndex = 3;
-            // 
-            // col_partya
-            // 
-            this.col_partya.Caption = "甲方";
-            this.col_partya.FieldName = "PartyA.Name";
-            this.col_partya.Name = "col_partya";
-            this.col_partya.Visible = true;
-            this.col_partya.VisibleIndex = 2;
+            this.col_pay.Caption = "已付金额";
+            this.col_pay.FieldName = "Pay";
+            this.col_pay.Name = "col_pay";
+            this.col_pay.Visible = true;
+            this.col_pay.VisibleIndex = 10;
             // 
             // DevContractList
             // 
@@ -393,5 +403,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_partya;
         private DevExpress.XtraGrid.Columns.GridColumn col_partyb;
         private DevExpress.XtraGrid.Columns.GridColumn col_incompany;
+        private DevExpress.XtraGrid.Columns.GridColumn col_pay;
     }
 }

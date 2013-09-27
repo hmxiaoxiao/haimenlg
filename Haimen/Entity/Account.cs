@@ -55,23 +55,23 @@ namespace Haimen.Entity
         
 
         [Field("contract_id")]
-        public long Contract_ID { get; set; }
-        private Contract m_contract = null;
-        public Contract Contract
-        {
-            get
-            {
-                if (Contract_ID > 0)
-                {
-                    if (m_contract == null || m_contract.ID != Contract_ID)
-                        m_contract = Contract.CreateByID(Contract_ID);
-                }
-                return m_contract;
-            }
-        }
+        public long ContractID { get; set; }
+        //private Contract m_contract = null;
+        //public Contract Contract
+        //{
+        //    get
+        //    {
+        //        if (ContractID > 0)
+        //        {
+        //            if (m_contract == null || m_contract.ID != ContractID)
+        //                m_contract = Contract.CreateByID(ContractID);
+        //        }
+        //        return m_contract;
+        //    }
+        //}
 
         [Field("balance_id")]
-        public long Balance_ID { get; set; }
+        public long BalanceID { get; set; }
 
         [Field("applicant")]
         public long AppUserID { get; set; }
@@ -152,20 +152,24 @@ namespace Haimen.Entity
             {
                 // 改标志为已审核
                 this.Status = 1;
-                this.RevUserID = GlobalSet.Current_User.ID;
+                this.RevUserID = GlobalSet.Current_User.ID;     // 审核人
 
+                // 更新二个单位的数据金额
                 CompanyDetail inCD = CompanyDetail.CreateByID(this.In_CompanyDetail_ID);
                 CompanyDetail outCD = CompanyDetail.CreateByID(this.Out_CompanyDetail_ID);
-                decimal money = 0;
-                foreach (AccountDetail ad in this.DetailList)
-                {
-                    money += ad.Money;
-                }
-                inCD.Balance += money;
-                outCD.Balance -= money;
+                inCD.Balance += Money;
+                outCD.Balance -= Money;
 
-                inCD.Save();       // 保存收入单位帐号余额
-                outCD.Save();      // 保存支出单位的帐号余额
+                // 更新合同的已付金额
+                if (ContractID > 0)
+                {
+                    Contract c = Contract.CreateByID(ContractID);
+                    c.Pay += Money;  // 已付金额加上当前票据的金额
+                    c.Save();
+                }
+
+                inCD.Save();        // 保存收入单位帐号余额
+                outCD.Save();       // 保存支出单位的帐号余额
                 this.Save();        // 保存审核标记
 
                 ts.Complete();
@@ -182,6 +186,11 @@ namespace Haimen.Entity
             this.Save();
         }
 
+
+        /// <summary>
+        /// 校对对象
+        /// </summary>
+        /// <returns></returns>
         public override bool Verify()
         {
             Error_Info.Clear();
@@ -193,10 +202,7 @@ namespace Haimen.Entity
             if (this.Out_CompanyDetail_ID <= 0)
                 Error_Info.Add(new KeyValuePair<string, string>("Out_CompanyDetail_ID", "请选择支出单位的帐号"));
 
-            if (Error_Info.Count > 0)
-                return false;
-            else
-                return true;
+            return Error_Info.Count == 0;
         }
 
 
@@ -209,6 +215,5 @@ namespace Haimen.Entity
             this.AppUserID = GlobalSet.Current_User.ID;
             return base.Insert();
         }
-
     }
 }

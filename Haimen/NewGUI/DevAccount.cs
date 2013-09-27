@@ -18,8 +18,8 @@ namespace Haimen.NewGUI
     {
 
         private Account m_account;
-        private long m_contract_id = -1;        // 关联的合同ID
-        private long m_balance_id = -1;         // 关联的贷款ID
+        //private long m_contract_id = -1;        // 关联的合同ID
+        //private long m_balance_id = -1;         // 关联的贷款ID
 
         private List<Bank> m_banks = Bank.Query();
         //private List<Company> m_companies = Company.Query();
@@ -159,8 +159,6 @@ namespace Haimen.NewGUI
             if (lueInAccount.EditValue != null)
                 m_account.In_CompanyDetail_ID = long.Parse(lueInAccount.EditValue.ToString());
 
-            m_account.Balance_ID = m_balance_id;
-            m_account.Contract_ID = m_contract_id;
             m_account.Memo = txtMemo.Text;
             if (string.IsNullOrEmpty(txtMoney.Text))
                 m_account.Money = 0;
@@ -173,6 +171,31 @@ namespace Haimen.NewGUI
         /// </summary>
         private void Object2form()
         {
+            //先设置单位的数据来源
+            List<Company> outlist = Company.Query("output = 'X'");
+            List<Company> inlist = Company.Query("input = 'X'");
+
+            lueInCompany.Properties.DataSource = inlist;
+            lueInCompany.Properties.DisplayMember = "Name";
+            lueInCompany.Properties.ValueMember = "ID";
+
+            lueOutCompany.Properties.DataSource = outlist;
+            lueOutCompany.Properties.DisplayMember = "Name";
+            lueOutCompany.Properties.ValueMember = "ID";
+
+            // 初始化明细
+            gridControl1.DataSource = m_account.DetailList;
+             List<Funds> fundslist = Funds.Query();
+            luefunds.DataSource = fundslist;
+            luefunds.DisplayMember = "Name";
+            luefunds.ValueMember = "ID";
+
+            // 初始化附件列表
+            lstFiles.Items.Clear();
+            foreach (Attach a in m_account.AttachList)
+                lstFiles.Items.Add(a.ID.ToString() + "." + a.FileName, 2);
+
+            // 显示数据
             if (m_account.ID > 0)
             {
                 dtSigned.DateTime = m_account.SignedDate;
@@ -183,6 +206,9 @@ namespace Haimen.NewGUI
                 lueInCompany.Properties.LockEvents();
                 lueInAccount.Properties.LockEvents();
                 lueOutAccount.Properties.LockEvents();
+
+                //List<CompanyDetail> outDetails = CompanyDetail.Query(" parent_id in ( select id from m_company where output = 'X')");
+                //List<CompanyDetail> inDetails = CompanyDetail.Query(" parent_id in (select id from m_company where input = 'X')");
 
                 lueOutCompany.EditValue = m_account.OutCompanyDetail.ParentID;
                 List<CompanyDetail> out_list = CompanyDetail.Query("parent_id = " + m_account.OutCompanyDetail.ParentID);
@@ -207,20 +233,6 @@ namespace Haimen.NewGUI
                 lueInAccount.Properties.UnLockEvents();
                 lueOutAccount.Properties.UnLockEvents();
 
-                // 显示关联信息
-                if (m_account.Contract_ID > 0)
-                {
-                    lueBalance.Enabled = false;
-                    lueContract.Enabled = true;
-                    lueContract.Properties.DataSource = null;
-                    lueContract.Properties.DataSource = Contract.Query();
-                    lueContract.Properties.DisplayMember = "Name";
-                    lueContract.Properties.ValueMember = "ID";
-
-                    lueContract.EditValue = m_account.Contract_ID;
-                    lueContract.Enabled = false;
-                }
-
                 txtMemo.Text = m_account.Memo;
             }
             else
@@ -238,38 +250,50 @@ namespace Haimen.NewGUI
                 txtMemo.Text = "";
             }
 
+            // 显示合同或者贷款信息
+            ShowContractOrBalanceInfo();
+
             // 显示审核标志
             ShowCheckPic();
+        }
 
-            // 显示关联信息
-            if (m_contract_id > 0)
+        // 显示合同或贷款信息
+        private void ShowContractOrBalanceInfo()
+        {
+            // 显示合同信息
+            if (m_account.ContractID > 0)  // 显示合同信息
             {
-                lueBalance.Enabled = false;
-                lueContract.Enabled = true;
-                lueContract.Properties.DataSource = null;
-                lueContract.Properties.DataSource = m_contracts;
-                lueContract.Properties.DisplayMember = "Name";
-                lueContract.Properties.ValueMember = "ID";
+                layoutControl2.Visible = true;
+                Contract c = Contract.CreateByID(m_account.ContractID);
+                txtContractCode.Text = c.Code;
+                txtContractName.Text = c.Name;
+                txtContractMoney.Text = c.Money.ToString();
+                txtContractAlreadyPay.Text = c.Pay.ToString();
+                txtContractUnpay.Text = (c.Money - c.Pay).ToString();
 
-                lueContract.EditValue = m_contract_id;
-                lueContract.Enabled = false;
-                Contract c = Contract.CreateByID(m_contract_id);
                 lueInCompany.EditValue = c.InCompanyID;
                 lueOutCompany.EditValue = c.OutCompanyID;
                 lueInCompany.Enabled = false;
                 lueOutCompany.Enabled = false;
-                txtMemo.Text = "本单据通过合同生成。";
-            }
-            else if (m_balance_id > 0)
-            {
-                lueContract.Enabled = false;
-                lueBalance.Enabled = true;
-                lueBalance.Properties.DataSource = null;
-                lueBalance.Properties.DataSource = m_balances;
-                lueBalance.Properties.DisplayMember = "Code";
-                lueBalance.Properties.ValueMember = "ID";
 
-                lueBalance.EditValue = m_balance_id;
+                // 判断新增时，还要给二个单位赋值
+                if (m_account.ID > 0)
+                    txtMemo.Text = m_account.Memo;
+                else
+                {
+                    txtMemo.Text = "本单据通过合同生成。";
+                    lueInCompany.EditValue = c.InCompanyID;
+                    lueOutCompany.EditValue = c.OutCompanyID;
+                }
+            }
+            else
+            {
+                layoutControl2.Visible = false;
+            }
+
+            // 设置贷款信息
+            if (m_account.BalanceID > 0)
+            {
             }
         }
 
@@ -293,33 +317,7 @@ namespace Haimen.NewGUI
         /// </summary>
         private void InitList()
         {
-            List<Company> outlist = Company.Query("output = 'X'");
-            List<Company> inlist = Company.Query("input = 'X'");
 
-            List<CompanyDetail> outDetails = CompanyDetail.Query(" parent_id in ( select id from m_company where output = 'X')");
-            List<CompanyDetail> inDetails = CompanyDetail.Query(" parent_id in (select id from m_company where input = 'X')");
-
-            lueInCompany.Properties.DataSource = inlist;
-            lueInCompany.Properties.DisplayMember = "Name";
-            lueInCompany.Properties.ValueMember = "ID";
-
-            lueOutCompany.Properties.DataSource = outlist;
-            lueOutCompany.Properties.DisplayMember = "Name";
-            lueOutCompany.Properties.ValueMember = "ID";
-
-            gridControl1.DataSource = m_account.DetailList;
-
-            List<Funds> fundslist = Funds.Query();
-
-            luefunds.DataSource = fundslist;
-            luefunds.DisplayMember = "Name";
-            luefunds.ValueMember = "ID";
-
-            lstFiles.Items.Clear();
-            foreach (Attach a in m_account.AttachList)
-            {
-                lstFiles.Items.Add(a.ID.ToString() + "." + a.FileName, 2);
-            }
         }
 
         /// <summary>
@@ -363,10 +361,10 @@ namespace Haimen.NewGUI
 
             // 保存传过来的对应的贷款或合同ID
             if (ContractID > 0)
-                m_contract_id = ContractID;
+                m_account.ContractID = ContractID;
 
             if (BalanceID > 0)
-                m_balance_id = BalanceID;
+                m_account.BalanceID = BalanceID;
 
         }
 

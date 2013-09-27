@@ -52,7 +52,6 @@ namespace Haimen.Entity
         public override bool Verify()
         {
             Error_Info.Clear();
-            string err = "";
             List<Company> list;
 
             // 校验代码
