@@ -52,7 +52,20 @@ namespace Haimen.Entity
                 return m_inComanpy;
             }
         }
-        
+
+        [Field("contract_accept_id")]
+        public long ContractAcceptID { get; set; }
+        private ContractAccept m_accept;
+        public ContractAccept ContractAccept
+        {
+            get
+            {
+                if (m_accept == null && ContractAcceptID > 0)
+                    m_accept = ContractAccept.CreateByID(ContractAcceptID);
+                return m_accept;
+            }
+        }
+
 
         [Field("contract_id")]
         public long ContractID { get; set; }
@@ -212,6 +225,13 @@ namespace Haimen.Entity
         public override bool Insert()
         {
             this.AppUserID = GlobalSet.Current_User.ID;
+            // 如果是从合同验收生成的，要写到合同验收一个标志
+            if (ContractAcceptID > 0)
+            {
+                ContractAccept c = ContractAccept.CreateByID(ContractAcceptID);
+                c.Status = (long)ContractAcceptStatusEnum.已开票;
+                c.Save();
+            }
             return base.Insert();
         }
     }

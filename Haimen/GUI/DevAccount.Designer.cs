@@ -107,6 +107,8 @@
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtMustPay = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -162,6 +164,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMustPay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             this.SuspendLayout();
             // 
             // lueInCompany
@@ -870,6 +874,7 @@
             // 
             // layoutControl2
             // 
+            this.layoutControl2.Controls.Add(this.txtMustPay);
             this.layoutControl2.Controls.Add(this.txtContractCode);
             this.layoutControl2.Controls.Add(this.txtContractUnpay);
             this.layoutControl2.Controls.Add(this.txtContractAlreadyPay);
@@ -879,7 +884,7 @@
             this.layoutControl2.Location = new System.Drawing.Point(668, 43);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup4;
-            this.layoutControl2.Size = new System.Drawing.Size(272, 185);
+            this.layoutControl2.Size = new System.Drawing.Size(272, 208);
             this.layoutControl2.TabIndex = 79;
             this.layoutControl2.Text = "合同";
             // 
@@ -938,7 +943,7 @@
             this.layoutControlGroup5});
             this.layoutControlGroup4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(272, 185);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(272, 208);
             this.layoutControlGroup4.Text = "layoutControlGroup4";
             this.layoutControlGroup4.TextVisible = false;
             // 
@@ -950,10 +955,11 @@
             this.layoutControlItem14,
             this.layoutControlItem15,
             this.layoutControlItem16,
-            this.layoutControlItem17});
+            this.layoutControlItem17,
+            this.layoutControlItem11});
             this.layoutControlGroup5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup5.Name = "layoutControlGroup5";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(252, 165);
+            this.layoutControlGroup5.Size = new System.Drawing.Size(252, 188);
             this.layoutControlGroup5.Text = "合同信息";
             // 
             // layoutControlItem10
@@ -1002,9 +1008,28 @@
             this.layoutControlItem17.CustomizationFormText = "未付金额";
             this.layoutControlItem17.Location = new System.Drawing.Point(0, 96);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(228, 25);
+            this.layoutControlItem17.Size = new System.Drawing.Size(228, 24);
             this.layoutControlItem17.Text = "未付金额";
             this.layoutControlItem17.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // txtMustPay
+            // 
+            this.txtMustPay.Location = new System.Drawing.Point(75, 164);
+            this.txtMustPay.MenuManager = this.barManager1;
+            this.txtMustPay.Name = "txtMustPay";
+            this.txtMustPay.Size = new System.Drawing.Size(173, 20);
+            this.txtMustPay.StyleController = this.layoutControl2;
+            this.txtMustPay.TabIndex = 17;
+            // 
+            // layoutControlItem11
+            // 
+            this.layoutControlItem11.Control = this.txtMustPay;
+            this.layoutControlItem11.CustomizationFormText = "应付金额";
+            this.layoutControlItem11.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Size = new System.Drawing.Size(228, 24);
+            this.layoutControlItem11.Text = "应付金额";
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(48, 14);
             // 
             // DevAccount
             // 
@@ -1083,6 +1108,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMustPay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1166,5 +1193,7 @@
         private DevExpress.XtraEditors.TextEdit txtContractCode;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
+        private DevExpress.XtraEditors.TextEdit txtMustPay;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
     }
 }

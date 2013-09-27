@@ -24,8 +24,8 @@ namespace Haimen.NewGUI
         private List<Bank> m_banks = Bank.Query();
         //private List<Company> m_companies = Company.Query();
         //private List<Funds> m_funds = Funds.Query();
-        private List<Contract> m_contracts = Contract.Query();  // 所有的合同
-        private List<Balance> m_balances = Balance.Query();     // 所有的贷款
+        //private List<Contract> m_contracts = Contract.Query();  // 所有的合同
+        //private List<Balance> m_balances = Balance.Query();     // 所有的贷款
 
 
         private winStatusEnum m_status;
@@ -171,6 +171,9 @@ namespace Haimen.NewGUI
         /// </summary>
         private void Object2form()
         {
+            // 合同区先不显示，有需要显示的，下面自己把它显示出来
+            layoutControl2.Visible = false;
+
             //先设置单位的数据来源
             List<Company> outlist = Company.Query("output = 'X'");
             List<Company> inlist = Company.Query("input = 'X'");
@@ -255,8 +258,47 @@ namespace Haimen.NewGUI
             // 显示合同或者贷款信息
             ShowContractOrBalanceInfo();
 
+            // 显示合同验收带来的信息   
+            ShowAcceptInfo();
+
             // 显示审核标志
             ShowCheckPic();
+        }
+
+        /// <summary>
+        /// 显示从合同里带来的信息
+        /// </summary>
+        private void ShowAcceptInfo()
+        {
+            // 只能新增，才显示
+            if (m_account.ID == 0 && m_account.ContractAcceptID > 0)
+            {
+                ContractAccept ca = ContractAccept.CreateByID(m_account.ContractAcceptID);
+
+                layoutControl2.Visible = true;
+                Contract c = ca.Contract;
+                txtContractCode.Text = c.Code;
+                txtContractName.Text = c.Name;
+                txtContractMoney.Text = c.Money.ToString();
+                txtContractAlreadyPay.Text = c.Pay.ToString();
+                txtContractUnpay.Text = (c.Money - c.Pay).ToString();
+
+                lueInCompany.EditValue = c.InCompanyID;
+                lueOutCompany.EditValue = c.OutCompanyID;
+                lueInCompany.Enabled = false;
+                lueOutCompany.Enabled = false;
+
+                // 判断新增时，还要给二个单位赋值
+                if (m_account.ID > 0)
+                    txtMemo.Text = m_account.Memo;
+                else
+                {
+                    txtMemo.Text = "本单据通过合同验收生成。";
+                    lueInCompany.EditValue = c.InCompanyID;
+                    lueOutCompany.EditValue = c.OutCompanyID;
+                    txtMustPay.Text = ca.Money.ToString();
+                }
+            }
         }
 
         // 显示合同或贷款信息
@@ -287,10 +329,6 @@ namespace Haimen.NewGUI
                     lueInCompany.EditValue = c.InCompanyID;
                     lueOutCompany.EditValue = c.OutCompanyID;
                 }
-            }
-            else
-            {
-                layoutControl2.Visible = false;
             }
 
             // 设置贷款信息
@@ -351,7 +389,8 @@ namespace Haimen.NewGUI
         /// 构造函数
         /// </summary>
         /// <param name="account"></param>
-        public DevAccount(winStatusEnum status, Account account = null, long ContractID = 0, long BalanceID = 0)
+        public DevAccount(winStatusEnum status, Account account = null, long ContractID = 0, 
+                          long BalanceID = 0, long acceptid = 0)
         {
             InitializeComponent();
 
@@ -367,6 +406,9 @@ namespace Haimen.NewGUI
 
             if (BalanceID > 0)
                 m_account.BalanceID = BalanceID;
+
+            if (acceptid > 0)
+                m_account.ContractAcceptID = acceptid;
 
         }
 

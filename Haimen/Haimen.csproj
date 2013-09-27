@@ -155,6 +155,12 @@
     <Compile Include="GUI\DevContractAccept.Designer.cs">
       <DependentUpon>DevContractAccept.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DevContractAcceptList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DevContractAcceptList.Designer.cs">
+      <DependentUpon>DevContractAcceptList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\CustomerINI.cs" />
     <Compile Include="Helper\FTPClient.cs" />
     <Compile Include="Helper\Helper.cs" />
@@ -365,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevContractAccept.resx">
       <DependentUpon>DevContractAccept.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DevContractAcceptList.resx">
+      <DependentUpon>DevContractAcceptList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevContractList.resx">
       <DependentUpon>DevContractList.cs</DependentUpon>

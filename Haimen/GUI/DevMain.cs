@@ -10,6 +10,7 @@ using DevExpress.Skins;
 
 using Haimen.Entity;
 using Haimen.Helper;
+using Haimen.GUI;
 
 using DevExpress.XtraBars.Helpers;
 using DevExpress.XtraEditors;
@@ -213,6 +214,11 @@ namespace Haimen.NewGUI
                 OpenForm(new DevAcceptanceBillList());
             else
                 MessageBox.Show("您无权限使用该功能");
+        }
+
+        private void mnuContractAcceptList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new DevContractAcceptList());
         }
     }
 }

@@ -47,6 +47,7 @@
             this.mnuAccess = new DevExpress.XtraBars.BarButtonItem();
             this.mnuAcceptanceBillList = new DevExpress.XtraBars.BarButtonItem();
             this.mnuAcceptanceBill = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuContractAcceptList = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -66,7 +67,6 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.mnuContractAcceptList = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -196,8 +196,6 @@
             this.mnuContract.Glyph = global::Haimen.Properties.Resources.Preview_hot;
             this.mnuContract.Id = 10;
             this.mnuContract.Name = "mnuContract";
-            this.mnuContract.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.mnuContract.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuContract_ItemClick);
             // 
             // mnuBalanceList
@@ -296,6 +294,15 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.mnuAcceptanceBill.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuAcceptanceBill_ItemClick);
             // 
+            // mnuContractAcceptList
+            // 
+            this.mnuContractAcceptList.Caption = "合同验收列表";
+            this.mnuContractAcceptList.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuContractAcceptList.Glyph = global::Haimen.Properties.Resources.Header_Previous_hot;
+            this.mnuContractAcceptList.Id = 36;
+            this.mnuContractAcceptList.Name = "mnuContractAcceptList";
+            this.mnuContractAcceptList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuContractAcceptList_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -319,6 +326,7 @@
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.mnuContractList);
             this.ribbonPageGroup3.ItemLinks.Add(this.mnuContract);
+            this.ribbonPageGroup3.ItemLinks.Add(this.mnuContractAcceptList);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.ShowCaptionButton = false;
             this.ribbonPageGroup3.Text = "合同";
@@ -432,13 +440,6 @@
             // mdiManager
             // 
             this.mdiManager.MdiParent = this;
-            // 
-            // mnuContractAcceptList
-            // 
-            this.mnuContractAcceptList.Caption = "合同验收列表";
-            this.mnuContractAcceptList.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuContractAcceptList.Id = 36;
-            this.mnuContractAcceptList.Name = "mnuContractAcceptList";
             // 
             // DevMain
             // 

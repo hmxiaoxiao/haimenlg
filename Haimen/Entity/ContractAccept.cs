@@ -19,6 +19,17 @@ namespace Haimen.Entity
         [Field("contract_id")]
         public long ContractID { get; set; }
 
+        private Contract m_contract;
+        public Contract Contract
+        {
+            get
+            {
+                if (m_contract == null && ContractID > 0)
+                    m_contract = Contract.CreateByID(ContractID);
+                return m_contract;
+            }
+        }
+
         [Field("accept_unit")]
         public string AcceptUnit { get; set; }
 
@@ -68,6 +79,19 @@ namespace Haimen.Entity
             c.Save();
             
             return base.Insert();
+        }
+
+        public override bool Update()
+        {
+            //  更新状态
+            Contract c = Contract.CreateByID(this.ContractID);
+            if (Pass > 0)
+                c.Status = (long)ContractStatusEnum.已验收;
+            else
+                c.Status = (long)ContractStatusEnum.验收未通过;
+            c.Save();
+
+            return base.Update();
         }
     }
 }

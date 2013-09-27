@@ -66,6 +66,7 @@ namespace Haimen.GUI
 
             dtAcceptDate.EditValue = DateTime.Now;
             clMoney.EditValue = m_contract.Money - m_contract.Pay;
+            chkPass.Checked = true;
 
             m_contract_accept = new ContractAccept();
             m_contract_accept.ContractID = m_contract.ID;
