@@ -144,6 +144,7 @@
     <Compile Include="Entity\Company.cs" />
     <Compile Include="Entity\CompanyDetail.cs" />
     <Compile Include="Entity\Contract.cs" />
+    <Compile Include="Entity\ContractAccept.cs" />
     <Compile Include="Entity\ContractDetail.cs" />
     <Compile Include="Entity\Dict.cs" />
     <Compile Include="Entity\Funds.cs" />
@@ -154,148 +155,148 @@
     <Compile Include="Helper\INIFile.cs" />
     <Compile Include="Helper\PinyinHelper.cs" />
     <Compile Include="Helper\HMEnum.cs" />
-    <Compile Include="NewGUI\DevAcceptanceBill.cs">
+    <Compile Include="GUI\DevAcceptanceBill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevAcceptanceBill.Designer.cs">
+    <Compile Include="GUI\DevAcceptanceBill.Designer.cs">
       <DependentUpon>DevAcceptanceBill.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevAcceptanceBillFinish.cs">
+    <Compile Include="GUI\DevAcceptanceBillFinish.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevAcceptanceBillFinish.Designer.cs">
+    <Compile Include="GUI\DevAcceptanceBillFinish.Designer.cs">
       <DependentUpon>DevAcceptanceBillFinish.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevAcceptanceBillList.cs">
+    <Compile Include="GUI\DevAcceptanceBillList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevAcceptanceBillList.Designer.cs">
+    <Compile Include="GUI\DevAcceptanceBillList.Designer.cs">
       <DependentUpon>DevAcceptanceBillList.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevAccess.cs">
+    <Compile Include="GUI\DevAccess.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevAccess.Designer.cs">
+    <Compile Include="GUI\DevAccess.Designer.cs">
       <DependentUpon>DevAccess.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevAccount.cs">
+    <Compile Include="GUI\DevAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevAccount.Designer.cs">
+    <Compile Include="GUI\DevAccount.Designer.cs">
       <DependentUpon>DevAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevAccountList.cs">
+    <Compile Include="GUI\DevAccountList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevAccountList.Designer.cs">
+    <Compile Include="GUI\DevAccountList.Designer.cs">
       <DependentUpon>DevAccountList.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevAccountQuery.cs">
+    <Compile Include="GUI\DevAccountQuery.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevAccountQuery.Designer.cs">
+    <Compile Include="GUI\DevAccountQuery.Designer.cs">
       <DependentUpon>DevAccountQuery.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevBalance.cs">
+    <Compile Include="GUI\DevBalance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevBalance.Designer.cs">
+    <Compile Include="GUI\DevBalance.Designer.cs">
       <DependentUpon>DevBalance.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevBalanceList.cs">
+    <Compile Include="GUI\DevBalanceList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevBalanceList.Designer.cs">
+    <Compile Include="GUI\DevBalanceList.Designer.cs">
       <DependentUpon>DevBalanceList.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevBalanceQuery.cs">
+    <Compile Include="GUI\DevBalanceQuery.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevBalanceQuery.Designer.cs">
+    <Compile Include="GUI\DevBalanceQuery.Designer.cs">
       <DependentUpon>DevBalanceQuery.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevBankList.cs">
+    <Compile Include="GUI\DevBankList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevBankList.Designer.cs">
+    <Compile Include="GUI\DevBankList.Designer.cs">
       <DependentUpon>DevBankList.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevCompany.cs">
+    <Compile Include="GUI\DevCompany.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevCompany.Designer.cs">
+    <Compile Include="GUI\DevCompany.Designer.cs">
       <DependentUpon>DevCompany.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevCompanyDetailList.cs">
+    <Compile Include="GUI\DevCompanyDetailList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevCompanyDetailList.Designer.cs">
+    <Compile Include="GUI\DevCompanyDetailList.Designer.cs">
       <DependentUpon>DevCompanyDetailList.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevCompanyList.cs">
+    <Compile Include="GUI\DevCompanyList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevCompanyList.Designer.cs">
+    <Compile Include="GUI\DevCompanyList.Designer.cs">
       <DependentUpon>DevCompanyList.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevCompanyQuery.cs">
+    <Compile Include="GUI\DevCompanyQuery.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevCompanyQuery.Designer.cs">
+    <Compile Include="GUI\DevCompanyQuery.Designer.cs">
       <DependentUpon>DevCompanyQuery.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevContract.cs">
+    <Compile Include="GUI\DevContract.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevContract.Designer.cs">
+    <Compile Include="GUI\DevContract.Designer.cs">
       <DependentUpon>DevContract.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevContractList.cs">
+    <Compile Include="GUI\DevContractList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevContractList.Designer.cs">
+    <Compile Include="GUI\DevContractList.Designer.cs">
       <DependentUpon>DevContractList.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevContractQuery.cs">
+    <Compile Include="GUI\DevContractQuery.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevContractQuery.Designer.cs">
+    <Compile Include="GUI\DevContractQuery.Designer.cs">
       <DependentUpon>DevContractQuery.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevFundsList.cs">
+    <Compile Include="GUI\DevFundsList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevFundsList.Designer.cs">
+    <Compile Include="GUI\DevFundsList.Designer.cs">
       <DependentUpon>DevFundsList.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevLogin.cs">
+    <Compile Include="GUI\DevLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevLogin.Designer.cs">
+    <Compile Include="GUI\DevLogin.Designer.cs">
       <DependentUpon>DevLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevMain.cs">
+    <Compile Include="GUI\DevMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevMain.Designer.cs">
+    <Compile Include="GUI\DevMain.Designer.cs">
       <DependentUpon>DevMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevUser.cs">
+    <Compile Include="GUI\DevUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevUser.Designer.cs">
+    <Compile Include="GUI\DevUser.Designer.cs">
       <DependentUpon>DevUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\DevUserList.cs">
+    <Compile Include="GUI\DevUserList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\DevUserList.Designer.cs">
+    <Compile Include="GUI\DevUserList.Designer.cs">
       <DependentUpon>DevUserList.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewGUI\frmSplash.cs">
+    <Compile Include="GUI\frmSplash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewGUI\frmSplash.Designer.cs">
+    <Compile Include="GUI\frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
     <Compile Include="Qy\DataSet2List.cs" />
@@ -308,76 +309,76 @@
     <Compile Include="Qy\DBFunction.cs" />
     <Compile Include="Qy\MEntityFunction.cs" />
     <Compile Include="Qy\TEntityFunction.cs" />
-    <EmbeddedResource Include="NewGUI\DevAcceptanceBill.resx">
+    <EmbeddedResource Include="GUI\DevAcceptanceBill.resx">
       <DependentUpon>DevAcceptanceBill.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevAcceptanceBillFinish.resx">
+    <EmbeddedResource Include="GUI\DevAcceptanceBillFinish.resx">
       <DependentUpon>DevAcceptanceBillFinish.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevAcceptanceBillList.resx">
+    <EmbeddedResource Include="GUI\DevAcceptanceBillList.resx">
       <DependentUpon>DevAcceptanceBillList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevAccess.resx">
+    <EmbeddedResource Include="GUI\DevAccess.resx">
       <DependentUpon>DevAccess.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevAccount.resx">
+    <EmbeddedResource Include="GUI\DevAccount.resx">
       <DependentUpon>DevAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevAccountList.resx">
+    <EmbeddedResource Include="GUI\DevAccountList.resx">
       <DependentUpon>DevAccountList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevAccountQuery.resx">
+    <EmbeddedResource Include="GUI\DevAccountQuery.resx">
       <DependentUpon>DevAccountQuery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevBalance.resx">
+    <EmbeddedResource Include="GUI\DevBalance.resx">
       <DependentUpon>DevBalance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevBalanceList.resx">
+    <EmbeddedResource Include="GUI\DevBalanceList.resx">
       <DependentUpon>DevBalanceList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevBalanceQuery.resx">
+    <EmbeddedResource Include="GUI\DevBalanceQuery.resx">
       <DependentUpon>DevBalanceQuery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevBankList.resx">
+    <EmbeddedResource Include="GUI\DevBankList.resx">
       <DependentUpon>DevBankList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevCompany.resx">
+    <EmbeddedResource Include="GUI\DevCompany.resx">
       <DependentUpon>DevCompany.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevCompanyDetailList.resx">
+    <EmbeddedResource Include="GUI\DevCompanyDetailList.resx">
       <DependentUpon>DevCompanyDetailList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevCompanyList.resx">
+    <EmbeddedResource Include="GUI\DevCompanyList.resx">
       <DependentUpon>DevCompanyList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevCompanyQuery.resx">
+    <EmbeddedResource Include="GUI\DevCompanyQuery.resx">
       <DependentUpon>DevCompanyQuery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevContract.resx">
+    <EmbeddedResource Include="GUI\DevContract.resx">
       <DependentUpon>DevContract.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevContractList.resx">
+    <EmbeddedResource Include="GUI\DevContractList.resx">
       <DependentUpon>DevContractList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevContractQuery.resx">
+    <EmbeddedResource Include="GUI\DevContractQuery.resx">
       <DependentUpon>DevContractQuery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevFundsList.resx">
+    <EmbeddedResource Include="GUI\DevFundsList.resx">
       <DependentUpon>DevFundsList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevLogin.resx">
+    <EmbeddedResource Include="GUI\DevLogin.resx">
       <DependentUpon>DevLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevMain.resx">
+    <EmbeddedResource Include="GUI\DevMain.resx">
       <DependentUpon>DevMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevUser.resx">
+    <EmbeddedResource Include="GUI\DevUser.resx">
       <DependentUpon>DevUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\DevUserList.resx">
+    <EmbeddedResource Include="GUI\DevUserList.resx">
       <DependentUpon>DevUserList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewGUI\frmSplash.resx">
+    <EmbeddedResource Include="GUI\frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />

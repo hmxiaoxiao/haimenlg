@@ -65,8 +65,9 @@ namespace Haimen.Entity
                     m_contract_status.Add(new Dict("审核未通过",2));
                     m_contract_status.Add(new Dict("再次审核",3));
                     m_contract_status.Add(new Dict("付款中",4));
-                    m_contract_status.Add(new Dict("已验收",5));
-                    m_contract_status.Add(new Dict("已中止",6));
+                    m_contract_status.Add(new Dict("已验收", 5));
+                    m_contract_status.Add(new Dict("验收未通过", 6));
+                    m_contract_status.Add(new Dict("已中止", 7));
                 }
                 return m_contract_status;
             }
@@ -84,6 +85,7 @@ namespace Haimen.Entity
         再次审核,
         付款中,
         已验收,
+        验收未通过,
         已中止,
     }
 

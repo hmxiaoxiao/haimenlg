@@ -164,7 +164,7 @@ namespace Haimen.Entity
                 if (ContractID > 0)
                 {
                     Contract c = Contract.CreateByID(ContractID);
-                    c.UpdatePay(money);
+                    c.UpdatePay(Money);
                 }
 
                 inCD.Save();        // 保存收入单位帐号余额
