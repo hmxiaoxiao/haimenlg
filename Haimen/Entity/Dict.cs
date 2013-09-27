@@ -7,7 +7,7 @@ using Haimen.Qy;
 
 namespace Haimen.Entity
 {
-
+    // 字典表，用来显示状态
     public class Dict
     {
         public Dict()
@@ -20,8 +20,10 @@ namespace Haimen.Entity
             ValueInt = value;
         }
 
+        // 状态名称
         public string Name { get; set; }
 
+        // 状态值 
         public long ValueInt { get; set; }
     }
 

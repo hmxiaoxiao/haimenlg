@@ -164,8 +164,7 @@ namespace Haimen.Entity
                 if (ContractID > 0)
                 {
                     Contract c = Contract.CreateByID(ContractID);
-                    c.Pay += Money;  // 已付金额加上当前票据的金额
-                    c.Save();
+                    c.UpdatePay(money);
                 }
 
                 inCD.Save();        // 保存收入单位帐号余额
@@ -182,7 +181,7 @@ namespace Haimen.Entity
         public void CheckFaild()
         {
             this.RevUserID = GlobalSet.Current_User.ID;
-            this.Status = (long)MyCheckStatus.Unpass;
+            this.Status = (long)AccountStatusEnum.审核未通过;
             this.Save();
         }
 

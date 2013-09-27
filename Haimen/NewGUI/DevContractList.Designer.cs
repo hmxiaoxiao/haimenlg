@@ -42,9 +42,10 @@
             this.col_partya = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_partyb = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_incompany = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_pay = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_securigy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_status = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lueCheckStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.lueStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -59,9 +60,9 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.col_pay = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueCheckStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
@@ -184,6 +185,14 @@
             this.col_incompany.Visible = true;
             this.col_incompany.VisibleIndex = 5;
             // 
+            // col_pay
+            // 
+            this.col_pay.Caption = "已付金额";
+            this.col_pay.FieldName = "Pay";
+            this.col_pay.Name = "col_pay";
+            this.col_pay.Visible = true;
+            this.col_pay.VisibleIndex = 10;
+            // 
             // col_securigy
             // 
             this.col_securigy.Caption = "保证金";
@@ -194,21 +203,21 @@
             // 
             // col_status
             // 
-            this.col_status.Caption = "审核进度";
-            this.col_status.ColumnEdit = this.lueCheckStatus;
+            this.col_status.Caption = "状态";
+            this.col_status.ColumnEdit = this.lueStatus;
             this.col_status.FieldName = "Status";
             this.col_status.Name = "col_status";
             this.col_status.Visible = true;
             this.col_status.VisibleIndex = 13;
             // 
-            // lueCheckStatus
+            // lueStatus
             // 
-            this.lueCheckStatus.AutoHeight = false;
-            this.lueCheckStatus.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lueStatus.AutoHeight = false;
+            this.lueStatus.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueCheckStatus.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.lueStatus.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
-            this.lueCheckStatus.Name = "lueCheckStatus";
+            this.lueStatus.Name = "lueStatus";
             // 
             // gridControl1
             // 
@@ -217,7 +226,7 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.lueCheckStatus});
+            this.lueStatus});
             this.gridControl1.Size = new System.Drawing.Size(744, 522);
             this.gridControl1.TabIndex = 27;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -239,8 +248,9 @@
             this.tsbCheck,
             this.tsbQuery,
             this.tsbGen,
-            this.tsbExit});
-            this.barManager1.MaxItemId = 7;
+            this.tsbExit,
+            this.tsbRefresh});
+            this.barManager1.MaxItemId = 8;
             // 
             // bar1
             // 
@@ -254,6 +264,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbGen, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
@@ -342,13 +353,13 @@
             this.barDockControlRight.Location = new System.Drawing.Point(744, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
             // 
-            // col_pay
+            // tsbRefresh
             // 
-            this.col_pay.Caption = "已付金额";
-            this.col_pay.FieldName = "Pay";
-            this.col_pay.Name = "col_pay";
-            this.col_pay.Visible = true;
-            this.col_pay.VisibleIndex = 10;
+            this.tsbRefresh.Caption = "刷新";
+            this.tsbRefresh.Glyph = global::Haimen.Properties.Resources.Refresh_hot;
+            this.tsbRefresh.Id = 7;
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
             // 
             // DevContractList
             // 
@@ -364,7 +375,7 @@
             this.Text = "合同列表";
             this.Load += new System.EventHandler(this.DevContractList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueCheckStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
@@ -399,10 +410,11 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraGrid.Columns.GridColumn col_id;
         private DevExpress.XtraGrid.Columns.GridColumn col_status;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueCheckStatus;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueStatus;
         private DevExpress.XtraGrid.Columns.GridColumn col_partya;
         private DevExpress.XtraGrid.Columns.GridColumn col_partyb;
         private DevExpress.XtraGrid.Columns.GridColumn col_incompany;
         private DevExpress.XtraGrid.Columns.GridColumn col_pay;
+        private DevExpress.XtraBars.BarButtonItem tsbRefresh;
     }
 }

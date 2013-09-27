@@ -33,59 +33,70 @@ namespace Haimen.Entity
             } 
         }
 
-        private static List<Dict> m_list;
-        public static List<Dict> CheckList
+        private static List<Dict> m_account_status;
+        public static List<Dict> AccountStatus
         {
             get
             {
-                if (m_list == null)
+                if (m_account_status == null)
                 {
-                    m_list = new List<Dict>();
-                    m_list.Add(new Dict("未审核", 0));
-                    m_list.Add(new Dict("审核通过", 1));
-                    m_list.Add(new Dict("审核未通过", 2));
-                    m_list.Add(new Dict("再次审核", 3));
-                    m_list.Add(new Dict("支付中", 4));
-                    m_list.Add(new Dict("关闭", 5));
+                    m_account_status = new List<Dict>();
+                    m_account_status.Add(new Dict("未审核", 0));
+                    m_account_status.Add(new Dict("审核通过", 1));
+                    m_account_status.Add(new Dict("审核未通过", 2));
+                    m_account_status.Add(new Dict("再次审核", 3));
+                    m_account_status.Add(new Dict("支付中", 4));
+                    m_account_status.Add(new Dict("关闭", 5));
                 }
-                return m_list;
+                return m_account_status;
+            }
+        }
+
+        private static List<Dict> m_contract_status;
+        public static List<Dict> ContractStatus
+        {
+            get
+            {
+                if (m_contract_status == null)
+                {
+                    m_contract_status = new List<Dict>();
+                    m_contract_status.Add(new Dict("未审核",0));
+                    m_contract_status.Add(new Dict("审核通过",1));
+                    m_contract_status.Add(new Dict("审核未通过",2));
+                    m_contract_status.Add(new Dict("再次审核",3));
+                    m_contract_status.Add(new Dict("付款中",4));
+                    m_contract_status.Add(new Dict("已验收",5));
+                    m_contract_status.Add(new Dict("已中止",6));
+                }
+                return m_contract_status;
             }
         }
     }
 
     /// <summary>
-    /// 审核进度的状态
+    /// 合同的状态
     /// </summary>
-    public enum MyCheckStatus :long
+    public enum ContractStatusEnum : long
     {
-        /// <summary>
-        /// 未审核
-        /// </summary>
-        Uncheck = 0,
+        未审核 = 0,
+        审核通过,
+        审核未通过,
+        再次审核,
+        付款中,
+        已验收,
+        已中止,
+    }
 
-        /// <summary>
-        /// 审核通过
-        /// </summary>
-        Checked,
-
-        /// <summary>
-        /// 审核未通过
-        /// </summary>
-        Unpass,
-
-        /// <summary>
-        /// 再次审核
-        /// </summary>
-        ReCheck,
-
-        /// <summary>
-        /// 支付中
-        /// </summary>
-        Paying,
-
-        /// <summary>
-        /// 已关闭
-        /// </summary>
-        Close
+    /// <summary>
+    /// 资金的状态
+    /// </summary>
+    public enum AccountStatusEnum :long
+    {
+        未审核 = 0,
+        审核通过,
+        审核未通过,
+        再次审核,
+        支付中,
+        已关闭
     }
 }

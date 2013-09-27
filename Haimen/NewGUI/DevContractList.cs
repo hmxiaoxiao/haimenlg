@@ -72,11 +72,13 @@ namespace Haimen.NewGUI
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_contracts;
 
-            lueCheckStatus.DataSource = GlobalSet.CheckList;
-            lueCheckStatus.DisplayMember = "Name";
-            lueCheckStatus.ValueMember = "ValueInt";
+            lueStatus.DataSource = null;
+            lueStatus.DataSource = GlobalSet.ContractStatus;
+            lueStatus.DisplayMember = "Name";
+            lueStatus.ValueMember = "ValueInt";
 
             gridView1.BestFitColumns();
+            // 显示数据源
             SetControlAccess();
         }
 
@@ -192,6 +194,11 @@ namespace Haimen.NewGUI
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
+        }
+
+        private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MyRefresh();
         }
     }
 }

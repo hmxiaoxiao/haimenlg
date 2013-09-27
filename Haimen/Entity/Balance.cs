@@ -94,7 +94,7 @@ namespace Haimen.Entity
             using (TransactionScope ts = new TransactionScope())
             {
                 // 改标志为已审核
-                this.Status = (long)MyCheckStatus.Checked;
+                this.Status = (long)AccountStatusEnum.审核通过;
 
                 Company cor = Company.CreateByID(this.CompanyID);
 
@@ -130,7 +130,7 @@ namespace Haimen.Entity
         /// </summary>
         public void CheckFaild()
         {
-            this.Status = (long)MyCheckStatus.Unpass;
+            this.Status = (long)AccountStatusEnum.审核未通过;
             this.Save();
         }
 

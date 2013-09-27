@@ -190,14 +190,14 @@ namespace Haimen.Entity
         // 审核通过
         public void CheckPassed()
         {
-            this.Status = (long)MyCheckStatus.Checked;
+            this.Status = (long)AccountStatusEnum.审核通过;
             this.Save();
         }
 
         // 审核不通过
         public void CheckFaild()
         {
-            this.Status = (long)MyCheckStatus.Unpass;
+            this.Status = (long)AccountStatusEnum.审核未通过;
             this.Save();
         }
 
@@ -229,6 +229,17 @@ namespace Haimen.Entity
                 return false;
             else
                 return true;
+        }
+
+        /// <summary>
+        /// 更新已付的金额
+        /// </summary>
+        /// <param name="money"></param>
+        public void UpdatePay(decimal money)
+        {
+            Pay += money;
+            Status = (long)ContractStatusEnum.付款中;
+            Save();
         }
     }
 }

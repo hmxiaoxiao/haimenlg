@@ -237,17 +237,17 @@ namespace Haimen.NewGUI
 
             switch (m_contract.Status)
             {
-                case (long)MyCheckStatus.Uncheck:
+                case (long)AccountStatusEnum.未审核:
                     picPass.Visible = false;
                     picCheckFaild.Visible = false;
                     break;
-                case (long)MyCheckStatus.Unpass:
+                case (long)AccountStatusEnum.审核未通过:
                     picCheckFaild.Visible = true;
                     picPass.Visible = false;
                     break;
-                case (long)MyCheckStatus.Checked:
-                case (long)MyCheckStatus.Paying:
-                case (long)MyCheckStatus.Close:
+                case (long)AccountStatusEnum.审核通过:
+                case (long)AccountStatusEnum.支付中:
+                case (long)AccountStatusEnum.已关闭:
                     picCheckFaild.Visible = false;
                     picPass.Visible = true;
                     break;
