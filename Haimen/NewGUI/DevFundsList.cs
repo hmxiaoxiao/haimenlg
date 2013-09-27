@@ -74,7 +74,7 @@ namespace Haimen.NewGUI
         {
             List<Funds> fs = Funds.Query();
             tree.KeyFieldName = "ID";
-            tree.ParentFieldName = "Parent_ID";
+            tree.ParentFieldName = "ParentID";
             tree.DataSource = fs;
         }
 

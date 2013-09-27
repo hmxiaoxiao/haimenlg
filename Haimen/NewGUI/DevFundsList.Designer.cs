@@ -196,7 +196,7 @@
             this.tree.OptionsView.ShowHorzLines = false;
             this.tree.OptionsView.ShowIndicator = false;
             this.tree.OptionsView.ShowVertLines = false;
-            this.tree.ParentFieldName = "Parent_ID";
+            this.tree.ParentFieldName = "ParentID";
             this.tree.Size = new System.Drawing.Size(247, 450);
             this.tree.TabIndex = 1;
             this.tree.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Light;
@@ -260,7 +260,7 @@
             // 
             this.col_parent.Caption = "父结点";
             this.col_parent.ColumnEdit = this.lueFunds;
-            this.col_parent.FieldName = "Parent_ID";
+            this.col_parent.FieldName = "ParentID";
             this.col_parent.Name = "col_parent";
             this.col_parent.Visible = true;
             this.col_parent.VisibleIndex = 1;

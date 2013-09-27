@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Haimen.GUI;
 using Haimen.Entity;
 using Haimen.Helper;
 

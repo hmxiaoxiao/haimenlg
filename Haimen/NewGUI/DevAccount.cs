@@ -184,11 +184,13 @@ namespace Haimen.NewGUI
             lueOutCompany.Properties.ValueMember = "ID";
 
             // 初始化明细
-            gridControl1.DataSource = m_account.DetailList;
-             List<Funds> fundslist = Funds.Query();
+            List<Funds> fundslist = Funds.Query();
             luefunds.DataSource = fundslist;
             luefunds.DisplayMember = "Name";
             luefunds.ValueMember = "ID";
+
+            gridControl1.DataSource = m_account.DetailList;
+
 
             // 初始化附件列表
             lstFiles.Items.Clear();
