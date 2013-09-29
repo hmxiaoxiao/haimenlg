@@ -148,51 +148,17 @@ namespace Haimen.Helper
     /// </summary>
     public enum FctionEnum : long
     {
-        /// <summary>
-        /// 资金往来
-        /// </summary>
         资金往来 = 1,
-
-        /// <summary>
-        /// 合同
-        /// </summary>
         合同,
-
-        /// <summary>
-        /// 贷款
-        /// </summary>
+        合同验收,
         贷款,
-
-        /// <summary>
-        /// 银行
-        /// </summary>
         银行,
-
-        /// <summary>
-        /// 单位
-        /// </summary>
         单位,
-
-        /// <summary>
-        /// 资金性质 
-        /// </summary>
         资金性质,
-
-        /// <summary>
-        /// 单位帐户明细
-        /// </summary>
         单位帐户明细,
-
-        /// <summary>
-        /// 用户
-        /// </summary>
+        项目,
         用户,
-
-        /// <summary>
-        /// 通知
-        /// </summary>
         通知,
-
         承兑汇票,
         权限,
     }

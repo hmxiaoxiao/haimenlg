@@ -148,6 +148,7 @@
     <Compile Include="Entity\ContractDetail.cs" />
     <Compile Include="Entity\Dict.cs" />
     <Compile Include="Entity\Funds.cs" />
+    <Compile Include="Entity\Project.cs" />
     <Compile Include="Entity\UserGroup.cs" />
     <Compile Include="GUI\DevContractAccept.cs">
       <SubType>Form</SubType>
@@ -160,6 +161,12 @@
     </Compile>
     <Compile Include="GUI\DevContractAcceptList.Designer.cs">
       <DependentUpon>DevContractAcceptList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DevProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DevProject.Designer.cs">
+      <DependentUpon>DevProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\CustomerINI.cs" />
     <Compile Include="Helper\FTPClient.cs" />
@@ -389,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevMain.resx">
       <DependentUpon>DevMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DevProject.resx">
+      <DependentUpon>DevProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevUser.resx">
       <DependentUpon>DevUser.cs</DependentUpon>

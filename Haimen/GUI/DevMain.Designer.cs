@@ -67,6 +67,7 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.mnuProject = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -94,9 +95,10 @@
             this.mnuAccess,
             this.mnuAcceptanceBillList,
             this.mnuAcceptanceBill,
-            this.mnuContractAcceptList});
+            this.mnuContractAcceptList,
+            this.mnuProject});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 37;
+            this.ribbon.MaxItemId = 38;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -368,6 +370,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.mnuBank);
             this.ribbonPageGroup1.ItemLinks.Add(this.mnuCompany);
             this.ribbonPageGroup1.ItemLinks.Add(this.mnuFouds);
+            this.ribbonPageGroup1.ItemLinks.Add(this.mnuProject);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
             this.ribbonPageGroup1.Text = "字典";
@@ -441,6 +444,17 @@
             // 
             this.mdiManager.MdiParent = this;
             // 
+            // mnuProject
+            // 
+            this.mnuProject.Caption = "项目 ";
+            this.mnuProject.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuProject.Glyph = global::Haimen.Properties.Resources.Books_hot;
+            this.mnuProject.Id = 37;
+            this.mnuProject.Name = "mnuProject";
+            this.mnuProject.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuProject.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuProject_ItemClick);
+            // 
             // DevMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -502,5 +516,6 @@
         private DevExpress.XtraBars.BarButtonItem mnuAcceptanceBill;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
         private DevExpress.XtraBars.BarButtonItem mnuContractAcceptList;
+        private DevExpress.XtraBars.BarButtonItem mnuProject;
     }
 }

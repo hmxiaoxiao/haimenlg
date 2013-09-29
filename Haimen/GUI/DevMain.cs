@@ -218,7 +218,18 @@ namespace Haimen.NewGUI
 
         private void mnuContractAcceptList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            OpenForm(new DevContractAcceptList());
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同验收, (long)ActionEnum.View))
+                OpenForm(new DevContractAcceptList());
+            else
+                MessageBox.Show("您无权限使用该功能");
+        }
+
+        private void mnuProject_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.项目, (long)ActionEnum.View))
+                OpenForm(new DevProject());
+            else
+                MessageBox.Show("您无权限使用该功能");
         }
     }
 }
