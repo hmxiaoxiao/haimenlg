@@ -40,7 +40,7 @@ namespace Haimen.NewGUI
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DevMain main = (DevMain)this.ParentForm;
-            main.OpenForm(new DevAcceptanceBill(winStatusEnum.New));
+            main.OpenForm(new DevAcceptanceBill(winStatusEnum.新增));
         }
 
         private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -54,7 +54,7 @@ namespace Haimen.NewGUI
                 if (a.ID == id && a.Status == 0)
                 {
                     DevMain main = (DevMain)this.ParentForm;
-                    main.OpenForm(new DevAcceptanceBill(winStatusEnum.Edit, a));
+                    main.OpenForm(new DevAcceptanceBill(winStatusEnum.编辑, a));
                     return;
                 }
             }

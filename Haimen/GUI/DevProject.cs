@@ -38,19 +38,19 @@ namespace Haimen.GUI
             m_status = status;
             switch (status)
             {
-                case winStatusEnum.View:
+                case winStatusEnum.查看:
                     tsbDelete.Enabled = true;
                     tsbEdit.Enabled = true;
                     tsbNew.Enabled = true;
                     tsbSave.Enabled = false;
                     break;
-                case winStatusEnum.Edit:
+                case winStatusEnum.编辑:
                     tsbDelete.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbNew.Enabled = false;
                     tsbSave.Enabled = true;
                     break;
-                case winStatusEnum.New:
+                case winStatusEnum.新增:
                     tsbDelete.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbNew.Enabled = false;
@@ -86,7 +86,7 @@ namespace Haimen.GUI
         private void DevProject_Load(object sender, EventArgs e)
         {
             MyRefresh();
-            setWinStatus(winStatusEnum.View);       // 当前的状态为浏览
+            setWinStatus(winStatusEnum.查看);       // 当前的状态为浏览
             SetControlAccess();
         }
 
@@ -98,7 +98,7 @@ namespace Haimen.GUI
             gridControl1.DataSource = m_projects;
             gridView1.OptionsBehavior.Editable = true;
 
-            setWinStatus(winStatusEnum.New);
+            setWinStatus(winStatusEnum.新增);
         }
 
         private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -114,7 +114,7 @@ namespace Haimen.GUI
                     m_project = bk;
             }
             gridView1.OptionsBehavior.Editable = true;
-            setWinStatus(winStatusEnum.Edit);
+            setWinStatus(winStatusEnum.编辑);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Haimen.GUI
                 }
             }
             m_project = null;
-            setWinStatus(winStatusEnum.View);
+            setWinStatus(winStatusEnum.查看);
             MyRefresh();
         }
 
@@ -164,7 +164,7 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatusEnum.View)
+            if (m_status != winStatusEnum.查看)
             {
                 if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
                         MessageBoxButtons.YesNo,
@@ -193,13 +193,13 @@ namespace Haimen.GUI
 
             m_project = null;
             gridView1.OptionsBehavior.Editable = false;
-            setWinStatus(winStatusEnum.View);
+            setWinStatus(winStatusEnum.查看);
         }
 
         // 设置新增或者行的颜色。
         private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            if (m_status == winStatusEnum.New || m_status == winStatusEnum.Edit)
+            if (m_status == winStatusEnum.新增 || m_status == winStatusEnum.编辑)
             {
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_project.ID)
                     e.Appearance.BackColor = Color.LightSteelBlue;
@@ -210,7 +210,7 @@ namespace Haimen.GUI
         // 新增或者编辑时，不可以离开当前行
         private void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
         {
-            if (m_status == winStatusEnum.New || m_status == winStatusEnum.Edit)
+            if (m_status == winStatusEnum.新增 || m_status == winStatusEnum.编辑)
             {
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_project.ID)
                     e.Allow = false;

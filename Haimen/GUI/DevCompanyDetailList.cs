@@ -43,7 +43,7 @@ namespace Haimen.NewGUI
             m_status = status;
             switch (status)
             {
-                case winStatusEnum.View:
+                case winStatusEnum.查看:
                     tsbNew.Enabled = true;
                     tsbEdit.Enabled = true;
                     tsbDelete.Enabled = true;
@@ -51,14 +51,14 @@ namespace Haimen.NewGUI
 
                     gridView1.OptionsBehavior.Editable = false;
                     break;
-                case winStatusEnum.Edit:
+                case winStatusEnum.编辑:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbDelete.Enabled = false;
                     tsbSave.Enabled = true;
                     gridView1.OptionsBehavior.Editable = true;
                     break;
-                case winStatusEnum.New:
+                case winStatusEnum.新增:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbDelete.Enabled = false;
@@ -92,7 +92,7 @@ namespace Haimen.NewGUI
         private void DevCompanyDetailList_Load(object sender, EventArgs e)
         {
             MyRefresh();
-            SetFormStatus(winStatusEnum.View);
+            SetFormStatus(winStatusEnum.查看);
             SetControlAccess();
         }
 
@@ -155,7 +155,7 @@ namespace Haimen.NewGUI
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_company.DetailList;
 
-            SetFormStatus(winStatusEnum.New);
+            SetFormStatus(winStatusEnum.新增);
         }
 
         /// <summary>
@@ -204,13 +204,13 @@ namespace Haimen.NewGUI
             else
             {
                 MessageBox.Show("保存成功！", "注意");
-                SetFormStatus(winStatusEnum.View);
+                SetFormStatus(winStatusEnum.查看);
             }
         }
 
         private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            if (m_status == winStatusEnum.New || m_status == winStatusEnum.Edit)
+            if (m_status == winStatusEnum.新增 || m_status == winStatusEnum.编辑)
             {
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_detail.ID)
                     e.Appearance.BackColor = Color.LightSteelBlue;
@@ -219,7 +219,7 @@ namespace Haimen.NewGUI
 
         private void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
         {
-            if (m_status == winStatusEnum.New || m_status == winStatusEnum.Edit)
+            if (m_status == winStatusEnum.新增 || m_status == winStatusEnum.编辑)
             {
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_detail.ID)
                     e.Allow = false;
@@ -233,7 +233,7 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatusEnum.View)
+            if (m_status != winStatusEnum.查看)
             {
                 if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
                         MessageBoxButtons.YesNo,
@@ -263,7 +263,7 @@ namespace Haimen.NewGUI
                 if (cd.ID == id)
                     m_detail = cd;
             }
-            SetFormStatus(winStatusEnum.Edit);
+            SetFormStatus(winStatusEnum.编辑);
         }
 
 
@@ -274,7 +274,7 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatusEnum.View)
+            if (m_status != winStatusEnum.查看)
             {
                 if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
                         MessageBoxButtons.YesNo,
@@ -285,7 +285,7 @@ namespace Haimen.NewGUI
                 }
             }
             MyRefresh();
-            SetFormStatus(winStatusEnum.View);
+            SetFormStatus(winStatusEnum.查看);
         }
     }
 }

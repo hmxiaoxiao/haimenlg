@@ -122,7 +122,7 @@ namespace Haimen.NewGUI
         private void mnuAccount_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.New))
-                OpenForm(new DevAccount(winStatusEnum.New));
+                OpenForm(new DevAccount(winStatusEnum.新增));
             else
                 MessageBox.Show("您无权限使用该功能");
         }
@@ -169,7 +169,7 @@ namespace Haimen.NewGUI
         private void mnuContract_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.New))
-                OpenForm(new DevContract(winStatusEnum.New));
+                OpenForm(new DevContract(winStatusEnum.新增));
             else
                 MessageBox.Show("您无权限使用该功能");
         }
@@ -185,7 +185,7 @@ namespace Haimen.NewGUI
         private void mnuBalance_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.New))
-                OpenForm(new DevBalance(winStatusEnum.New));
+                OpenForm(new DevBalance(winStatusEnum.新增));
             else
                 MessageBox.Show("您无权限使用该功能");
         }
@@ -203,7 +203,7 @@ namespace Haimen.NewGUI
         private void mnuAcceptanceBill_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.承兑汇票, (long)ActionEnum.New))
-                OpenForm(new DevAcceptanceBill(winStatusEnum.New));
+                OpenForm(new DevAcceptanceBill(winStatusEnum.新增));
             else
                 MessageBox.Show("您无权限使用该功能");
         }

@@ -56,31 +56,31 @@ namespace Haimen.NewGUI
             m_status = status;
             switch (m_status)
             {
-                case winStatusEnum.New:
+                case winStatusEnum.新增:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbDelete.Enabled = false;
                     tsbSave.Enabled = true;
                     break;
-                case winStatusEnum.Edit:
+                case winStatusEnum.编辑:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbDelete.Enabled = false;
                     tsbSave.Enabled = true;
                     break;
-                case winStatusEnum.View:
+                case winStatusEnum.查看:
                     tsbNew.Enabled = true;
                     tsbEdit.Enabled = true;
                     tsbDelete.Enabled = true;
                     tsbSave.Enabled = false;
                     break;
-                case winStatusEnum.Check:
+                case winStatusEnum.审核:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbDelete.Enabled = false;
                     tsbSave.Enabled = false;
                     break;
-                case winStatusEnum.OnlyView:
+                case winStatusEnum.纯查看:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbDelete.Enabled = false;
@@ -381,7 +381,7 @@ namespace Haimen.NewGUI
         {
             m_acceptance_bill = new AcceptanceBill();
             Object2Form();                      //  对象显示到界面
-            SetFormStatus(winStatusEnum.New);
+            SetFormStatus(winStatusEnum.新增);
             SetEditorStatus(true);              // 可以编辑
             dtDrawDate.Focus();                 // 设置输入焦点
         }
@@ -392,7 +392,7 @@ namespace Haimen.NewGUI
             if (m_acceptance_bill != null && m_acceptance_bill.ID > 0)
             {
                 Object2Form();                      //  对象显示到界面
-                SetFormStatus(winStatusEnum.Edit);
+                SetFormStatus(winStatusEnum.编辑);
                 SetEditorStatus(true);              // 可以编辑
                 dtDrawDate.Focus();                 // 设置输入焦点
             }
@@ -408,7 +408,7 @@ namespace Haimen.NewGUI
                 Object2Form();
 
                 m_acceptance_bill = null;
-                SetFormStatus(winStatusEnum.View);
+                SetFormStatus(winStatusEnum.查看);
             }
         }
 
@@ -423,12 +423,12 @@ namespace Haimen.NewGUI
 
             // 设置状态
             SetEditorStatus(false);        // 不可编辑
-            SetFormStatus(winStatusEnum.View);               // 设置状态
+            SetFormStatus(winStatusEnum.查看);               // 设置状态
         }
 
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(m_status == winStatusEnum.View || m_status == winStatusEnum.OnlyView))
+            if (!(m_status == winStatusEnum.查看 || m_status == winStatusEnum.纯查看))
             {
                 if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
                                    "警告",

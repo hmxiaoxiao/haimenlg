@@ -8,30 +8,12 @@ namespace Haimen.Helper
     // 当前窗口的状态
     public enum winStatusEnum
     {
-        /// <summary>
-        /// 查看
-        /// </summary>
-        View,
-
-        /// <summary>
-        ///  新增
-        /// </summary>
-        New,
-
-        /// <summary>
-        /// 编辑
-        /// </summary>
-        Edit,
-
-        /// <summary>
-        /// 审核
-        /// </summary>
-        Check,
-
-        /// <summary>
-        /// 只是查看
-        /// </summary>
-        OnlyView,
+        查看,
+        新增,
+        编辑,
+        审核,
+        支付,
+        纯查看,
     }
 
     /// <summary>

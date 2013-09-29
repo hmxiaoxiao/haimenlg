@@ -54,7 +54,7 @@ namespace Haimen.NewGUI
         {
             Balance bal = CurrentSelectObject();
             if (bal != null)
-                m_main_window.OpenForm(new DevBalance(winStatusEnum.Edit, bal));
+                m_main_window.OpenForm(new DevBalance(winStatusEnum.编辑, bal));
             return;
         }
 
@@ -111,7 +111,7 @@ namespace Haimen.NewGUI
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DevMain main = (DevMain)this.ParentForm;
-            main.OpenForm(new DevBalance(winStatusEnum.New));
+            main.OpenForm(new DevBalance(winStatusEnum.新增));
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Haimen.NewGUI
         {
             Balance bal = CurrentSelectObject();
             if (bal != null)
-                m_main_window.OpenForm(new DevBalance(winStatusEnum.Check, bal));
+                m_main_window.OpenForm(new DevBalance(winStatusEnum.审核, bal));
         }
 
         /// <summary>

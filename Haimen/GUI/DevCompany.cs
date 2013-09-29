@@ -60,19 +60,19 @@ namespace Haimen.NewGUI
             m_status = status;
             switch (status)
             {
-                case winStatusEnum.New:
+                case winStatusEnum.新增:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbSave.Enabled = true;
                     SetControlStatus(true);     //  控件可用
                     break;
-                case winStatusEnum.Edit:
+                case winStatusEnum.编辑:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbSave.Enabled = true;
                     SetControlStatus(true);     //  控件可用
                     break;
-                case winStatusEnum.View:
+                case winStatusEnum.查看:
                     tsbNew.Enabled = true;
                     tsbEdit.Enabled = true;
                     tsbSave.Enabled = false;
@@ -197,12 +197,12 @@ namespace Haimen.NewGUI
             InitializeComponent();
             if (company != null)
             {
-                SetFormStatus(winStatusEnum.Edit);
+                SetFormStatus(winStatusEnum.编辑);
                 m_company = company;
             }
             else
             {
-                SetFormStatus(winStatusEnum.New);
+                SetFormStatus(winStatusEnum.新增);
                 m_company = new Company();
             }
         }
@@ -237,12 +237,12 @@ namespace Haimen.NewGUI
 
             MessageBox.Show("保存成功！", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            SetFormStatus(winStatusEnum.View);
+            SetFormStatus(winStatusEnum.查看);
         }
 
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatusEnum.View)
+            if (m_status != winStatusEnum.查看)
             {
                 if (MessageBox.Show("现在退出，当前的数据将会丢失，是否要退出？", "注意！",
                                     MessageBoxButtons.YesNo,
@@ -259,14 +259,14 @@ namespace Haimen.NewGUI
             m_company = new Company();
             initBankList();
             Object2Form();
-            SetFormStatus(winStatusEnum.New);
+            SetFormStatus(winStatusEnum.新增);
         }
 
         private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             initBankList();
             Object2Form();
-            SetFormStatus(winStatusEnum.New);
+            SetFormStatus(winStatusEnum.新增);
         }
 
         private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -276,7 +276,7 @@ namespace Haimen.NewGUI
                 m_company.Destory();
                 m_company = new Company();
                 Object2Form();
-                SetFormStatus(winStatusEnum.New);
+                SetFormStatus(winStatusEnum.新增);
             }
         }
     }

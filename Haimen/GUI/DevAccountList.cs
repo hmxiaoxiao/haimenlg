@@ -45,7 +45,7 @@ namespace Haimen.NewGUI
         /// <summary>
         /// 编辑资金
         /// </summary>
-        private void EditAccount(winStatusEnum status = winStatusEnum.Edit)
+        private void EditAccount(winStatusEnum status = winStatusEnum.编辑)
         {
             if (gridView1.FocusedRowHandle < 0)
                 return;
@@ -175,7 +175,7 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void tsbCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            EditAccount(winStatusEnum.Check);
+            EditAccount(winStatusEnum.审核);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
-            EditAccount(winStatusEnum.OnlyView);
+            EditAccount(winStatusEnum.纯查看);
         }
 
         /// <summary>
@@ -240,7 +240,7 @@ namespace Haimen.NewGUI
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DevMain main = (DevMain)this.ParentForm;
-            main.OpenForm(new DevAccount(winStatusEnum.New));
+            main.OpenForm(new DevAccount(winStatusEnum.新增));
         }
 
 
@@ -252,6 +252,11 @@ namespace Haimen.NewGUI
         private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MyRefresh();
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            EditAccount(winStatusEnum.支付);
         }
     }
 }

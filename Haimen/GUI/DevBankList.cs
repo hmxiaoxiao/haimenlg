@@ -49,19 +49,19 @@ namespace Haimen.NewGUI
             m_status = status;
             switch (status)
             {
-                case winStatusEnum.View:
+                case winStatusEnum.查看:
                     tsbDelete.Enabled = true;
                     tsbEdit.Enabled = true;
                     tsbNew.Enabled = true;
                     tsbSave.Enabled = false;
                     break;
-                case winStatusEnum.Edit:
+                case winStatusEnum.编辑:
                     tsbDelete.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbNew.Enabled = false;
                     tsbSave.Enabled = true;
                     break;
-                case winStatusEnum.New:
+                case winStatusEnum.新增:
                     tsbDelete.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbNew.Enabled = false;
@@ -84,7 +84,7 @@ namespace Haimen.NewGUI
         {
             initTree();
             ShowBank2Grid();
-            setWinStatus(winStatusEnum.View);       // 当前的状态为浏览
+            setWinStatus(winStatusEnum.查看);       // 当前的状态为浏览
             SetControlAccess();
         }
 
@@ -146,7 +146,7 @@ namespace Haimen.NewGUI
             gridControl1.DataSource = m_banks;
             gridView1.OptionsBehavior.Editable = true;
 
-            setWinStatus(winStatusEnum.New);
+            setWinStatus(winStatusEnum.新增);
         }
 
 
@@ -167,7 +167,7 @@ namespace Haimen.NewGUI
 
             m_bank = null;
             gridView1.OptionsBehavior.Editable = false;
-            setWinStatus(winStatusEnum.View);
+            setWinStatus(winStatusEnum.查看);
         }
 
         // 修改银行信息
@@ -184,13 +184,13 @@ namespace Haimen.NewGUI
                     m_bank = bk;
             }
             gridView1.OptionsBehavior.Editable = true;
-            setWinStatus(winStatusEnum.Edit);
+            setWinStatus(winStatusEnum.编辑);
         }
 
         // 设置新增或者行的颜色。
         private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            if (m_status == winStatusEnum.New || m_status == winStatusEnum.Edit )
+            if (m_status == winStatusEnum.新增 || m_status == winStatusEnum.编辑 )
             {
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_bank.ID)
                     e.Appearance.BackColor = Color.LightSteelBlue;
@@ -201,7 +201,7 @@ namespace Haimen.NewGUI
         // 新增或者编辑时，不可以离开当前行
         private void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
         {
-            if (m_status == winStatusEnum.New || m_status == winStatusEnum.Edit)
+            if (m_status == winStatusEnum.新增 || m_status == winStatusEnum.编辑)
             {
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_bank.ID)
                     e.Allow = false;
@@ -211,7 +211,7 @@ namespace Haimen.NewGUI
         // 新增和编辑时，代码自动从名称中转换过来。
         private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            if ((m_status == winStatusEnum.New || m_status == winStatusEnum.Edit) && e.Column.Name == "col_name")
+            if ((m_status == winStatusEnum.新增 || m_status == winStatusEnum.编辑) && e.Column.Name == "col_name")
             {
                 gridView1.SetRowCellValue(e.RowHandle, "Code", PinyinHelper.GetShortPinyin(e.Value.ToString()).ToUpper());
                 //m_bank.Name = e.Value.ToString();
@@ -240,7 +240,7 @@ namespace Haimen.NewGUI
                 }
             }
             m_bank = null;
-            setWinStatus(winStatusEnum.View);
+            setWinStatus(winStatusEnum.查看);
             initTree();
             ShowBank2Grid();
         }
@@ -249,7 +249,7 @@ namespace Haimen.NewGUI
         // 关闭窗口退出
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatusEnum.View)
+            if (m_status != winStatusEnum.查看)
             {
                 if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
                         MessageBoxButtons.YesNo,

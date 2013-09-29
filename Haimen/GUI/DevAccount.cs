@@ -78,7 +78,7 @@ namespace Haimen.NewGUI
             m_status = status;
             switch (status)
             {
-                case winStatusEnum.New:
+                case winStatusEnum.新增:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -87,7 +87,7 @@ namespace Haimen.NewGUI
                     tbCheckPassed.Enabled = false;
                     SetEditorStatus(true);
                     break;
-                case winStatusEnum.Edit:
+                case winStatusEnum.编辑:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -96,7 +96,7 @@ namespace Haimen.NewGUI
                     tbCheckPassed.Enabled = false;
                     SetEditorStatus(true);
                     break;
-                case winStatusEnum.View:
+                case winStatusEnum.查看:
                     tbNew.Enabled = true;
                     tbEdit.Enabled = true;
                     tbDelete.Enabled = true;
@@ -105,7 +105,7 @@ namespace Haimen.NewGUI
                     tbCheckPassed.Enabled = false;
                     SetEditorStatus(false);
                     break;
-                case winStatusEnum.Check:
+                case winStatusEnum.审核:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -114,13 +114,20 @@ namespace Haimen.NewGUI
                     tbCheckPassed.Enabled = true;
                     SetEditorStatus(false);
                     break;
-                case winStatusEnum.OnlyView:
+                case winStatusEnum.纯查看:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
                     tbSave.Enabled = false;
                     tbCheckFaild.Enabled = false;
                     tbCheckPassed.Enabled = false;
+                    SetEditorStatus(false);
+                    break;
+                case winStatusEnum.支付:
+                    bar1.Visible = false;
+                    bar2.Visible = true;
+                    bar2.Offset = 0;
+
                     SetEditorStatus(false);
                     break;
             }
@@ -139,6 +146,13 @@ namespace Haimen.NewGUI
             lueInAccount.Enabled = status;
             lueOutAccount.Enabled = status;
             txtMemo.Enabled = status;
+
+            lueProjects.Enabled = status;
+            chkRelease.Enabled = status;
+            lueMaker.Enabled = status;
+            lueReviewer.Enabled = status;
+            lueCashier.EditValue = status;
+
 
             tsbNew.Enabled = status;
             tsbDelete.Enabled = status;
@@ -186,6 +200,29 @@ namespace Haimen.NewGUI
             lueOutCompany.Properties.DisplayMember = "Name";
             lueOutCompany.Properties.ValueMember = "ID";
 
+            // 项目数据来源
+            lueProjects.Properties.DataSource = null;
+            lueProjects.Properties.DataSource = Project.Query();
+            lueProjects.Properties.DisplayMember = "Name";
+            lueProjects.Properties.ValueMember = "ID";
+
+            // 制作人，审核人，出纳人的数据来源
+            List<User> users = User.Query();
+            lueMaker.Properties.DataSource = null;
+            lueMaker.Properties.DataSource = users;
+            lueMaker.Properties.DisplayMember = "Name";
+            lueMaker.Properties.ValueMember = "ID";
+
+            lueReviewer.Properties.DataSource = null;
+            lueReviewer.Properties.DataSource = users;
+            lueReviewer.Properties.DisplayMember = "Name";
+            lueReviewer.Properties.ValueMember = "ID";
+
+            lueCashier.Properties.DataSource = null;
+            lueCashier.Properties.DataSource = users;
+            lueCashier.Properties.DisplayMember = "Name";
+            lueCashier.Properties.ValueMember = "ID";
+
             // 初始化明细
             List<Funds> fundslist = Funds.Query();
             luefunds.DataSource = fundslist;
@@ -206,6 +243,10 @@ namespace Haimen.NewGUI
                 dtSigned.DateTime = m_account.SignedDate;
                 txtCode.Text = m_account.Code;
                 txtMoney.Text = m_account.Money.ToString();
+                lueProjects.EditValue = m_account.ProjectID;
+                lueMaker.EditValue = m_account.MakerID;
+                lueReviewer.EditValue = m_account.ReviewerID;
+                lueCashier.EditValue = m_account.CashierID;
 
                 lueOutCompany.Properties.LockEvents();
                 lueInCompany.Properties.LockEvents();
@@ -242,8 +283,12 @@ namespace Haimen.NewGUI
             }
             else
             {
+                // 制作人为当前用户
+                lueMaker.EditValue = GlobalSet.Current_User.ID;
+
                 dtSigned.EditValue = DateTime.Now;
                 txtCode.Text = "";
+                
                 lueInCompany.EditValue = null;
                 lueInAccount.EditValue = null;
                 txtOutBank.Text = "";
@@ -337,6 +382,7 @@ namespace Haimen.NewGUI
             }
         }
 
+        // 显示审核的图片
         private void ShowCheckPic()
         {
             switch (m_account.Status)
@@ -352,14 +398,20 @@ namespace Haimen.NewGUI
             }
         }
 
-        /// <summary>
-        /// 初始化列表
-        /// </summary>
-        private void InitList()
+        // 关闭窗口
+        private void FormClose()
         {
-
+            if (!(m_status == winStatusEnum.查看 || m_status == winStatusEnum.纯查看))
+            {
+                if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
+                                   "警告",
+                                   MessageBoxButtons.YesNoCancel,
+                                   MessageBoxIcon.Warning,
+                                   MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes)
+                    return;
+            }
+            this.Close();
         }
-
         /// <summary>
         /// 校验
         /// </summary>
@@ -400,8 +452,9 @@ namespace Haimen.NewGUI
             else
                 m_account = new Account();
 
-            // 保存传过来的对应的贷款或合同ID
-            if (ContractID > 0)
+
+            // 保存传过来的对应的贷款或合同ID或者合同验收号
+            if (ContractID > 0)     
                 m_account.ContractID = ContractID;
 
             if (BalanceID > 0)
@@ -415,7 +468,6 @@ namespace Haimen.NewGUI
         private void DevAccount_Load(object sender, EventArgs e)
         {
             // 初始化界面
-            InitList();
             Object2form();
 
             SetControlAccess();
@@ -512,7 +564,7 @@ namespace Haimen.NewGUI
             if (m_account.Save())
             {
                 MessageBox.Show("保存成功！");
-                SetFormStatus(winStatusEnum.View);
+                SetFormStatus(winStatusEnum.查看);
             }
         }
 
@@ -525,7 +577,7 @@ namespace Haimen.NewGUI
         {
             m_account = new Account();
             Object2form();
-            SetFormStatus(winStatusEnum.New);
+            SetFormStatus(winStatusEnum.新增);
         }
 
 
@@ -540,7 +592,7 @@ namespace Haimen.NewGUI
                 return;
 
             Object2form();
-            SetFormStatus(winStatusEnum.Edit);
+            SetFormStatus(winStatusEnum.编辑);
         }
 
         /// <summary>
@@ -597,17 +649,10 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void tbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(m_status == winStatusEnum.View || m_status == winStatusEnum.OnlyView))
-            {
-                if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
-                                   "警告",
-                                   MessageBoxButtons.YesNoCancel,
-                                   MessageBoxIcon.Warning,
-                                   MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes)
-                    return;
-            }
-            this.Close();
+            FormClose();
         }
+
+
 
         /// <summary>
         /// 删除附件
@@ -669,7 +714,7 @@ namespace Haimen.NewGUI
         private void tbCheckPassed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_account.CheckPass();
-            SetFormStatus(winStatusEnum.OnlyView);      //审核通过后，只能看。
+            SetFormStatus(winStatusEnum.纯查看);      //审核通过后，只能看。
             ShowCheckPic();
         }
 
@@ -681,7 +726,7 @@ namespace Haimen.NewGUI
         private void tbCheckFaild_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_account.CheckFaild();
-            SetFormStatus(winStatusEnum.View);
+            SetFormStatus(winStatusEnum.查看);
         }
 
 
@@ -727,6 +772,18 @@ namespace Haimen.NewGUI
         private void txtMoney_TextChanged(object sender, EventArgs e)
         {
             txtCMoney.Text = Haimen.Helper.Helper.ConvertToChinese( double.Parse(txtMoney.Text) );
+        }
+
+        private void tbExit2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FormClose();
+        }
+
+        private void tbPay_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            m_account.Payed();
+            SetFormStatus(winStatusEnum.纯查看);      //审核通过后，只能看。
+            ShowCheckPic();
         }
     }
 }

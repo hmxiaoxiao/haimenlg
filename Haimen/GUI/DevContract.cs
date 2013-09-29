@@ -64,8 +64,8 @@ namespace Haimen.NewGUI
             m_status = status;
             switch (status)
             {
-                case winStatusEnum.New:
-                case winStatusEnum.Edit:
+                case winStatusEnum.新增:
+                case winStatusEnum.编辑:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -75,7 +75,7 @@ namespace Haimen.NewGUI
 
                     SetControlStatus(true);
                     break;
-                case winStatusEnum.View:
+                case winStatusEnum.查看:
                     tbNew.Enabled = true;
                     tbEdit.Enabled = true;
                     tbDelete.Enabled = true;
@@ -85,7 +85,7 @@ namespace Haimen.NewGUI
 
                     SetControlStatus(false);
                     break;
-                case winStatusEnum.Check:
+                case winStatusEnum.审核:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -95,7 +95,7 @@ namespace Haimen.NewGUI
 
                     SetControlStatus(false);
                     break;
-                case winStatusEnum.OnlyView:
+                case winStatusEnum.纯查看:
                     tbNew.Enabled = true;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -246,7 +246,7 @@ namespace Haimen.NewGUI
                     picPass.Visible = false;
                     break;
                 case (long)AccountStatusEnum.审核通过:
-                case (long)AccountStatusEnum.支付中:
+                case (long)AccountStatusEnum.已支付:
                 case (long)AccountStatusEnum.已关闭:
                     picCheckFaild.Visible = false;
                     picPass.Visible = true;
@@ -335,7 +335,7 @@ namespace Haimen.NewGUI
 
             m_contract.Save();
             MessageBox.Show("保存成功！");
-            SetFormStatus(winStatusEnum.View);
+            SetFormStatus(winStatusEnum.查看);
         }
 
 
@@ -344,7 +344,7 @@ namespace Haimen.NewGUI
         {
             m_contract = new Contract();
             Object2Form();
-            SetFormStatus(winStatusEnum.New);
+            SetFormStatus(winStatusEnum.新增);
         }
 
         // 编辑对象
@@ -353,7 +353,7 @@ namespace Haimen.NewGUI
             if (m_contract != null && m_contract.ID > 0)
             {
                 Object2Form();
-                SetFormStatus(winStatusEnum.Edit);
+                SetFormStatus(winStatusEnum.编辑);
             }
         }
 
@@ -365,13 +365,13 @@ namespace Haimen.NewGUI
                 m_contract.Destory();
                 m_contract = new Contract();
                 Object2Form();
-                SetFormStatus(winStatusEnum.View);
+                SetFormStatus(winStatusEnum.查看);
             }
         }
 
         private void tbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(m_status == winStatusEnum.View || m_status == winStatusEnum.OnlyView))
+            if (!(m_status == winStatusEnum.查看 || m_status == winStatusEnum.纯查看))
             {
                 if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
                                    "警告",
@@ -454,14 +454,14 @@ namespace Haimen.NewGUI
         private void tbCheckPassed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_contract.CheckPassed();
-            SetFormStatus(winStatusEnum.OnlyView);
+            SetFormStatus(winStatusEnum.纯查看);
         }
 
         // 审核不通过
         private void tbCheckFaild_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_contract.CheckFaild();
-            SetFormStatus(winStatusEnum.View);
+            SetFormStatus(winStatusEnum.查看);
         }
 
         /// <summary>

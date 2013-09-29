@@ -54,7 +54,7 @@ namespace Haimen.GUI
                 if (a.ID == id)
                 {
                     DevMain main = (DevMain)this.ParentForm;
-                    main.OpenForm(new DevAccount(winStatusEnum.New, null, 0, 0, id));
+                    main.OpenForm(new DevAccount(winStatusEnum.新增, null, 0, 0, id));
                     return;
                 }
             }

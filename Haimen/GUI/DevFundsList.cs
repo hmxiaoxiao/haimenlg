@@ -45,19 +45,19 @@ namespace Haimen.NewGUI
             m_status = status;
             switch (status)
             {
-                case winStatusEnum.View:
+                case winStatusEnum.查看:
                     tsbDelete.Enabled = true;
                     tsbEdit.Enabled = true;
                     tsbNew.Enabled = true;
                     tsbSave.Enabled = false;
                     break;
-                case winStatusEnum.Edit:
+                case winStatusEnum.编辑:
                     tsbDelete.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbNew.Enabled = false;
                     tsbSave.Enabled = true;
                     break;
-                case winStatusEnum.New:
+                case winStatusEnum.新增:
                     tsbDelete.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbNew.Enabled = false;
@@ -115,7 +115,7 @@ namespace Haimen.NewGUI
         {
             initTree();
             ShowFunds2Grid();
-            setWinStatus(winStatusEnum.View);       // 当前的状态为浏览
+            setWinStatus(winStatusEnum.查看);       // 当前的状态为浏览
             SetControlAccess();
         }
 
@@ -132,7 +132,7 @@ namespace Haimen.NewGUI
             gridControl1.DataSource = m_fundses;
             gridView1.OptionsBehavior.Editable = true;
 
-            setWinStatus(winStatusEnum.New);
+            setWinStatus(winStatusEnum.新增);
         }
 
         private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -148,7 +148,7 @@ namespace Haimen.NewGUI
                     m_funds = bk;
             }
             gridView1.OptionsBehavior.Editable = true;
-            setWinStatus(winStatusEnum.Edit);
+            setWinStatus(winStatusEnum.编辑);
         }
 
         private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -156,7 +156,7 @@ namespace Haimen.NewGUI
             if (gridView1.FocusedRowHandle < 0)
                 return;
 
-            if (m_status != winStatusEnum.View)
+            if (m_status != winStatusEnum.查看)
                 return;
 
             if (MessageBox.Show("要删除指定的资金性质，是否要继续？", "注意",
@@ -191,7 +191,7 @@ namespace Haimen.NewGUI
 
             m_funds = null;
             gridView1.OptionsBehavior.Editable = false;
-            setWinStatus(winStatusEnum.View);
+            setWinStatus(winStatusEnum.查看);
         }
 
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -227,14 +227,14 @@ namespace Haimen.NewGUI
                 }
             }
             m_funds = null;
-            setWinStatus(winStatusEnum.View);
+            setWinStatus(winStatusEnum.查看);
             initTree();
             ShowFunds2Grid();
         }
 
         private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            if (m_status == winStatusEnum.New || m_status == winStatusEnum.Edit)
+            if (m_status == winStatusEnum.新增 || m_status == winStatusEnum.编辑)
             {
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_funds.ID)
                     e.Appearance.BackColor = Color.LightSteelBlue;
@@ -243,7 +243,7 @@ namespace Haimen.NewGUI
 
         private void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
         {
-            if (m_status == winStatusEnum.New || m_status == winStatusEnum.Edit)
+            if (m_status == winStatusEnum.新增 || m_status == winStatusEnum.编辑)
             {
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_funds.ID)
                     e.Allow = false;

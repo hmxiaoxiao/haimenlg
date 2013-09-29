@@ -53,8 +53,8 @@ namespace Haimen.NewGUI
             m_status = status;
             switch (status)
             {
-                case winStatusEnum.New:
-                case winStatusEnum.Edit: 
+                case winStatusEnum.新增:
+                case winStatusEnum.编辑: 
                     btnNew.Enabled = false;
                     btnEdit.Enabled = false;
                     btnDelete.Enabled = false;
@@ -64,7 +64,7 @@ namespace Haimen.NewGUI
 
                     SetControlStatus(true);
                     break;
-                case winStatusEnum.View:
+                case winStatusEnum.查看:
                     btnNew.Enabled = false;
                     btnEdit.Enabled = false;
                     btnDelete.Enabled = false;
@@ -74,7 +74,7 @@ namespace Haimen.NewGUI
 
                     SetControlStatus(false);
                     break;
-                case winStatusEnum.Check:
+                case winStatusEnum.审核:
                     btnNew.Enabled = false;
                     btnEdit.Enabled = false;
                     btnDelete.Enabled = false;
@@ -84,7 +84,7 @@ namespace Haimen.NewGUI
 
                     SetControlStatus(false);
                     break;
-                case winStatusEnum.OnlyView:
+                case winStatusEnum.纯查看:
                     btnNew.Enabled = true;
                     btnEdit.Enabled = false;
                     btnDelete.Enabled = false;
@@ -262,7 +262,7 @@ namespace Haimen.NewGUI
                 return;
 
             m_balance.Save();
-            SetFromStatus(winStatusEnum.View);
+            SetFromStatus(winStatusEnum.查看);
             MessageBox.Show("保存成功");
         }
 
@@ -292,7 +292,7 @@ namespace Haimen.NewGUI
         {
             m_balance = new Balance();
             Object2Form();
-            SetFromStatus(winStatusEnum.New);
+            SetFromStatus(winStatusEnum.新增);
         }
 
         /// <summary>
@@ -306,7 +306,7 @@ namespace Haimen.NewGUI
                 return;
 
             Object2Form();
-            SetFromStatus(winStatusEnum.Edit);
+            SetFromStatus(winStatusEnum.编辑);
         }
 
         /// <summary>
@@ -320,7 +320,7 @@ namespace Haimen.NewGUI
             {
                 m_balance.Destory();
                 m_balance = new Balance();
-                SetFromStatus(winStatusEnum.View);
+                SetFromStatus(winStatusEnum.查看);
             }
         }
 
@@ -331,7 +331,7 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void btnExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(m_status == winStatusEnum.View || m_status == winStatusEnum.OnlyView))
+            if (!(m_status == winStatusEnum.查看 || m_status == winStatusEnum.纯查看))
             {
                 if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
                                    "警告",
@@ -351,7 +351,7 @@ namespace Haimen.NewGUI
         private void btnCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_balance.CheckPass();
-            SetFromStatus(winStatusEnum.OnlyView);
+            SetFromStatus(winStatusEnum.纯查看);
         }
 
         /// <summary>
@@ -362,7 +362,7 @@ namespace Haimen.NewGUI
         private void btnCheckFaild_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_balance.CheckFaild();
-            SetFromStatus(winStatusEnum.View);
+            SetFromStatus(winStatusEnum.查看);
         }
 
 

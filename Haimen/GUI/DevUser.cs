@@ -123,8 +123,8 @@ namespace Haimen.NewGUI
             SetControlAccess();
             switch (m_status)
             {
-                case winStatusEnum.New:
-                case winStatusEnum.Edit:
+                case winStatusEnum.新增:
+                case winStatusEnum.编辑:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbDelete.Enabled = false;
@@ -135,7 +135,7 @@ namespace Haimen.NewGUI
                     txtPassword.Enabled = true;
                     txtPasswordConfirm.Enabled = true;
                     break;
-                case winStatusEnum.View:
+                case winStatusEnum.查看:
                     tsbNew.Enabled = true;
                     tsbEdit.Enabled = true;
                     tsbDelete.Enabled = true;
@@ -187,12 +187,12 @@ namespace Haimen.NewGUI
             if (user != null)
             {
                 m_user = user;
-                m_status = winStatusEnum.Edit;
+                m_status = winStatusEnum.编辑;
             }
             else
             {
                 m_user = new User();
-                m_status = winStatusEnum.New;
+                m_status = winStatusEnum.新增;
             }
         }
 
@@ -205,7 +205,7 @@ namespace Haimen.NewGUI
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_user = new User();
-            m_status = winStatusEnum.New;
+            m_status = winStatusEnum.新增;
 
             MyRefresh();
         }
@@ -214,7 +214,7 @@ namespace Haimen.NewGUI
         {
             if (m_user != null)
             {
-                m_status = winStatusEnum.Edit;
+                m_status = winStatusEnum.编辑;
                 MyRefresh();
             }
         }
@@ -225,7 +225,7 @@ namespace Haimen.NewGUI
             {
                 m_user.Destory();
                 m_user = new User();
-                m_status = winStatusEnum.View;
+                m_status = winStatusEnum.查看;
                 MyRefresh();
             }
 
@@ -246,13 +246,13 @@ namespace Haimen.NewGUI
 
             m_user.Save();
             MessageBox.Show("用户保存成功!", "注意");
-            m_status = winStatusEnum.View;
+            m_status = winStatusEnum.查看;
             MyRefresh();
         }
 
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatusEnum.View)
+            if (m_status != winStatusEnum.查看)
             {
                 if (MessageBox.Show("当前正在编辑数据，这时退出会丢失当前的数据，是否真的要退出？",
                                 "注意",

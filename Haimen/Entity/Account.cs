@@ -86,49 +86,49 @@ namespace Haimen.Entity
         [Field("balance_id")]
         public long BalanceID { get; set; }
 
-        [Field("applicant")]
-        public long AppUserID { get; set; }
-        private User m_applicant = null;
+        [Field("maker")]
+        public long MakerID { get; set; }
+        private User m_maker = null;
         public User Applicant
         {
             get
             {
-                if (AppUserID > 0)
+                if (MakerID > 0)
                 {
-                    if (m_applicant == null || m_applicant.ID != AppUserID)
-                        m_applicant = User.CreateByID(AppUserID);
+                    if (m_maker == null || m_maker.ID != MakerID)
+                        m_maker = User.CreateByID(MakerID);
                 }
-                return m_applicant;
+                return m_maker;
             }
         }
 
         [Field("reviewer")]
-        public long RevUserID { get; set; }
+        public long ReviewerID { get; set; }
         private User m_reviewer = null;
         public User Reviewer
         {
             get
             {
-                if (RevUserID > 0)
+                if (ReviewerID > 0)
                 {
-                    if (m_reviewer == null || m_reviewer.ID != RevUserID)
-                        m_reviewer = User.CreateByID(RevUserID);
+                    if (m_reviewer == null || m_reviewer.ID != ReviewerID)
+                        m_reviewer = User.CreateByID(ReviewerID);
                 }
                 return m_reviewer;
             }
         }
 
         [Field("cashier")]
-        public long CasUserID { get; set; }
+        public long CashierID { get; set; }
         private User m_cashier = null;
         public User Cashier
         {
             get
             {
-                if (CasUserID > 0)
+                if (CashierID > 0)
                 {
-                    if (m_cashier == null || m_cashier.ID != CasUserID)
-                        m_cashier = User.CreateByID(CasUserID);
+                    if (m_cashier == null || m_cashier.ID != CashierID)
+                        m_cashier = User.CreateByID(CashierID);
                 }
                 return m_cashier;
             }
@@ -156,16 +156,46 @@ namespace Haimen.Entity
         [Field("memo")]
         public string Memo { get; set; }
 
+        [Field("project_id")]
+        public long ProjectID { get; set; }
+        private Project m_project;
+        public Project Project
+        {
+            get
+            {
+                if (m_project == null && ProjectID > 0)
+                    m_project = Project.CreateByID(ProjectID);
+                return m_project;
+            }
+        }
+
         /// <summary>
         /// 审核通过
         /// </summary>
         public void CheckPass()
         {
+            // 改标志为已审核
+            this.Status = (long)AccountStatusEnum.审核通过;
+            this.Save();
+        }
+
+        /// <summary>
+        /// 审核不通过
+        /// </summary>
+        public void CheckFaild()
+        {
+            this.Status = (long)AccountStatusEnum.审核未通过;
+            this.Save();
+        }
+
+        /// <summary>
+        /// 支付
+        /// </summary>
+        public void Payed()
+        {
             using (TransactionScope ts = new TransactionScope())
             {
-                // 改标志为已审核
-                this.Status = 1;
-                this.RevUserID = GlobalSet.Current_User.ID;     // 审核人
+                this.Status = (long)AccountStatusEnum.已支付;
 
                 // 更新二个单位的数据金额
                 CompanyDetail inCD = CompanyDetail.CreateByID(this.In_CompanyDetail_ID);
@@ -180,24 +210,41 @@ namespace Haimen.Entity
                     c.UpdatePay(Money);
                 }
 
+
                 inCD.Save();        // 保存收入单位帐号余额
                 outCD.Save();       // 保存支出单位的帐号余额
-                this.Save();        // 保存审核标记
-
-                ts.Complete();
+                this.Save();        // 保存
             }
         }
 
         /// <summary>
-        /// 审核不通过
+        /// 撤消支付
         /// </summary>
-        public void CheckFaild()
+        public void UnPayed()
         {
-            this.RevUserID = GlobalSet.Current_User.ID;
-            this.Status = (long)AccountStatusEnum.审核未通过;
-            this.Save();
-        }
+            using (TransactionScope ts = new TransactionScope())
+            {
+                this.Status = (long)AccountStatusEnum.审核通过;
 
+                // 更新二个单位的数据金额
+                CompanyDetail inCD = CompanyDetail.CreateByID(this.In_CompanyDetail_ID);
+                CompanyDetail outCD = CompanyDetail.CreateByID(this.Out_CompanyDetail_ID);
+                inCD.Balance -= Money;
+                outCD.Balance += Money;
+
+                // 更新合同的已付金额
+                if (ContractID > 0)
+                {
+                    Contract c = Contract.CreateByID(ContractID);
+                    c.UpdatePay(-Money);
+                }
+
+
+                inCD.Save();        // 保存收入单位帐号余额
+                outCD.Save();       // 保存支出单位的帐号余额
+                this.Save();        // 保存
+            }
+        }
 
         /// <summary>
         /// 校对对象
@@ -224,7 +271,6 @@ namespace Haimen.Entity
         /// <returns></returns>
         public override bool Insert()
         {
-            this.AppUserID = GlobalSet.Current_User.ID;
             // 如果是从合同验收生成的，要写到合同验收一个标志
             if (ContractAcceptID > 0)
             {
