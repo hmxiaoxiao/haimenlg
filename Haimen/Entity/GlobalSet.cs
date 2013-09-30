@@ -99,21 +99,6 @@ namespace Haimen.Entity
     }
 
     /// <summary>
-    /// 合同的状态
-    /// </summary>
-    public enum ContractStatusEnum : long
-    {
-        未审核 = 0,
-        审核通过,
-        审核未通过,
-        再次审核,
-        付款中,
-        已验收,
-        验收未通过,
-        已中止,
-    }
-
-    /// <summary>
     /// 资金的状态
     /// </summary>
     public enum AccountStatusEnum :long

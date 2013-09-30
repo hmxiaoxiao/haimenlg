@@ -187,6 +187,19 @@ namespace Haimen.Entity
         [Field("memo")]
         public string Memo { get; set; }
 
+        [Field("project_id")]
+        public long ProjectID { get; set; }
+        private Project m_project;
+        public Project Project
+        {
+            get
+            {
+                if (m_project == null && ProjectID > 0)
+                    m_project = Project.CreateByID(ProjectID);
+                return m_project;
+            }
+        }
+
         // 审核通过
         public void CheckPassed()
         {
@@ -241,5 +254,33 @@ namespace Haimen.Entity
             Status = (long)ContractStatusEnum.付款中;
             Save();
         }
+    }
+
+    /// <summary>
+    /// 打开合同界面的不同状态
+    /// </summary>
+    public enum ContractFromEnum : long
+    {
+        查看 = 0,
+        新增,
+        编辑,
+        审核,
+        撤审,
+        付款申请,
+    }
+
+    /// <summary>
+    /// 合同的状态
+    /// </summary>
+    public enum ContractStatusEnum : long
+    {
+        未审核 = 0,
+        审核通过,
+        审核未通过,
+        再次审核,
+        付款中,
+        已验收,
+        验收未通过,
+        已中止,
     }
 }

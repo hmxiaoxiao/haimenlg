@@ -56,12 +56,13 @@
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
             this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.tsbGen = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbPay = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbAccept = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.tsbAccept = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -228,7 +229,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueStatus});
-            this.gridControl1.Size = new System.Drawing.Size(744, 522);
+            this.gridControl1.Size = new System.Drawing.Size(884, 522);
             this.gridControl1.TabIndex = 27;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -251,8 +252,9 @@
             this.tsbGen,
             this.tsbExit,
             this.tsbRefresh,
-            this.tsbAccept});
-            this.barManager1.MaxItemId = 9;
+            this.tsbAccept,
+            this.tsbPay});
+            this.barManager1.MaxItemId = 10;
             // 
             // bar1
             // 
@@ -267,7 +269,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbGen, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbGen, "", true, true, false, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPay, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbAccept, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
@@ -328,6 +331,22 @@
             this.tsbGen.Name = "tsbGen";
             this.tsbGen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbGen_ItemClick);
             // 
+            // tsbPay
+            // 
+            this.tsbPay.Caption = "付款申请";
+            this.tsbPay.Glyph = global::Haimen.Properties.Resources.Note_New_hot;
+            this.tsbPay.Id = 9;
+            this.tsbPay.Name = "tsbPay";
+            this.tsbPay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbPay_ItemClick);
+            // 
+            // tsbAccept
+            // 
+            this.tsbAccept.Caption = "验收";
+            this.tsbAccept.Glyph = global::Haimen.Properties.Resources.Slide_Show_hot;
+            this.tsbAccept.Id = 8;
+            this.tsbAccept.Name = "tsbAccept";
+            this.tsbAccept.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbAccept_ItemClick);
+            // 
             // tsbExit
             // 
             this.tsbExit.Caption = "退出";
@@ -341,14 +360,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(744, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(884, 39);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 561);
-            this.barDockControlBottom.Size = new System.Drawing.Size(744, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(884, 0);
             // 
             // barDockControlLeft
             // 
@@ -361,22 +380,14 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(744, 39);
+            this.barDockControlRight.Location = new System.Drawing.Point(884, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
-            // 
-            // tsbAccept
-            // 
-            this.tsbAccept.Caption = "验收";
-            this.tsbAccept.Glyph = global::Haimen.Properties.Resources.Slide_Show_hot;
-            this.tsbAccept.Id = 8;
-            this.tsbAccept.Name = "tsbAccept";
-            this.tsbAccept.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbAccept_ItemClick);
             // 
             // DevContractList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(744, 561);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -428,5 +439,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_pay;
         private DevExpress.XtraBars.BarButtonItem tsbRefresh;
         private DevExpress.XtraBars.BarButtonItem tsbAccept;
+        private DevExpress.XtraBars.BarButtonItem tsbPay;
     }
 }

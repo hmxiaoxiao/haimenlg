@@ -102,7 +102,7 @@ namespace Haimen.NewGUI
         /// <param name="e"></param>
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            m_main.OpenForm(new DevContract(winStatusEnum.新增));
+            m_main.OpenForm(new DevContract(ContractFromEnum.新增));
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Haimen.NewGUI
         {
             Contract ct = CurrentSelectedObject();
             if (ct != null)
-                m_main.OpenForm(new DevContract(winStatusEnum.编辑, ct));
+                m_main.OpenForm(new DevContract(ContractFromEnum.编辑, ct));
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Haimen.NewGUI
         {
             Contract ct = CurrentSelectedObject();
             if (ct != null)
-                m_main.OpenForm(new DevContract(winStatusEnum.审核, ct));
+                m_main.OpenForm(new DevContract(ContractFromEnum.审核, ct));
         }
 
         /// <summary>
@@ -208,6 +208,13 @@ namespace Haimen.NewGUI
             Contract ct = CurrentSelectedObject();
             if (ct != null)
                 m_main.OpenForm(new DevContractAccept(ct));
+        }
+
+        private void tsbPay_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Contract ct = CurrentSelectedObject();
+            if (ct != null)
+                m_main.OpenForm(new DevContract(ContractFromEnum.付款申请, ct));
         }
     }
 }

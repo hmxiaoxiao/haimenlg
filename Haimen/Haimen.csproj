@@ -145,6 +145,7 @@
     <Compile Include="Entity\CompanyDetail.cs" />
     <Compile Include="Entity\Contract.cs" />
     <Compile Include="Entity\ContractAccept.cs" />
+    <Compile Include="Entity\ContractApply.cs" />
     <Compile Include="Entity\ContractDetail.cs" />
     <Compile Include="Entity\Dict.cs" />
     <Compile Include="Entity\Funds.cs" />

@@ -58,50 +58,61 @@ namespace Haimen.NewGUI
         }
 
 
-        private winStatusEnum m_status;
-        private void SetFormStatus(winStatusEnum status)
+        private ContractFromEnum m_status;
+        private void SetFormStatus(ContractFromEnum status)
         {
             m_status = status;
             switch (status)
             {
-                case winStatusEnum.新增:
-                case winStatusEnum.编辑:
+                case ContractFromEnum.新增:
+                case ContractFromEnum.编辑:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
                     tbSave.Enabled = true;
                     tbCheckPassed.Enabled = false;
                     tbCheckFaild.Enabled = false;
+                    
+                    // 支付申请不能编辑
+                    layoutControl2.Enabled = false;
+                    bar2.Visible = false;
 
                     SetControlStatus(true);
                     break;
-                case winStatusEnum.查看:
+                case ContractFromEnum.查看:
                     tbNew.Enabled = true;
                     tbEdit.Enabled = true;
                     tbDelete.Enabled = true;
                     tbSave.Enabled = false;
                     tbCheckPassed.Enabled = false;
                     tbCheckFaild.Enabled = false;
+                    layoutControl2.Enabled = false;
+                    bar2.Visible = false;
 
                     SetControlStatus(false);
                     break;
-                case winStatusEnum.审核:
+                case ContractFromEnum.审核:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
                     tbSave.Enabled = false;
                     tbCheckPassed.Enabled = true;
                     tbCheckFaild.Enabled = true;
+                    layoutControl2.Enabled = false;
+                    bar2.Visible = false;
 
                     SetControlStatus(false);
                     break;
-                case winStatusEnum.纯查看:
-                    tbNew.Enabled = true;
-                    tbEdit.Enabled = false;
-                    tbDelete.Enabled = false;
-                    tbSave.Enabled = false;
-                    tbCheckPassed.Enabled = false;
-                    tbCheckFaild.Enabled = false;
+                case ContractFromEnum.付款申请:
+                    bar1.Visible = false;
+                    bar2.Visible = true;
+                    bar2.Offset = 0;
+                    xtraTabControl1.SelectedTabPage = xtraTabPage4;
+
+                    dtApplyDate.EditValue = DateTime.Now;
+
+                    // 支付申请能编辑
+                    layoutControl2.Enabled = true;
 
                     SetControlStatus(false);
                     break;
@@ -117,6 +128,7 @@ namespace Haimen.NewGUI
             lueInCompany.Enabled = enabled;
             luePartyA.Enabled = enabled;
             luePartyB.Enabled = enabled;
+            lueProject.Enabled = enabled;
 
             dtSignedDate.Enabled = enabled;
             dtBeginDate.Enabled = enabled;
@@ -151,6 +163,8 @@ namespace Haimen.NewGUI
                 m_contract.PartyAID = long.Parse(luePartyA.EditValue.ToString());
             if(luePartyB.EditValue != null)
                 m_contract.PartyBID = long.Parse(luePartyB.EditValue.ToString());
+            if (lueProject.EditValue != null)
+                m_contract.ProjectID = long.Parse(lueProject.EditValue.ToString());
             m_contract.SignedDate = DateTime.Parse(dtSignedDate.EditValue.ToString());
             m_contract.BeginDate = DateTime.Parse(dtBeginDate.EditValue.ToString());
             m_contract.EndDate = DateTime.Parse(dtEndDate.EditValue.ToString());
@@ -166,6 +180,39 @@ namespace Haimen.NewGUI
         /// </summary>
         private void Object2Form()
         {
+            // 设置收支单位的数据来源
+            List<Company> outlist = Company.Query("output = 'X'");
+            List<Company> inlist = Company.Query("input = 'X'");
+
+            lueOutCompany.Properties.DataSource = null;
+            lueOutCompany.Properties.DataSource = outlist;
+            lueOutCompany.Properties.DisplayMember = "Name";
+            lueOutCompany.Properties.ValueMember = "ID";
+
+            lueInCompany.Properties.DataSource = null;
+            lueInCompany.Properties.DataSource = inlist;
+            lueInCompany.Properties.DisplayMember = "Name";
+            lueInCompany.Properties.ValueMember = "ID";
+
+            luePartyA.Properties.DataSource = null;
+            luePartyA.Properties.DataSource = outlist;
+            luePartyA.Properties.DisplayMember = "Name";
+            luePartyA.Properties.ValueMember = "ID";
+
+            luePartyB.Properties.DataSource = null;
+            luePartyB.Properties.DataSource = inlist;
+            luePartyB.Properties.DisplayMember = "Name";
+            luePartyB.Properties.ValueMember = "ID";
+
+            // 项目数据来源
+            lueProject.Properties.DataSource = null;
+            lueProject.Properties.DataSource = Project.Query();
+            lueProject.Properties.DisplayMember = "Name";
+            lueProject.Properties.ValueMember = "ID";
+
+            gridControl1.DataSource = null;
+            gridControl1.DataSource = m_contract.DetailList;
+
             if (m_contract.ID > 0)
             {
                 txtCode.Text = m_contract.Code;
@@ -174,6 +221,8 @@ namespace Haimen.NewGUI
                 lueInCompany.EditValue = m_contract.InCompanyID;
                 luePartyA.EditValue = m_contract.PartyAID;
                 luePartyB.EditValue = m_contract.PartyBID;
+
+                lueProject.EditValue = m_contract.ProjectID;
 
                 dtSignedDate.EditValue = m_contract.SignedDate;
                 dtBeginDate.EditValue = m_contract.BeginDate;
@@ -202,33 +251,29 @@ namespace Haimen.NewGUI
                 txtSecurity.Value = 0;
             }
 
-            // 设置收支单位的数据来源
-            List<Company> outlist = Company.Query("output = 'X'");
-            List<Company> inlist = Company.Query("input = 'X'"); 
-            
-            lueOutCompany.Properties.DataSource = null;
-            lueOutCompany.Properties.DataSource = outlist;
-            lueOutCompany.Properties.DisplayMember = "Name";
-            lueOutCompany.Properties.ValueMember = "ID";
+            // 设置合同付款申请
+            if (m_contract.ID > 0)
+            {
+                lueApplyStatus.DataSource = ContractApply.ApplyStatus;
+                lueApplyStatus.DisplayMember = "Name";
+                lueApplyStatus.ValueMember = "ValueInt";
 
-            lueInCompany.Properties.DataSource = null;
-            lueInCompany.Properties.DataSource = inlist;
-            lueInCompany.Properties.DisplayMember = "Name";
-            lueInCompany.Properties.ValueMember = "ID";
+                List<ContractApply> m_applies = ContractApply.Query();
+                gridControl2.DataSource = null;
+                gridControl2.DataSource = m_applies;
 
-            luePartyA.Properties.DataSource = null;
-            luePartyA.Properties.DataSource = outlist;
-            luePartyA.Properties.DisplayMember = "Name";
-            luePartyA.Properties.ValueMember = "ID";
+                if (m_status == ContractFromEnum.付款申请)
+                {
+                    dtApplyDate.EditValue = DateTime.Now;
+                }
 
-            luePartyB.Properties.DataSource = null;
-            luePartyB.Properties.DataSource = inlist;
-            luePartyB.Properties.DisplayMember = "Name";
-            luePartyB.Properties.ValueMember = "ID";
+                // 设置已经申请总额
+                decimal sum_money = ContractApply.GetAllPayMoney(m_contract.ID);
+                calcPayed.EditValue = sum_money;
+                txtPayed.Text = Haimen.Helper.Helper.ConvertToChinese((double)sum_money);
+            }
 
-            gridControl1.DataSource = null;
-            gridControl1.DataSource = m_contract.DetailList;
-
+            // 显示附件
             lstFiles.Items.Clear();
             foreach (Attach a in m_contract.AttachList)
             {
@@ -284,12 +329,27 @@ namespace Haimen.NewGUI
                         break;
                 }
             }
-
-
             return !dxErrorProvider1.HasErrors;
         }
 
-        public DevContract(winStatusEnum status, Contract con = null)
+        /// <summary>
+        /// 关闭当前窗口
+        /// </summary>
+        private void MyExit()
+        {
+            if (!(m_status == ContractFromEnum.查看))
+            {
+                if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
+                                   "警告",
+                                   MessageBoxButtons.YesNoCancel,
+                                   MessageBoxIcon.Warning,
+                                   MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes)
+                    return;
+            }
+            this.Close();
+        }
+
+        public DevContract(ContractFromEnum status, Contract con = null)
         {
             InitializeComponent();
             if (con != null)
@@ -335,7 +395,7 @@ namespace Haimen.NewGUI
 
             m_contract.Save();
             MessageBox.Show("保存成功！");
-            SetFormStatus(winStatusEnum.查看);
+            SetFormStatus(ContractFromEnum.查看);
         }
 
 
@@ -344,7 +404,7 @@ namespace Haimen.NewGUI
         {
             m_contract = new Contract();
             Object2Form();
-            SetFormStatus(winStatusEnum.新增);
+            SetFormStatus(ContractFromEnum.新增);
         }
 
         // 编辑对象
@@ -353,7 +413,7 @@ namespace Haimen.NewGUI
             if (m_contract != null && m_contract.ID > 0)
             {
                 Object2Form();
-                SetFormStatus(winStatusEnum.编辑);
+                SetFormStatus(ContractFromEnum.编辑);
             }
         }
 
@@ -365,23 +425,16 @@ namespace Haimen.NewGUI
                 m_contract.Destory();
                 m_contract = new Contract();
                 Object2Form();
-                SetFormStatus(winStatusEnum.查看);
+                SetFormStatus(ContractFromEnum.查看);
             }
         }
 
         private void tbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(m_status == winStatusEnum.查看 || m_status == winStatusEnum.纯查看))
-            {
-                if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
-                                   "警告",
-                                   MessageBoxButtons.YesNoCancel,
-                                   MessageBoxIcon.Warning,
-                                   MessageBoxDefaultButton.Button2) != System.Windows.Forms.DialogResult.Yes)
-                    return;
-            }
-            this.Close();
+            MyExit();
         }
+
+
 
         private void tsbAttachNew_Click(object sender, EventArgs e)
         {
@@ -454,14 +507,14 @@ namespace Haimen.NewGUI
         private void tbCheckPassed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_contract.CheckPassed();
-            SetFormStatus(winStatusEnum.纯查看);
+            SetFormStatus(ContractFromEnum.查看);
         }
 
         // 审核不通过
         private void tbCheckFaild_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_contract.CheckFaild();
-            SetFormStatus(winStatusEnum.查看);
+            SetFormStatus(ContractFromEnum.查看);
         }
 
         /// <summary>
@@ -477,6 +530,43 @@ namespace Haimen.NewGUI
         private void txtMoney_EditValueChanged(object sender, EventArgs e)
         {
             SetSecurity();
+        }
+
+        private void tbApplyExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MyExit();
+        }
+
+        /// <summary>
+        /// 付款申请保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbApplySave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            // 先将界面的数据保存到对象里
+            ContractApply apply = new ContractApply();
+            apply.ContractID = m_contract.ID;
+            apply.ApplyDate = DateTime.Parse(dtApplyDate.EditValue.ToString());
+            if (calcApplyMoney.EditValue != null)
+                apply.Money = decimal.Parse(calcApplyMoney.EditValue.ToString());
+            apply.Memo = txtApplyMemo.Text;
+
+            // 判断是否通过校验
+            if (!apply.Verify())
+            {
+                dxErrorProvider1.ClearErrors();
+                dxErrorProvider1.SetError(calcApplyMoney, apply.ErrorString);
+                return;
+            }
+            else
+            {
+                apply.Save();
+                tbApplySave.Enabled = false;
+                layoutControl2.Enabled = false;
+                m_status = ContractFromEnum.查看;
+                MessageBox.Show("合同付款申请保存成功！", "注意");
+            }
         }
 
     }
