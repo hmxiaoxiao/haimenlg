@@ -45,7 +45,7 @@ namespace Haimen.Entity
                     m_account_status.Add(new Dict("审核通过", 1));
                     m_account_status.Add(new Dict("审核未通过", 2));
                     m_account_status.Add(new Dict("再次审核", 3));
-                    m_account_status.Add(new Dict("支付中", 4));
+                    m_account_status.Add(new Dict("已支付", 4));
                     m_account_status.Add(new Dict("关闭", 5));
                 }
                 return m_account_status;

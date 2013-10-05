@@ -23,19 +23,19 @@ namespace Haimen.NewGUI
         /// </summary>
         private void SetControlAccess()
         {
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.New))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.新增))
             {
                 if (tsbNew.Enabled == true) tsbNew.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.Edit))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.编辑))
             {
                 if (tsbEdit.Enabled == true) tsbEdit.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.Delete))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.删除))
             {
                 if (tsbDelete.Enabled == true) tsbDelete.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.Check))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.审核))
             {
                 if (tsbCheck.Enabled == true) tsbCheck.Enabled = false;
             }

@@ -67,21 +67,21 @@ namespace Haimen.Entity
         }
 
 
-        [Field("contract_id")]
-        public long ContractID { get; set; }
-        //private Contract m_contract = null;
-        //public Contract Contract
-        //{
-        //    get
-        //    {
-        //        if (ContractID > 0)
-        //        {
-        //            if (m_contract == null || m_contract.ID != ContractID)
-        //                m_contract = Contract.CreateByID(ContractID);
-        //        }
-        //        return m_contract;
-        //    }
-        //}
+        [Field("contract_apply_id")]
+        public long ContractApplyID { get; set; }
+        private ContractApply m_contract_apply = null;
+        public ContractApply ContractApply
+        {
+            get
+            {
+                if (ContractApplyID > 0)
+                {
+                    if (m_contract_apply == null || m_contract_apply.ID != ContractApplyID)
+                        m_contract_apply = ContractApply.CreateByID(ContractApplyID);
+                }
+                return m_contract_apply;
+            }
+        }
 
         [Field("balance_id")]
         public long BalanceID { get; set; }
@@ -175,6 +175,7 @@ namespace Haimen.Entity
         public void CheckPass()
         {
             // 改标志为已审核
+            this.ReviewerID = GlobalSet.Current_User.ID;
             this.Status = (long)AccountStatusEnum.审核通过;
             this.Save();
         }
@@ -184,6 +185,7 @@ namespace Haimen.Entity
         /// </summary>
         public void CheckFaild()
         {
+            this.ReviewerID = GlobalSet.Current_User.ID;
             this.Status = (long)AccountStatusEnum.审核未通过;
             this.Save();
         }
@@ -196,6 +198,7 @@ namespace Haimen.Entity
             using (TransactionScope ts = new TransactionScope())
             {
                 this.Status = (long)AccountStatusEnum.已支付;
+                this.CashierID = GlobalSet.Current_User.ID;
 
                 // 更新二个单位的数据金额
                 CompanyDetail inCD = CompanyDetail.CreateByID(this.In_CompanyDetail_ID);
@@ -203,13 +206,12 @@ namespace Haimen.Entity
                 inCD.Balance += Money;
                 outCD.Balance -= Money;
 
-                // 更新合同的已付金额
-                if (ContractID > 0)
+                // 更新合同申请中对应的合同的已付金额
+                if (ContractApplyID > 0)
                 {
-                    Contract c = Contract.CreateByID(ContractID);
+                    Contract c = ContractApply.CreateByID(ContractApplyID).Contract;
                     c.UpdatePay(Money);
                 }
-
 
                 inCD.Save();        // 保存收入单位帐号余额
                 outCD.Save();       // 保存支出单位的帐号余额
@@ -233,9 +235,9 @@ namespace Haimen.Entity
                 outCD.Balance += Money;
 
                 // 更新合同的已付金额
-                if (ContractID > 0)
+                if (ContractApplyID > 0)
                 {
-                    Contract c = Contract.CreateByID(ContractID);
+                    Contract c = ContractApply.CreateByID(ContractApplyID).Contract;
                     c.UpdatePay(-Money);
                 }
 
@@ -261,6 +263,13 @@ namespace Haimen.Entity
             if (this.Out_CompanyDetail_ID <= 0)
                 Error_Info.Add(new KeyValuePair<string, string>("Out_CompanyDetail_ID", "请选择支出单位的帐号"));
 
+            if (ContractApplyID > 0)
+            {
+                ContractApply cy = ContractApply.CreateByID(ContractApplyID);
+                if (cy.Status == (long)ContractApplyStatusEnum.已支付)
+                    Error_Info.Add(new KeyValuePair<string, string>("ContractApplyID", "您选择的合同申请号已经支付，无需再生成凭证！"));
+            }
+
             return Error_Info.Count == 0;
         }
 
@@ -271,6 +280,16 @@ namespace Haimen.Entity
         /// <returns></returns>
         public override bool Insert()
         {
+            MakerID = GlobalSet.Current_User.ID;
+
+            // 如果是合同申请生成，则返写一个标志进去
+            if (ContractApplyID > 0)
+            {
+                ContractApply cy = ContractApply.CreateByID(ContractApplyID);
+                cy.Status = (long)ContractApplyStatusEnum.已开票;
+                cy.Save();
+            }
+
             // 如果是从合同验收生成的，要写到合同验收一个标志
             if (ContractAcceptID > 0)
             {
@@ -279,6 +298,23 @@ namespace Haimen.Entity
                 c.Save();
             }
             return base.Insert();
+        }
+
+        public override bool Update()
+        {
+            // 如果更新了合同申请，则修改申请的标志
+            if (ContractApplyID > 0)
+            {
+                // 先取得老的数据
+                ContractApply old_c = ContractApply.CreateByID( Account.CreateByID(ID).ContractApplyID);
+                ContractApply new_c = ContractApply.CreateByID(ContractApplyID);
+                if (old_c.ID != ContractApplyID)  // 如果修改了合同申请
+                {
+                    old_c.Status = (long)ContractApplyStatusEnum.提交申请;
+                    new_c.Status = (long)ContractApplyStatusEnum.已开票;
+                }
+            }
+            return base.Update();
         }
     }
 }

@@ -16,8 +16,21 @@ namespace Haimen.Entity
         [Field("apply_date")]
         public DateTime ApplyDate { get; set; }
 
+        
+        private long m_contract_id;
         [Field("contract_id")]
-        public long ContractID { get; set; }
+        public long ContractID 
+        { 
+            get
+            {
+                return m_contract_id;
+            }
+            set
+            {
+                m_contract_id = value;
+                m_contract = Contract.CreateByID(m_contract_id);
+            }
+        }
         private Contract m_contract;
         public Contract Contract
         {
@@ -26,6 +39,14 @@ namespace Haimen.Entity
                 if (m_contract == null && ContractID > 0)
                     m_contract = Contract.CreateByID(ContractID);
                 return m_contract;
+            }
+        }
+
+        public string ContractName
+        {
+            get
+            {
+                return m_contract.Name;
             }
         }
 
@@ -66,6 +87,16 @@ namespace Haimen.Entity
         }
 
         /// <summary>
+        /// 更新状态
+        /// </summary>
+        /// <param name="status"></param>
+        public void UpdateStatus(ContractApplyStatusEnum status)
+        {
+            this.Status = (long)status;
+            this.Save();
+        }
+
+        /// <summary>
         /// 取得指定合同的所以已申请的金额（之和）
         /// </summary>
         /// <param name="contract_id">合同ID</param>
@@ -89,5 +120,6 @@ namespace Haimen.Entity
     {
         提交申请,
         已开票,
+        已支付,
     }
 }

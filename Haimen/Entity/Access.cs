@@ -93,11 +93,11 @@ namespace Haimen.Entity
                 fa.UserID = user.ID;
                 fa.GroupID = user.UserGroupID;
                 fa.Name = Enum.GetName(typeof(FctionEnum), fction);
-                fa.View = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.View);
-                fa.New = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.New);
-                fa.Edit = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.Edit);
-                fa.Delete = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.Delete);
-                fa.Check = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.Check);
+                fa.View = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.查看);
+                fa.New = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.新增);
+                fa.Edit = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.编辑);
+                fa.Delete = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.删除);
+                fa.Check = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.审核);
                 rtn_list.Add(fa);
             }
             return rtn_list;
@@ -117,11 +117,11 @@ namespace Haimen.Entity
                 fa.UserID = 0;
                 fa.GroupID = usergroup_id;
                 fa.Name = Enum.GetName(typeof(FctionEnum), fction);
-                fa.View = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.View);
-                fa.New = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.New);
-                fa.Edit = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.Edit);
-                fa.Delete = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.Delete);
-                fa.Check = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.Check);
+                fa.View = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.查看);
+                fa.New = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.新增);
+                fa.Edit = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.编辑);
+                fa.Delete = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.删除);
+                fa.Check = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.审核);
                 rtn_list.Add(fa);
             }
             return rtn_list;
@@ -187,15 +187,15 @@ namespace Haimen.Entity
                         foreach (long action in Enum.GetValues(typeof(ActionEnum)))
                         {
                             bool user_acc = false;
-                            if (action == (long)ActionEnum.View && acc.View)
+                            if (action == (long)ActionEnum.查看 && acc.View)
                                 user_acc = true;
-                            else if (action == (long)ActionEnum.New && acc.New)
+                            else if (action == (long)ActionEnum.新增 && acc.New)
                                 user_acc = true;
-                            else if (action == (long)ActionEnum.Edit && acc.Edit)
+                            else if (action == (long)ActionEnum.编辑 && acc.Edit)
                                 user_acc = true;
-                            else if (action == (long)ActionEnum.Delete && acc.Delete)
+                            else if (action == (long)ActionEnum.删除 && acc.Delete)
                                 user_acc = true;
-                            else if (action == (long)ActionEnum.Check && acc.Check)
+                            else if (action == (long)ActionEnum.审核 && acc.Check)
                                 user_acc = true;
                             bool group_acc = GetUserGroupAccess(group_id, fction, action);
                             if (user_acc != group_acc)
@@ -229,15 +229,15 @@ namespace Haimen.Entity
                         {
                             foreach (long action in Enum.GetValues(typeof(ActionEnum)))
                             {
-                                if (action == (long)ActionEnum.View && acc.View)
+                                if (action == (long)ActionEnum.查看 && acc.View)
                                     SaveGroupAccess(group_id, fction, action);
-                                else if (action == (long)ActionEnum.New && acc.New)
+                                else if (action == (long)ActionEnum.新增 && acc.New)
                                     SaveGroupAccess(group_id, fction, action);
-                                else if (action == (long)ActionEnum.Edit && acc.Edit)
+                                else if (action == (long)ActionEnum.编辑 && acc.Edit)
                                     SaveGroupAccess(group_id, fction, action);
-                                else if (action == (long)ActionEnum.Delete && acc.Delete)
+                                else if (action == (long)ActionEnum.删除 && acc.Delete)
                                     SaveGroupAccess(group_id, fction, action);
-                                else if (action == (long)ActionEnum.Check && acc.Check)
+                                else if (action == (long)ActionEnum.审核 && acc.Check)
                                     SaveGroupAccess(group_id, fction, action);
                             }
                         }

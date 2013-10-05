@@ -25,19 +25,19 @@ namespace Haimen.NewGUI
         /// </summary>
         private void SetControlAccess()
         {
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.New))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.新增))
             {
                 if (btnNew.Enabled == true) btnNew.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.Edit))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.编辑))
             {
                 if (btnEdit.Enabled == true) btnEdit.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.Delete))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.删除))
             {
                 if (btnDelete.Enabled == true) btnDelete.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.Check))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.审核))
             {
                 if (btnCheck.Enabled == true) btnCheck.Enabled = false;
                 if (btnCheckFaild.Enabled == true) btnCheckFaild.Enabled = false;

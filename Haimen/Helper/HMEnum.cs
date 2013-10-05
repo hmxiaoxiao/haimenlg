@@ -98,30 +98,12 @@ namespace Haimen.Helper
     /// </summary>
     public enum ActionEnum : long
     {
-        /// <summary>
-        /// 查看
-        /// </summary>
-        View  = 1,
-
-        /// <summary>
-        /// 新增
-        /// </summary>
-        New,
-
-        /// <summary>
-        /// 编辑
-        /// </summary>
-        Edit,
-
-        /// <summary>
-        /// 删除
-        /// </summary>
-        Delete,
-
-        /// <summary>
-        /// 审核
-        /// </summary>
-        Check,
+        查看  = 1,
+        新增,
+        编辑,
+        删除,
+        审核,
+        支付,
     }
 
 

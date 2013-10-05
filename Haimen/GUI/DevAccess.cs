@@ -27,9 +27,9 @@ namespace Haimen.NewGUI
             cboUType.Properties.Items.Add("用户组");
             cboUType.SelectedIndex = 0;
 
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.New) ||
-                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.New) ||
-                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.New) ||
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.新增) ||
+                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.新增) ||
+                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.新增) ||
                 GlobalSet.Current_User.Admin == "X" )
             {
                 btnSave.Enabled = true;

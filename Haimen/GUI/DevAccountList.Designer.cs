@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.col_detail_money = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -59,6 +59,7 @@
             this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tsbCheck = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbPay = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
             this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
@@ -68,7 +69,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.tsbNewInput = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.col_project = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -91,9 +92,9 @@
             // gridControl2
             // 
             this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.gridControl2.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView3;
             this.gridControl2.Name = "gridControl2";
@@ -148,6 +149,9 @@
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.col_id,
+            this.col_status,
+            this.col_signed,
+            this.col_project,
             this.col_code,
             this.col_outcompany,
             this.col_outcompany_bank,
@@ -155,8 +159,6 @@
             this.col_incompany,
             this.col_incompany_bank,
             this.col_incompany_account,
-            this.col_status,
-            this.col_signed,
             this.col_money,
             this.col_memo});
             this.gridView1.GridControl = this.gridControl1;
@@ -179,7 +181,7 @@
             this.col_code.FieldName = "Code";
             this.col_code.Name = "col_code";
             this.col_code.Visible = true;
-            this.col_code.VisibleIndex = 0;
+            this.col_code.VisibleIndex = 2;
             // 
             // col_outcompany
             // 
@@ -187,7 +189,7 @@
             this.col_outcompany.FieldName = "OutCompanyDetail.Parent.Name";
             this.col_outcompany.Name = "col_outcompany";
             this.col_outcompany.Visible = true;
-            this.col_outcompany.VisibleIndex = 1;
+            this.col_outcompany.VisibleIndex = 4;
             // 
             // col_outcompany_bank
             // 
@@ -195,7 +197,7 @@
             this.col_outcompany_bank.FieldName = "OutCompanyDetail.Bank.Name";
             this.col_outcompany_bank.Name = "col_outcompany_bank";
             this.col_outcompany_bank.Visible = true;
-            this.col_outcompany_bank.VisibleIndex = 2;
+            this.col_outcompany_bank.VisibleIndex = 5;
             // 
             // col_outcompany_account
             // 
@@ -203,7 +205,7 @@
             this.col_outcompany_account.FieldName = "OutCompanyDetail.Account";
             this.col_outcompany_account.Name = "col_outcompany_account";
             this.col_outcompany_account.Visible = true;
-            this.col_outcompany_account.VisibleIndex = 3;
+            this.col_outcompany_account.VisibleIndex = 6;
             // 
             // col_incompany
             // 
@@ -211,7 +213,7 @@
             this.col_incompany.FieldName = "InCompanyDetail.Parent.Name";
             this.col_incompany.Name = "col_incompany";
             this.col_incompany.Visible = true;
-            this.col_incompany.VisibleIndex = 4;
+            this.col_incompany.VisibleIndex = 7;
             // 
             // col_incompany_bank
             // 
@@ -219,7 +221,7 @@
             this.col_incompany_bank.FieldName = "InCompanyDetail.Bank.Name";
             this.col_incompany_bank.Name = "col_incompany_bank";
             this.col_incompany_bank.Visible = true;
-            this.col_incompany_bank.VisibleIndex = 5;
+            this.col_incompany_bank.VisibleIndex = 8;
             // 
             // col_incompany_account
             // 
@@ -227,7 +229,7 @@
             this.col_incompany_account.FieldName = "InCompanyDetail.Account";
             this.col_incompany_account.Name = "col_incompany_account";
             this.col_incompany_account.Visible = true;
-            this.col_incompany_account.VisibleIndex = 6;
+            this.col_incompany_account.VisibleIndex = 9;
             // 
             // col_status
             // 
@@ -236,7 +238,7 @@
             this.col_status.FieldName = "Status";
             this.col_status.Name = "col_status";
             this.col_status.Visible = true;
-            this.col_status.VisibleIndex = 7;
+            this.col_status.VisibleIndex = 0;
             // 
             // lueStatus
             // 
@@ -249,11 +251,11 @@
             // 
             // col_signed
             // 
-            this.col_signed.Caption = "签订日期";
+            this.col_signed.Caption = "日期";
             this.col_signed.FieldName = "SignedDate";
             this.col_signed.Name = "col_signed";
             this.col_signed.Visible = true;
-            this.col_signed.VisibleIndex = 8;
+            this.col_signed.VisibleIndex = 1;
             // 
             // col_money
             // 
@@ -261,7 +263,7 @@
             this.col_money.FieldName = "Money";
             this.col_money.Name = "col_money";
             this.col_money.Visible = true;
-            this.col_money.VisibleIndex = 9;
+            this.col_money.VisibleIndex = 10;
             // 
             // col_memo
             // 
@@ -269,7 +271,7 @@
             this.col_memo.FieldName = "Memo";
             this.col_memo.Name = "col_memo";
             this.col_memo.Visible = true;
-            this.col_memo.VisibleIndex = 10;
+            this.col_memo.VisibleIndex = 11;
             // 
             // gridView2
             // 
@@ -313,7 +315,7 @@
             this.tsbQuery,
             this.tsbExit,
             this.tsbRefresh,
-            this.barButtonItem1});
+            this.tsbPay});
             this.barManager1.MaxItemId = 10;
             // 
             // bar1
@@ -327,7 +329,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPay, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
@@ -364,6 +366,14 @@
             this.tsbCheck.Id = 4;
             this.tsbCheck.Name = "tsbCheck";
             this.tsbCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbCheck_ItemClick);
+            // 
+            // tsbPay
+            // 
+            this.tsbPay.Caption = "支付";
+            this.tsbPay.Glyph = global::Haimen.Properties.Resources.Insert_hot;
+            this.tsbPay.Id = 9;
+            this.tsbPay.Name = "tsbPay";
+            this.tsbPay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // tsbQuery
             // 
@@ -437,13 +447,13 @@
             this.splitContainerControl1.TabIndex = 38;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
-            // barButtonItem1
+            // col_project
             // 
-            this.barButtonItem1.Caption = "收支";
-            this.barButtonItem1.Glyph = global::Haimen.Properties.Resources.Insert_hot;
-            this.barButtonItem1.Id = 9;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            this.col_project.Caption = "所属项目";
+            this.col_project.FieldName = "Project.Name";
+            this.col_project.Name = "col_project";
+            this.col_project.Visible = true;
+            this.col_project.VisibleIndex = 3;
             // 
             // DevAccountList
             // 
@@ -511,6 +521,7 @@
         private DevExpress.XtraBars.BarButtonItem tsbRefresh;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraGrid.Columns.GridColumn col_money;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem tsbPay;
+        private DevExpress.XtraGrid.Columns.GridColumn col_project;
     }
 }

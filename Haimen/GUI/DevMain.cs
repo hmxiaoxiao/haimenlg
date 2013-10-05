@@ -62,19 +62,19 @@ namespace Haimen.NewGUI
             // 根据权限显示可以访问的菜单
             if (GlobalSet.Current_User.Admin != "X")    // 超级用户可以使用全部
             {
-                mnuAccess.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.View);
-                mnuAccount.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.New);
-                mnuAccountList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.View);
-                mnuBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.New);
-                mnuBalanceList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.View);
-                mnuBank.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.银行, (long)ActionEnum.View);
-                mnuCompany.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位, (long)ActionEnum.View);
-                mnuCompanyDetail.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位帐户明细, (long)ActionEnum.View);
-                mnuContract.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.New);
-                mnuContractList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.View);
-                mnuFouds.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金性质, (long)ActionEnum.View);
-                mnuNotify.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.通知, (long)ActionEnum.View);
-                mnuUserList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.用户, (long)ActionEnum.View);
+                mnuAccess.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.查看);
+                mnuAccount.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.新增);
+                mnuAccountList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.查看);
+                mnuBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.新增);
+                mnuBalanceList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.查看);
+                mnuBank.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.银行, (long)ActionEnum.查看);
+                mnuCompany.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位, (long)ActionEnum.查看);
+                mnuCompanyDetail.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位帐户明细, (long)ActionEnum.查看);
+                mnuContract.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.新增);
+                mnuContractList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.查看);
+                mnuFouds.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金性质, (long)ActionEnum.查看);
+                mnuNotify.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.通知, (long)ActionEnum.查看);
+                mnuUserList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.用户, (long)ActionEnum.查看);
             }
         }
 
@@ -87,7 +87,7 @@ namespace Haimen.NewGUI
         // 打开银行管理
         private void mnuBank_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.银行, (long)ActionEnum.View))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.银行, (long)ActionEnum.查看))
                 OpenForm(new DevBankList());
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -105,7 +105,7 @@ namespace Haimen.NewGUI
         // 资金性质
         private void mnuFouds_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金性质, (long)ActionEnum.View))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金性质, (long)ActionEnum.查看))
                 OpenForm(new DevFundsList());
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -113,7 +113,7 @@ namespace Haimen.NewGUI
 
         private void mnuAccountList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.View))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.查看))
                 OpenForm(new DevAccountList());
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -121,7 +121,7 @@ namespace Haimen.NewGUI
 
         private void mnuAccount_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.New))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.新增))
                 OpenForm(new DevAccount(winStatusEnum.新增));
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -136,7 +136,7 @@ namespace Haimen.NewGUI
         // 打开银行
         private void mnuCompany_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.银行, (long)ActionEnum.View))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.银行, (long)ActionEnum.查看))
                 OpenForm(new DevCompanyList());
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -144,7 +144,7 @@ namespace Haimen.NewGUI
 
         private void mnuCompanyDetail_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位帐户明细, (long)ActionEnum.View))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位帐户明细, (long)ActionEnum.查看))
                 OpenForm(new DevCompanyDetailList());
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -152,7 +152,7 @@ namespace Haimen.NewGUI
 
         private void mnuUserList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.用户, (long)ActionEnum.View))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.用户, (long)ActionEnum.查看))
                 OpenForm(new DevUserList());
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -160,7 +160,7 @@ namespace Haimen.NewGUI
 
         private void mnuContractList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.View))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.查看))
                 OpenForm(new DevContractList());
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -168,7 +168,7 @@ namespace Haimen.NewGUI
 
         private void mnuContract_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.New))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.新增))
                 OpenForm(new DevContract(ContractFromEnum.新增));
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -176,7 +176,7 @@ namespace Haimen.NewGUI
 
         private void mnuBalanceList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.View))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.查看))
                 OpenForm(new DevBalanceList());
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -184,7 +184,7 @@ namespace Haimen.NewGUI
 
         private void mnuBalance_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.New))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.新增))
                 OpenForm(new DevBalance(winStatusEnum.新增));
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -192,7 +192,7 @@ namespace Haimen.NewGUI
 
         private void mnuAccess_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.View))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.查看))
                 OpenForm(new DevAccess());
             if (GlobalSet.Current_User.Admin == "X")
                 OpenForm(new DevAccess());
@@ -202,7 +202,7 @@ namespace Haimen.NewGUI
 
         private void mnuAcceptanceBill_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.承兑汇票, (long)ActionEnum.New))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.承兑汇票, (long)ActionEnum.新增))
                 OpenForm(new DevAcceptanceBill(winStatusEnum.新增));
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -210,7 +210,7 @@ namespace Haimen.NewGUI
 
         private void mnuAcceptanceBillList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.承兑汇票, (long)ActionEnum.View))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.承兑汇票, (long)ActionEnum.查看))
                 OpenForm(new DevAcceptanceBillList());
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -218,7 +218,7 @@ namespace Haimen.NewGUI
 
         private void mnuContractAcceptList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同验收, (long)ActionEnum.View))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同验收, (long)ActionEnum.查看))
                 OpenForm(new DevContractAcceptList());
             else
                 MessageBox.Show("您无权限使用该功能");
@@ -226,7 +226,7 @@ namespace Haimen.NewGUI
 
         private void mnuProject_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.项目, (long)ActionEnum.View))
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.项目, (long)ActionEnum.查看))
                 OpenForm(new DevProject());
             else
                 MessageBox.Show("您无权限使用该功能");

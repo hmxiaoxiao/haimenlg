@@ -38,19 +38,19 @@ namespace Haimen.NewGUI
         /// </summary>
         private void SetControlAccess()
         {
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.New))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.新增))
             {
                 if (tbNew.Enabled == true) tbNew.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.Edit))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.编辑))
             {
                 if (tbEdit.Enabled == true) tbEdit.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.Delete))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.删除))
             {
                 if (tbDelete.Enabled == true) tbDelete.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.Check))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.审核))
             {
                 if (tbCheckPassed.Enabled == true) tbCheckPassed.Enabled = false;
                 if (tbCheckFaild.Enabled == true) tbCheckFaild.Enabled = false;
@@ -371,7 +371,9 @@ namespace Haimen.NewGUI
         // 增加明细
         private void tsbNew_Click(object sender, EventArgs e)
         {
-            m_contract.DetailList.Add(new ContractDetail());
+            ContractDetail cd = new ContractDetail();
+            cd.PayDate = DateTime.Now;
+            m_contract.DetailList.Add(cd);
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_contract.DetailList;
         }
