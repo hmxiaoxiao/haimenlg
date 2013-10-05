@@ -79,6 +79,10 @@ namespace Haimen.NewGUI
             ShowDetail();
             gridView2.BestFitColumns();
 
+            lueInvoiceList.DataSource = Account.AccountInvoicList;
+            lueInvoiceList.DisplayMember = "Name";
+            lueInvoiceList.ValueMember = "ValueInt";
+
             // 显示数据源
             lueStatus.DataSource = null;
             lueStatus.DataSource = GlobalSet.AccountStatus;
@@ -257,6 +261,11 @@ namespace Haimen.NewGUI
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             EditAccount(winStatusEnum.支付);
+        }
+
+        private void tsb2Invoice_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            EditAccount(winStatusEnum.转正式发票);
         }
     }
 }

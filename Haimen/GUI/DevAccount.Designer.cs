@@ -71,11 +71,13 @@
             this.dtSigned = new DevExpress.XtraEditors.DateEdit();
             this.lueOutCompany = new DevExpress.XtraEditors.LookUpEdit();
             this.lueContractApply = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.lueContractApplyStatusEnum = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.c_id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_apply_date = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_money = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -147,8 +149,9 @@
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.c_status = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lueContractApplyStatusEnum = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.barInvoice = new DevExpress.XtraBars.Bar();
+            this.tb2Invoice = new DevExpress.XtraBars.BarButtonItem();
+            this.tbExit4 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -172,6 +175,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtSigned.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueOutCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractApply.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueContractApplyStatusEnum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
@@ -236,7 +240,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueContractApplyStatusEnum)).BeginInit();
             this.SuspendLayout();
             // 
             // lueInCompany
@@ -301,7 +304,8 @@
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
             this.barNormal,
             this.barPay,
-            this.barCheck});
+            this.barCheck,
+            this.barInvoice});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -318,8 +322,10 @@
             this.barEditItem1,
             this.tbPay,
             this.tbExit2,
-            this.tbExit3});
-            this.barManager1.MaxItemId = 12;
+            this.tbExit3,
+            this.tb2Invoice,
+            this.tbExit4});
+            this.barManager1.MaxItemId = 14;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemPictureEdit1,
             this.repositoryItemPictureEdit2});
@@ -452,28 +458,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(857, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(1042, 78);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 467);
-            this.barDockControlBottom.Size = new System.Drawing.Size(857, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1042, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 428);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 78);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 389);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(857, 39);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 428);
+            this.barDockControlRight.Location = new System.Drawing.Point(1042, 78);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 389);
             // 
             // barEditItem1
             // 
@@ -725,6 +731,13 @@
             this.lueContractApply.TabIndex = 19;
             this.lueContractApply.EditValueChanged += new System.EventHandler(this.lueContractApply_EditValueChanged);
             // 
+            // lueContractApplyStatusEnum
+            // 
+            this.lueContractApplyStatusEnum.AutoHeight = false;
+            this.lueContractApplyStatusEnum.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueContractApplyStatusEnum.Name = "lueContractApplyStatusEnum";
+            // 
             // gridLookUpEdit1View
             // 
             this.gridLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -767,6 +780,15 @@
             this.c_name.Name = "c_name";
             this.c_name.Visible = true;
             this.c_name.VisibleIndex = 2;
+            // 
+            // c_status
+            // 
+            this.c_status.Caption = "状态";
+            this.c_status.ColumnEdit = this.lueContractApplyStatusEnum;
+            this.c_status.FieldName = "Status";
+            this.c_status.Name = "c_status";
+            this.c_status.Visible = true;
+            this.c_status.VisibleIndex = 3;
             // 
             // layoutControlGroup1
             // 
@@ -1042,7 +1064,7 @@
             // 
             this.picPass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picPass.EditValue = ((object)(resources.GetObject("picPass.EditValue")));
-            this.picPass.Location = new System.Drawing.Point(750, 324);
+            this.picPass.Location = new System.Drawing.Point(935, 324);
             this.picPass.MenuManager = this.barManager1;
             this.picPass.Name = "picPass";
             this.picPass.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -1056,7 +1078,7 @@
             // 
             this.picCheckFaild.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picCheckFaild.EditValue = ((object)(resources.GetObject("picCheckFaild.EditValue")));
-            this.picCheckFaild.Location = new System.Drawing.Point(762, 284);
+            this.picCheckFaild.Location = new System.Drawing.Point(947, 284);
             this.picCheckFaild.MenuManager = this.barManager1;
             this.picCheckFaild.Name = "picCheckFaild";
             this.picCheckFaild.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -1073,10 +1095,10 @@
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 39);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 78);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(857, 428);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1042, 389);
             this.xtraTabControl1.TabIndex = 84;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -1090,7 +1112,7 @@
             this.xtraTabPage1.Controls.Add(this.picCheckFaild);
             this.xtraTabPage1.Controls.Add(this.picPass);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(851, 399);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1036, 360);
             this.xtraTabPage1.Text = "基础信息";
             // 
             // xtraTabPage2
@@ -1312,7 +1334,7 @@
             this.xtraTabPage3.Controls.Add(this.lstFiles);
             this.xtraTabPage3.Controls.Add(this.toolStrip2);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(766, 417);
+            this.xtraTabPage3.Size = new System.Drawing.Size(851, 399);
             this.xtraTabPage3.Text = "附件";
             // 
             // lstFiles
@@ -1324,7 +1346,7 @@
             new DevExpress.XtraEditors.Controls.ImageListBoxItem("asdfasdf", 1)});
             this.lstFiles.Location = new System.Drawing.Point(0, 25);
             this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(766, 392);
+            this.lstFiles.Size = new System.Drawing.Size(851, 374);
             this.lstFiles.TabIndex = 65;
             this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
             // 
@@ -1336,7 +1358,7 @@
             this.tsbAttachDelete});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(766, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(851, 25);
             this.toolStrip2.TabIndex = 45;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -1367,7 +1389,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.layoutControl2);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(766, 417);
+            this.xtraTabPage4.Size = new System.Drawing.Size(851, 399);
             this.xtraTabPage4.Text = "合同";
             // 
             // layoutControl2
@@ -1529,21 +1551,34 @@
             this.layoutControlItem11.Text = "应付金额";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // c_status
+            // barInvoice
             // 
-            this.c_status.Caption = "状态";
-            this.c_status.ColumnEdit = this.lueContractApplyStatusEnum;
-            this.c_status.FieldName = "Status";
-            this.c_status.Name = "c_status";
-            this.c_status.Visible = true;
-            this.c_status.VisibleIndex = 3;
+            this.barInvoice.BarName = "Custom 5";
+            this.barInvoice.DockCol = 0;
+            this.barInvoice.DockRow = 1;
+            this.barInvoice.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.barInvoice.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tb2Invoice, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbExit4, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.barInvoice.Offset = 1;
+            this.barInvoice.Text = "Custom 5";
+            this.barInvoice.Visible = false;
             // 
-            // lueContractApplyStatusEnum
+            // tb2Invoice
             // 
-            this.lueContractApplyStatusEnum.AutoHeight = false;
-            this.lueContractApplyStatusEnum.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueContractApplyStatusEnum.Name = "lueContractApplyStatusEnum";
+            this.tb2Invoice.Caption = "转正式发票";
+            this.tb2Invoice.Glyph = global::Haimen.Properties.Resources.Chart_Bar_hot;
+            this.tb2Invoice.Id = 12;
+            this.tb2Invoice.Name = "tb2Invoice";
+            this.tb2Invoice.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tb2Invoice_ItemClick);
+            // 
+            // tbExit4
+            // 
+            this.tbExit4.Caption = "退出";
+            this.tbExit4.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.tbExit4.Id = 13;
+            this.tbExit4.Name = "tbExit4";
+            this.tbExit4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbExit4_ItemClick);
             // 
             // DevAccount
             // 
@@ -1551,7 +1586,7 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(857, 467);
+            this.ClientSize = new System.Drawing.Size(1042, 467);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -1583,6 +1618,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtSigned.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueOutCompany.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractApply.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueContractApplyStatusEnum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -1651,7 +1687,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueContractApplyStatusEnum)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1777,5 +1812,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem25;
         private DevExpress.XtraGrid.Columns.GridColumn c_status;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueContractApplyStatusEnum;
+        private DevExpress.XtraBars.Bar barInvoice;
+        private DevExpress.XtraBars.BarButtonItem tb2Invoice;
+        private DevExpress.XtraBars.BarButtonItem tbExit4;
     }
 }

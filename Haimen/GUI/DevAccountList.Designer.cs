@@ -38,6 +38,10 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lueStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.col_signed = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_project = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_outcompany = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_outcompany_bank = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -45,9 +49,6 @@
             this.col_incompany = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_incompany_bank = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_incompany_account = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_status = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lueStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.col_signed = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_money = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -69,7 +70,9 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.tsbNewInput = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.col_project = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_invoice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lueInvoiceList = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.tsb2Invoice = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -79,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lueInvoiceList)).BeginInit();
             this.SuspendLayout();
             // 
             // col_detail_money
@@ -137,7 +141,8 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.lueStatus});
+            this.lueStatus,
+            this.lueInvoiceList});
             this.gridControl1.Size = new System.Drawing.Size(522, 519);
             this.gridControl1.TabIndex = 23;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -151,7 +156,9 @@
             this.col_id,
             this.col_status,
             this.col_signed,
+            this.col_money,
             this.col_project,
+            this.col_invoice,
             this.col_code,
             this.col_outcompany,
             this.col_outcompany_bank,
@@ -159,7 +166,6 @@
             this.col_incompany,
             this.col_incompany_bank,
             this.col_incompany_account,
-            this.col_money,
             this.col_memo});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
@@ -174,62 +180,6 @@
             this.col_id.Caption = "ID";
             this.col_id.FieldName = "ID";
             this.col_id.Name = "col_id";
-            // 
-            // col_code
-            // 
-            this.col_code.Caption = "单据字";
-            this.col_code.FieldName = "Code";
-            this.col_code.Name = "col_code";
-            this.col_code.Visible = true;
-            this.col_code.VisibleIndex = 2;
-            // 
-            // col_outcompany
-            // 
-            this.col_outcompany.Caption = "付款单位";
-            this.col_outcompany.FieldName = "OutCompanyDetail.Parent.Name";
-            this.col_outcompany.Name = "col_outcompany";
-            this.col_outcompany.Visible = true;
-            this.col_outcompany.VisibleIndex = 4;
-            // 
-            // col_outcompany_bank
-            // 
-            this.col_outcompany_bank.Caption = "付款银行";
-            this.col_outcompany_bank.FieldName = "OutCompanyDetail.Bank.Name";
-            this.col_outcompany_bank.Name = "col_outcompany_bank";
-            this.col_outcompany_bank.Visible = true;
-            this.col_outcompany_bank.VisibleIndex = 5;
-            // 
-            // col_outcompany_account
-            // 
-            this.col_outcompany_account.Caption = "付款帐号";
-            this.col_outcompany_account.FieldName = "OutCompanyDetail.Account";
-            this.col_outcompany_account.Name = "col_outcompany_account";
-            this.col_outcompany_account.Visible = true;
-            this.col_outcompany_account.VisibleIndex = 6;
-            // 
-            // col_incompany
-            // 
-            this.col_incompany.Caption = "收款单位";
-            this.col_incompany.FieldName = "InCompanyDetail.Parent.Name";
-            this.col_incompany.Name = "col_incompany";
-            this.col_incompany.Visible = true;
-            this.col_incompany.VisibleIndex = 7;
-            // 
-            // col_incompany_bank
-            // 
-            this.col_incompany_bank.Caption = "收款银行";
-            this.col_incompany_bank.FieldName = "InCompanyDetail.Bank.Name";
-            this.col_incompany_bank.Name = "col_incompany_bank";
-            this.col_incompany_bank.Visible = true;
-            this.col_incompany_bank.VisibleIndex = 8;
-            // 
-            // col_incompany_account
-            // 
-            this.col_incompany_account.Caption = "收款帐号";
-            this.col_incompany_account.FieldName = "InCompanyDetail.Account";
-            this.col_incompany_account.Name = "col_incompany_account";
-            this.col_incompany_account.Visible = true;
-            this.col_incompany_account.VisibleIndex = 9;
             // 
             // col_status
             // 
@@ -257,13 +207,77 @@
             this.col_signed.Visible = true;
             this.col_signed.VisibleIndex = 1;
             // 
+            // col_project
+            // 
+            this.col_project.Caption = "所属项目";
+            this.col_project.FieldName = "Project.Name";
+            this.col_project.Name = "col_project";
+            this.col_project.Visible = true;
+            this.col_project.VisibleIndex = 3;
+            // 
+            // col_code
+            // 
+            this.col_code.Caption = "单据字";
+            this.col_code.FieldName = "Code";
+            this.col_code.Name = "col_code";
+            this.col_code.Visible = true;
+            this.col_code.VisibleIndex = 5;
+            // 
+            // col_outcompany
+            // 
+            this.col_outcompany.Caption = "付款单位";
+            this.col_outcompany.FieldName = "OutCompanyDetail.Parent.Name";
+            this.col_outcompany.Name = "col_outcompany";
+            this.col_outcompany.Visible = true;
+            this.col_outcompany.VisibleIndex = 6;
+            // 
+            // col_outcompany_bank
+            // 
+            this.col_outcompany_bank.Caption = "付款银行";
+            this.col_outcompany_bank.FieldName = "OutCompanyDetail.Bank.Name";
+            this.col_outcompany_bank.Name = "col_outcompany_bank";
+            this.col_outcompany_bank.Visible = true;
+            this.col_outcompany_bank.VisibleIndex = 7;
+            // 
+            // col_outcompany_account
+            // 
+            this.col_outcompany_account.Caption = "付款帐号";
+            this.col_outcompany_account.FieldName = "OutCompanyDetail.Account";
+            this.col_outcompany_account.Name = "col_outcompany_account";
+            this.col_outcompany_account.Visible = true;
+            this.col_outcompany_account.VisibleIndex = 8;
+            // 
+            // col_incompany
+            // 
+            this.col_incompany.Caption = "收款单位";
+            this.col_incompany.FieldName = "InCompanyDetail.Parent.Name";
+            this.col_incompany.Name = "col_incompany";
+            this.col_incompany.Visible = true;
+            this.col_incompany.VisibleIndex = 9;
+            // 
+            // col_incompany_bank
+            // 
+            this.col_incompany_bank.Caption = "收款银行";
+            this.col_incompany_bank.FieldName = "InCompanyDetail.Bank.Name";
+            this.col_incompany_bank.Name = "col_incompany_bank";
+            this.col_incompany_bank.Visible = true;
+            this.col_incompany_bank.VisibleIndex = 10;
+            // 
+            // col_incompany_account
+            // 
+            this.col_incompany_account.Caption = "收款帐号";
+            this.col_incompany_account.FieldName = "InCompanyDetail.Account";
+            this.col_incompany_account.Name = "col_incompany_account";
+            this.col_incompany_account.Visible = true;
+            this.col_incompany_account.VisibleIndex = 11;
+            // 
             // col_money
             // 
             this.col_money.Caption = "总金额";
             this.col_money.FieldName = "Money";
             this.col_money.Name = "col_money";
             this.col_money.Visible = true;
-            this.col_money.VisibleIndex = 10;
+            this.col_money.VisibleIndex = 2;
             // 
             // col_memo
             // 
@@ -271,7 +285,7 @@
             this.col_memo.FieldName = "Memo";
             this.col_memo.Name = "col_memo";
             this.col_memo.Visible = true;
-            this.col_memo.VisibleIndex = 11;
+            this.col_memo.VisibleIndex = 12;
             // 
             // gridView2
             // 
@@ -315,8 +329,9 @@
             this.tsbQuery,
             this.tsbExit,
             this.tsbRefresh,
-            this.tsbPay});
-            this.barManager1.MaxItemId = 10;
+            this.tsbPay,
+            this.tsb2Invoice});
+            this.barManager1.MaxItemId = 11;
             // 
             // bar1
             // 
@@ -330,6 +345,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPay, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsb2Invoice, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
@@ -447,13 +463,29 @@
             this.splitContainerControl1.TabIndex = 38;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
-            // col_project
+            // col_invoice
             // 
-            this.col_project.Caption = "所属项目";
-            this.col_project.FieldName = "Project.Name";
-            this.col_project.Name = "col_project";
-            this.col_project.Visible = true;
-            this.col_project.VisibleIndex = 3;
+            this.col_invoice.Caption = "发票";
+            this.col_invoice.ColumnEdit = this.lueInvoiceList;
+            this.col_invoice.FieldName = "Invoice";
+            this.col_invoice.Name = "col_invoice";
+            this.col_invoice.Visible = true;
+            this.col_invoice.VisibleIndex = 4;
+            // 
+            // lueInvoiceList
+            // 
+            this.lueInvoiceList.AutoHeight = false;
+            this.lueInvoiceList.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueInvoiceList.Name = "lueInvoiceList";
+            // 
+            // tsb2Invoice
+            // 
+            this.tsb2Invoice.Caption = " 转正式发票";
+            this.tsb2Invoice.Glyph = global::Haimen.Properties.Resources.Card_File_hot;
+            this.tsb2Invoice.Id = 10;
+            this.tsb2Invoice.Name = "tsb2Invoice";
+            this.tsb2Invoice.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsb2Invoice_ItemClick);
             // 
             // DevAccountList
             // 
@@ -477,6 +509,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lueInvoiceList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -523,5 +556,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_money;
         private DevExpress.XtraBars.BarButtonItem tsbPay;
         private DevExpress.XtraGrid.Columns.GridColumn col_project;
+        private DevExpress.XtraGrid.Columns.GridColumn col_invoice;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueInvoiceList;
+        private DevExpress.XtraBars.BarButtonItem tsb2Invoice;
     }
 }

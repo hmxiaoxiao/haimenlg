@@ -80,6 +80,8 @@ namespace Haimen.NewGUI
             barNormal.Visible = true;
             barCheck.Visible = false;
             barPay.Visible = false;
+            barInvoice.Visible = false;
+
             switch (status)
             {
                 case winStatusEnum.新增:
@@ -113,6 +115,7 @@ namespace Haimen.NewGUI
                     barNormal.Visible = false;
                     barCheck.Visible = true;
                     barPay.Visible = false;
+                    barInvoice.Visible = false;
                     barCheck.Offset = 0;        // 把状态条的位置移动第一位
                     SetEditorStatus(false);
                     break;
@@ -129,8 +132,17 @@ namespace Haimen.NewGUI
                     barNormal.Visible = false;
                     barCheck.Visible = false;
                     barPay.Visible = true;
+                    barInvoice.Visible = false;
                     barPay.Offset = 0;          // 把状态条的位置移到第一条
 
+                    SetEditorStatus(false);
+                    break;
+                case winStatusEnum.转正式发票:
+                    barNormal.Visible = false;
+                    barPay.Visible = false;
+                    barCheck.Visible = false;
+                    barInvoice.Visible = true;
+                    barInvoice.Offset = 0;
                     SetEditorStatus(false);
                     break;
             }
@@ -183,6 +195,12 @@ namespace Haimen.NewGUI
             // 备注
             m_account.Memo = txtMemo.Text;
 
+            // 正式发票
+            if (chkRelease.Checked)
+                m_account.Invoice = (long)AccountInvoiceEnum.正式发票;
+            else
+                m_account.Invoice = (long)AccountInvoiceEnum.非正式发票;
+
             // 总金额
             if (string.IsNullOrEmpty(txtMoney.Text))
                 m_account.Money = 0;
@@ -190,7 +208,7 @@ namespace Haimen.NewGUI
                 m_account.Money = decimal.Parse(txtMoney.Text);
 
             // 合同申请号，如果存在的话
-            if (!string.IsNullOrEmpty(lueContractApply.EditValue.ToString()))
+            if (!(lueContractApply.EditValue == null || string.IsNullOrEmpty(lueContractApply.EditValue.ToString())))
                 m_account.ContractApplyID = long.Parse(lueContractApply.EditValue.ToString());
 
             // 附件张数
@@ -282,6 +300,11 @@ namespace Haimen.NewGUI
                 lueCashier.EditValue = m_account.CashierID;     // 出纳
                 txtMemo.Text = m_account.Memo;                  // 备注
                 calcAttachCount.EditValue = m_account.Attachment;    // 附件张数
+                // 正式发票
+                if (m_account.Invoice == (long)AccountInvoiceEnum.正式发票)
+                    chkRelease.Checked = true;
+                else
+                    chkRelease.Checked = false;
 
 
                 // 停止信号同步
@@ -330,7 +353,7 @@ namespace Haimen.NewGUI
                 txtInBank.Text = "";
 
                 lueProjects.EditValue = null;
-                chkRelease.Checked = true;
+                chkRelease.Checked = true;      // 默认为正式发票
 
                 txtMemo.Text = "";
             }
@@ -481,6 +504,9 @@ namespace Haimen.NewGUI
                         break;
                     case "ContractApplyID":
                         dxErrorProvider1.SetError(lueContractApply, kv.Value);
+                        break;
+                    case "Money":
+                        dxErrorProvider1.SetError(txtMoney, kv.Value);
                         break;
                 }
             }
@@ -864,6 +890,24 @@ namespace Haimen.NewGUI
         private void tbExit3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MyFormClose();
+        }
+
+        private void tbExit4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MyFormClose();
+        }
+
+        private void tb2Invoice_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!chkRelease.Checked)
+            {
+                m_account.ConverInvoice();
+                //SetFormStatus(winStatusEnum.纯查看);      //审核通过后，只能看。
+                ShowCheckPic();
+                tb2Invoice.Enabled = false;
+                chkRelease.Checked = true;
+                m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
+            }
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Haimen.Helper
         审核,
         支付,
         纯查看,
+        转正式发票,
     }
 
     /// <summary>

@@ -156,6 +156,27 @@ namespace Haimen.Entity
         [Field("memo")]
         public string Memo { get; set; }
 
+        // 是否正式发票 0为是，1为不是，跟
+        // AccountInvoiceEnum的一致
+        [Field("invoice")]
+        public long Invoice { get; set; }
+        private static List<Dict> m_invoice_enum;
+        public static List<Dict> AccountInvoicList
+        {
+            get
+            {
+                if (m_invoice_enum == null)
+                {
+                    m_invoice_enum = new List<Dict>();
+                    foreach (string s in Enum.GetNames(typeof(AccountInvoiceEnum)))
+                    {
+                        m_invoice_enum.Add(new Dict(s, long.Parse(Enum.Format(typeof(AccountInvoiceEnum), Enum.Parse(typeof(AccountInvoiceEnum), s), "d")))); ;
+                    }
+                }
+                return m_invoice_enum;
+            }
+        }
+
         [Field("project_id")]
         public long ProjectID { get; set; }
         private Project m_project;
@@ -206,11 +227,12 @@ namespace Haimen.Entity
                 inCD.Balance += Money;
                 outCD.Balance -= Money;
 
-                // 更新合同申请中对应的合同的已付金额
+                // 更新合同申请中对应的合同的状态
                 if (ContractApplyID > 0)
                 {
-                    Contract c = ContractApply.CreateByID(ContractApplyID).Contract;
-                    c.UpdatePay(Money);
+                    ContractApply c = ContractApply.CreateByID(ContractApplyID);
+                    c.Status = (long)ContractApplyStatusEnum.已支付;
+                    c.Save();
                 }
 
                 inCD.Save();        // 保存收入单位帐号余额
@@ -237,8 +259,9 @@ namespace Haimen.Entity
                 // 更新合同的已付金额
                 if (ContractApplyID > 0)
                 {
-                    Contract c = ContractApply.CreateByID(ContractApplyID).Contract;
-                    c.UpdatePay(-Money);
+                    ContractApply c = ContractApply.CreateByID(ContractApplyID);
+                    c.Status = (long)ContractApplyStatusEnum.已开票;
+                    c.Save();
                 }
 
 
@@ -269,6 +292,9 @@ namespace Haimen.Entity
                 if (cy.Status == (long)ContractApplyStatusEnum.已支付)
                     Error_Info.Add(new KeyValuePair<string, string>("ContractApplyID", "您选择的合同申请号已经支付，无需再生成凭证！"));
             }
+
+            if (Money == 0)
+                Error_Info.Add(new KeyValuePair<string,string>("Money", "必须输入发生的金额（金额不能为零）！"));
 
             return Error_Info.Count == 0;
         }
@@ -316,5 +342,20 @@ namespace Haimen.Entity
             }
             return base.Update();
         }
+
+        public void ConverInvoice()
+        {
+            if (Invoice != (long)AccountInvoiceEnum.正式发票)
+            {
+                Invoice = (long)AccountInvoiceEnum.正式发票;
+                this.Save();
+            }
+        }
+    }
+
+    public enum AccountInvoiceEnum : long
+    {
+        正式发票 = 1,
+        非正式发票,
     }
 }
