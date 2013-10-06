@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraSplashScreen;
 
-namespace Haimen.NewGUI
+namespace Haimen.GUI
 {
     public partial class frmSplash : SplashScreen
     {

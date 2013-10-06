@@ -9,7 +9,7 @@ using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 
-namespace Haimen.NewGUI
+namespace Haimen.GUI
 {
     public partial class DevAccountQuery : DevExpress.XtraEditors.XtraForm
     {

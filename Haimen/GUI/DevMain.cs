@@ -14,7 +14,7 @@ using Haimen.GUI;
 
 using DevExpress.XtraBars.Helpers;
 using DevExpress.XtraEditors;
-namespace Haimen.NewGUI
+namespace Haimen.GUI
 {
     public partial class DevMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {

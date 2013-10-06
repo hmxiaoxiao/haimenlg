@@ -10,7 +10,7 @@ using DevExpress.XtraEditors;
 using Haimen.Entity;
 using Haimen.Helper;
 
-namespace Haimen.NewGUI
+namespace Haimen.GUI
 {
     /// <summary>
     /// 银行列表

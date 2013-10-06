@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 using Haimen.Entity;
-using Haimen.NewGUI;
+using Haimen.GUI;
 using Haimen.Helper;
 
 namespace Haimen.GUI

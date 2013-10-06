@@ -13,7 +13,7 @@ using Haimen.Helper;
 using System.IO;
 using System.Diagnostics;
 
-namespace Haimen.NewGUI
+namespace Haimen.GUI
 {
     public partial class DevContract : DevExpress.XtraEditors.XtraForm
     {

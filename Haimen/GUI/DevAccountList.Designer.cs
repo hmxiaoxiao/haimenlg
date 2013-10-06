@@ -1,4 +1,4 @@
-﻿namespace Haimen.NewGUI
+﻿namespace Haimen.GUI
 {
     partial class DevAccountList
     {
@@ -64,6 +64,7 @@
             this.tsbCheck = new DevExpress.XtraBars.BarButtonItem();
             this.tsbPay = new DevExpress.XtraBars.BarButtonItem();
             this.tsb2Invoice = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbPrint = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
             this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
@@ -145,7 +146,7 @@
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueStatus,
             this.lueInvoiceList});
-            this.gridControl1.Size = new System.Drawing.Size(522, 519);
+            this.gridControl1.Size = new System.Drawing.Size(584, 519);
             this.gridControl1.TabIndex = 23;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -350,8 +351,9 @@
             this.tsbExit,
             this.tsbRefresh,
             this.tsbPay,
-            this.tsb2Invoice});
-            this.barManager1.MaxItemId = 11;
+            this.tsb2Invoice,
+            this.tsbPrint});
+            this.barManager1.MaxItemId = 12;
             // 
             // bar1
             // 
@@ -366,6 +368,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPay, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsb2Invoice, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPrint, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
@@ -419,6 +422,14 @@
             this.tsb2Invoice.Name = "tsb2Invoice";
             this.tsb2Invoice.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsb2Invoice_ItemClick);
             // 
+            // tsbPrint
+            // 
+            this.tsbPrint.Caption = "打印";
+            this.tsbPrint.Glyph = global::Haimen.Properties.Resources.Print_2_hot;
+            this.tsbPrint.Id = 11;
+            this.tsbPrint.Name = "tsbPrint";
+            this.tsbPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbPrint_ItemClick);
+            // 
             // tsbQuery
             // 
             this.tsbQuery.Caption = "查询";
@@ -448,14 +459,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(744, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(806, 39);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 558);
-            this.barDockControlBottom.Size = new System.Drawing.Size(744, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(806, 0);
             // 
             // barDockControlLeft
             // 
@@ -468,7 +479,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(744, 39);
+            this.barDockControlRight.Location = new System.Drawing.Point(806, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 519);
             // 
             // tsbNewInput
@@ -486,7 +497,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(744, 519);
+            this.splitContainerControl1.Size = new System.Drawing.Size(806, 519);
             this.splitContainerControl1.SplitterPosition = 217;
             this.splitContainerControl1.TabIndex = 38;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -495,7 +506,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(744, 558);
+            this.ClientSize = new System.Drawing.Size(806, 558);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -563,5 +574,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_invoice;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueInvoiceList;
         private DevExpress.XtraBars.BarButtonItem tsb2Invoice;
+        private DevExpress.XtraBars.BarButtonItem tsbPrint;
     }
 }

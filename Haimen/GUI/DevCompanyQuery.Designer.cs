@@ -1,4 +1,4 @@
-﻿namespace Haimen.NewGUI
+﻿namespace Haimen.GUI
 {
     partial class DevCompanyQuery
     {

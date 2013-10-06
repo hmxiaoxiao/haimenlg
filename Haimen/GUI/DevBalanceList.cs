@@ -10,7 +10,7 @@ using DevExpress.XtraEditors;
 using Haimen.Entity;
 using Haimen.Helper;
 
-namespace Haimen.NewGUI
+namespace Haimen.GUI
 {
     public partial class DevBalanceList : DevExpress.XtraEditors.XtraForm
     {

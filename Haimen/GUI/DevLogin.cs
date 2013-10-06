@@ -10,7 +10,7 @@ using DevExpress.XtraEditors;
 using Haimen.Entity;
 using Haimen.Helper;
 
-namespace Haimen.NewGUI
+namespace Haimen.GUI
 {
     // 用户登录
     public partial class DevLogin : DevExpress.XtraEditors.XtraForm

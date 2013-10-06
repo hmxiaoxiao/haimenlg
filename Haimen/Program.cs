@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using Haimen.Entity;
 using Haimen.Helper;
 
-using Haimen.NewGUI;
+using Haimen.GUI;
 
 namespace Haimen
 {

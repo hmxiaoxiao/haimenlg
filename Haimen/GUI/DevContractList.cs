@@ -11,7 +11,7 @@ using Haimen.Entity;
 using Haimen.Helper;
 using Haimen.GUI;
 
-namespace Haimen.NewGUI
+namespace Haimen.GUI
 {
     public partial class DevContractList : DevExpress.XtraEditors.XtraForm
     {

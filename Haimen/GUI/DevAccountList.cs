@@ -10,7 +10,7 @@ using DevExpress.XtraEditors;
 using Haimen.Entity;
 using Haimen.Helper;
 
-namespace Haimen.NewGUI
+namespace Haimen.GUI
 {
     public partial class DevAccountList : DevExpress.XtraEditors.XtraForm
     {
@@ -266,6 +266,10 @@ namespace Haimen.NewGUI
         private void tsb2Invoice_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             EditAccount(winStatusEnum.转正式发票);
+        }
+
+        private void tsbPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
         }
     }
 }
