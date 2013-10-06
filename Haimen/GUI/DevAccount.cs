@@ -510,7 +510,9 @@ namespace Haimen.NewGUI
                         break;
                 }
             }
-            return !dxErrorProvider1.HasErrors;
+            if (m_account.Error_Info.Count > 0)
+                MessageBox.Show(m_account.ErrorString, "出错了！",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            return m_account.Error_Info.Count == 0;
         }
 
         /// <summary>

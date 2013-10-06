@@ -454,7 +454,7 @@
             // c_obalance
             // 
             this.c_obalance.Caption = "初始余额";
-            this.c_obalance.DisplayFormat.FormatString = "N";
+            this.c_obalance.DisplayFormat.FormatString = "c";
             this.c_obalance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.c_obalance.FieldName = "OBalance";
             this.c_obalance.Name = "c_obalance";
@@ -464,7 +464,7 @@
             // c_ocredit
             // 
             this.c_ocredit.Caption = "初始贷款";
-            this.c_ocredit.DisplayFormat.FormatString = "N";
+            this.c_ocredit.DisplayFormat.FormatString = "c";
             this.c_ocredit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.c_ocredit.FieldName = "OCredit";
             this.c_ocredit.Name = "c_ocredit";

@@ -77,7 +77,7 @@ namespace Haimen.NewGUI
 
             // 显示明细
             ShowDetail();
-            gridView2.BestFitColumns();
+            gridView3.BestFitColumns();
 
             lueInvoiceList.DataSource = Account.AccountInvoicList;
             lueInvoiceList.DisplayMember = "Name";

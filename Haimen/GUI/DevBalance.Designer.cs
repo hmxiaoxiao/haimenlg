@@ -319,6 +319,7 @@
             this.txtMoney.Name = "txtMoney";
             this.txtMoney.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtMoney.Properties.Mask.EditMask = "c";
             this.txtMoney.Size = new System.Drawing.Size(229, 20);
             this.txtMoney.StyleController = this.layoutControl1;
             this.txtMoney.TabIndex = 6;
@@ -616,7 +617,7 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "付款金额";
-            this.gridColumn2.DisplayFormat.FormatString = "N";
+            this.gridColumn2.DisplayFormat.FormatString = "c";
             this.gridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn2.FieldName = "Money";
             this.gridColumn2.Name = "gridColumn2";

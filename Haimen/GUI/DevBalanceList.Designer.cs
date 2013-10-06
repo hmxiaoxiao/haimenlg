@@ -246,6 +246,8 @@
             // col_money
             // 
             this.col_money.Caption = "贷款金额";
+            this.col_money.DisplayFormat.FormatString = "c";
+            this.col_money.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.col_money.FieldName = "Money";
             this.col_money.Name = "col_money";
             this.col_money.Visible = true;
@@ -254,6 +256,8 @@
             // col_remaining
             // 
             this.col_remaining.Caption = "余额";
+            this.col_remaining.DisplayFormat.FormatString = "c";
+            this.col_remaining.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.col_remaining.FieldName = "Remaining";
             this.col_remaining.Name = "col_remaining";
             this.col_remaining.Visible = true;

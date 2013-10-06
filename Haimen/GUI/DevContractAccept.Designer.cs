@@ -196,6 +196,8 @@
             this.txtContractMoney.Location = new System.Drawing.Point(300, 37);
             this.txtContractMoney.MenuManager = this.barManager1;
             this.txtContractMoney.Name = "txtContractMoney";
+            this.txtContractMoney.Properties.Mask.EditMask = "c";
+            this.txtContractMoney.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtContractMoney.Size = new System.Drawing.Size(175, 20);
             this.txtContractMoney.StyleController = this.layoutControl1;
             this.txtContractMoney.TabIndex = 15;
@@ -207,6 +209,7 @@
             this.clMoney.Name = "clMoney";
             this.clMoney.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.clMoney.Properties.Mask.EditMask = "c";
             this.clMoney.Size = new System.Drawing.Size(407, 20);
             this.clMoney.StyleController = this.layoutControl1;
             this.clMoney.TabIndex = 13;
@@ -272,6 +275,8 @@
             this.txtContractUnpay.Location = new System.Drawing.Point(300, 61);
             this.txtContractUnpay.MenuManager = this.barManager1;
             this.txtContractUnpay.Name = "txtContractUnpay";
+            this.txtContractUnpay.Properties.Mask.EditMask = "c";
+            this.txtContractUnpay.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtContractUnpay.Size = new System.Drawing.Size(175, 20);
             this.txtContractUnpay.StyleController = this.layoutControl1;
             this.txtContractUnpay.TabIndex = 7;
@@ -282,6 +287,8 @@
             this.txtContractPay.Location = new System.Drawing.Point(68, 61);
             this.txtContractPay.MenuManager = this.barManager1;
             this.txtContractPay.Name = "txtContractPay";
+            this.txtContractPay.Properties.Mask.EditMask = "c";
+            this.txtContractPay.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtContractPay.Size = new System.Drawing.Size(177, 20);
             this.txtContractPay.StyleController = this.layoutControl1;
             this.txtContractPay.TabIndex = 6;

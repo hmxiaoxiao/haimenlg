@@ -80,6 +80,8 @@
             // col_money
             // 
             this.col_money.Caption = "金额";
+            this.col_money.DisplayFormat.FormatString = "c";
+            this.col_money.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.col_money.FieldName = "Money";
             this.col_money.Name = "col_money";
             this.col_money.Visible = true;
@@ -190,6 +192,8 @@
             // col_pay
             // 
             this.col_pay.Caption = "已付金额";
+            this.col_pay.DisplayFormat.FormatString = "c";
+            this.col_pay.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.col_pay.FieldName = "Pay";
             this.col_pay.Name = "col_pay";
             this.col_pay.Visible = true;
@@ -198,6 +202,8 @@
             // col_securigy
             // 
             this.col_securigy.Caption = "保证金";
+            this.col_securigy.DisplayFormat.FormatString = "c";
+            this.col_securigy.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.col_securigy.FieldName = "Security";
             this.col_securigy.Name = "col_securigy";
             this.col_securigy.Visible = true;

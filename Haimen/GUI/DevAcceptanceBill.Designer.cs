@@ -272,6 +272,7 @@
             this.clMoney.Name = "clMoney";
             this.clMoney.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.clMoney.Properties.Mask.EditMask = "c";
             this.clMoney.Size = new System.Drawing.Size(203, 20);
             this.clMoney.StyleController = this.layoutControl1;
             this.clMoney.TabIndex = 10;

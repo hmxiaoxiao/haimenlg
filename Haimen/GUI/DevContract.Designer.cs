@@ -42,6 +42,9 @@
             this.tbCheckPassed = new DevExpress.XtraBars.BarButtonItem();
             this.tbCheckFaild = new DevExpress.XtraBars.BarButtonItem();
             this.tbExit = new DevExpress.XtraBars.BarButtonItem();
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.tbApplySave = new DevExpress.XtraBars.BarButtonItem();
+            this.tbApplyExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -107,6 +110,7 @@
             this.c_money = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lueApplyStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.txtPayed = new DevExpress.XtraEditors.TextEdit();
             this.calcPayed = new DevExpress.XtraEditors.CalcEdit();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -124,10 +128,6 @@
             this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
             this.picCheckFaild = new DevExpress.XtraEditors.PictureEdit();
-            this.bar2 = new DevExpress.XtraBars.Bar();
-            this.tbApplySave = new DevExpress.XtraBars.BarButtonItem();
-            this.tbApplyExit = new DevExpress.XtraBars.BarButtonItem();
-            this.lueApplyStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.lueOutCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -186,6 +186,7 @@
             this.layoutControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueApplyStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayed.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcPayed.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
@@ -205,7 +206,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueApplyStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // lueOutCompany
@@ -356,6 +356,34 @@
             this.tbExit.Id = 5;
             this.tbExit.Name = "tbExit";
             this.tbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbExit_ItemClick);
+            // 
+            // bar2
+            // 
+            this.bar2.BarName = "Custom 3";
+            this.bar2.DockCol = 1;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbApplySave, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbApplyExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.bar2.Offset = 526;
+            this.bar2.Text = "Custom 3";
+            // 
+            // tbApplySave
+            // 
+            this.tbApplySave.Caption = "保存申请";
+            this.tbApplySave.Glyph = global::Haimen.Properties.Resources.Save_hot;
+            this.tbApplySave.Id = 7;
+            this.tbApplySave.Name = "tbApplySave";
+            this.tbApplySave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbApplySave_ItemClick);
+            // 
+            // tbApplyExit
+            // 
+            this.tbApplyExit.Caption = "退出";
+            this.tbApplyExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.tbApplyExit.Id = 8;
+            this.tbApplyExit.Name = "tbApplyExit";
+            this.tbApplyExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbApplyExit_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -859,7 +887,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl1);
             this.xtraTabPage2.Controls.Add(this.toolStrip3);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(732, 517);
+            this.xtraTabPage2.Size = new System.Drawing.Size(840, 517);
             this.xtraTabPage2.Text = "合同支付明细";
             // 
             // gridControl1
@@ -870,7 +898,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(732, 492);
+            this.gridControl1.Size = new System.Drawing.Size(840, 492);
             this.gridControl1.TabIndex = 74;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -911,7 +939,7 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "付款金额";
-            this.gridColumn2.DisplayFormat.FormatString = "N";
+            this.gridColumn2.DisplayFormat.FormatString = "c";
             this.gridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn2.FieldName = "Money";
             this.gridColumn2.Name = "gridColumn2";
@@ -929,7 +957,7 @@
             this.tsbDelete});
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(732, 25);
+            this.toolStrip3.Size = new System.Drawing.Size(840, 25);
             this.toolStrip3.TabIndex = 73;
             this.toolStrip3.Text = "toolStrip3";
             // 
@@ -961,7 +989,7 @@
             this.xtraTabPage3.Controls.Add(this.lstFiles);
             this.xtraTabPage3.Controls.Add(this.toolStrip1);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(732, 517);
+            this.xtraTabPage3.Size = new System.Drawing.Size(840, 517);
             this.xtraTabPage3.Text = "合同附件";
             // 
             // lstFiles
@@ -970,7 +998,7 @@
             this.lstFiles.ImageList = this.imageListBoxControl2;
             this.lstFiles.Location = new System.Drawing.Point(0, 25);
             this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(732, 492);
+            this.lstFiles.Size = new System.Drawing.Size(840, 492);
             this.lstFiles.TabIndex = 1;
             this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
             // 
@@ -982,7 +1010,7 @@
             this.tsbAttachDelete});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(732, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(840, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1073,6 +1101,8 @@
             // c_money
             // 
             this.c_money.Caption = "申请金额";
+            this.c_money.DisplayFormat.FormatString = "c";
+            this.c_money.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.c_money.FieldName = "Money";
             this.c_money.Name = "c_money";
             this.c_money.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -1097,11 +1127,22 @@
             this.c_status.Visible = true;
             this.c_status.VisibleIndex = 3;
             // 
+            // lueApplyStatus
+            // 
+            this.lueApplyStatus.AutoHeight = false;
+            this.lueApplyStatus.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueApplyStatus.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
+            this.lueApplyStatus.Name = "lueApplyStatus";
+            // 
             // txtPayed
             // 
             this.txtPayed.Location = new System.Drawing.Point(75, 68);
             this.txtPayed.MenuManager = this.barManager1;
             this.txtPayed.Name = "txtPayed";
+            this.txtPayed.Properties.Mask.EditMask = "c";
+            this.txtPayed.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtPayed.Size = new System.Drawing.Size(355, 20);
             this.txtPayed.StyleController = this.layoutControl3;
             this.txtPayed.TabIndex = 5;
@@ -1113,6 +1154,7 @@
             this.calcPayed.Name = "calcPayed";
             this.calcPayed.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcPayed.Properties.Mask.EditMask = "c";
             this.calcPayed.Size = new System.Drawing.Size(355, 20);
             this.calcPayed.StyleController = this.layoutControl3;
             this.calcPayed.TabIndex = 4;
@@ -1201,6 +1243,7 @@
             this.calcApplyMoney.Name = "calcApplyMoney";
             this.calcApplyMoney.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcApplyMoney.Properties.Mask.EditMask = "c";
             this.calcApplyMoney.Size = new System.Drawing.Size(150, 20);
             this.calcApplyMoney.StyleController = this.layoutControl2;
             this.calcApplyMoney.TabIndex = 5;
@@ -1289,43 +1332,6 @@
             this.picCheckFaild.TabIndex = 66;
             this.picCheckFaild.Visible = false;
             // 
-            // bar2
-            // 
-            this.bar2.BarName = "Custom 3";
-            this.bar2.DockCol = 1;
-            this.bar2.DockRow = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbApplySave, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbApplyExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar2.Offset = 526;
-            this.bar2.Text = "Custom 3";
-            // 
-            // tbApplySave
-            // 
-            this.tbApplySave.Caption = "保存申请";
-            this.tbApplySave.Glyph = global::Haimen.Properties.Resources.Save_hot;
-            this.tbApplySave.Id = 7;
-            this.tbApplySave.Name = "tbApplySave";
-            this.tbApplySave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbApplySave_ItemClick);
-            // 
-            // tbApplyExit
-            // 
-            this.tbApplyExit.Caption = "退出";
-            this.tbApplyExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
-            this.tbApplyExit.Id = 8;
-            this.tbApplyExit.Name = "tbApplyExit";
-            this.tbApplyExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbApplyExit_ItemClick);
-            // 
-            // lueApplyStatus
-            // 
-            this.lueApplyStatus.AutoHeight = false;
-            this.lueApplyStatus.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueApplyStatus.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
-            this.lueApplyStatus.Name = "lueApplyStatus";
-            // 
             // DevContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1403,6 +1409,7 @@
             this.layoutControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueApplyStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayed.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcPayed.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
@@ -1422,7 +1429,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueApplyStatus)).EndInit();
             this.ResumeLayout(false);
 
         }

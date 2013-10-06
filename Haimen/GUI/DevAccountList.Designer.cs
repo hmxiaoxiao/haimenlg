@@ -41,7 +41,10 @@
             this.col_status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lueStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.col_signed = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_money = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_project = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_invoice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lueInvoiceList = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_outcompany = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_outcompany_bank = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -49,7 +52,6 @@
             this.col_incompany = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_incompany_bank = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_incompany_account = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_money = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,6 +63,7 @@
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tsbCheck = new DevExpress.XtraBars.BarButtonItem();
             this.tsbPay = new DevExpress.XtraBars.BarButtonItem();
+            this.tsb2Invoice = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
             this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
@@ -70,28 +73,27 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.tsbNewInput = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.col_invoice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lueInvoiceList = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.tsb2Invoice = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueInvoiceList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lueInvoiceList)).BeginInit();
             this.SuspendLayout();
             // 
             // col_detail_money
             // 
             this.col_detail_money.Caption = "金额";
+            this.col_detail_money.DisplayFormat.FormatString = "C";
+            this.col_detail_money.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.col_detail_money.FieldName = "Money";
             this.col_detail_money.Name = "col_detail_money";
             this.col_detail_money.Visible = true;
-            this.col_detail_money.VisibleIndex = 0;
+            this.col_detail_money.VisibleIndex = 1;
             // 
             // gridControl2
             // 
@@ -124,7 +126,7 @@
             this.col_funds.FieldName = "Funds.Name";
             this.col_funds.Name = "col_funds";
             this.col_funds.Visible = true;
-            this.col_funds.VisibleIndex = 2;
+            this.col_funds.VisibleIndex = 0;
             // 
             // col_usage
             // 
@@ -132,7 +134,7 @@
             this.col_usage.FieldName = "Usage";
             this.col_usage.Name = "col_usage";
             this.col_usage.Visible = true;
-            this.col_usage.VisibleIndex = 1;
+            this.col_usage.VisibleIndex = 2;
             // 
             // gridControl1
             // 
@@ -207,6 +209,16 @@
             this.col_signed.Visible = true;
             this.col_signed.VisibleIndex = 1;
             // 
+            // col_money
+            // 
+            this.col_money.Caption = "总金额";
+            this.col_money.DisplayFormat.FormatString = "C";
+            this.col_money.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.col_money.FieldName = "Money";
+            this.col_money.Name = "col_money";
+            this.col_money.Visible = true;
+            this.col_money.VisibleIndex = 2;
+            // 
             // col_project
             // 
             this.col_project.Caption = "所属项目";
@@ -214,6 +226,22 @@
             this.col_project.Name = "col_project";
             this.col_project.Visible = true;
             this.col_project.VisibleIndex = 3;
+            // 
+            // col_invoice
+            // 
+            this.col_invoice.Caption = "发票";
+            this.col_invoice.ColumnEdit = this.lueInvoiceList;
+            this.col_invoice.FieldName = "Invoice";
+            this.col_invoice.Name = "col_invoice";
+            this.col_invoice.Visible = true;
+            this.col_invoice.VisibleIndex = 4;
+            // 
+            // lueInvoiceList
+            // 
+            this.lueInvoiceList.AutoHeight = false;
+            this.lueInvoiceList.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueInvoiceList.Name = "lueInvoiceList";
             // 
             // col_code
             // 
@@ -270,14 +298,6 @@
             this.col_incompany_account.Name = "col_incompany_account";
             this.col_incompany_account.Visible = true;
             this.col_incompany_account.VisibleIndex = 11;
-            // 
-            // col_money
-            // 
-            this.col_money.Caption = "总金额";
-            this.col_money.FieldName = "Money";
-            this.col_money.Name = "col_money";
-            this.col_money.Visible = true;
-            this.col_money.VisibleIndex = 2;
             // 
             // col_memo
             // 
@@ -391,6 +411,14 @@
             this.tsbPay.Name = "tsbPay";
             this.tsbPay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
+            // tsb2Invoice
+            // 
+            this.tsb2Invoice.Caption = " 转正式发票";
+            this.tsb2Invoice.Glyph = global::Haimen.Properties.Resources.Card_File_hot;
+            this.tsb2Invoice.Id = 10;
+            this.tsb2Invoice.Name = "tsb2Invoice";
+            this.tsb2Invoice.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsb2Invoice_ItemClick);
+            // 
             // tsbQuery
             // 
             this.tsbQuery.Caption = "查询";
@@ -463,30 +491,6 @@
             this.splitContainerControl1.TabIndex = 38;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
-            // col_invoice
-            // 
-            this.col_invoice.Caption = "发票";
-            this.col_invoice.ColumnEdit = this.lueInvoiceList;
-            this.col_invoice.FieldName = "Invoice";
-            this.col_invoice.Name = "col_invoice";
-            this.col_invoice.Visible = true;
-            this.col_invoice.VisibleIndex = 4;
-            // 
-            // lueInvoiceList
-            // 
-            this.lueInvoiceList.AutoHeight = false;
-            this.lueInvoiceList.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueInvoiceList.Name = "lueInvoiceList";
-            // 
-            // tsb2Invoice
-            // 
-            this.tsb2Invoice.Caption = " 转正式发票";
-            this.tsb2Invoice.Glyph = global::Haimen.Properties.Resources.Card_File_hot;
-            this.tsb2Invoice.Id = 10;
-            this.tsb2Invoice.Name = "tsb2Invoice";
-            this.tsb2Invoice.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsb2Invoice_ItemClick);
-            // 
             // DevAccountList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -505,11 +509,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueInvoiceList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lueInvoiceList)).EndInit();
             this.ResumeLayout(false);
 
         }

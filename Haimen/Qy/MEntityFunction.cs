@@ -49,7 +49,7 @@ namespace Haimen.Qy
                 string m_errorstring = "";
                 foreach (KeyValuePair<string, string> kv in Error_Info)
                 {
-                    m_errorstring += kv.Value;
+                    m_errorstring += kv.Value + Environment.NewLine;
                 }
                 return m_errorstring;
             }

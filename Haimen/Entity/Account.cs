@@ -284,7 +284,7 @@ namespace Haimen.Entity
             }
 
             if (this.Out_CompanyDetail_ID <= 0)
-                Error_Info.Add(new KeyValuePair<string, string>("Out_CompanyDetail_ID", "请选择支出单位的帐号"));
+                Error_Info.Add(new KeyValuePair<string, string>("Out_CompanyDetail_ID", "请选择支出单位的帐号!"));
 
             if (ContractApplyID > 0)
             {
