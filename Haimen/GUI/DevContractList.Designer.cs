@@ -63,6 +63,10 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.tsbCostMoney = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbCheckMoney = new DevExpress.XtraBars.BarButtonItem();
+            this.col_cost = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_checkmoney = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -75,11 +79,11 @@
             this.col_payment_ration.FieldName = "PaymentRatio";
             this.col_payment_ration.Name = "col_payment_ration";
             this.col_payment_ration.Visible = true;
-            this.col_payment_ration.VisibleIndex = 12;
+            this.col_payment_ration.VisibleIndex = 14;
             // 
             // col_money
             // 
-            this.col_money.Caption = "金额";
+            this.col_money.Caption = "合同价";
             this.col_money.DisplayFormat.FormatString = "c";
             this.col_money.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.col_money.FieldName = "Money";
@@ -139,6 +143,7 @@
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.col_id,
+            this.col_status,
             this.col_code,
             this.col_name,
             this.col_partya,
@@ -149,10 +154,11 @@
             this.col_begin_date,
             this.col_end_date,
             this.col_money,
+            this.col_cost,
+            this.col_checkmoney,
             this.col_pay,
             this.col_securigy,
-            this.col_payment_ration,
-            this.col_status});
+            this.col_payment_ration});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -197,7 +203,7 @@
             this.col_pay.FieldName = "Pay";
             this.col_pay.Name = "col_pay";
             this.col_pay.Visible = true;
-            this.col_pay.VisibleIndex = 10;
+            this.col_pay.VisibleIndex = 12;
             // 
             // col_securigy
             // 
@@ -207,7 +213,7 @@
             this.col_securigy.FieldName = "Security";
             this.col_securigy.Name = "col_securigy";
             this.col_securigy.Visible = true;
-            this.col_securigy.VisibleIndex = 11;
+            this.col_securigy.VisibleIndex = 13;
             // 
             // col_status
             // 
@@ -216,7 +222,7 @@
             this.col_status.FieldName = "Status";
             this.col_status.Name = "col_status";
             this.col_status.Visible = true;
-            this.col_status.VisibleIndex = 13;
+            this.col_status.VisibleIndex = 0;
             // 
             // lueStatus
             // 
@@ -235,7 +241,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueStatus});
-            this.gridControl1.Size = new System.Drawing.Size(884, 522);
+            this.gridControl1.Size = new System.Drawing.Size(1075, 522);
             this.gridControl1.TabIndex = 27;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -259,8 +265,10 @@
             this.tsbExit,
             this.tsbRefresh,
             this.tsbAccept,
-            this.tsbPay});
-            this.barManager1.MaxItemId = 10;
+            this.tsbPay,
+            this.tsbCostMoney,
+            this.tsbCheckMoney});
+            this.barManager1.MaxItemId = 12;
             // 
             // bar1
             // 
@@ -278,7 +286,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbGen, "", true, true, false, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPay, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbAccept, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCostMoney, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheckMoney, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
             // tsbNew
@@ -366,14 +376,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(884, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(1075, 39);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 561);
-            this.barDockControlBottom.Size = new System.Drawing.Size(884, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1075, 0);
             // 
             // barDockControlLeft
             // 
@@ -386,14 +396,50 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(884, 39);
+            this.barDockControlRight.Location = new System.Drawing.Point(1075, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
+            // 
+            // tsbCostMoney
+            // 
+            this.tsbCostMoney.Caption = "决算价";
+            this.tsbCostMoney.Glyph = global::Haimen.Properties.Resources.Parcel_hot;
+            this.tsbCostMoney.Id = 10;
+            this.tsbCostMoney.Name = "tsbCostMoney";
+            this.tsbCostMoney.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbCostMoney_ItemClick);
+            // 
+            // tsbCheckMoney
+            // 
+            this.tsbCheckMoney.Caption = "审计价";
+            this.tsbCheckMoney.Glyph = global::Haimen.Properties.Resources.Page_Number_hot;
+            this.tsbCheckMoney.Id = 11;
+            this.tsbCheckMoney.Name = "tsbCheckMoney";
+            this.tsbCheckMoney.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbCheckMoney_ItemClick);
+            // 
+            // col_cost
+            // 
+            this.col_cost.Caption = "决算价";
+            this.col_cost.DisplayFormat.FormatString = "c";
+            this.col_cost.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.col_cost.FieldName = "Cost";
+            this.col_cost.Name = "col_cost";
+            this.col_cost.Visible = true;
+            this.col_cost.VisibleIndex = 10;
+            // 
+            // col_checkmoney
+            // 
+            this.col_checkmoney.Caption = "审计价";
+            this.col_checkmoney.DisplayFormat.FormatString = "c";
+            this.col_checkmoney.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.col_checkmoney.FieldName = "CheckMoney";
+            this.col_checkmoney.Name = "col_checkmoney";
+            this.col_checkmoney.Visible = true;
+            this.col_checkmoney.VisibleIndex = 11;
             // 
             // DevContractList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(1075, 561);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -446,5 +492,9 @@
         private DevExpress.XtraBars.BarButtonItem tsbRefresh;
         private DevExpress.XtraBars.BarButtonItem tsbAccept;
         private DevExpress.XtraBars.BarButtonItem tsbPay;
+        private DevExpress.XtraBars.BarButtonItem tsbCostMoney;
+        private DevExpress.XtraBars.BarButtonItem tsbCheckMoney;
+        private DevExpress.XtraGrid.Columns.GridColumn col_cost;
+        private DevExpress.XtraGrid.Columns.GridColumn col_checkmoney;
     }
 }

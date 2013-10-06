@@ -135,7 +135,7 @@ namespace Haimen.Entity
         public string Name { get; set; }
 
         /// <summary>
-        /// 决算价
+        /// 合同金额
         /// </summary>
         [Field("money")]
         public decimal Money { get; set; }
@@ -145,6 +145,18 @@ namespace Haimen.Entity
         /// </summary>
         [Field("checkmoney")]
         public decimal CheckMoney { get; set; }
+
+        /// <summary>
+        /// 决算价
+        /// </summary>
+        [Field("cost")]
+        public decimal Cost { get; set; }
+
+        /// <summary>
+        /// 最终决定价
+        /// </summary>
+        [Field("finalmoney")]
+        public decimal FinalMoney { get; set; }
 
         /// <summary>
         /// 保证金
@@ -254,6 +266,62 @@ namespace Haimen.Entity
             Status = (long)ContractStatusEnum.付款中;
             Save();
         }
+
+        /// <summary>
+        /// 更新决算金额
+        /// </summary>
+        /// <param name="money"></param>
+        public void SetCost(decimal money)
+        {
+            Cost = money;       // 决算金额为传入金额
+            // 如果已经有审计价了，则最终价一定为审计价
+            if (CheckMoney == 0)
+            {
+                FinalMoney = Cost;  // 合同最终金额为决算金额
+            }
+            Save();
+        }
+
+        /// <summary>
+        /// 更新审计价
+        /// </summary>
+        /// <param name="money"></param>
+        public void SetCheckMoney(decimal money)
+        {
+            CheckMoney = money;
+            FinalMoney = CheckMoney;        // 合同最终金额为审核价
+            Save();
+        }
+
+        /// <summary>
+        /// 新增时，对最终价进行设置
+        /// </summary>
+        /// <returns></returns>
+        public override bool Insert()
+        {
+            FinalMoney = Money;         
+            if (Cost > 0)
+                FinalMoney = Cost;
+            if (CheckMoney > 0)
+                FinalMoney = CheckMoney;
+            return base.Insert();
+        }
+
+
+        /// <summary>
+        /// 更新时，同样须对最终价进行设置
+        /// </summary>
+        /// <returns></returns>
+        public override bool Update()
+        {
+            FinalMoney = Money;
+            if (Cost > 0)
+                FinalMoney = Cost;
+            if (CheckMoney > 0)
+                FinalMoney = CheckMoney;
+            return base.Update();
+        }
+
     }
 
     /// <summary>
@@ -267,6 +335,8 @@ namespace Haimen.Entity
         审核,
         撤审,
         付款申请,
+        设置决算价,
+        设置审计价,
     }
 
     /// <summary>

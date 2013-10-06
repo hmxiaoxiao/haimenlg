@@ -62,6 +62,9 @@ namespace Haimen.NewGUI
         private void SetFormStatus(ContractFromEnum status)
         {
             m_status = status;
+            bar1.Visible = true;
+            bar2.Visible = false;
+            bar3.Visible = false;
             switch (status)
             {
                 case ContractFromEnum.新增:
@@ -116,6 +119,23 @@ namespace Haimen.NewGUI
 
                     SetControlStatus(false);
                     break;
+
+                case ContractFromEnum.设置决算价:
+                    bar1.Visible = false;
+                    bar2.Visible = false;
+                    bar3.Visible = true;
+                    SetControlStatus(false);
+                    calcCostMoney.Enabled = true;
+                    tbSave2.Caption = "保存决算价";
+                    break;
+                case ContractFromEnum.设置审计价:
+                    bar1.Visible = false;
+                    bar2.Visible = false;
+                    bar3.Visible = true;
+                    SetControlStatus(false);
+                    txtCheckMoney.Enabled = true;
+                    tbSave2.Caption = "保存审计价";
+                    break;
             }
         }
 
@@ -138,6 +158,7 @@ namespace Haimen.NewGUI
             txtPayment_ratio.Enabled = enabled;
             txtSecurity.Enabled = enabled;
             txtCheckMoney.Enabled = enabled;
+            calcCostMoney.Enabled = enabled;
 
             tsbNew.Enabled = enabled;
             tsbDelete.Enabled = enabled;
@@ -173,6 +194,8 @@ namespace Haimen.NewGUI
             m_contract.CheckMoney = txtCheckMoney.Value;
             m_contract.PaymentRatio = txtPayment_ratio.Value;
             m_contract.Security = txtSecurity.Value;
+            if (calcCostMoney.EditValue != null)
+                m_contract.Cost = decimal.Parse(calcCostMoney.EditValue.ToString());
         }
 
         /// <summary>
@@ -230,6 +253,7 @@ namespace Haimen.NewGUI
                 txtMemo.Text = m_contract.Memo;
                 txtMoney.Value = m_contract.Money;
                 txtCheckMoney.Value = m_contract.CheckMoney;
+                calcCostMoney.Value = m_contract.Cost;
                 txtPayment_ratio.Value = m_contract.PaymentRatio;
                 txtSecurity.Value = m_contract.Security;
             }
@@ -247,6 +271,7 @@ namespace Haimen.NewGUI
                 txtMemo.Text = "";
                 txtMoney.Value = 0;
                 txtCheckMoney.Value = 0;
+                calcCostMoney.Value = 0;
                 txtPayment_ratio.Value = 0;
                 txtSecurity.Value = 0;
             }
@@ -569,6 +594,17 @@ namespace Haimen.NewGUI
                 m_status = ContractFromEnum.查看;
                 MessageBox.Show("合同付款申请保存成功！", "注意");
             }
+        }
+
+        private void tbSave2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!Verify())
+                return;
+
+            m_contract.Save();
+            MessageBox.Show("保存成功！");
+            tbSave2.Enabled = false;
+            m_status = ContractFromEnum.查看;
         }
 
     }

@@ -216,5 +216,29 @@ namespace Haimen.NewGUI
             if (ct != null)
                 m_main.OpenForm(new DevContract(ContractFromEnum.付款申请, ct));
         }
+
+        /// <summary>
+        /// 设置决算价
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbCostMoney_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Contract ct = CurrentSelectedObject();
+            if (ct != null)
+                m_main.OpenForm(new DevContract(ContractFromEnum.设置决算价, ct));
+        }
+
+        /// <summary>
+        /// 设置审计价
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbCheckMoney_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Contract ct = CurrentSelectedObject();
+            if (ct != null)
+                m_main.OpenForm(new DevContract(ContractFromEnum.设置审计价, ct));
+        }
     }
 }
