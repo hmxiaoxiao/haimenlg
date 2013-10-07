@@ -86,10 +86,10 @@ namespace Haimen.Entity
         [Field("balance_id")]
         public long BalanceID { get; set; }
 
-        [Field("maker")]
+        [Field("maker_id")]
         public long MakerID { get; set; }
         private User m_maker = null;
-        public User Applicant
+        public User Maker
         {
             get
             {
@@ -102,35 +102,35 @@ namespace Haimen.Entity
             }
         }
 
-        [Field("reviewer")]
-        public long ReviewerID { get; set; }
-        private User m_reviewer = null;
-        public User Reviewer
+        [Field("checker_id")]
+        public long CheckerID { get; set; }
+        private User m_checker = null;
+        public User Checker
         {
             get
             {
-                if (ReviewerID > 0)
+                if (CheckerID > 0)
                 {
-                    if (m_reviewer == null || m_reviewer.ID != ReviewerID)
-                        m_reviewer = User.CreateByID(ReviewerID);
+                    if (m_checker == null || m_checker.ID != CheckerID)
+                        m_checker = User.CreateByID(CheckerID);
                 }
-                return m_reviewer;
+                return m_checker;
             }
         }
 
-        [Field("cashier")]
-        public long CashierID { get; set; }
-        private User m_cashier = null;
-        public User Cashier
+        [Field("payer_id")]
+        public long PayerID { get; set; }
+        private User m_payer = null;
+        public User Payer
         {
             get
             {
-                if (CashierID > 0)
+                if (PayerID > 0)
                 {
-                    if (m_cashier == null || m_cashier.ID != CashierID)
-                        m_cashier = User.CreateByID(CashierID);
+                    if (m_payer == null || m_payer.ID != PayerID)
+                        m_payer = User.CreateByID(PayerID);
                 }
-                return m_cashier;
+                return m_payer;
             }
         }
 
@@ -196,7 +196,7 @@ namespace Haimen.Entity
         public void CheckPass()
         {
             // 改标志为已审核
-            this.ReviewerID = GlobalSet.Current_User.ID;
+            this.CheckerID = GlobalSet.Current_User.ID;
             this.Status = (long)AccountStatusEnum.审核通过;
             this.Save();
         }
@@ -206,7 +206,7 @@ namespace Haimen.Entity
         /// </summary>
         public void CheckFaild()
         {
-            this.ReviewerID = GlobalSet.Current_User.ID;
+            this.CheckerID = GlobalSet.Current_User.ID;
             this.Status = (long)AccountStatusEnum.审核未通过;
             this.Save();
         }
@@ -219,7 +219,7 @@ namespace Haimen.Entity
             using (TransactionScope ts = new TransactionScope())
             {
                 this.Status = (long)AccountStatusEnum.已支付;
-                this.CashierID = GlobalSet.Current_User.ID;
+                this.PayerID = GlobalSet.Current_User.ID;
 
                 // 更新二个单位的数据金额
                 CompanyDetail inCD = CompanyDetail.CreateByID(this.In_CompanyDetail_ID);

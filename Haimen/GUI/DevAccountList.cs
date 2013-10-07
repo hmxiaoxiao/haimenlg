@@ -10,6 +10,8 @@ using DevExpress.XtraEditors;
 using Haimen.Entity;
 using Haimen.Helper;
 
+using Haimen.Report;
+
 namespace Haimen.GUI
 {
     public partial class DevAccountList : DevExpress.XtraEditors.XtraForm
@@ -270,6 +272,12 @@ namespace Haimen.GUI
 
         private void tsbPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //if (gridView1.FocusedRowHandle < 0)
+            //    return;
+
+            //long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
+            //devAccountPrint print = new devAccountPrint(id);
+            //print.ShowDialog();
         }
     }
 }

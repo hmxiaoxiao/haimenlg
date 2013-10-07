@@ -296,8 +296,8 @@ namespace Haimen.GUI
                 txtMoney.Text = m_account.Money.ToString();     // 金额
                 lueProjects.EditValue = m_account.ProjectID;    // 项目
                 lueMaker.EditValue = m_account.MakerID;         // 制作人
-                lueReviewer.EditValue = m_account.ReviewerID;   // 审核人
-                lueCashier.EditValue = m_account.CashierID;     // 出纳
+                lueReviewer.EditValue = m_account.CheckerID;   // 审核人
+                lueCashier.EditValue = m_account.PayerID;     // 出纳
                 txtMemo.Text = m_account.Memo;                  // 备注
                 calcAttachCount.EditValue = m_account.Attachment;    // 附件张数
                 // 正式发票
