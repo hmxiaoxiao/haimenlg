@@ -166,7 +166,7 @@ namespace Haimen.GUI
             lueUserGroup.Properties.DataSource = null;
             lueUserGroup.Properties.DataSource = m_usergroups;
             lueUserGroup.Properties.DisplayMember = "Name";
-            lueUserGroup.Properties.ValueMember = "Code";
+            lueUserGroup.Properties.ValueMember = "id";
 
             lueUserGroup.EditValue = m_user.UserGroupID;
 

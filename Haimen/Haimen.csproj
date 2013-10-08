@@ -218,6 +218,12 @@
     <Compile Include="GUI\devQuerySelectCompany.Designer.cs">
       <DependentUpon>devQuerySelectCompany.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\devUserGroupList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\devUserGroupList.Designer.cs">
+      <DependentUpon>devUserGroupList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\CustomerINI.cs" />
     <Compile Include="Helper\FTPClient.cs" />
     <Compile Include="Helper\Helper.cs" />
@@ -473,6 +479,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevUser.resx">
       <DependentUpon>DevUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\devUserGroupList.resx">
+      <DependentUpon>devUserGroupList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevUserList.resx">
       <DependentUpon>DevUserList.cs</DependentUpon>

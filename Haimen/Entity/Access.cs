@@ -138,6 +138,11 @@ namespace Haimen.Entity
         /// <returns></returns>
         public static bool getUserAccess(long user_id, long group_id, long ft, long at)
         {
+            // 如果是超级用户，可以直接使用
+            User u = User.CreateByID(user_id);
+            if (u.Admin == "X")
+                return true;
+
             string sql = " user_id = " + user_id + 
                          " and fction_id = " + ft + 
                          " and action_id = " + (long)at;

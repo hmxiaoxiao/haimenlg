@@ -241,5 +241,10 @@ namespace Haimen.GUI
         {
             OpenForm(new devQueryBalance2());
         }
+
+        private void mnuUserGroup_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new devUserGroupList());
+        }
     }
 }
