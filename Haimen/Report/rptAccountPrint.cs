@@ -27,8 +27,11 @@ namespace Haimen.Report
             txtInAccount.Text = m_account.InCompanyDetail.Account;
             txtRMB.Text = Helper.Helper.ConvertToChinese((double)m_account.Money);
             txtMoney.Text =string.Format("{0:c}", m_account.Money);
-            txtChecker.Text = m_account.Checker.Name;
             if (m_account.CheckerID > 0)
+                txtChecker.Text = m_account.Checker.Name;
+            else
+                txtChecker.Text = "";
+            if (m_account.MakerID > 0)
                 txtMaker.Text = m_account.Maker.Name;
             else
                 txtMaker.Text = "";

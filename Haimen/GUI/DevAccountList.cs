@@ -11,6 +11,7 @@ using Haimen.Entity;
 using Haimen.Helper;
 
 using Haimen.Report;
+using DevExpress.XtraReports.UI;
 
 namespace Haimen.GUI
 {
@@ -272,12 +273,16 @@ namespace Haimen.GUI
 
         private void tsbPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //if (gridView1.FocusedRowHandle < 0)
-            //    return;
+            if (gridView1.FocusedRowHandle < 0)
+                return;
 
-            //long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
-            //devAccountPrint print = new devAccountPrint(id);
-            //print.ShowDialog();
+            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
+            // Create a report. 
+            rptAccountPrint report = new rptAccountPrint(id);
+
+            // Show the report's preview. 
+            ReportPrintTool tool = new ReportPrintTool(report);
+            tool.ShowPreview();
         }
     }
 }
