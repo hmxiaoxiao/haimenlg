@@ -231,5 +231,15 @@ namespace Haimen.GUI
             else
                 MessageBox.Show("您无权限使用该功能");
         }
+
+        private void mnuBCBalance_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new devQueryBalance());
+        }
+
+        private void mnuCBBalance_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new devQueryBalance2());
+        }
     }
 }

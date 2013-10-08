@@ -5,6 +5,7 @@ using System.Text;
 
 using System.Data.SqlClient;
 using Haimen.Helper;
+using System.Data;
 
 namespace Haimen.Qy
 {
@@ -35,6 +36,17 @@ namespace Haimen.Qy
         public SqlTransaction BeginTrans()
         {
             return Connection.BeginTransaction();
+        }
+
+        public static DataSet RunQuerySql(string sql)
+        {
+            SqlCommand cmd = DBFunction.Connection.CreateCommand();
+            cmd.CommandText = sql;
+
+            SqlDataAdapter adap = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            adap.Fill(ds);
+            return ds;
         }
 
     }

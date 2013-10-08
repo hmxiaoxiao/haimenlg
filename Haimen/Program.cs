@@ -30,10 +30,10 @@ namespace Haimen
             Application.SetCompatibleTextRenderingDefault(false);
 
             //初始化用户, 第一次使用时，没有用户时增加用户。
-            User.Init();
+            //User.Init();
 
 
-            //// 显示登录窗口
+            // 显示登录窗口
             //DevLogin win = new DevLogin();
             //win.ShowDialog();
 
@@ -48,7 +48,7 @@ namespace Haimen
             if (GlobalSet.Current_User != null)
             {
                 //Application.Run(new DevMain());
-                Application.Run(new devAccountPrint(1));
+                Application.Run(new DevMain());
             }
         }
     }

@@ -48,6 +48,7 @@
             this.mnuAcceptanceBillList = new DevExpress.XtraBars.BarButtonItem();
             this.mnuAcceptanceBill = new DevExpress.XtraBars.BarButtonItem();
             this.mnuContractAcceptList = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuProject = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -67,7 +68,9 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.mnuProject = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuBCBalance = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuCBBalance = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -96,9 +99,11 @@
             this.mnuAcceptanceBillList,
             this.mnuAcceptanceBill,
             this.mnuContractAcceptList,
-            this.mnuProject});
+            this.mnuProject,
+            this.mnuBCBalance,
+            this.mnuCBBalance});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 38;
+            this.ribbon.MaxItemId = 40;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -305,6 +310,17 @@
             this.mnuContractAcceptList.Name = "mnuContractAcceptList";
             this.mnuContractAcceptList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuContractAcceptList_ItemClick);
             // 
+            // mnuProject
+            // 
+            this.mnuProject.Caption = "项目 ";
+            this.mnuProject.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuProject.Glyph = global::Haimen.Properties.Resources.Books_hot;
+            this.mnuProject.Id = 37;
+            this.mnuProject.Name = "mnuProject";
+            this.mnuProject.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuProject.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuProject_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -422,6 +438,8 @@
             // 
             // ribbonPage4
             // 
+            this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup12});
             this.ribbonPage4.Name = "ribbonPage4";
             this.ribbonPage4.Text = "报表";
             // 
@@ -444,16 +462,30 @@
             // 
             this.mdiManager.MdiParent = this;
             // 
-            // mnuProject
+            // mnuBCBalance
             // 
-            this.mnuProject.Caption = "项目 ";
-            this.mnuProject.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuProject.Glyph = global::Haimen.Properties.Resources.Books_hot;
-            this.mnuProject.Id = 37;
-            this.mnuProject.Name = "mnuProject";
-            this.mnuProject.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.mnuProject.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuProject_ItemClick);
+            this.mnuBCBalance.Caption = "银行单位余额表";
+            this.mnuBCBalance.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuBCBalance.Glyph = global::Haimen.Properties.Resources.Work_Sheet_New;
+            this.mnuBCBalance.Id = 38;
+            this.mnuBCBalance.Name = "mnuBCBalance";
+            this.mnuBCBalance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuBCBalance_ItemClick);
+            // 
+            // mnuCBBalance
+            // 
+            this.mnuCBBalance.Caption = "单位银行余额表";
+            this.mnuCBBalance.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuCBBalance.Glyph = global::Haimen.Properties.Resources.Work_Sheet_New_hot;
+            this.mnuCBBalance.Id = 39;
+            this.mnuCBBalance.Name = "mnuCBBalance";
+            this.mnuCBBalance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuCBBalance_ItemClick);
+            // 
+            // ribbonPageGroup12
+            // 
+            this.ribbonPageGroup12.ItemLinks.Add(this.mnuBCBalance);
+            this.ribbonPageGroup12.ItemLinks.Add(this.mnuCBBalance);
+            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
+            this.ribbonPageGroup12.Text = "余额表";
             // 
             // DevMain
             // 
@@ -517,5 +549,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
         private DevExpress.XtraBars.BarButtonItem mnuContractAcceptList;
         private DevExpress.XtraBars.BarButtonItem mnuProject;
+        private DevExpress.XtraBars.BarButtonItem mnuBCBalance;
+        private DevExpress.XtraBars.BarButtonItem mnuCBBalance;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
     }
 }
