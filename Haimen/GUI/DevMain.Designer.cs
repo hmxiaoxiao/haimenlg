@@ -49,6 +49,8 @@
             this.mnuAcceptanceBill = new DevExpress.XtraBars.BarButtonItem();
             this.mnuContractAcceptList = new DevExpress.XtraBars.BarButtonItem();
             this.mnuProject = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuBCBalance = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuCBBalance = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -64,13 +66,11 @@
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.mnuComboSkins = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.mnuBCBalance = new DevExpress.XtraBars.BarButtonItem();
-            this.mnuCBBalance = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -321,6 +321,24 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.mnuProject.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuProject_ItemClick);
             // 
+            // mnuBCBalance
+            // 
+            this.mnuBCBalance.Caption = "银行单位余额表";
+            this.mnuBCBalance.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuBCBalance.Glyph = global::Haimen.Properties.Resources.Work_Sheet_New;
+            this.mnuBCBalance.Id = 38;
+            this.mnuBCBalance.Name = "mnuBCBalance";
+            this.mnuBCBalance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuBCBalance_ItemClick);
+            // 
+            // mnuCBBalance
+            // 
+            this.mnuCBBalance.Caption = "单位银行余额表";
+            this.mnuCBBalance.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuCBBalance.Glyph = global::Haimen.Properties.Resources.Work_Sheet_New_hot;
+            this.mnuCBBalance.Id = 39;
+            this.mnuCBBalance.Name = "mnuCBBalance";
+            this.mnuCBBalance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuCBBalance_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -385,8 +403,7 @@
             this.ribbonPageGroup1.AllowTextClipping = false;
             this.ribbonPageGroup1.ItemLinks.Add(this.mnuBank);
             this.ribbonPageGroup1.ItemLinks.Add(this.mnuCompany);
-            this.ribbonPageGroup1.ItemLinks.Add(this.mnuFouds);
-            this.ribbonPageGroup1.ItemLinks.Add(this.mnuProject);
+            this.ribbonPageGroup1.ItemLinks.Add(this.mnuCompanyDetail);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
             this.ribbonPageGroup1.Text = "字典";
@@ -394,7 +411,8 @@
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.AllowTextClipping = false;
-            this.ribbonPageGroup2.ItemLinks.Add(this.mnuCompanyDetail);
+            this.ribbonPageGroup2.ItemLinks.Add(this.mnuProject);
+            this.ribbonPageGroup2.ItemLinks.Add(this.mnuFouds);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.ShowCaptionButton = false;
             this.ribbonPageGroup2.Text = "设置";
@@ -443,6 +461,13 @@
             this.ribbonPage4.Name = "ribbonPage4";
             this.ribbonPage4.Text = "报表";
             // 
+            // ribbonPageGroup12
+            // 
+            this.ribbonPageGroup12.ItemLinks.Add(this.mnuBCBalance);
+            this.ribbonPageGroup12.ItemLinks.Add(this.mnuCBBalance);
+            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
+            this.ribbonPageGroup12.Text = "余额表";
+            // 
             // mnuComboSkins
             // 
             this.mnuComboSkins.AutoHeight = false;
@@ -461,31 +486,6 @@
             // mdiManager
             // 
             this.mdiManager.MdiParent = this;
-            // 
-            // mnuBCBalance
-            // 
-            this.mnuBCBalance.Caption = "银行单位余额表";
-            this.mnuBCBalance.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuBCBalance.Glyph = global::Haimen.Properties.Resources.Work_Sheet_New;
-            this.mnuBCBalance.Id = 38;
-            this.mnuBCBalance.Name = "mnuBCBalance";
-            this.mnuBCBalance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuBCBalance_ItemClick);
-            // 
-            // mnuCBBalance
-            // 
-            this.mnuCBBalance.Caption = "单位银行余额表";
-            this.mnuCBBalance.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuCBBalance.Glyph = global::Haimen.Properties.Resources.Work_Sheet_New_hot;
-            this.mnuCBBalance.Id = 39;
-            this.mnuCBBalance.Name = "mnuCBBalance";
-            this.mnuCBBalance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuCBBalance_ItemClick);
-            // 
-            // ribbonPageGroup12
-            // 
-            this.ribbonPageGroup12.ItemLinks.Add(this.mnuBCBalance);
-            this.ribbonPageGroup12.ItemLinks.Add(this.mnuCBBalance);
-            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
-            this.ribbonPageGroup12.Text = "余额表";
             // 
             // DevMain
             // 
