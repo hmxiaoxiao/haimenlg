@@ -44,9 +44,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.lueBank = new DevExpress.XtraEditors.LookUpEdit();
             this.txtDoc = new DevExpress.XtraEditors.TextEdit();
-            this.txtAccount = new DevExpress.XtraEditors.TextEdit();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.txtCode = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -54,16 +52,14 @@
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.cbOutput.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbInput.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lueBank.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoc.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -71,32 +67,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbOutput
             // 
-            //this.cbOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.cbOutput.Location = new System.Drawing.Point(70, 260);
+            this.cbOutput.Location = new System.Drawing.Point(70, 179);
             this.cbOutput.Name = "cbOutput";
-            this.cbOutput.Size = new System.Drawing.Size(367, 20);
+            this.cbOutput.Properties.Caption = "支出单位";
+            this.cbOutput.Size = new System.Drawing.Size(367, 19);
+            this.cbOutput.StyleController = this.layoutControl1;
             this.cbOutput.TabIndex = 6;
-            this.cbOutput.Text = "支出单位";
-            //this.cbOutput.Value = null;
             // 
             // cbInput
             // 
-            //this.cbInput.BorderColor = System.Drawing.Color.Transparent;
-            //this.cbInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.cbInput.Location = new System.Drawing.Point(70, 220);
+            this.cbInput.Location = new System.Drawing.Point(70, 140);
             this.cbInput.Name = "cbInput";
-            this.cbInput.Size = new System.Drawing.Size(367, 20);
+            this.cbInput.Properties.Caption = "收入单位";
+            this.cbInput.Size = new System.Drawing.Size(367, 19);
+            this.cbInput.StyleController = this.layoutControl1;
             this.cbInput.TabIndex = 5;
-            this.cbInput.Text = "收入单位";
-            //this.cbInput.Value = null;
             // 
             // barManager1
             // 
@@ -206,9 +197,7 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.lueBank);
             this.layoutControl1.Controls.Add(this.txtDoc);
-            this.layoutControl1.Controls.Add(this.txtAccount);
             this.layoutControl1.Controls.Add(this.txtName);
             this.layoutControl1.Controls.Add(this.txtCode);
             this.layoutControl1.Controls.Add(this.cbOutput);
@@ -221,41 +210,15 @@
             this.layoutControl1.TabIndex = 14;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // lueBank
-            // 
-            this.lueBank.EnterMoveNextControl = true;
-            this.lueBank.Location = new System.Drawing.Point(70, 180);
-            this.lueBank.MenuManager = this.barManager1;
-            this.lueBank.Name = "lueBank";
-            this.lueBank.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueBank.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "编号"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
-            this.lueBank.Properties.NullText = "";
-            this.lueBank.Size = new System.Drawing.Size(367, 20);
-            this.lueBank.StyleController = this.layoutControl1;
-            this.lueBank.TabIndex = 5;
-            // 
             // txtDoc
             // 
             this.txtDoc.EnterMoveNextControl = true;
-            this.txtDoc.Location = new System.Drawing.Point(70, 140);
+            this.txtDoc.Location = new System.Drawing.Point(70, 100);
             this.txtDoc.MenuManager = this.barManager1;
             this.txtDoc.Name = "txtDoc";
             this.txtDoc.Size = new System.Drawing.Size(367, 20);
             this.txtDoc.StyleController = this.layoutControl1;
             this.txtDoc.TabIndex = 4;
-            // 
-            // txtAccount
-            // 
-            this.txtAccount.EnterMoveNextControl = true;
-            this.txtAccount.Location = new System.Drawing.Point(70, 100);
-            this.txtAccount.MenuManager = this.barManager1;
-            this.txtAccount.Name = "txtAccount";
-            this.txtAccount.Size = new System.Drawing.Size(367, 20);
-            this.txtAccount.StyleController = this.layoutControl1;
-            this.txtAccount.TabIndex = 3;
             // 
             // txtName
             // 
@@ -287,9 +250,7 @@
             this.layoutControlItem7,
             this.layoutControlItem8,
             this.layoutControlItem9,
-            this.layoutControlItem10,
-            this.layoutControlItem11,
-            this.layoutControlItem1});
+            this.layoutControlItem11});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.OptionsItemText.TextToControlDistance = 2;
@@ -300,10 +261,10 @@
             // 
             this.layoutControlItem6.Control = this.cbInput;
             this.layoutControlItem6.CustomizationFormText = "layoutControlItem6";
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 200);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 120);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem6.Size = new System.Drawing.Size(437, 40);
+            this.layoutControlItem6.Size = new System.Drawing.Size(437, 39);
             this.layoutControlItem6.Text = "   ";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -311,10 +272,10 @@
             // 
             this.layoutControlItem7.Control = this.cbOutput;
             this.layoutControlItem7.CustomizationFormText = "layoutControlItem7";
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 240);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 159);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem7.Size = new System.Drawing.Size(437, 107);
+            this.layoutControlItem7.Size = new System.Drawing.Size(437, 188);
             this.layoutControlItem7.Text = "   ";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -340,38 +301,16 @@
             this.layoutControlItem9.Text = "名称：";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // layoutControlItem10
-            // 
-            this.layoutControlItem10.Control = this.txtAccount;
-            this.layoutControlItem10.CustomizationFormText = "帐号：";
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 80);
-            this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem10.Size = new System.Drawing.Size(437, 40);
-            this.layoutControlItem10.Text = "帐号：";
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(48, 14);
-            // 
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.txtDoc;
             this.layoutControlItem11.CustomizationFormText = "单据字：";
-            this.layoutControlItem11.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem11.Location = new System.Drawing.Point(0, 80);
             this.layoutControlItem11.Name = "layoutControlItem11";
             this.layoutControlItem11.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
             this.layoutControlItem11.Size = new System.Drawing.Size(437, 40);
             this.layoutControlItem11.Text = "单据字：";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.lueBank;
-            this.layoutControlItem1.CustomizationFormText = "开户行:";
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 160);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem1.Size = new System.Drawing.Size(437, 40);
-            this.layoutControlItem1.Text = "开户行:";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
             // dxErrorProvider1
             // 
@@ -390,12 +329,12 @@
             this.Name = "DevCompany";
             this.Text = "单位管理";
             this.Load += new System.EventHandler(this.DevCompany_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.cbOutput.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbInput.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lueBank.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoc.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -403,9 +342,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.ResumeLayout(false);
 
@@ -430,17 +367,13 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private DevExpress.XtraEditors.LookUpEdit lueBank;
         private DevExpress.XtraBars.BarButtonItem tsbDelete;
         private DevExpress.XtraEditors.TextEdit txtDoc;
-        private DevExpress.XtraEditors.TextEdit txtAccount;
         private DevExpress.XtraEditors.TextEdit txtName;
         private DevExpress.XtraEditors.TextEdit txtCode;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
     }
 }

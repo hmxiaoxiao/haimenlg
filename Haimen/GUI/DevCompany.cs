@@ -44,9 +44,7 @@ namespace Haimen.GUI
         {
             txtCode.Enabled = enabled;
             txtName.Enabled = enabled;
-            txtAccount.Enabled = enabled;
             txtDoc.Enabled = enabled;
-            lueBank.Enabled = enabled;
             cbInput.Enabled = enabled;
             cbOutput.Enabled = enabled;
         }
@@ -81,17 +79,6 @@ namespace Haimen.GUI
             }
         }
 
-        /// <summary>
-        /// 初始化银行下拉框
-        /// </summary>
-        private void initBankList()
-        {
-            List<Bank> banks = Bank.Query();
-            lueBank.Properties.DataSource = null;
-            lueBank.Properties.DataSource = banks;
-            lueBank.Properties.DisplayMember = "Name";
-            lueBank.Properties.ValueMember = "ID";
-        }
 
         // 校验数据是否正确
         private bool Verify()
@@ -124,12 +111,6 @@ namespace Haimen.GUI
                     case "name":
                         dxErrorProvider1.SetError(txtName, val.Value);
                         break;
-                    case "account":
-                        dxErrorProvider1.SetError(txtAccount, val.Value);
-                        break;
-                    case "bankid":
-                        dxErrorProvider1.SetError(lueBank, val.Value);
-                        break;
                     case "doc":
                         dxErrorProvider1.SetError(txtDoc, val.Value);
                         break;
@@ -142,13 +123,9 @@ namespace Haimen.GUI
         /// </summary>
         private void Object2Form()
         {
-            initBankList();
-            if (m_company.BankID > 0)
-                lueBank.EditValue = m_company.BankID;
             txtCode.Text = m_company.Code;
             txtDoc.Text = m_company.Doc;
             txtName.Text = m_company.Name;
-            txtAccount.Text = m_company.Account;
 
             if (m_company.Input == "X")
                 cbInput.Checked = true;
@@ -167,11 +144,6 @@ namespace Haimen.GUI
         private void Form2Object()
         {
             // 将输入的值保存到对象里
-            if (lueBank.EditValue != null)
-                m_company.BankID = long.Parse(lueBank.EditValue.ToString());
-            else
-                m_company.BankID = 0;
-
             m_company.Code = txtCode.Text;
             m_company.Name = txtName.Text;
             m_company.Doc = txtDoc.Text;
@@ -184,8 +156,6 @@ namespace Haimen.GUI
                 m_company.Output = "X";
             else
                 m_company.Output = "";
-
-            m_company.Account = txtAccount.Text;
         }
 
         /// <summary>
@@ -257,14 +227,12 @@ namespace Haimen.GUI
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_company = new Company();
-            initBankList();
             Object2Form();
             SetFormStatus(winStatusEnum.新增);
         }
 
         private void tsbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            initBankList();
             Object2Form();
             SetFormStatus(winStatusEnum.新增);
         }

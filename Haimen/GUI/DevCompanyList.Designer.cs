@@ -34,8 +34,6 @@
             this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_name = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_account = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_bank = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_doc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_output = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_input = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -73,8 +71,6 @@
             this.col_id,
             this.col_code,
             this.col_name,
-            this.col_account,
-            this.col_bank,
             this.col_doc,
             this.col_output,
             this.col_input});
@@ -105,29 +101,13 @@
             this.col_name.Visible = true;
             this.col_name.VisibleIndex = 1;
             // 
-            // col_account
-            // 
-            this.col_account.Caption = "帐户";
-            this.col_account.FieldName = "Account";
-            this.col_account.Name = "col_account";
-            this.col_account.Visible = true;
-            this.col_account.VisibleIndex = 2;
-            // 
-            // col_bank
-            // 
-            this.col_bank.Caption = "开户行";
-            this.col_bank.FieldName = "Bank.Name";
-            this.col_bank.Name = "col_bank";
-            this.col_bank.Visible = true;
-            this.col_bank.VisibleIndex = 3;
-            // 
             // col_doc
             // 
             this.col_doc.Caption = "字";
             this.col_doc.FieldName = "Doc";
             this.col_doc.Name = "col_doc";
             this.col_doc.Visible = true;
-            this.col_doc.VisibleIndex = 4;
+            this.col_doc.VisibleIndex = 2;
             // 
             // col_output
             // 
@@ -135,7 +115,7 @@
             this.col_output.FieldName = "Output";
             this.col_output.Name = "col_output";
             this.col_output.Visible = true;
-            this.col_output.VisibleIndex = 5;
+            this.col_output.VisibleIndex = 3;
             // 
             // col_input
             // 
@@ -143,7 +123,7 @@
             this.col_input.FieldName = "Input";
             this.col_input.Name = "col_input";
             this.col_input.Visible = true;
-            this.col_input.VisibleIndex = 6;
+            this.col_input.VisibleIndex = 4;
             // 
             // barManager1
             // 
@@ -282,8 +262,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_id;
         private DevExpress.XtraGrid.Columns.GridColumn col_code;
         private DevExpress.XtraGrid.Columns.GridColumn col_name;
-        private DevExpress.XtraGrid.Columns.GridColumn col_account;
-        private DevExpress.XtraGrid.Columns.GridColumn col_bank;
         private DevExpress.XtraGrid.Columns.GridColumn col_doc;
         private DevExpress.XtraGrid.Columns.GridColumn col_output;
         private DevExpress.XtraGrid.Columns.GridColumn col_input;

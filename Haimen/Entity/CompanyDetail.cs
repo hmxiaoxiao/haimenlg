@@ -75,6 +75,9 @@ namespace Haimen.Entity
         [Field("ocredit")]
         public decimal OCredit { get; set; }
 
+        [Field("memo")]
+        public string Memo { get; set; }
+
         
         private Bank m_bank;
         public Bank Bank 

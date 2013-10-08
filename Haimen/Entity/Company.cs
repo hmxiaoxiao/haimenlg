@@ -17,12 +17,6 @@ namespace Haimen.Entity
         [Field("name")]
         public string Name { get; set; }
 
-        [Field("bank_id")]
-        public long BankID { get; set; }
-
-        [Field("account")]
-        public string Account { get; set; }
-
         [Field("doc")]
         public string Doc { get; set; }
 
@@ -32,18 +26,12 @@ namespace Haimen.Entity
         [Field("input")]
         public string Input { get; set; }
 
-        private Bank m_bank;
-        public Bank Bank
-        {
-            get
-            {
-                if (m_bank == null && BankID > 0)
-                {
-                    m_bank = Bank.CreateByID(BankID);
-                }
-                return m_bank;
-            }
-        }
+
+        [Field("doc_date")]
+        public string DocDate { get; set; }
+
+        [Field("gen_doc")]
+        public long GenDoc { get; set; }
 
         /// <summary>
         /// 单位的数据校验
@@ -72,26 +60,9 @@ namespace Haimen.Entity
             if (list.Count > 0)
                 Error_Info.Add(new KeyValuePair<string, string>("Name", "您输入的名称已经存在，请重新输入"));
 
-            // 校验帐号
-            if (string.IsNullOrEmpty(Account))
-                Error_Info.Add(new KeyValuePair<string, string>("Account", "帐号不能为空"));
-            list = Company.Query("account = '" + Account + "' and id <> " + ID.ToString());
-            if (list.Count > 0)
-                Error_Info.Add(new KeyValuePair<string, string>("Account", "您输入的帐号已经存在，请重新输入!"));
-
-            // 校验开户行
-            if (BankID== 0)
-                Error_Info.Add(new KeyValuePair<string,string>("BankID", "开户行不能为空"));
-
-
             return Error_Info.Count == 0;
         }
 
-        [Field("doc_date")]
-        public string DocDate { get; set; }
-
-        [Field("gen_doc")]
-        public long GenDoc { get; set; }
         
         /// <summary>
         /// 生成单据字
@@ -131,21 +102,5 @@ namespace Haimen.Entity
             relVal = com.Doc + com.DocDate + string.Format("{0:000}",com.GenDoc);
             return relVal;
         }
-
-        /// <summary>
-        /// 新增单位时，自动增加一个明细，为开户银行
-        /// </summary>
-        /// <returns></returns>
-        public override bool Insert()
-        {
-            CompanyDetail cd = new CompanyDetail();
-            cd.BankID = BankID;
-            cd.Account = Account;
-
-            DetailList.Add(cd);
-
-            return base.Insert();
-        }
-
     }
 }

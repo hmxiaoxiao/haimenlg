@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.txtBank = new DevExpress.XtraEditors.TextEdit();
-            this.txtAccount = new DevExpress.XtraEditors.TextEdit();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.txtDoc = new DevExpress.XtraEditors.TextEdit();
             this.txtCode = new DevExpress.XtraEditors.TextEdit();
@@ -39,8 +37,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
@@ -66,10 +62,9 @@
             this.c_account = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_obalance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_ocredit = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_memo = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBank.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
@@ -77,8 +72,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -92,8 +85,6 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.txtBank);
-            this.layoutControl1.Controls.Add(this.txtAccount);
             this.layoutControl1.Controls.Add(this.txtName);
             this.layoutControl1.Controls.Add(this.txtDoc);
             this.layoutControl1.Controls.Add(this.txtCode);
@@ -102,25 +93,9 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(492, 141);
+            this.layoutControl1.Size = new System.Drawing.Size(492, 63);
             this.layoutControl1.TabIndex = 28;
             this.layoutControl1.Text = "layoutControl1";
-            // 
-            // txtBank
-            // 
-            this.txtBank.Location = new System.Drawing.Point(56, 65);
-            this.txtBank.Name = "txtBank";
-            this.txtBank.Size = new System.Drawing.Size(431, 20);
-            this.txtBank.StyleController = this.layoutControl1;
-            this.txtBank.TabIndex = 9;
-            // 
-            // txtAccount
-            // 
-            this.txtAccount.Location = new System.Drawing.Point(56, 95);
-            this.txtAccount.Name = "txtAccount";
-            this.txtAccount.Size = new System.Drawing.Size(431, 20);
-            this.txtAccount.StyleController = this.layoutControl1;
-            this.txtAccount.TabIndex = 8;
             // 
             // txtName
             // 
@@ -154,13 +129,11 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem2,
-            this.layoutControlItem3,
-            this.layoutControlItem5,
-            this.layoutControlItem6});
+            this.layoutControlItem3});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 3);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(492, 141);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(492, 63);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -196,28 +169,6 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(492, 30);
             this.layoutControlItem3.Text = "名称：";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.txtAccount;
-            this.layoutControlItem5.CustomizationFormText = "帐号：";
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 90);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem5.Size = new System.Drawing.Size(492, 48);
-            this.layoutControlItem5.Text = "帐号：";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.txtBank;
-            this.layoutControlItem6.CustomizationFormText = "开户行：";
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 60);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem6.Size = new System.Drawing.Size(492, 30);
-            this.layoutControlItem6.Text = "开户行：";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
             // 
             // barManager1
             // 
@@ -384,7 +335,7 @@
             this.splitContainerControl2.Panel2.Controls.Add(this.gridControl1);
             this.splitContainerControl2.Panel2.Text = "Panel2";
             this.splitContainerControl2.Size = new System.Drawing.Size(492, 460);
-            this.splitContainerControl2.SplitterPosition = 141;
+            this.splitContainerControl2.SplitterPosition = 63;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
             // 
@@ -396,7 +347,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueBanks});
-            this.gridControl1.Size = new System.Drawing.Size(492, 314);
+            this.gridControl1.Size = new System.Drawing.Size(492, 392);
             this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -408,7 +359,8 @@
             this.c_bank,
             this.c_account,
             this.c_obalance,
-            this.c_ocredit});
+            this.c_ocredit,
+            this.c_memo});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
@@ -471,6 +423,14 @@
             this.c_ocredit.Visible = true;
             this.c_ocredit.VisibleIndex = 3;
             // 
+            // c_memo
+            // 
+            this.c_memo.Caption = "备注";
+            this.c_memo.FieldName = "Memo";
+            this.c_memo.Name = "c_memo";
+            this.c_memo.Visible = true;
+            this.c_memo.VisibleIndex = 4;
+            // 
             // DevCompanyDetailList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -486,8 +446,6 @@
             this.Load += new System.EventHandler(this.DevCompanyDetailList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtBank.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAccount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
@@ -495,8 +453,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
@@ -513,8 +469,6 @@
         #endregion
 
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private DevExpress.XtraEditors.TextEdit txtBank;
-        private DevExpress.XtraEditors.TextEdit txtAccount;
         private DevExpress.XtraEditors.TextEdit txtName;
         private DevExpress.XtraEditors.TextEdit txtDoc;
         private DevExpress.XtraEditors.TextEdit txtCode;
@@ -522,8 +476,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarButtonItem tsbNew;
@@ -549,5 +501,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn c_account;
         private DevExpress.XtraGrid.Columns.GridColumn c_obalance;
         private DevExpress.XtraGrid.Columns.GridColumn c_ocredit;
+        private DevExpress.XtraGrid.Columns.GridColumn c_memo;
     }
 }

@@ -111,23 +111,13 @@ namespace Haimen.GUI
             if (com == null)
                 return;    // 如果是空对象，可能被删除了。
 
-            txtCode.Enabled = true;
-            txtDoc.Enabled = true;
-            txtBank.Enabled = true;
-            txtName.Enabled = true;
-            txtAccount.Enabled = true;
-
             txtCode.Text = com.Code;
             txtDoc.Text = com.Doc;
-            txtBank.Text = com.Bank.Name;
             txtName.Text = com.Name;
-            txtAccount.Text = com.Account;
 
             txtCode.Enabled = false;
             txtDoc.Enabled = false;
-            txtBank.Enabled = false;
             txtName.Enabled = false;
-            txtAccount.Enabled = false;
 
             lueBanks.DataSource = banks;
             lueBanks.DisplayMember = "Name";

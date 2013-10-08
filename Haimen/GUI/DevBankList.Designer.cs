@@ -50,8 +50,8 @@
             this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tsbSave = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -200,6 +200,8 @@
             this.col_parentid.ColumnEdit = this.lueBanks;
             this.col_parentid.FieldName = "ParentID";
             this.col_parentid.Name = "col_parentid";
+            this.col_parentid.Visible = true;
+            this.col_parentid.VisibleIndex = 2;
             // 
             // lueBanks
             // 
@@ -286,14 +288,6 @@
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbSave_ItemClick);
             // 
-            // tsbExit
-            // 
-            this.tsbExit.Caption = "退出";
-            this.tsbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
-            this.tsbExit.Id = 3;
-            this.tsbExit.Name = "tsbExit";
-            this.tsbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbExit_ItemClick);
-            // 
             // tsbRefresh
             // 
             this.tsbRefresh.Caption = "刷新";
@@ -301,6 +295,14 @@
             this.tsbRefresh.Id = 6;
             this.tsbRefresh.Name = "tsbRefresh";
             this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
+            // 
+            // tsbExit
+            // 
+            this.tsbExit.Caption = "退出";
+            this.tsbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.tsbExit.Id = 3;
+            this.tsbExit.Name = "tsbExit";
+            this.tsbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbExit_ItemClick);
             // 
             // barDockControlTop
             // 
