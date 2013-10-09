@@ -138,13 +138,16 @@
     <value>宋体, 12pt</value>
   </data>
   <data name="xrLabel3.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v13.1">
-    <value>520.8333, 81.41669</value>
+    <value>502.083344, 81.41669</value>
+  </data>
+  <data name="xrLabel3.SizeF" type="System.Drawing.SizeF, System.Drawing">
+    <value>87.49997, 23</value>
   </data>
   <data name="SignedDate.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
   </data>
   <data name="SignedDate.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v13.1">
-    <value>339.2125, 81.41669</value>
+    <value>344.170776, 81.41669</value>
   </data>
   <data name="xrLabel2.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
