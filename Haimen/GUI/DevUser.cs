@@ -54,7 +54,7 @@ namespace Haimen.GUI
             bool verify = true;
 
 
-            if (!string.IsNullOrEmpty(lueUserGroup.EditValue.ToString()))
+            if (lueUserGroup.EditValue != null)
             {
                 m_user.UserGroupID = long.Parse(lueUserGroup.EditValue.ToString());
             }
@@ -166,7 +166,7 @@ namespace Haimen.GUI
             lueUserGroup.Properties.DataSource = null;
             lueUserGroup.Properties.DataSource = m_usergroups;
             lueUserGroup.Properties.DisplayMember = "Name";
-            lueUserGroup.Properties.ValueMember = "id";
+            lueUserGroup.Properties.ValueMember = "ID";
 
             lueUserGroup.EditValue = m_user.UserGroupID;
 
