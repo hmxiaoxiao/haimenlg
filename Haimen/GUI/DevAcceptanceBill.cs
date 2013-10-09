@@ -185,12 +185,14 @@ namespace Haimen.GUI
         /// </summary>
         private void Form2Object()
         {
-            m_acceptance_bill.DrawDate = DateTime.Parse( dtDrawDate.EditValue.ToString());
+            m_acceptance_bill.DrawDate = dtDrawDate.DateTime;
             m_acceptance_bill.Code = txtCode.Text;
-            m_acceptance_bill.InCompanyDetailID = long.Parse(lueInCompanyDetail.EditValue.ToString());
-            m_acceptance_bill.OutCompanyDetailID = long.Parse(lueOutCompanyDetail.EditValue.ToString());
+            if (lueInCompanyDetail.EditValue != null)
+                m_acceptance_bill.InCompanyDetailID = long.Parse(lueInCompanyDetail.EditValue.ToString());
+            if (lueOutCompanyDetail.EditValue != null)
+                m_acceptance_bill.OutCompanyDetailID = long.Parse(lueOutCompanyDetail.EditValue.ToString());
             m_acceptance_bill.Money = clMoney.Value;
-            m_acceptance_bill.EndDate = DateTime.Parse(dtEndDate.EditValue.ToString());
+            m_acceptance_bill.EndDate = dtEndDate.DateTime;
             m_acceptance_bill.TradeCode = txtTradeCode.Text;
         }
 
@@ -214,6 +216,15 @@ namespace Haimen.GUI
                         break;
                     case "TradeCode":
                         dxErrorProvider1.SetError(txtTradeCode, kv.Value);
+                        break;
+                    case "InCompanyDetail":
+                        dxErrorProvider1.SetError(lueInCompanyDetail, kv.Value);
+                        break;
+                    case "OutCompanyDetail":
+                        dxErrorProvider1.SetError(lueOutCompanyDetail, kv.Value);
+                        break;
+                    case "Money":
+                        dxErrorProvider1.SetError(clMoney, kv.Value);
                         break;
                 }
             }

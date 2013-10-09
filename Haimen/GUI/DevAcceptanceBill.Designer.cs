@@ -223,35 +223,39 @@
             // txtInBank
             // 
             this.txtInBank.Enabled = false;
+            this.txtInBank.EnterMoveNextControl = true;
             this.txtInBank.Location = new System.Drawing.Point(387, 186);
             this.txtInBank.MenuManager = this.barManager1;
             this.txtInBank.Name = "txtInBank";
             this.txtInBank.Size = new System.Drawing.Size(179, 20);
             this.txtInBank.StyleController = this.layoutControl1;
-            this.txtInBank.TabIndex = 14;
+            this.txtInBank.TabIndex = 11;
             // 
             // txtOutBank
             // 
             this.txtOutBank.Enabled = false;
+            this.txtOutBank.EnterMoveNextControl = true;
             this.txtOutBank.Location = new System.Drawing.Point(97, 186);
             this.txtOutBank.MenuManager = this.barManager1;
             this.txtOutBank.Name = "txtOutBank";
             this.txtOutBank.Size = new System.Drawing.Size(179, 20);
             this.txtOutBank.StyleController = this.layoutControl1;
-            this.txtOutBank.TabIndex = 13;
+            this.txtOutBank.TabIndex = 8;
             // 
             // txtTradeCode
             // 
+            this.txtTradeCode.EnterMoveNextControl = true;
             this.txtTradeCode.Location = new System.Drawing.Point(85, 286);
             this.txtTradeCode.MenuManager = this.barManager1;
             this.txtTradeCode.Name = "txtTradeCode";
             this.txtTradeCode.Size = new System.Drawing.Size(493, 20);
             this.txtTradeCode.StyleController = this.layoutControl1;
-            this.txtTradeCode.TabIndex = 12;
+            this.txtTradeCode.TabIndex = 14;
             // 
             // dtEndDate
             // 
             this.dtEndDate.EditValue = null;
+            this.dtEndDate.EnterMoveNextControl = true;
             this.dtEndDate.Location = new System.Drawing.Point(375, 242);
             this.dtEndDate.MenuManager = this.barManager1;
             this.dtEndDate.Name = "dtEndDate";
@@ -263,25 +267,30 @@
             this.dtEndDate.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.Default;
             this.dtEndDate.Size = new System.Drawing.Size(203, 20);
             this.dtEndDate.StyleController = this.layoutControl1;
-            this.dtEndDate.TabIndex = 11;
+            this.dtEndDate.TabIndex = 13;
             // 
             // clMoney
             // 
+            this.clMoney.EnterMoveNextControl = true;
             this.clMoney.Location = new System.Drawing.Point(85, 242);
             this.clMoney.MenuManager = this.barManager1;
             this.clMoney.Name = "clMoney";
             this.clMoney.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.clMoney.Properties.DisplayFormat.FormatString = "c";
+            this.clMoney.Properties.EditFormat.FormatString = "c";
             this.clMoney.Properties.Mask.EditMask = "c";
             this.clMoney.Size = new System.Drawing.Size(203, 20);
             this.clMoney.StyleController = this.layoutControl1;
-            this.clMoney.TabIndex = 10;
+            this.clMoney.TabIndex = 12;
             // 
             // lueInCompanyDetail
             // 
+            this.lueInCompanyDetail.EnterMoveNextControl = true;
             this.lueInCompanyDetail.Location = new System.Drawing.Point(387, 142);
             this.lueInCompanyDetail.MenuManager = this.barManager1;
             this.lueInCompanyDetail.Name = "lueInCompanyDetail";
+            this.lueInCompanyDetail.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueInCompanyDetail.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueInCompanyDetail.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -291,17 +300,18 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Balance", "余额"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Credit", "贷款")});
             this.lueInCompanyDetail.Properties.NullText = "请选择收款帐号";
-            this.lueInCompanyDetail.Properties.PopupWidth = 500;
             this.lueInCompanyDetail.Size = new System.Drawing.Size(179, 20);
             this.lueInCompanyDetail.StyleController = this.layoutControl1;
-            this.lueInCompanyDetail.TabIndex = 9;
+            this.lueInCompanyDetail.TabIndex = 10;
             this.lueInCompanyDetail.EditValueChanged += new System.EventHandler(this.lueInCompanyDetail_EditValueChanged);
             // 
             // lueOutCompanyDetail
             // 
+            this.lueOutCompanyDetail.EnterMoveNextControl = true;
             this.lueOutCompanyDetail.Location = new System.Drawing.Point(97, 142);
             this.lueOutCompanyDetail.MenuManager = this.barManager1;
             this.lueOutCompanyDetail.Name = "lueOutCompanyDetail";
+            this.lueOutCompanyDetail.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueOutCompanyDetail.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueOutCompanyDetail.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -314,14 +324,16 @@
             this.lueOutCompanyDetail.Properties.PopupWidth = 500;
             this.lueOutCompanyDetail.Size = new System.Drawing.Size(179, 20);
             this.lueOutCompanyDetail.StyleController = this.layoutControl1;
-            this.lueOutCompanyDetail.TabIndex = 8;
+            this.lueOutCompanyDetail.TabIndex = 7;
             this.lueOutCompanyDetail.EditValueChanged += new System.EventHandler(this.lueOutCompanyDetail_EditValueChanged);
             // 
             // lueInCompany
             // 
+            this.lueInCompany.EnterMoveNextControl = true;
             this.lueInCompany.Location = new System.Drawing.Point(387, 98);
             this.lueInCompany.MenuManager = this.barManager1;
             this.lueInCompany.Name = "lueInCompany";
+            this.lueInCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueInCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueInCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -329,14 +341,16 @@
             this.lueInCompany.Properties.NullText = "请选择收款单位";
             this.lueInCompany.Size = new System.Drawing.Size(179, 20);
             this.lueInCompany.StyleController = this.layoutControl1;
-            this.lueInCompany.TabIndex = 7;
+            this.lueInCompany.TabIndex = 9;
             this.lueInCompany.EditValueChanged += new System.EventHandler(this.lueInCompany_EditValueChanged);
             // 
             // lueOutCompany
             // 
+            this.lueOutCompany.EnterMoveNextControl = true;
             this.lueOutCompany.Location = new System.Drawing.Point(97, 98);
             this.lueOutCompany.MenuManager = this.barManager1;
             this.lueOutCompany.Name = "lueOutCompany";
+            this.lueOutCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueOutCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueOutCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -349,6 +363,7 @@
             // 
             // txtCode
             // 
+            this.txtCode.EnterMoveNextControl = true;
             this.txtCode.Location = new System.Drawing.Point(375, 22);
             this.txtCode.MenuManager = this.barManager1;
             this.txtCode.Name = "txtCode";
@@ -359,6 +374,7 @@
             // dtDrawDate
             // 
             this.dtDrawDate.EditValue = null;
+            this.dtDrawDate.EnterMoveNextControl = true;
             this.dtDrawDate.Location = new System.Drawing.Point(85, 22);
             this.dtDrawDate.MenuManager = this.barManager1;
             this.dtDrawDate.Name = "dtDrawDate";

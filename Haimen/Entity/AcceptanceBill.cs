@@ -114,6 +114,15 @@ namespace Haimen.Entity
             if (string.IsNullOrWhiteSpace(TradeCode))
                 Error_Info.Add(new KeyValuePair<string, string>("TradeCode", "交易合同号不能为空！"));
 
+            if(this.InCompanyDetailID <= 0)
+                Error_Info.Add(new KeyValuePair<string,string>("InCompanyDetail", "请选择收入单位！"));
+
+            if (this.OutCompanyDetailID <= 0)
+                Error_Info.Add(new KeyValuePair<string,string>("OutCompanyDetail", "请选择支出单位!"));
+
+            if (this.Money <= 0)
+                Error_Info.Add(new KeyValuePair<string,string>("Money", "汇票金额不能为空!"));
+
             return Error_Info.Count == 0;
         }
     }

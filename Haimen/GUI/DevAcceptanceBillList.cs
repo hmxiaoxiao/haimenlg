@@ -30,6 +30,7 @@ namespace Haimen.GUI
         {
             m_lists = AcceptanceBill.Query();
             gridControl1.DataSource = m_lists;
+            gridView1.BestFitColumns();
         }
 
         /// <summary>
