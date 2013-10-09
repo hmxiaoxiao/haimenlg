@@ -207,5 +207,10 @@ namespace Haimen.GUI
         {
             this.Close();
         }
+
+        private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MyRefresh();
+        }
     }
 }

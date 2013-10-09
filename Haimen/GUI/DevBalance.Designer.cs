@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevBalance));
             this.lueCompany = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.calcRate = new DevExpress.XtraEditors.CalcEdit();
+            this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnNew = new DevExpress.XtraBars.BarButtonItem();
@@ -46,6 +46,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.calcRate = new DevExpress.XtraEditors.CalcEdit();
             this.calcMoney = new DevExpress.XtraEditors.CalcEdit();
             this.dtEndDate = new DevExpress.XtraEditors.DateEdit();
             this.dtBeginDate = new DevExpress.XtraEditors.DateEdit();
@@ -55,12 +56,14 @@
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.picCheckFaild = new DevExpress.XtraEditors.PictureEdit();
             this.picPass = new DevExpress.XtraEditors.PictureEdit();
@@ -75,14 +78,12 @@
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.txtName = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.lueCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcRate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcRate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcMoney.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties)).BeginInit();
@@ -94,12 +95,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).BeginInit();
@@ -112,9 +115,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             this.toolStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // lueCompany
@@ -122,6 +122,7 @@
             this.lueCompany.EnterMoveNextControl = true;
             this.lueCompany.Location = new System.Drawing.Point(53, 50);
             this.lueCompany.Name = "lueCompany";
+            this.lueCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -153,17 +154,14 @@
             this.layoutControl1.TabIndex = 67;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // calcRate
+            // txtName
             // 
-            this.calcRate.EnterMoveNextControl = true;
-            this.calcRate.Location = new System.Drawing.Point(338, 122);
-            this.calcRate.MenuManager = this.barManager1;
-            this.calcRate.Name = "calcRate";
-            this.calcRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcRate.Size = new System.Drawing.Size(230, 20);
-            this.calcRate.StyleController = this.layoutControl1;
-            this.calcRate.TabIndex = 8;
+            this.txtName.Location = new System.Drawing.Point(53, 26);
+            this.txtName.MenuManager = this.barManager1;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(515, 20);
+            this.txtName.StyleController = this.layoutControl1;
+            this.txtName.TabIndex = 9;
             // 
             // barManager1
             // 
@@ -284,6 +282,18 @@
             this.barDockControlRight.Location = new System.Drawing.Point(827, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 495);
             // 
+            // calcRate
+            // 
+            this.calcRate.EnterMoveNextControl = true;
+            this.calcRate.Location = new System.Drawing.Point(338, 122);
+            this.calcRate.MenuManager = this.barManager1;
+            this.calcRate.Name = "calcRate";
+            this.calcRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcRate.Size = new System.Drawing.Size(230, 20);
+            this.calcRate.StyleController = this.layoutControl1;
+            this.calcRate.TabIndex = 8;
+            // 
             // calcMoney
             // 
             this.calcMoney.EnterMoveNextControl = true;
@@ -358,6 +368,7 @@
             this.lueCompanyDetail.EnterMoveNextControl = true;
             this.lueCompanyDetail.Location = new System.Drawing.Point(53, 74);
             this.lueCompanyDetail.Name = "lueCompanyDetail";
+            this.lueCompanyDetail.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueCompanyDetail.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueCompanyDetail.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -414,6 +425,66 @@
             this.layoutControlItem2.Text = "单位";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.dtEndDate;
+            this.layoutControlItem6.CustomizationFormText = "贷款到期";
+            this.layoutControlItem6.Location = new System.Drawing.Point(284, 72);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(286, 24);
+            this.layoutControlItem6.Text = "贷款到期";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.calcMoney;
+            this.layoutControlItem7.CustomizationFormText = "贷款金额";
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(285, 26);
+            this.layoutControlItem7.Text = "贷款金额";
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.txtName;
+            this.layoutControlItem9.CustomizationFormText = "合同名称";
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(570, 24);
+            this.layoutControlItem9.Text = "合同名称";
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.dtBeginDate;
+            this.layoutControlItem5.CustomizationFormText = "贷款日期";
+            this.layoutControlItem5.Location = new System.Drawing.Point(284, 48);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(286, 24);
+            this.layoutControlItem5.Text = "贷款日期";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
+            this.emptySpaceItem1.Location = new System.Drawing.Point(285, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(285, 24);
+            this.emptySpaceItem1.Text = "emptySpaceItem1";
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.lueCompanyDetail;
+            this.layoutControlItem3.CustomizationFormText = "贷款银行";
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(284, 24);
+            this.layoutControlItem3.Text = "贷款银行";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
+            // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.txtAccount;
@@ -433,46 +504,6 @@
             this.layoutControlItem8.Size = new System.Drawing.Size(285, 26);
             this.layoutControlItem8.Text = "利率";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.dtBeginDate;
-            this.layoutControlItem5.CustomizationFormText = "贷款日期";
-            this.layoutControlItem5.Location = new System.Drawing.Point(284, 48);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(286, 24);
-            this.layoutControlItem5.Text = "贷款日期";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.dtEndDate;
-            this.layoutControlItem6.CustomizationFormText = "贷款到期";
-            this.layoutControlItem6.Location = new System.Drawing.Point(284, 72);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(286, 24);
-            this.layoutControlItem6.Text = "贷款到期";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.lueCompanyDetail;
-            this.layoutControlItem3.CustomizationFormText = "贷款银行";
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 72);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(284, 24);
-            this.layoutControlItem3.Text = "贷款银行";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.calcMoney;
-            this.layoutControlItem7.CustomizationFormText = "贷款金额";
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 120);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(285, 26);
-            this.layoutControlItem7.Text = "贷款金额";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(48, 14);
             // 
             // repositoryItemDateEdit2
             // 
@@ -618,35 +649,6 @@
             this.tsbDelete.Size = new System.Drawing.Size(52, 22);
             this.tsbDelete.Text = "删除";
             // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(53, 26);
-            this.txtName.MenuManager = this.barManager1;
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(515, 20);
-            this.txtName.StyleController = this.layoutControl1;
-            this.txtName.TabIndex = 9;
-            // 
-            // layoutControlItem9
-            // 
-            this.layoutControlItem9.Control = this.txtName;
-            this.layoutControlItem9.CustomizationFormText = "合同名称";
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(570, 24);
-            this.layoutControlItem9.Text = "合同名称";
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(285, 0);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(285, 24);
-            this.emptySpaceItem1.Text = "emptySpaceItem1";
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // DevBalance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -666,8 +668,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.lueCompany.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.calcRate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcRate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcMoney.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties)).EndInit();
@@ -679,12 +682,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).EndInit();
@@ -699,9 +704,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
 
         }

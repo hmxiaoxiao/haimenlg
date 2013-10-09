@@ -220,6 +220,7 @@
             this.lueOutCompany.EnterMoveNextControl = true;
             this.lueOutCompany.Location = new System.Drawing.Point(105, 109);
             this.lueOutCompany.Name = "lueOutCompany";
+            this.lueOutCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueOutCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueOutCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -497,6 +498,7 @@
             this.lueInCompany.Location = new System.Drawing.Point(416, 109);
             this.lueInCompany.MenuManager = this.barManager1;
             this.lueInCompany.Name = "lueInCompany";
+            this.lueInCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueInCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueInCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -513,6 +515,7 @@
             this.luePartyB.Location = new System.Drawing.Point(416, 75);
             this.luePartyB.MenuManager = this.barManager1;
             this.luePartyB.Name = "luePartyB";
+            this.luePartyB.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.luePartyB.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.luePartyB.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -529,6 +532,7 @@
             this.luePartyA.Location = new System.Drawing.Point(105, 75);
             this.luePartyA.MenuManager = this.barManager1;
             this.luePartyA.Name = "luePartyA";
+            this.luePartyA.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.luePartyA.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.luePartyA.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -949,7 +953,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl1);
             this.xtraTabPage2.Controls.Add(this.toolStrip3);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(840, 486);
+            this.xtraTabPage2.Size = new System.Drawing.Size(840, 478);
             this.xtraTabPage2.Text = "合同支付明细";
             // 
             // gridControl1
@@ -960,7 +964,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(840, 461);
+            this.gridControl1.Size = new System.Drawing.Size(840, 453);
             this.gridControl1.TabIndex = 74;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1051,7 +1055,7 @@
             this.xtraTabPage3.Controls.Add(this.lstFiles);
             this.xtraTabPage3.Controls.Add(this.toolStrip1);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(840, 486);
+            this.xtraTabPage3.Size = new System.Drawing.Size(840, 478);
             this.xtraTabPage3.Text = "合同附件";
             // 
             // lstFiles
@@ -1060,7 +1064,7 @@
             this.lstFiles.ImageList = this.imageListBoxControl2;
             this.lstFiles.Location = new System.Drawing.Point(0, 25);
             this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(840, 461);
+            this.lstFiles.Size = new System.Drawing.Size(840, 453);
             this.lstFiles.TabIndex = 1;
             this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
             // 
@@ -1104,7 +1108,7 @@
             this.xtraTabPage4.Controls.Add(this.layoutControl3);
             this.xtraTabPage4.Controls.Add(this.layoutControl2);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(840, 486);
+            this.xtraTabPage4.Size = new System.Drawing.Size(840, 478);
             this.xtraTabPage4.Text = " 支付申请";
             // 
             // layoutControl3

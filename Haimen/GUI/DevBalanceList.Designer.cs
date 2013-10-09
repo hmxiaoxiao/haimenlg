@@ -52,6 +52,7 @@
             this.col_money = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_remaining = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_rate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -73,8 +74,9 @@
             this.tsbGene,
             this.tsbCheck,
             this.tsbExit,
-            this.tsbQuery});
-            this.barManager1.MaxItemId = 7;
+            this.tsbQuery,
+            this.tsbRefresh});
+            this.barManager1.MaxItemId = 8;
             // 
             // bar1
             // 
@@ -89,6 +91,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbGene, "", true, true, false, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
@@ -271,6 +274,14 @@
             this.col_rate.Visible = true;
             this.col_rate.VisibleIndex = 6;
             // 
+            // tsbRefresh
+            // 
+            this.tsbRefresh.Caption = "刷新";
+            this.tsbRefresh.Glyph = global::Haimen.Properties.Resources.Refresh_hot;
+            this.tsbRefresh.Id = 7;
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
+            // 
             // DevBalanceList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -316,5 +327,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_money;
         private DevExpress.XtraGrid.Columns.GridColumn col_remaining;
         private DevExpress.XtraGrid.Columns.GridColumn col_rate;
+        private DevExpress.XtraBars.BarButtonItem tsbRefresh;
     }
 }

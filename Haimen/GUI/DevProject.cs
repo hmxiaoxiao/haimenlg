@@ -126,7 +126,7 @@ namespace Haimen.GUI
         {
             if (gridView1.FocusedRowHandle < 0)
                 return;
-            if (MessageBox.Show(this, "是否要删除指定的项目？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            if (MessageBox.Show(this, "是否要删除指定的数据？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
                 long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
                 Project bk = Project.CreateByID(id);

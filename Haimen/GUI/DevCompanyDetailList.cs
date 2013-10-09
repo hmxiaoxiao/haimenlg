@@ -157,7 +157,7 @@ namespace Haimen.GUI
         {
             if (gridView1.FocusedRowHandle < 0)
                 return;
-            if (MessageBox.Show(this, "是否要删除指定的资金凭证？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            if (MessageBox.Show(this, "是否要删除指定的单位明细？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
                 gridView1.DeleteRow(gridView1.FocusedRowHandle);
                 m_company.Save();

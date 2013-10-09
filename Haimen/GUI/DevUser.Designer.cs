@@ -195,6 +195,7 @@
             this.lueUserGroup.Location = new System.Drawing.Point(83, 180);
             this.lueUserGroup.MenuManager = this.barManager1;
             this.lueUserGroup.Name = "lueUserGroup";
+            this.lueUserGroup.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueUserGroup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueUserGroup.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {

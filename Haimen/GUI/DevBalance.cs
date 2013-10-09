@@ -102,7 +102,6 @@ namespace Haimen.GUI
         private void SetControlStatus(bool enabled)
         {
             txtCode.Enabled = enabled;
-            txtAccount.Enabled = enabled;
             calcMoney.Enabled = enabled;
             calcRate.Enabled = enabled;
             lueCompanyDetail.Enabled = enabled;

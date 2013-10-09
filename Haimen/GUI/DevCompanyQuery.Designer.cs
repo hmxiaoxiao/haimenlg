@@ -130,6 +130,7 @@
             this.lueBanks.EnterMoveNextControl = true;
             this.lueBanks.Location = new System.Drawing.Point(70, 140);
             this.lueBanks.Name = "lueBanks";
+            this.lueBanks.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueBanks.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueBanks.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {

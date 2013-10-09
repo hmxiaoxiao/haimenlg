@@ -26,6 +26,7 @@ namespace Haimen.GUI
             lueStatus.ValueMember = "ValueInt";
 
             gridControl1.DataSource = m_lists;
+            gridView1.BestFitColumns();
         }
 
         public DevContractAcceptList()

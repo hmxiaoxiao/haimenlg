@@ -221,14 +221,16 @@ namespace Haimen.GUI
 
         private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_user != null && m_user.ID > 0)
+            if (MessageBox.Show(this, "是否要删除指定的数据？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
-                m_user.Destory();
-                m_user = new User();
-                m_status = winStatusEnum.查看;
-                MyRefresh();
+                if (m_user != null && m_user.ID > 0 && m_user.Name != "admin")
+                {
+                    m_user.Destory();
+                    m_user = new User();
+                    m_status = winStatusEnum.查看;
+                    MyRefresh();
+                }
             }
-
         }
 
         private void tsbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

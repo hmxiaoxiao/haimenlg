@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevAccount));
             this.lueInCompany = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.calcAttachCount = new DevExpress.XtraEditors.CalcEdit();
+            this.txtMoney = new DevExpress.XtraEditors.CalcEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barNormal = new DevExpress.XtraBars.Bar();
             this.tbNew = new DevExpress.XtraBars.BarButtonItem();
@@ -57,6 +57,7 @@
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemPictureEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
+            this.calcAttachCount = new DevExpress.XtraEditors.CalcEdit();
             this.calcPayMoney = new DevExpress.XtraEditors.CalcEdit();
             this.lueReviewer = new DevExpress.XtraEditors.LookUpEdit();
             this.lueMaker = new DevExpress.XtraEditors.LookUpEdit();
@@ -101,6 +102,7 @@
             this.layoutControlItem23 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.picPass = new DevExpress.XtraEditors.PictureEdit();
             this.picCheckFaild = new DevExpress.XtraEditors.PictureEdit();
@@ -136,29 +138,28 @@
             this.tsbAttachDelete = new System.Windows.Forms.ToolStripButton();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtMustPay = new DevExpress.XtraEditors.CalcEdit();
+            this.txtContractUnpay = new DevExpress.XtraEditors.CalcEdit();
+            this.txtContractAlreadyPay = new DevExpress.XtraEditors.CalcEdit();
+            this.txtContractMoney = new DevExpress.XtraEditors.CalcEdit();
             this.txtContractCode = new DevExpress.XtraEditors.TextEdit();
             this.txtContractName = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtMoney = new DevExpress.XtraEditors.CalcEdit();
-            this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtContractMoney = new DevExpress.XtraEditors.CalcEdit();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtContractAlreadyPay = new DevExpress.XtraEditors.CalcEdit();
             this.layoutControlItem29 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtContractUnpay = new DevExpress.XtraEditors.CalcEdit();
             this.layoutControlItem30 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtMustPay = new DevExpress.XtraEditors.CalcEdit();
             this.layoutControlItem31 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcAttachCount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMoney.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcAttachCount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcPayMoney.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueReviewer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueMaker.Properties)).BeginInit();
@@ -198,6 +199,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
@@ -225,21 +227,19 @@
             this.xtraTabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMustPay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContractUnpay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContractAlreadyPay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContractMoney.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtContractCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtContractName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMoney.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtContractMoney.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtContractAlreadyPay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtContractUnpay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMustPay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).BeginInit();
             this.SuspendLayout();
             // 
@@ -248,6 +248,7 @@
             this.lueInCompany.EnterMoveNextControl = true;
             this.lueInCompany.Location = new System.Drawing.Point(431, 84);
             this.lueInCompany.Name = "lueInCompany";
+            this.lueInCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueInCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueInCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -288,17 +289,21 @@
             this.layoutControl1.TabIndex = 69;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // calcAttachCount
+            // txtMoney
             // 
-            this.calcAttachCount.Enabled = false;
-            this.calcAttachCount.Location = new System.Drawing.Point(421, 216);
-            this.calcAttachCount.MenuManager = this.barManager1;
-            this.calcAttachCount.Name = "calcAttachCount";
-            this.calcAttachCount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.txtMoney.Enabled = false;
+            this.txtMoney.Location = new System.Drawing.Point(90, 216);
+            this.txtMoney.MenuManager = this.barManager1;
+            this.txtMoney.Name = "txtMoney";
+            this.txtMoney.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcAttachCount.Size = new System.Drawing.Size(231, 20);
-            this.calcAttachCount.StyleController = this.layoutControl1;
-            this.calcAttachCount.TabIndex = 21;
+            this.txtMoney.Properties.DisplayFormat.FormatString = "c";
+            this.txtMoney.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtMoney.Properties.Mask.EditMask = "c";
+            this.txtMoney.Size = new System.Drawing.Size(241, 20);
+            this.txtMoney.StyleController = this.layoutControl1;
+            this.txtMoney.TabIndex = 22;
+            this.txtMoney.TextChanged += new System.EventHandler(this.txtMoney_TextChanged);
             // 
             // barManager1
             // 
@@ -527,6 +532,18 @@
             // 
             this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
             // 
+            // calcAttachCount
+            // 
+            this.calcAttachCount.Enabled = false;
+            this.calcAttachCount.Location = new System.Drawing.Point(421, 216);
+            this.calcAttachCount.MenuManager = this.barManager1;
+            this.calcAttachCount.Name = "calcAttachCount";
+            this.calcAttachCount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcAttachCount.Size = new System.Drawing.Size(231, 20);
+            this.calcAttachCount.StyleController = this.layoutControl1;
+            this.calcAttachCount.TabIndex = 21;
+            // 
             // calcPayMoney
             // 
             this.calcPayMoney.Enabled = false;
@@ -648,6 +665,7 @@
             this.lueInAccount.Location = new System.Drawing.Point(431, 108);
             this.lueInAccount.MenuManager = this.barManager1;
             this.lueInAccount.Name = "lueInAccount";
+            this.lueInAccount.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueInAccount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueInAccount.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -668,6 +686,7 @@
             this.lueOutAccount.Location = new System.Drawing.Point(102, 108);
             this.lueOutAccount.MenuManager = this.barManager1;
             this.lueOutAccount.Name = "lueOutAccount";
+            this.lueOutAccount.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueOutAccount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueOutAccount.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -724,6 +743,7 @@
             this.lueOutCompany.EnterMoveNextControl = true;
             this.lueOutCompany.Location = new System.Drawing.Point(102, 84);
             this.lueOutCompany.Name = "lueOutCompany";
+            this.lueOutCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueOutCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueOutCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -1049,6 +1069,16 @@
             this.layoutControlItem25.Text = "附件张数";
             this.layoutControlItem25.TextSize = new System.Drawing.Size(84, 14);
             // 
+            // layoutControlItem28
+            // 
+            this.layoutControlItem28.Control = this.txtMoney;
+            this.layoutControlItem28.CustomizationFormText = "总金额";
+            this.layoutControlItem28.Location = new System.Drawing.Point(0, 212);
+            this.layoutControlItem28.Name = "layoutControlItem28";
+            this.layoutControlItem28.Size = new System.Drawing.Size(331, 24);
+            this.layoutControlItem28.Text = "总金额";
+            this.layoutControlItem28.TextSize = new System.Drawing.Size(84, 14);
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -1078,7 +1108,7 @@
             // 
             this.picPass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picPass.EditValue = ((object)(resources.GetObject("picPass.EditValue")));
-            this.picPass.Location = new System.Drawing.Point(935, 324);
+            this.picPass.Location = new System.Drawing.Point(728, 0);
             this.picPass.MenuManager = this.barManager1;
             this.picPass.Name = "picPass";
             this.picPass.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -1092,7 +1122,7 @@
             // 
             this.picCheckFaild.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picCheckFaild.EditValue = ((object)(resources.GetObject("picCheckFaild.EditValue")));
-            this.picCheckFaild.Location = new System.Drawing.Point(947, 284);
+            this.picCheckFaild.Location = new System.Drawing.Point(728, -6);
             this.picCheckFaild.MenuManager = this.barManager1;
             this.picCheckFaild.Name = "picCheckFaild";
             this.picCheckFaild.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -1123,8 +1153,6 @@
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.layoutControl1);
-            this.xtraTabPage1.Controls.Add(this.picCheckFaild);
-            this.xtraTabPage1.Controls.Add(this.picPass);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1036, 360);
             this.xtraTabPage1.Text = "基础信息";
@@ -1430,6 +1458,68 @@
             this.layoutControl2.TabIndex = 80;
             this.layoutControl2.Text = "合同";
             // 
+            // txtMustPay
+            // 
+            this.txtMustPay.Location = new System.Drawing.Point(75, 164);
+            this.txtMustPay.MenuManager = this.barManager1;
+            this.txtMustPay.Name = "txtMustPay";
+            this.txtMustPay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtMustPay.Properties.DisplayFormat.FormatString = "c";
+            this.txtMustPay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtMustPay.Properties.Mask.EditMask = "c";
+            this.txtMustPay.Size = new System.Drawing.Size(257, 20);
+            this.txtMustPay.StyleController = this.layoutControl2;
+            this.txtMustPay.TabIndex = 21;
+            // 
+            // txtContractUnpay
+            // 
+            this.txtContractUnpay.Location = new System.Drawing.Point(75, 140);
+            this.txtContractUnpay.MenuManager = this.barManager1;
+            this.txtContractUnpay.Name = "txtContractUnpay";
+            this.txtContractUnpay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtContractUnpay.Properties.DisplayFormat.FormatString = "c";
+            this.txtContractUnpay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtContractUnpay.Properties.EditFormat.FormatString = "c";
+            this.txtContractUnpay.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtContractUnpay.Properties.Mask.EditMask = "c";
+            this.txtContractUnpay.Size = new System.Drawing.Size(257, 20);
+            this.txtContractUnpay.StyleController = this.layoutControl2;
+            this.txtContractUnpay.TabIndex = 20;
+            // 
+            // txtContractAlreadyPay
+            // 
+            this.txtContractAlreadyPay.Location = new System.Drawing.Point(75, 116);
+            this.txtContractAlreadyPay.MenuManager = this.barManager1;
+            this.txtContractAlreadyPay.Name = "txtContractAlreadyPay";
+            this.txtContractAlreadyPay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtContractAlreadyPay.Properties.DisplayFormat.FormatString = "c";
+            this.txtContractAlreadyPay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtContractAlreadyPay.Properties.EditFormat.FormatString = "c";
+            this.txtContractAlreadyPay.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtContractAlreadyPay.Properties.Mask.EditMask = "c";
+            this.txtContractAlreadyPay.Size = new System.Drawing.Size(257, 20);
+            this.txtContractAlreadyPay.StyleController = this.layoutControl2;
+            this.txtContractAlreadyPay.TabIndex = 19;
+            // 
+            // txtContractMoney
+            // 
+            this.txtContractMoney.Location = new System.Drawing.Point(75, 92);
+            this.txtContractMoney.MenuManager = this.barManager1;
+            this.txtContractMoney.Name = "txtContractMoney";
+            this.txtContractMoney.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtContractMoney.Properties.DisplayFormat.FormatString = "c";
+            this.txtContractMoney.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtContractMoney.Properties.EditFormat.FormatString = "c";
+            this.txtContractMoney.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtContractMoney.Properties.Mask.EditMask = "c";
+            this.txtContractMoney.Size = new System.Drawing.Size(257, 20);
+            this.txtContractMoney.StyleController = this.layoutControl2;
+            this.txtContractMoney.TabIndex = 18;
+            // 
             // txtContractCode
             // 
             this.txtContractCode.Location = new System.Drawing.Point(75, 44);
@@ -1496,48 +1586,6 @@
             this.layoutControlItem14.Text = "合同名称";
             this.layoutControlItem14.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // txtMoney
-            // 
-            this.txtMoney.Enabled = false;
-            this.txtMoney.Location = new System.Drawing.Point(90, 216);
-            this.txtMoney.MenuManager = this.barManager1;
-            this.txtMoney.Name = "txtMoney";
-            this.txtMoney.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtMoney.Properties.DisplayFormat.FormatString = "c";
-            this.txtMoney.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtMoney.Properties.Mask.EditMask = "c";
-            this.txtMoney.Size = new System.Drawing.Size(241, 20);
-            this.txtMoney.StyleController = this.layoutControl1;
-            this.txtMoney.TabIndex = 22;
-            this.txtMoney.TextChanged += new System.EventHandler(this.txtMoney_TextChanged);
-            // 
-            // layoutControlItem28
-            // 
-            this.layoutControlItem28.Control = this.txtMoney;
-            this.layoutControlItem28.CustomizationFormText = "总金额";
-            this.layoutControlItem28.Location = new System.Drawing.Point(0, 212);
-            this.layoutControlItem28.Name = "layoutControlItem28";
-            this.layoutControlItem28.Size = new System.Drawing.Size(331, 24);
-            this.layoutControlItem28.Text = "总金额";
-            this.layoutControlItem28.TextSize = new System.Drawing.Size(84, 14);
-            // 
-            // txtContractMoney
-            // 
-            this.txtContractMoney.Location = new System.Drawing.Point(75, 92);
-            this.txtContractMoney.MenuManager = this.barManager1;
-            this.txtContractMoney.Name = "txtContractMoney";
-            this.txtContractMoney.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtContractMoney.Properties.DisplayFormat.FormatString = "c";
-            this.txtContractMoney.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtContractMoney.Properties.EditFormat.FormatString = "c";
-            this.txtContractMoney.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtContractMoney.Properties.Mask.EditMask = "c";
-            this.txtContractMoney.Size = new System.Drawing.Size(257, 20);
-            this.txtContractMoney.StyleController = this.layoutControl2;
-            this.txtContractMoney.TabIndex = 18;
-            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.txtContractMoney;
@@ -1547,22 +1595,6 @@
             this.layoutControlItem5.Size = new System.Drawing.Size(312, 24);
             this.layoutControlItem5.Text = "合同金额";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // txtContractAlreadyPay
-            // 
-            this.txtContractAlreadyPay.Location = new System.Drawing.Point(75, 116);
-            this.txtContractAlreadyPay.MenuManager = this.barManager1;
-            this.txtContractAlreadyPay.Name = "txtContractAlreadyPay";
-            this.txtContractAlreadyPay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtContractAlreadyPay.Properties.DisplayFormat.FormatString = "c";
-            this.txtContractAlreadyPay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtContractAlreadyPay.Properties.EditFormat.FormatString = "c";
-            this.txtContractAlreadyPay.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtContractAlreadyPay.Properties.Mask.EditMask = "c";
-            this.txtContractAlreadyPay.Size = new System.Drawing.Size(257, 20);
-            this.txtContractAlreadyPay.StyleController = this.layoutControl2;
-            this.txtContractAlreadyPay.TabIndex = 19;
             // 
             // layoutControlItem29
             // 
@@ -1574,22 +1606,6 @@
             this.layoutControlItem29.Text = "已付金额";
             this.layoutControlItem29.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // txtContractUnpay
-            // 
-            this.txtContractUnpay.Location = new System.Drawing.Point(75, 140);
-            this.txtContractUnpay.MenuManager = this.barManager1;
-            this.txtContractUnpay.Name = "txtContractUnpay";
-            this.txtContractUnpay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtContractUnpay.Properties.DisplayFormat.FormatString = "c";
-            this.txtContractUnpay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtContractUnpay.Properties.EditFormat.FormatString = "c";
-            this.txtContractUnpay.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtContractUnpay.Properties.Mask.EditMask = "c";
-            this.txtContractUnpay.Size = new System.Drawing.Size(257, 20);
-            this.txtContractUnpay.StyleController = this.layoutControl2;
-            this.txtContractUnpay.TabIndex = 20;
-            // 
             // layoutControlItem30
             // 
             this.layoutControlItem30.Control = this.txtContractUnpay;
@@ -1599,20 +1615,6 @@
             this.layoutControlItem30.Size = new System.Drawing.Size(312, 24);
             this.layoutControlItem30.Text = "未付金额";
             this.layoutControlItem30.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // txtMustPay
-            // 
-            this.txtMustPay.Location = new System.Drawing.Point(75, 164);
-            this.txtMustPay.MenuManager = this.barManager1;
-            this.txtMustPay.Name = "txtMustPay";
-            this.txtMustPay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtMustPay.Properties.DisplayFormat.FormatString = "c";
-            this.txtMustPay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtMustPay.Properties.Mask.EditMask = "c";
-            this.txtMustPay.Size = new System.Drawing.Size(257, 20);
-            this.txtMustPay.StyleController = this.layoutControl2;
-            this.txtMustPay.TabIndex = 21;
             // 
             // layoutControlItem31
             // 
@@ -1632,6 +1634,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1042, 467);
             this.Controls.Add(this.xtraTabControl1);
+            this.Controls.Add(this.picPass);
+            this.Controls.Add(this.picCheckFaild);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -1642,10 +1646,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.calcAttachCount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMoney.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcAttachCount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcPayMoney.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueReviewer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueMaker.Properties)).EndInit();
@@ -1685,6 +1690,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
@@ -1716,21 +1722,19 @@
             this.xtraTabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtMustPay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContractUnpay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContractAlreadyPay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContractMoney.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtContractCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtContractName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMoney.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtContractMoney.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtContractAlreadyPay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtContractUnpay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMustPay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).EndInit();
             this.ResumeLayout(false);
 

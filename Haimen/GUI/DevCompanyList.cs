@@ -41,6 +41,7 @@ namespace Haimen.GUI
             m_companies = Company.Query();
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_companies;
+            gridView1.BestFitColumns();
 
             SetControlAccess();
         }

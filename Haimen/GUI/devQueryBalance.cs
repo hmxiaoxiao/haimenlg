@@ -86,6 +86,7 @@ namespace Haimen.GUI
             sql += " order by c.name, b.name";
 
             gridControl1.DataSource = DBFunction.RunQuerySql(sql).Tables[0];
+            gridView1.BestFitColumns();
         }
 
         private void tsbSelectCompany_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

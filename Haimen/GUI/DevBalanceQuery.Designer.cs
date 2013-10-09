@@ -112,6 +112,7 @@
             this.lueCheck.EnterMoveNextControl = true;
             this.lueCheck.Location = new System.Drawing.Point(82, 140);
             this.lueCheck.Name = "lueCheck";
+            this.lueCheck.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueCheck.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueCheck.Size = new System.Drawing.Size(274, 20);
@@ -123,6 +124,7 @@
             this.lueCompany.EnterMoveNextControl = true;
             this.lueCompany.Location = new System.Drawing.Point(82, 60);
             this.lueCompany.Name = "lueCompany";
+            this.lueCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -138,6 +140,7 @@
             this.lueBank.EnterMoveNextControl = true;
             this.lueBank.Location = new System.Drawing.Point(82, 100);
             this.lueBank.Name = "lueBank";
+            this.lueBank.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueBank.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueBank.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {

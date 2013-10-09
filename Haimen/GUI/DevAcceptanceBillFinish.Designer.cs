@@ -279,6 +279,7 @@
             this.lueInCompanyDetail.Location = new System.Drawing.Point(380, 149);
             this.lueInCompanyDetail.MenuManager = this.barManager1;
             this.lueInCompanyDetail.Name = "lueInCompanyDetail";
+            this.lueInCompanyDetail.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueInCompanyDetail.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueInCompanyDetail.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -298,6 +299,7 @@
             this.lueOutCompanyDetail.Location = new System.Drawing.Point(104, 149);
             this.lueOutCompanyDetail.MenuManager = this.barManager1;
             this.lueOutCompanyDetail.Name = "lueOutCompanyDetail";
+            this.lueOutCompanyDetail.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueOutCompanyDetail.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueOutCompanyDetail.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -317,6 +319,7 @@
             this.lueInCompany.Location = new System.Drawing.Point(380, 115);
             this.lueInCompany.MenuManager = this.barManager1;
             this.lueInCompany.Name = "lueInCompany";
+            this.lueInCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueInCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueInCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -331,6 +334,7 @@
             this.lueOutCompany.Location = new System.Drawing.Point(104, 115);
             this.lueOutCompany.MenuManager = this.barManager1;
             this.lueOutCompany.Name = "lueOutCompany";
+            this.lueOutCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueOutCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueOutCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -571,6 +575,7 @@
             this.lueMoveAccount.Location = new System.Drawing.Point(201, 109);
             this.lueMoveAccount.MenuManager = this.barManager1;
             this.lueMoveAccount.Name = "lueMoveAccount";
+            this.lueMoveAccount.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueMoveAccount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueMoveAccount.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -591,6 +596,7 @@
             this.lueMoveCompany.Location = new System.Drawing.Point(201, 79);
             this.lueMoveCompany.MenuManager = this.barManager1;
             this.lueMoveCompany.Name = "lueMoveCompany";
+            this.lueMoveCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.lueMoveCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueMoveCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
