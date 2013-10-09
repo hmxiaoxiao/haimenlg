@@ -28,8 +28,8 @@ namespace Haimen.GUI
             cboUType.SelectedIndex = 0;
 
             if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.新增) ||
-                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.新增) ||
-                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.新增) ||
+                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.编辑) ||
+                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.删除) ||
                 GlobalSet.Current_User.Admin == "X" )
             {
                 btnSave.Enabled = true;
@@ -75,12 +75,14 @@ namespace Haimen.GUI
             }
         }
 
+
+        // 选择了具体用户后再显示可操作的内容
         private void lueList_EditValueChanged(object sender, EventArgs e)
         {
             if (lueList.EditValue == null)
                 return;
 
-            Cursor.Current = Cursors.AppStarting;
+            Cursor.Current = Cursors.AppStarting;       // 修改光标样式 
             if (cboUType.Text == "用户")
             {
                 User user = User.CreateByID(long.Parse(lueList.EditValue.ToString()));
@@ -96,7 +98,7 @@ namespace Haimen.GUI
 
             gridView1.BestFitColumns();
 
-            Cursor.Current = Cursors.Default;
+            Cursor.Current = Cursors.Default;           // 恢复光标样式
         }
 
         // 保存权限

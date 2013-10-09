@@ -28,17 +28,27 @@ namespace Haimen.Report
             txtRMB.Text = Helper.Helper.ConvertToChinese((double)m_account.Money);
             txtMoney.Text =string.Format("{0:c}", m_account.Money);
             if (m_account.CheckerID > 0)
-                txtChecker.Text = m_account.Checker.Name;
+                txtChecker.Text = "审批： 同意。" + string.Format("{0:d}", m_account.UpdatedDate) + "  " + m_account.Checker.Name;
             else
                 txtChecker.Text = "";
+
             if (m_account.MakerID > 0)
-                txtMaker.Text = m_account.Maker.Name;
+                txtMaker.Text = "支付：" + m_account.Maker.Name;
             else
                 txtMaker.Text = "";
+
             if (m_account.PayerID > 0)
-                txtPayer.Text = m_account.Payer.Name;
+                txtPayer.Text = "申请：" + m_account.Payer.Name;
             else
                 txtPayer.Text = "";
+
+            txtUsage.Text = "";
+            txtFunds.Text = "";
+            foreach (AccountDetail ad in m_account.DetailList)
+            {
+                txtUsage.Text += ad.Usage + "  ";
+                txtFunds.Text += ad.Funds.Name + "  ";
+            }
 
             txtAttach.Text = m_account.Attachment.ToString();
         }

@@ -288,4 +288,38 @@ namespace Haimen.Entity
             }
         }
     }
+
+    /// <summary>
+    /// 每个业务的功能
+    /// </summary>
+    public enum ActionEnum : long
+    {
+        查看 = 1,
+        新增,
+        编辑,
+        删除,
+        审核,
+        支付,
+    }
+
+
+    /// <summary>
+    /// 业务列表
+    /// </summary>
+    public enum FctionEnum : long
+    {
+        资金往来 = 1,
+        合同,
+        合同验收,
+        贷款,
+        银行,
+        单位,
+        资金性质,
+        单位帐户明细,
+        项目,
+        用户,
+        通知,
+        承兑汇票,
+        权限,
+    }
 }

@@ -193,6 +193,8 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridView1.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.col_function,
             this.col_view,
@@ -202,7 +204,10 @@
             this.col_check});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView1.OptionsCustomization.AllowColumnMoving = false;
+            this.gridView1.OptionsCustomization.AllowFilter = false;
+            this.gridView1.OptionsCustomization.AllowGroup = false;
+            this.gridView1.OptionsCustomization.AllowSort = false;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.EnableAppearanceOddRow = true;
