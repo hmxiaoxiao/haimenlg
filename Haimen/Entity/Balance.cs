@@ -14,44 +14,34 @@ namespace Haimen.Entity
         [Field("code")]
         public string Code { get; set; }
 
-        private long m_company_id;
-        public Company Company { get; set; }
-        [Field("company_id")]
-        public long CompanyID
+        [Field("Name")]
+        public string Name { get; set; }
+
+        private long m_companydetail_id;
+        public CompanyDetail CompanyDetail { get; set; }
+        [Field("companydetail_id")]
+        public long CompanyDetailID
         {
             get
             {
-                return m_company_id;
+                return m_companydetail_id;
             }
             set 
             {
-                m_company_id = value;
-                Company = Company.CreateByID(value);
+                m_companydetail_id = value;
+                CompanyDetail = CompanyDetail.CreateByID(value);
             }
         }
 
-        private long m_bank_id;
-        public Bank Bank{ get; set; }
-        [Field("bank_id")]
-        public long BankID
-        {
-            get
-            {
-                return m_bank_id;
-            }
-            set
-            {
-                m_bank_id = value;
-                Bank = Bank.CreateByID(value);
-            }
-        }
-
-        [Field("account")]
-        public string Account { get; set; }
-
+        /// <summary>
+        /// 贷款金额
+        /// </summary>
         [Field("money")]
         public decimal Money { get; set; }
 
+        /// <summary>
+        /// 贷款余额
+        /// </summary>
         [Field("remaining")]
         public decimal Remaining { get; set; }
 
@@ -61,23 +51,11 @@ namespace Haimen.Entity
         [Field("end_date")]
         public DateTime EndDate { get; set; }
 
+        /// <summary>
+        /// 利率
+        /// </summary>
         [Field("rate")]
         public decimal Rate { get; set; }
-
-        [Field("total_interest")]
-        public decimal TotalInterest { get; set; }
-
-        [Field("interest_date")]
-        public int InterestDate { get; set; }
-
-        [Field("repay_date")]
-        public int RepayDate { get; set; }
-
-        [Field("month_interest")]
-        public decimal MonthIntereset { get; set; }
-
-        [Field("already_interest")]
-        public decimal AlreadyInterest { get; set; }
 
         [Field("memo")]
         public string Memo { get; set; }
@@ -94,31 +72,7 @@ namespace Haimen.Entity
             using (TransactionScope ts = new TransactionScope())
             {
                 // 改标志为已审核
-                this.Status = (long)AccountStatusEnum.审核通过;
-
-                Company cor = Company.CreateByID(this.CompanyID);
-
-                // 加入一个查找标记
-                bool finded = false;
-                foreach (CompanyDetail cd in cor.DetailList)
-                {
-                    // 如果找到了，更新该单位的银行资金
-                    if (cd.BankID == this.BankID && cd.Account == this.Account)
-                    {
-                        finded = true;
-                        cd.Credit += this.Money;
-                    }
-                }
-                // 如果没有找到，则在单位帐号表里面增加一条记录
-                if (!finded)
-                {
-                    CompanyDetail cde = new CompanyDetail();
-                    cde.BankID = this.BankID;
-                    cde.Account = this.Account;
-                    cde.Credit += this.Money;
-                }
-
-                cor.Save();      
+                this.Status = (long)AccountStatusEnum.审核通过;   
                 this.Save();        // 保存审核标记
 
                 ts.Complete();
@@ -139,21 +93,34 @@ namespace Haimen.Entity
             Error_Info.Clear();
 
             if (string.IsNullOrEmpty(this.Code))
-                Error_Info.Add(new KeyValuePair<string, string>("Code", "代码不能为空"));
+                Error_Info.Add(new KeyValuePair<string, string>("Code", "贷款编号不能为空"));
 
-            if (this.CompanyID <= 0)
-                Error_Info.Add(new KeyValuePair<string, string>("CompanyID", "请选择贷款单位"));
+            if (string.IsNullOrEmpty(this.Name))
+                Error_Info.Add(new KeyValuePair<string, string>("Name", "贷款合同名称不能为空"));
 
-            if (this.BankID <= 0)
-                Error_Info.Add(new KeyValuePair<string, string>("BankID", "请选择贷款银行"));
+            if (this.CompanyDetailID <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("CompanyDetailID", "请选择贷款单位"));
 
-            if (string.IsNullOrEmpty(this.Account))
-                Error_Info.Add(new KeyValuePair<string, string>("Account", "请输入贷款帐号"));
+            if (this.Money <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("Money", "贷款金额不能为零"));
 
-            if (Error_Info.Count > 0)
-                return false;
-            else
-                return true;
+            return Error_Info.Count == 0;
+        }
+
+        public override bool Insert()
+        {
+            this.Remaining = this.Money;
+            return base.Insert();
+        }
+
+        public override bool Update()
+        {
+            // 当前已还贷金额
+            Balance old_balance = Balance.CreateByID(this.ID);
+
+            decimal d = old_balance.Money - old_balance.Remaining;
+            this.Remaining = Money - d;     //当前的还贷余额
+            return base.Update();
         }
     }
 }

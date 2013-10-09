@@ -85,6 +85,7 @@ namespace Haimen.GUI
             m_balances = Balance.Query();
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_balances;
+            gridView1.BestFitColumns();
         }
 
 

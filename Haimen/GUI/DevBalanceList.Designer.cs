@@ -222,7 +222,7 @@
             // col_compandid
             // 
             this.col_compandid.Caption = "单位";
-            this.col_compandid.FieldName = "Company.Name";
+            this.col_compandid.FieldName = "CompanyDetail.Parent.Name";
             this.col_compandid.Name = "col_compandid";
             this.col_compandid.Visible = true;
             this.col_compandid.VisibleIndex = 1;
@@ -230,7 +230,7 @@
             // col_bankid
             // 
             this.col_bankid.Caption = "银行";
-            this.col_bankid.FieldName = "Bank.Name";
+            this.col_bankid.FieldName = "CompanyDetail.Bank.Name";
             this.col_bankid.Name = "col_bankid";
             this.col_bankid.Visible = true;
             this.col_bankid.VisibleIndex = 2;
@@ -238,7 +238,7 @@
             // col_account
             // 
             this.col_account.Caption = "帐号";
-            this.col_account.FieldName = "Account";
+            this.col_account.FieldName = "CompanyDetail.Account";
             this.col_account.Name = "col_account";
             this.col_account.Visible = true;
             this.col_account.VisibleIndex = 3;

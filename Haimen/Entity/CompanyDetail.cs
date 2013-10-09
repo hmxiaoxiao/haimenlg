@@ -44,6 +44,27 @@ namespace Haimen.Entity
         /// </summary>
         [Field("bank_id")]
         public long BankID { get; set; }
+        private Bank m_bank;
+        public Bank Bank
+        {
+            get
+            {
+                if (m_bank == null)
+                    m_bank = Bank.CreateByID(BankID);
+                return m_bank;
+            }
+        }
+
+        // for lookupedit控件
+        public string BankName
+        {
+            get
+            {
+                if (m_bank == null)
+                    m_bank = Bank.CreateByID(BankID);
+                return m_bank.Name;
+            }
+        }
 
         /// <summary>
         /// 帐号
@@ -79,27 +100,7 @@ namespace Haimen.Entity
         public string Memo { get; set; }
 
         
-        private Bank m_bank;
-        public Bank Bank 
-        {
-            get
-            {
-                if (m_bank == null)
-                    m_bank = Bank.CreateByID(BankID);
-                return m_bank;
-            }
-        }
 
-        // for lookupedit控件
-        public string BankName
-        {
-            get
-            {
-                if (m_bank == null)
-                    m_bank = Bank.CreateByID(BankID);
-                return m_bank.Name;
-            }
-        }
 
 
         /// <summary>

@@ -15,8 +15,6 @@ namespace Haimen.GUI
     public partial class DevBalance : DevExpress.XtraEditors.XtraForm
     {
         private Balance m_balance;
-        private List<Bank> m_banks = Bank.Query();
-        private List<Company> m_companies = Company.Query();
 
         private winStatusEnum m_status;
 
@@ -105,14 +103,12 @@ namespace Haimen.GUI
         {
             txtCode.Enabled = enabled;
             txtAccount.Enabled = enabled;
-            txtMoney.Enabled = enabled;
-            txtRate.Enabled = enabled;
-            lueBank.Enabled = enabled;
+            calcMoney.Enabled = enabled;
+            calcRate.Enabled = enabled;
+            lueCompanyDetail.Enabled = enabled;
             lueCompany.Enabled = enabled;
             dtBeginDate.Enabled = enabled;
             dtEndDate.Enabled = enabled;
-            cboInterestDate.Enabled = enabled;
-            cboRepayDate.Enabled = enabled;
 
             tsbNew.Enabled = enabled;
             tsbDelete.Enabled = enabled;
@@ -125,15 +121,12 @@ namespace Haimen.GUI
         private void Form2Object()
         {
             m_balance.Code = txtCode.Text;
-            m_balance.BankID = long.Parse(lueBank.EditValue.ToString());
-            m_balance.CompanyID = long.Parse(lueCompany.EditValue.ToString());
-            m_balance.BeginDate = DateTime.Parse(dtBeginDate.EditValue.ToString());
-            m_balance.EndDate = DateTime.Parse(dtEndDate.EditValue.ToString());
-            m_balance.InterestDate = int.Parse(cboInterestDate.Text);
-            m_balance.RepayDate = int.Parse(cboRepayDate.Text);
-            m_balance.Account = txtAccount.Text;
-            m_balance.Money = decimal.Parse(txtMoney.Text);
-            m_balance.Rate = decimal.Parse(txtRate.Text);
+            m_balance.Name = txtName.Text;
+            m_balance.CompanyDetailID = long.Parse(lueCompanyDetail.EditValue.ToString());
+            m_balance.BeginDate = dtBeginDate.DateTime;
+            m_balance.EndDate = dtEndDate.DateTime;
+            m_balance.Money = calcMoney.Value;
+            m_balance.Rate = calcRate.Value;
         }
 
         /// <summary>
@@ -141,48 +134,54 @@ namespace Haimen.GUI
         /// </summary>
         private void Object2Form()
         {
+
+            lueCompany.Properties.DataSource = Company.Query();
+            lueCompany.Properties.DisplayMember = "Name";
+            lueCompany.Properties.ValueMember = "ID";
+
             if (m_balance.ID > 0)
             {
+
+
                 txtCode.Text = m_balance.Code;
-                txtAccount.Text = m_balance.Account;
-                txtMoney.Text = m_balance.Money.ToString();
-                txtRate.Text = m_balance.Rate.ToString();
-                lueBank.EditValue = m_balance.BankID;
-                lueCompany.EditValue = m_balance.CompanyID;
+                calcMoney.Text = m_balance.Money.ToString();
+                calcRate.Text = m_balance.Rate.ToString();
+
+                lueCompany.Properties.LockEvents();
+                lueCompanyDetail.Properties.LockEvents();
+
+                lueCompany.EditValue = m_balance.CompanyDetail.ParentID;
+
+                lueCompanyDetail.Properties.DataSource = m_balance.CompanyDetail.Parent.DetailList;
+                lueCompanyDetail.Properties.DisplayMember = "Name";
+                lueCompanyDetail.Properties.ValueMember = "ID";
+                lueCompanyDetail.EditValue = m_balance.CompanyDetailID;
+
+                lueCompanyDetail.Properties.UnLockEvents();
+                lueCompany.Properties.UnLockEvents();
+
                 dtBeginDate.EditValue = m_balance.BeginDate;
                 dtEndDate.EditValue = m_balance.EndDate;
-                cboInterestDate.Text = m_balance.InterestDate.ToString();
-                cboRepayDate.Text = m_balance.RepayDate.ToString();
+
+
             }
             else
             {
                 txtCode.Text = "";
+                txtName.Text = "";
                 txtAccount.Text = "";
-                txtMoney.Text = "";
-                txtRate.Text = "";
-                lueBank.EditValue = null;
+                calcMoney.Value = 0;
+                calcRate.Value = 0;
+                lueCompanyDetail.EditValue = null;
                 lueCompany.EditValue = null;
-                dtBeginDate.EditValue = DateTime.Now;
-                dtEndDate.EditValue = DateTime.Now;
-                cboInterestDate.Text = "";
-                cboRepayDate.Text = "";
+                dtBeginDate.DateTime = DateTime.Now;
+                dtEndDate.DateTime = DateTime.Now;
+
+                lueCompanyDetail.Properties.DataSource = null;
             }
 
-            lueBank.Properties.DataSource = m_banks;
-            lueBank.Properties.DisplayMember = "Name";
-            lueBank.Properties.ValueMember = "ID";
 
-            lueCompany.Properties.DataSource = m_companies;
-            lueCompany.Properties.DisplayMember = "Name";
-            lueCompany.Properties.ValueMember = "ID";
 
-            cboInterestDate.Properties.Items.Clear();
-            cboRepayDate.Properties.Items.Clear();
-            for (int i = 1; i <= 31; i++)
-            {
-                cboInterestDate.Properties.Items.Add(i);
-                cboRepayDate.Properties.Items.Add(i);
-            }
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_balance.DetailList;
         }
@@ -221,14 +220,14 @@ namespace Haimen.GUI
                     case "Code":
                         dxErrorProvider1.SetError(txtCode, kv.Value);
                         break;
-                    case "CompanyID":
-                        dxErrorProvider1.SetError(lueCompany, kv.Value);
+                    case "Name":
+                        dxErrorProvider1.SetError(txtName, kv.Value);
                         break;
-                    case "BankID":
-                        dxErrorProvider1.SetError(lueBank, kv.Value);
+                    case "CompanyDetailID":
+                        dxErrorProvider1.SetError(lueCompanyDetail, kv.Value);
                         break;
-                    case "Account":
-                        dxErrorProvider1.SetError(txtAccount, kv.Value);
+                    case "Money":
+                        dxErrorProvider1.SetError(calcMoney, kv.Value);
                         break;
                 }
             }
@@ -363,6 +362,28 @@ namespace Haimen.GUI
         {
             m_balance.CheckFaild();
             SetFromStatus(winStatusEnum.查看);
+        }
+
+        private void lueCompany_EditValueChanged(object sender, EventArgs e)
+        {
+            if (lueCompany.EditValue == null)
+                return;
+
+            long id = long.Parse(lueCompany.EditValue.ToString());
+            lueCompanyDetail.Properties.DataSource = null;
+            lueCompanyDetail.Properties.DataSource = Company.CreateByID(id).DetailList;
+            lueCompanyDetail.Properties.DisplayMember = "BankName";
+            lueCompanyDetail.Properties.ValueMember = "ID";
+            lueCompanyDetail.Enabled = true;
+        }
+
+        private void lueCompanyDetail_EditValueChanged(object sender, EventArgs e)
+        {
+            if (lueCompanyDetail.EditValue == null)
+                return;
+
+            long id = long.Parse(lueCompanyDetail.EditValue.ToString());
+            txtAccount.Text = CompanyDetail.CreateByID(id).Account;
         }
 
 
