@@ -194,7 +194,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSave, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCheckFaild, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
@@ -237,14 +236,6 @@
             this.btnCheck.Id = 3;
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCheck_ItemClick);
-            // 
-            // btnCheckFaild
-            // 
-            this.btnCheckFaild.Caption = "不通过";
-            this.btnCheckFaild.Glyph = global::Haimen.Properties.Resources.Stop_hot;
-            this.btnCheckFaild.Id = 6;
-            this.btnCheckFaild.Name = "btnCheckFaild";
-            this.btnCheckFaild.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCheckFaild_ItemClick);
             // 
             // btnExit
             // 

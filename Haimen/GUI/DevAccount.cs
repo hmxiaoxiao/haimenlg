@@ -198,9 +198,9 @@ namespace Haimen.GUI
 
             // 正式发票
             if (chkRelease.Checked)
-                m_account.Invoice = (long)AccountInvoiceEnum.正式发票;
+                m_account.Invoice = (long)Account.AccountInvoiceEnum.正式发票;
             else
-                m_account.Invoice = (long)AccountInvoiceEnum.非正式发票;
+                m_account.Invoice = (long)Account.AccountInvoiceEnum.非正式发票;
 
             // 总金额
             if (string.IsNullOrEmpty(txtMoney.Text))
@@ -302,7 +302,7 @@ namespace Haimen.GUI
                 txtMemo.Text = m_account.Memo;                  // 备注
                 calcAttachCount.EditValue = m_account.Attachment;    // 附件张数
                 // 正式发票
-                if (m_account.Invoice == (long)AccountInvoiceEnum.正式发票)
+                if (m_account.Invoice == (long)Account.AccountInvoiceEnum.正式发票)
                     chkRelease.Checked = true;
                 else
                     chkRelease.Checked = false;
@@ -371,7 +371,7 @@ namespace Haimen.GUI
             ShowAcceptInfo();
 
             // 显示审核标志
-            ShowCheckPic();
+            ShowCheckPayPic();
 
             // 设置各制表人员
             SetAllOperator();
@@ -454,17 +454,21 @@ namespace Haimen.GUI
         }
 
         // 显示审核的图片
-        private void ShowCheckPic()
+        private void ShowCheckPayPic()
         {
             switch (m_account.Status)
             {
-                case 1:
-                    picPass.Visible = true;
-                    picCheckFaild.Visible = false;
+                case (long)Account.AccountStatusEnum.未审核:
+                    picChecked.Visible = false;
+                    picPayed.Visible = false;
                     break;
-                case 2:
-                    picPass.Visible = false;
-                    picCheckFaild.Visible = true;
+                case (long)Account.AccountStatusEnum.审核通过:
+                    picChecked.Visible = true;
+                    picPayed.Visible = false;
+                    break;
+                case (long)Account.AccountStatusEnum.已支付:
+                    picChecked.Visible = true;
+                    picPayed.Visible = true;
                     break;
             }
         }
@@ -785,27 +789,11 @@ namespace Haimen.GUI
         {
             m_account.CheckPass();
             //SetFormStatus(winStatusEnum.纯查看);      //审核通过后，只能看。
-            ShowCheckPic();
+            ShowCheckPayPic();
             tbCheckPassed.Enabled = false;
             tbCheckFaild.Enabled = false;
             m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
         }
-
-        /// <summary>
-        /// 审核不通过
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tbCheckFaild_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            m_account.CheckFaild();
-            //SetFormStatus(winStatusEnum.查看);
-            tbCheckPassed.Enabled = false;
-            tbCheckFaild.Enabled = false;
-            ShowCheckPic();
-            m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
-        }
-
 
         /// <summary>
         /// 选择帐户
@@ -864,6 +852,7 @@ namespace Haimen.GUI
         {
             m_account.Payed();
             tbPay.Enabled = false;
+            ShowCheckPayPic();                  // 显示支付信息
             m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
             //ShowCheckPic();
         }
@@ -906,7 +895,7 @@ namespace Haimen.GUI
             {
                 m_account.ConverInvoice();
                 //SetFormStatus(winStatusEnum.纯查看);      //审核通过后，只能看。
-                ShowCheckPic();
+                ShowCheckPayPic();
                 tb2Invoice.Enabled = false;
                 chkRelease.Checked = true;
                 m_status = winStatusEnum.纯查看;           // 保证退出时不会提示

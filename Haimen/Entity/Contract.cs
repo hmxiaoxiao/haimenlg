@@ -215,14 +215,14 @@ namespace Haimen.Entity
         // 审核通过
         public void CheckPassed()
         {
-            this.Status = (long)AccountStatusEnum.审核通过;
+            this.Status = (long)ContractStatusEnum.审核通过;
             this.Save();
         }
 
         // 审核不通过
         public void CheckFaild()
         {
-            this.Status = (long)AccountStatusEnum.审核未通过;
+            this.Status = (long)ContractStatusEnum.审核未通过;
             this.Save();
         }
 

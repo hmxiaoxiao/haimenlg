@@ -86,7 +86,7 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.imageListBoxControl2 = new System.Windows.Forms.ImageList(this.components);
-            this.picPass = new DevExpress.XtraEditors.PictureEdit();
+            this.picChecked = new DevExpress.XtraEditors.PictureEdit();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
@@ -132,7 +132,7 @@
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.picCheckFaild = new DevExpress.XtraEditors.PictureEdit();
+            this.picPayed = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.lueOutCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -174,7 +174,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picChecked.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -212,7 +212,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPayed.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lueOutCompany
@@ -909,18 +909,18 @@
             this.imageListBoxControl2.Images.SetKeyName(18, "DREAMWEAVER XP.ico");
             this.imageListBoxControl2.Images.SetKeyName(19, "ERASER.ico");
             // 
-            // picPass
+            // picChecked
             // 
-            this.picPass.EditValue = ((object)(resources.GetObject("picPass.EditValue")));
-            this.picPass.Location = new System.Drawing.Point(701, -4);
-            this.picPass.MenuManager = this.barManager1;
-            this.picPass.Name = "picPass";
-            this.picPass.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.picPass.Properties.Appearance.Options.UseBackColor = true;
-            this.picPass.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.picPass.Size = new System.Drawing.Size(204, 61);
-            this.picPass.TabIndex = 65;
-            this.picPass.Visible = false;
+            this.picChecked.EditValue = ((object)(resources.GetObject("picChecked.EditValue")));
+            this.picChecked.Location = new System.Drawing.Point(531, 0);
+            this.picChecked.MenuManager = this.barManager1;
+            this.picChecked.Name = "picChecked";
+            this.picChecked.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.picChecked.Properties.Appearance.Options.UseBackColor = true;
+            this.picChecked.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.picChecked.Size = new System.Drawing.Size(162, 72);
+            this.picChecked.TabIndex = 65;
+            this.picChecked.Visible = false;
             // 
             // dxErrorProvider1
             // 
@@ -1385,27 +1385,27 @@
             this.layoutControlItem21.Text = "申请金额";
             this.layoutControlItem21.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // picCheckFaild
+            // picPayed
             // 
-            this.picCheckFaild.EditValue = ((object)(resources.GetObject("picCheckFaild.EditValue")));
-            this.picCheckFaild.Location = new System.Drawing.Point(701, -4);
-            this.picCheckFaild.MenuManager = this.barManager1;
-            this.picCheckFaild.Name = "picCheckFaild";
-            this.picCheckFaild.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.picCheckFaild.Properties.Appearance.Options.UseBackColor = true;
-            this.picCheckFaild.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.picCheckFaild.Size = new System.Drawing.Size(204, 61);
-            this.picCheckFaild.TabIndex = 66;
-            this.picCheckFaild.Visible = false;
+            this.picPayed.EditValue = ((object)(resources.GetObject("picPayed.EditValue")));
+            this.picPayed.Location = new System.Drawing.Point(699, 0);
+            this.picPayed.MenuManager = this.barManager1;
+            this.picPayed.Name = "picPayed";
+            this.picPayed.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.picPayed.Properties.Appearance.Options.UseBackColor = true;
+            this.picPayed.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.picPayed.Size = new System.Drawing.Size(163, 72);
+            this.picPayed.TabIndex = 66;
+            this.picPayed.Visible = false;
             // 
             // DevContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 585);
+            this.Controls.Add(this.picChecked);
+            this.Controls.Add(this.picPayed);
             this.Controls.Add(this.xtraTabControl1);
-            this.Controls.Add(this.picCheckFaild);
-            this.Controls.Add(this.picPass);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -1454,7 +1454,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picChecked.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
@@ -1496,7 +1496,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPayed.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1519,7 +1519,7 @@
         private System.Windows.Forms.ImageList imageListBoxControl2;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraEditors.MemoEdit txtMemo;
-        private DevExpress.XtraEditors.PictureEdit picPass;
+        private DevExpress.XtraEditors.PictureEdit picChecked;
         private DevExpress.XtraEditors.CalcEdit txtPayment_ratio;
         private DevExpress.XtraEditors.CalcEdit txtSecurity;
         private DevExpress.XtraEditors.CalcEdit txtMoney;
@@ -1557,7 +1557,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraEditors.CalcEdit calcAttarchCount;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
-        private DevExpress.XtraEditors.PictureEdit picCheckFaild;
+        private DevExpress.XtraEditors.PictureEdit picPayed;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;

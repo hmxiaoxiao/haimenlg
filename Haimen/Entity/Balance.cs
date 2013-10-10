@@ -72,20 +72,11 @@ namespace Haimen.Entity
             using (TransactionScope ts = new TransactionScope())
             {
                 // 改标志为已审核
-                this.Status = (long)AccountStatusEnum.审核通过;   
+                this.Status = (long)BalanceStatusEnum.审核通过;   
                 this.Save();        // 保存审核标记
 
                 ts.Complete();
             }
-        }
-
-        /// <summary>
-        /// 审核不通过
-        /// </summary>
-        public void CheckFaild()
-        {
-            this.Status = (long)AccountStatusEnum.审核未通过;
-            this.Save();
         }
 
         public override bool Verify()
@@ -121,6 +112,16 @@ namespace Haimen.Entity
             decimal d = old_balance.Money - old_balance.Remaining;
             this.Remaining = Money - d;     //当前的还贷余额
             return base.Update();
+        }
+
+        /// <summary>
+        /// 资金的状态
+        /// </summary>
+        public enum BalanceStatusEnum : long
+        {
+            未审核 = 0,
+            审核通过,
+            贷款到帐,
         }
     }
 }

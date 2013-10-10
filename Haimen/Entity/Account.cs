@@ -211,16 +211,7 @@ namespace Haimen.Entity
             this.CheckerID = GlobalSet.Current_User.ID;
             this.Status = (long)AccountStatusEnum.审核通过;
             this.CheckDate = DateTime.Now;
-            this.Save();
-        }
-
-        /// <summary>
-        /// 审核不通过
-        /// </summary>
-        public void CheckFaild()
-        {
-            this.CheckerID = GlobalSet.Current_User.ID;
-            this.Status = (long)AccountStatusEnum.审核未通过;
+            this.PayDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
             this.Save();
         }
 
@@ -357,6 +348,9 @@ namespace Haimen.Entity
             return base.Update();
         }
 
+        /// <summary>
+        /// 非正式发票转换为正式发票
+        /// </summary>
         public void ConverInvoice()
         {
             if (Invoice != (long)AccountInvoiceEnum.正式发票)
@@ -365,11 +359,36 @@ namespace Haimen.Entity
                 this.Save();
             }
         }
-    }
 
-    public enum AccountInvoiceEnum : long
-    {
-        正式发票 = 1,
-        非正式发票,
+        private static List<Dict> m_account_status_list;
+        public static List<Dict> AccountStatusList
+        {
+            get
+            {
+                if (m_account_status_list == null)
+                {
+                    m_account_status_list = new List<Dict>();
+                    foreach (long sn in Enum.GetValues(typeof(AccountStatusEnum)))
+                        m_account_status_list.Add(new Dict(Enum.GetName(typeof(AccountStatusEnum), sn), sn));
+                }
+                return m_account_status_list;
+            }
+        }
+
+        public enum AccountInvoiceEnum : long
+        {
+            正式发票 = 1,
+            非正式发票,
+        }
+
+        /// <summary>
+        /// 资金的状态
+        /// </summary>
+        public enum AccountStatusEnum : long
+        {
+            未审核 = 0,
+            审核通过,
+            已支付,
+        }
     }
 }

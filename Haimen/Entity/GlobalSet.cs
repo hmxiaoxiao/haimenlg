@@ -33,24 +33,7 @@ namespace Haimen.Entity
             } 
         }
 
-        private static List<Dict> m_account_status;
-        public static List<Dict> AccountStatus
-        {
-            get
-            {
-                if (m_account_status == null)
-                {
-                    m_account_status = new List<Dict>();
-                    m_account_status.Add(new Dict("未审核", 0));
-                    m_account_status.Add(new Dict("审核通过", 1));
-                    m_account_status.Add(new Dict("审核未通过", 2));
-                    m_account_status.Add(new Dict("再次审核", 3));
-                    m_account_status.Add(new Dict("已支付", 4));
-                    m_account_status.Add(new Dict("关闭", 5));
-                }
-                return m_account_status;
-            }
-        }
+
 
         private static List<Dict> m_contract_status;
         public static List<Dict> ContractStatus
@@ -96,18 +79,5 @@ namespace Haimen.Entity
     {
         未开票 = 0,
         已开票,
-    }
-
-    /// <summary>
-    /// 资金的状态
-    /// </summary>
-    public enum AccountStatusEnum :long
-    {
-        未审核 = 0,
-        审核通过,
-        审核未通过,
-        再次审核,
-        已支付,
-        已关闭
     }
 }

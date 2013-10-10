@@ -88,7 +88,7 @@ namespace Haimen.GUI
 
             // 显示数据源
             lueStatus.DataSource = null;
-            lueStatus.DataSource = GlobalSet.AccountStatus;
+            lueStatus.DataSource = Account.AccountStatusList;
             lueStatus.DisplayMember = "Name";
             lueStatus.ValueMember = "ValueInt";
         }

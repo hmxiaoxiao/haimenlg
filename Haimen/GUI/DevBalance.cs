@@ -352,17 +352,6 @@ namespace Haimen.GUI
             SetFromStatus(winStatusEnum.纯查看);
         }
 
-        /// <summary>
-        /// 审核不通过
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnCheckFaild_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            m_balance.CheckFaild();
-            SetFromStatus(winStatusEnum.查看);
-        }
-
         private void lueCompany_EditValueChanged(object sender, EventArgs e)
         {
             if (lueCompany.EditValue == null)

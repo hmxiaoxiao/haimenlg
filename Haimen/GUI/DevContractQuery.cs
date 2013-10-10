@@ -30,7 +30,7 @@ namespace Haimen.GUI
             lueCompany.Properties.DisplayMember = "Name";
             lueCompany.Properties.ValueMember = "ID";
 
-            lueCheck.Properties.DataSource = GlobalSet.AccountStatus;
+            lueCheck.Properties.DataSource = Account.AccountStatusList;
             lueCheck.Properties.DisplayMember = "Name";
             lueCheck.Properties.ValueMember = "ValueInt";
         }

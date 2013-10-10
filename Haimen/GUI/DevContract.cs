@@ -19,7 +19,6 @@ namespace Haimen.GUI
     {
 
         private Contract m_contract;
-        //private List<Company> m_companies = Company.Query();
 
         /// <summary>
         /// 设置保证金，自动计算
@@ -307,19 +306,19 @@ namespace Haimen.GUI
 
             switch (m_contract.Status)
             {
-                case (long)AccountStatusEnum.未审核:
-                    picPass.Visible = false;
-                    picCheckFaild.Visible = false;
+                case (long)ContractStatusEnum.未审核:
+                    picChecked.Visible = false;
+                    picPayed.Visible = false;
                     break;
-                case (long)AccountStatusEnum.审核未通过:
-                    picCheckFaild.Visible = true;
-                    picPass.Visible = false;
+                case (long)ContractStatusEnum.审核未通过:
+                    picPayed.Visible = true;
+                    picChecked.Visible = false;
                     break;
-                case (long)AccountStatusEnum.审核通过:
-                case (long)AccountStatusEnum.已支付:
-                case (long)AccountStatusEnum.已关闭:
-                    picCheckFaild.Visible = false;
-                    picPass.Visible = true;
+                case (long)ContractStatusEnum.审核通过:
+                case (long)ContractStatusEnum.已验收:
+                case (long)ContractStatusEnum.已中止:
+                    picPayed.Visible = false;
+                    picChecked.Visible = true;
                     break;
             }
         }
