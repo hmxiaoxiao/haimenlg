@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevQueryBalance));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.tsbSelectBank = new DevExpress.XtraBars.BarButtonItem();
@@ -51,6 +52,7 @@
             this.col_account = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_balance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_credit = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tsbPrint = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
@@ -74,8 +76,9 @@
             this.tsbQuery,
             this.tsbExit,
             this.tsbSelectBank,
-            this.tsbSelectCompany});
-            this.barManager1.MaxItemId = 8;
+            this.tsbSelectCompany,
+            this.tsbPrint});
+            this.barManager1.MaxItemId = 9;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueBank,
             this.repositoryItemSearchLookUpEdit1,
@@ -91,6 +94,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbSelectBank, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbSelectCompany, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPrint, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
@@ -131,7 +135,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(793, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(793, 47);
             // 
             // barDockControlBottom
             // 
@@ -144,15 +148,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 430);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 422);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(793, 39);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 430);
+            this.barDockControlRight.Location = new System.Drawing.Point(793, 47);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 422);
             // 
             // lueBank
             // 
@@ -207,11 +211,11 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 39);
+            this.gridControl1.Location = new System.Drawing.Point(0, 47);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(793, 430);
+            this.gridControl1.Size = new System.Drawing.Size(793, 422);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -276,6 +280,14 @@
             this.col_credit.Visible = true;
             this.col_credit.VisibleIndex = 4;
             // 
+            // tsbPrint
+            // 
+            this.tsbPrint.Caption = "打印";
+            this.tsbPrint.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbPrint.Glyph")));
+            this.tsbPrint.Id = 8;
+            this.tsbPrint.Name = "tsbPrint";
+            this.tsbPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbPrint_ItemClick);
+            // 
             // DevQueryBalance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -324,5 +336,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_account;
         private DevExpress.XtraGrid.Columns.GridColumn col_balance;
         private DevExpress.XtraGrid.Columns.GridColumn col_credit;
+        private DevExpress.XtraBars.BarButtonItem tsbPrint;
     }
 }
