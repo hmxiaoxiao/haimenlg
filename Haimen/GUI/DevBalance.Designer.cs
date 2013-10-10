@@ -34,18 +34,18 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barNormal = new DevExpress.XtraBars.Bar();
             this.btnNew = new DevExpress.XtraBars.BarButtonItem();
             this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
             this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
             this.btnCheck = new DevExpress.XtraBars.BarButtonItem();
-            this.btnCheckFaild = new DevExpress.XtraBars.BarButtonItem();
             this.btnExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnCheckFaild = new DevExpress.XtraBars.BarButtonItem();
             this.calcRate = new DevExpress.XtraEditors.CalcEdit();
             this.calcMoney = new DevExpress.XtraEditors.CalcEdit();
             this.dtEndDate = new DevExpress.XtraEditors.DateEdit();
@@ -65,7 +65,6 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.picCheckFaild = new DevExpress.XtraEditors.PictureEdit();
             this.picPass = new DevExpress.XtraEditors.PictureEdit();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -78,6 +77,7 @@
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
+            this.barCheck = new DevExpress.XtraBars.Bar();
             ((System.ComponentModel.ISupportInitialize)(this.lueCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -105,7 +105,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -166,7 +165,8 @@
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1});
+            this.barNormal,
+            this.barCheck});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -180,22 +180,21 @@
             this.btnExit,
             this.btnSave,
             this.btnCheckFaild});
-            this.barManager1.MaxItemId = 7;
+            this.barManager1.MaxItemId = 8;
             // 
-            // bar1
+            // barNormal
             // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.barNormal.BarName = "Tools";
+            this.barNormal.DockCol = 0;
+            this.barNormal.DockRow = 0;
+            this.barNormal.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.barNormal.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnNew, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSave, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar1.Text = "Tools";
+            this.barNormal.Text = "Tools";
             // 
             // btnNew
             // 
@@ -272,6 +271,11 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(827, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 495);
+            // 
+            // btnCheckFaild
+            // 
+            this.btnCheckFaild.Id = 7;
+            this.btnCheckFaild.Name = "btnCheckFaild";
             // 
             // calcRate
             // 
@@ -509,29 +513,16 @@
             this.repositoryItemDateEdit2.LookAndFeel.SkinName = "Seven Classic";
             this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
             // 
-            // picCheckFaild
-            // 
-            this.picCheckFaild.EditValue = ((object)(resources.GetObject("picCheckFaild.EditValue")));
-            this.picCheckFaild.Location = new System.Drawing.Point(576, 45);
-            this.picCheckFaild.MenuManager = this.barManager1;
-            this.picCheckFaild.Name = "picCheckFaild";
-            this.picCheckFaild.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.picCheckFaild.Properties.Appearance.Options.UseBackColor = true;
-            this.picCheckFaild.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.picCheckFaild.Size = new System.Drawing.Size(204, 61);
-            this.picCheckFaild.TabIndex = 66;
-            this.picCheckFaild.Visible = false;
-            // 
             // picPass
             // 
             this.picPass.EditValue = ((object)(resources.GetObject("picPass.EditValue")));
-            this.picPass.Location = new System.Drawing.Point(576, 45);
+            this.picPass.Location = new System.Drawing.Point(588, 3);
             this.picPass.MenuManager = this.barManager1;
             this.picPass.Name = "picPass";
             this.picPass.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.picPass.Properties.Appearance.Options.UseBackColor = true;
             this.picPass.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.picPass.Size = new System.Drawing.Size(204, 61);
+            this.picPass.Size = new System.Drawing.Size(161, 64);
             this.picPass.TabIndex = 65;
             this.picPass.Visible = false;
             // 
@@ -640,15 +631,27 @@
             this.tsbDelete.Size = new System.Drawing.Size(52, 22);
             this.tsbDelete.Text = "删除";
             // 
+            // barCheck
+            // 
+            this.barCheck.BarName = "Custom 3";
+            this.barCheck.DockCol = 1;
+            this.barCheck.DockRow = 0;
+            this.barCheck.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.barCheck.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCheck, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.barCheck.Offset = 382;
+            this.barCheck.Text = "Custom 3";
+            this.barCheck.Visible = false;
+            // 
             // DevBalance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(827, 534);
+            this.Controls.Add(this.picPass);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.layoutControl1);
-            this.Controls.Add(this.picCheckFaild);
-            this.Controls.Add(this.picPass);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -683,7 +686,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picCheckFaild.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPass.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -705,7 +707,7 @@
         private DevExpress.XtraEditors.LookUpEdit lueCompanyDetail;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.Bar barNormal;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -718,7 +720,6 @@
         private DevExpress.XtraBars.BarButtonItem btnSave;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraEditors.TextEdit txtCode;
-        private DevExpress.XtraEditors.PictureEdit picCheckFaild;
         private DevExpress.XtraEditors.PictureEdit picPass;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
@@ -749,6 +750,7 @@
         private DevExpress.XtraEditors.TextEdit txtName;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraBars.Bar barCheck;
 
     }
 }

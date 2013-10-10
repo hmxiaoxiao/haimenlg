@@ -25,20 +25,19 @@ namespace Haimen.GUI
         {
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.新增))
             {
-                if (btnNew.Enabled == true) btnNew.Enabled = false;
+                btnNew.Enabled = false;
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.编辑))
             {
-                if (btnEdit.Enabled == true) btnEdit.Enabled = false;
+                btnEdit.Enabled = false;
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.删除))
             {
-                if (btnDelete.Enabled == true) btnDelete.Enabled = false;
+                btnDelete.Enabled = false;
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.审核))
             {
-                if (btnCheck.Enabled == true) btnCheck.Enabled = false;
-                if (btnCheckFaild.Enabled == true) btnCheckFaild.Enabled = false;
+                btnCheck.Enabled = false;
             }
         }
 
@@ -73,12 +72,8 @@ namespace Haimen.GUI
                     SetControlStatus(false);
                     break;
                 case winStatusEnum.审核:
-                    btnNew.Enabled = false;
-                    btnEdit.Enabled = false;
-                    btnDelete.Enabled = false;
-                    btnSave.Enabled = false;
-                    btnCheck.Enabled = true;
-                    btnCheckFaild.Enabled = true;
+                    barCheck.Visible = true;
+                    barNormal.Visible = false;
 
                     SetControlStatus(false);
                     break;
@@ -140,8 +135,6 @@ namespace Haimen.GUI
 
             if (m_balance.ID > 0)
             {
-
-
                 txtCode.Text = m_balance.Code;
                 calcMoney.Text = m_balance.Money.ToString();
                 calcRate.Text = m_balance.Rate.ToString();
@@ -161,8 +154,6 @@ namespace Haimen.GUI
 
                 dtBeginDate.EditValue = m_balance.BeginDate;
                 dtEndDate.EditValue = m_balance.EndDate;
-
-
             }
             else
             {
@@ -178,12 +169,29 @@ namespace Haimen.GUI
 
                 lueCompanyDetail.Properties.DataSource = null;
             }
-
-
-
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_balance.DetailList;
         }
+
+        /// <summary>
+        /// 显示审核的标志
+        /// </summary>
+        private void ShowCheckPic()
+        {
+            switch (m_balance.Status)
+            {
+                case (long)Balance.BalanceStatusEnum.未审核:
+                    picPass.Visible = false;
+                    break;
+                case (long)Balance.BalanceStatusEnum.审核通过:
+                    picPass.Visible = true;
+                    break;
+                case (long)Balance.BalanceStatusEnum.贷款到帐:
+                    picPass.Visible = true;
+                    break;
+            }
+        }
+
 
         /// <summary>
         /// 构造函数

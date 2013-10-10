@@ -58,14 +58,13 @@ namespace Haimen.GUI
             // 审核
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.审核))
             {
-                tbCheckFaild.Enabled = true;
-                tbCheckPassed.Enabled = true;
+                tbCheckPassed.Enabled = false;
             }
 
             // 支付
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.支付))
             {
-                tbPay.Enabled = true;
+                tbPay.Enabled = false;
             }
 
         }

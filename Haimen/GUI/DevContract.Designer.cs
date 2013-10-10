@@ -953,7 +953,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl1);
             this.xtraTabPage2.Controls.Add(this.toolStrip3);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(840, 478);
+            this.xtraTabPage2.Size = new System.Drawing.Size(840, 449);
             this.xtraTabPage2.Text = "合同支付明细";
             // 
             // gridControl1
@@ -964,7 +964,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(840, 453);
+            this.gridControl1.Size = new System.Drawing.Size(840, 424);
             this.gridControl1.TabIndex = 74;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1055,7 +1055,7 @@
             this.xtraTabPage3.Controls.Add(this.lstFiles);
             this.xtraTabPage3.Controls.Add(this.toolStrip1);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(840, 478);
+            this.xtraTabPage3.Size = new System.Drawing.Size(840, 449);
             this.xtraTabPage3.Text = "合同附件";
             // 
             // lstFiles
@@ -1064,7 +1064,7 @@
             this.lstFiles.ImageList = this.imageListBoxControl2;
             this.lstFiles.Location = new System.Drawing.Point(0, 25);
             this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(840, 453);
+            this.lstFiles.Size = new System.Drawing.Size(840, 424);
             this.lstFiles.TabIndex = 1;
             this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
             // 
@@ -1108,7 +1108,7 @@
             this.xtraTabPage4.Controls.Add(this.layoutControl3);
             this.xtraTabPage4.Controls.Add(this.layoutControl2);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(840, 478);
+            this.xtraTabPage4.Size = new System.Drawing.Size(840, 449);
             this.xtraTabPage4.Text = " 支付申请";
             // 
             // layoutControl3

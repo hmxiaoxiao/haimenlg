@@ -170,12 +170,6 @@
     <Compile Include="Entity\Funds.cs" />
     <Compile Include="Entity\Project.cs" />
     <Compile Include="Entity\UserGroup.cs" />
-    <Compile Include="GUI\devAccountPrint.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\devAccountPrint.Designer.cs">
-      <DependentUpon>devAccountPrint.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\DevContractAccept.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -407,9 +401,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevAccountList.resx">
       <DependentUpon>DevAccountList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\devAccountPrint.resx">
-      <DependentUpon>devAccountPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevAccountQuery.resx">
       <DependentUpon>DevAccountQuery.cs</DependentUpon>

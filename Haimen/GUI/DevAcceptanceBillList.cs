@@ -16,6 +16,25 @@ namespace Haimen.GUI
     {
         private List<AcceptanceBill> m_lists;
 
+        /// <summary>
+        /// 根据用户的权限设置控件的可用与否
+        /// </summary>
+        private void SetControlAccess()
+        {
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.承兑汇票, (long)ActionEnum.新增))
+            {
+                if (tsbNew.Enabled == true) tsbNew.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.承兑汇票, (long)ActionEnum.编辑))
+            {
+                if (tsbEdit.Enabled == true) tsbEdit.Enabled = false;
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.承兑汇票, (long)ActionEnum.删除))
+            {
+                if (tsbDelete.Enabled == true) tsbDelete.Enabled = false;
+            }
+        }
+
         public DevAcceptanceBillList()
         {
             InitializeComponent();

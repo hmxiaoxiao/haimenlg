@@ -42,6 +42,10 @@ namespace Haimen.GUI
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.审核))
             {
                 if (tsbCheck.Enabled == true) tsbCheck.Enabled = false;
+            } 
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.支付))
+            {
+                if (tsbPay.Enabled == true) tsbCheck.Enabled = false;
             }
         }
 
