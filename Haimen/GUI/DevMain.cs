@@ -19,7 +19,10 @@ namespace Haimen.GUI
     public partial class DevMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
 
-        // 打开指定的窗口
+        /// <summary>
+        /// 打开指定的窗口
+        /// </summary>
+        /// <param name="winForm"></param>
         public void OpenForm(XtraForm winForm)
         {
             if (!FormAlreadyOpen(winForm.GetType()))
@@ -28,7 +31,12 @@ namespace Haimen.GUI
                 winForm.Show();
             }
         }
-        // 判断是否已经打开对应的窗口
+        
+        /// <summary>
+        /// 判断是否已经打开对应的窗口
+        /// </summary>
+        /// <param name="win"></param>
+        /// <returns></returns>
         private bool FormAlreadyOpen(Type win)
         {
             foreach (DevExpress.XtraTabbedMdi.XtraMdiTabPage page in mdiManager.Pages)
@@ -46,13 +54,13 @@ namespace Haimen.GUI
         private void myInitialze()
         {
             statusText.Caption = "当前登录用户为：" + GlobalSet.Current_User.Name;
-            foreach (SkinContainer cnt in SkinManager.Default.Skins)
-            {
-                //comboBoxEdit1.Properties.Items.Add(cnt.SkinName);
-                mnuComboSkins.Items.Add(cnt.SkinName);
-            }
+
 
             // 设置皮肤列表
+            foreach (SkinContainer cnt in SkinManager.Default.Skins)
+            {
+                mnuComboSkins.Items.Add(cnt.SkinName);
+            }
             SkinHelper.InitSkinGallery(rbSkins, true);
             rbSkins.Gallery.ImageSize = new Size(24, 24);
 

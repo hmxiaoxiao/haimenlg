@@ -95,7 +95,7 @@ namespace Haimen.GUI
                 else
                     sql += " and d.parent_id in ( 0 )";
             }
-            sql += " order by b.name, c.name ";
+            sql += " order by c.name, b.name ";
 
             gridControl1.DataSource = DBFunction.RunQuerySql(sql).Tables[0];
             gridView1.BestFitColumns();

@@ -30,6 +30,8 @@ namespace Haimen.Entity
         用户组,
         通知,
         权限,
+        单位银行余额表,
+        银行单位余额表,
     }
 
     /// <summary>
