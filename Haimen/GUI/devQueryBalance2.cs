@@ -100,5 +100,16 @@ namespace Haimen.GUI
             gridControl1.DataSource = DBFunction.RunQuerySql(sql).Tables[0];
             gridView1.BestFitColumns();
         }
+
+        private void gridView1_CellMerge(object sender, DevExpress.XtraGrid.Views.Grid.CellMergeEventArgs e)
+        {
+            if (e.Column.Name == col_account.Name ||
+                e.Column.Name == col_balance.Name ||
+                e.Column.Name == col_credit.Name)
+            {
+                e.Merge = false;
+                e.Handled = true;
+            }
+        }
     }
 }

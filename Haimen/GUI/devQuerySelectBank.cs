@@ -26,6 +26,7 @@ namespace Haimen.GUI
         {
             string sql = "Select 'Y' as sel, id, code, name from m_bank";
             gridControl1.DataSource = DBFunction.RunQuerySql(sql).Tables[0];
+            gridView1.BestFitColumns();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)

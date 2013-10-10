@@ -100,5 +100,26 @@ namespace Haimen.GUI
                 MyQuery();
             }
         }
+
+
+        // 处理合并
+        private void gridView1_CellMerge(object sender, DevExpress.XtraGrid.Views.Grid.CellMergeEventArgs e)
+        {
+            //if (e.Column.FieldName == "Order Date")
+            //{
+            //    GridView view = sender as GridView;
+            //    DateTime val1 = (DateTime)view.GetRowCellValue(e.RowHandle1, e.Column);
+            //    DateTime val2 = (DateTime)view.GetRowCellValue(e.RowHandle2, e.Column);
+            //    e.Merge = val1.Date == val2.Date;
+            //    e.Handled = true;
+            //}
+            if (e.Column.Name == col_account.Name ||
+                e.Column.Name == col_balance.Name ||
+                e.Column.Name == col_credit.Name)
+            {
+                e.Merge = false;
+                e.Handled = true;
+            }
+        }
     }
 }
