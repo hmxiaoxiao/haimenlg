@@ -118,6 +118,12 @@ namespace Haimen.Entity
             }
         }
 
+        /// <summary>
+        /// 审核日期
+        /// </summary>
+        [Field("check_date")]
+        public DateTime CheckDate { get; set; }
+
         [Field("payer_id")]
         public long PayerID { get; set; }
         private User m_payer = null;
@@ -133,6 +139,12 @@ namespace Haimen.Entity
                 return m_payer;
             }
         }
+
+        /// <summary>
+        /// 支付日期
+        /// </summary>
+        [Field("pay_date")]
+        public DateTime PayDate { get; set; }
 
         [Field("status")]
         public long Status { get; set; }
@@ -198,6 +210,7 @@ namespace Haimen.Entity
             // 改标志为已审核
             this.CheckerID = GlobalSet.Current_User.ID;
             this.Status = (long)AccountStatusEnum.审核通过;
+            this.CheckDate = DateTime.Now;
             this.Save();
         }
 
@@ -220,6 +233,7 @@ namespace Haimen.Entity
             {
                 this.Status = (long)AccountStatusEnum.已支付;
                 this.PayerID = GlobalSet.Current_User.ID;
+                this.PayDate = DateTime.Now;
 
                 // 更新二个单位的数据金额
                 CompanyDetail inCD = CompanyDetail.CreateByID(this.In_CompanyDetail_ID);

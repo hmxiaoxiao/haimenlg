@@ -28,7 +28,7 @@ namespace Haimen.Report
             txtRMB.Text = Helper.Helper.ConvertToChinese((double)m_account.Money);
             txtMoney.Text =string.Format("{0:c}", m_account.Money);
             if (m_account.CheckerID > 0)
-                txtChecker.Text = "审批： 同意。" + string.Format("{0:d}", m_account.UpdatedDate) + "  " + m_account.Checker.Name;
+                txtChecker.Text = "审批： 同意。" + string.Format("{0:d}", m_account.CheckDate) + "  " + m_account.Checker.Name;
             else
                 txtChecker.Text = "";
 

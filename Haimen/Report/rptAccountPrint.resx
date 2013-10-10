@@ -131,20 +131,23 @@
   <data name="Code.Text" xml:space="preserve">
     <value>Code</value>
   </data>
+  <data name="xrLabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 9pt</value>
+  </data>
   <data name="xrLabel1.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>133.3333, 28.12501</value>
   </data>
   <data name="xrLabel3.Text" xml:space="preserve">
     <value>单据字：</value>
   </data>
-  <data name="txtInCompany.Text" xml:space="preserve">
-    <value>txtInCompany</value>
+  <data name="xrLabel3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 9pt</value>
   </data>
   <data name="txtOutAccount.Text" xml:space="preserve">
     <value>txtOutAccount</value>
   </data>
-  <data name="txtOutBank.Text" xml:space="preserve">
-    <value>txtOutBank</value>
+  <data name="xrTableCell7.Text" xml:space="preserve">
+    <value>开户行</value>
   </data>
   <data name="xrLabel1.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v13.1">
     <value>MiddleJustify</value>
@@ -171,20 +174,20 @@
   <data name="Code.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 9pt</value>
   </data>
+  <data name="BottomMargin.HeightF" type="System.Single, mscorlib">
+    <value>6</value>
+  </data>
   <data name="xrTableCell20.Text" xml:space="preserve">
     <value>附件张数</value>
   </data>
-  <data name="txtPayer.Text" xml:space="preserve">
-    <value>txtPayer</value>
+  <data name="txtOutCompany.Text" xml:space="preserve">
+    <value>txtOutCompany</value>
   </data>
   <data name="xrLabel2.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>73.95835, 23.00001</value>
   </data>
   <data name="xrTableCell23.Text" xml:space="preserve">
     <value>申请</value>
-  </data>
-  <data name="xrTable1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 9pt</value>
   </data>
   <data name="SignedDate.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>100, 23</value>
@@ -198,20 +201,17 @@
   <data name="xrTableCell4.Text" xml:space="preserve">
     <value>收款单位</value>
   </data>
-  <data name="xrLabel1.Text" xml:space="preserve">
-    <value>资金审批表</value>
-  </data>
   <data name="txtInBank.Text" xml:space="preserve">
     <value>txtInBank</value>
-  </data>
-  <data name="xrLabel2.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v13.1">
-    <value>MiddleLeft</value>
   </data>
   <data name="xrLabel3.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v13.1">
     <value>400, 81.58334</value>
   </data>
   <data name="txtAttach.Text" xml:space="preserve">
     <value>txtAttach</value>
+  </data>
+  <data name="xrTableCell17.Text" xml:space="preserve">
+    <value>审批</value>
   </data>
   <data name="Code.SizeF" type="System.Drawing.SizeF, System.Drawing">
     <value>138.5417, 23</value>
@@ -221,6 +221,9 @@
   </data>
   <data name="xrTableCell9.Text" xml:space="preserve">
     <value>帐号</value>
+  </data>
+  <data name="xrLabel2.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v13.1">
+    <value>200.670776, 81.41669</value>
   </data>
   <data name="TopMargin.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v13.1">
     <value>TopLeft</value>
@@ -237,11 +240,11 @@
   <data name="xrTable1.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v13.1">
     <value>MiddleLeft</value>
   </data>
-  <data name="BottomMargin.HeightF" type="System.Single, mscorlib">
-    <value>6</value>
+  <data name="xrLabel1.Text" xml:space="preserve">
+    <value>资金审批表</value>
   </data>
-  <data name="txtOutCompany.Text" xml:space="preserve">
-    <value>txtOutCompany</value>
+  <data name="txtInCompany.Text" xml:space="preserve">
+    <value>txtInCompany</value>
   </data>
   <data name="xrTableCell11.Text" xml:space="preserve">
     <value>帐号</value>
@@ -261,28 +264,25 @@
   <data name="Detail.HeightF" type="System.Single, mscorlib">
     <value>0</value>
   </data>
-  <data name="SignedDate.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v13.1">
-    <value>274.62915, 81.58334</value>
-  </data>
   <data name="Code.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v13.1">
     <value>MiddleLeft</value>
   </data>
   <data name="xrTable1.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v13.1">
     <value>10.0000067, 114.618683</value>
   </data>
-  <data name="xrTableCell7.Text" xml:space="preserve">
-    <value>开户行</value>
+  <data name="txtOutBank.Text" xml:space="preserve">
+    <value>txtOutBank</value>
   </data>
-  <data name="xrLabel3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 9pt</value>
+  <data name="txtPayer.Text" xml:space="preserve">
+    <value>txtPayer</value>
   </data>
-  <data name="xrLabel2.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v13.1">
-    <value>200.670776, 81.41669</value>
+  <data name="xrLabel2.TextAlignment" type="DevExpress.XtraPrinting.TextAlignment, DevExpress.Data.v13.1">
+    <value>MiddleLeft</value>
   </data>
   <data name="txtMaker.Text" xml:space="preserve">
     <value>txtMaker</value>
   </data>
-  <data name="xrLabel2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="xrTable1.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 9pt</value>
   </data>
   <data name="SignedDate.Text" xml:space="preserve">
@@ -294,8 +294,8 @@
   <data name="xrTableCell1.Text" xml:space="preserve">
     <value>付款单位</value>
   </data>
-  <data name="xrTableCell17.Text" xml:space="preserve">
-    <value>审批</value>
+  <data name="SignedDate.LocationFloat" type="DevExpress.Utils.PointFloat, DevExpress.Data.v13.1">
+    <value>274.62915, 81.58334</value>
   </data>
   <data name="xrTableCell29.Text" xml:space="preserve">
     <value>支付</value>
