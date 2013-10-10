@@ -72,6 +72,9 @@ namespace Haimen.GUI
         {
             List<Company> companies = Company.Query();
             tree.DataSource = companies;
+
+            lueType.DataSource = null;
+            lueType.DataSource = CompanyDetail.AccountTypeList;
         }
 
         private bool Verify()

@@ -63,6 +63,8 @@
             this.c_obalance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_ocredit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_memo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_type = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lueType = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
@@ -81,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBanks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueType)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -346,7 +349,8 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.lueBanks});
+            this.lueBanks,
+            this.lueType});
             this.gridControl1.Size = new System.Drawing.Size(492, 392);
             this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -358,6 +362,7 @@
             this.c_id,
             this.c_bank,
             this.c_account,
+            this.col_type,
             this.c_obalance,
             this.c_ocredit,
             this.c_memo});
@@ -421,7 +426,7 @@
             this.c_ocredit.FieldName = "OCredit";
             this.c_ocredit.Name = "c_ocredit";
             this.c_ocredit.Visible = true;
-            this.c_ocredit.VisibleIndex = 3;
+            this.c_ocredit.VisibleIndex = 4;
             // 
             // c_memo
             // 
@@ -429,7 +434,23 @@
             this.c_memo.FieldName = "Memo";
             this.c_memo.Name = "c_memo";
             this.c_memo.Visible = true;
-            this.c_memo.VisibleIndex = 4;
+            this.c_memo.VisibleIndex = 5;
+            // 
+            // col_type
+            // 
+            this.col_type.Caption = "帐户性质";
+            this.col_type.ColumnEdit = this.lueType;
+            this.col_type.FieldName = "AccountType";
+            this.col_type.Name = "col_type";
+            this.col_type.Visible = true;
+            this.col_type.VisibleIndex = 3;
+            // 
+            // lueType
+            // 
+            this.lueType.AutoHeight = false;
+            this.lueType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueType.Name = "lueType";
             // 
             // DevCompanyDetailList
             // 
@@ -462,6 +483,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBanks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -502,5 +524,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn c_obalance;
         private DevExpress.XtraGrid.Columns.GridColumn c_ocredit;
         private DevExpress.XtraGrid.Columns.GridColumn c_memo;
+        private DevExpress.XtraGrid.Columns.GridColumn col_type;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueType;
     }
 }

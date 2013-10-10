@@ -73,6 +73,28 @@ namespace Haimen.Entity
         public string Account { get; set; }
 
         /// <summary>
+        /// 帐户类型
+        /// </summary>
+        [Field("dtype")]
+        public string AccountType { get; set; }
+
+        private static List<string> m_list;
+        public static List<string> AccountTypeList
+        {
+            get
+            {
+                if (m_list == null)
+                {
+                    m_list = new List<string>();
+                    m_list.Add("基本户");
+                    m_list.Add("一般户");
+                    m_list.Add("贷款户");
+                }
+                return m_list;
+            }
+        }
+
+        /// <summary>
         /// 余额
         /// </summary>
         [Field("balance")]
