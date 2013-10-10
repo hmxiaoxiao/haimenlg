@@ -42,10 +42,11 @@
             this.tbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barPay = new DevExpress.XtraBars.Bar();
             this.tbPay = new DevExpress.XtraBars.BarButtonItem();
+            this.tbUnPay = new DevExpress.XtraBars.BarButtonItem();
             this.tbExit2 = new DevExpress.XtraBars.BarButtonItem();
             this.barCheck = new DevExpress.XtraBars.Bar();
-            this.tbCheckPassed = new DevExpress.XtraBars.BarButtonItem();
-            this.tbCheckFaild = new DevExpress.XtraBars.BarButtonItem();
+            this.tbCheck = new DevExpress.XtraBars.BarButtonItem();
+            this.tbUnCheck = new DevExpress.XtraBars.BarButtonItem();
             this.tbExit3 = new DevExpress.XtraBars.BarButtonItem();
             this.barInvoice = new DevExpress.XtraBars.Bar();
             this.tb2Invoice = new DevExpress.XtraBars.BarButtonItem();
@@ -54,9 +55,6 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemPictureEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
-            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.calcAttachCount = new DevExpress.XtraEditors.CalcEdit();
             this.calcPayMoney = new DevExpress.XtraEditors.CalcEdit();
             this.lueReviewer = new DevExpress.XtraEditors.LookUpEdit();
@@ -157,8 +155,6 @@
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMoney.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcAttachCount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcPayMoney.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueReviewer.Properties)).BeginInit();
@@ -323,18 +319,15 @@
             this.tbNew,
             this.tbEdit,
             this.tbDelete,
-            this.tbCheckPassed,
-            this.tbCheckFaild,
-            this.barEditItem1,
+            this.tbCheck,
             this.tbPay,
             this.tbExit2,
             this.tbExit3,
             this.tb2Invoice,
-            this.tbExit4});
-            this.barManager1.MaxItemId = 14;
-            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemPictureEdit1,
-            this.repositoryItemPictureEdit2});
+            this.tbExit4,
+            this.tbUnCheck,
+            this.tbUnPay});
+            this.barManager1.MaxItemId = 16;
             // 
             // barNormal
             // 
@@ -399,6 +392,7 @@
             this.barPay.FloatLocation = new System.Drawing.Point(560, 133);
             this.barPay.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbPay, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbUnPay, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbExit2, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.barPay.Offset = 524;
             this.barPay.Text = "Pay";
@@ -411,6 +405,14 @@
             this.tbPay.Id = 9;
             this.tbPay.Name = "tbPay";
             this.tbPay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbPay_ItemClick);
+            // 
+            // tbUnPay
+            // 
+            this.tbUnPay.Caption = "撤消支付";
+            this.tbUnPay.Glyph = ((System.Drawing.Image)(resources.GetObject("tbUnPay.Glyph")));
+            this.tbUnPay.Id = 15;
+            this.tbUnPay.Name = "tbUnPay";
+            this.tbUnPay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbUnPay_ItemClick);
             // 
             // tbExit2
             // 
@@ -428,26 +430,28 @@
             this.barCheck.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.barCheck.FloatLocation = new System.Drawing.Point(295, 125);
             this.barCheck.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbCheckPassed, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbUnCheck, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbExit3, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.barCheck.Offset = 373;
             this.barCheck.Text = "Custom 4";
             this.barCheck.Visible = false;
             // 
-            // tbCheckPassed
+            // tbCheck
             // 
-            this.tbCheckPassed.Caption = "通过";
-            this.tbCheckPassed.Glyph = global::Haimen.Properties.Resources.Tick_hot;
-            this.tbCheckPassed.Id = 5;
-            this.tbCheckPassed.Name = "tbCheckPassed";
-            this.tbCheckPassed.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbCheckPassed_ItemClick);
+            this.tbCheck.Caption = "通过";
+            this.tbCheck.Glyph = global::Haimen.Properties.Resources.Tick_hot;
+            this.tbCheck.Id = 5;
+            this.tbCheck.Name = "tbCheck";
+            this.tbCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbCheckPassed_ItemClick);
             // 
-            // tbCheckFaild
+            // tbUnCheck
             // 
-            this.tbCheckFaild.Caption = "不通过";
-            this.tbCheckFaild.Glyph = global::Haimen.Properties.Resources.Stop_hot;
-            this.tbCheckFaild.Id = 6;
-            this.tbCheckFaild.Name = "tbCheckFaild";
+            this.tbUnCheck.Caption = "撤审";
+            this.tbUnCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("tbUnCheck.Glyph")));
+            this.tbUnCheck.Id = 14;
+            this.tbUnCheck.Name = "tbUnCheck";
+            this.tbUnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbUnCheck_ItemClick);
             // 
             // tbExit3
             // 
@@ -491,7 +495,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1042, 78);
+            this.barDockControlTop.Size = new System.Drawing.Size(1042, 86);
             // 
             // barDockControlBottom
             // 
@@ -504,31 +508,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 78);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 389);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 86);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 381);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1042, 78);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 389);
-            // 
-            // barEditItem1
-            // 
-            this.barEditItem1.Edit = this.repositoryItemPictureEdit2;
-            this.barEditItem1.Enabled = false;
-            this.barEditItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barEditItem1.Glyph")));
-            this.barEditItem1.Id = 8;
-            this.barEditItem1.Name = "barEditItem1";
-            // 
-            // repositoryItemPictureEdit2
-            // 
-            this.repositoryItemPictureEdit2.Name = "repositoryItemPictureEdit2";
-            // 
-            // repositoryItemPictureEdit1
-            // 
-            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
+            this.barDockControlRight.Location = new System.Drawing.Point(1042, 86);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 381);
             // 
             // calcAttachCount
             // 
@@ -1105,7 +1093,7 @@
             // 
             this.picChecked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picChecked.EditValue = ((object)(resources.GetObject("picChecked.EditValue")));
-            this.picChecked.Location = new System.Drawing.Point(643, 0);
+            this.picChecked.Location = new System.Drawing.Point(689, 0);
             this.picChecked.MenuManager = this.barManager1;
             this.picChecked.Name = "picChecked";
             this.picChecked.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -1119,7 +1107,7 @@
             // 
             this.picPayed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picPayed.EditValue = ((object)(resources.GetObject("picPayed.EditValue")));
-            this.picPayed.Location = new System.Drawing.Point(808, 0);
+            this.picPayed.Location = new System.Drawing.Point(854, 0);
             this.picPayed.MenuManager = this.barManager1;
             this.picPayed.Name = "picPayed";
             this.picPayed.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -1136,10 +1124,10 @@
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 78);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 86);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1042, 389);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1042, 381);
             this.xtraTabControl1.TabIndex = 84;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -1151,7 +1139,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.layoutControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1036, 360);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1036, 352);
             this.xtraTabPage1.Text = "基础信息";
             // 
             // xtraTabPage2
@@ -1160,7 +1148,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl1);
             this.xtraTabPage2.Controls.Add(this.toolStrip3);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1036, 360);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1036, 352);
             this.xtraTabPage2.Text = "支付明细";
             // 
             // layoutControl3
@@ -1381,7 +1369,7 @@
             this.xtraTabPage3.Controls.Add(this.lstFiles);
             this.xtraTabPage3.Controls.Add(this.toolStrip2);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1036, 360);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1036, 352);
             this.xtraTabPage3.Text = "附件";
             // 
             // lstFiles
@@ -1393,7 +1381,7 @@
             new DevExpress.XtraEditors.Controls.ImageListBoxItem("asdfasdf", 1)});
             this.lstFiles.Location = new System.Drawing.Point(0, 25);
             this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(1036, 335);
+            this.lstFiles.Size = new System.Drawing.Size(1036, 327);
             this.lstFiles.TabIndex = 65;
             this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
             // 
@@ -1436,7 +1424,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.layoutControl2);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1036, 360);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1036, 352);
             this.xtraTabPage4.Text = "合同";
             // 
             // layoutControl2
@@ -1645,8 +1633,6 @@
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtMoney.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcAttachCount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcPayMoney.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueReviewer.Properties)).EndInit();
@@ -1753,12 +1739,8 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private System.Windows.Forms.ImageList imageList1;
-        private DevExpress.XtraBars.BarButtonItem tbCheckPassed;
-        private DevExpress.XtraBars.BarButtonItem tbCheckFaild;
+        private DevExpress.XtraBars.BarButtonItem tbCheck;
         private DevExpress.XtraEditors.PictureEdit picChecked;
-        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
-        private DevExpress.XtraBars.BarEditItem barEditItem1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit2;
         private DevExpress.XtraEditors.PictureEdit picPayed;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
@@ -1861,5 +1843,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem30;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem31;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem28;
+        private DevExpress.XtraBars.BarButtonItem tbUnPay;
+        private DevExpress.XtraBars.BarButtonItem tbUnCheck;
     }
 }

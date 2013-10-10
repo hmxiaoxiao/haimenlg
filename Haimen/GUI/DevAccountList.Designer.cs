@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevAccountList));
             this.col_detail_money = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -58,6 +59,7 @@
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.tsbView = new DevExpress.XtraBars.BarButtonItem();
             this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
             this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
@@ -74,6 +76,8 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.tsbNewInput = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.tsbUnCheck = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbUnPay = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -99,13 +103,13 @@
             // gridControl2
             // 
             this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl2.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView3;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(217, 519);
+            this.gridControl2.Size = new System.Drawing.Size(217, 523);
             this.gridControl2.TabIndex = 25;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -146,7 +150,7 @@
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueStatus,
             this.lueInvoiceList});
-            this.gridControl1.Size = new System.Drawing.Size(584, 519);
+            this.gridControl1.Size = new System.Drawing.Size(788, 523);
             this.gridControl1.TabIndex = 23;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -352,8 +356,11 @@
             this.tsbRefresh,
             this.tsbPay,
             this.tsb2Invoice,
-            this.tsbPrint});
-            this.barManager1.MaxItemId = 12;
+            this.tsbPrint,
+            this.tsbView,
+            this.tsbUnCheck,
+            this.tsbUnPay});
+            this.barManager1.MaxItemId = 15;
             // 
             // bar1
             // 
@@ -362,17 +369,28 @@
             this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbView, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbNew, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbUnCheck, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPay, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbUnPay, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsb2Invoice, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPrint, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, false, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
+            // 
+            // tsbView
+            // 
+            this.tsbView.Caption = "查看";
+            this.tsbView.Glyph = global::Haimen.Properties.Resources.Views_hot;
+            this.tsbView.Id = 12;
+            this.tsbView.Name = "tsbView";
+            this.tsbView.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbView_ItemClick_1);
             // 
             // tsbNew
             // 
@@ -459,28 +477,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(806, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(1010, 47);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 558);
-            this.barDockControlBottom.Size = new System.Drawing.Size(806, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 570);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1010, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 519);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 523);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(806, 39);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 519);
+            this.barDockControlRight.Location = new System.Drawing.Point(1010, 47);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 523);
             // 
             // tsbNewInput
             // 
@@ -491,22 +509,38 @@
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 39);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 47);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(806, 519);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1010, 523);
             this.splitContainerControl1.SplitterPosition = 217;
             this.splitContainerControl1.TabIndex = 38;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // tsbUnCheck
+            // 
+            this.tsbUnCheck.Caption = "撤审";
+            this.tsbUnCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnCheck.Glyph")));
+            this.tsbUnCheck.Id = 13;
+            this.tsbUnCheck.Name = "tsbUnCheck";
+            this.tsbUnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnCheck_ItemClick);
+            // 
+            // tsbUnPay
+            // 
+            this.tsbUnPay.Caption = "撤消支付";
+            this.tsbUnPay.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnPay.Glyph")));
+            this.tsbUnPay.Id = 14;
+            this.tsbUnPay.Name = "tsbUnPay";
+            this.tsbUnPay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnPay_ItemClick);
             // 
             // DevAccountList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 558);
+            this.ClientSize = new System.Drawing.Size(1010, 570);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -575,5 +609,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueInvoiceList;
         private DevExpress.XtraBars.BarButtonItem tsb2Invoice;
         private DevExpress.XtraBars.BarButtonItem tsbPrint;
+        private DevExpress.XtraBars.BarButtonItem tsbView;
+        private DevExpress.XtraBars.BarButtonItem tsbUnCheck;
+        private DevExpress.XtraBars.BarButtonItem tsbUnPay;
     }
 }

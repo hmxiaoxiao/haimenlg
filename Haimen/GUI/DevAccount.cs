@@ -35,7 +35,6 @@ namespace Haimen.GUI
         }
 
 
-
         /// <summary>
         /// 根据用户的权限设置控件的可用与否
         /// </summary>
@@ -44,27 +43,29 @@ namespace Haimen.GUI
             // 普通新增，编辑，删除
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.新增))
             {
-                if (tbNew.Enabled == true) tbNew.Enabled = false;
+                tbNew.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.编辑))
             {
-                if (tbEdit.Enabled == true) tbEdit.Enabled = false;
+                tbEdit.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.删除))
             {
-                if (tbDelete.Enabled == true) tbDelete.Enabled = false;
+                tbDelete.Dispose();
             }
 
             // 审核
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.审核))
             {
-                tbCheckPassed.Enabled = false;
+                tbCheck.Dispose();
+                tbUnCheck.Dispose();
             }
 
             // 支付
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.支付))
             {
-                tbPay.Enabled = false;
+                tbPay.Dispose();
+                tbUnPay.Dispose();
             }
 
         }
@@ -88,8 +89,7 @@ namespace Haimen.GUI
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
                     tbSave.Enabled = true;
-                    tbCheckFaild.Enabled = false;
-                    tbCheckPassed.Enabled = false;
+                    tbCheck.Enabled = false;
                     SetEditorStatus(true);
                     break;
                 case winStatusEnum.编辑:
@@ -97,8 +97,7 @@ namespace Haimen.GUI
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
                     tbSave.Enabled = true;
-                    tbCheckFaild.Enabled = false;
-                    tbCheckPassed.Enabled = false;
+                    tbCheck.Enabled = false;
                     SetEditorStatus(true);
                     break;
                 case winStatusEnum.查看:
@@ -106,8 +105,7 @@ namespace Haimen.GUI
                     tbEdit.Enabled = true;
                     tbDelete.Enabled = true;
                     tbSave.Enabled = false;
-                    tbCheckFaild.Enabled = false;
-                    tbCheckPassed.Enabled = false;
+                    tbCheck.Enabled = false;
                     SetEditorStatus(false);
                     break;
                 case winStatusEnum.审核:
@@ -116,6 +114,18 @@ namespace Haimen.GUI
                     barPay.Visible = false;
                     barInvoice.Visible = false;
                     barCheck.Offset = 0;        // 把状态条的位置移动第一位
+                    tbCheck.Enabled = true;
+                    tbUnCheck.Enabled = false;
+                    SetEditorStatus(false);
+                    break;
+                case winStatusEnum.撤审:
+                    barNormal.Visible = false;
+                    barCheck.Visible = true;
+                    barPay.Visible = false;
+                    barInvoice.Visible = false;
+                    barCheck.Offset = 0;        // 把状态条的位置移动第一位
+                    tbCheck.Enabled = false;
+                    tbUnCheck.Enabled = true;
                     SetEditorStatus(false);
                     break;
                 case winStatusEnum.纯查看:
@@ -123,8 +133,7 @@ namespace Haimen.GUI
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
                     tbSave.Enabled = false;
-                    tbCheckFaild.Enabled = false;
-                    tbCheckPassed.Enabled = false;
+                    tbCheck.Enabled = false;
                     SetEditorStatus(false);
                     break;
                 case winStatusEnum.支付:
@@ -133,7 +142,18 @@ namespace Haimen.GUI
                     barPay.Visible = true;
                     barInvoice.Visible = false;
                     barPay.Offset = 0;          // 把状态条的位置移到第一条
-
+                    tbPay.Enabled = true;
+                    tbUnPay.Enabled = false;
+                    SetEditorStatus(false);
+                    break;
+                case winStatusEnum.撤消支付:
+                    barNormal.Visible = false;
+                    barCheck.Visible = false;
+                    barPay.Visible = true;
+                    barInvoice.Visible = false;
+                    barPay.Offset = 0;          // 把状态条的位置移到第一条
+                    tbPay.Enabled = false;
+                    tbUnPay.Enabled = true;
                     SetEditorStatus(false);
                     break;
                 case winStatusEnum.转正式发票:
@@ -660,6 +680,12 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (!m_account.CanEdit())
+            {
+                MessageBox.Show("该单据已经审核，无法再修改!");
+                return;
+            }
+
             if (m_account.ID <= 0)
                 return;
 
@@ -674,6 +700,12 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (!m_account.CanDelete())
+            {
+                MessageBox.Show("该单据已经审核，无法删除！");
+                return;
+            }
+
             if (m_account.ID > 0)
             {
                 m_account.Destory();
@@ -786,11 +818,9 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tbCheckPassed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            m_account.CheckPass();
-            //SetFormStatus(winStatusEnum.纯查看);      //审核通过后，只能看。
+            m_account.Checked();
             ShowCheckPayPic();
-            tbCheckPassed.Enabled = false;
-            tbCheckFaild.Enabled = false;
+            tbCheck.Enabled = false;
             m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
         }
 
@@ -899,6 +929,22 @@ namespace Haimen.GUI
                 chkRelease.Checked = true;
                 m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
             }
+        }
+
+        private void tbUnCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            m_account.UnChecked();
+            ShowCheckPayPic();
+            tbUnCheck.Enabled = false;
+            m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
+        }
+
+        private void tbUnPay_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            m_account.UnPayed();
+            ShowCheckPayPic();
+            tbUnPay.Enabled = false;
+            m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
         }
     }
 }

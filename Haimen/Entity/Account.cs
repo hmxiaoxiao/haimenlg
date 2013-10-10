@@ -205,13 +205,23 @@ namespace Haimen.Entity
         /// <summary>
         /// 审核通过
         /// </summary>
-        public void CheckPass()
+        public void Checked()
         {
             // 改标志为已审核
             this.CheckerID = GlobalSet.Current_User.ID;
             this.Status = (long)AccountStatusEnum.审核通过;
             this.CheckDate = DateTime.Now;
             this.PayDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+            this.Save();
+        }
+
+        /// <summary>
+        /// 撤审
+        /// </summary>
+        public void UnChecked()
+        {
+            this.CheckerID = 0;
+            this.Status = (long)AccountStatusEnum.未审核;
             this.Save();
         }
 
@@ -328,6 +338,10 @@ namespace Haimen.Entity
                 c.Status = (long)ContractAcceptStatusEnum.已开票;
                 c.Save();
             }
+
+            this.CheckDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+            this.PayDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+
             return base.Insert();
         }
 
@@ -373,6 +387,89 @@ namespace Haimen.Entity
                 }
                 return m_account_status_list;
             }
+        }
+
+        /// <summary>
+        /// 判断当前对象是否可以编辑
+        /// </summary>
+        /// <returns></returns>
+        public bool CanEdit()
+        {
+            if (this.Status > (long)AccountStatusEnum.未审核)
+                return false;
+            else
+                return true;
+        }
+
+        /// <summary>
+        /// 判断当前的对象是否可以打印
+        /// </summary>
+        /// <returns></returns>
+        public bool CanPrint()
+        {
+            if (this.Status > (long)AccountStatusEnum.未审核)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// 判断当前的对象是否可以删除
+        /// </summary>
+        /// <returns></returns>
+        public bool CanDelete()
+        {
+            if (this.Status > (long)AccountStatusEnum.未审核)
+                return false;
+            else
+                return true;
+        }
+        /// <summary>
+        /// 判断当前对象是否可以审核
+        /// </summary>
+        /// <returns></returns>
+        public bool CanCheck()
+        {
+            if (this.Status == (long)AccountStatusEnum.未审核)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// 判断当前对象是否可以支付
+        /// </summary>
+        /// <returns></returns>
+        public bool CanPay()
+        {
+            if (this.Status == (long)AccountStatusEnum.审核通过)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// 当前对象是否可以撤审
+        /// </summary>
+        /// <returns></returns>
+        public bool CanUnCheck()
+        {
+            if (this.Status == (long)AccountStatusEnum.审核通过)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// 当前对象是否可以撤消支付
+        /// </summary>
+        /// <returns></returns>
+        public bool CanUnPay()
+        {
+            if (this.Status == (long)AccountStatusEnum.已支付)
+                return true;
+            else
+                return false;
         }
 
         public enum AccountInvoiceEnum : long

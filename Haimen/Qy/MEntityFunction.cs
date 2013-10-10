@@ -41,7 +41,9 @@ namespace Haimen.Qy
         /// </summary>
         public List<KeyValuePair<string, string>> Error_Info = new List<KeyValuePair<string, string>>();
 
-        //private string m_errorstring = "";
+        /// <summary>
+        /// 返回错误原因
+        /// </summary>
         public string ErrorString
         {
             get
@@ -57,6 +59,7 @@ namespace Haimen.Qy
 
         /// <summary>
         /// 当前对象指定的排序字段
+        /// 默认是后增加的在前面
         /// </summary>
         public static string OrderBy = " Order By ID Desc";
 
@@ -309,11 +312,13 @@ namespace Haimen.Qy
 
         /// <summary>
         /// 删除实体类,这个只能删除一个实体类，如果要删除含明细的实体类，请使用Destory方法
-        /// 静态调用
+        /// 静态调用,此调用不会判断是否可以删除，需要调用者已经调用判断
         /// </summary>
         /// <param name="id">需要删除实体类的ID</param>
         public static void Delete(long id)
         {
+
+
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
             string table_name = GetTableName(typeof(T));
 

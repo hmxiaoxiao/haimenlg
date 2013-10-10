@@ -29,23 +29,27 @@ namespace Haimen.GUI
         {
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.新增))
             {
-                if (tsbNew.Enabled == true) tsbNew.Enabled = false;
+                tsbNew.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.编辑))
             {
-                if (tsbEdit.Enabled == true) tsbEdit.Enabled = false;
+                tsbEdit.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.删除))
             {
-                if (tsbDelete.Enabled == true) tsbDelete.Enabled = false;
+                tsbDelete.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.审核))
             {
-                if (tsbCheck.Enabled == true) tsbCheck.Enabled = false;
+                tsbCheck.Dispose();
             } 
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.支付))
             {
-                if (tsbPay.Enabled == true) tsbCheck.Enabled = false;
+                tsbPay.Dispose();
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.打印))
+            {
+                tsbPrint.Dispose();
             }
         }
 
@@ -111,7 +115,17 @@ namespace Haimen.GUI
             foreach (Account a in m_accounts)
             {
                 if (id == a.ID)
+                {
                     gridControl2.DataSource = a.DetailList;
+
+                    tsbPrint.Enabled = a.CanPrint();
+                    tsbEdit.Enabled = a.CanEdit();
+                    tsbDelete.Enabled = a.CanDelete();
+                    tsbCheck.Enabled = a.CanCheck();
+                    tsbUnCheck.Enabled = a.CanUnCheck();
+                    tsbPay.Enabled = a.CanPay();
+                    tsbUnPay.Enabled = a.CanUnPay();
+                }
             }
         }
 
@@ -150,17 +164,26 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tsbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (MessageBox.Show(this, "是否要删除指定的资金凭证？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+
+            if (gridView1.FocusedRowHandle < 0)
+                return;
+
+            long id = 0;
+            if (gridView1.FocusedRowHandle >= 0)
+                id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
+            Account acc = Account.CreateByID(id);
+            if (acc != null)
             {
-                long id = 0;
-                if (gridView1.FocusedRowHandle >= 0)
-                    id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
-                Account acc = Account.CreateByID(id);
-                if (acc != null)
+                if (!acc.CanDelete())
+                {
+                    MessageBox.Show("该单据已经审核，不能删除！");
+                    return;
+                }
+                if (MessageBox.Show(this, "是否要删除指定的资金凭证？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
                     acc.Destory();
                     MessageBox.Show(this, "删除资金凭证成功!", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+
                     // 去掉当前行
                     gridView1.DeleteRow(gridView1.FocusedRowHandle);
                 }
@@ -196,7 +219,7 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
-            EditAccount(winStatusEnum.纯查看);
+            EditAccount(winStatusEnum.查看);
         }
 
         /// <summary>
@@ -281,12 +304,43 @@ namespace Haimen.GUI
                 return;
 
             long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
+            foreach (Account a in m_accounts)
+            {
+                if (a.ID == id)
+                {
+                    if (!a.CanPrint())
+                    {
+                        MessageBox.Show("该单据尚未审核，无法打印！");
+                        return;
+                    }
+                }
+            }
+            
             // Create a report. 
             rptAccountPrint report = new rptAccountPrint(id);
 
             // Show the report's preview. 
             ReportPrintTool tool = new ReportPrintTool(report);
             tool.ShowPreview();
+        }
+
+        private void tsbView_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (gridView1.FocusedRowHandle < 0)
+                return;
+
+            
+            EditAccount(winStatusEnum.查看);
+        }
+
+        private void tsbUnCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            EditAccount(winStatusEnum.撤审);
+        }
+
+        private void tsbUnPay_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            EditAccount(winStatusEnum.撤消支付);
         }
     }
 }
