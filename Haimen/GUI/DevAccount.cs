@@ -162,7 +162,8 @@ namespace Haimen.GUI
             lueInCompany.Enabled = status;          // 收入单位
             lueOutCompany.Enabled = status;         // 支出单位
             lueInAccount.Enabled = status;          // 收入帐号
-            lueOutAccount.Enabled = status;         // 去出帐号
+            lueOutAccount.Enabled = status;         // 支出帐号
+            calcAttachCount.Enabled = status;       // 附件张数
             txtMemo.Enabled = status;               // 备注
 
             lueProjects.Enabled = status;           // 所属项目

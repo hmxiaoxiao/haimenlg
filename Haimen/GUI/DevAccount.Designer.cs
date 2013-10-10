@@ -534,7 +534,6 @@
             // 
             // calcAttachCount
             // 
-            this.calcAttachCount.Enabled = false;
             this.calcAttachCount.Location = new System.Drawing.Point(421, 216);
             this.calcAttachCount.MenuManager = this.barManager1;
             this.calcAttachCount.Name = "calcAttachCount";
