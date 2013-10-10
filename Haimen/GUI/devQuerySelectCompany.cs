@@ -11,12 +11,12 @@ using Haimen.Qy;
 
 namespace Haimen.GUI
 {
-    public partial class devQuerySelectCompany : DevExpress.XtraEditors.XtraForm
+    public partial class DevQuerySelectCompany : DevExpress.XtraEditors.XtraForm
     {
         public List<string> ID_List { get; set; }
         public Boolean SelectAll { get; set; }
 
-        public devQuerySelectCompany()
+        public DevQuerySelectCompany()
         {
             InitializeComponent();
         }

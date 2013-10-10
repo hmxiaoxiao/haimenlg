@@ -234,12 +234,12 @@ namespace Haimen.GUI
 
         private void mnuBCBalance_ItemClick(object sender, ItemClickEventArgs e)
         {
-            OpenForm(new devQueryBalance());
+            OpenForm(new DevQueryBalance());
         }
 
         private void mnuCBBalance_ItemClick(object sender, ItemClickEventArgs e)
         {
-            OpenForm(new devQueryBalance2());
+            OpenForm(new DevQueryBalance2());
         }
 
         private void mnuUserGroup_ItemClick(object sender, ItemClickEventArgs e)

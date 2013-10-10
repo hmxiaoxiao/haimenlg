@@ -71,7 +71,7 @@ namespace Haimen.GUI
                 lueList.Properties.DataSource = null;
                 lueList.Properties.DataSource = m_usergroups;
                 lueList.Properties.DisplayMember = "Name";
-                lueList.Properties.ValueMember = "Code";
+                lueList.Properties.ValueMember = "ID";
             }
         }
 
@@ -104,6 +104,8 @@ namespace Haimen.GUI
         // 保存权限
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //// 记录下时间
+            //DateTime n = DateTime.Now;
             // 切换一下焦点,保证不会丢失数据
             gridView1.CloseEditor();
             gridView1.UpdateCurrentRow();
@@ -122,6 +124,12 @@ namespace Haimen.GUI
             else
                 Access.SaveGroupAll(m_accesses, id);
             Cursor.Current = Cursors.Default;
+
+            //TimeSpan begin = new TimeSpan(n.Ticks);
+            //TimeSpan end = new TimeSpan(DateTime.Now.Ticks);
+
+            //TimeSpan use_time = end.Subtract(begin).Duration();
+            
 
             MessageBox.Show("保存成功！");
 

@@ -58,6 +58,10 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.col_uncheck = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_pay = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_print = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_unpay = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -201,7 +205,11 @@
             this.col_new,
             this.col_edit,
             this.col_delete,
-            this.col_check});
+            this.col_check,
+            this.col_uncheck,
+            this.col_pay,
+            this.col_unpay,
+            this.col_print});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsCustomization.AllowColumnMoving = false;
@@ -368,6 +376,38 @@
             this.layoutControlItem4.TextToControlDistance = 0;
             this.layoutControlItem4.TextVisible = false;
             // 
+            // col_uncheck
+            // 
+            this.col_uncheck.Caption = "撤审";
+            this.col_uncheck.FieldName = "UnCheck";
+            this.col_uncheck.Name = "col_uncheck";
+            this.col_uncheck.Visible = true;
+            this.col_uncheck.VisibleIndex = 6;
+            // 
+            // col_pay
+            // 
+            this.col_pay.Caption = "支付";
+            this.col_pay.FieldName = "Pay";
+            this.col_pay.Name = "col_pay";
+            this.col_pay.Visible = true;
+            this.col_pay.VisibleIndex = 7;
+            // 
+            // col_print
+            // 
+            this.col_print.Caption = "打印";
+            this.col_print.FieldName = "Print";
+            this.col_print.Name = "col_print";
+            this.col_print.Visible = true;
+            this.col_print.VisibleIndex = 9;
+            // 
+            // col_unpay
+            // 
+            this.col_unpay.Caption = "取消支付";
+            this.col_unpay.FieldName = "UnPay";
+            this.col_unpay.Name = "col_unpay";
+            this.col_unpay.Visible = true;
+            this.col_unpay.VisibleIndex = 8;
+            // 
             // DevAccess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -434,5 +474,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chkDelete;
         private DevExpress.XtraGrid.Columns.GridColumn col_check;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chkCheck;
+        private DevExpress.XtraGrid.Columns.GridColumn col_uncheck;
+        private DevExpress.XtraGrid.Columns.GridColumn col_pay;
+        private DevExpress.XtraGrid.Columns.GridColumn col_print;
+        private DevExpress.XtraGrid.Columns.GridColumn col_unpay;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Haimen.GUI
 {
-    partial class devQueryBalance2
+    partial class DevQueryBalance2
     {
         /// <summary>
         /// Required designer variable.

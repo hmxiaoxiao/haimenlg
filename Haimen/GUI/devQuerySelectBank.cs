@@ -12,12 +12,12 @@ using Haimen.Qy;
 
 namespace Haimen.GUI
 {
-    public partial class devQuerySelectBank : DevExpress.XtraEditors.XtraForm
+    public partial class DevQuerySelectBank : DevExpress.XtraEditors.XtraForm
     {
         public List<string> ID_List { get; set; }
         public Boolean SelectAll { get; set; }
 
-        public devQuerySelectBank()
+        public DevQuerySelectBank()
         {
             InitializeComponent();
         }

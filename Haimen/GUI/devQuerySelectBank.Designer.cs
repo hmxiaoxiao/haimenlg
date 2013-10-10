@@ -1,6 +1,6 @@
 ﻿namespace Haimen.GUI
 {
-    partial class devQuerySelectBank
+    partial class DevQuerySelectBank
     {
         /// <summary>
         /// Required designer variable.

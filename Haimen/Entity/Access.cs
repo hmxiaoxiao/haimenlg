@@ -12,6 +12,42 @@ using System.Data.SqlClient;
 namespace Haimen.Entity
 {
     /// <summary>
+    /// 业务列表
+    /// </summary>
+    public enum FctionEnum : long
+    {
+        资金往来 = 1,
+        合同,
+        合同验收,
+        贷款,
+        承兑汇票,
+        银行,
+        单位,
+        单位帐户明细,
+        资金性质,
+        项目,
+        用户,
+        用户组,
+        通知,
+        权限,
+    }
+
+    /// <summary>
+    /// 每个业务的功能
+    /// </summary>
+    public enum ActionEnum : long
+    {
+        查看 = 1,
+        新增,
+        编辑,
+        删除,
+        审核,
+        撤审,
+        支付,
+        取消支付,
+        打印,
+    }
+    /// <summary>
     /// 将权限转换成一个对象
     /// </summary>
     public class FAccess
@@ -31,8 +67,20 @@ namespace Haimen.Entity
         // 是否可以删除
         public bool Delete { get; set; }
 
-        // 是否可以校验
+        // 是否可以审核
         public bool Check { get; set; }
+
+        // 撤审
+        public bool UnCheck { get; set; }
+
+        // 支付
+        public bool Pay { get; set; }
+
+        // 取消支付
+        public bool UnPay { get; set; }
+
+        // 打印
+        public bool Print { get; set; }
 
         // 所属用户
         public long UserID { get; set; }
@@ -98,6 +146,10 @@ namespace Haimen.Entity
                 fa.Edit = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.编辑);
                 fa.Delete = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.删除);
                 fa.Check = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.审核);
+                fa.UnCheck = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.撤审);
+                fa.Pay = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.支付);
+                fa.Pay = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.取消支付);
+                fa.Print = getUserAccess(user.ID, user.UserGroupID, fction, (long)ActionEnum.打印);
                 rtn_list.Add(fa);
             }
             return rtn_list;
@@ -122,6 +174,10 @@ namespace Haimen.Entity
                 fa.Edit = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.编辑);
                 fa.Delete = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.删除);
                 fa.Check = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.审核);
+                fa.UnCheck = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.撤审);
+                fa.Pay = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.支付);
+                fa.Pay = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.取消支付);
+                fa.Print = GetUserGroupAccess(usergroup_id, fction, (long)ActionEnum.打印);
                 rtn_list.Add(fa);
             }
             return rtn_list;
@@ -189,22 +245,33 @@ namespace Haimen.Entity
                 {
                     foreach (long fction in Enum.GetValues(typeof(FctionEnum)))
                     {
-                        foreach (long action in Enum.GetValues(typeof(ActionEnum)))
+                        if (acc.Name == Enum.GetName(typeof(FctionEnum), fction))
                         {
-                            bool user_acc = false;
-                            if (action == (long)ActionEnum.查看 && acc.View)
-                                user_acc = true;
-                            else if (action == (long)ActionEnum.新增 && acc.New)
-                                user_acc = true;
-                            else if (action == (long)ActionEnum.编辑 && acc.Edit)
-                                user_acc = true;
-                            else if (action == (long)ActionEnum.删除 && acc.Delete)
-                                user_acc = true;
-                            else if (action == (long)ActionEnum.审核 && acc.Check)
-                                user_acc = true;
-                            bool group_acc = GetUserGroupAccess(group_id, fction, action);
-                            if (user_acc != group_acc)
-                                SaveUserAccess(user_id, group_id, fction, action, user_acc);
+                            foreach (long action in Enum.GetValues(typeof(ActionEnum)))
+                            {
+                                bool user_acc = false;
+                                if (action == (long)ActionEnum.查看 && acc.View)
+                                    user_acc = true;
+                                else if (action == (long)ActionEnum.新增 && acc.New)
+                                    user_acc = true;
+                                else if (action == (long)ActionEnum.编辑 && acc.Edit)
+                                    user_acc = true;
+                                else if (action == (long)ActionEnum.删除 && acc.Delete)
+                                    user_acc = true;
+                                else if (action == (long)ActionEnum.审核 && acc.Check)
+                                    user_acc = true;
+                                else if (action == (long)ActionEnum.撤审 && acc.UnCheck)
+                                    user_acc = true;
+                                else if (action == (long)ActionEnum.支付 && acc.Pay)
+                                    user_acc = true;
+                                else if (action == (long)ActionEnum.取消支付 && acc.UnPay)
+                                    user_acc = true;
+                                else if (action == (long)ActionEnum.打印 && acc.Print)
+                                    user_acc = true;
+                                bool group_acc = GetUserGroupAccess(group_id, fction, action);
+                                if (user_acc != group_acc)      //  用户的权限只有与用户组不一致时，才会保存
+                                    SaveUserAccess(user_id, group_id, fction, action, user_acc);
+                            }
                         }
                     }
                 }
@@ -244,6 +311,14 @@ namespace Haimen.Entity
                                     SaveGroupAccess(group_id, fction, action);
                                 else if (action == (long)ActionEnum.审核 && acc.Check)
                                     SaveGroupAccess(group_id, fction, action);
+                                else if (action == (long)ActionEnum.撤审 && acc.UnCheck)
+                                    SaveGroupAccess(group_id, fction, action);
+                                else if (action == (long)ActionEnum.支付 && acc.Pay)
+                                    SaveGroupAccess(group_id, fction, action);
+                                else if (action == (long)ActionEnum.取消支付 && acc.UnPay)
+                                    SaveGroupAccess(group_id, fction, action);
+                                else if (action == (long)ActionEnum.打印 && acc.Print)
+                                    SaveGroupAccess(group_id, fction, action);
                             }
                         }
                     }
@@ -276,7 +351,7 @@ namespace Haimen.Entity
             {
                 Access acc = new Access();
                 acc.UserID = user_id;
-                acc.UserGroupID = group_id;
+                acc.UserGroupID = 0;
                 acc.FunctionID = fction;
                 acc.ActionID = (long)act;
                 if (use_acc)
@@ -287,39 +362,5 @@ namespace Haimen.Entity
                 ts.Complete();
             }
         }
-    }
-
-    /// <summary>
-    /// 每个业务的功能
-    /// </summary>
-    public enum ActionEnum : long
-    {
-        查看 = 1,
-        新增,
-        编辑,
-        删除,
-        审核,
-        支付,
-    }
-
-
-    /// <summary>
-    /// 业务列表
-    /// </summary>
-    public enum FctionEnum : long
-    {
-        资金往来 = 1,
-        合同,
-        合同验收,
-        贷款,
-        银行,
-        单位,
-        资金性质,
-        单位帐户明细,
-        项目,
-        用户,
-        通知,
-        承兑汇票,
-        权限,
     }
 }

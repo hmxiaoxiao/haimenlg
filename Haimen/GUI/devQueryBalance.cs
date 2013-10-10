@@ -11,7 +11,7 @@ using Haimen.Qy;
 
 namespace Haimen.GUI
 {
-    public partial class devQueryBalance : DevExpress.XtraEditors.XtraForm
+    public partial class DevQueryBalance : DevExpress.XtraEditors.XtraForm
     {
         private List<string> bankid_list = new List<string>();
         private bool bank_selected_all = true;
@@ -19,7 +19,7 @@ namespace Haimen.GUI
         private List<string> companyid_list = new List<string>();
         private bool company_selected_all = true;
 
-        public devQueryBalance()
+        public DevQueryBalance()
         {
             InitializeComponent();
         }
@@ -31,7 +31,7 @@ namespace Haimen.GUI
 
         private void tsbSelectBank_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            devQuerySelectBank dia = new devQuerySelectBank();
+            DevQuerySelectBank dia = new DevQuerySelectBank();
             if (dia.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 bankid_list = dia.ID_List;
@@ -91,7 +91,7 @@ namespace Haimen.GUI
 
         private void tsbSelectCompany_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            devQuerySelectCompany dia = new devQuerySelectCompany();
+            DevQuerySelectCompany dia = new DevQuerySelectCompany();
             if (dia.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 companyid_list = dia.ID_List;
