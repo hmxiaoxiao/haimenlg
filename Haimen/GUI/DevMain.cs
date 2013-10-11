@@ -77,26 +77,26 @@ namespace Haimen.GUI
         /// </summary>
         private void SetAccess()
         {
-            mnuAccess.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.查看);
-            mnuAccount.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.新增);
-            mnuAccountList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.查看);
-            mnuBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.新增);
-            mnuBalanceList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.查看);
-            mnuBank.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.银行, (long)ActionEnum.查看);
-            mnuCompany.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位, (long)ActionEnum.查看);
-            mnuCompanyDetail.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位帐户明细, (long)ActionEnum.查看);
-            mnuContract.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.新增);
-            mnuContractList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同, (long)ActionEnum.查看);
-            mnuFouds.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金性质, (long)ActionEnum.查看);
-            mnuNotify.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.通知, (long)ActionEnum.查看);
-            mnuUserList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.用户, (long)ActionEnum.查看);
-            mnuAcceptanceBill.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.承兑汇票, (long)ActionEnum.查看);
-            mnuAcceptanceBillList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.承兑汇票, (long)ActionEnum.查看);
-            mnuProject.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.项目, (long)ActionEnum.查看);
-            mnuContractAcceptList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.合同验收, (long)ActionEnum.查看);
-            mnuBCBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.银行单位余额表, (long)ActionEnum.查看);
-            mnuCBBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.单位银行余额表, (long)ActionEnum.查看);
-            mnuUserGroup.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.用户组, (long)ActionEnum.查看);
+            mnuAccess.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.权限, (long)ActionEnum.查看);
+            mnuAccount.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.资金, (long)ActionEnum.新增);
+            mnuAccountList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.资金, (long)ActionEnum.查看);
+            mnuBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.贷款, (long)ActionEnum.新增);
+            mnuBalanceList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.贷款, (long)ActionEnum.查看);
+            mnuBank.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.银行, (long)ActionEnum.查看);
+            mnuCompany.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.单位, (long)ActionEnum.查看);
+            mnuCompanyDetail.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.单位帐户, (long)ActionEnum.查看);
+            mnuContract.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.合同, (long)ActionEnum.新增);
+            mnuContractList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.合同, (long)ActionEnum.查看);
+            mnuFouds.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.资金性质, (long)ActionEnum.查看);
+            mnuNotify.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.通知, (long)ActionEnum.查看);
+            mnuUserList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.用户, (long)ActionEnum.查看);
+            mnuAcceptanceBill.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.承兑汇票, (long)ActionEnum.查看);
+            mnuAcceptanceBillList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.承兑汇票, (long)ActionEnum.查看);
+            mnuProject.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.项目, (long)ActionEnum.查看);
+            mnuContractAcceptList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.合同验收, (long)ActionEnum.查看);
+            mnuBCBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.余额表, (long)ActionEnum.查看);
+            mnuCBBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.余额表, (long)ActionEnum.查看);
+            mnuUserGroup.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.用户组, (long)ActionEnum.查看);
         }
 
         public DevMain()

@@ -41,39 +41,39 @@
             this.cboUType = new DevExpress.XtraEditors.ComboBoxEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.col_function = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.txtFunction = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.col_view = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_userid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_usergroupid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_functiontype = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_functionid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_functionname = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_actionid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_actionname = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_access = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.chkAccess = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.chkView = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.col_new = new DevExpress.XtraGrid.Columns.GridColumn();
             this.chkNew = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.col_edit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.chkEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.col_delete = new DevExpress.XtraGrid.Columns.GridColumn();
             this.chkDelete = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.col_check = new DevExpress.XtraGrid.Columns.GridColumn();
             this.chkCheck = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.txtFunction = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.lueList = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.col_uncheck = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_pay = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_print = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_unpay = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboUType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFunction)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAccess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkCheck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFunction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueList.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -189,7 +189,8 @@
             this.chkEdit,
             this.chkDelete,
             this.chkCheck,
-            this.txtFunction});
+            this.txtFunction,
+            this.chkAccess});
             this.gridControl1.Size = new System.Drawing.Size(543, 392);
             this.gridControl1.TabIndex = 6;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -200,16 +201,14 @@
             this.gridView1.Appearance.HeaderPanel.Options.UseTextOptions = true;
             this.gridView1.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.col_function,
-            this.col_view,
-            this.col_new,
-            this.col_edit,
-            this.col_delete,
-            this.col_check,
-            this.col_uncheck,
-            this.col_pay,
-            this.col_unpay,
-            this.col_print});
+            this.col_userid,
+            this.col_usergroupid,
+            this.col_functiontype,
+            this.col_functionid,
+            this.col_functionname,
+            this.col_actionid,
+            this.col_actionname,
+            this.col_access});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsCustomization.AllowColumnMoving = false;
@@ -221,28 +220,78 @@
             this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
-            // col_function
+            // col_userid
             // 
-            this.col_function.Caption = "业务";
-            this.col_function.ColumnEdit = this.txtFunction;
-            this.col_function.FieldName = "Name";
-            this.col_function.Name = "col_function";
-            this.col_function.Visible = true;
-            this.col_function.VisibleIndex = 0;
+            this.col_userid.Caption = "用户ID";
+            this.col_userid.FieldName = "UserID";
+            this.col_userid.Name = "col_userid";
+            this.col_userid.Visible = true;
+            this.col_userid.VisibleIndex = 0;
             // 
-            // txtFunction
+            // col_usergroupid
             // 
-            this.txtFunction.AutoHeight = false;
-            this.txtFunction.Name = "txtFunction";
+            this.col_usergroupid.Caption = "用户组ID";
+            this.col_usergroupid.FieldName = "UserGroupID";
+            this.col_usergroupid.Name = "col_usergroupid";
+            this.col_usergroupid.Visible = true;
+            this.col_usergroupid.VisibleIndex = 1;
             // 
-            // col_view
+            // col_functiontype
             // 
-            this.col_view.Caption = "查看";
-            this.col_view.ColumnEdit = this.chkView;
-            this.col_view.FieldName = "View";
-            this.col_view.Name = "col_view";
-            this.col_view.Visible = true;
-            this.col_view.VisibleIndex = 1;
+            this.col_functiontype.Caption = "类别";
+            this.col_functiontype.FieldName = "FunctionType";
+            this.col_functiontype.Name = "col_functiontype";
+            this.col_functiontype.Visible = true;
+            this.col_functiontype.VisibleIndex = 2;
+            // 
+            // col_functionid
+            // 
+            this.col_functionid.Caption = "功能ID";
+            this.col_functionid.FieldName = "FunctionID";
+            this.col_functionid.Name = "col_functionid";
+            this.col_functionid.Visible = true;
+            this.col_functionid.VisibleIndex = 3;
+            // 
+            // col_functionname
+            // 
+            this.col_functionname.Caption = "功能";
+            this.col_functionname.FieldName = "FunctionName";
+            this.col_functionname.Name = "col_functionname";
+            this.col_functionname.Visible = true;
+            this.col_functionname.VisibleIndex = 4;
+            // 
+            // col_actionid
+            // 
+            this.col_actionid.Caption = "操作ID";
+            this.col_actionid.FieldName = "ActionID";
+            this.col_actionid.Name = "col_actionid";
+            this.col_actionid.Visible = true;
+            this.col_actionid.VisibleIndex = 5;
+            // 
+            // col_actionname
+            // 
+            this.col_actionname.Caption = "操作";
+            this.col_actionname.FieldName = "ActionName";
+            this.col_actionname.Name = "col_actionname";
+            this.col_actionname.Visible = true;
+            this.col_actionname.VisibleIndex = 6;
+            // 
+            // col_access
+            // 
+            this.col_access.Caption = "权限";
+            this.col_access.ColumnEdit = this.chkAccess;
+            this.col_access.FieldName = "CanAccess";
+            this.col_access.Name = "col_access";
+            this.col_access.Visible = true;
+            this.col_access.VisibleIndex = 7;
+            // 
+            // chkAccess
+            // 
+            this.chkAccess.AutoHeight = false;
+            this.chkAccess.Caption = "Check";
+            this.chkAccess.Name = "chkAccess";
+            this.chkAccess.ValueChecked = ((byte)(1));
+            this.chkAccess.ValueUnchecked = ((byte)(0));
             // 
             // chkView
             // 
@@ -250,29 +299,11 @@
             this.chkView.Caption = "Check";
             this.chkView.Name = "chkView";
             // 
-            // col_new
-            // 
-            this.col_new.Caption = "新增";
-            this.col_new.ColumnEdit = this.chkNew;
-            this.col_new.FieldName = "New";
-            this.col_new.Name = "col_new";
-            this.col_new.Visible = true;
-            this.col_new.VisibleIndex = 2;
-            // 
             // chkNew
             // 
             this.chkNew.AutoHeight = false;
             this.chkNew.Caption = "Check";
             this.chkNew.Name = "chkNew";
-            // 
-            // col_edit
-            // 
-            this.col_edit.Caption = "编辑";
-            this.col_edit.ColumnEdit = this.chkEdit;
-            this.col_edit.FieldName = "Edit";
-            this.col_edit.Name = "col_edit";
-            this.col_edit.Visible = true;
-            this.col_edit.VisibleIndex = 3;
             // 
             // chkEdit
             // 
@@ -280,35 +311,22 @@
             this.chkEdit.Caption = "Check";
             this.chkEdit.Name = "chkEdit";
             // 
-            // col_delete
-            // 
-            this.col_delete.Caption = "删除";
-            this.col_delete.ColumnEdit = this.chkDelete;
-            this.col_delete.FieldName = "Delete";
-            this.col_delete.Name = "col_delete";
-            this.col_delete.Visible = true;
-            this.col_delete.VisibleIndex = 4;
-            // 
             // chkDelete
             // 
             this.chkDelete.AutoHeight = false;
             this.chkDelete.Caption = "Check";
             this.chkDelete.Name = "chkDelete";
             // 
-            // col_check
-            // 
-            this.col_check.Caption = "审核";
-            this.col_check.ColumnEdit = this.chkCheck;
-            this.col_check.FieldName = "Check";
-            this.col_check.Name = "col_check";
-            this.col_check.Visible = true;
-            this.col_check.VisibleIndex = 5;
-            // 
             // chkCheck
             // 
             this.chkCheck.AutoHeight = false;
             this.chkCheck.Caption = "Check";
             this.chkCheck.Name = "chkCheck";
+            // 
+            // txtFunction
+            // 
+            this.txtFunction.AutoHeight = false;
+            this.txtFunction.Name = "txtFunction";
             // 
             // lueList
             // 
@@ -376,38 +394,6 @@
             this.layoutControlItem4.TextToControlDistance = 0;
             this.layoutControlItem4.TextVisible = false;
             // 
-            // col_uncheck
-            // 
-            this.col_uncheck.Caption = "撤审";
-            this.col_uncheck.FieldName = "UnCheck";
-            this.col_uncheck.Name = "col_uncheck";
-            this.col_uncheck.Visible = true;
-            this.col_uncheck.VisibleIndex = 6;
-            // 
-            // col_pay
-            // 
-            this.col_pay.Caption = "支付";
-            this.col_pay.FieldName = "Pay";
-            this.col_pay.Name = "col_pay";
-            this.col_pay.Visible = true;
-            this.col_pay.VisibleIndex = 7;
-            // 
-            // col_print
-            // 
-            this.col_print.Caption = "打印";
-            this.col_print.FieldName = "Print";
-            this.col_print.Name = "col_print";
-            this.col_print.Visible = true;
-            this.col_print.VisibleIndex = 9;
-            // 
-            // col_unpay
-            // 
-            this.col_unpay.Caption = "取消支付";
-            this.col_unpay.FieldName = "UnPay";
-            this.col_unpay.Name = "col_unpay";
-            this.col_unpay.Visible = true;
-            this.col_unpay.VisibleIndex = 8;
-            // 
             // DevAccess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -428,12 +414,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboUType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFunction)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAccess)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkCheck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFunction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -462,21 +449,20 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraEditors.ComboBoxEdit cboUType;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private DevExpress.XtraGrid.Columns.GridColumn col_function;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit txtFunction;
-        private DevExpress.XtraGrid.Columns.GridColumn col_view;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chkView;
-        private DevExpress.XtraGrid.Columns.GridColumn col_new;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chkNew;
-        private DevExpress.XtraGrid.Columns.GridColumn col_edit;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chkEdit;
-        private DevExpress.XtraGrid.Columns.GridColumn col_delete;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chkDelete;
-        private DevExpress.XtraGrid.Columns.GridColumn col_check;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chkCheck;
-        private DevExpress.XtraGrid.Columns.GridColumn col_uncheck;
-        private DevExpress.XtraGrid.Columns.GridColumn col_pay;
-        private DevExpress.XtraGrid.Columns.GridColumn col_print;
-        private DevExpress.XtraGrid.Columns.GridColumn col_unpay;
+        private DevExpress.XtraGrid.Columns.GridColumn col_userid;
+        private DevExpress.XtraGrid.Columns.GridColumn col_usergroupid;
+        private DevExpress.XtraGrid.Columns.GridColumn col_functiontype;
+        private DevExpress.XtraGrid.Columns.GridColumn col_functionid;
+        private DevExpress.XtraGrid.Columns.GridColumn col_functionname;
+        private DevExpress.XtraGrid.Columns.GridColumn col_actionid;
+        private DevExpress.XtraGrid.Columns.GridColumn col_actionname;
+        private DevExpress.XtraGrid.Columns.GridColumn col_access;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chkAccess;
     }
 }

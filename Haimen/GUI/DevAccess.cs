@@ -17,8 +17,6 @@ namespace Haimen.GUI
         private List<User> m_users = User.Query();
         private List<UserGroup> m_usergroups = UserGroup.Query();
 
-        private List<FAccess> m_accesses = null;
-
         // 初始化
         private void init()
         {
@@ -27,16 +25,15 @@ namespace Haimen.GUI
             cboUType.Properties.Items.Add("用户组");
             cboUType.SelectedIndex = 0;
 
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.新增) ||
-                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.编辑) ||
-                Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.权限, (long)ActionEnum.删除) ||
-                GlobalSet.Current_User.Admin == "X" )
+            if (Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.权限, (long)ActionEnum.编辑))
             {
                 btnSave.Enabled = true;
+                gridView1.OptionsBehavior.Editable = true;
             }
             else
             {
                 btnSave.Enabled = false;
+                gridView1.OptionsBehavior.Editable = false;
             }
         }
 
@@ -83,19 +80,17 @@ namespace Haimen.GUI
                 return;
 
             Cursor.Current = Cursors.AppStarting;       // 修改光标样式 
+            long id = long.Parse(lueList.EditValue.ToString());
             if (cboUType.Text == "用户")
             {
-                User user = User.CreateByID(long.Parse(lueList.EditValue.ToString()));
-                m_accesses = Access.UserAccess2List(user);
+                gridControl1.DataSource = null;
+                gridControl1.DataSource = Access.GetAccessList(id);
             }
             else
             {
-                long usergroup_id = long.Parse(lueList.EditValue.ToString());
-                m_accesses = Access.UserGroupAccess2List(usergroup_id);
+                gridControl1.DataSource = null;
+                gridControl1.DataSource = Access.GetAccessList(id, false);
             }
-            gridControl1.DataSource = null;
-            gridControl1.DataSource = m_accesses;
-
             gridView1.BestFitColumns();
 
             Cursor.Current = Cursors.Default;           // 恢复光标样式
@@ -113,24 +108,9 @@ namespace Haimen.GUI
             if (lueList.EditValue == null)
                 return;
 
-            long id = long.Parse(lueList.EditValue.ToString());
-
             Cursor.Current = Cursors.AppStarting;
-            if (cboUType.Text == "用户")
-            {
-                User user = User.CreateByID(id);
-                Access.SaveUserAll(m_accesses, user.ID, user.UserGroupID);
-            }
-            else
-                Access.SaveGroupAll(m_accesses, id);
+            Access.SaveAccessList();
             Cursor.Current = Cursors.Default;
-
-            //TimeSpan begin = new TimeSpan(n.Ticks);
-            //TimeSpan end = new TimeSpan(DateTime.Now.Ticks);
-
-            //TimeSpan use_time = end.Subtract(begin).Duration();
-            
-
             MessageBox.Show("保存成功！");
 
         }

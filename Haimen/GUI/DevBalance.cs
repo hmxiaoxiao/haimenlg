@@ -23,19 +23,19 @@ namespace Haimen.GUI
         /// </summary>
         private void SetControlAccess()
         {
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.新增))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.贷款, (long)ActionEnum.新增))
             {
                 btnNew.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.编辑))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.贷款, (long)ActionEnum.编辑))
             {
                 btnEdit.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.删除))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.贷款, (long)ActionEnum.删除))
             {
                 btnDelete.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.贷款, (long)ActionEnum.审核))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.贷款, (long)ActionEnum.审核))
             {
                 btnCheck.Enabled = false;
             }
