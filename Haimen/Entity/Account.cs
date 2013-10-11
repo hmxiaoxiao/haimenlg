@@ -472,6 +472,18 @@ namespace Haimen.Entity
                 return false;
         }
 
+        /// <summary>
+        ///  当前对象是否可以转为正式发票
+        /// </summary>
+        /// <returns></returns>
+        public bool CanConvertInvoice()
+        {
+            if (this.Invoice == (long)AccountInvoiceEnum.非正式发票)
+                return true;
+            else
+                return false;
+        }
+
         public enum AccountInvoiceEnum : long
         {
             正式发票 = 1,

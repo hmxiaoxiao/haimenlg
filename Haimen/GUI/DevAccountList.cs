@@ -42,10 +42,12 @@ namespace Haimen.GUI
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.审核))
             {
                 tsbCheck.Dispose();
+                tsbUnCheck.Dispose();
             } 
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.支付))
             {
                 tsbPay.Dispose();
+                tsbUnPay.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, GlobalSet.Current_User.UserGroupID, (long)FctionEnum.资金往来, (long)ActionEnum.打印))
             {
@@ -125,6 +127,7 @@ namespace Haimen.GUI
                     tsbUnCheck.Enabled = a.CanUnCheck();
                     tsbPay.Enabled = a.CanPay();
                     tsbUnPay.Enabled = a.CanUnPay();
+                    tsb2Invoice.Enabled = a.CanConvertInvoice();
                 }
             }
         }
