@@ -68,12 +68,12 @@ namespace Haimen.Entity
         /// 生成单据字
         /// </summary>
         /// <returns></returns>
-        public string NextDoc()
+        public string NextDoc(bool can_save = false)
         {
             string relVal = "";
-            // 如果不需要单据字，则直接退出
+            // 如果不需要前缀，则调用通用的单据字生成器（没有前缀）
             if (string.IsNullOrEmpty(this.Doc))
-                return relVal;
+                return GenNextDoc(can_save);
 
 
             // 因为在内存的对象可能是很久以前的数据，
@@ -83,24 +83,60 @@ namespace Haimen.Entity
             {
                 com.DocDate = string.Format("{0:yyyyMMdd}", DateTime.Now);
                 com.GenDoc = 1;
-                com.Save();
             }
             else
             {
+                // 如果当天已经生成了，则直接序列号+1
                 if (com.DocDate == string.Format("{0:yyyyMMdd}", DateTime.Now))
                 {
                     com.GenDoc += 1;
-                    com.Save();
                 }
                 else
                 {
+                    // 否则还要生成日期
                     com.DocDate = string.Format("{0:yyyyMMdd}", DateTime.Now);
                     com.GenDoc = 1;
-                    com.Save();
                 }
             }
             relVal = com.Doc + com.DocDate + string.Format("{0:000}",com.GenDoc);
+            if (can_save)
+            {
+                com.Save();
+            }
             return relVal;
+        }
+
+        /// <summary>
+        /// 生成通用的单据字
+        /// </summary>
+        /// <returns>单据字的格式为YYYYMMDD001</returns>
+        private string GenNextDoc(bool can_save = false)
+        {
+            string current_doc = SystemSet.GetValue("Doc");
+            string current_date = string.Format("{0:yyyyMMdd}", DateTime.Now);
+            string doc = "";            // 本次生成的单据字
+            int num = 0;
+            // 如果为空，则直接返回
+            if (string.IsNullOrEmpty(current_doc))
+            {
+                doc = current_date + "001";
+            }
+            else
+            {
+                string old_doc_date = current_doc.Substring(0, 8);
+                if (old_doc_date == current_date)
+                {
+                    num = int.Parse(current_doc.Substring(8)) + 1;
+                    doc = current_date + string.Format("{0:000}", num);
+                }
+                else
+                {
+                    doc = current_date + "001";
+                }
+            }
+            if (can_save)
+                SystemSet.SetValue("Doc", doc);
+            return doc;
         }
     }
 }

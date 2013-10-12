@@ -32,52 +32,5 @@ namespace Haimen.Entity
                 return Path.Combine(path, "config.ini");
             } 
         }
-
-
-
-        private static List<Dict> m_contract_status;
-        public static List<Dict> ContractStatus
-        {
-            get
-            {
-                if (m_contract_status == null)
-                {
-                    m_contract_status = new List<Dict>();
-                    m_contract_status.Add(new Dict("未审核",0));
-                    m_contract_status.Add(new Dict("审核通过",1));
-                    m_contract_status.Add(new Dict("审核未通过",2));
-                    m_contract_status.Add(new Dict("再次审核",3));
-                    m_contract_status.Add(new Dict("付款中",4));
-                    m_contract_status.Add(new Dict("已验收", 5));
-                    m_contract_status.Add(new Dict("验收未通过", 6));
-                    m_contract_status.Add(new Dict("已中止", 7));
-                }
-                return m_contract_status;
-            }
-        }
-
-        public static List<Dict> m_accept_status;
-        public static List<Dict> AcceptStatus
-        {
-            get
-            {
-                if (m_accept_status == null)
-                {
-                    m_accept_status = new List<Dict>();
-                    m_accept_status.Add(new Dict("未开票", 0));
-                    m_accept_status.Add(new Dict("已开票", 1));
-                }
-                return m_accept_status;
-            }
-        }
-    }
-
-    /// <summary>
-    /// 合同验收的状态，就是开票未开票
-    /// </summary>
-    public enum ContractAcceptStatusEnum : long
-    {
-        未开票 = 0,
-        已开票,
     }
 }

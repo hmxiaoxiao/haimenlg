@@ -323,6 +323,9 @@ namespace Haimen.Entity
         {
             MakerID = GlobalSet.Current_User.ID;
 
+            // 重新生成代码
+            this.Code = this.OutCompanyDetail.Parent.NextDoc(true);
+
             // 如果是合同申请生成，则返写一个标志进去
             if (ContractApplyID > 0)
             {
@@ -335,7 +338,7 @@ namespace Haimen.Entity
             if (ContractAcceptID > 0)
             {
                 ContractAccept c = ContractAccept.CreateByID(ContractAcceptID);
-                c.Status = (long)ContractAcceptStatusEnum.已开票;
+                c.Status = (long)ContractAccept.ContractAcceptStatusEnum.已开票;
                 c.Save();
             }
 

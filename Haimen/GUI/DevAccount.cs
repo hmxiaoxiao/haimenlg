@@ -177,7 +177,7 @@ namespace Haimen.GUI
             calcPayMoney.Enabled = status;          // 申请金额
 
             dtSigned.Enabled = status;              // 日期
-            txtCode.Enabled = status;               // 代码
+            //txtCode.Enabled = status;               // 代码
             lueInCompany.Enabled = status;          // 收入单位
             lueOutCompany.Enabled = status;         // 支出单位
             lueInAccount.Enabled = status;          // 收入帐号
@@ -232,7 +232,7 @@ namespace Haimen.GUI
                 m_account.ContractApplyID = long.Parse(lueContractApply.EditValue.ToString());
 
             // 附件张数
-            m_account.Attachment = m_account.AttachList.Count;
+            m_account.Attachment = (long)calcAttachCount.Value;
 
             // 项目
             if (!(lueProjects.EditValue == null || string.IsNullOrEmpty(lueProjects.EditValue.ToString())))
@@ -356,6 +356,7 @@ namespace Haimen.GUI
                 lueInAccount.Properties.UnLockEvents();
                 lueOutAccount.Properties.UnLockEvents();
 
+                calcAttachCount.Value = m_account.Attachment;
             }
             else
             {
@@ -376,6 +377,7 @@ namespace Haimen.GUI
                 chkRelease.Checked = true;      // 默认为正式发票
 
                 txtMemo.Text = "";
+                calcAttachCount.Value = 0;
             }
 
             // 显示合同或者贷款信息
@@ -840,8 +842,8 @@ namespace Haimen.GUI
             txtOutBank.Text = m_account.OutCompanyDetail.Bank.Name;
 
             // 生成单据字
-            if (string.IsNullOrEmpty(txtCode.Text))
-                txtCode.Text = Company.CreateByID(m_account.OutCompanyDetail.ParentID).NextDoc();
+            //if (string.IsNullOrEmpty(txtCode.Text))
+            txtCode.Text = m_account.OutCompanyDetail.Parent.NextDoc();//Company.CreateByID(m_account.OutCompanyDetail.ParentID).NextDoc();
         }
 
         private void lueInAccount_EditValueChanged(object sender, EventArgs e)

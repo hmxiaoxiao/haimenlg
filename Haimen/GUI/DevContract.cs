@@ -57,8 +57,8 @@ namespace Haimen.GUI
         }
 
 
-        private ContractFromEnum m_status;
-        private void SetFormStatus(ContractFromEnum status)
+        private winStatusEnum m_status;
+        private void SetFormStatus(winStatusEnum status)
         {
             m_status = status;
             bar1.Visible = true;
@@ -66,8 +66,8 @@ namespace Haimen.GUI
             bar3.Visible = false;
             switch (status)
             {
-                case ContractFromEnum.新增:
-                case ContractFromEnum.编辑:
+                case winStatusEnum.新增:
+                case winStatusEnum.编辑:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -81,7 +81,7 @@ namespace Haimen.GUI
 
                     SetControlStatus(true);
                     break;
-                case ContractFromEnum.查看:
+                case winStatusEnum.查看:
                     tbNew.Enabled = true;
                     tbEdit.Enabled = true;
                     tbDelete.Enabled = true;
@@ -93,7 +93,7 @@ namespace Haimen.GUI
 
                     SetControlStatus(false);
                     break;
-                case ContractFromEnum.审核:
+                case winStatusEnum.审核:
                     tbNew.Enabled = false;
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
@@ -105,7 +105,7 @@ namespace Haimen.GUI
 
                     SetControlStatus(false);
                     break;
-                case ContractFromEnum.付款申请:
+                case winStatusEnum.付款申请:
                     bar1.Visible = false;
                     bar2.Visible = true;
                     bar2.Offset = 0;
@@ -119,7 +119,7 @@ namespace Haimen.GUI
                     SetControlStatus(false);
                     break;
 
-                case ContractFromEnum.设置决算价:
+                case winStatusEnum.设置决算价:
                     bar1.Visible = false;
                     bar2.Visible = false;
                     bar3.Visible = true;
@@ -127,7 +127,7 @@ namespace Haimen.GUI
                     calcCostMoney.Enabled = true;
                     tbSave2.Caption = "保存决算价";
                     break;
-                case ContractFromEnum.设置审计价:
+                case winStatusEnum.设置审计价:
                     bar1.Visible = false;
                     bar2.Visible = false;
                     bar3.Visible = true;
@@ -286,7 +286,7 @@ namespace Haimen.GUI
                 gridControl2.DataSource = null;
                 gridControl2.DataSource = m_applies;
 
-                if (m_status == ContractFromEnum.付款申请)
+                if (m_status == winStatusEnum.付款申请)
                 {
                     dtApplyDate.EditValue = DateTime.Now;
                 }
@@ -306,17 +306,17 @@ namespace Haimen.GUI
 
             switch (m_contract.Status)
             {
-                case (long)ContractStatusEnum.未审核:
+                case (long)Contract.ContractStatusEnum.未审核:
                     picChecked.Visible = false;
                     picPayed.Visible = false;
                     break;
-                case (long)ContractStatusEnum.审核未通过:
+                case (long)Contract.ContractStatusEnum.审核未通过:
                     picPayed.Visible = true;
                     picChecked.Visible = false;
                     break;
-                case (long)ContractStatusEnum.审核通过:
-                case (long)ContractStatusEnum.已验收:
-                case (long)ContractStatusEnum.已中止:
+                case (long)Contract.ContractStatusEnum.审核通过:
+                case (long)Contract.ContractStatusEnum.已验收:
+                case (long)Contract.ContractStatusEnum.已中止:
                     picPayed.Visible = false;
                     picChecked.Visible = true;
                     break;
@@ -361,7 +361,7 @@ namespace Haimen.GUI
         /// </summary>
         private void MyExit()
         {
-            if (!(m_status == ContractFromEnum.查看))
+            if (!(m_status == winStatusEnum.查看))
             {
                 if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
                                    "警告",
@@ -373,7 +373,7 @@ namespace Haimen.GUI
             this.Close();
         }
 
-        public DevContract(ContractFromEnum status, Contract con = null)
+        public DevContract(winStatusEnum status, Contract con = null)
         {
             InitializeComponent();
             if (con != null)
@@ -421,7 +421,7 @@ namespace Haimen.GUI
 
             m_contract.Save();
             MessageBox.Show("保存成功！");
-            SetFormStatus(ContractFromEnum.查看);
+            SetFormStatus(winStatusEnum.查看);
         }
 
 
@@ -430,7 +430,7 @@ namespace Haimen.GUI
         {
             m_contract = new Contract();
             Object2Form();
-            SetFormStatus(ContractFromEnum.新增);
+            SetFormStatus(winStatusEnum.新增);
         }
 
         // 编辑对象
@@ -439,7 +439,7 @@ namespace Haimen.GUI
             if (m_contract != null && m_contract.ID > 0)
             {
                 Object2Form();
-                SetFormStatus(ContractFromEnum.编辑);
+                SetFormStatus(winStatusEnum.编辑);
             }
         }
 
@@ -451,7 +451,7 @@ namespace Haimen.GUI
                 m_contract.Destory();
                 m_contract = new Contract();
                 Object2Form();
-                SetFormStatus(ContractFromEnum.查看);
+                SetFormStatus(winStatusEnum.查看);
             }
         }
 
@@ -533,14 +533,14 @@ namespace Haimen.GUI
         private void tbCheckPassed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_contract.CheckPassed();
-            SetFormStatus(ContractFromEnum.查看);
+            SetFormStatus(winStatusEnum.查看);
         }
 
         // 审核不通过
         private void tbCheckFaild_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_contract.CheckFaild();
-            SetFormStatus(ContractFromEnum.查看);
+            SetFormStatus(winStatusEnum.查看);
         }
 
         /// <summary>
@@ -590,7 +590,7 @@ namespace Haimen.GUI
                 apply.Save();
                 tbApplySave.Enabled = false;
                 layoutControl2.Enabled = false;
-                m_status = ContractFromEnum.查看;
+                m_status = winStatusEnum.查看;
                 MessageBox.Show("合同付款申请保存成功！", "注意");
             }
         }
@@ -603,7 +603,7 @@ namespace Haimen.GUI
             m_contract.Save();
             MessageBox.Show("保存成功！");
             tbSave2.Enabled = false;
-            m_status = ContractFromEnum.查看;
+            m_status = winStatusEnum.查看;
         }
 
     }

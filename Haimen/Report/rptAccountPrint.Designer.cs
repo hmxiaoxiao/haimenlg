@@ -437,7 +437,7 @@
             resources.ApplyResources(this, "$this");
             this.FormattingRuleSheet.AddRange(new DevExpress.XtraReports.UI.FormattingRule[] {
             this.formattingRule1});
-            this.Margins = new System.Drawing.Printing.Margins(50, 55, 444, 6);
+            this.Margins = new System.Drawing.Printing.Margins(50, 55, 515, 6);
             this.Version = "13.1";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();

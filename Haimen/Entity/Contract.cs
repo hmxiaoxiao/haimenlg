@@ -322,35 +322,55 @@ namespace Haimen.Entity
             return base.Update();
         }
 
-    }
+        private static List<Dict> m_contract_status;
+        public static List<Dict> ContractStatus
+        {
+            get
+            {
+                if (m_contract_status == null)
+                {
+                    m_contract_status = new List<Dict>();
+                    m_contract_status.Add(new Dict("未审核", 0));
+                    m_contract_status.Add(new Dict("审核通过", 1));
+                    m_contract_status.Add(new Dict("审核未通过", 2));
+                    m_contract_status.Add(new Dict("再次审核", 3));
+                    m_contract_status.Add(new Dict("付款中", 4));
+                    m_contract_status.Add(new Dict("已验收", 5));
+                    m_contract_status.Add(new Dict("验收未通过", 6));
+                    m_contract_status.Add(new Dict("已中止", 7));
+                }
+                return m_contract_status;
+            }
+        }
 
-    /// <summary>
-    /// 打开合同界面的不同状态
-    /// </summary>
-    public enum ContractFromEnum : long
-    {
-        查看 = 0,
-        新增,
-        编辑,
-        审核,
-        撤审,
-        付款申请,
-        设置决算价,
-        设置审计价,
-    }
+        /// <summary>
+        /// 打开合同界面的不同状态
+        /// </summary>
+        public enum ContractFromEnum : long
+        {
+            查看 = 0,
+            新增,
+            编辑,
+            审核,
+            撤审,
+            付款申请,
+            设置决算价,
+            设置审计价,
+        }
 
-    /// <summary>
-    /// 合同的状态
-    /// </summary>
-    public enum ContractStatusEnum : long
-    {
-        未审核 = 0,
-        审核通过,
-        审核未通过,
-        再次审核,
-        付款中,
-        已验收,
-        验收未通过,
-        已中止,
+        /// <summary>
+        /// 合同的状态
+        /// </summary>
+        public enum ContractStatusEnum : long
+        {
+            未审核 = 0,
+            审核通过,
+            审核未通过,
+            再次审核,
+            付款中,
+            已验收,
+            验收未通过,
+            已中止,
+        }
     }
 }

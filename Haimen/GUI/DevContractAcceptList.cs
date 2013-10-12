@@ -21,7 +21,7 @@ namespace Haimen.GUI
         {
             m_lists = ContractAccept.Query();
             lueStatus.DataSource = null;
-            lueStatus.DataSource = GlobalSet.AcceptStatus;
+            lueStatus.DataSource = ContractAccept.AcceptStatus;
             lueStatus.DisplayMember = "Name";
             lueStatus.ValueMember = "ValueInt";
 

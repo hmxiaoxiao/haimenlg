@@ -74,7 +74,7 @@ namespace Haimen.GUI
             gridControl1.DataSource = m_contracts;
 
             lueStatus.DataSource = null;
-            lueStatus.DataSource = GlobalSet.ContractStatus;
+            lueStatus.DataSource = Contract.ContractStatus;
             lueStatus.DisplayMember = "Name";
             lueStatus.ValueMember = "ValueInt";
 
@@ -102,7 +102,7 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            m_main.OpenForm(new DevContract(ContractFromEnum.新增));
+            m_main.OpenForm(new DevContract(winStatusEnum.新增));
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Haimen.GUI
         {
             Contract ct = CurrentSelectedObject();
             if (ct != null)
-                m_main.OpenForm(new DevContract(ContractFromEnum.编辑, ct));
+                m_main.OpenForm(new DevContract(winStatusEnum.编辑, ct));
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Haimen.GUI
         {
             Contract ct = CurrentSelectedObject();
             if (ct != null)
-                m_main.OpenForm(new DevContract(ContractFromEnum.审核, ct));
+                m_main.OpenForm(new DevContract(winStatusEnum.审核, ct));
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace Haimen.GUI
         {
             Contract ct = CurrentSelectedObject();
             if (ct != null)
-                m_main.OpenForm(new DevContract(ContractFromEnum.付款申请, ct));
+                m_main.OpenForm(new DevContract(winStatusEnum.付款申请, ct));
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace Haimen.GUI
         {
             Contract ct = CurrentSelectedObject();
             if (ct != null)
-                m_main.OpenForm(new DevContract(ContractFromEnum.设置决算价, ct));
+                m_main.OpenForm(new DevContract(winStatusEnum.设置决算价, ct));
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace Haimen.GUI
         {
             Contract ct = CurrentSelectedObject();
             if (ct != null)
-                m_main.OpenForm(new DevContract(ContractFromEnum.设置审计价, ct));
+                m_main.OpenForm(new DevContract(winStatusEnum.设置审计价, ct));
         }
     }
 }

@@ -73,9 +73,9 @@ namespace Haimen.Entity
             //  更新状态
             Contract c = Contract.CreateByID(this.ContractID);
             if (Pass > 0)
-                c.Status = (long)ContractStatusEnum.已验收;
+                c.Status = (long)Contract.ContractStatusEnum.已验收;
             else
-                c.Status = (long)ContractStatusEnum.验收未通过;
+                c.Status = (long)Contract.ContractStatusEnum.验收未通过;
             c.Save();
             
             return base.Insert();
@@ -86,12 +86,36 @@ namespace Haimen.Entity
             //  更新状态
             Contract c = Contract.CreateByID(this.ContractID);
             if (Pass > 0)
-                c.Status = (long)ContractStatusEnum.已验收;
+                c.Status = (long)Contract.ContractStatusEnum.已验收;
             else
-                c.Status = (long)ContractStatusEnum.验收未通过;
+                c.Status = (long)Contract.ContractStatusEnum.验收未通过;
             c.Save();
 
             return base.Update();
+        }
+
+        private static List<Dict> m_accept_status;
+        public static List<Dict> AcceptStatus
+        {
+            get
+            {
+                if (m_accept_status == null)
+                {
+                    m_accept_status = new List<Dict>();
+                    m_accept_status.Add(new Dict("未开票", 0));
+                    m_accept_status.Add(new Dict("已开票", 1));
+                }
+                return m_accept_status;
+            }
+        }
+
+        /// <summary>
+        /// 合同验收的状态，就是开票未开票
+        /// </summary>
+        public enum ContractAcceptStatusEnum : long
+        {
+            未开票 = 0,
+            已开票,
         }
     }
 }

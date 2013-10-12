@@ -17,6 +17,9 @@ namespace Haimen.Helper
         撤消支付,
         纯查看,
         转正式发票,
+        付款申请,
+        设置决算价,
+        设置审计价,
     }
 
     /// <summary>

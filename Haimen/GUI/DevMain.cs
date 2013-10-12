@@ -165,7 +165,7 @@ namespace Haimen.GUI
 
         private void mnuContract_ItemClick(object sender, ItemClickEventArgs e)
         {
-            OpenForm(new DevContract(ContractFromEnum.新增));
+            OpenForm(new DevContract(winStatusEnum.新增));
         }
 
         private void mnuBalanceList_ItemClick(object sender, ItemClickEventArgs e)
