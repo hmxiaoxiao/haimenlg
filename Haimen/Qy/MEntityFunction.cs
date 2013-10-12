@@ -30,8 +30,15 @@ namespace Haimen.Qy
         /// <summary>
         /// 更新时间
         /// </summary>
-        [Field("Updated_date")]
+        [Field("updated_date")]
         public DateTime UpdatedDate { get; set; }
+
+
+        /// <summary>
+        /// 删除标记，0 为正常，1为删除
+        /// </summary>
+        [Field("deleted")]
+        public long Deleted { get; set; }
 
         /// <summary>
         /// 用于保存错误信息
@@ -56,6 +63,11 @@ namespace Haimen.Qy
                 return m_errorstring;
             }
         }
+
+        /// <summary>
+        /// 是否显示已经打上删除标记的记录
+        /// </summary>
+        public static bool ShowDeleteRecord = false;
 
         /// <summary>
         /// 当前对象指定的排序字段
@@ -266,7 +278,17 @@ namespace Haimen.Qy
 
             // 生成SQL语句
             if (where.Length > 0)
-                sql += " where " + where;
+            {
+                if (!ShowDeleteRecord)
+                    sql += " where " + where + " and deleted = 0 ";
+                else
+                    sql += " where " + where;
+            }
+            else
+            {
+                if (!ShowDeleteRecord)
+                    sql += " where deleted = 0 ";
+            }
 
             // 按生成的ID降序排列
             sql += " " + OrderBy;
@@ -296,7 +318,17 @@ namespace Haimen.Qy
 
             // 生成SQL语句
             if (where.Length > 0)
-                sql += " where " + where;
+            {
+                if (!ShowDeleteRecord)
+                    sql += " where " + where + " and deleted = 0";
+                else
+                    sql += " where " + where;
+            }
+            else
+            {
+                if (!ShowDeleteRecord)
+                    sql += " where deleted = 0";
+            }
 
             // 按生成的ID降序排列
             sql += " " + OrderBy;

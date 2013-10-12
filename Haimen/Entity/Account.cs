@@ -204,9 +204,6 @@ namespace Haimen.Entity
             }
         }
 
-        [Field("deleted")]
-        public long Deleted { get; set; }
-
         /// <summary>
         /// 审核通过
         /// </summary>

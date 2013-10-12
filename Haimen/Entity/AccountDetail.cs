@@ -35,8 +35,5 @@ namespace Haimen.Entity
 
         [Field("money")]
         public Decimal Money { get; set; }
-
-        [Field("deleted")]
-        public long Deleted { get; set; }
     }
 }

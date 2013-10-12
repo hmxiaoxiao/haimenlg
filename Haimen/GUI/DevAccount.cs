@@ -11,6 +11,8 @@ using Haimen.Entity;
 using Haimen.Helper;
 using System.IO;
 using System.Diagnostics;
+using DevExpress.XtraReports.UI;
+using Haimen.Report;
 
 namespace Haimen.GUI
 {
@@ -66,6 +68,12 @@ namespace Haimen.GUI
             {
                 tbPay.Dispose();
                 tbUnPay.Dispose();
+            }
+
+            // 打印
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.资金, (long)ActionEnum.打印))
+            {
+                tbPrint.Dispose();
             }
 
         }
@@ -947,6 +955,16 @@ namespace Haimen.GUI
             ShowCheckPayPic();
             tbUnPay.Enabled = false;
             m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
+        }
+
+        private void tbPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            // Create a report. 
+            rptAccountPrint report = new rptAccountPrint(m_account.ID);
+
+            // Show the report's preview. 
+            ReportPrintTool tool = new ReportPrintTool(report);
+            tool.ShowPreview();
         }
     }
 }

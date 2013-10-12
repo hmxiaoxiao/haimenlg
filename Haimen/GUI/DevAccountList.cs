@@ -345,5 +345,10 @@ namespace Haimen.GUI
         {
             EditAccount(winStatusEnum.撤消支付);
         }
+
+        private void DevAccountList_Activated(object sender, EventArgs e)
+        {
+            MyRefresh();
+        }
     }
 }

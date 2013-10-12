@@ -150,6 +150,7 @@
             this.layoutControlItem29 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem30 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem31 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.tbPrint = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -322,8 +323,9 @@
             this.tb2Invoice,
             this.tbExit4,
             this.tbUnCheck,
-            this.tbUnPay});
-            this.barManager1.MaxItemId = 16;
+            this.tbUnPay,
+            this.tbPrint});
+            this.barManager1.MaxItemId = 17;
             // 
             // barNormal
             // 
@@ -382,15 +384,16 @@
             // barPay
             // 
             this.barPay.BarName = "Pay";
-            this.barPay.DockCol = 2;
-            this.barPay.DockRow = 0;
+            this.barPay.DockCol = 1;
+            this.barPay.DockRow = 1;
             this.barPay.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.barPay.FloatLocation = new System.Drawing.Point(560, 133);
             this.barPay.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbPay, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbUnPay, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbPrint, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbExit2, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.barPay.Offset = 524;
+            this.barPay.Offset = 233;
             this.barPay.Text = "Pay";
             this.barPay.Visible = false;
             // 
@@ -491,7 +494,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1042, 86);
+            this.barDockControlTop.Size = new System.Drawing.Size(1042, 94);
             // 
             // barDockControlBottom
             // 
@@ -504,15 +507,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 86);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 381);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 94);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 373);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1042, 86);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 381);
+            this.barDockControlRight.Location = new System.Drawing.Point(1042, 94);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 373);
             // 
             // txtMoney
             // 
@@ -534,11 +537,14 @@
             // calcAttachCount
             // 
             this.calcAttachCount.EnterMoveNextControl = true;
+            this.calcAttachCount.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.calcAttachCount.Location = new System.Drawing.Point(421, 216);
             this.calcAttachCount.MenuManager = this.barManager1;
             this.calcAttachCount.Name = "calcAttachCount";
             this.calcAttachCount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcAttachCount.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.calcAttachCount.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.calcAttachCount.Size = new System.Drawing.Size(231, 20);
             this.calcAttachCount.StyleController = this.layoutControl1;
             this.calcAttachCount.TabIndex = 17;
@@ -1138,10 +1144,10 @@
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 86);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 94);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1042, 381);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1042, 373);
             this.xtraTabControl1.TabIndex = 84;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -1153,7 +1159,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.layoutControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1036, 352);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1036, 344);
             this.xtraTabPage1.Text = "基础信息";
             // 
             // xtraTabPage2
@@ -1636,6 +1642,14 @@
             this.layoutControlItem31.Text = "应付金额";
             this.layoutControlItem31.TextSize = new System.Drawing.Size(48, 14);
             // 
+            // tbPrint
+            // 
+            this.tbPrint.Caption = "打印";
+            this.tbPrint.Glyph = ((System.Drawing.Image)(resources.GetObject("tbPrint.Glyph")));
+            this.tbPrint.Id = 16;
+            this.tbPrint.Name = "tbPrint";
+            this.tbPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbPrint_ItemClick);
+            // 
             // DevAccount
             // 
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -1871,5 +1885,6 @@
         private DevExpress.XtraBars.BarButtonItem tbUnCheck;
         private DevExpress.XtraEditors.TextEdit txtCMoney;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
+        private DevExpress.XtraBars.BarButtonItem tbPrint;
     }
 }

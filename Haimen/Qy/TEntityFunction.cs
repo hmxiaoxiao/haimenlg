@@ -20,12 +20,7 @@ namespace Haimen.Qy
         /// <summary>
         /// 当前对象指定的排序字段
         /// </summary>
-        public static new string OrderBy = " Order By ID Desc ";
-
-        /// <summary>
-        /// 是否显示已经打上删除标记的记录
-        /// </summary>
-        public static new bool ShowDeleteRecord = false;
+        //public static new string OrderBy = " Order By ID Desc ";
 
         // 明细列表
         public List<U> DetailList = new List<U>();
@@ -243,7 +238,17 @@ namespace Haimen.Qy
 
             // 生成SQL语句
             if (where.Length > 0)
-                sql += " where " + where;
+            {
+                if (!ShowDeleteRecord)
+                    sql += " where " + where + " and deleted = 0";
+                else
+                    sql += " where " + where;
+            }
+            else
+            {
+                if (!ShowDeleteRecord)
+                    sql += " where deleted = 0 ";
+            }
 
             // 按生成的ID降序排列
             sql += " " + OrderBy;
@@ -259,7 +264,7 @@ namespace Haimen.Qy
             {
                 FieldInfo info = t.GetType().GetField("DetailList");
                 PropertyInfo pro = t.GetType().GetProperty("ID");
-                long id = (long) pro.GetValue(t, null);
+                long id = (long)pro.GetValue(t, null);
                 List<U> detail = new U().Find("parent_id = " + id.ToString());
                 info.SetValue(t, detail);
 
@@ -290,14 +295,14 @@ namespace Haimen.Qy
             if (where.Length > 0)
             {
                 if (!ShowDeleteRecord)
-                    sql += " where " + where + " and deleted <> 1";
+                    sql += " where " + where + " and deleted = 0 ";
                 else
                     sql += " where " + where;
             }
             else
             {
                 if (!ShowDeleteRecord)
-                    sql += " where deleted <> 1";
+                    sql += " where deleted = 0 ";
             }
 
             // 按生成的ID降序排列
