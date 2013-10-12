@@ -34,13 +34,13 @@
             this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
             this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbReset = new DevExpress.XtraBars.BarButtonItem();
             this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.tsbReset = new DevExpress.XtraBars.BarButtonItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -67,7 +67,7 @@
             this.tsbReset,
             this.tsbExit,
             this.tsbRefresh});
-            this.barManager1.MaxItemId = 6;
+            this.barManager1.MaxItemId = 7;
             // 
             // bar1
             // 
@@ -151,6 +151,11 @@
             this.barDockControlRight.Location = new System.Drawing.Point(573, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 437);
             // 
+            // tsbReset
+            // 
+            this.tsbReset.Id = 6;
+            this.tsbReset.Name = "tsbReset";
+            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -174,6 +179,8 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // col_id

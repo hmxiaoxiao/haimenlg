@@ -196,7 +196,6 @@
             this.tree.OptionsView.ShowHorzLines = false;
             this.tree.OptionsView.ShowIndicator = false;
             this.tree.OptionsView.ShowVertLines = false;
-            this.tree.ParentFieldName = "ParentID";
             this.tree.Size = new System.Drawing.Size(247, 450);
             this.tree.TabIndex = 1;
             this.tree.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Light;
@@ -238,6 +237,8 @@
             this.col_parent});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView1_CustomDrawCell);
             this.gridView1.BeforeLeaveRow += new DevExpress.XtraGrid.Views.Base.RowAllowEventHandler(this.gridView1_BeforeLeaveRow);

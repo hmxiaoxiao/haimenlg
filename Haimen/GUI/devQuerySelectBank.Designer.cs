@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.chkSelected = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_selected = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -37,10 +37,17 @@
             this.col_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnConfirm = new DevExpress.XtraEditors.SimpleButton();
             this.btnExit = new DevExpress.XtraEditors.SimpleButton();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSelected)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemCheckEdit1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // chkSelected
+            // 
+            this.chkSelected.AutoHeight = false;
+            this.chkSelected.Caption = "Check";
+            this.chkSelected.Name = "chkSelected";
+            this.chkSelected.ValueChecked = "Y";
             // 
             // gridControl1
             // 
@@ -64,16 +71,14 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // col_selected
             // 
             this.col_selected.Caption = "选择";
-            repositoryItemCheckEdit1.AutoHeight = false;
-            repositoryItemCheckEdit1.Caption = "Check";
-            repositoryItemCheckEdit1.Name = "chkSelected";
-            repositoryItemCheckEdit1.ValueChecked = "Y";
-            this.col_selected.ColumnEdit = repositoryItemCheckEdit1;
+            this.col_selected.ColumnEdit = this.chkSelected;
             this.col_selected.FieldName = "sel";
             this.col_selected.Name = "col_selected";
             this.col_selected.Visible = true;
@@ -121,7 +126,7 @@
             this.btnExit.Text = "取消退出";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // devQuerySelectBank
+            // DevQuerySelectBank
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,13 +134,13 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.gridControl1);
-            this.Name = "devQuerySelectBank";
+            this.Name = "DevQuerySelectBank";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "银行选择";
             this.Load += new System.EventHandler(this.devQuerySelectBank_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.chkSelected)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemCheckEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -150,6 +155,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_name;
         private DevExpress.XtraEditors.SimpleButton btnConfirm;
         private DevExpress.XtraEditors.SimpleButton btnExit;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chkSelected;
 
     }
 }

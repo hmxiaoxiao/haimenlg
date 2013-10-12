@@ -41,6 +41,7 @@
             this.tsbSelectBank = new DevExpress.XtraBars.BarButtonItem();
             this.tsbSelectCompany = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbPrint = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -51,7 +52,6 @@
             this.repositoryItemSearchLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repositoryItemRadioGroup1 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
-            this.tsbPrint = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -109,6 +109,8 @@
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.AllowCellMerge = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.CellMerge += new DevExpress.XtraGrid.Views.Grid.CellMergeEventHandler(this.gridView1_CellMerge);
             // 
@@ -192,6 +194,14 @@
             this.tsbQuery.Id = 0;
             this.tsbQuery.Name = "tsbQuery";
             this.tsbQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbQuery_ItemClick);
+            // 
+            // tsbPrint
+            // 
+            this.tsbPrint.Caption = "打印";
+            this.tsbPrint.Glyph = global::Haimen.Properties.Resources.Print_2_hot;
+            this.tsbPrint.Id = 8;
+            this.tsbPrint.Name = "tsbPrint";
+            this.tsbPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbPrint_ItemClick);
             // 
             // tsbExit
             // 
@@ -278,14 +288,6 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem(),
             new DevExpress.XtraEditors.Controls.RadioGroupItem()});
             this.repositoryItemRadioGroup1.Name = "repositoryItemRadioGroup1";
-            // 
-            // tsbPrint
-            // 
-            this.tsbPrint.Caption = "打印";
-            this.tsbPrint.Glyph = global::Haimen.Properties.Resources.Print_2_hot;
-            this.tsbPrint.Id = 8;
-            this.tsbPrint.Name = "tsbPrint";
-            this.tsbPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbPrint_ItemClick);
             // 
             // DevQueryBalance2
             // 

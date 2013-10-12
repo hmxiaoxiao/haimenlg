@@ -35,6 +35,7 @@
             this.tsbSelectBank = new DevExpress.XtraBars.BarButtonItem();
             this.tsbSelectCompany = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbPrint = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -52,7 +53,6 @@
             this.col_account = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_balance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_credit = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tsbPrint = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
@@ -121,6 +121,14 @@
             this.tsbQuery.Id = 0;
             this.tsbQuery.Name = "tsbQuery";
             this.tsbQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbQuery_ItemClick);
+            // 
+            // tsbPrint
+            // 
+            this.tsbPrint.Caption = "打印";
+            this.tsbPrint.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbPrint.Glyph")));
+            this.tsbPrint.Id = 8;
+            this.tsbPrint.Name = "tsbPrint";
+            this.tsbPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbPrint_ItemClick);
             // 
             // tsbExit
             // 
@@ -233,6 +241,8 @@
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.AllowCellMerge = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.CellMerge += new DevExpress.XtraGrid.Views.Grid.CellMergeEventHandler(this.gridView1_CellMerge);
             // 
@@ -279,14 +289,6 @@
             this.col_credit.Name = "col_credit";
             this.col_credit.Visible = true;
             this.col_credit.VisibleIndex = 4;
-            // 
-            // tsbPrint
-            // 
-            this.tsbPrint.Caption = "打印";
-            this.tsbPrint.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbPrint.Glyph")));
-            this.tsbPrint.Id = 8;
-            this.tsbPrint.Name = "tsbPrint";
-            this.tsbPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbPrint_ItemClick);
             // 
             // DevQueryBalance
             // 

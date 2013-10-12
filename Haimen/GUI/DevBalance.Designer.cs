@@ -39,8 +39,9 @@
             this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
             this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
-            this.btnCheck = new DevExpress.XtraBars.BarButtonItem();
             this.btnExit = new DevExpress.XtraBars.BarButtonItem();
+            this.barCheck = new DevExpress.XtraBars.Bar();
+            this.btnCheck = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -77,7 +78,6 @@
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.barCheck = new DevExpress.XtraBars.Bar();
             ((System.ComponentModel.ISupportInitialize)(this.lueCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -131,7 +131,7 @@
             this.lueCompany.Properties.PopupWidth = 300;
             this.lueCompany.Size = new System.Drawing.Size(229, 20);
             this.lueCompany.StyleController = this.layoutControl1;
-            this.lueCompany.TabIndex = 2;
+            this.lueCompany.TabIndex = 3;
             this.lueCompany.EditValueChanged += new System.EventHandler(this.lueCompany_EditValueChanged);
             // 
             // layoutControl1
@@ -160,7 +160,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(515, 20);
             this.txtName.StyleController = this.layoutControl1;
-            this.txtName.TabIndex = 9;
+            this.txtName.TabIndex = 2;
             // 
             // barManager1
             // 
@@ -228,14 +228,6 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
             // 
-            // btnCheck
-            // 
-            this.btnCheck.Caption = "通过";
-            this.btnCheck.Glyph = global::Haimen.Properties.Resources.Tick_hot;
-            this.btnCheck.Id = 3;
-            this.btnCheck.Name = "btnCheck";
-            this.btnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCheck_ItemClick);
-            // 
             // btnExit
             // 
             this.btnExit.Caption = "退出";
@@ -243,6 +235,27 @@
             this.btnExit.Id = 4;
             this.btnExit.Name = "btnExit";
             this.btnExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExit_ItemClick);
+            // 
+            // barCheck
+            // 
+            this.barCheck.BarName = "Custom 3";
+            this.barCheck.DockCol = 1;
+            this.barCheck.DockRow = 0;
+            this.barCheck.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.barCheck.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCheck, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.barCheck.Offset = 382;
+            this.barCheck.Text = "Custom 3";
+            this.barCheck.Visible = false;
+            // 
+            // btnCheck
+            // 
+            this.btnCheck.Caption = "通过";
+            this.btnCheck.Glyph = global::Haimen.Properties.Resources.Tick_hot;
+            this.btnCheck.Id = 3;
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCheck_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -287,7 +300,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.calcRate.Size = new System.Drawing.Size(230, 20);
             this.calcRate.StyleController = this.layoutControl1;
-            this.calcRate.TabIndex = 8;
+            this.calcRate.TabIndex = 9;
             // 
             // calcMoney
             // 
@@ -300,7 +313,7 @@
             this.calcMoney.Properties.Mask.EditMask = "c";
             this.calcMoney.Size = new System.Drawing.Size(230, 20);
             this.calcMoney.StyleController = this.layoutControl1;
-            this.calcMoney.TabIndex = 6;
+            this.calcMoney.TabIndex = 8;
             // 
             // dtEndDate
             // 
@@ -317,7 +330,7 @@
             this.dtEndDate.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.Default;
             this.dtEndDate.Size = new System.Drawing.Size(231, 20);
             this.dtEndDate.StyleController = this.layoutControl1;
-            this.dtEndDate.TabIndex = 7;
+            this.dtEndDate.TabIndex = 6;
             // 
             // dtBeginDate
             // 
@@ -345,7 +358,7 @@
             this.txtAccount.Name = "txtAccount";
             this.txtAccount.Size = new System.Drawing.Size(515, 20);
             this.txtAccount.StyleController = this.layoutControl1;
-            this.txtAccount.TabIndex = 4;
+            this.txtAccount.TabIndex = 7;
             // 
             // txtCode
             // 
@@ -374,7 +387,7 @@
             this.lueCompanyDetail.Properties.NullText = "请选择银行";
             this.lueCompanyDetail.Size = new System.Drawing.Size(229, 20);
             this.lueCompanyDetail.StyleController = this.layoutControl1;
-            this.lueCompanyDetail.TabIndex = 3;
+            this.lueCompanyDetail.TabIndex = 4;
             this.lueCompanyDetail.EditValueChanged += new System.EventHandler(this.lueCompanyDetail_EditValueChanged);
             // 
             // layoutControlGroup1
@@ -562,6 +575,8 @@
             this.gridColumn2});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
@@ -630,19 +645,6 @@
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(52, 22);
             this.tsbDelete.Text = "删除";
-            // 
-            // barCheck
-            // 
-            this.barCheck.BarName = "Custom 3";
-            this.barCheck.DockCol = 1;
-            this.barCheck.DockRow = 0;
-            this.barCheck.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.barCheck.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCheck, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.barCheck.Offset = 382;
-            this.barCheck.Text = "Custom 3";
-            this.barCheck.Visible = false;
             // 
             // DevBalance
             // 

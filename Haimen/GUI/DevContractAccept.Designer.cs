@@ -193,6 +193,7 @@
             // txtContractMoney
             // 
             this.txtContractMoney.Enabled = false;
+            this.txtContractMoney.EnterMoveNextControl = true;
             this.txtContractMoney.Location = new System.Drawing.Point(300, 37);
             this.txtContractMoney.MenuManager = this.barManager1;
             this.txtContractMoney.Name = "txtContractMoney";
@@ -200,10 +201,11 @@
             this.txtContractMoney.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtContractMoney.Size = new System.Drawing.Size(175, 20);
             this.txtContractMoney.StyleController = this.layoutControl1;
-            this.txtContractMoney.TabIndex = 15;
+            this.txtContractMoney.TabIndex = 5;
             // 
             // clMoney
             // 
+            this.clMoney.EnterMoveNextControl = true;
             this.clMoney.Location = new System.Drawing.Point(68, 249);
             this.clMoney.MenuManager = this.barManager1;
             this.clMoney.Name = "clMoney";
@@ -212,21 +214,23 @@
             this.clMoney.Properties.Mask.EditMask = "c";
             this.clMoney.Size = new System.Drawing.Size(407, 20);
             this.clMoney.StyleController = this.layoutControl1;
-            this.clMoney.TabIndex = 13;
+            this.clMoney.TabIndex = 14;
             // 
             // chkPass
             // 
+            this.chkPass.EnterMoveNextControl = true;
             this.chkPass.Location = new System.Drawing.Point(247, 225);
             this.chkPass.MenuManager = this.barManager1;
             this.chkPass.Name = "chkPass";
             this.chkPass.Properties.Caption = "是否通过";
             this.chkPass.Size = new System.Drawing.Size(228, 19);
             this.chkPass.StyleController = this.layoutControl1;
-            this.chkPass.TabIndex = 12;
+            this.chkPass.TabIndex = 13;
             // 
             // dtAcceptDate
             // 
             this.dtAcceptDate.EditValue = null;
+            this.dtAcceptDate.EnterMoveNextControl = true;
             this.dtAcceptDate.Location = new System.Drawing.Point(68, 225);
             this.dtAcceptDate.MenuManager = this.barManager1;
             this.dtAcceptDate.Name = "dtAcceptDate";
@@ -238,40 +242,44 @@
             this.dtAcceptDate.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.Default;
             this.dtAcceptDate.Size = new System.Drawing.Size(175, 20);
             this.dtAcceptDate.StyleController = this.layoutControl1;
-            this.dtAcceptDate.TabIndex = 11;
+            this.dtAcceptDate.TabIndex = 12;
             // 
             // txtAcceptUnit
             // 
+            this.txtAcceptUnit.EnterMoveNextControl = true;
             this.txtAcceptUnit.Location = new System.Drawing.Point(68, 201);
             this.txtAcceptUnit.MenuManager = this.barManager1;
             this.txtAcceptUnit.Name = "txtAcceptUnit";
             this.txtAcceptUnit.Size = new System.Drawing.Size(407, 20);
             this.txtAcceptUnit.StyleController = this.layoutControl1;
-            this.txtAcceptUnit.TabIndex = 10;
+            this.txtAcceptUnit.TabIndex = 11;
             // 
             // txtContractPartyBName
             // 
             this.txtContractPartyBName.Enabled = false;
+            this.txtContractPartyBName.EnterMoveNextControl = true;
             this.txtContractPartyBName.Location = new System.Drawing.Point(68, 133);
             this.txtContractPartyBName.MenuManager = this.barManager1;
             this.txtContractPartyBName.Name = "txtContractPartyBName";
             this.txtContractPartyBName.Size = new System.Drawing.Size(407, 20);
             this.txtContractPartyBName.StyleController = this.layoutControl1;
-            this.txtContractPartyBName.TabIndex = 9;
+            this.txtContractPartyBName.TabIndex = 10;
             // 
             // txtContractPartyAName
             // 
             this.txtContractPartyAName.Enabled = false;
+            this.txtContractPartyAName.EnterMoveNextControl = true;
             this.txtContractPartyAName.Location = new System.Drawing.Point(68, 109);
             this.txtContractPartyAName.MenuManager = this.barManager1;
             this.txtContractPartyAName.Name = "txtContractPartyAName";
             this.txtContractPartyAName.Size = new System.Drawing.Size(407, 20);
             this.txtContractPartyAName.StyleController = this.layoutControl1;
-            this.txtContractPartyAName.TabIndex = 8;
+            this.txtContractPartyAName.TabIndex = 9;
             // 
             // txtContractUnpay
             // 
             this.txtContractUnpay.Enabled = false;
+            this.txtContractUnpay.EnterMoveNextControl = true;
             this.txtContractUnpay.Location = new System.Drawing.Point(300, 61);
             this.txtContractUnpay.MenuManager = this.barManager1;
             this.txtContractUnpay.Name = "txtContractUnpay";
@@ -284,6 +292,7 @@
             // txtContractPay
             // 
             this.txtContractPay.Enabled = false;
+            this.txtContractPay.EnterMoveNextControl = true;
             this.txtContractPay.Location = new System.Drawing.Point(68, 61);
             this.txtContractPay.MenuManager = this.barManager1;
             this.txtContractPay.Name = "txtContractPay";
@@ -296,16 +305,18 @@
             // txtContractName
             // 
             this.txtContractName.Enabled = false;
+            this.txtContractName.EnterMoveNextControl = true;
             this.txtContractName.Location = new System.Drawing.Point(68, 85);
             this.txtContractName.MenuManager = this.barManager1;
             this.txtContractName.Name = "txtContractName";
             this.txtContractName.Size = new System.Drawing.Size(407, 20);
             this.txtContractName.StyleController = this.layoutControl1;
-            this.txtContractName.TabIndex = 5;
+            this.txtContractName.TabIndex = 8;
             // 
             // txtContractCode
             // 
             this.txtContractCode.Enabled = false;
+            this.txtContractCode.EnterMoveNextControl = true;
             this.txtContractCode.Location = new System.Drawing.Point(68, 37);
             this.txtContractCode.MenuManager = this.barManager1;
             this.txtContractCode.Name = "txtContractCode";
@@ -315,12 +326,13 @@
             // 
             // txtMemo
             // 
+            this.txtMemo.EnterMoveNextControl = true;
             this.txtMemo.Location = new System.Drawing.Point(68, 273);
             this.txtMemo.MenuManager = this.barManager1;
             this.txtMemo.Name = "txtMemo";
             this.txtMemo.Size = new System.Drawing.Size(407, 98);
             this.txtMemo.StyleController = this.layoutControl1;
-            this.txtMemo.TabIndex = 14;
+            this.txtMemo.TabIndex = 15;
             // 
             // layoutControlGroup1
             // 

@@ -270,7 +270,7 @@
             this.calcCostMoney.Properties.Mask.EditMask = "c";
             this.calcCostMoney.Size = new System.Drawing.Size(204, 20);
             this.calcCostMoney.StyleController = this.layoutControl1;
-            this.calcCostMoney.TabIndex = 17;
+            this.calcCostMoney.TabIndex = 12;
             // 
             // barManager1
             // 
@@ -429,14 +429,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(846, 78);
+            this.barDockControlTop.Size = new System.Drawing.Size(869, 78);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 585);
-            this.barDockControlBottom.Size = new System.Drawing.Size(846, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(869, 0);
             // 
             // barDockControlLeft
             // 
@@ -449,7 +449,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(846, 78);
+            this.barDockControlRight.Location = new System.Drawing.Point(869, 78);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 507);
             // 
             // calcAttarchCount
@@ -462,7 +462,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.calcAttarchCount.Size = new System.Drawing.Size(200, 20);
             this.calcAttarchCount.StyleController = this.layoutControl1;
-            this.calcAttarchCount.TabIndex = 16;
+            this.calcAttarchCount.TabIndex = 15;
             // 
             // lueProject
             // 
@@ -476,7 +476,7 @@
             this.lueProject.Properties.NullText = "";
             this.lueProject.Size = new System.Drawing.Size(512, 20);
             this.lueProject.StyleController = this.layoutControl1;
-            this.lueProject.TabIndex = 15;
+            this.lueProject.TabIndex = 16;
             // 
             // txtCheckMoney
             // 
@@ -490,7 +490,7 @@
             this.txtCheckMoney.Properties.NullText = "0";
             this.txtCheckMoney.Size = new System.Drawing.Size(200, 20);
             this.txtCheckMoney.StyleController = this.layoutControl1;
-            this.txtCheckMoney.TabIndex = 13;
+            this.txtCheckMoney.TabIndex = 14;
             // 
             // lueInCompany
             // 
@@ -551,7 +551,7 @@
             this.txtMemo.Name = "txtMemo";
             this.txtMemo.Size = new System.Drawing.Size(512, 158);
             this.txtMemo.StyleController = this.layoutControl1;
-            this.txtMemo.TabIndex = 14;
+            this.txtMemo.TabIndex = 17;
             // 
             // txtPayment_ratio
             // 
@@ -579,7 +579,7 @@
             this.txtSecurity.Properties.Mask.EditMask = "c";
             this.txtSecurity.Size = new System.Drawing.Size(200, 20);
             this.txtSecurity.StyleController = this.layoutControl1;
-            this.txtSecurity.TabIndex = 12;
+            this.txtSecurity.TabIndex = 13;
             // 
             // txtMoney
             // 
@@ -911,6 +911,7 @@
             // 
             // picChecked
             // 
+            this.picChecked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.picChecked.EditValue = ((object)(resources.GetObject("picChecked.EditValue")));
             this.picChecked.Location = new System.Drawing.Point(531, 0);
             this.picChecked.MenuManager = this.barManager1;
@@ -933,7 +934,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.Padding = new System.Windows.Forms.Padding(3);
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(846, 507);
+            this.xtraTabControl1.Size = new System.Drawing.Size(869, 507);
             this.xtraTabControl1.TabIndex = 77;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -945,7 +946,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.layoutControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(840, 478);
+            this.xtraTabPage1.Size = new System.Drawing.Size(863, 478);
             this.xtraTabPage1.Text = "合同基本信息";
             // 
             // xtraTabPage2
@@ -953,7 +954,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl1);
             this.xtraTabPage2.Controls.Add(this.toolStrip3);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(840, 449);
+            this.xtraTabPage2.Size = new System.Drawing.Size(863, 478);
             this.xtraTabPage2.Text = "合同支付明细";
             // 
             // gridControl1
@@ -964,7 +965,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(840, 424);
+            this.gridControl1.Size = new System.Drawing.Size(863, 453);
             this.gridControl1.TabIndex = 74;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -976,6 +977,8 @@
             this.gridColumn2});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
@@ -1023,7 +1026,7 @@
             this.tsbDelete});
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(840, 25);
+            this.toolStrip3.Size = new System.Drawing.Size(863, 25);
             this.toolStrip3.TabIndex = 73;
             this.toolStrip3.Text = "toolStrip3";
             // 
@@ -1055,7 +1058,7 @@
             this.xtraTabPage3.Controls.Add(this.lstFiles);
             this.xtraTabPage3.Controls.Add(this.toolStrip1);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(840, 449);
+            this.xtraTabPage3.Size = new System.Drawing.Size(863, 478);
             this.xtraTabPage3.Text = "合同附件";
             // 
             // lstFiles
@@ -1064,7 +1067,7 @@
             this.lstFiles.ImageList = this.imageListBoxControl2;
             this.lstFiles.Location = new System.Drawing.Point(0, 25);
             this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(840, 424);
+            this.lstFiles.Size = new System.Drawing.Size(863, 453);
             this.lstFiles.TabIndex = 1;
             this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
             // 
@@ -1076,7 +1079,7 @@
             this.tsbAttachDelete});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(840, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(863, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1108,7 +1111,7 @@
             this.xtraTabPage4.Controls.Add(this.layoutControl3);
             this.xtraTabPage4.Controls.Add(this.layoutControl2);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(840, 449);
+            this.xtraTabPage4.Size = new System.Drawing.Size(863, 478);
             this.xtraTabPage4.Text = " 支付申请";
             // 
             // layoutControl3
@@ -1204,6 +1207,7 @@
             // 
             // txtPayed
             // 
+            this.txtPayed.EnterMoveNextControl = true;
             this.txtPayed.Location = new System.Drawing.Point(75, 68);
             this.txtPayed.MenuManager = this.barManager1;
             this.txtPayed.Name = "txtPayed";
@@ -1215,6 +1219,7 @@
             // 
             // calcPayed
             // 
+            this.calcPayed.EnterMoveNextControl = true;
             this.calcPayed.Location = new System.Drawing.Point(75, 44);
             this.calcPayed.MenuManager = this.barManager1;
             this.calcPayed.Name = "calcPayed";
@@ -1295,6 +1300,7 @@
             // 
             // txtApplyMemo
             // 
+            this.txtApplyMemo.EnterMoveNextControl = true;
             this.txtApplyMemo.Location = new System.Drawing.Point(75, 68);
             this.txtApplyMemo.MenuManager = this.barManager1;
             this.txtApplyMemo.Name = "txtApplyMemo";
@@ -1304,6 +1310,7 @@
             // 
             // calcApplyMoney
             // 
+            this.calcApplyMoney.EnterMoveNextControl = true;
             this.calcApplyMoney.Location = new System.Drawing.Point(279, 44);
             this.calcApplyMoney.MenuManager = this.barManager1;
             this.calcApplyMoney.Name = "calcApplyMoney";
@@ -1317,6 +1324,7 @@
             // dtApplyDate
             // 
             this.dtApplyDate.EditValue = null;
+            this.dtApplyDate.EnterMoveNextControl = true;
             this.dtApplyDate.Location = new System.Drawing.Point(75, 44);
             this.dtApplyDate.MenuManager = this.barManager1;
             this.dtApplyDate.Name = "dtApplyDate";
@@ -1387,6 +1395,7 @@
             // 
             // picPayed
             // 
+            this.picPayed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.picPayed.EditValue = ((object)(resources.GetObject("picPayed.EditValue")));
             this.picPayed.Location = new System.Drawing.Point(699, 0);
             this.picPayed.MenuManager = this.barManager1;
@@ -1402,7 +1411,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 585);
+            this.ClientSize = new System.Drawing.Size(869, 585);
             this.Controls.Add(this.picChecked);
             this.Controls.Add(this.picPayed);
             this.Controls.Add(this.xtraTabControl1);

@@ -39,13 +39,15 @@
             this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lueStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.col_partya = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_partyb = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_incompany = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_cost = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_checkmoney = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_pay = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_securigy = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_status = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lueStatus = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -59,14 +61,12 @@
             this.tsbPay = new DevExpress.XtraBars.BarButtonItem();
             this.tsbAccept = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbCostMoney = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbCheckMoney = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.tsbCostMoney = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbCheckMoney = new DevExpress.XtraBars.BarButtonItem();
-            this.col_cost = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_checkmoney = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -79,7 +79,7 @@
             this.col_payment_ration.FieldName = "PaymentRatio";
             this.col_payment_ration.Name = "col_payment_ration";
             this.col_payment_ration.Visible = true;
-            this.col_payment_ration.VisibleIndex = 14;
+            this.col_payment_ration.VisibleIndex = 15;
             // 
             // col_money
             // 
@@ -89,7 +89,7 @@
             this.col_money.FieldName = "Money";
             this.col_money.Name = "col_money";
             this.col_money.Visible = true;
-            this.col_money.VisibleIndex = 9;
+            this.col_money.VisibleIndex = 10;
             // 
             // col_name
             // 
@@ -97,7 +97,7 @@
             this.col_name.FieldName = "Name";
             this.col_name.Name = "col_name";
             this.col_name.Visible = true;
-            this.col_name.VisibleIndex = 1;
+            this.col_name.VisibleIndex = 2;
             // 
             // col_end_date
             // 
@@ -105,7 +105,7 @@
             this.col_end_date.FieldName = "EndDate";
             this.col_end_date.Name = "col_end_date";
             this.col_end_date.Visible = true;
-            this.col_end_date.VisibleIndex = 8;
+            this.col_end_date.VisibleIndex = 9;
             // 
             // col_begin_date
             // 
@@ -113,7 +113,7 @@
             this.col_begin_date.FieldName = "BeginDate";
             this.col_begin_date.Name = "col_begin_date";
             this.col_begin_date.Visible = true;
-            this.col_begin_date.VisibleIndex = 7;
+            this.col_begin_date.VisibleIndex = 8;
             // 
             // col_signed_date
             // 
@@ -121,7 +121,7 @@
             this.col_signed_date.FieldName = "SignedDate";
             this.col_signed_date.Name = "col_signed_date";
             this.col_signed_date.Visible = true;
-            this.col_signed_date.VisibleIndex = 6;
+            this.col_signed_date.VisibleIndex = 7;
             // 
             // col_outcompany
             // 
@@ -129,7 +129,7 @@
             this.col_outcompany.FieldName = "OutCompany.Name";
             this.col_outcompany.Name = "col_outcompany";
             this.col_outcompany.Visible = true;
-            this.col_outcompany.VisibleIndex = 4;
+            this.col_outcompany.VisibleIndex = 5;
             // 
             // col_code
             // 
@@ -137,7 +137,7 @@
             this.col_code.FieldName = "Code";
             this.col_code.Name = "col_code";
             this.col_code.Visible = true;
-            this.col_code.VisibleIndex = 0;
+            this.col_code.VisibleIndex = 1;
             // 
             // gridView1
             // 
@@ -163,6 +163,8 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // col_id
@@ -170,50 +172,6 @@
             this.col_id.Caption = "ID";
             this.col_id.FieldName = "Name";
             this.col_id.Name = "col_id";
-            // 
-            // col_partya
-            // 
-            this.col_partya.Caption = "甲方";
-            this.col_partya.FieldName = "PartyA.Name";
-            this.col_partya.Name = "col_partya";
-            this.col_partya.Visible = true;
-            this.col_partya.VisibleIndex = 2;
-            // 
-            // col_partyb
-            // 
-            this.col_partyb.Caption = "乙方";
-            this.col_partyb.FieldName = "PartyB.Name";
-            this.col_partyb.Name = "col_partyb";
-            this.col_partyb.Visible = true;
-            this.col_partyb.VisibleIndex = 3;
-            // 
-            // col_incompany
-            // 
-            this.col_incompany.Caption = "收款单位";
-            this.col_incompany.FieldName = "InCompany.Name";
-            this.col_incompany.Name = "col_incompany";
-            this.col_incompany.Visible = true;
-            this.col_incompany.VisibleIndex = 5;
-            // 
-            // col_pay
-            // 
-            this.col_pay.Caption = "已付金额";
-            this.col_pay.DisplayFormat.FormatString = "c";
-            this.col_pay.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.col_pay.FieldName = "Pay";
-            this.col_pay.Name = "col_pay";
-            this.col_pay.Visible = true;
-            this.col_pay.VisibleIndex = 12;
-            // 
-            // col_securigy
-            // 
-            this.col_securigy.Caption = "保证金";
-            this.col_securigy.DisplayFormat.FormatString = "c";
-            this.col_securigy.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.col_securigy.FieldName = "Security";
-            this.col_securigy.Name = "col_securigy";
-            this.col_securigy.Visible = true;
-            this.col_securigy.VisibleIndex = 13;
             // 
             // col_status
             // 
@@ -232,6 +190,70 @@
             this.lueStatus.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
             this.lueStatus.Name = "lueStatus";
+            // 
+            // col_partya
+            // 
+            this.col_partya.Caption = "甲方";
+            this.col_partya.FieldName = "PartyA.Name";
+            this.col_partya.Name = "col_partya";
+            this.col_partya.Visible = true;
+            this.col_partya.VisibleIndex = 3;
+            // 
+            // col_partyb
+            // 
+            this.col_partyb.Caption = "乙方";
+            this.col_partyb.FieldName = "PartyB.Name";
+            this.col_partyb.Name = "col_partyb";
+            this.col_partyb.Visible = true;
+            this.col_partyb.VisibleIndex = 4;
+            // 
+            // col_incompany
+            // 
+            this.col_incompany.Caption = "收款单位";
+            this.col_incompany.FieldName = "InCompany.Name";
+            this.col_incompany.Name = "col_incompany";
+            this.col_incompany.Visible = true;
+            this.col_incompany.VisibleIndex = 6;
+            // 
+            // col_cost
+            // 
+            this.col_cost.Caption = "决算价";
+            this.col_cost.DisplayFormat.FormatString = "c";
+            this.col_cost.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.col_cost.FieldName = "Cost";
+            this.col_cost.Name = "col_cost";
+            this.col_cost.Visible = true;
+            this.col_cost.VisibleIndex = 11;
+            // 
+            // col_checkmoney
+            // 
+            this.col_checkmoney.Caption = "审计价";
+            this.col_checkmoney.DisplayFormat.FormatString = "c";
+            this.col_checkmoney.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.col_checkmoney.FieldName = "CheckMoney";
+            this.col_checkmoney.Name = "col_checkmoney";
+            this.col_checkmoney.Visible = true;
+            this.col_checkmoney.VisibleIndex = 12;
+            // 
+            // col_pay
+            // 
+            this.col_pay.Caption = "已付金额";
+            this.col_pay.DisplayFormat.FormatString = "c";
+            this.col_pay.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.col_pay.FieldName = "Pay";
+            this.col_pay.Name = "col_pay";
+            this.col_pay.Visible = true;
+            this.col_pay.VisibleIndex = 13;
+            // 
+            // col_securigy
+            // 
+            this.col_securigy.Caption = "保证金";
+            this.col_securigy.DisplayFormat.FormatString = "c";
+            this.col_securigy.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.col_securigy.FieldName = "Security";
+            this.col_securigy.Name = "col_securigy";
+            this.col_securigy.Visible = true;
+            this.col_securigy.VisibleIndex = 14;
             // 
             // gridControl1
             // 
@@ -371,6 +393,22 @@
             this.tsbExit.Name = "tsbExit";
             this.tsbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbExit_ItemClick);
             // 
+            // tsbCostMoney
+            // 
+            this.tsbCostMoney.Caption = "决算价";
+            this.tsbCostMoney.Glyph = global::Haimen.Properties.Resources.Parcel_hot;
+            this.tsbCostMoney.Id = 10;
+            this.tsbCostMoney.Name = "tsbCostMoney";
+            this.tsbCostMoney.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbCostMoney_ItemClick);
+            // 
+            // tsbCheckMoney
+            // 
+            this.tsbCheckMoney.Caption = "审计价";
+            this.tsbCheckMoney.Glyph = global::Haimen.Properties.Resources.Page_Number_hot;
+            this.tsbCheckMoney.Id = 11;
+            this.tsbCheckMoney.Name = "tsbCheckMoney";
+            this.tsbCheckMoney.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbCheckMoney_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -398,42 +436,6 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1075, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
-            // 
-            // tsbCostMoney
-            // 
-            this.tsbCostMoney.Caption = "决算价";
-            this.tsbCostMoney.Glyph = global::Haimen.Properties.Resources.Parcel_hot;
-            this.tsbCostMoney.Id = 10;
-            this.tsbCostMoney.Name = "tsbCostMoney";
-            this.tsbCostMoney.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbCostMoney_ItemClick);
-            // 
-            // tsbCheckMoney
-            // 
-            this.tsbCheckMoney.Caption = "审计价";
-            this.tsbCheckMoney.Glyph = global::Haimen.Properties.Resources.Page_Number_hot;
-            this.tsbCheckMoney.Id = 11;
-            this.tsbCheckMoney.Name = "tsbCheckMoney";
-            this.tsbCheckMoney.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbCheckMoney_ItemClick);
-            // 
-            // col_cost
-            // 
-            this.col_cost.Caption = "决算价";
-            this.col_cost.DisplayFormat.FormatString = "c";
-            this.col_cost.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.col_cost.FieldName = "Cost";
-            this.col_cost.Name = "col_cost";
-            this.col_cost.Visible = true;
-            this.col_cost.VisibleIndex = 10;
-            // 
-            // col_checkmoney
-            // 
-            this.col_checkmoney.Caption = "审计价";
-            this.col_checkmoney.DisplayFormat.FormatString = "c";
-            this.col_checkmoney.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.col_checkmoney.FieldName = "CheckMoney";
-            this.col_checkmoney.Name = "col_checkmoney";
-            this.col_checkmoney.Visible = true;
-            this.col_checkmoney.VisibleIndex = 11;
             // 
             // DevContractList
             // 

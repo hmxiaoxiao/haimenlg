@@ -30,7 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.cbOutput = new DevExpress.XtraEditors.CheckEdit();
-            this.cbInput = new DevExpress.XtraEditors.CheckEdit();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtDoc = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
@@ -43,10 +44,9 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.txtDoc = new DevExpress.XtraEditors.TextEdit();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.txtCode = new DevExpress.XtraEditors.TextEdit();
+            this.cbInput = new DevExpress.XtraEditors.CheckEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -55,13 +55,13 @@
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.cbOutput.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbInput.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoc.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbInput.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
@@ -73,6 +73,7 @@
             // 
             // cbOutput
             // 
+            this.cbOutput.EnterMoveNextControl = true;
             this.cbOutput.Location = new System.Drawing.Point(70, 179);
             this.cbOutput.Name = "cbOutput";
             this.cbOutput.Properties.Caption = "支出单位";
@@ -80,14 +81,30 @@
             this.cbOutput.StyleController = this.layoutControl1;
             this.cbOutput.TabIndex = 6;
             // 
-            // cbInput
+            // layoutControl1
             // 
-            this.cbInput.Location = new System.Drawing.Point(70, 140);
-            this.cbInput.Name = "cbInput";
-            this.cbInput.Properties.Caption = "收入单位";
-            this.cbInput.Size = new System.Drawing.Size(367, 19);
-            this.cbInput.StyleController = this.layoutControl1;
-            this.cbInput.TabIndex = 5;
+            this.layoutControl1.Controls.Add(this.txtDoc);
+            this.layoutControl1.Controls.Add(this.txtName);
+            this.layoutControl1.Controls.Add(this.txtCode);
+            this.layoutControl1.Controls.Add(this.cbOutput);
+            this.layoutControl1.Controls.Add(this.cbInput);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 37);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsFocus.EnableAutoTabOrder = false;
+            this.layoutControl1.Root = this.layoutControlGroup1;
+            this.layoutControl1.Size = new System.Drawing.Size(457, 367);
+            this.layoutControl1.TabIndex = 14;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
+            // txtDoc
+            // 
+            this.txtDoc.EnterMoveNextControl = true;
+            this.txtDoc.Location = new System.Drawing.Point(70, 100);
+            this.txtDoc.MenuManager = this.barManager1;
+            this.txtDoc.Name = "txtDoc";
+            this.txtDoc.Size = new System.Drawing.Size(367, 20);
+            this.txtDoc.StyleController = this.layoutControl1;
+            this.txtDoc.TabIndex = 3;
             // 
             // barManager1
             // 
@@ -195,31 +212,6 @@
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
-            // layoutControl1
-            // 
-            this.layoutControl1.Controls.Add(this.txtDoc);
-            this.layoutControl1.Controls.Add(this.txtName);
-            this.layoutControl1.Controls.Add(this.txtCode);
-            this.layoutControl1.Controls.Add(this.cbOutput);
-            this.layoutControl1.Controls.Add(this.cbInput);
-            this.layoutControl1.Location = new System.Drawing.Point(0, 37);
-            this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsFocus.EnableAutoTabOrder = false;
-            this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(457, 367);
-            this.layoutControl1.TabIndex = 14;
-            this.layoutControl1.Text = "layoutControl1";
-            // 
-            // txtDoc
-            // 
-            this.txtDoc.EnterMoveNextControl = true;
-            this.txtDoc.Location = new System.Drawing.Point(70, 100);
-            this.txtDoc.MenuManager = this.barManager1;
-            this.txtDoc.Name = "txtDoc";
-            this.txtDoc.Size = new System.Drawing.Size(367, 20);
-            this.txtDoc.StyleController = this.layoutControl1;
-            this.txtDoc.TabIndex = 4;
-            // 
             // txtName
             // 
             this.txtName.EnterMoveNextControl = true;
@@ -239,6 +231,16 @@
             this.txtCode.Size = new System.Drawing.Size(367, 20);
             this.txtCode.StyleController = this.layoutControl1;
             this.txtCode.TabIndex = 1;
+            // 
+            // cbInput
+            // 
+            this.cbInput.EnterMoveNextControl = true;
+            this.cbInput.Location = new System.Drawing.Point(70, 140);
+            this.cbInput.Name = "cbInput";
+            this.cbInput.Properties.Caption = "收入单位";
+            this.cbInput.Size = new System.Drawing.Size(367, 19);
+            this.cbInput.StyleController = this.layoutControl1;
+            this.cbInput.TabIndex = 5;
             // 
             // layoutControlGroup1
             // 
@@ -330,13 +332,13 @@
             this.Text = "单位管理";
             this.Load += new System.EventHandler(this.DevCompany_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cbOutput.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbInput.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtDoc.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbInput.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();

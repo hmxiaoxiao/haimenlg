@@ -562,6 +562,7 @@
             // txtMoveBank
             // 
             this.txtMoveBank.Enabled = false;
+            this.txtMoveBank.EnterMoveNextControl = true;
             this.txtMoveBank.Location = new System.Drawing.Point(201, 139);
             this.txtMoveBank.MenuManager = this.barManager1;
             this.txtMoveBank.Name = "txtMoveBank";
@@ -572,6 +573,7 @@
             // lueMoveAccount
             // 
             this.lueMoveAccount.Enabled = false;
+            this.lueMoveAccount.EnterMoveNextControl = true;
             this.lueMoveAccount.Location = new System.Drawing.Point(201, 109);
             this.lueMoveAccount.MenuManager = this.barManager1;
             this.lueMoveAccount.Name = "lueMoveAccount";
@@ -593,6 +595,7 @@
             // lueMoveCompany
             // 
             this.lueMoveCompany.Enabled = false;
+            this.lueMoveCompany.EnterMoveNextControl = true;
             this.lueMoveCompany.Location = new System.Drawing.Point(201, 79);
             this.lueMoveCompany.MenuManager = this.barManager1;
             this.lueMoveCompany.Name = "lueMoveCompany";

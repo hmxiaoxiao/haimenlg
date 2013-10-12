@@ -73,6 +73,8 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // col_selected
@@ -126,7 +128,7 @@
             this.btnConfirm.Text = "确认选择";
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // devQuerySelectCompany
+            // DevQuerySelectCompany
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -134,7 +136,7 @@
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnConfirm);
-            this.Name = "devQuerySelectCompany";
+            this.Name = "DevQuerySelectCompany";
             this.Text = "单位选择";
             this.Load += new System.EventHandler(this.devQuerySelectCompany_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chk_Selected)).EndInit();

@@ -37,6 +37,7 @@
             this.tsbGene = new DevExpress.XtraBars.BarButtonItem();
             this.tsbCheck = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -52,7 +53,6 @@
             this.col_money = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_remaining = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_rate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -143,6 +143,14 @@
             this.tsbQuery.Name = "tsbQuery";
             this.tsbQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbQuery_ItemClick);
             // 
+            // tsbRefresh
+            // 
+            this.tsbRefresh.Caption = "刷新";
+            this.tsbRefresh.Glyph = global::Haimen.Properties.Resources.Refresh_hot;
+            this.tsbRefresh.Id = 7;
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
+            // 
             // tsbExit
             // 
             this.tsbExit.Caption = "退出";
@@ -206,6 +214,8 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // col_id
@@ -273,14 +283,6 @@
             this.col_rate.Name = "col_rate";
             this.col_rate.Visible = true;
             this.col_rate.VisibleIndex = 6;
-            // 
-            // tsbRefresh
-            // 
-            this.tsbRefresh.Caption = "刷新";
-            this.tsbRefresh.Glyph = global::Haimen.Properties.Resources.Refresh_hot;
-            this.tsbRefresh.Id = 7;
-            this.tsbRefresh.Name = "tsbRefresh";
-            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
             // 
             // DevBalanceList
             // 
