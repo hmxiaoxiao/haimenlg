@@ -189,6 +189,8 @@ namespace Haimen.Entity
             }
         }
 
+
+
         [Field("project_id")]
         public long ProjectID { get; set; }
         private Project m_project;
@@ -201,6 +203,9 @@ namespace Haimen.Entity
                 return m_project;
             }
         }
+
+        [Field("deleted")]
+        public long Deleted { get; set; }
 
         /// <summary>
         /// 审核通过
@@ -365,6 +370,20 @@ namespace Haimen.Entity
             return base.Update();
         }
 
+        // 资金的删除不是真正的删除
+        // 只是打上标记，默认不会显示
+        public override void Destory()
+        {
+            this.Deleted = 1;       // 打上删除标记
+            foreach (AccountDetail ad in DetailList)
+            {
+                ad.Deleted = 1;
+                ad.Save();
+            }
+            this.Save();
+            return;
+        }
+
         /// <summary>
         /// 非正式发票转换为正式发票
         /// </summary>
@@ -376,6 +395,7 @@ namespace Haimen.Entity
                 this.Save();
             }
         }
+
 
         private static List<Dict> m_account_status_list;
         public static List<Dict> AccountStatusList
@@ -422,7 +442,7 @@ namespace Haimen.Entity
         /// <returns></returns>
         public bool CanDelete()
         {
-            if (this.Status > (long)AccountStatusEnum.未审核)
+            if (this.Status != (long)AccountStatusEnum.未审核)
                 return false;
             else
                 return true;

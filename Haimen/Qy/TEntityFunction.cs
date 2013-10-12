@@ -22,6 +22,11 @@ namespace Haimen.Qy
         /// </summary>
         public static new string OrderBy = " Order By ID Desc ";
 
+        /// <summary>
+        /// 是否显示已经打上删除标记的记录
+        /// </summary>
+        public static new bool ShowDeleteRecord = false;
+
         // 明细列表
         public List<U> DetailList = new List<U>();
 
@@ -283,7 +288,17 @@ namespace Haimen.Qy
 
             // 生成SQL语句
             if (where.Length > 0)
-                sql += " where " + where;
+            {
+                if (!ShowDeleteRecord)
+                    sql += " where " + where + " and deleted <> 1";
+                else
+                    sql += " where " + where;
+            }
+            else
+            {
+                if (!ShowDeleteRecord)
+                    sql += " where deleted <> 1";
+            }
 
             // 按生成的ID降序排列
             sql += " " + OrderBy;
