@@ -89,6 +89,20 @@ namespace Haimen.Entity
                     m_list.Add("基本户");
                     m_list.Add("一般户");
                     m_list.Add("贷款户");
+                    m_list.Add("一般户");
+                    m_list.Add("预算内");
+                    m_list.Add("预算外");
+                    m_list.Add("贷款户");
+                    m_list.Add("风险保证金");
+                    m_list.Add("公积金");
+                    m_list.Add("基本户");
+                    m_list.Add("经费帐");
+                    m_list.Add("取款专户");
+                    m_list.Add("收息户");
+                    m_list.Add("税款户");
+                    m_list.Add("信贷资金");
+                    m_list.Add("偿债备时金");
+                    m_list.Add("承兑保证金户");
                 }
                 return m_list;
             }

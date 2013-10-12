@@ -70,6 +70,7 @@ namespace Haimen.GUI
 
         private void MyRefresh()
         {
+            Company.OrderBy = "order by code";
             List<Company> companies = Company.Query();
             tree.DataSource = companies;
 

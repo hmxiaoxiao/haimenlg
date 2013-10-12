@@ -241,7 +241,7 @@ namespace Haimen.Qy
                 sql += " where " + where;
 
             // 按生成的ID降序排列
-            sql += OrderBy;
+            sql += " " + OrderBy;
 
             cmd.CommandText = sql;
             SqlDataAdapter adap = new SqlDataAdapter(cmd);
@@ -286,7 +286,7 @@ namespace Haimen.Qy
                 sql += " where " + where;
 
             // 按生成的ID降序排列
-            sql += OrderBy;
+            sql += " " + OrderBy;
 
 
             cmd.CommandText = sql;
