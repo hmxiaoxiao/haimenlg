@@ -215,66 +215,67 @@
             this.gridView1.OptionsCustomization.AllowFilter = false;
             this.gridView1.OptionsCustomization.AllowGroup = false;
             this.gridView1.OptionsCustomization.AllowSort = false;
+            this.gridView1.OptionsView.AllowCellMerge = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.CellMerge += new DevExpress.XtraGrid.Views.Grid.CellMergeEventHandler(this.gridView1_CellMerge);
             // 
             // col_userid
             // 
             this.col_userid.Caption = "用户ID";
             this.col_userid.FieldName = "UserID";
             this.col_userid.Name = "col_userid";
-            this.col_userid.Visible = true;
-            this.col_userid.VisibleIndex = 0;
+            this.col_userid.OptionsColumn.AllowEdit = false;
             // 
             // col_usergroupid
             // 
             this.col_usergroupid.Caption = "用户组ID";
             this.col_usergroupid.FieldName = "UserGroupID";
             this.col_usergroupid.Name = "col_usergroupid";
-            this.col_usergroupid.Visible = true;
-            this.col_usergroupid.VisibleIndex = 1;
+            this.col_usergroupid.OptionsColumn.AllowEdit = false;
             // 
             // col_functiontype
             // 
             this.col_functiontype.Caption = "类别";
             this.col_functiontype.FieldName = "FunctionType";
             this.col_functiontype.Name = "col_functiontype";
+            this.col_functiontype.OptionsColumn.AllowEdit = false;
             this.col_functiontype.Visible = true;
-            this.col_functiontype.VisibleIndex = 2;
+            this.col_functiontype.VisibleIndex = 0;
             // 
             // col_functionid
             // 
             this.col_functionid.Caption = "功能ID";
             this.col_functionid.FieldName = "FunctionID";
             this.col_functionid.Name = "col_functionid";
-            this.col_functionid.Visible = true;
-            this.col_functionid.VisibleIndex = 3;
+            this.col_functionid.OptionsColumn.AllowEdit = false;
             // 
             // col_functionname
             // 
             this.col_functionname.Caption = "功能";
             this.col_functionname.FieldName = "FunctionName";
             this.col_functionname.Name = "col_functionname";
+            this.col_functionname.OptionsColumn.AllowEdit = false;
             this.col_functionname.Visible = true;
-            this.col_functionname.VisibleIndex = 4;
+            this.col_functionname.VisibleIndex = 1;
             // 
             // col_actionid
             // 
             this.col_actionid.Caption = "操作ID";
             this.col_actionid.FieldName = "ActionID";
             this.col_actionid.Name = "col_actionid";
-            this.col_actionid.Visible = true;
-            this.col_actionid.VisibleIndex = 5;
+            this.col_actionid.OptionsColumn.AllowEdit = false;
             // 
             // col_actionname
             // 
             this.col_actionname.Caption = "操作";
             this.col_actionname.FieldName = "ActionName";
             this.col_actionname.Name = "col_actionname";
+            this.col_actionname.OptionsColumn.AllowEdit = false;
             this.col_actionname.Visible = true;
-            this.col_actionname.VisibleIndex = 6;
+            this.col_actionname.VisibleIndex = 2;
             // 
             // col_access
             // 
@@ -283,7 +284,7 @@
             this.col_access.FieldName = "CanAccess";
             this.col_access.Name = "col_access";
             this.col_access.Visible = true;
-            this.col_access.VisibleIndex = 7;
+            this.col_access.VisibleIndex = 3;
             // 
             // chkAccess
             // 

@@ -115,6 +115,15 @@ namespace Haimen.GUI
 
         }
 
+        private void gridView1_CellMerge(object sender, DevExpress.XtraGrid.Views.Grid.CellMergeEventArgs e)
+        {
+            if (e.Column == col_access)
+            {
+                e.Merge = false;
+                e.Handled = true;
+            }
+        }
+
 
     }
 }

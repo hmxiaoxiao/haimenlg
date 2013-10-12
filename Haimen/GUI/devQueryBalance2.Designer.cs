@@ -51,6 +51,7 @@
             this.repositoryItemSearchLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repositoryItemRadioGroup1 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
+            this.tsbPrint = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -146,8 +147,9 @@
             this.tsbQuery,
             this.tsbExit,
             this.tsbSelectBank,
-            this.tsbSelectCompany});
-            this.barManager1.MaxItemId = 8;
+            this.tsbSelectCompany,
+            this.tsbPrint});
+            this.barManager1.MaxItemId = 9;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueBank,
             this.repositoryItemSearchLookUpEdit1,
@@ -163,6 +165,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbSelectBank, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbSelectCompany, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPrint, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
@@ -276,6 +279,14 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem()});
             this.repositoryItemRadioGroup1.Name = "repositoryItemRadioGroup1";
             // 
+            // tsbPrint
+            // 
+            this.tsbPrint.Caption = "打印";
+            this.tsbPrint.Glyph = global::Haimen.Properties.Resources.Print_2_hot;
+            this.tsbPrint.Id = 8;
+            this.tsbPrint.Name = "tsbPrint";
+            this.tsbPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbPrint_ItemClick);
+            // 
             // DevQueryBalance2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -324,5 +335,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup1;
+        private DevExpress.XtraBars.BarButtonItem tsbPrint;
     }
 }

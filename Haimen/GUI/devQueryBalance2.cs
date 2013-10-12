@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 using Haimen.Qy;
+using DevExpress.XtraPrinting;
 
 namespace Haimen.GUI
 {
@@ -110,6 +111,29 @@ namespace Haimen.GUI
                 e.Merge = false;
                 e.Handled = true;
             }
+        }
+
+        private void tsbPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            PrintableComponentLink link = new PrintableComponentLink(new PrintingSystem());
+            link.Component = this.gridControl1;
+            link.Landscape = true;
+            link.PaperKind = System.Drawing.Printing.PaperKind.A3;
+            link.CreateMarginalHeaderArea += new CreateAreaEventHandler(Link_CreateMarginalHeaderArea);
+            link.CreateDocument();
+            link.ShowPreview();
+        }
+
+        private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
+        {
+            string title = "单位余额明细";
+            PageInfoBrick brick = e.Graph.DrawPageInfo(PageInfo.None, title, Color.DarkBlue,
+               new RectangleF(0, 0, 100, 30), BorderSide.None);
+
+            brick.LineAlignment = BrickAlignment.Center;
+            brick.Alignment = BrickAlignment.Center;
+            brick.AutoWidth = true;
+            brick.Font = new System.Drawing.Font("宋体", 11f, FontStyle.Bold);
         }
     }
 }

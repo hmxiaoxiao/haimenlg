@@ -64,7 +64,9 @@
             this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tsbCheck = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbUnCheck = new DevExpress.XtraBars.BarButtonItem();
             this.tsbPay = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbUnPay = new DevExpress.XtraBars.BarButtonItem();
             this.tsb2Invoice = new DevExpress.XtraBars.BarButtonItem();
             this.tsbPrint = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
@@ -76,8 +78,6 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.tsbNewInput = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.tsbUnCheck = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbUnPay = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -123,6 +123,8 @@
             this.gridView3.GridControl = this.gridControl2;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsBehavior.Editable = false;
+            this.gridView3.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView3.OptionsView.EnableAppearanceOddRow = true;
             this.gridView3.OptionsView.ShowGroupPanel = false;
             // 
             // col_funds
@@ -179,6 +181,8 @@
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsNavigation.EnterMoveNextColumn = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
             // 
@@ -424,6 +428,14 @@
             this.tsbCheck.Name = "tsbCheck";
             this.tsbCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbCheck_ItemClick);
             // 
+            // tsbUnCheck
+            // 
+            this.tsbUnCheck.Caption = "撤审";
+            this.tsbUnCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnCheck.Glyph")));
+            this.tsbUnCheck.Id = 13;
+            this.tsbUnCheck.Name = "tsbUnCheck";
+            this.tsbUnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnCheck_ItemClick);
+            // 
             // tsbPay
             // 
             this.tsbPay.Caption = "支付";
@@ -431,6 +443,14 @@
             this.tsbPay.Id = 9;
             this.tsbPay.Name = "tsbPay";
             this.tsbPay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // tsbUnPay
+            // 
+            this.tsbUnPay.Caption = "撤消支付";
+            this.tsbUnPay.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnPay.Glyph")));
+            this.tsbUnPay.Id = 14;
+            this.tsbUnPay.Name = "tsbUnPay";
+            this.tsbUnPay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnPay_ItemClick);
             // 
             // tsb2Invoice
             // 
@@ -519,22 +539,6 @@
             this.splitContainerControl1.SplitterPosition = 217;
             this.splitContainerControl1.TabIndex = 38;
             this.splitContainerControl1.Text = "splitContainerControl1";
-            // 
-            // tsbUnCheck
-            // 
-            this.tsbUnCheck.Caption = "撤审";
-            this.tsbUnCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnCheck.Glyph")));
-            this.tsbUnCheck.Id = 13;
-            this.tsbUnCheck.Name = "tsbUnCheck";
-            this.tsbUnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnCheck_ItemClick);
-            // 
-            // tsbUnPay
-            // 
-            this.tsbUnPay.Caption = "撤消支付";
-            this.tsbUnPay.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnPay.Glyph")));
-            this.tsbUnPay.Id = 14;
-            this.tsbUnPay.Name = "tsbUnPay";
-            this.tsbUnPay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnPay_ItemClick);
             // 
             // DevAccountList
             // 
