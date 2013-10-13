@@ -47,6 +47,8 @@ namespace Haimen.Entity
         支付,
         取消支付,
         打印,
+        完结,     // 承兑汇票用
+        转正式发票,
     }
 
     /// <summary>
@@ -185,6 +187,7 @@ namespace Haimen.Entity
                 m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.支付, Enum.GetName(typeof(ActionEnum), ActionEnum.支付)));
                 m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.取消支付, Enum.GetName(typeof(ActionEnum), ActionEnum.取消支付)));
                 m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.打印, Enum.GetName(typeof(ActionEnum), ActionEnum.打印)));
+                m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.转正式发票, Enum.GetName(typeof(ActionEnum), ActionEnum.转正式发票)));
 
                 m_list.Add(new Access("业务", (long)FctionEnum.合同, Enum.GetName(typeof(FctionEnum), FctionEnum.合同), (long)ActionEnum.查看, Enum.GetName(typeof(ActionEnum), ActionEnum.查看)));
                 m_list.Add(new Access("业务", (long)FctionEnum.合同, Enum.GetName(typeof(FctionEnum), FctionEnum.合同), (long)ActionEnum.新增, Enum.GetName(typeof(ActionEnum), ActionEnum.新增)));
@@ -220,11 +223,12 @@ namespace Haimen.Entity
                 m_list.Add(new Access("业务", (long)FctionEnum.承兑汇票, Enum.GetName(typeof(FctionEnum), FctionEnum.承兑汇票), (long)ActionEnum.新增, Enum.GetName(typeof(ActionEnum), ActionEnum.新增)));
                 m_list.Add(new Access("业务", (long)FctionEnum.承兑汇票, Enum.GetName(typeof(FctionEnum), FctionEnum.承兑汇票), (long)ActionEnum.编辑, Enum.GetName(typeof(ActionEnum), ActionEnum.编辑)));
                 m_list.Add(new Access("业务", (long)FctionEnum.承兑汇票, Enum.GetName(typeof(FctionEnum), FctionEnum.承兑汇票), (long)ActionEnum.删除, Enum.GetName(typeof(ActionEnum), ActionEnum.删除)));
-                m_list.Add(new Access("业务", (long)FctionEnum.承兑汇票, Enum.GetName(typeof(FctionEnum), FctionEnum.承兑汇票), (long)ActionEnum.审核, Enum.GetName(typeof(ActionEnum), ActionEnum.审核)));
-                m_list.Add(new Access("业务", (long)FctionEnum.承兑汇票, Enum.GetName(typeof(FctionEnum), FctionEnum.承兑汇票), (long)ActionEnum.撤审, Enum.GetName(typeof(ActionEnum), ActionEnum.撤审)));
+                //m_list.Add(new Access("业务", (long)FctionEnum.承兑汇票, Enum.GetName(typeof(FctionEnum), FctionEnum.承兑汇票), (long)ActionEnum.审核, Enum.GetName(typeof(ActionEnum), ActionEnum.审核)));
+                //m_list.Add(new Access("业务", (long)FctionEnum.承兑汇票, Enum.GetName(typeof(FctionEnum), FctionEnum.承兑汇票), (long)ActionEnum.撤审, Enum.GetName(typeof(ActionEnum), ActionEnum.撤审)));
                 //m_list.Add(new Access("业务", (long)FctionEnum.承兑汇票, Enum.GetName(typeof(FctionEnum), FctionEnum.承兑汇票), (long)ActionEnum.支付, Enum.GetName(typeof(ActionEnum), ActionEnum.支付)));
                 //m_list.Add(new Access("业务", (long)FctionEnum.承兑汇票, Enum.GetName(typeof(FctionEnum), FctionEnum.承兑汇票), (long)ActionEnum.取消支付, Enum.GetName(typeof(ActionEnum), ActionEnum.取消支付)));
                 //m_list.Add(new Access("业务", (long)FctionEnum.承兑汇票, Enum.GetName(typeof(FctionEnum), FctionEnum.承兑汇票), (long)ActionEnum.打印, Enum.GetName(typeof(ActionEnum), ActionEnum.打印)));
+                m_list.Add(new Access("业务", (long)FctionEnum.承兑汇票, Enum.GetName(typeof(FctionEnum), FctionEnum.承兑汇票), (long)ActionEnum.完结, Enum.GetName(typeof(ActionEnum), ActionEnum.完结)));
 
                 m_list.Add(new Access("基础数据", (long)FctionEnum.银行, Enum.GetName(typeof(FctionEnum), FctionEnum.银行), (long)ActionEnum.查看, Enum.GetName(typeof(ActionEnum), ActionEnum.查看)));
                 m_list.Add(new Access("基础数据", (long)FctionEnum.银行, Enum.GetName(typeof(FctionEnum), FctionEnum.银行), (long)ActionEnum.新增, Enum.GetName(typeof(ActionEnum), ActionEnum.新增)));

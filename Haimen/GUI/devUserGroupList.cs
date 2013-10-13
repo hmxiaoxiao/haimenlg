@@ -69,17 +69,17 @@ namespace Haimen.GUI
         /// </summary>
         private void SetControlAccess()
         {
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.项目, (long)ActionEnum.新增))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.用户组, (long)ActionEnum.新增))
             {
-                if (tsbNew.Enabled == true) tsbNew.Enabled = false;
+                tsbNew.Dispose();
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.项目, (long)ActionEnum.编辑))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.用户组, (long)ActionEnum.编辑))
             {
-                if (tsbEdit.Enabled == true) tsbEdit.Enabled = false;
+                tsbEdit.Dispose();
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.项目, (long)ActionEnum.删除))
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.用户组, (long)ActionEnum.删除))
             {
-                if (tsbDelete.Enabled == true) tsbDelete.Enabled = false;
+                tsbDelete.Dispose();
             }
         }
 

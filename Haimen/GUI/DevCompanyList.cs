@@ -23,15 +23,15 @@ namespace Haimen.GUI
         {
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.单位, (long)ActionEnum.新增))
             {
-                if (tsbNew.Enabled == true) tsbNew.Enabled = false;
+                tsbNew.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.单位, (long)ActionEnum.编辑))
             {
-                if (tsbEdit.Enabled == true) tsbEdit.Enabled = false;
+                tsbEdit.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.单位, (long)ActionEnum.删除))
             {
-                if (tsbDelete.Enabled == true) tsbDelete.Enabled = false;
+                tsbDelete.Dispose();
             }
         }
 
@@ -83,6 +83,7 @@ namespace Haimen.GUI
         private void DevCompanyList_Load(object sender, EventArgs e)
         {
             myRefresh();
+            SetControlAccess();
         }
 
         // 刷新

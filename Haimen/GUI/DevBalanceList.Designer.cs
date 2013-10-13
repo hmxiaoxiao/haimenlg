@@ -122,6 +122,7 @@
             // tsbGene
             // 
             this.tsbGene.Caption = "生成还款申请";
+            this.tsbGene.Enabled = false;
             this.tsbGene.Glyph = global::Haimen.Properties.Resources.Note_Add_hot;
             this.tsbGene.Id = 3;
             this.tsbGene.Name = "tsbGene";

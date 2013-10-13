@@ -76,6 +76,12 @@ namespace Haimen.GUI
                 tbPrint.Dispose();
             }
 
+            // 转正式发票
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.资金, (long)ActionEnum.转正式发票))
+            {
+                tb2Invoice.Dispose();
+            }
+
         }
 
         /// <summary>
@@ -583,9 +589,8 @@ namespace Haimen.GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DevAccount_Load(object sender, EventArgs e)
+        private void  DevAccount_Load(object sender, EventArgs e)
         {
-
             Object2form();             // 初始化界面
             SetControlAccess();        // 设置访问权限
         }

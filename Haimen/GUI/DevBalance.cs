@@ -25,19 +25,19 @@ namespace Haimen.GUI
         {
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.贷款, (long)ActionEnum.新增))
             {
-                btnNew.Enabled = false;
+                btnNew.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.贷款, (long)ActionEnum.编辑))
             {
-                btnEdit.Enabled = false;
+                btnEdit.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.贷款, (long)ActionEnum.删除))
             {
-                btnDelete.Enabled = false;
+                btnDelete.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.贷款, (long)ActionEnum.审核))
             {
-                btnCheck.Enabled = false;
+                btnCheck.Dispose();
             }
         }
 

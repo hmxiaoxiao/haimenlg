@@ -39,20 +39,20 @@ namespace Haimen.GUI
         {
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.合同, (long)ActionEnum.新增))
             {
-                if (tbNew.Enabled == true) tbNew.Enabled = false;
+                tbNew.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.合同, (long)ActionEnum.编辑))
             {
-                if (tbEdit.Enabled == true) tbEdit.Enabled = false;
+                tbEdit.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.合同, (long)ActionEnum.删除))
             {
-                if (tbDelete.Enabled == true) tbDelete.Enabled = false;
+                tbDelete.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.合同, (long)ActionEnum.审核))
             {
-                if (tbCheckPassed.Enabled == true) tbCheckPassed.Enabled = false;
-                if (tbCheckFaild.Enabled == true) tbCheckFaild.Enabled = false;
+                tbCheckPassed.Dispose();
+                tbCheckFaild.Dispose();
             }
         }
 

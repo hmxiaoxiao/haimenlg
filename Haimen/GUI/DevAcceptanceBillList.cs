@@ -23,15 +23,19 @@ namespace Haimen.GUI
         {
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.承兑汇票, (long)ActionEnum.新增))
             {
-                if (tsbNew.Enabled == true) tsbNew.Enabled = false;
+                tsbNew.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.承兑汇票, (long)ActionEnum.编辑))
             {
-                if (tsbEdit.Enabled == true) tsbEdit.Enabled = false;
+                tsbEdit.Dispose();
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.承兑汇票, (long)ActionEnum.删除))
             {
-                if (tsbDelete.Enabled == true) tsbDelete.Enabled = false;
+                tsbDelete.Dispose();
+            }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.承兑汇票, (long)ActionEnum.完结))
+            {
+                tsbFinish.Dispose();
             }
         }
 
@@ -43,6 +47,7 @@ namespace Haimen.GUI
         private void DevAcceptanceBillList_Load(object sender, EventArgs e)
         {
             MyRefresh();
+            SetControlAccess();
         }
 
         private void MyRefresh()

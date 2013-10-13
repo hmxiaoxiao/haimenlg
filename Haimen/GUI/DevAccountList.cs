@@ -53,6 +53,10 @@ namespace Haimen.GUI
             {
                 tsbPrint.Dispose();
             }
+            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.资金, (long)ActionEnum.转正式发票))
+            {
+                tsb2Invoice.Dispose();
+            }
         }
 
         /// <summary>
