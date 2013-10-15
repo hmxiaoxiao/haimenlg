@@ -427,7 +427,7 @@ namespace Haimen.Entity
         /// <returns></returns>
         public bool CanPrint()
         {
-            if (this.Status > (long)AccountStatusEnum.未审核)
+            if (this.Status > (long)AccountStatusEnum.审核通过)
                 return true;
             else
                 return false;

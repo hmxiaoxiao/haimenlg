@@ -25,7 +25,7 @@
     <MapFileExtensions>false</MapFileExtensions>
     <TargetCulture>zh-Hans</TargetCulture>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>0.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -45,7 +45,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -379,11 +379,11 @@
     <Compile Include="Qy\DBFunction.cs" />
     <Compile Include="Qy\MEntityFunction.cs" />
     <Compile Include="Qy\TEntityFunction.cs" />
-    <Compile Include="Report\rptAccountPrint.cs">
+    <Compile Include="Report\rptAccount.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Report\rptAccountPrint.Designer.cs">
-      <DependentUpon>rptAccountPrint.cs</DependentUpon>
+    <Compile Include="Report\rptAccount.Designer.cs">
+      <DependentUpon>rptAccount.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="GUI\DevAcceptanceBill.resx">
       <DependentUpon>DevAcceptanceBill.cs</DependentUpon>
@@ -492,11 +492,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Report\rptAccountPrint.resx">
-      <DependentUpon>rptAccountPrint.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\rptAccountPrint.zh-CN.resx">
-      <DependentUpon>rptAccountPrint.cs</DependentUpon>
+    <EmbeddedResource Include="Report\rptAccount.resx">
+      <DependentUpon>rptAccount.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\Haimen.Entity.Account.datasource" />

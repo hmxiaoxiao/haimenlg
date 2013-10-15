@@ -51,6 +51,7 @@
             this.mnuProject = new DevExpress.XtraBars.BarButtonItem();
             this.mnuBCBalance = new DevExpress.XtraBars.BarButtonItem();
             this.mnuCBBalance = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuUserGroup = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -71,7 +72,6 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.mnuUserGroup = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -341,6 +341,17 @@
             this.mnuCBBalance.Name = "mnuCBBalance";
             this.mnuCBBalance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuCBBalance_ItemClick);
             // 
+            // mnuUserGroup
+            // 
+            this.mnuUserGroup.Caption = "用户组";
+            this.mnuUserGroup.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuUserGroup.Glyph = global::Haimen.Properties.Resources.Borders_and_Shading_hot;
+            this.mnuUserGroup.Id = 40;
+            this.mnuUserGroup.Name = "mnuUserGroup";
+            this.mnuUserGroup.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuUserGroup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuUserGroup_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -489,17 +500,6 @@
             // mdiManager
             // 
             this.mdiManager.MdiParent = this;
-            // 
-            // mnuUserGroup
-            // 
-            this.mnuUserGroup.Caption = "用户组";
-            this.mnuUserGroup.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuUserGroup.Glyph = global::Haimen.Properties.Resources.Borders_and_Shading_hot;
-            this.mnuUserGroup.Id = 40;
-            this.mnuUserGroup.Name = "mnuUserGroup";
-            this.mnuUserGroup.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.mnuUserGroup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuUserGroup_ItemClick);
             // 
             // DevMain
             // 

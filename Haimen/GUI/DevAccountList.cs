@@ -324,7 +324,8 @@ namespace Haimen.GUI
             }
             
             // Create a report. 
-            rptAccountPrint report = new rptAccountPrint(id);
+            //rptAccountPrint report = new rptAccountPrint(id);
+            rptAccount report = new rptAccount(id);
 
             // Show the report's preview. 
             ReportPrintTool tool = new ReportPrintTool(report);

@@ -158,6 +158,7 @@ namespace Haimen.GUI
                     barPay.Offset = 0;          // 把状态条的位置移到第一条
                     tbPay.Enabled = true;
                     tbUnPay.Enabled = false;
+                    tbPrint.Enabled = m_account.CanPrint();
                     SetEditorStatus(false);
                     break;
                 case winStatusEnum.撤消支付:
@@ -564,7 +565,7 @@ namespace Haimen.GUI
         {
             InitializeComponent();
 
-            SetFormStatus(status);
+
             if (account != null)
                 m_account = account;
             else
@@ -581,6 +582,8 @@ namespace Haimen.GUI
             if (acceptid > 0)
                 m_account.ContractAcceptID = acceptid;
 
+
+            SetFormStatus(status);
         }
 
 
@@ -896,6 +899,7 @@ namespace Haimen.GUI
         {
             m_account.Payed();
             tbPay.Enabled = false;
+            tbPrint.Enabled = m_account.CanPrint();
             ShowCheckPayPic();                  // 显示支付信息
             m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
             //ShowCheckPic();
@@ -965,7 +969,7 @@ namespace Haimen.GUI
         private void tbPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // Create a report. 
-            rptAccountPrint report = new rptAccountPrint(m_account.ID);
+            rptAccount report = new rptAccount(m_account.ID);
 
             // Show the report's preview. 
             ReportPrintTool tool = new ReportPrintTool(report);
