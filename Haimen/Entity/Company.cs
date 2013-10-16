@@ -33,6 +33,9 @@ namespace Haimen.Entity
         [Field("gen_doc")]
         public long GenDoc { get; set; }
 
+        [Field("parent_id")]
+        public long ParentId { get; set; }
+
         /// <summary>
         /// 单位的数据校验
         /// </summary>

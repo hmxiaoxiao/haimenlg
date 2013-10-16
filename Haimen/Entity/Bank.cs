@@ -35,9 +35,9 @@ namespace Haimen.Entity
             {
                 if (m_parent_bank == null)
                 {
-                    if (ID > 0)
+                    if (ParentID > 0)
                     {
-                        m_parent_bank = Bank.CreateByID(ID);
+                        m_parent_bank = Bank.CreateByID(ParentID);
                         return m_parent_bank;
                     }
                     else

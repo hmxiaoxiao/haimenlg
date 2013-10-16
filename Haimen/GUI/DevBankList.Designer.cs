@@ -43,7 +43,11 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_parentid = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lueBanks = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.sueBank = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.SearchLookUpEditBanks = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.c_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
@@ -70,7 +74,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueBanks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sueBank)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchLookUpEditBanks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -143,7 +148,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
-            this.lueBanks});
+            this.sueBank});
             this.gridControl1.Size = new System.Drawing.Size(365, 468);
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -161,9 +166,11 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.FocusLeaveOnTab = true;
             this.gridView1.OptionsBehavior.KeepFocusedRowOnUpdate = false;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView1_CustomDrawCell);
+            this.gridView1.HiddenEditor += new System.EventHandler(this.gridView1_HiddenEditor);
             this.gridView1.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanging);
             this.gridView1.BeforeLeaveRow += new DevExpress.XtraGrid.Views.Base.RowAllowEventHandler(this.gridView1_BeforeLeaveRow);
             // 
@@ -199,24 +206,59 @@
             // col_parentid
             // 
             this.col_parentid.Caption = "所属银行";
-            this.col_parentid.ColumnEdit = this.lueBanks;
+            this.col_parentid.ColumnEdit = this.sueBank;
             this.col_parentid.FieldName = "ParentID";
             this.col_parentid.Name = "col_parentid";
             this.col_parentid.Visible = true;
             this.col_parentid.VisibleIndex = 2;
             // 
-            // lueBanks
+            // sueBank
             // 
-            this.lueBanks.AutoHeight = false;
-            this.lueBanks.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.sueBank.AutoHeight = false;
+            this.sueBank.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            this.sueBank.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueBanks.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
-            this.lueBanks.DisplayMember = "Name";
-            this.lueBanks.Name = "lueBanks";
-            this.lueBanks.NullText = "";
-            this.lueBanks.ValueMember = "ID";
+            this.sueBank.DisplayMember = "Name";
+            this.sueBank.Name = "sueBank";
+            this.sueBank.NullText = "请选择...";
+            this.sueBank.ValueMember = "ID";
+            this.sueBank.View = this.SearchLookUpEditBanks;
+            // 
+            // SearchLookUpEditBanks
+            // 
+            this.SearchLookUpEditBanks.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.c_id,
+            this.c_code,
+            this.c_name});
+            this.SearchLookUpEditBanks.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.SearchLookUpEditBanks.Name = "SearchLookUpEditBanks";
+            this.SearchLookUpEditBanks.OptionsBehavior.AutoPopulateColumns = false;
+            this.SearchLookUpEditBanks.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.SearchLookUpEditBanks.OptionsView.ColumnAutoWidth = false;
+            this.SearchLookUpEditBanks.OptionsView.EnableAppearanceEvenRow = true;
+            this.SearchLookUpEditBanks.OptionsView.ShowGroupPanel = false;
+            // 
+            // c_id
+            // 
+            this.c_id.Caption = "ID";
+            this.c_id.FieldName = "ID";
+            this.c_id.Name = "c_id";
+            // 
+            // c_code
+            // 
+            this.c_code.Caption = "代码";
+            this.c_code.FieldName = "Code";
+            this.c_code.Name = "c_code";
+            this.c_code.Visible = true;
+            this.c_code.VisibleIndex = 0;
+            // 
+            // c_name
+            // 
+            this.c_name.Caption = "名称";
+            this.c_name.FieldName = "Name";
+            this.c_name.Name = "c_name";
+            this.c_name.Visible = true;
+            this.c_name.VisibleIndex = 1;
             // 
             // barManager1
             // 
@@ -431,7 +473,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueBanks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sueBank)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchLookUpEditBanks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutViewCard1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
@@ -471,11 +514,15 @@
         private DevExpress.XtraGrid.Views.Layout.LayoutViewField layoutViewField_layoutViewColumn3;
         private DevExpress.XtraGrid.Views.Layout.LayoutViewCard layoutViewCard1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueBanks;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn col_id;
         private DevExpress.XtraGrid.Columns.GridColumn col_code;
         private DevExpress.XtraGrid.Columns.GridColumn col_name;
         private DevExpress.XtraGrid.Columns.GridColumn col_parentid;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit sueBank;
+        private DevExpress.XtraGrid.Views.Grid.GridView SearchLookUpEditBanks;
+        private DevExpress.XtraGrid.Columns.GridColumn c_id;
+        private DevExpress.XtraGrid.Columns.GridColumn c_code;
+        private DevExpress.XtraGrid.Columns.GridColumn c_name;
     }
 }

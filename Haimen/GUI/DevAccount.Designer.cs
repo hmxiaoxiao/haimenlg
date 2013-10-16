@@ -43,6 +43,7 @@
             this.barPay = new DevExpress.XtraBars.Bar();
             this.tbPay = new DevExpress.XtraBars.BarButtonItem();
             this.tbUnPay = new DevExpress.XtraBars.BarButtonItem();
+            this.tbPrint = new DevExpress.XtraBars.BarButtonItem();
             this.tbExit2 = new DevExpress.XtraBars.BarButtonItem();
             this.barCheck = new DevExpress.XtraBars.Bar();
             this.tbCheck = new DevExpress.XtraBars.BarButtonItem();
@@ -150,7 +151,6 @@
             this.layoutControlItem29 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem30 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem31 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.tbPrint = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -412,6 +412,14 @@
             this.tbUnPay.Id = 15;
             this.tbUnPay.Name = "tbUnPay";
             this.tbUnPay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbUnPay_ItemClick);
+            // 
+            // tbPrint
+            // 
+            this.tbPrint.Caption = "打印";
+            this.tbPrint.Glyph = ((System.Drawing.Image)(resources.GetObject("tbPrint.Glyph")));
+            this.tbPrint.Id = 16;
+            this.tbPrint.Name = "tbPrint";
+            this.tbPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbPrint_ItemClick);
             // 
             // tbExit2
             // 
@@ -1168,7 +1176,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl1);
             this.xtraTabPage2.Controls.Add(this.toolStrip3);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1036, 352);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1036, 344);
             this.xtraTabPage2.Text = "支付明细";
             // 
             // layoutControl3
@@ -1394,7 +1402,7 @@
             this.xtraTabPage3.Controls.Add(this.lstFiles);
             this.xtraTabPage3.Controls.Add(this.toolStrip2);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1036, 352);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1036, 344);
             this.xtraTabPage3.Text = "附件";
             // 
             // lstFiles
@@ -1406,7 +1414,7 @@
             new DevExpress.XtraEditors.Controls.ImageListBoxItem("asdfasdf", 1)});
             this.lstFiles.Location = new System.Drawing.Point(0, 25);
             this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(1036, 327);
+            this.lstFiles.Size = new System.Drawing.Size(1036, 319);
             this.lstFiles.TabIndex = 65;
             this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
             // 
@@ -1449,7 +1457,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.layoutControl2);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1036, 352);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1036, 344);
             this.xtraTabPage4.Text = "合同";
             // 
             // layoutControl2
@@ -1641,14 +1649,6 @@
             this.layoutControlItem31.Size = new System.Drawing.Size(312, 103);
             this.layoutControlItem31.Text = "应付金额";
             this.layoutControlItem31.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // tbPrint
-            // 
-            this.tbPrint.Caption = "打印";
-            this.tbPrint.Glyph = ((System.Drawing.Image)(resources.GetObject("tbPrint.Glyph")));
-            this.tbPrint.Id = 16;
-            this.tbPrint.Name = "tbPrint";
-            this.tbPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbPrint_ItemClick);
             // 
             // DevAccount
             // 

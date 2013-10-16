@@ -119,9 +119,10 @@ namespace Haimen.GUI
             m_banks.Clear();
             AddBank2List(id);
 
-            lueBanks.DataSource = Bank.Query();
+            sueBank.DataSource = Bank.Query();
             gridControl1.DataSource = m_banks;
             gridView1.OptionsBehavior.Editable = false;
+            gridView1.BestFitColumns();
         }
 
         // 将对应ID的银行以及下属银行加到grid中
@@ -167,6 +168,7 @@ namespace Haimen.GUI
 
             m_bank = null;
             gridView1.OptionsBehavior.Editable = false;
+            gridView1.BestFitColumns();
             setWinStatus(winStatusEnum.查看);
         }
 
@@ -277,7 +279,14 @@ namespace Haimen.GUI
 
         private void DevBankList_Activated(object sender, EventArgs e)
         {
-            MyRefresh();
+            // 当窗口被激活时，当前为查看状态时，可以刷新
+            if (m_status == winStatusEnum.查看)
+                MyRefresh();
+        }
+
+        private void gridView1_HiddenEditor(object sender, EventArgs e)
+        {
+            gridView1.BestFitColumns();
         }
     }
 }
