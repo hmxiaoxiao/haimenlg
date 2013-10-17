@@ -8,6 +8,9 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 using Haimen.Qy;
+using Haimen.Entity;
+
+using DevExpress.XtraTreeList.Nodes;
 
 namespace Haimen.GUI
 {
@@ -23,33 +26,61 @@ namespace Haimen.GUI
 
         private void devQuerySelectCompany_Load(object sender, EventArgs e)
         {
-            string sql = "Select 'Y' as sel, id, code, name from m_company";
-            gridControl1.DataSource = DBFunction.RunQuerySql(sql).Tables[0];
-            gridView1.BestFitColumns();
+            tree.DataSource = Company.Query();
+            tree.ParentFieldName = "ParentID";
+            tree.KeyFieldName = "ID";
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            gridView1.CloseEditor();
-            gridView1.UpdateCurrentRow();
-
-            long count = gridView1.RowCount;
             SelectAll = true;
             ID_List = new List<string>();
-            for (int i = 0; i < count; i++)
-            {
 
-                if (gridView1.GetRowCellValue(i, col_selected).ToString() == "Y")
-                    ID_List.Add(gridView1.GetRowCellValue(i, col_id).ToString());
+            foreach (TreeListNode node in tree.Nodes)
+            {
+                if (node.CheckState == CheckState.Checked)
+                {
+                    ID_List.Add(node.GetValue(tree_id).ToString());
+                    GetChildNodeCheck(node);
+                }
                 else
                     SelectAll = false;
             }
             this.Close();
         }
 
+        private void GetChildNodeCheck(TreeListNode node)
+        {
+            foreach (TreeListNode n in node.Nodes)
+            {
+                if (n.CheckState == CheckState.Checked)
+                    ID_List.Add(n.GetValue(tree_id).ToString());
+                else
+                    SelectAll = false;
+            }
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tree_AfterCheckNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e)
+        {
+            SetCheckedChildNodes(e.Node, e.Node.CheckState);
+        }
+
+        /// 设置子节点的状态
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="check"></param>
+        private void SetCheckedChildNodes(TreeListNode node, CheckState check)
+        {
+            for (int i = 0; i < node.Nodes.Count; i++)
+            {
+                node.Nodes[i].CheckState = check;
+                SetCheckedChildNodes(node.Nodes[i], check);
+            }
         }
     }
 }

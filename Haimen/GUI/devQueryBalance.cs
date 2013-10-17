@@ -51,7 +51,7 @@ namespace Haimen.GUI
         {
             string sql = "select c.name as companyname, b.name as bankname, d.account, d.balance, d.credit ";
             sql += " from m_company_detail d, m_bank b, m_company c ";
-            sql += " where d.parent_id = c.id and d.bank_id = b.id";
+            sql += " where d.parent_id = c.id and d.bank_id = b.id and not(c.input <> 'X' and c.output <> 'X') ";
 
             // 如果不是显示全部银行数据,则只显示选择中数据
             if (!bank_selected_all)

@@ -28,85 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.chk_Selected = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.col_selected = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnExit = new DevExpress.XtraEditors.SimpleButton();
             this.btnConfirm = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.chk_Selected)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.tree = new DevExpress.XtraTreeList.TreeList();
+            this.tree_id = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tree_code = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tree_name = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.tree)).BeginInit();
             this.SuspendLayout();
-            // 
-            // chk_Selected
-            // 
-            this.chk_Selected.AutoHeight = false;
-            this.chk_Selected.Caption = "Check";
-            this.chk_Selected.Name = "chk_Selected";
-            this.chk_Selected.ValueChecked = "Y";
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.gridControl1.Location = new System.Drawing.Point(12, 12);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.chk_Selected});
-            this.gridControl1.Size = new System.Drawing.Size(464, 380);
-            this.gridControl1.TabIndex = 2;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.col_selected,
-            this.col_id,
-            this.col_code,
-            this.col_name});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ColumnAutoWidth = false;
-            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            // 
-            // col_selected
-            // 
-            this.col_selected.Caption = "选择";
-            this.col_selected.ColumnEdit = this.chk_Selected;
-            this.col_selected.FieldName = "sel";
-            this.col_selected.Name = "col_selected";
-            this.col_selected.Visible = true;
-            this.col_selected.VisibleIndex = 0;
-            // 
-            // col_id
-            // 
-            this.col_id.Caption = "ID";
-            this.col_id.FieldName = "id";
-            this.col_id.Name = "col_id";
-            // 
-            // col_code
-            // 
-            this.col_code.Caption = "代码";
-            this.col_code.FieldName = "code";
-            this.col_code.Name = "col_code";
-            this.col_code.Visible = true;
-            this.col_code.VisibleIndex = 1;
-            // 
-            // col_name
-            // 
-            this.col_name.Caption = "名称";
-            this.col_name.FieldName = "name";
-            this.col_name.Name = "col_name";
-            this.col_name.Visible = true;
-            this.col_name.VisibleIndex = 2;
             // 
             // btnExit
             // 
@@ -128,34 +57,67 @@
             this.btnConfirm.Text = "确认选择";
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // tree
+            // 
+            this.tree.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.tree_id,
+            this.tree_name,
+            this.tree_code});
+            this.tree.Location = new System.Drawing.Point(12, 12);
+            this.tree.Name = "tree";
+            this.tree.OptionsView.ShowCheckBoxes = true;
+            this.tree.Size = new System.Drawing.Size(442, 380);
+            this.tree.TabIndex = 5;
+            this.tree.AfterCheckNode += new DevExpress.XtraTreeList.NodeEventHandler(this.tree_AfterCheckNode);
+            // 
+            // tree_id
+            // 
+            this.tree_id.Caption = "ID";
+            this.tree_id.FieldName = "ID";
+            this.tree_id.Name = "tree_id";
+            // 
+            // tree_code
+            // 
+            this.tree_code.Caption = "代码";
+            this.tree_code.FieldName = "Code";
+            this.tree_code.Name = "tree_code";
+            this.tree_code.Visible = true;
+            this.tree_code.VisibleIndex = 1;
+            this.tree_code.Width = 153;
+            // 
+            // tree_name
+            // 
+            this.tree_name.Caption = "名称";
+            this.tree_name.FieldName = "Name";
+            this.tree_name.MinWidth = 32;
+            this.tree_name.Name = "tree_name";
+            this.tree_name.Visible = true;
+            this.tree_name.VisibleIndex = 0;
+            this.tree_name.Width = 184;
+            // 
             // DevQuerySelectCompany
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(616, 401);
-            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.tree);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnConfirm);
             this.Name = "DevQuerySelectCompany";
             this.Text = "单位选择";
             this.Load += new System.EventHandler(this.devQuerySelectCompany_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.chk_Selected)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tree)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn col_selected;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chk_Selected;
-        private DevExpress.XtraGrid.Columns.GridColumn col_id;
-        private DevExpress.XtraGrid.Columns.GridColumn col_code;
-        private DevExpress.XtraGrid.Columns.GridColumn col_name;
         private DevExpress.XtraEditors.SimpleButton btnExit;
         private DevExpress.XtraEditors.SimpleButton btnConfirm;
+        private DevExpress.XtraTreeList.TreeList tree;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tree_id;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tree_code;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tree_name;
     }
 }
