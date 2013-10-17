@@ -49,18 +49,25 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.tree = new DevExpress.XtraTreeList.TreeList();
+            this.tree_id = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tree_name = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tree)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 39);
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(751, 483);
+            this.gridControl1.Size = new System.Drawing.Size(585, 535);
             this.gridControl1.TabIndex = 19;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -79,7 +86,6 @@
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // col_id
@@ -214,35 +220,81 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(751, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(799, 39);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 522);
-            this.barDockControlBottom.Size = new System.Drawing.Size(751, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 574);
+            this.barDockControlBottom.Size = new System.Drawing.Size(799, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 483);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 535);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(751, 39);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 483);
+            this.barDockControlRight.Location = new System.Drawing.Point(799, 39);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 535);
+            // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 39);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.tree);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.gridControl1);
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(799, 535);
+            this.splitContainerControl1.SplitterPosition = 209;
+            this.splitContainerControl1.TabIndex = 24;
+            this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // tree
+            // 
+            this.tree.BestFitVisibleOnly = true;
+            this.tree.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.tree_id,
+            this.tree_name});
+            this.tree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tree.Location = new System.Drawing.Point(0, 0);
+            this.tree.Name = "tree";
+            this.tree.OptionsView.ShowColumns = false;
+            this.tree.OptionsView.ShowIndentAsRowStyle = true;
+            this.tree.OptionsView.ShowIndicator = false;
+            this.tree.OptionsView.ShowVertLines = false;
+            this.tree.Size = new System.Drawing.Size(209, 535);
+            this.tree.TabIndex = 0;
+            this.tree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tree_FocusedNodeChanged);
+            // 
+            // tree_id
+            // 
+            this.tree_id.Caption = "ID";
+            this.tree_id.FieldName = "ID";
+            this.tree_id.Name = "tree_id";
+            // 
+            // tree_name
+            // 
+            this.tree_name.Caption = "类别";
+            this.tree_name.FieldName = "Name";
+            this.tree_name.Name = "tree_name";
+            this.tree_name.OptionsColumn.AllowEdit = false;
+            this.tree_name.Visible = true;
+            this.tree_name.VisibleIndex = 0;
             // 
             // DevCompanyList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 522);
-            this.Controls.Add(this.gridControl1);
+            this.ClientSize = new System.Drawing.Size(799, 574);
+            this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -254,6 +306,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tree)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -280,6 +335,10 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem tsbRefresh;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraTreeList.TreeList tree;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tree_id;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn tree_name;
 
     }
 }

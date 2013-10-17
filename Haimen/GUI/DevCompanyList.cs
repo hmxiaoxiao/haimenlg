@@ -38,7 +38,11 @@ namespace Haimen.GUI
         // 刷新界面
         private void myRefresh()
         {
-            m_companies = Company.Query();
+            if (tree.FocusedNode == null)
+                return;
+
+            long id = long.Parse(tree.FocusedNode.GetValue(tree_id).ToString());
+            m_companies = Company.Query("parent_id = " + id.ToString());
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_companies;
             gridView1.BestFitColumns();
@@ -49,6 +53,7 @@ namespace Haimen.GUI
         public DevCompanyList()
         {
             InitializeComponent();
+            tree.DataSource = Company.Query("input <> 'X' and output <> 'X'");
         }
 
         // 增加
@@ -142,6 +147,11 @@ namespace Haimen.GUI
         }
 
         private void DevCompanyList_Activated(object sender, EventArgs e)
+        {
+            myRefresh();
+        }
+
+        private void tree_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             myRefresh();
         }
