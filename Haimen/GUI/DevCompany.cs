@@ -45,6 +45,7 @@ namespace Haimen.GUI
             txtCode.Enabled = enabled;
             txtName.Enabled = enabled;
             txtDoc.Enabled = enabled;
+            sueCompany.Enabled = enabled;
             cbInput.Enabled = enabled;
             cbOutput.Enabled = enabled;
         }
@@ -127,6 +128,13 @@ namespace Haimen.GUI
             txtDoc.Text = m_company.Doc;
             txtName.Text = m_company.Name;
 
+            List<Company> list = Company.Query("input <> 'X' and output <> 'X'");
+            sueCompany.Properties.DataSource = list;
+            sueCompany.Properties.DisplayMember = "Name";
+            sueCompany.Properties.ValueMember = "ID";
+
+            sueCompany.EditValue = m_company.ParentID;
+
             if (m_company.Input == "X")
                 cbInput.Checked = true;
             else
@@ -147,6 +155,9 @@ namespace Haimen.GUI
             m_company.Code = txtCode.Text;
             m_company.Name = txtName.Text;
             m_company.Doc = txtDoc.Text;
+            if (sueCompany.EditValue != null)
+                m_company.ParentID = long.Parse(sueCompany.EditValue.ToString());
+
             if (cbInput.Checked)
                 m_company.Input = "X";
             else

@@ -54,6 +54,12 @@
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.sueCompany = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_name = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.cbOutput.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -69,20 +75,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sueCompany.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             this.SuspendLayout();
             // 
             // cbOutput
             // 
             this.cbOutput.EnterMoveNextControl = true;
-            this.cbOutput.Location = new System.Drawing.Point(70, 179);
+            this.cbOutput.Location = new System.Drawing.Point(82, 219);
             this.cbOutput.Name = "cbOutput";
             this.cbOutput.Properties.Caption = "支出单位";
-            this.cbOutput.Size = new System.Drawing.Size(367, 19);
+            this.cbOutput.Size = new System.Drawing.Size(355, 19);
             this.cbOutput.StyleController = this.layoutControl1;
             this.cbOutput.TabIndex = 6;
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.sueCompany);
             this.layoutControl1.Controls.Add(this.txtDoc);
             this.layoutControl1.Controls.Add(this.txtName);
             this.layoutControl1.Controls.Add(this.txtCode);
@@ -99,10 +109,10 @@
             // txtDoc
             // 
             this.txtDoc.EnterMoveNextControl = true;
-            this.txtDoc.Location = new System.Drawing.Point(70, 100);
+            this.txtDoc.Location = new System.Drawing.Point(82, 100);
             this.txtDoc.MenuManager = this.barManager1;
             this.txtDoc.Name = "txtDoc";
-            this.txtDoc.Size = new System.Drawing.Size(367, 20);
+            this.txtDoc.Size = new System.Drawing.Size(355, 20);
             this.txtDoc.StyleController = this.layoutControl1;
             this.txtDoc.TabIndex = 3;
             // 
@@ -215,30 +225,30 @@
             // txtName
             // 
             this.txtName.EnterMoveNextControl = true;
-            this.txtName.Location = new System.Drawing.Point(70, 60);
+            this.txtName.Location = new System.Drawing.Point(82, 60);
             this.txtName.MenuManager = this.barManager1;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(367, 20);
+            this.txtName.Size = new System.Drawing.Size(355, 20);
             this.txtName.StyleController = this.layoutControl1;
             this.txtName.TabIndex = 2;
             // 
             // txtCode
             // 
             this.txtCode.EnterMoveNextControl = true;
-            this.txtCode.Location = new System.Drawing.Point(70, 20);
+            this.txtCode.Location = new System.Drawing.Point(82, 20);
             this.txtCode.MenuManager = this.barManager1;
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(367, 20);
+            this.txtCode.Size = new System.Drawing.Size(355, 20);
             this.txtCode.StyleController = this.layoutControl1;
             this.txtCode.TabIndex = 1;
             // 
             // cbInput
             // 
             this.cbInput.EnterMoveNextControl = true;
-            this.cbInput.Location = new System.Drawing.Point(70, 140);
+            this.cbInput.Location = new System.Drawing.Point(82, 180);
             this.cbInput.Name = "cbInput";
             this.cbInput.Properties.Caption = "收入单位";
-            this.cbInput.Size = new System.Drawing.Size(367, 19);
+            this.cbInput.Size = new System.Drawing.Size(355, 19);
             this.cbInput.StyleController = this.layoutControl1;
             this.cbInput.TabIndex = 5;
             // 
@@ -252,7 +262,8 @@
             this.layoutControlItem7,
             this.layoutControlItem8,
             this.layoutControlItem9,
-            this.layoutControlItem11});
+            this.layoutControlItem11,
+            this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.OptionsItemText.TextToControlDistance = 2;
@@ -263,23 +274,23 @@
             // 
             this.layoutControlItem6.Control = this.cbInput;
             this.layoutControlItem6.CustomizationFormText = "layoutControlItem6";
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 160);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
             this.layoutControlItem6.Size = new System.Drawing.Size(437, 39);
             this.layoutControlItem6.Text = "   ";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(60, 14);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.cbOutput;
             this.layoutControlItem7.CustomizationFormText = "layoutControlItem7";
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 159);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 199);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem7.Size = new System.Drawing.Size(437, 188);
+            this.layoutControlItem7.Size = new System.Drawing.Size(437, 148);
             this.layoutControlItem7.Text = "   ";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(48, 14);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(60, 14);
             // 
             // layoutControlItem8
             // 
@@ -290,7 +301,7 @@
             this.layoutControlItem8.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
             this.layoutControlItem8.Size = new System.Drawing.Size(437, 40);
             this.layoutControlItem8.Text = "编号：";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(48, 14);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(60, 14);
             // 
             // layoutControlItem9
             // 
@@ -301,7 +312,7 @@
             this.layoutControlItem9.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
             this.layoutControlItem9.Size = new System.Drawing.Size(437, 40);
             this.layoutControlItem9.Text = "名称：";
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(48, 14);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(60, 14);
             // 
             // layoutControlItem11
             // 
@@ -312,11 +323,68 @@
             this.layoutControlItem11.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
             this.layoutControlItem11.Size = new System.Drawing.Size(437, 40);
             this.layoutControlItem11.Text = "单据字：";
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(48, 14);
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(60, 14);
             // 
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
+            // 
+            // sueCompany
+            // 
+            this.sueCompany.EditValue = "请选择...";
+            this.sueCompany.Location = new System.Drawing.Point(82, 140);
+            this.sueCompany.MenuManager = this.barManager1;
+            this.sueCompany.Name = "sueCompany";
+            this.sueCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.sueCompany.Properties.View = this.searchLookUpEdit1View;
+            this.sueCompany.Size = new System.Drawing.Size(355, 20);
+            this.sueCompany.StyleController = this.layoutControl1;
+            this.sueCompany.TabIndex = 7;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.sueCompany;
+            this.layoutControlItem1.CustomizationFormText = "所属单位：";
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
+            this.layoutControlItem1.Size = new System.Drawing.Size(437, 40);
+            this.layoutControlItem1.Text = "所属单位：";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 14);
+            // 
+            // searchLookUpEdit1View
+            // 
+            this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.col_id,
+            this.col_code,
+            this.col_name});
+            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
+            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // col_id
+            // 
+            this.col_id.Caption = "ID";
+            this.col_id.FieldName = "ID";
+            this.col_id.Name = "col_id";
+            // 
+            // col_code
+            // 
+            this.col_code.Caption = "代码";
+            this.col_code.FieldName = "Code";
+            this.col_code.Name = "col_code";
+            this.col_code.Visible = true;
+            this.col_code.VisibleIndex = 0;
+            // 
+            // col_name
+            // 
+            this.col_name.Caption = "名称";
+            this.col_name.FieldName = "Name";
+            this.col_name.Name = "col_name";
+            this.col_name.Visible = true;
+            this.col_name.VisibleIndex = 1;
             // 
             // DevCompany
             // 
@@ -346,6 +414,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sueCompany.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -377,5 +448,11 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
+        private DevExpress.XtraEditors.SearchLookUpEdit sueCompany;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraGrid.Columns.GridColumn col_id;
+        private DevExpress.XtraGrid.Columns.GridColumn col_code;
+        private DevExpress.XtraGrid.Columns.GridColumn col_name;
     }
 }

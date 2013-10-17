@@ -48,7 +48,7 @@ namespace Haimen
             if (GlobalSet.Current_User != null)
             {
                 //Application.Run(new DevMain());
-                Application.Run(new DevBankList());
+                Application.Run(new DevCompany());
             }
         }
     }
