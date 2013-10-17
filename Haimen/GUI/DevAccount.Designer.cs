@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevAccount));
-            this.lueInCompany = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtCMoney = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -66,12 +65,9 @@
             this.lueProjects = new DevExpress.XtraEditors.LookUpEdit();
             this.txtInBank = new DevExpress.XtraEditors.TextEdit();
             this.txtOutBank = new DevExpress.XtraEditors.TextEdit();
-            this.lueInAccount = new DevExpress.XtraEditors.LookUpEdit();
-            this.lueOutAccount = new DevExpress.XtraEditors.LookUpEdit();
             this.txtMemo = new DevExpress.XtraEditors.TextEdit();
             this.txtCode = new DevExpress.XtraEditors.TextEdit();
             this.dtSigned = new DevExpress.XtraEditors.DateEdit();
-            this.lueOutCompany = new DevExpress.XtraEditors.LookUpEdit();
             this.lueContractApply = new DevExpress.XtraEditors.GridLookUpEdit();
             this.lueContractApplyStatusEnum = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -151,7 +147,34 @@
             this.layoutControlItem29 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem30 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem31 = new DevExpress.XtraLayout.LayoutControlItem();
-            ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).BeginInit();
+            this.lueOutCompany = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.lueInCompany = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.lueOutAccount = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.lueInAccount = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.out_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.out_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.out_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.in_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.in_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.in_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.out_a_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.out_a_bank = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.out_a_account = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.out_a_type = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.out_a_balance = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.out_a_credit = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.out_a_memo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.in_a_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.in_a_bank = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.in_a_account = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.in_a_type = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.in_a_balance = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.in_a_credit = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.in_a_memo = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCMoney.Properties)).BeginInit();
@@ -166,13 +189,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.lueProjects.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInBank.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOutBank.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueInAccount.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueOutAccount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMemo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtSigned.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtSigned.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueOutCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractApply.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractApplyStatusEnum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
@@ -239,24 +259,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueOutCompany.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueOutAccount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueInAccount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lueInCompany
-            // 
-            this.lueInCompany.EnterMoveNextControl = true;
-            this.lueInCompany.Location = new System.Drawing.Point(431, 84);
-            this.lueInCompany.Name = "lueInCompany";
-            this.lueInCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            this.lueInCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueInCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
-            this.lueInCompany.Properties.NullText = "请选择收款单位";
-            this.lueInCompany.Size = new System.Drawing.Size(209, 20);
-            this.lueInCompany.StyleController = this.layoutControl1;
-            this.lueInCompany.TabIndex = 8;
-            this.lueInCompany.EditValueChanged += new System.EventHandler(this.lueInCompany_EditValueChanged);
             // 
             // layoutControl1
             // 
@@ -271,14 +282,14 @@
             this.layoutControl1.Controls.Add(this.lueProjects);
             this.layoutControl1.Controls.Add(this.txtInBank);
             this.layoutControl1.Controls.Add(this.txtOutBank);
-            this.layoutControl1.Controls.Add(this.lueInAccount);
-            this.layoutControl1.Controls.Add(this.lueOutAccount);
             this.layoutControl1.Controls.Add(this.txtMemo);
             this.layoutControl1.Controls.Add(this.txtCode);
             this.layoutControl1.Controls.Add(this.dtSigned);
-            this.layoutControl1.Controls.Add(this.lueInCompany);
-            this.layoutControl1.Controls.Add(this.lueOutCompany);
             this.layoutControl1.Controls.Add(this.lueContractApply);
+            this.layoutControl1.Controls.Add(this.lueOutCompany);
+            this.layoutControl1.Controls.Add(this.lueInCompany);
+            this.layoutControl1.Controls.Add(this.lueOutAccount);
+            this.layoutControl1.Controls.Add(this.lueInAccount);
             this.layoutControl1.Location = new System.Drawing.Point(3, 6);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsFocus.EnableAutoTabOrder = false;
@@ -670,48 +681,6 @@
             this.txtOutBank.StyleController = this.layoutControl1;
             this.txtOutBank.TabIndex = 7;
             // 
-            // lueInAccount
-            // 
-            this.lueInAccount.EnterMoveNextControl = true;
-            this.lueInAccount.Location = new System.Drawing.Point(431, 108);
-            this.lueInAccount.MenuManager = this.barManager1;
-            this.lueInAccount.Name = "lueInAccount";
-            this.lueInAccount.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            this.lueInAccount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueInAccount.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("BankName", "银行"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Account", "帐户"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Balance", "余额"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Credit", "贷款")});
-            this.lueInAccount.Properties.NullText = "";
-            this.lueInAccount.Properties.PopupWidth = 500;
-            this.lueInAccount.Size = new System.Drawing.Size(209, 20);
-            this.lueInAccount.StyleController = this.layoutControl1;
-            this.lueInAccount.TabIndex = 9;
-            this.lueInAccount.EditValueChanged += new System.EventHandler(this.lueInAccount_EditValueChanged);
-            // 
-            // lueOutAccount
-            // 
-            this.lueOutAccount.EnterMoveNextControl = true;
-            this.lueOutAccount.Location = new System.Drawing.Point(102, 108);
-            this.lueOutAccount.MenuManager = this.barManager1;
-            this.lueOutAccount.Name = "lueOutAccount";
-            this.lueOutAccount.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            this.lueOutAccount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueOutAccount.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("BankName", "银行"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Account", "帐户"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Balance", "余额"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Credit", "贷款")});
-            this.lueOutAccount.Properties.NullText = "";
-            this.lueOutAccount.Properties.PopupWidth = 500;
-            this.lueOutAccount.Size = new System.Drawing.Size(215, 20);
-            this.lueOutAccount.StyleController = this.layoutControl1;
-            this.lueOutAccount.TabIndex = 6;
-            this.lueOutAccount.EditValueChanged += new System.EventHandler(this.lueOutAccount_EditValueChanged);
-            // 
             // txtMemo
             // 
             this.txtMemo.EnterMoveNextControl = true;
@@ -749,23 +718,6 @@
             this.dtSigned.Size = new System.Drawing.Size(239, 20);
             this.dtSigned.StyleController = this.layoutControl1;
             this.dtSigned.TabIndex = 1;
-            // 
-            // lueOutCompany
-            // 
-            this.lueOutCompany.EnterMoveNextControl = true;
-            this.lueOutCompany.Location = new System.Drawing.Point(102, 84);
-            this.lueOutCompany.Name = "lueOutCompany";
-            this.lueOutCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            this.lueOutCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueOutCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
-            this.lueOutCompany.Properties.NullText = "请选择付款单位";
-            this.lueOutCompany.Size = new System.Drawing.Size(215, 20);
-            this.lueOutCompany.StyleController = this.layoutControl1;
-            this.lueOutCompany.TabIndex = 5;
-            this.lueOutCompany.EditValueChanged += new System.EventHandler(this.lueOutCompany_EditValueChanged);
             // 
             // lueContractApply
             // 
@@ -1650,6 +1602,277 @@
             this.layoutControlItem31.Text = "应付金额";
             this.layoutControlItem31.TextSize = new System.Drawing.Size(48, 14);
             // 
+            // lueOutCompany
+            // 
+            this.lueOutCompany.Location = new System.Drawing.Point(102, 84);
+            this.lueOutCompany.Name = "lueOutCompany";
+            this.lueOutCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            this.lueOutCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueOutCompany.Properties.NullText = "请选择付款单位";
+            this.lueOutCompany.Properties.View = this.searchLookUpEdit1View;
+            this.lueOutCompany.Size = new System.Drawing.Size(215, 20);
+            this.lueOutCompany.StyleController = this.layoutControl1;
+            this.lueOutCompany.TabIndex = 5;
+            this.lueOutCompany.EditValueChanged += new System.EventHandler(this.lueOutCompany_EditValueChanged);
+            // 
+            // searchLookUpEdit1View
+            // 
+            this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.out_id,
+            this.out_code,
+            this.out_name});
+            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
+            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit1View.OptionsView.ColumnAutoWidth = false;
+            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // lueInCompany
+            // 
+            this.lueInCompany.Location = new System.Drawing.Point(431, 84);
+            this.lueInCompany.Name = "lueInCompany";
+            this.lueInCompany.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            this.lueInCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueInCompany.Properties.NullText = "请选择收款单位";
+            this.lueInCompany.Properties.View = this.gridView2;
+            this.lueInCompany.Size = new System.Drawing.Size(209, 20);
+            this.lueInCompany.StyleController = this.layoutControl1;
+            this.lueInCompany.TabIndex = 8;
+            this.lueInCompany.EditValueChanged += new System.EventHandler(this.lueInCompany_EditValueChanged);
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.in_id,
+            this.in_code,
+            this.in_name});
+            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // lueOutAccount
+            // 
+            this.lueOutAccount.Location = new System.Drawing.Point(102, 108);
+            this.lueOutAccount.MenuManager = this.barManager1;
+            this.lueOutAccount.Name = "lueOutAccount";
+            this.lueOutAccount.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            this.lueOutAccount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueOutAccount.Properties.NullText = "";
+            this.lueOutAccount.Properties.PopupFormSize = new System.Drawing.Size(500, 0);
+            this.lueOutAccount.Properties.View = this.gridView3;
+            this.lueOutAccount.Size = new System.Drawing.Size(215, 20);
+            this.lueOutAccount.StyleController = this.layoutControl1;
+            this.lueOutAccount.TabIndex = 6;
+            this.lueOutAccount.EditValueChanged += new System.EventHandler(this.lueOutAccount_EditValueChanged);
+            // 
+            // gridView3
+            // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.out_a_id,
+            this.out_a_bank,
+            this.out_a_account,
+            this.out_a_type,
+            this.out_a_balance,
+            this.out_a_credit,
+            this.out_a_memo});
+            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView3.OptionsView.ColumnAutoWidth = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            // 
+            // lueInAccount
+            // 
+            this.lueInAccount.Location = new System.Drawing.Point(431, 108);
+            this.lueInAccount.MenuManager = this.barManager1;
+            this.lueInAccount.Name = "lueInAccount";
+            this.lueInAccount.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            this.lueInAccount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueInAccount.Properties.NullText = "";
+            this.lueInAccount.Properties.PopupFormSize = new System.Drawing.Size(500, 0);
+            this.lueInAccount.Properties.View = this.gridView4;
+            this.lueInAccount.Size = new System.Drawing.Size(209, 20);
+            this.lueInAccount.StyleController = this.layoutControl1;
+            this.lueInAccount.TabIndex = 9;
+            this.lueInAccount.EditValueChanged += new System.EventHandler(this.lueInAccount_EditValueChanged);
+            // 
+            // gridView4
+            // 
+            this.gridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.in_a_id,
+            this.in_a_bank,
+            this.in_a_account,
+            this.in_a_type,
+            this.in_a_balance,
+            this.in_a_credit,
+            this.in_a_memo});
+            this.gridView4.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView4.Name = "gridView4";
+            this.gridView4.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView4.OptionsView.ColumnAutoWidth = false;
+            this.gridView4.OptionsView.ShowGroupPanel = false;
+            // 
+            // out_id
+            // 
+            this.out_id.Caption = "ID";
+            this.out_id.FieldName = "ID";
+            this.out_id.Name = "out_id";
+            this.out_id.Visible = true;
+            this.out_id.VisibleIndex = 0;
+            // 
+            // out_code
+            // 
+            this.out_code.Caption = "代码";
+            this.out_code.FieldName = "Code";
+            this.out_code.Name = "out_code";
+            this.out_code.Visible = true;
+            this.out_code.VisibleIndex = 1;
+            // 
+            // out_name
+            // 
+            this.out_name.Caption = "名称";
+            this.out_name.FieldName = "Name";
+            this.out_name.Name = "out_name";
+            this.out_name.Visible = true;
+            this.out_name.VisibleIndex = 2;
+            // 
+            // in_id
+            // 
+            this.in_id.Caption = "ID";
+            this.in_id.FieldName = "ID";
+            this.in_id.Name = "in_id";
+            this.in_id.Visible = true;
+            this.in_id.VisibleIndex = 0;
+            // 
+            // in_code
+            // 
+            this.in_code.Caption = "代码";
+            this.in_code.FieldName = "Code";
+            this.in_code.Name = "in_code";
+            this.in_code.Visible = true;
+            this.in_code.VisibleIndex = 1;
+            // 
+            // in_name
+            // 
+            this.in_name.Caption = "名称";
+            this.in_name.FieldName = "Name";
+            this.in_name.Name = "in_name";
+            this.in_name.Visible = true;
+            this.in_name.VisibleIndex = 2;
+            // 
+            // out_a_id
+            // 
+            this.out_a_id.Caption = "ID";
+            this.out_a_id.FieldName = "ID";
+            this.out_a_id.Name = "out_a_id";
+            // 
+            // out_a_bank
+            // 
+            this.out_a_bank.Caption = "银行";
+            this.out_a_bank.FieldName = "BankName";
+            this.out_a_bank.Name = "out_a_bank";
+            this.out_a_bank.Visible = true;
+            this.out_a_bank.VisibleIndex = 1;
+            // 
+            // out_a_account
+            // 
+            this.out_a_account.Caption = "帐号";
+            this.out_a_account.FieldName = "Account";
+            this.out_a_account.Name = "out_a_account";
+            this.out_a_account.Visible = true;
+            this.out_a_account.VisibleIndex = 2;
+            // 
+            // out_a_type
+            // 
+            this.out_a_type.Caption = "类型";
+            this.out_a_type.FieldName = "AccountType";
+            this.out_a_type.Name = "out_a_type";
+            this.out_a_type.Visible = true;
+            this.out_a_type.VisibleIndex = 3;
+            // 
+            // out_a_balance
+            // 
+            this.out_a_balance.Caption = "余额";
+            this.out_a_balance.FieldName = "Balance";
+            this.out_a_balance.Name = "out_a_balance";
+            this.out_a_balance.Visible = true;
+            this.out_a_balance.VisibleIndex = 4;
+            // 
+            // out_a_credit
+            // 
+            this.out_a_credit.Caption = "代款";
+            this.out_a_credit.FieldName = "Credit";
+            this.out_a_credit.Name = "out_a_credit";
+            this.out_a_credit.Visible = true;
+            this.out_a_credit.VisibleIndex = 5;
+            // 
+            // out_a_memo
+            // 
+            this.out_a_memo.Caption = "备注";
+            this.out_a_memo.FieldName = "Memo";
+            this.out_a_memo.Name = "out_a_memo";
+            this.out_a_memo.Visible = true;
+            this.out_a_memo.VisibleIndex = 6;
+            // 
+            // in_a_id
+            // 
+            this.in_a_id.Caption = "ID";
+            this.in_a_id.FieldName = "ID";
+            this.in_a_id.Name = "in_a_id";
+            // 
+            // in_a_bank
+            // 
+            this.in_a_bank.Caption = "银行";
+            this.in_a_bank.FieldName = "BankName";
+            this.in_a_bank.Name = "in_a_bank";
+            this.in_a_bank.Visible = true;
+            this.in_a_bank.VisibleIndex = 1;
+            // 
+            // in_a_account
+            // 
+            this.in_a_account.Caption = "帐号";
+            this.in_a_account.FieldName = "Account";
+            this.in_a_account.Name = "in_a_account";
+            this.in_a_account.Visible = true;
+            this.in_a_account.VisibleIndex = 2;
+            // 
+            // in_a_type
+            // 
+            this.in_a_type.Caption = "性质";
+            this.in_a_type.FieldName = "AccountType";
+            this.in_a_type.Name = "in_a_type";
+            this.in_a_type.Visible = true;
+            this.in_a_type.VisibleIndex = 3;
+            // 
+            // in_a_balance
+            // 
+            this.in_a_balance.Caption = "余额";
+            this.in_a_balance.FieldName = "Balance";
+            this.in_a_balance.Name = "in_a_balance";
+            this.in_a_balance.Visible = true;
+            this.in_a_balance.VisibleIndex = 4;
+            // 
+            // in_a_credit
+            // 
+            this.in_a_credit.Caption = "贷款";
+            this.in_a_credit.FieldName = "Credit";
+            this.in_a_credit.Name = "in_a_credit";
+            this.in_a_credit.Visible = true;
+            this.in_a_credit.VisibleIndex = 5;
+            // 
+            // in_a_memo
+            // 
+            this.in_a_memo.Caption = "备注";
+            this.in_a_memo.FieldName = "Memo";
+            this.in_a_memo.Name = "in_a_memo";
+            this.in_a_memo.Visible = true;
+            this.in_a_memo.VisibleIndex = 6;
+            // 
             // DevAccount
             // 
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -1667,7 +1890,6 @@
             this.Name = "DevAccount";
             this.Text = "资金往来";
             this.Load += new System.EventHandler(this.DevAccount_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtCMoney.Properties)).EndInit();
@@ -1682,13 +1904,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.lueProjects.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInBank.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOutBank.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueInAccount.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueOutAccount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMemo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtSigned.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtSigned.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueOutCompany.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractApply.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractApplyStatusEnum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
@@ -1759,14 +1978,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueOutCompany.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueInCompany.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueOutAccount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueInAccount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraEditors.LookUpEdit lueInCompany;
-        private DevExpress.XtraEditors.LookUpEdit lueOutCompany;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar barNormal;
         private DevExpress.XtraBars.BarButtonItem tbNew;
@@ -1792,8 +2017,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.TextEdit txtMemo;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
-        private DevExpress.XtraEditors.LookUpEdit lueInAccount;
-        private DevExpress.XtraEditors.LookUpEdit lueOutAccount;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
@@ -1886,5 +2109,33 @@
         private DevExpress.XtraEditors.TextEdit txtCMoney;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private DevExpress.XtraBars.BarButtonItem tbPrint;
+        private DevExpress.XtraEditors.SearchLookUpEdit lueOutCompany;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
+        private DevExpress.XtraEditors.SearchLookUpEdit lueInCompany;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraEditors.SearchLookUpEdit lueOutAccount;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraEditors.SearchLookUpEdit lueInAccount;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
+        private DevExpress.XtraGrid.Columns.GridColumn out_id;
+        private DevExpress.XtraGrid.Columns.GridColumn out_code;
+        private DevExpress.XtraGrid.Columns.GridColumn out_name;
+        private DevExpress.XtraGrid.Columns.GridColumn in_id;
+        private DevExpress.XtraGrid.Columns.GridColumn in_code;
+        private DevExpress.XtraGrid.Columns.GridColumn in_name;
+        private DevExpress.XtraGrid.Columns.GridColumn out_a_id;
+        private DevExpress.XtraGrid.Columns.GridColumn out_a_bank;
+        private DevExpress.XtraGrid.Columns.GridColumn out_a_account;
+        private DevExpress.XtraGrid.Columns.GridColumn out_a_type;
+        private DevExpress.XtraGrid.Columns.GridColumn out_a_balance;
+        private DevExpress.XtraGrid.Columns.GridColumn out_a_credit;
+        private DevExpress.XtraGrid.Columns.GridColumn out_a_memo;
+        private DevExpress.XtraGrid.Columns.GridColumn in_a_id;
+        private DevExpress.XtraGrid.Columns.GridColumn in_a_bank;
+        private DevExpress.XtraGrid.Columns.GridColumn in_a_account;
+        private DevExpress.XtraGrid.Columns.GridColumn in_a_type;
+        private DevExpress.XtraGrid.Columns.GridColumn in_a_balance;
+        private DevExpress.XtraGrid.Columns.GridColumn in_a_credit;
+        private DevExpress.XtraGrid.Columns.GridColumn in_a_memo;
     }
 }
