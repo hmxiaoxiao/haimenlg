@@ -65,5 +65,10 @@ namespace Haimen.GUI
         {
             MyRefresh();
         }
+
+        private void DevContractAcceptList_Activated(object sender, EventArgs e)
+        {
+            MyRefresh();
+        }
     }
 }

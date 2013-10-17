@@ -212,5 +212,10 @@ namespace Haimen.GUI
         {
             MyRefresh();
         }
+
+        private void DevBalanceList_Activated(object sender, EventArgs e)
+        {
+            MyRefresh();
+        }
     }
 }

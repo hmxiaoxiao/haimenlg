@@ -29,9 +29,20 @@ namespace Haimen.GUI
         /// </summary>
         private void MyRefresh()
         {
+            if (m_status != winStatusEnum.查看)
+            {
+                if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                {
+                    return;
+                }
+            }
             m_UserGroups = UserGroup.Query();
             gridControl1.DataSource = m_UserGroups;
             gridView1.OptionsBehavior.Editable = false;
+            setWinStatus(winStatusEnum.查看);
         }
 
         /// <summary>
@@ -86,7 +97,6 @@ namespace Haimen.GUI
         private void DevUserGroup_Load(object sender, EventArgs e)
         {
             MyRefresh();
-            setWinStatus(winStatusEnum.查看);       // 当前的状态为浏览
             SetControlAccess();
         }
 
@@ -215,6 +225,11 @@ namespace Haimen.GUI
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_usergroup.ID)
                     e.Allow = false;
             }
+        }
+
+        private void devUserGroupList_Activated(object sender, EventArgs e)
+        {
+            MyRefresh();
         }
     }
 }

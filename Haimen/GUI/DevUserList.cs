@@ -132,5 +132,10 @@ namespace Haimen.GUI
         {
             MyRefresh();
         }
+
+        private void DevUserList_Activated(object sender, EventArgs e)
+        {
+            MyRefresh();
+        }
     }
 }

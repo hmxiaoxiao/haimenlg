@@ -1,6 +1,6 @@
 ﻿namespace Haimen.GUI
 {
-    partial class DevProject
+    partial class DevProjectList
     {
         /// <summary>
         /// Required designer variable.
@@ -199,7 +199,7 @@
             this.col_name.Visible = true;
             this.col_name.VisibleIndex = 0;
             // 
-            // DevProject
+            // DevProjectList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -209,8 +209,9 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "DevProject";
+            this.Name = "DevProjectList";
             this.Text = "项目管理";
+            this.Activated += new System.EventHandler(this.DevProjectList_Activated);
             this.Load += new System.EventHandler(this.DevProject_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

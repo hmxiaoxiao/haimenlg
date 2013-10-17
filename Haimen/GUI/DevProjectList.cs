@@ -13,7 +13,7 @@ using Haimen.Helper;
 
 namespace Haimen.GUI
 {
-    public partial class DevProject : DevExpress.XtraEditors.XtraForm
+    public partial class DevProjectList : DevExpress.XtraEditors.XtraForm
     {
         private List<Project> m_projects = new List<Project>();
         private Project m_project;
@@ -24,9 +24,21 @@ namespace Haimen.GUI
         /// </summary>
         private void MyRefresh()
         {
+            if (m_status != winStatusEnum.查看)
+            {
+                if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                {
+                    return;
+                }
+            }
             m_projects = Project.Query();
             gridControl1.DataSource = m_projects;
             gridView1.OptionsBehavior.Editable = false;
+
+            setWinStatus(winStatusEnum.查看);
         }
 
         /// <summary>
@@ -78,7 +90,7 @@ namespace Haimen.GUI
             }
         }
 
-        public DevProject()
+        public DevProjectList()
         {
             InitializeComponent();
         }
@@ -86,7 +98,6 @@ namespace Haimen.GUI
         private void DevProject_Load(object sender, EventArgs e)
         {
             MyRefresh();
-            setWinStatus(winStatusEnum.查看);       // 当前的状态为浏览
             SetControlAccess();
         }
 
@@ -215,6 +226,11 @@ namespace Haimen.GUI
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_project.ID)
                     e.Allow = false;
             }
+        }
+
+        private void DevProjectList_Activated(object sender, EventArgs e)
+        {
+            MyRefresh();
         }
     }
 }

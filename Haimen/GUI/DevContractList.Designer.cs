@@ -449,6 +449,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "DevContractList";
             this.Text = "合同列表";
+            this.Activated += new System.EventHandler(this.DevContractList_Activated);
             this.Load += new System.EventHandler(this.DevContractList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueStatus)).EndInit();

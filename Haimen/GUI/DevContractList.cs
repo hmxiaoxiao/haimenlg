@@ -240,5 +240,10 @@ namespace Haimen.GUI
             if (ct != null)
                 m_main.OpenForm(new DevContract(winStatusEnum.设置审计价, ct));
         }
+
+        private void DevContractList_Activated(object sender, EventArgs e)
+        {
+            MyRefresh();
+        }
     }
 }

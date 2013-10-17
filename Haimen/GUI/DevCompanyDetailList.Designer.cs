@@ -469,6 +469,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "DevCompanyDetailList";
             this.Text = "单位帐户明细";
+            this.Activated += new System.EventHandler(this.DevCompanyDetailList_Activated);
             this.Load += new System.EventHandler(this.DevCompanyDetailList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);

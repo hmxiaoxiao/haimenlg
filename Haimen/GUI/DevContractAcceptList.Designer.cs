@@ -261,6 +261,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "DevContractAcceptList";
             this.Text = "合同验收列表";
+            this.Activated += new System.EventHandler(this.DevContractAcceptList_Activated);
             this.Load += new System.EventHandler(this.DevContractAcceptList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

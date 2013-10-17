@@ -35,13 +35,13 @@
             this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbFinish = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.tsbFinish = new DevExpress.XtraBars.BarButtonItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -129,14 +129,6 @@
             this.tsbQuery.Name = "tsbQuery";
             this.tsbQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbQuery_ItemClick);
             // 
-            // tsbFinish
-            // 
-            this.tsbFinish.Caption = "完结";
-            this.tsbFinish.Glyph = global::Haimen.Properties.Resources.Fill_Up_hot;
-            this.tsbFinish.Id = 5;
-            this.tsbFinish.Name = "tsbFinish";
-            this.tsbFinish.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbFinish_ItemClick);
-            // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "刷新";
@@ -180,6 +172,14 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(628, 39);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 421);
+            // 
+            // tsbFinish
+            // 
+            this.tsbFinish.Caption = "完结";
+            this.tsbFinish.Glyph = global::Haimen.Properties.Resources.Fill_Up_hot;
+            this.tsbFinish.Id = 5;
+            this.tsbFinish.Name = "tsbFinish";
+            this.tsbFinish.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbFinish_ItemClick);
             // 
             // gridControl1
             // 
@@ -342,6 +342,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "DevAcceptanceBillList";
             this.Text = "承兑汇票列表";
+            this.Activated += new System.EventHandler(this.DevAcceptanceBillList_Activated);
             this.Load += new System.EventHandler(this.DevAcceptanceBillList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

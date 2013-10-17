@@ -203,7 +203,7 @@ namespace Haimen.GUI
 
         private void mnuProject_ItemClick(object sender, ItemClickEventArgs e)
         {
-            OpenForm(new DevProject());
+            OpenForm(new DevProjectList());
         }
 
         private void mnuBCBalance_ItemClick(object sender, ItemClickEventArgs e)

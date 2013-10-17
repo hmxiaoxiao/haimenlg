@@ -135,5 +135,10 @@ namespace Haimen.GUI
         {
             MyRefresh();
         }
+
+        private void DevAcceptanceBillList_Activated(object sender, EventArgs e)
+        {
+            MyRefresh();
+        }
     }
 }

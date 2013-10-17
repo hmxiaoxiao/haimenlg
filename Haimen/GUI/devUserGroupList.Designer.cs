@@ -209,6 +209,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "devUserGroupList";
             this.Text = "用户组管理";
+            this.Activated += new System.EventHandler(this.devUserGroupList_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

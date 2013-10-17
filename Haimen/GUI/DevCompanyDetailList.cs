@@ -70,6 +70,16 @@ namespace Haimen.GUI
 
         private void MyRefresh()
         {
+            if (m_status != winStatusEnum.查看)
+            {
+                if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                {
+                    return;
+                }
+            }
             Company.OrderBy = "order by code";
             
             List<Company> companies = Company.Query();
@@ -77,6 +87,8 @@ namespace Haimen.GUI
 
             lueType.DataSource = null;
             lueType.DataSource = CompanyDetail.AccountTypeList;
+
+            SetFormStatus(winStatusEnum.查看);
         }
 
         private bool Verify()
@@ -269,18 +281,12 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatusEnum.查看)
-            {
-                if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question,
-                        MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
-                {
-                    return;
-                }
-            }
             MyRefresh();
-            SetFormStatus(winStatusEnum.查看);
+        }
+
+        private void DevCompanyDetailList_Activated(object sender, EventArgs e)
+        {
+            MyRefresh();
         }
     }
 }
