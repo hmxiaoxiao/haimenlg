@@ -252,10 +252,13 @@ namespace Haimen.GUI
         {
             if (m_company.ID > 0)
             {
-                m_company.Destory();
-                m_company = new Company();
-                Object2Form();
-                SetFormStatus(winStatusEnum.新增);
+                if (!m_company.CanDelete(m_company.ID))
+                {
+                    MessageBox.Show(m_company.ErrorString, "注意");
+                    return;
+                }
+                m_company = null;
+                SetFormStatus(winStatusEnum.查看);
             }
         }
     }

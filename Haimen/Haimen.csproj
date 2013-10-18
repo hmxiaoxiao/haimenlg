@@ -171,6 +171,12 @@
     <Compile Include="Entity\Project.cs" />
     <Compile Include="Entity\SystemSet.cs" />
     <Compile Include="Entity\UserGroup.cs" />
+    <Compile Include="GUI\DevBankMerge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DevBankMerge.Designer.cs">
+      <DependentUpon>DevBankMerge.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DevContractAccept.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -418,6 +424,9 @@
     <EmbeddedResource Include="GUI\DevBankList.resx">
       <DependentUpon>DevBankList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DevBankMerge.resx">
+      <DependentUpon>DevBankMerge.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevCompany.resx">
       <DependentUpon>DevCompany.cs</DependentUpon>
     </EmbeddedResource>
@@ -495,6 +504,7 @@
     <EmbeddedResource Include="Report\rptAccount.resx">
       <DependentUpon>rptAccount.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\Haimen.Entity.Account.datasource" />
     <None Include="Properties\Settings.settings">

@@ -159,6 +159,14 @@ namespace Haimen.GUI
             if (m_status != winStatusEnum.查看)
                 return;
 
+            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
+            Funds fd = Funds.CreateByID(id);
+            if (!fd.CanDelete(id))
+            {
+                MessageBox.Show(fd.ErrorString, "注意");
+                return;
+            }
+
             if (MessageBox.Show("要删除指定的资金性质，是否要继续？", "注意",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question,
@@ -167,7 +175,6 @@ namespace Haimen.GUI
                 return;
             }
 
-            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
             Funds.Delete(id);
 
             initTree();

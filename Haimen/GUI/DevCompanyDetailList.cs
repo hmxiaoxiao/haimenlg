@@ -174,6 +174,13 @@ namespace Haimen.GUI
         {
             if (gridView1.FocusedRowHandle < 0)
                 return;
+            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, c_id).ToString());
+            CompanyDetail cd = CompanyDetail.CreateByID(id);
+            if (!cd.CanDelete(id))
+            {
+                MessageBox.Show(cd.ErrorString, "注意");
+                return;
+            }
             if (MessageBox.Show(this, "是否要删除指定的单位明细？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
                 gridView1.DeleteRow(gridView1.FocusedRowHandle);

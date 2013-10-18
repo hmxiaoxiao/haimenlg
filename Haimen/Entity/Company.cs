@@ -36,6 +36,27 @@ namespace Haimen.Entity
         [Field("parent_id")]
         public long ParentID { get; set; }
 
+
+        public bool CanDelete(long id)
+        {
+            Error_Info.Clear();
+            if (CompanyDetail.Query("parent_id = " + id.ToString()).Count > 0)
+            {
+                Error_Info.Add(new KeyValuePair<string, string>("删除单位", "该单位已经被单位明细引用，不能删除"));
+                return false;
+            }
+
+            if (Contract.Query("out_company_id = " + id.ToString()).Count > 0 ||
+                Contract.Query("in_company_id = " + id.ToString()).Count > 0 ||
+                Contract.Query("partya = " + id.ToString()).Count > 0 ||
+                Contract.Query("partyb = " + id.ToString()).Count > 0)
+            {
+                Error_Info.Add(new KeyValuePair<string, string>("删除单位", "该单位已经被合同引用，不能删除"));
+                return false;
+            }
+            return true;
+        }
+
         /// <summary>
         /// 单位的数据校验
         /// </summary>

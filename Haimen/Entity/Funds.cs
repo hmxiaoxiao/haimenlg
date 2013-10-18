@@ -19,6 +19,17 @@ namespace Haimen.Entity
         [Field("parent_id")]
         public long ParentID { get; set; }
 
+        public bool CanDelete(long id)
+        {
+            Error_Info.Clear();
+            if (AccountDetail.Query("funds_id = " + id.ToString()).Count > 0)
+            {
+                Error_Info.Add(new KeyValuePair<string,string>("删除资金性质","该性质已经被资金单据中引用，不能删除！"));
+                return false;
+            }
+            return true;
+        }
+
         //  取得下级的资金性质
         public List<Funds> GetChildren()
         {

@@ -32,6 +32,9 @@ namespace Haimen.GUI
         // 登录
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (lueCode.EditValue == null)
+                return;
+
             User LoginUser = User.Login(lueCode.EditValue.ToString(), txtPassword.Text);
             if (LoginUser != null)
             {

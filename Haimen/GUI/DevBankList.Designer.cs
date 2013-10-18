@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevBankList));
             this.layoutView1 = new DevExpress.XtraGrid.Views.Layout.LayoutView();
             this.layoutViewColumn1 = new DevExpress.XtraGrid.Columns.LayoutViewColumn();
             this.layoutViewField_layoutViewColumn1 = new DevExpress.XtraGrid.Views.Layout.LayoutViewField();
@@ -55,6 +56,7 @@
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tsbSave = new DevExpress.XtraBars.BarButtonItem();
             this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbMerger = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -149,7 +151,7 @@
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.sueBank});
-            this.gridControl1.Size = new System.Drawing.Size(365, 468);
+            this.gridControl1.Size = new System.Drawing.Size(365, 460);
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -276,8 +278,9 @@
             this.tsbExit,
             this.barStaticItem1,
             this.tsbSave,
-            this.tsbRefresh});
-            this.barManager1.MaxItemId = 7;
+            this.tsbRefresh,
+            this.tsbMerger});
+            this.barManager1.MaxItemId = 8;
             // 
             // bar1
             // 
@@ -292,6 +295,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbSave, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbMerger, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
@@ -340,6 +344,14 @@
             this.tsbRefresh.Name = "tsbRefresh";
             this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
             // 
+            // tsbMerger
+            // 
+            this.tsbMerger.Caption = "合并银行";
+            this.tsbMerger.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbMerger.Glyph")));
+            this.tsbMerger.Id = 7;
+            this.tsbMerger.Name = "tsbMerger";
+            this.tsbMerger.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbMerger_ItemClick);
+            // 
             // tsbExit
             // 
             this.tsbExit.Caption = "退出";
@@ -353,7 +365,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(706, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(706, 47);
             // 
             // barDockControlBottom
             // 
@@ -366,15 +378,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 468);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 460);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(706, 39);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 468);
+            this.barDockControlRight.Location = new System.Drawing.Point(706, 47);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 460);
             // 
             // barStaticItem1
             // 
@@ -398,13 +410,13 @@
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 39);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 47);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.tree);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(706, 468);
+            this.splitContainerControl1.Size = new System.Drawing.Size(706, 460);
             this.splitContainerControl1.SplitterPosition = 336;
             this.splitContainerControl1.TabIndex = 14;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -420,7 +432,7 @@
             this.tree.Name = "tree";
             this.tree.OptionsView.ShowColumns = false;
             this.tree.OptionsView.ShowIndicator = false;
-            this.tree.Size = new System.Drawing.Size(336, 468);
+            this.tree.Size = new System.Drawing.Size(336, 460);
             this.tree.TabIndex = 1;
             this.tree.Click += new System.EventHandler(this.tree_Click);
             // 
@@ -524,5 +536,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn c_id;
         private DevExpress.XtraGrid.Columns.GridColumn c_code;
         private DevExpress.XtraGrid.Columns.GridColumn c_name;
+        private DevExpress.XtraBars.BarButtonItem tsbMerger;
     }
 }

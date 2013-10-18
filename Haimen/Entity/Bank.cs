@@ -56,6 +56,19 @@ namespace Haimen.Entity
             return list;
         }
 
+
+        // 判断银行是否可以删除
+        public bool CanDelete(long id)
+        {
+            Error_Info.Clear();
+            if (CompanyDetail.Query("bank_id = " + id.ToString()).Count > 0)
+            {
+                Error_Info.Add(new KeyValuePair<string,string>("删除银行", "该银行已经被单位明细引用，无法删除！"));
+                return false;
+            }
+            return true;
+        }
+
         /// <summary>
         /// 校验
         /// </summary>
@@ -111,6 +124,39 @@ namespace Haimen.Entity
 
             // 返回校验成功与否
             return Error_Info.Count == 0;
+        }
+
+        /// <summary>
+        /// 合并银行，将老的银行全并到新的银行上，并删除老的银行
+        /// </summary>
+        /// <param name="old_id">老银行ID</param>
+        /// <param name="new_id">新银行Id</param>
+        /// <returns></returns>
+        public bool Merge(long old_id, long new_id)
+        {
+            Error_Info.Clear();
+            Bank old_bank = Bank.CreateByID(old_id);
+            Bank new_bank = Bank.CreateByID(new_id);
+
+            if (old_bank == null || new_bank == null)
+            {
+                Error_Info.Add(new KeyValuePair<string,string>("Merge","对应的银行信息找不到！"));
+                return false;
+            }
+
+            if (Bank.Query("parent_id = " + old_id.ToString()).Count > 0)
+            {
+                Error_Info.Add(new KeyValuePair<string, string>("Merge", "被合并的银行不能是别的银行的父结点。"));
+                return false;
+            }
+
+            string sql = " Update m_company_detail set bank_id = " + new_id.ToString() + " where bank_id = " + old_id.ToString();
+            Haimen.Qy.DBFunction.RunQuerySql(sql);
+
+            sql = " Delete m_bank where id = " + old_id.ToString();
+            Haimen.Qy.DBFunction.RunQuerySql(sql);
+
+            return true;
         }
 
     }

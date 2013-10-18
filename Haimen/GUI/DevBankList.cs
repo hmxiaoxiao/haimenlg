@@ -268,10 +268,17 @@ namespace Haimen.GUI
         {
             if (gridView1.FocusedRowHandle < 0)
                 return;
+
+            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
+            Bank bk = Bank.CreateByID(id);
+            if (!bk.CanDelete(id))  // 如果该银行不能被删除
+            {
+                MessageBox.Show(bk.ErrorString, "注意");
+                return;
+            }
+
             if (MessageBox.Show(this, "是否要删除指定的银行？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
-                long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
-                Bank bk = Bank.CreateByID(id);
                 bk.Destory();
                 gridView1.DeleteRow(gridView1.FocusedRowHandle);
             }
@@ -287,6 +294,12 @@ namespace Haimen.GUI
         private void gridView1_HiddenEditor(object sender, EventArgs e)
         {
             gridView1.BestFitColumns();
+        }
+
+        private void tsbMerger_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DevBankMerge bm = new DevBankMerge();
+            bm.ShowDialog();
         }
     }
 }

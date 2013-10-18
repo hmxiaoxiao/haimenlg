@@ -135,8 +135,27 @@ namespace Haimen.Entity
         [Field("memo")]
         public string Memo { get; set; }
 
-        
 
+        public bool CanDelete(long id)
+        {
+            Error_Info.Clear();
+            if (Haimen.Entity.Account.Query(" in_companydetail_id = " + id.ToString()).Count > 0)
+            {
+                Error_Info.Add(new KeyValuePair<string,string>("删除单位明细","该单位明细已经被资金中引用"));
+                return false;
+            }
+            if (Haimen.Entity.Account.Query(" out_companydetail_id = " + id.ToString()).Count > 0)
+            {
+                Error_Info.Add(new KeyValuePair<string,string>("删除单位明细","该单位明细已经被资金中引用"));
+                return false;
+            }
+            if(Haimen.Entity.Balance.Query("companydetail_id = " + id.ToString()).Count > 0)
+            {
+                Error_Info.Add(new KeyValuePair<string,string>("删除单位明细","该单位明细已经被贷款中引用"));
+                return false;
+            }
+            return true;
+        }
 
 
         /// <summary>

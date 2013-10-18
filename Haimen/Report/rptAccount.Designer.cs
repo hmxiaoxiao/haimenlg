@@ -30,13 +30,18 @@
         {
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
-            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+            this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
+            this.xrTableRow8 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.xrTableCell19 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.SignedDate = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell20 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.Code = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
             this.txtOutCompany = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.txtInCompany = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -52,7 +57,9 @@
             this.xrTableCell13 = new DevExpress.XtraReports.UI.XRTableCell();
             this.txtRMB = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell15 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.txtMoney = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell16 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.txtAttach = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow5 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell17 = new DevExpress.XtraReports.UI.XRTableCell();
             this.txtUsage = new DevExpress.XtraReports.UI.XRTableCell();
@@ -63,16 +70,10 @@
             this.txtChecker = new DevExpress.XtraReports.UI.XRTableCell();
             this.txtPayer = new DevExpress.XtraReports.UI.XRTableCell();
             this.txtMaker = new DevExpress.XtraReports.UI.XRTableCell();
-            this.txtMoney = new DevExpress.XtraReports.UI.XRTableCell();
-            this.txtAttach = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
-            this.xrTableRow8 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell19 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell20 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.Code = new DevExpress.XtraReports.UI.XRTableCell();
-            this.SignedDate = new DevExpress.XtraReports.UI.XRTableCell();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
+            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+            this.txtCheckDate = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -93,11 +94,67 @@
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
-            // BottomMargin
+            // xrTable2
             // 
-            this.BottomMargin.Name = "BottomMargin";
-            this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(216.0938F, 88.54166F);
+            this.xrTable2.Name = "xrTable2";
+            this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrTableRow8});
+            this.xrTable2.SizeF = new System.Drawing.SizeF(423.9063F, 25F);
+            // 
+            // xrTableRow8
+            // 
+            this.xrTableRow8.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell19,
+            this.SignedDate,
+            this.xrTableCell20,
+            this.Code});
+            this.xrTableRow8.Name = "xrTableRow8";
+            this.xrTableRow8.Weight = 1D;
+            // 
+            // xrTableCell19
+            // 
+            this.xrTableCell19.Name = "xrTableCell19";
+            this.xrTableCell19.StylePriority.UseTextAlignment = false;
+            this.xrTableCell19.Text = "日期：";
+            this.xrTableCell19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell19.Weight = 0.5D;
+            // 
+            // SignedDate
+            // 
+            this.SignedDate.Name = "SignedDate";
+            this.SignedDate.StylePriority.UseTextAlignment = false;
+            this.SignedDate.Text = "SignedDate";
+            this.SignedDate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.SignedDate.Weight = 0.79711081106848836D;
+            // 
+            // xrTableCell20
+            // 
+            this.xrTableCell20.Name = "xrTableCell20";
+            this.xrTableCell20.StylePriority.UseTextAlignment = false;
+            this.xrTableCell20.Text = "凭证号：";
+            this.xrTableCell20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell20.Weight = 0.48173177159196595D;
+            // 
+            // Code
+            // 
+            this.Code.Name = "Code";
+            this.Code.StylePriority.UseTextAlignment = false;
+            this.Code.Text = "Code";
+            this.Code.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.Code.Weight = 1.2211574173395456D;
+            // 
+            // xrLabel1
+            // 
+            this.xrLabel1.Font = new System.Drawing.Font("黑体", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 42.70833F);
+            this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(630F, 45.83333F);
+            this.xrLabel1.StylePriority.UseFont = false;
+            this.xrLabel1.StylePriority.UseTextAlignment = false;
+            this.xrLabel1.Text = "资金审批表";
+            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrTable1
             // 
@@ -152,18 +209,6 @@
             this.xrTableCell3.Text = "收款单位";
             this.xrTableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell3.Weight = 0.38397797844492976D;
-            // 
-            // xrLabel1
-            // 
-            this.xrLabel1.Font = new System.Drawing.Font("黑体", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 42.70833F);
-            this.xrLabel1.Name = "xrLabel1";
-            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(630F, 45.83333F);
-            this.xrLabel1.StylePriority.UseFont = false;
-            this.xrLabel1.StylePriority.UseTextAlignment = false;
-            this.xrLabel1.Text = "资金审批表";
-            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // txtInCompany
             // 
@@ -293,6 +338,14 @@
             this.xrTableCell15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell15.Weight = 0.16988951415309161D;
             // 
+            // txtMoney
+            // 
+            this.txtMoney.Name = "txtMoney";
+            this.txtMoney.StylePriority.UseTextAlignment = false;
+            this.txtMoney.Text = "txtMoney";
+            this.txtMoney.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.txtMoney.Weight = 0.71132588451207335D;
+            // 
             // xrTableCell16
             // 
             this.xrTableCell16.Name = "xrTableCell16";
@@ -300,6 +353,14 @@
             this.xrTableCell16.Text = "附件张数";
             this.xrTableCell16.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell16.Weight = 0.24834258185835995D;
+            // 
+            // txtAttach
+            // 
+            this.txtAttach.Name = "txtAttach";
+            this.txtAttach.StylePriority.UseTextAlignment = false;
+            this.txtAttach.Text = "txtAttach";
+            this.txtAttach.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtAttach.Weight = 0.39198904841339177D;
             // 
             // xrTableRow5
             // 
@@ -353,6 +414,7 @@
             // 
             this.xrTableRow7.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.txtChecker,
+            this.txtCheckDate,
             this.txtPayer,
             this.txtMaker});
             this.xrTableRow7.Name = "xrTableRow7";
@@ -360,11 +422,14 @@
             // 
             // txtChecker
             // 
+            this.txtChecker.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.txtChecker.Name = "txtChecker";
+            this.txtChecker.StylePriority.UseBorders = false;
             this.txtChecker.StylePriority.UseTextAlignment = false;
             this.txtChecker.Text = "审批：";
-            this.txtChecker.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.txtChecker.Weight = 1.5491713097030344D;
+            this.txtChecker.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.txtChecker.Weight = 1.0930941258344118D;
             // 
             // txtPayer
             // 
@@ -382,73 +447,30 @@
             this.txtMaker.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.txtMaker.Weight = 0.85027636017371111D;
             // 
-            // txtMoney
+            // BottomMargin
             // 
-            this.txtMoney.Name = "txtMoney";
-            this.txtMoney.StylePriority.UseTextAlignment = false;
-            this.txtMoney.Text = "txtMoney";
-            this.txtMoney.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.txtMoney.Weight = 0.71132588451207335D;
+            this.BottomMargin.Name = "BottomMargin";
+            this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
-            // txtAttach
+            // txtCheckDate
             // 
-            this.txtAttach.Name = "txtAttach";
-            this.txtAttach.StylePriority.UseTextAlignment = false;
-            this.txtAttach.Text = "txtAttach";
-            this.txtAttach.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.txtAttach.Weight = 0.39198904841339177D;
+            this.txtCheckDate.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Top | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.txtCheckDate.BorderWidth = 1;
+            this.txtCheckDate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtCheckDate.Name = "txtCheckDate";
+            this.txtCheckDate.Padding = new DevExpress.XtraPrinting.PaddingInfo(1, 1, 1, 1, 100F);
+            this.txtCheckDate.StylePriority.UseBorders = false;
+            this.txtCheckDate.StylePriority.UseBorderWidth = false;
+            this.txtCheckDate.StylePriority.UseFont = false;
+            this.txtCheckDate.StylePriority.UsePadding = false;
+            this.txtCheckDate.StylePriority.UseTextAlignment = false;
+            this.txtCheckDate.Text = "txtCheckDate";
+            this.txtCheckDate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.txtCheckDate.Weight = 0.45607718386862262D;
             // 
-            // xrTable2
-            // 
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(216.0938F, 88.54166F);
-            this.xrTable2.Name = "xrTable2";
-            this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
-            this.xrTableRow8});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(423.9063F, 25F);
-            // 
-            // xrTableRow8
-            // 
-            this.xrTableRow8.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell19,
-            this.SignedDate,
-            this.xrTableCell20,
-            this.Code});
-            this.xrTableRow8.Name = "xrTableRow8";
-            this.xrTableRow8.Weight = 1D;
-            // 
-            // xrTableCell19
-            // 
-            this.xrTableCell19.Name = "xrTableCell19";
-            this.xrTableCell19.StylePriority.UseTextAlignment = false;
-            this.xrTableCell19.Text = "日期：";
-            this.xrTableCell19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell19.Weight = 0.5D;
-            // 
-            // xrTableCell20
-            // 
-            this.xrTableCell20.Name = "xrTableCell20";
-            this.xrTableCell20.StylePriority.UseTextAlignment = false;
-            this.xrTableCell20.Text = "单据字：";
-            this.xrTableCell20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell20.Weight = 0.48173177159196595D;
-            // 
-            // Code
-            // 
-            this.Code.Name = "Code";
-            this.Code.StylePriority.UseTextAlignment = false;
-            this.Code.Text = "Code";
-            this.Code.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.Code.Weight = 1.2211574173395456D;
-            // 
-            // SignedDate
-            // 
-            this.SignedDate.Name = "SignedDate";
-            this.SignedDate.StylePriority.UseTextAlignment = false;
-            this.SignedDate.Text = "SignedDate";
-            this.SignedDate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.SignedDate.Weight = 0.79711081106848836D;
-            // 
-            // XtraReport2
+            // rptAccount
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,
@@ -456,8 +478,8 @@
             this.BottomMargin});
             this.Margins = new System.Drawing.Printing.Margins(100, 100, 476, 100);
             this.Version = "13.1";
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -507,5 +529,6 @@
         private DevExpress.XtraReports.UI.XRTableCell Code;
         private DevExpress.XtraReports.UI.XRTableCell txtMoney;
         private DevExpress.XtraReports.UI.XRTableCell txtAttach;
+        private DevExpress.XtraReports.UI.XRTableCell txtCheckDate;
     }
 }
