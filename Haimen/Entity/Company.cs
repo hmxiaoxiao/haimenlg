@@ -6,6 +6,9 @@ using System.Text;
 using Haimen.Qy;
 using Haimen.Entity;
 
+using System.Data;
+using System.Data.SqlClient;
+
 namespace Haimen.Entity
 {
     [Table("m_company")]
@@ -162,5 +165,6 @@ namespace Haimen.Entity
                 SystemSet.SetValue("Doc", doc);
             return doc;
         }
+
     }
 }

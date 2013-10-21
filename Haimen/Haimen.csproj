@@ -219,6 +219,12 @@
     <Compile Include="GUI\DevQuerySelectCompany.Designer.cs">
       <DependentUpon>DevQuerySelectCompany.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DevTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DevTest.Designer.cs">
+      <DependentUpon>DevTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\devUserGroupList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -477,6 +483,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevQuerySelectCompany.resx">
       <DependentUpon>DevQuerySelectCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DevTest.resx">
+      <DependentUpon>DevTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevUser.resx">
       <DependentUpon>DevUser.cs</DependentUpon>

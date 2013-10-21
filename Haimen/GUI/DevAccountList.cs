@@ -12,6 +12,7 @@ using Haimen.Helper;
 
 using Haimen.Report;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace Haimen.GUI
 {
@@ -204,8 +205,11 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void DevAccountList_Load(object sender, EventArgs e)
         {
+            (this.gridControl1.MainView as DevExpress.XtraGrid.Views.Base.BaseView).DataController.AllowIEnumerableDetails = true;
             MyRefresh();
             SetControlAccess();
+
+//            DataController.AllowIEnumerableDetails = true;
         }
 
 

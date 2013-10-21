@@ -310,7 +310,7 @@ namespace Haimen.GUI
             lueCashier.Properties.ValueMember = "ID";
 
             // 明细数据中的资金来源
-            List<Funds> fundslist = Funds.Query();
+            List<Funds> fundslist = Funds.GetLevel();
             luefunds.DataSource = fundslist;
             luefunds.DisplayMember = "Name";
             luefunds.ValueMember = "ID";

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevAccountList));
             this.col_detail_money = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
@@ -146,6 +147,10 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            gridLevelNode2.LevelTemplate = this.gridView2;
+            gridLevelNode2.RelationName = "Level1";
+            this.gridControl1.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode2});
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
