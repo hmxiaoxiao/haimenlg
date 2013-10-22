@@ -132,10 +132,6 @@ namespace Haimen.GUI
                     filters.Add(" Code like '%" + qcode + "%' ");
                 if (qname.Length > 0)
                     filters.Add(" Name like '%" + qname + "%' ");
-                if (qaccount.Length > 0)
-                    filters.Add(" Account like '%" + qaccount + "%' ");
-                if (qbankid.Length > 0)
-                    filters.Add(" Bank_ID = " + qbankid + " ");
 
                 string where = "";
                 foreach (string filter in filters)

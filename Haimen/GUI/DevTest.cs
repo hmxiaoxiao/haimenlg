@@ -8,7 +8,6 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 using Haimen.Entity;
-using System.Data;
 
 namespace Haimen.GUI
 {

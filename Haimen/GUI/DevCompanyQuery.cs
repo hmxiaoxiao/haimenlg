@@ -32,17 +32,11 @@ namespace Haimen.GUI
         {
             Q_Code = txtCode.Text;
             Q_Name = txtName.Text;
-            Q_Account = txtAccount.Text;
-            if (lueBanks.EditValue != null)
-                Q_BankID = lueBanks.EditValue.ToString();
             this.Close();
         }
 
         private void DevCompanyQuery_Load(object sender, EventArgs e)
         {
-            lueBanks.Properties.DataSource = Bank.Query();
-            lueBanks.Properties.DisplayMember = "Name";
-            lueBanks.Properties.ValueMember = "ID";
         }
     }
 }
