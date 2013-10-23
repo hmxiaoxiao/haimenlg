@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevMain));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.mnuBank = new DevExpress.XtraBars.BarButtonItem();
             this.mnuCompany = new DevExpress.XtraBars.BarButtonItem();
@@ -72,6 +73,7 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.mnuReportBalance = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -103,9 +105,10 @@
             this.mnuProject,
             this.mnuBCBalance,
             this.mnuCBBalance,
-            this.mnuUserGroup});
+            this.mnuUserGroup,
+            this.mnuReportBalance});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 41;
+            this.ribbon.MaxItemId = 42;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -477,6 +480,7 @@
             // 
             // ribbonPageGroup12
             // 
+            this.ribbonPageGroup12.ItemLinks.Add(this.mnuReportBalance);
             this.ribbonPageGroup12.ItemLinks.Add(this.mnuBCBalance);
             this.ribbonPageGroup12.ItemLinks.Add(this.mnuCBBalance);
             this.ribbonPageGroup12.Name = "ribbonPageGroup12";
@@ -500,6 +504,17 @@
             // mdiManager
             // 
             this.mdiManager.MdiParent = this;
+            // 
+            // mnuReportBalance
+            // 
+            this.mnuReportBalance.Caption = "余额表";
+            this.mnuReportBalance.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuReportBalance.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuReportBalance.Glyph")));
+            this.mnuReportBalance.Id = 41;
+            this.mnuReportBalance.Name = "mnuReportBalance";
+            this.mnuReportBalance.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuReportBalance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuReportBalance_ItemClick);
             // 
             // DevMain
             // 
@@ -567,5 +582,6 @@
         private DevExpress.XtraBars.BarButtonItem mnuCBBalance;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
         private DevExpress.XtraBars.BarButtonItem mnuUserGroup;
+        private DevExpress.XtraBars.BarButtonItem mnuReportBalance;
     }
 }

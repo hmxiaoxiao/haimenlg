@@ -24,7 +24,15 @@ namespace Haimen.GUI
 
         private void devQuerySelectBank_Load(object sender, EventArgs e)
         {
-            string sql = "Select 'Y' as sel, id, code, name from m_bank";
+            string sql = @"
+                Select 'Y' as sel, id, code, name from m_bank
+                where id in (
+                   select bank_id 
+                   from m_company_detail 
+                   where parent_id in (select id from m_company
+                                    where doc <> ''))
+                order by parent_id
+            ";
             gridControl1.DataSource = DBFunction.RunQuerySql(sql).Tables[0];
             gridView1.BestFitColumns();
         }

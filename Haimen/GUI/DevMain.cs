@@ -99,6 +99,7 @@ namespace Haimen.GUI
             mnuContractAcceptList.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.合同验收, (long)ActionEnum.查看);
             mnuBCBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.余额表, (long)ActionEnum.查看);
             mnuCBBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.余额表, (long)ActionEnum.查看);
+            mnuReportBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.余额表, (long)ActionEnum.查看);
             mnuUserGroup.Enabled = Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.用户组, (long)ActionEnum.查看);
         }
 
@@ -219,6 +220,11 @@ namespace Haimen.GUI
         private void mnuUserGroup_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenForm(new devUserGroupList());
+        }
+
+        private void mnuReportBalance_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new DevQueryBalance3());
         }
     }
 }

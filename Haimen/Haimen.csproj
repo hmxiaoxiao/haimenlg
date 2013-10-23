@@ -207,6 +207,12 @@
     <Compile Include="GUI\DevQueryBalance2.Designer.cs">
       <DependentUpon>DevQueryBalance2.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DevQueryBalance3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DevQueryBalance3.Designer.cs">
+      <DependentUpon>DevQueryBalance3.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DevQuerySelectBank.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -397,6 +403,12 @@
     <Compile Include="Report\rptAccount.Designer.cs">
       <DependentUpon>rptAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\rptBalance.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptBalance.Designer.cs">
+      <DependentUpon>rptBalance.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GUI\DevAcceptanceBill.resx">
       <DependentUpon>DevAcceptanceBill.cs</DependentUpon>
     </EmbeddedResource>
@@ -478,6 +490,9 @@
     <EmbeddedResource Include="GUI\DevQueryBalance2.resx">
       <DependentUpon>DevQueryBalance2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DevQueryBalance3.resx">
+      <DependentUpon>DevQueryBalance3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevQuerySelectBank.resx">
       <DependentUpon>DevQuerySelectBank.cs</DependentUpon>
     </EmbeddedResource>
@@ -512,6 +527,9 @@
     </Compile>
     <EmbeddedResource Include="Report\rptAccount.resx">
       <DependentUpon>rptAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptBalance.resx">
+      <DependentUpon>rptBalance.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\app.manifest" />

@@ -32,8 +32,8 @@
             this.btnConfirm = new DevExpress.XtraEditors.SimpleButton();
             this.tree = new DevExpress.XtraTreeList.TreeList();
             this.tree_id = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.tree_code = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tree_name = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tree_code = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tree)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,15 +76,6 @@
             this.tree_id.FieldName = "ID";
             this.tree_id.Name = "tree_id";
             // 
-            // tree_code
-            // 
-            this.tree_code.Caption = "代码";
-            this.tree_code.FieldName = "Code";
-            this.tree_code.Name = "tree_code";
-            this.tree_code.Visible = true;
-            this.tree_code.VisibleIndex = 1;
-            this.tree_code.Width = 153;
-            // 
             // tree_name
             // 
             this.tree_name.Caption = "名称";
@@ -95,6 +86,15 @@
             this.tree_name.VisibleIndex = 0;
             this.tree_name.Width = 184;
             // 
+            // tree_code
+            // 
+            this.tree_code.Caption = "代码";
+            this.tree_code.FieldName = "Code";
+            this.tree_code.Name = "tree_code";
+            this.tree_code.Visible = true;
+            this.tree_code.VisibleIndex = 1;
+            this.tree_code.Width = 153;
+            // 
             // DevQuerySelectCompany
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -104,7 +104,7 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnConfirm);
             this.Name = "DevQuerySelectCompany";
-            this.Text = "单位选择";
+            this.Text = "7";
             this.Load += new System.EventHandler(this.devQuerySelectCompany_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tree)).EndInit();
             this.ResumeLayout(false);

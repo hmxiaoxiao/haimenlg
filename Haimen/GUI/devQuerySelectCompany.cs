@@ -26,7 +26,7 @@ namespace Haimen.GUI
 
         private void devQuerySelectCompany_Load(object sender, EventArgs e)
         {
-            tree.DataSource = Company.Query();
+            tree.DataSource = Company.Query(" doc <>  ''");
             tree.ParentFieldName = "ParentID";
             tree.KeyFieldName = "ID";
         }

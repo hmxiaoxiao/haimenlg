@@ -830,8 +830,6 @@
             this.out_id.Caption = "ID";
             this.out_id.FieldName = "ID";
             this.out_id.Name = "out_id";
-            this.out_id.Visible = true;
-            this.out_id.VisibleIndex = 0;
             // 
             // out_code
             // 
@@ -839,7 +837,7 @@
             this.out_code.FieldName = "Code";
             this.out_code.Name = "out_code";
             this.out_code.Visible = true;
-            this.out_code.VisibleIndex = 1;
+            this.out_code.VisibleIndex = 0;
             // 
             // out_name
             // 
@@ -847,7 +845,7 @@
             this.out_name.FieldName = "Name";
             this.out_name.Name = "out_name";
             this.out_name.Visible = true;
-            this.out_name.VisibleIndex = 2;
+            this.out_name.VisibleIndex = 1;
             // 
             // lueInCompany
             // 
@@ -879,8 +877,6 @@
             this.in_id.Caption = "ID";
             this.in_id.FieldName = "ID";
             this.in_id.Name = "in_id";
-            this.in_id.Visible = true;
-            this.in_id.VisibleIndex = 0;
             // 
             // in_code
             // 
@@ -888,7 +884,7 @@
             this.in_code.FieldName = "Code";
             this.in_code.Name = "in_code";
             this.in_code.Visible = true;
-            this.in_code.VisibleIndex = 1;
+            this.in_code.VisibleIndex = 0;
             // 
             // in_name
             // 
@@ -896,7 +892,7 @@
             this.in_name.FieldName = "Name";
             this.in_name.Name = "in_name";
             this.in_name.Visible = true;
-            this.in_name.VisibleIndex = 2;
+            this.in_name.VisibleIndex = 1;
             // 
             // lueOutAccount
             // 

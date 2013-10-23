@@ -275,6 +275,7 @@ namespace Haimen.GUI
             xtraTabPage4.PageVisible = false;
 
             //先设置单位的数据来源
+            Company.OrderBy = " order by doc desc, id ";
             List<Company> outlist = Company.Query("output = 'X'");
             List<Company> inlist = Company.Query("input = 'X'");
 
