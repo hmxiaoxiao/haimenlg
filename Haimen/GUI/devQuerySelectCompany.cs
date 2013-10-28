@@ -26,61 +26,71 @@ namespace Haimen.GUI
 
         private void devQuerySelectCompany_Load(object sender, EventArgs e)
         {
-            tree.DataSource = Company.Query(" doc <>  ''");
-            tree.ParentFieldName = "ParentID";
-            tree.KeyFieldName = "ID";
+            string sql = @"
+                Select 'Y' as sel, id, code, name from m_company
+                where doc <> ''
+            ";
+            gridControl1.DataSource = DBFunction.RunQuerySql(sql).Tables[0];
+            gridView1.BestFitColumns();
         }
 
-        private void btnConfirm_Click(object sender, EventArgs e)
+        private void tsbSelectAll_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
+
+            for (int i = 0; i < gridView1.RowCount; i++)
+            {
+                gridView1.SetRowCellValue(i, gridView1.Columns["sel"], "Y");
+            }
+        }
+
+        private void tsbReSelect_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
+            for (int i = 0; i < gridView1.RowCount; i++)
+            {
+                if (gridView1.GetRowCellValue(i, gridView1.Columns[0]).ToString() == "Y")
+                    gridView1.SetRowCellValue(i, gridView1.Columns[0], "N");
+                else
+                    gridView1.SetRowCellValue(i, gridView1.Columns[0], "Y");
+            }
+        }
+
+        private void tsbUnSelected_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
+            for (int i = 0; i < gridView1.RowCount; i++)
+            {
+                gridView1.SetRowCellValue(i, gridView1.Columns[0], "N");
+            }
+        }
+
+        private void tsbConfirm_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
+
+            long count = gridView1.RowCount;
             SelectAll = true;
             ID_List = new List<string>();
-
-            foreach (TreeListNode node in tree.Nodes)
+            for (int i = 0; i < count; i++)
             {
-                if (node.CheckState == CheckState.Checked)
-                {
-                    ID_List.Add(node.GetValue(tree_id).ToString());
-                    GetChildNodeCheck(node);
-                }
+
+                if (gridView1.GetRowCellValue(i, col_selected).ToString() == "Y")
+                    ID_List.Add(gridView1.GetRowCellValue(i, col_id).ToString());
                 else
                     SelectAll = false;
             }
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
-        private void GetChildNodeCheck(TreeListNode node)
-        {
-            foreach (TreeListNode n in node.Nodes)
-            {
-                if (n.CheckState == CheckState.Checked)
-                    ID_List.Add(n.GetValue(tree_id).ToString());
-                else
-                    SelectAll = false;
-            }
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
+        private void tsbClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Close();
-        }
-
-        private void tree_AfterCheckNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e)
-        {
-            SetCheckedChildNodes(e.Node, e.Node.CheckState);
-        }
-
-        /// 设置子节点的状态
-        /// </summary>
-        /// <param name="node"></param>
-        /// <param name="check"></param>
-        private void SetCheckedChildNodes(TreeListNode node, CheckState check)
-        {
-            for (int i = 0; i < node.Nodes.Count; i++)
-            {
-                node.Nodes[i].CheckState = check;
-                SetCheckedChildNodes(node.Nodes[i], check);
-            }
         }
     }
 }

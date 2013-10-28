@@ -37,7 +37,7 @@ namespace Haimen.GUI
             gridView1.BestFitColumns();
         }
 
-        private void btnConfirm_Click(object sender, EventArgs e)
+        private void tsbConfirm_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             gridView1.CloseEditor();
             gridView1.UpdateCurrentRow();
@@ -53,10 +53,45 @@ namespace Haimen.GUI
                 else
                     SelectAll = false;
             }
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void tsbSelectAll_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
+
+            for (int i = 0; i < gridView1.RowCount; i++)
+            {
+                gridView1.SetRowCellValue(i, gridView1.Columns["sel"], "Y");
+            }
+        }
+
+        private void tsbReselect_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
+            for (int i = 0; i < gridView1.RowCount; i++)
+            {
+                if (gridView1.GetRowCellValue(i,gridView1.Columns[0]).ToString() == "Y")
+                    gridView1.SetRowCellValue(i, gridView1.Columns[0], "N");
+                else
+                    gridView1.SetRowCellValue(i, gridView1.Columns[0], "Y");
+            }
+        }
+
+        private void tsbUnselected_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
+            for (int i = 0; i < gridView1.RowCount; i++)
+            {
+                gridView1.SetRowCellValue(i, gridView1.Columns[0], "N");
+            }
+        }
+
+        private void tsbCancel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Close();
         }

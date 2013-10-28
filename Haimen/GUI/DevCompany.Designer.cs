@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevCompany));
             this.cbOutput = new DevExpress.XtraEditors.CheckEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.txtDoc = new DevExpress.XtraEditors.TextEdit();
+            this.sueCompany = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
@@ -44,6 +45,11 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtDoc = new DevExpress.XtraEditors.TextEdit();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.txtCode = new DevExpress.XtraEditors.TextEdit();
             this.cbInput = new DevExpress.XtraEditors.CheckEdit();
@@ -53,18 +59,19 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.sueCompany = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_code = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.cbOutput.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDoc.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sueCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbInput.Properties)).BeginInit();
@@ -74,10 +81,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sueCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbOutput
@@ -98,7 +103,7 @@
             this.layoutControl1.Controls.Add(this.txtCode);
             this.layoutControl1.Controls.Add(this.cbOutput);
             this.layoutControl1.Controls.Add(this.cbInput);
-            this.layoutControl1.Location = new System.Drawing.Point(0, 37);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 53);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsFocus.EnableAutoTabOrder = false;
             this.layoutControl1.Root = this.layoutControlGroup1;
@@ -106,15 +111,18 @@
             this.layoutControl1.TabIndex = 14;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // txtDoc
+            // sueCompany
             // 
-            this.txtDoc.EnterMoveNextControl = true;
-            this.txtDoc.Location = new System.Drawing.Point(82, 100);
-            this.txtDoc.MenuManager = this.barManager1;
-            this.txtDoc.Name = "txtDoc";
-            this.txtDoc.Size = new System.Drawing.Size(355, 20);
-            this.txtDoc.StyleController = this.layoutControl1;
-            this.txtDoc.TabIndex = 3;
+            this.sueCompany.EditValue = "请选择...";
+            this.sueCompany.Location = new System.Drawing.Point(82, 140);
+            this.sueCompany.MenuManager = this.barManager1;
+            this.sueCompany.Name = "sueCompany";
+            this.sueCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.sueCompany.Properties.View = this.searchLookUpEdit1View;
+            this.sueCompany.Size = new System.Drawing.Size(355, 20);
+            this.sueCompany.StyleController = this.layoutControl1;
+            this.sueCompany.TabIndex = 7;
             // 
             // barManager1
             // 
@@ -131,8 +139,12 @@
             this.tsbExit,
             this.tsbNew,
             this.tsbEdit,
-            this.tsbDelete});
-            this.barManager1.MaxItemId = 6;
+            this.tsbDelete,
+            this.barButtonItem2,
+            this.barButtonItem3,
+            this.barButtonItem4,
+            this.barButtonItem5});
+            this.barManager1.MaxItemId = 10;
             // 
             // bar1
             // 
@@ -145,6 +157,10 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbSave, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
@@ -193,34 +209,77 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(532, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(725, 47);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 406);
-            this.barDockControlBottom.Size = new System.Drawing.Size(532, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 464);
+            this.barDockControlBottom.Size = new System.Drawing.Size(725, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 367);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 417);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(532, 39);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 367);
+            this.barDockControlRight.Location = new System.Drawing.Point(725, 47);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 417);
             // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "barButtonItem1";
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // searchLookUpEdit1View
+            // 
+            this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.col_id,
+            this.col_code,
+            this.col_name});
+            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
+            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // col_id
+            // 
+            this.col_id.Caption = "ID";
+            this.col_id.FieldName = "ID";
+            this.col_id.Name = "col_id";
+            // 
+            // col_code
+            // 
+            this.col_code.Caption = "代码";
+            this.col_code.FieldName = "Code";
+            this.col_code.Name = "col_code";
+            this.col_code.Visible = true;
+            this.col_code.VisibleIndex = 0;
+            // 
+            // col_name
+            // 
+            this.col_name.Caption = "名称";
+            this.col_name.FieldName = "Name";
+            this.col_name.Name = "col_name";
+            this.col_name.Visible = true;
+            this.col_name.VisibleIndex = 1;
+            // 
+            // txtDoc
+            // 
+            this.txtDoc.EnterMoveNextControl = true;
+            this.txtDoc.Location = new System.Drawing.Point(82, 100);
+            this.txtDoc.MenuManager = this.barManager1;
+            this.txtDoc.Name = "txtDoc";
+            this.txtDoc.Size = new System.Drawing.Size(355, 20);
+            this.txtDoc.StyleController = this.layoutControl1;
+            this.txtDoc.TabIndex = 3;
             // 
             // txtName
             // 
@@ -325,23 +384,6 @@
             this.layoutControlItem11.Text = "单据字：";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(60, 14);
             // 
-            // dxErrorProvider1
-            // 
-            this.dxErrorProvider1.ContainerControl = this;
-            // 
-            // sueCompany
-            // 
-            this.sueCompany.EditValue = "请选择...";
-            this.sueCompany.Location = new System.Drawing.Point(82, 140);
-            this.sueCompany.MenuManager = this.barManager1;
-            this.sueCompany.Name = "sueCompany";
-            this.sueCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.sueCompany.Properties.View = this.searchLookUpEdit1View;
-            this.sueCompany.Size = new System.Drawing.Size(355, 20);
-            this.sueCompany.StyleController = this.layoutControl1;
-            this.sueCompany.TabIndex = 7;
-            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.sueCompany;
@@ -353,44 +395,43 @@
             this.layoutControlItem1.Text = "所属单位：";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 14);
             // 
-            // searchLookUpEdit1View
+            // dxErrorProvider1
             // 
-            this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.col_id,
-            this.col_code,
-            this.col_name});
-            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
-            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            this.dxErrorProvider1.ContainerControl = this;
             // 
-            // col_id
+            // barButtonItem2
             // 
-            this.col_id.Caption = "ID";
-            this.col_id.FieldName = "ID";
-            this.col_id.Name = "col_id";
+            this.barButtonItem2.Caption = "barButtonItem2";
+            this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
+            this.barButtonItem2.Id = 6;
+            this.barButtonItem2.Name = "barButtonItem2";
             // 
-            // col_code
+            // barButtonItem3
             // 
-            this.col_code.Caption = "代码";
-            this.col_code.FieldName = "Code";
-            this.col_code.Name = "col_code";
-            this.col_code.Visible = true;
-            this.col_code.VisibleIndex = 0;
+            this.barButtonItem3.Caption = "barButtonItem3";
+            this.barButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.Glyph")));
+            this.barButtonItem3.Id = 7;
+            this.barButtonItem3.Name = "barButtonItem3";
             // 
-            // col_name
+            // barButtonItem4
             // 
-            this.col_name.Caption = "名称";
-            this.col_name.FieldName = "Name";
-            this.col_name.Name = "col_name";
-            this.col_name.Visible = true;
-            this.col_name.VisibleIndex = 1;
+            this.barButtonItem4.Caption = "barButtonItem4";
+            this.barButtonItem4.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.Glyph")));
+            this.barButtonItem4.Id = 8;
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "barButtonItem5";
+            this.barButtonItem5.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.Glyph")));
+            this.barButtonItem5.Id = 9;
+            this.barButtonItem5.Name = "barButtonItem5";
             // 
             // DevCompany
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 406);
+            this.ClientSize = new System.Drawing.Size(725, 464);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -402,8 +443,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbOutput.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtDoc.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sueCompany.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbInput.Properties)).EndInit();
@@ -413,10 +456,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sueCompany.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -454,5 +495,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_id;
         private DevExpress.XtraGrid.Columns.GridColumn col_code;
         private DevExpress.XtraGrid.Columns.GridColumn col_name;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
     }
 }

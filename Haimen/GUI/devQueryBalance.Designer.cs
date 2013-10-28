@@ -243,6 +243,7 @@
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.EnableAppearanceOddRow = true;
+            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.CellMerge += new DevExpress.XtraGrid.Views.Grid.CellMergeEventHandler(this.gridView1_CellMerge);
             // 
@@ -277,6 +278,8 @@
             this.col_balance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.col_balance.FieldName = "balance";
             this.col_balance.Name = "col_balance";
+            this.col_balance.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.col_balance.Visible = true;
             this.col_balance.VisibleIndex = 3;
             // 
@@ -287,6 +290,8 @@
             this.col_credit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.col_credit.FieldName = "credit";
             this.col_credit.Name = "col_credit";
+            this.col_credit.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.col_credit.Visible = true;
             this.col_credit.VisibleIndex = 4;
             // 
