@@ -157,5 +157,89 @@ namespace Haimen.GUI
         {
             myRefresh();
         }
+
+        private void tsbBatSetOutput_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            for (int i = 0; i < gridView1.RowCount; i++)
+            {
+                if (gridView1.IsRowSelected(i))
+                {
+                    long id = long.Parse(gridView1.GetRowCellValue(i, col_id).ToString());
+                    foreach (Company com in m_companies)
+                    {
+                        if (com.ID == id)
+                        {
+                            com.Output = "X";
+                            com.Save();
+                        }
+                    }
+                }
+            }
+            gridControl1.DataSource = null;
+            gridControl1.DataSource = m_companies;
+        }
+
+        private void tsbUnSetOutput_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            for (int i = 0; i < gridView1.RowCount; i++)
+            {
+                if (gridView1.IsRowSelected(i))
+                {
+                    long id = long.Parse(gridView1.GetRowCellValue(i, col_id).ToString());
+                    foreach (Company com in m_companies)
+                    {
+                        if (com.ID == id)
+                        {
+                            com.Output = "";
+                            com.Save();
+                        }
+                    }
+                }
+            }
+            gridControl1.DataSource = null;
+            gridControl1.DataSource = m_companies;
+        }
+
+        private void tsbSetInput_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            for (int i = 0; i < gridView1.RowCount; i++)
+            {
+                if (gridView1.IsRowSelected(i))
+                {
+                    long id = long.Parse(gridView1.GetRowCellValue(i, col_id).ToString());
+                    foreach (Company com in m_companies)
+                    {
+                        if (com.ID == id)
+                        {
+                            com.Input = "X";
+                            com.Save();
+                        }
+                    }
+                }
+            }
+            gridControl1.DataSource = null;
+            gridControl1.DataSource = m_companies;
+        }
+
+        private void tsbUnsetInput_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            for (int i = 0; i < gridView1.RowCount; i++)
+            {
+                if (gridView1.IsRowSelected(i))
+                {
+                    long id = long.Parse(gridView1.GetRowCellValue(i, col_id).ToString());
+                    foreach (Company com in m_companies)
+                    {
+                        if (com.ID == id)
+                        {
+                            com.Input = "";
+                            com.Save();
+                        }
+                    }
+                }
+            }
+            gridControl1.DataSource = null;
+            gridControl1.DataSource = m_companies;
+        }
     }
 }

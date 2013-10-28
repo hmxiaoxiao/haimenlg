@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevCompanyList));
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -53,6 +54,10 @@
             this.tree = new DevExpress.XtraTreeList.TreeList();
             this.tree_id = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tree_name = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tsbBatSetOutput = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbUnSetOutput = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbSetInput = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbUnsetInput = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -67,7 +72,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(585, 535);
+            this.gridControl1.Size = new System.Drawing.Size(688, 513);
             this.gridControl1.TabIndex = 19;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -84,6 +89,7 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
@@ -149,8 +155,12 @@
             this.tsbDelete,
             this.tsbQuery,
             this.tsbExit,
-            this.tsbRefresh});
-            this.barManager1.MaxItemId = 6;
+            this.tsbRefresh,
+            this.tsbBatSetOutput,
+            this.tsbUnSetOutput,
+            this.tsbSetInput,
+            this.tsbUnsetInput});
+            this.barManager1.MaxItemId = 10;
             // 
             // bar1
             // 
@@ -164,6 +174,10 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbBatSetOutput, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbUnSetOutput, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbSetInput, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbUnsetInput, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
@@ -220,39 +234,39 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(799, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(902, 47);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 574);
-            this.barDockControlBottom.Size = new System.Drawing.Size(799, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 560);
+            this.barDockControlBottom.Size = new System.Drawing.Size(902, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 535);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 513);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(799, 39);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 535);
+            this.barDockControlRight.Location = new System.Drawing.Point(902, 47);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 513);
             // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 39);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 47);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.tree);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(799, 535);
+            this.splitContainerControl1.Size = new System.Drawing.Size(902, 513);
             this.splitContainerControl1.SplitterPosition = 209;
             this.splitContainerControl1.TabIndex = 24;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -270,7 +284,7 @@
             this.tree.OptionsView.ShowIndentAsRowStyle = true;
             this.tree.OptionsView.ShowIndicator = false;
             this.tree.OptionsView.ShowVertLines = false;
-            this.tree.Size = new System.Drawing.Size(209, 535);
+            this.tree.Size = new System.Drawing.Size(209, 513);
             this.tree.TabIndex = 0;
             this.tree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tree_FocusedNodeChanged);
             // 
@@ -289,11 +303,43 @@
             this.tree_name.Visible = true;
             this.tree_name.VisibleIndex = 0;
             // 
+            // tsbBatSetOutput
+            // 
+            this.tsbBatSetOutput.Caption = "设为付款单位";
+            this.tsbBatSetOutput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbBatSetOutput.Glyph")));
+            this.tsbBatSetOutput.Id = 6;
+            this.tsbBatSetOutput.Name = "tsbBatSetOutput";
+            this.tsbBatSetOutput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbBatSetOutput_ItemClick);
+            // 
+            // tsbUnSetOutput
+            // 
+            this.tsbUnSetOutput.Caption = "取消付款单位";
+            this.tsbUnSetOutput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnSetOutput.Glyph")));
+            this.tsbUnSetOutput.Id = 7;
+            this.tsbUnSetOutput.Name = "tsbUnSetOutput";
+            this.tsbUnSetOutput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnSetOutput_ItemClick);
+            // 
+            // tsbSetInput
+            // 
+            this.tsbSetInput.Caption = "设为收款单位";
+            this.tsbSetInput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbSetInput.Glyph")));
+            this.tsbSetInput.Id = 8;
+            this.tsbSetInput.Name = "tsbSetInput";
+            this.tsbSetInput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbSetInput_ItemClick);
+            // 
+            // tsbUnsetInput
+            // 
+            this.tsbUnsetInput.Caption = "取消收款单位";
+            this.tsbUnsetInput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnsetInput.Glyph")));
+            this.tsbUnsetInput.Id = 9;
+            this.tsbUnsetInput.Name = "tsbUnsetInput";
+            this.tsbUnsetInput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnsetInput_ItemClick);
+            // 
             // DevCompanyList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 574);
+            this.ClientSize = new System.Drawing.Size(902, 560);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -339,6 +385,10 @@
         private DevExpress.XtraTreeList.TreeList tree;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tree_id;
         private DevExpress.XtraTreeList.Columns.TreeListColumn tree_name;
+        private DevExpress.XtraBars.BarButtonItem tsbBatSetOutput;
+        private DevExpress.XtraBars.BarButtonItem tsbUnSetOutput;
+        private DevExpress.XtraBars.BarButtonItem tsbSetInput;
+        private DevExpress.XtraBars.BarButtonItem tsbUnsetInput;
 
     }
 }

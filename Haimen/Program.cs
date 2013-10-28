@@ -47,7 +47,7 @@ namespace Haimen
             GlobalSet.Current_User = User.Login("admin", "qwer1234");
             if (GlobalSet.Current_User != null)
             {
-                Application.Run(new DevQueryBalance());
+                Application.Run(new DevCompanyList());
             }
         }
     }
