@@ -36,7 +36,7 @@
   </PostinstrumentEvent>
   <Binaries>
     <ProjBinary>
-      <Path>Haimen\obj\Debug\Haimen.exe</Path>
+      <Path>Haimen\obj\x86\Release\Haimen.exe</Path>
       <ArgumentTimestamp>01/01/0001 00:00:00</ArgumentTimestamp>
       <Instrument>true</Instrument>
       <Sample>true</Sample>
@@ -48,8 +48,8 @@
       <LaunchProject>true</LaunchProject>
       <OverrideProjectSettings>false</OverrideProjectSettings>
       <LaunchMethod>Executable</LaunchMethod>
-      <ExecutablePath>Haimen\bin\Debug\Haimen.exe</ExecutablePath>
-      <StartupDirectory>Haimen\bin\Debug\</StartupDirectory>
+      <ExecutablePath>Haimen\bin\x86\Release\Haimen.exe</ExecutablePath>
+      <StartupDirectory>Haimen\bin\x86\Release\</StartupDirectory>
       <Arguments>
       </Arguments>
       <NetAppHost>IIS</NetAppHost>
@@ -70,6 +70,9 @@
   <Reports>
     <Report>
       <Path>Haimen131021.vsp</Path>
+    </Report>
+    <Report>
+      <Path>Haimen131029.vsp</Path>
     </Report>
   </Reports>
   <Launches>

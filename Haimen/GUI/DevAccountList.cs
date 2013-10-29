@@ -30,33 +30,33 @@ namespace Haimen.GUI
         {
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.新增))
             {
-                tsbNew.Dispose();
+                tsbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.编辑))
             {
-                tsbEdit.Dispose();
+                tsbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.删除))
             {
-                tsbDelete.Dispose();
+                tsbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.审核))
             {
-                tsbCheck.Dispose();
-                tsbUnCheck.Dispose();
+                tsbCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                tsbUnCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             } 
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.支付))
             {
-                tsbPay.Dispose();
-                tsbUnPay.Dispose();
+                tsbPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                tsbUnPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.打印))
             {
-                tsbPrint.Dispose();
+                tsbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.资金, (long)ActionEnum.转正式发票))
             {
-                tsb2Invoice.Dispose();
+                tsb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
         }
 
@@ -357,7 +357,15 @@ namespace Haimen.GUI
 
         private void DevAccountList_Activated(object sender, EventArgs e)
         {
-            MyRefresh();
+            //MyRefresh();
+
+            for (int i = 0; i < gridView1.RowCount; i++)
+            {
+                if (gridView1.IsRowSelected(i))
+                {
+                    
+                }
+            }
         }
     }
 }

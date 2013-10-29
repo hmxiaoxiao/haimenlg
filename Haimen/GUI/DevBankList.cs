@@ -31,15 +31,15 @@ namespace Haimen.GUI
         {
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.银行, (long)ActionEnum.新增))
             {
-                tsbNew.Dispose();
+                tsbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.银行, (long)ActionEnum.编辑))
             {
-                tsbEdit.Dispose();
+                tsbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.银行, (long)ActionEnum.删除))
             {
-                tsbDelete.Dispose();
+                tsbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
         }
 

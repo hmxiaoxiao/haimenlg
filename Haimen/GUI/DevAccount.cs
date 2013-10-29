@@ -45,41 +45,41 @@ namespace Haimen.GUI
             // 普通新增，编辑，删除
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.新增))
             {
-                tbNew.Dispose();
+                tbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.编辑))
             {
-                tbEdit.Dispose();
+                tbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.删除))
             {
-                tbDelete.Dispose();
+                tbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
 
             // 审核
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.审核))
             {
-                tbCheck.Dispose();
-                tbUnCheck.Dispose();
+                tbCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                tbUnCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
 
             // 支付
             if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.支付))
             {
-                tbPay.Dispose();
-                tbUnPay.Dispose();
+                tbPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                tbUnPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
 
             // 打印
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.资金, (long)ActionEnum.打印))
             {
-                tbPrint.Dispose();
+                tbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
 
             // 转正式发票
             if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.资金, (long)ActionEnum.转正式发票))
             {
-                tb2Invoice.Dispose();
+                tb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
 
         }
