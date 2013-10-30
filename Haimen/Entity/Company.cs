@@ -87,6 +87,9 @@ namespace Haimen.Entity
             if (list.Count > 0)
                 Error_Info.Add(new KeyValuePair<string, string>("Name", "您输入的名称已经存在，请重新输入"));
 
+            if (this.ParentID <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("ParentID", "请选择所属的单位(个人，收入，支出)"));
+
             return Error_Info.Count == 0;
         }
 

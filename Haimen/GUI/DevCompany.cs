@@ -86,6 +86,9 @@ namespace Haimen.GUI
         {
             Form2Object();
 
+            // 清空错误
+            dxErrorProvider1.ClearErrors();
+
             // 调用校验对象
             if (m_company.Verify())
                 return true;
@@ -100,7 +103,7 @@ namespace Haimen.GUI
         /// </summary>
         private void ShowErrorInfo()
         {
-            dxErrorProvider1.ClearErrors();
+ 
 
             foreach (KeyValuePair<string, string> val in m_company.Error_Info)
             {
@@ -114,6 +117,9 @@ namespace Haimen.GUI
                         break;
                     case "doc":
                         dxErrorProvider1.SetError(txtDoc, val.Value);
+                        break;
+                    case "parentid":
+                        dxErrorProvider1.SetError(sueCompany, val.Value);
                         break;
                 }
             }

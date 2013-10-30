@@ -94,9 +94,10 @@ namespace Haimen.GUI
             gridView1.BestFitColumns();
 
             // 显示明细
-            ShowDetail();
+            SelectedRow();
             gridView3.BestFitColumns();
 
+            // 是否正式发票
             lueInvoiceList.DataSource = Account.AccountInvoicList;
             lueInvoiceList.DisplayMember = "Name";
             lueInvoiceList.ValueMember = "ValueInt";
@@ -110,9 +111,9 @@ namespace Haimen.GUI
 
 
         /// <summary>
-        ///  显示当前列表的明细
+        /// 选择当前行之后
         /// </summary>
-        private void ShowDetail()
+        private void SelectedRow()
         {
             long id = 0;
             if (gridView1.FocusedRowHandle >= 0)
@@ -240,7 +241,7 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            ShowDetail();
+            SelectedRow();
         }
 
         /// <summary>
@@ -272,7 +273,7 @@ namespace Haimen.GUI
 
                 m_accounts = Account.Query(where);
                 gridControl1.DataSource = m_accounts;
-                ShowDetail();
+                SelectedRow();
 
             }
         }
@@ -357,15 +358,7 @@ namespace Haimen.GUI
 
         private void DevAccountList_Activated(object sender, EventArgs e)
         {
-            //MyRefresh();
-
-            for (int i = 0; i < gridView1.RowCount; i++)
-            {
-                if (gridView1.IsRowSelected(i))
-                {
-                    
-                }
-            }
+            MyRefresh();
         }
     }
 }

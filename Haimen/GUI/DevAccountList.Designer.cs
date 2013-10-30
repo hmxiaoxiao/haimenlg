@@ -32,11 +32,9 @@
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevAccountList));
-            this.col_detail_money = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.col_funds = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.col_usage = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_id = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,9 +53,11 @@
             this.col_incompany_bank = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_incompany_account = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_memo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_detail_money = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.col_funds = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_usage = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.tsbView = new DevExpress.XtraBars.BarButtonItem();
@@ -79,85 +79,56 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.tsbNewInput = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueInvoiceList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // col_detail_money
+            // gridView2
             // 
-            this.col_detail_money.Caption = "金额";
-            this.col_detail_money.DisplayFormat.FormatString = "C";
-            this.col_detail_money.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.col_detail_money.FieldName = "Money";
-            this.col_detail_money.Name = "col_detail_money";
-            this.col_detail_money.Visible = true;
-            this.col_detail_money.VisibleIndex = 1;
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn11,
+            this.gridColumn12});
+            this.gridView2.GridControl = this.gridControl1;
+            this.gridView2.Name = "gridView2";
             // 
-            // gridControl2
+            // gridColumn11
             // 
-            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
-            this.gridControl2.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
-            this.gridControl2.Location = new System.Drawing.Point(0, 0);
-            this.gridControl2.MainView = this.gridView3;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(217, 523);
-            this.gridControl2.TabIndex = 25;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView3});
+            this.gridColumn11.Caption = "资金性质";
+            this.gridColumn11.FieldName = "Funds.Name";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 0;
             // 
-            // gridView3
+            // gridColumn12
             // 
-            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.col_funds,
-            this.col_detail_money,
-            this.col_usage});
-            this.gridView3.GridControl = this.gridControl2;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsBehavior.Editable = false;
-            this.gridView3.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridView3.OptionsView.EnableAppearanceOddRow = true;
-            this.gridView3.OptionsView.ShowGroupPanel = false;
-            // 
-            // col_funds
-            // 
-            this.col_funds.Caption = "资金性质";
-            this.col_funds.FieldName = "Funds.Name";
-            this.col_funds.Name = "col_funds";
-            this.col_funds.Visible = true;
-            this.col_funds.VisibleIndex = 0;
-            // 
-            // col_usage
-            // 
-            this.col_usage.Caption = "用途";
-            this.col_usage.FieldName = "Usage";
-            this.col_usage.Name = "col_usage";
-            this.col_usage.Visible = true;
-            this.col_usage.VisibleIndex = 2;
+            this.gridColumn12.Caption = "金额";
+            this.gridColumn12.FieldName = "Money";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 1;
             // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode2.LevelTemplate = this.gridView2;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.LevelTemplate = this.gridView2;
+            gridLevelNode1.RelationName = "Level1";
             this.gridControl1.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueStatus,
             this.lueInvoiceList});
-            this.gridControl1.Size = new System.Drawing.Size(788, 523);
+            this.gridControl1.Size = new System.Drawing.Size(758, 523);
             this.gridControl1.TabIndex = 23;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -187,7 +158,6 @@
             this.gridView1.OptionsNavigation.EnterMoveNextColumn = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
             // 
@@ -321,29 +291,58 @@
             this.col_memo.Visible = true;
             this.col_memo.VisibleIndex = 12;
             // 
-            // gridView2
+            // col_detail_money
             // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn11,
-            this.gridColumn12});
-            this.gridView2.GridControl = this.gridControl1;
-            this.gridView2.Name = "gridView2";
+            this.col_detail_money.Caption = "金额";
+            this.col_detail_money.DisplayFormat.FormatString = "C";
+            this.col_detail_money.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.col_detail_money.FieldName = "Money";
+            this.col_detail_money.Name = "col_detail_money";
+            this.col_detail_money.Visible = true;
+            this.col_detail_money.VisibleIndex = 1;
             // 
-            // gridColumn11
+            // gridControl2
             // 
-            this.gridColumn11.Caption = "资金性质";
-            this.gridColumn11.FieldName = "Funds.Name";
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 0;
+            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            gridLevelNode2.RelationName = "Level1";
+            this.gridControl2.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode2});
+            this.gridControl2.Location = new System.Drawing.Point(0, 0);
+            this.gridControl2.MainView = this.gridView3;
+            this.gridControl2.Name = "gridControl2";
+            this.gridControl2.Size = new System.Drawing.Size(247, 523);
+            this.gridControl2.TabIndex = 25;
+            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
             // 
-            // gridColumn12
+            // gridView3
             // 
-            this.gridColumn12.Caption = "金额";
-            this.gridColumn12.FieldName = "Money";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 1;
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.col_funds,
+            this.col_detail_money,
+            this.col_usage});
+            this.gridView3.GridControl = this.gridControl2;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsBehavior.Editable = false;
+            this.gridView3.OptionsView.ColumnAutoWidth = false;
+            this.gridView3.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            // 
+            // col_funds
+            // 
+            this.col_funds.Caption = "资金性质";
+            this.col_funds.FieldName = "Funds.Name";
+            this.col_funds.Name = "col_funds";
+            this.col_funds.Visible = true;
+            this.col_funds.VisibleIndex = 0;
+            // 
+            // col_usage
+            // 
+            this.col_usage.Caption = "用途";
+            this.col_usage.FieldName = "Usage";
+            this.col_usage.Name = "col_usage";
+            this.col_usage.Visible = true;
+            this.col_usage.VisibleIndex = 2;
             // 
             // barManager1
             // 
@@ -541,7 +540,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1010, 523);
-            this.splitContainerControl1.SplitterPosition = 217;
+            this.splitContainerControl1.SplitterPosition = 247;
             this.splitContainerControl1.TabIndex = 38;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -559,13 +558,13 @@
             this.Text = "资金往来列表";
             this.Activated += new System.EventHandler(this.DevAccountList_Activated);
             this.Load += new System.EventHandler(this.DevAccountList_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueInvoiceList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
