@@ -267,5 +267,11 @@ namespace Haimen.GUI
                 SetFormStatus(winStatusEnum.查看);
             }
         }
+
+        private void txtName_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtName.Text))
+                txtCode.Text = Haimen.Helper.PinyinHelper.GetShortPinyin(txtName.Text);
+        }
     }
 }
