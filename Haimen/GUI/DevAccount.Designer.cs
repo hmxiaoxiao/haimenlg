@@ -39,16 +39,13 @@
             this.tbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tbSave = new DevExpress.XtraBars.BarButtonItem();
             this.tbExit = new DevExpress.XtraBars.BarButtonItem();
-            this.barPay = new DevExpress.XtraBars.Bar();
             this.tbPay = new DevExpress.XtraBars.BarButtonItem();
             this.tbUnPay = new DevExpress.XtraBars.BarButtonItem();
             this.tbPrint = new DevExpress.XtraBars.BarButtonItem();
             this.tbExit2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barCheck = new DevExpress.XtraBars.Bar();
             this.tbCheck = new DevExpress.XtraBars.BarButtonItem();
             this.tbUnCheck = new DevExpress.XtraBars.BarButtonItem();
             this.tbExit3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barInvoice = new DevExpress.XtraBars.Bar();
             this.tb2Invoice = new DevExpress.XtraBars.BarButtonItem();
             this.tbExit4 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -122,10 +119,10 @@
             this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem23 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.picChecked = new DevExpress.XtraEditors.PictureEdit();
             this.picPayed = new DevExpress.XtraEditors.PictureEdit();
@@ -198,10 +195,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picChecked.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPayed.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
@@ -264,10 +261,7 @@
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.barNormal,
-            this.barPay,
-            this.barCheck,
-            this.barInvoice});
+            this.barNormal});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -301,6 +295,12 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbSave, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbUnCheck, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbPay, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbUnPay, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbPrint, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tb2Invoice, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.barNormal.Text = "Tools";
             // 
@@ -344,22 +344,6 @@
             this.tbExit.Name = "tbExit";
             this.tbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbExit_ItemClick);
             // 
-            // barPay
-            // 
-            this.barPay.BarName = "Pay";
-            this.barPay.DockCol = 1;
-            this.barPay.DockRow = 1;
-            this.barPay.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.barPay.FloatLocation = new System.Drawing.Point(560, 133);
-            this.barPay.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbPay, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbUnPay, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbPrint, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbExit2, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.barPay.Offset = 233;
-            this.barPay.Text = "Pay";
-            this.barPay.Visible = false;
-            // 
             // tbPay
             // 
             this.tbPay.Caption = "支付";
@@ -390,22 +374,6 @@
             this.tbExit2.Glyph = global::Haimen.Properties.Resources.Exit_hot;
             this.tbExit2.Id = 10;
             this.tbExit2.Name = "tbExit2";
-            this.tbExit2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbExit2_ItemClick);
-            // 
-            // barCheck
-            // 
-            this.barCheck.BarName = "Custom 4";
-            this.barCheck.DockCol = 1;
-            this.barCheck.DockRow = 0;
-            this.barCheck.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.barCheck.FloatLocation = new System.Drawing.Point(295, 125);
-            this.barCheck.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbUnCheck, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbExit3, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.barCheck.Offset = 373;
-            this.barCheck.Text = "Custom 4";
-            this.barCheck.Visible = false;
             // 
             // tbCheck
             // 
@@ -429,20 +397,6 @@
             this.tbExit3.Glyph = global::Haimen.Properties.Resources.Exit_hot;
             this.tbExit3.Id = 11;
             this.tbExit3.Name = "tbExit3";
-            this.tbExit3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbExit3_ItemClick);
-            // 
-            // barInvoice
-            // 
-            this.barInvoice.BarName = "Custom 5";
-            this.barInvoice.DockCol = 0;
-            this.barInvoice.DockRow = 1;
-            this.barInvoice.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.barInvoice.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tb2Invoice, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tbExit4, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.barInvoice.Offset = 1;
-            this.barInvoice.Text = "Custom 5";
-            this.barInvoice.Visible = false;
             // 
             // tb2Invoice
             // 
@@ -458,14 +412,13 @@
             this.tbExit4.Glyph = global::Haimen.Properties.Resources.Exit_hot;
             this.tbExit4.Id = 13;
             this.tbExit4.Name = "tbExit4";
-            this.tbExit4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbExit4_ItemClick);
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1007, 94);
+            this.barDockControlTop.Size = new System.Drawing.Size(1007, 47);
             // 
             // barDockControlBottom
             // 
@@ -478,15 +431,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 94);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 491);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 538);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1007, 94);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 491);
+            this.barDockControlRight.Location = new System.Drawing.Point(1007, 47);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 538);
             // 
             // txtMoney
             // 
@@ -1224,16 +1177,6 @@
             this.layoutControlItem11.Text = "总金额（中文）";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(84, 14);
             // 
-            // layoutControlItem25
-            // 
-            this.layoutControlItem25.Control = this.calcAttachCount;
-            this.layoutControlItem25.CustomizationFormText = "附件张数";
-            this.layoutControlItem25.Location = new System.Drawing.Point(350, 188);
-            this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Size = new System.Drawing.Size(351, 24);
-            this.layoutControlItem25.Text = "附件张数";
-            this.layoutControlItem25.TextSize = new System.Drawing.Size(84, 14);
-            // 
             // layoutControlItem24
             // 
             this.layoutControlItem24.Control = this.calcPayMoney;
@@ -1264,6 +1207,16 @@
             this.layoutControlItem12.Text = "备注";
             this.layoutControlItem12.TextSize = new System.Drawing.Size(84, 14);
             // 
+            // layoutControlItem25
+            // 
+            this.layoutControlItem25.Control = this.calcAttachCount;
+            this.layoutControlItem25.CustomizationFormText = "附件张数";
+            this.layoutControlItem25.Location = new System.Drawing.Point(350, 188);
+            this.layoutControlItem25.Name = "layoutControlItem25";
+            this.layoutControlItem25.Size = new System.Drawing.Size(351, 24);
+            this.layoutControlItem25.Text = "附件张数";
+            this.layoutControlItem25.TextSize = new System.Drawing.Size(84, 14);
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -1293,7 +1246,7 @@
             // 
             this.picChecked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picChecked.EditValue = ((object)(resources.GetObject("picChecked.EditValue")));
-            this.picChecked.Location = new System.Drawing.Point(654, 0);
+            this.picChecked.Location = new System.Drawing.Point(678, 4);
             this.picChecked.MenuManager = this.barManager1;
             this.picChecked.Name = "picChecked";
             this.picChecked.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -1307,7 +1260,7 @@
             // 
             this.picPayed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picPayed.EditValue = ((object)(resources.GetObject("picPayed.EditValue")));
-            this.picPayed.Location = new System.Drawing.Point(819, 0);
+            this.picPayed.Location = new System.Drawing.Point(843, 4);
             this.picPayed.MenuManager = this.barManager1;
             this.picPayed.Name = "picPayed";
             this.picPayed.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -1324,10 +1277,10 @@
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 94);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 47);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1007, 491);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1007, 538);
             this.xtraTabControl1.TabIndex = 84;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -1337,7 +1290,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.splitContainerControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1001, 462);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1001, 509);
             this.xtraTabPage1.Text = "基础信息";
             // 
             // splitContainerControl1
@@ -1352,7 +1305,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.toolStrip3);
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(705, 449);
+            this.splitContainerControl1.Size = new System.Drawing.Size(705, 496);
             this.splitContainerControl1.SplitterPosition = 293;
             this.splitContainerControl1.TabIndex = 71;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -1403,7 +1356,7 @@
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.luefunds,
             this.calcDetailMoney});
-            this.gridControl1.Size = new System.Drawing.Size(698, 123);
+            this.gridControl1.Size = new System.Drawing.Size(698, 170);
             this.gridControl1.TabIndex = 70;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1597,10 +1550,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picChecked.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPayed.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
@@ -1670,7 +1623,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem22;
-        private DevExpress.XtraBars.Bar barPay;
         private DevExpress.XtraBars.BarButtonItem tbPay;
         private DevExpress.XtraBars.BarButtonItem tbExit2;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
@@ -1690,13 +1642,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn c_name;
         private DevExpress.XtraEditors.CalcEdit calcPayMoney;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem24;
-        private DevExpress.XtraBars.Bar barCheck;
         private DevExpress.XtraBars.BarButtonItem tbExit3;
         private DevExpress.XtraEditors.CalcEdit calcAttachCount;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem25;
         private DevExpress.XtraGrid.Columns.GridColumn c_status;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueContractApplyStatusEnum;
-        private DevExpress.XtraBars.Bar barInvoice;
         private DevExpress.XtraBars.BarButtonItem tb2Invoice;
         private DevExpress.XtraBars.BarButtonItem tbExit4;
         private DevExpress.XtraEditors.CalcEdit txtMoney;

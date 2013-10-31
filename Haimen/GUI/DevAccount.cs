@@ -91,11 +91,6 @@ namespace Haimen.GUI
         private void SetFormStatus(winStatusEnum status)
         {
             m_status = status;
-            barNormal.Visible = true;
-            barCheck.Visible = false;
-            barPay.Visible = false;
-            barInvoice.Visible = false;
-
             switch (status)
             {
                 case winStatusEnum.新增:
@@ -103,7 +98,12 @@ namespace Haimen.GUI
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
                     tbSave.Enabled = true;
-                    tbCheck.Enabled = false;
+                    tbCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     SetEditorStatus(true);
                     break;
                 case winStatusEnum.编辑:
@@ -111,7 +111,12 @@ namespace Haimen.GUI
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
                     tbSave.Enabled = true;
-                    tbCheck.Enabled = false;
+                    tbCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     SetEditorStatus(true);
                     break;
                 case winStatusEnum.查看:
@@ -119,27 +124,38 @@ namespace Haimen.GUI
                     tbEdit.Enabled = true;
                     tbDelete.Enabled = true;
                     tbSave.Enabled = false;
-                    tbCheck.Enabled = false;
+                    tbCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     SetEditorStatus(false);
                     break;
                 case winStatusEnum.审核:
-                    barNormal.Visible = false;
-                    barCheck.Visible = true;
-                    barPay.Visible = false;
-                    barInvoice.Visible = false;
-                    barCheck.Offset = 0;        // 把状态条的位置移动第一位
+                    tbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbSave.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     tbCheck.Enabled = true;
                     tbUnCheck.Enabled = false;
+                    tbPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     SetEditorStatus(false);
                     break;
                 case winStatusEnum.撤审:
-                    barNormal.Visible = false;
-                    barCheck.Visible = true;
-                    barPay.Visible = false;
-                    barInvoice.Visible = false;
-                    barCheck.Offset = 0;        // 把状态条的位置移动第一位
+                    tbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbSave.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     tbCheck.Enabled = false;
                     tbUnCheck.Enabled = true;
+                    tbPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     SetEditorStatus(false);
                     break;
                 case winStatusEnum.纯查看:
@@ -147,36 +163,50 @@ namespace Haimen.GUI
                     tbEdit.Enabled = false;
                     tbDelete.Enabled = false;
                     tbSave.Enabled = false;
-                    tbCheck.Enabled = false;
-                    SetEditorStatus(false);
+                    tbCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     break;
                 case winStatusEnum.支付:
-                    barNormal.Visible = false;
-                    barCheck.Visible = false;
-                    barPay.Visible = true;
-                    barInvoice.Visible = false;
-                    barPay.Offset = 0;          // 把状态条的位置移到第一条
+                    tbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbSave.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     tbPay.Enabled = true;
                     tbUnPay.Enabled = false;
-                    tbPrint.Enabled = m_account.CanPrint();
+                    tb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbPrint.Enabled = false; //m_account.CanPrint();
                     SetEditorStatus(false);
                     break;
                 case winStatusEnum.撤消支付:
-                    barNormal.Visible = false;
-                    barCheck.Visible = false;
-                    barPay.Visible = true;
-                    barInvoice.Visible = false;
-                    barPay.Offset = 0;          // 把状态条的位置移到第一条
+                    tbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbSave.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     tbPay.Enabled = false;
                     tbUnPay.Enabled = true;
+                    tb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbPrint.Enabled = m_account.CanPrint();
                     SetEditorStatus(false);
                     break;
                 case winStatusEnum.转正式发票:
-                    barNormal.Visible = false;
-                    barPay.Visible = false;
-                    barCheck.Visible = false;
-                    barInvoice.Visible = true;
-                    barInvoice.Offset = 0;
+                    tbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbSave.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tbUnPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                    tb2Invoice.Enabled = true;
+                    tbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     SetEditorStatus(false);
                     break;
             }
@@ -185,30 +215,30 @@ namespace Haimen.GUI
         /// <summary>
         /// 设置当前输入控件是否可用。
         /// </summary>
-        /// <param name="status"></param>
-        private void SetEditorStatus(bool status)
+        /// <param name="enabled"></param>
+        private void SetEditorStatus(bool enabled)
         {
-            lueContractApply.Enabled = status;      // 合同申请
-            calcPayMoney.Enabled = status;          // 申请金额
+            lueContractApply.Enabled = enabled;      // 合同申请
+            calcPayMoney.Enabled = enabled;          // 申请金额
 
-            dtSigned.Enabled = status;              // 日期
+            dtSigned.Enabled = enabled;              // 日期
             //txtCode.Enabled = status;               // 代码
-            lueInCompany.Enabled = status;          // 收入单位
-            lueOutCompany.Enabled = status;         // 支出单位
-            lueInAccount.Enabled = status;          // 收入帐号
-            lueOutAccount.Enabled = status;         // 支出帐号
-            calcAttachCount.Enabled = status;       // 附件张数
-            txtMemo.Enabled = status;               // 备注
+            lueInCompany.Enabled = enabled;          // 收入单位
+            lueOutCompany.Enabled = enabled;         // 支出单位
+            lueInAccount.Enabled = enabled;          // 收入帐号
+            lueOutAccount.Enabled = enabled;         // 支出帐号
+            calcAttachCount.Enabled = enabled;       // 附件张数
+            txtMemo.Enabled = enabled;               // 备注
 
-            lueProjects.Enabled = status;           // 所属项目
-            chkRelease.Enabled = status;            // 正式发票
+            lueProjects.Enabled = enabled;           // 所属项目
+            chkRelease.Enabled = enabled;            // 正式发票
 
-            tsbNew.Enabled = status;                            // 资金明细新增
-            tsbDelete.Enabled = status;                         // 资金明细删除
-            gridView1.OptionsBehavior.ReadOnly = !status;       // 资金列表
+            tsbNew.Enabled = enabled;                            // 资金明细新增
+            tsbDelete.Enabled = enabled;                         // 资金明细删除
+            gridView1.OptionsBehavior.ReadOnly = !enabled;       // 资金列表
 
-            tsbAttachDelete.Enabled = status;       // 附件删除
-            tsbAttachNew.Enabled = status;          // 附件新增
+            tsbAttachDelete.Enabled = enabled;       // 附件删除
+            tsbAttachNew.Enabled = enabled;          // 附件新增
         }
 
         /// <summary>
@@ -576,7 +606,7 @@ namespace Haimen.GUI
             DateTime begin = DateTime.Now;
             Object2form();             // 初始化界面
             SetControlAccess();        // 设置访问权限
-           
+            Console.WriteLine("#############################################");
             Console.WriteLine("载入总共用了" + Haimen.Helper.Helper.DateDiff(begin,DateTime.Now));
         }
 
@@ -875,22 +905,13 @@ namespace Haimen.GUI
             }
         }
 
-        //private void txtMoney_TextChanged(object sender, EventArgs e)
-        //{
-        //    txtCMoney.Text = Haimen.Helper.Helper.ConvertToChinese( double.Parse(txtMoney.Text) );
-        //}
-
-        private void tbExit2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            MyFormClose();
-        }
-
 
         // 支付通过
         private void tbPay_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             m_account.Payed();
             tbPay.Enabled = false;
+            tbUnPay.Enabled = true;
             tbPrint.Enabled = m_account.CanPrint();
             ShowCheckPayPic();                  // 显示支付信息
             m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
@@ -915,16 +936,6 @@ namespace Haimen.GUI
             lueInCompany.Enabled = false;
             calcPayMoney.EditValue = cy.Money;
             calcPayMoney.Enabled = false;
-        }
-
-        private void tbExit3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            MyFormClose();
-        }
-
-        private void tbExit4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            MyFormClose();
         }
 
         // 转正式发票
