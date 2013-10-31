@@ -25,7 +25,7 @@ namespace Haimen.GUI
             cboUType.Properties.Items.Add("用户组");
             cboUType.SelectedIndex = 0;
 
-            if (Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.权限, (long)ActionEnum.编辑))
+            if (Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.权限, (long)ActionEnum.编辑))
             {
                 btnSave.Enabled = true;
                 gridView1.OptionsBehavior.Editable = true;

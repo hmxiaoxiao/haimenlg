@@ -33,17 +33,17 @@ namespace Haimen.GUI
         /// </summary>
         private void SetControlAccess()
         {
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.承兑汇票, (long)ActionEnum.新增))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.承兑汇票, (long)ActionEnum.新增))
             {
                 tsbNew.Dispose();
                 //if (tsbNew.Enabled == true) tsbNew.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.承兑汇票, (long)ActionEnum.编辑))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.承兑汇票, (long)ActionEnum.编辑))
             {
                 tsbEdit.Dispose();
                 //if (tsbEdit.Enabled == true) tsbEdit.Enabled = false;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.承兑汇票, (long)ActionEnum.删除))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.承兑汇票, (long)ActionEnum.删除))
             {
                 tsbDelete.Dispose();
                 //if (tsbDelete.Enabled == true) tsbDelete.Enabled = false;

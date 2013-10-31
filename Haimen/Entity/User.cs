@@ -28,7 +28,7 @@ namespace Haimen.Entity
         public string Admin { get; set; }
 
         [Field("ugroup")]
-        public long UserGroupID { get; set; }
+        public long GroupID { get; set; }
 
         public string Password { get; set; }
 
@@ -100,6 +100,10 @@ namespace Haimen.Entity
                 Error_Info.Add(new KeyValuePair<string, string>("Code", err));
                 return false;
             }
+
+            // 判断是否加了用户组
+            if (GroupID <= 0)
+                Error_Info.Add(new KeyValuePair<string, string>("GroupID", "用户组必须选择！"));
             return true;
         }
 

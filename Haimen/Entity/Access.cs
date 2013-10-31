@@ -159,11 +159,23 @@ namespace Haimen.Entity
             init_list();        // 初始化列表
 
             // 针对用户或者用户组进行处理
-            foreach (Access a in m_list)
+            if (is_user)
             {
-                a.UserGroupID = 0;
-                a.UserID = id;
-                a.CanAccess = getUserAccess(id, a.FunctionID, a.ActionID, is_user) ? (byte)1 : (byte)0;
+                foreach (Access a in m_list)
+                {
+                    a.UserGroupID = 0;
+                    a.UserID = id;
+                    a.CanAccess = getUserAccess(User.CreateByID(id), a.FunctionID, a.ActionID) ? (byte)1 : (byte)0;
+                }
+            }
+            else
+            {
+                foreach (Access a in m_list)
+                {
+                    a.UserGroupID = id;
+                    a.UserID = 0;
+                    a.CanAccess = getUserGroupAccess(id, a.FunctionID, a.ActionID) ? (byte)1 : (byte)0;
+                }
             }
             return m_list;
         }
@@ -343,7 +355,7 @@ namespace Haimen.Entity
             if (m_list[0].UserID > 0)
                 sql = "delete from q_access where user_id = " + m_list[0].UserID.ToString();
             else
-                sql = "Delete from q_access where ugroup_id = " + m_list[0].UserGroupID.ToString();
+                sql = "delete from q_access where ugroup_id = " + m_list[0].UserGroupID.ToString();
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
 
@@ -355,7 +367,7 @@ namespace Haimen.Entity
                 foreach (Access a in m_list)
                 {
                     // 只有用户的权限 与 该用户所属的用户组的权限不一致才会保存
-                    if (a.CanAccess != (getUserAccess(u.UserGroupID, a.FunctionID, a.ActionID, false) ? (byte)1 : (byte)0))
+                    if (a.CanAccess != (getUserGroupAccess(u.GroupID, a.FunctionID, a.ActionID) ? (byte)1 : (byte)0))
                         a.Save();
                 }
             }
@@ -371,48 +383,42 @@ namespace Haimen.Entity
             m_must_reload = true; 
         }
 
+
         /// <summary>
-        /// 取得指定用户的业务权限
+        /// 判断当前的用户的权限
         /// </summary>
-        /// <param name="id">用户ID</param>
-        /// <param name="ft">业务</param>
-        /// <param name="at">操作</param>
-        /// <param name="is_user">是否为用户，真为用户，假为用户组</param>
-        /// <returns></returns>
-        public static bool getUserAccess(long id, long ft, long at, bool is_user = true)
+        /// <param name="user">用户</param>
+        /// <param name="function">业务</param>
+        /// <param name="action">行为</param>
+        /// <returns>可以使用为真，否则为假</returns>
+        public static bool getUserAccess(User user, long function, long action)
         {
             // 如果是超级用户，可以直接使用
-            User u;
-            if (is_user)
-            {
-                u = User.CreateByID(id);
-                if (u.Admin == "X") return true;
-            }
-
-
-            // 先判断是否要重新调用
-            if (m_must_reload)
-            {
-                m_all_list = Access.Query();
-                m_must_reload = false;
-            }
+            if (user.Admin == "X")
+                return true;
 
             // 判断权限
-            if (is_user)
+            foreach (Access a in m_all_list)
             {
-                foreach (Access a in m_all_list)
-                {
-                    if (a.UserID == id && a.FunctionID == ft && a.ActionID == at)
-                        return a.CanAccess != 0;
-                }
+                if (a.UserID == user.ID && a.FunctionID == function && a.ActionID == action)
+                    return a.CanAccess != 0;
             }
-            else
+            return getUserGroupAccess(user.GroupID, function,action);
+        }
+
+        /// <summary>
+        /// 判断对应用户组的权限
+        /// </summary>
+        /// <param name="groupid">用户组ID</param>
+        /// <param name="function">业务</param>
+        /// <param name="action">功能</param>
+        /// <returns>可以使用为真，否则为假</returns>
+        public static bool getUserGroupAccess(long groupid, long function, long action)
+        {
+            foreach (Access a in m_all_list)
             {
-                foreach (Access a in m_all_list)
-                {
-                    if (a.UserGroupID == id && a.FunctionID == ft && a.ActionID == at)
-                        return a.CanAccess != 0;
-                }
+                if (a.UserGroupID == groupid && a.FunctionID == function && a.ActionID == action)
+                    return a.CanAccess != 0;
             }
             return false;
         }

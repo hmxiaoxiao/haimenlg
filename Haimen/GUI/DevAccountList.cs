@@ -28,33 +28,33 @@ namespace Haimen.GUI
         /// </summary>
         private void SetControlAccess()
         {
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.新增))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.资金, (long)ActionEnum.新增))
             {
                 tsbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.编辑))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.资金, (long)ActionEnum.编辑))
             {
                 tsbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.删除))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.资金, (long)ActionEnum.删除))
             {
                 tsbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.审核))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.资金, (long)ActionEnum.审核))
             {
                 tsbCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 tsbUnCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             } 
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.支付))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.资金, (long)ActionEnum.支付))
             {
                 tsbPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 tsbUnPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.资金, (long)ActionEnum.打印))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.资金, (long)ActionEnum.打印))
             {
                 tsbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.资金, (long)ActionEnum.转正式发票))
+            if (!Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.资金, (long)ActionEnum.转正式发票))
             {
                 tsb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }

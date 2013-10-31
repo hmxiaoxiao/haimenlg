@@ -26,7 +26,22 @@ namespace Haimen.Qy
         public List<U> DetailList = new List<U>();
 
         // 附件列表
-        public List<Attach> AttachList = new List<Attach>();
+        private List<Attach> m_attachlist = null;
+        public List<Attach> AttachList
+        {
+            get
+            {
+                if (m_attachlist == null)
+                {
+                    m_attachlist = Attach.Query("parent_id = " + ID.ToString());
+                }
+                return m_attachlist;
+            }
+            set
+            {
+                m_attachlist = value;
+            }
+        }
 
         public override bool Insert()
         {
@@ -185,9 +200,10 @@ namespace Haimen.Qy
             info.SetValue(t, detail);
 
             // 取得所有的附件记录
-            FieldInfo ainfo = t.GetType().GetField("AttachList");
+            PropertyInfo ainfo = t.GetType().GetProperty("AttachList");
             List<Attach> attaches = Attach.Query("parent_id = " + id.ToString());
-            ainfo.SetValue(t, attaches);
+            //ainfo.SetValue(t, attaches);
+            ainfo.SetValue(t, attaches, null);
 
             return t;
         }
@@ -320,13 +336,13 @@ namespace Haimen.Qy
             {
                 FieldInfo info = t.GetType().GetField("DetailList");
                 PropertyInfo pro = t.GetType().GetProperty("ID");
-                long id = (long) pro.GetValue(t, null);
+                long id = (long)pro.GetValue(t, null);
                 List<U> detail = new U().Find("parent_id = " + id.ToString());
                 info.SetValue(t, detail);
 
-                FieldInfo ainfo = t.GetType().GetField("AttachList");
-                List<Attach> attaches = Attach.Query("parent_id = " + id.ToString());
-                ainfo.SetValue(t, attaches);
+                //FieldInfo ainfo = t.GetType().GetField("AttachList");
+                //List<Attach> attaches = Attach.Query("parent_id = " + id.ToString());
+                //ainfo.SetValue(t, attaches);
             }
 
             return list;

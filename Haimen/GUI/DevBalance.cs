@@ -23,19 +23,19 @@ namespace Haimen.GUI
         /// </summary>
         private void SetControlAccess()
         {
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.贷款, (long)ActionEnum.新增))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.贷款, (long)ActionEnum.新增))
             {
                 btnNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.贷款, (long)ActionEnum.编辑))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.贷款, (long)ActionEnum.编辑))
             {
                 btnEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.贷款, (long)ActionEnum.删除))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.贷款, (long)ActionEnum.删除))
             {
                 btnDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.贷款, (long)ActionEnum.审核))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.贷款, (long)ActionEnum.审核))
             {
                 btnCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }

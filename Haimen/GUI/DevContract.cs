@@ -37,19 +37,19 @@ namespace Haimen.GUI
         /// </summary>
         private void SetControlAccess()
         {
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.合同, (long)ActionEnum.新增))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.合同, (long)ActionEnum.新增))
             {
                 tbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.合同, (long)ActionEnum.编辑))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.合同, (long)ActionEnum.编辑))
             {
                 tbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.合同, (long)ActionEnum.删除))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.合同, (long)ActionEnum.删除))
             {
                 tbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID,  (long)FctionEnum.合同, (long)ActionEnum.审核))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.合同, (long)ActionEnum.审核))
             {
                 tbCheckPassed.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 tbCheckFaild.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;

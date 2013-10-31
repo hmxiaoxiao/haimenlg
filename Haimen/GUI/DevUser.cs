@@ -29,15 +29,15 @@ namespace Haimen.GUI
         /// </summary>
         private void SetControlAccess()
         {
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.用户, (long)ActionEnum.新增))
+            if (!Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.用户, (long)ActionEnum.新增))
             {
                 tsbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.用户, (long)ActionEnum.编辑))
+            if (!Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.用户, (long)ActionEnum.编辑))
             {
                 tsbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User.ID, (long)FctionEnum.用户, (long)ActionEnum.删除))
+            if (!Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.用户, (long)ActionEnum.删除))
             {
                 tsbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
@@ -56,10 +56,10 @@ namespace Haimen.GUI
 
             if (lueUserGroup.EditValue != null)
             {
-                m_user.UserGroupID = long.Parse(lueUserGroup.EditValue.ToString());
+                m_user.GroupID = long.Parse(lueUserGroup.EditValue.ToString());
             }
 
-            if (m_user.UserGroupID <= 0)
+            if (m_user.GroupID <= 0)
             {
                 dxErrorProvider1.SetError(lueUserGroup, "必须选择所属的用户组");
                 verify = false;
@@ -168,7 +168,7 @@ namespace Haimen.GUI
             lueUserGroup.Properties.DisplayMember = "Name";
             lueUserGroup.Properties.ValueMember = "ID";
 
-            lueUserGroup.EditValue = m_user.UserGroupID;
+            lueUserGroup.EditValue = m_user.GroupID;
 
         }
 
