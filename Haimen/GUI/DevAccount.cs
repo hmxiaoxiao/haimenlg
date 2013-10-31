@@ -22,16 +22,6 @@ namespace Haimen.GUI
         private Account m_account;                  // 当前正在编辑的资金对象
         private winStatusEnum m_status;             // 当前窗口的状态，象新增之类的
 
-        private string DateDiff(DateTime DateTime1, DateTime DateTime2)
-        {
-            string dateDiff = null;
-            TimeSpan ts1 = new TimeSpan(DateTime1.Ticks);
-            TimeSpan ts2 = new TimeSpan(DateTime2.Ticks);
-            TimeSpan ts = ts1.Subtract(ts2).Duration();
-            dateDiff = ts.Days.ToString() + "天" + ts.Hours.ToString() + "小时" + ts.Minutes.ToString() + "分钟" + ts.Seconds.ToString() + "秒";
-            return dateDiff;
-        }
-
         /// <summary>
         /// 计算总金额
         /// </summary>
@@ -587,7 +577,7 @@ namespace Haimen.GUI
             Object2form();             // 初始化界面
             SetControlAccess();        // 设置访问权限
            
-            Console.WriteLine("载入总共用了" + DateDiff(begin,DateTime.Now));
+            Console.WriteLine("载入总共用了" + Haimen.Helper.Helper.DateDiff(begin,DateTime.Now));
         }
 
         /// <summary>
@@ -713,6 +703,9 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (m_account == null)
+                return;
+
             if (!m_account.CanDelete())
             {
                 MessageBox.Show("该单据已经审核，无法删除！");
@@ -723,6 +716,10 @@ namespace Haimen.GUI
             {
                 m_account.Destory();
                 m_account = null;
+
+                // 这时只能新增，不能再删除和编辑
+                tbEdit.Enabled = false;
+                tbDelete.Enabled = false;
             }
         }
 
@@ -834,6 +831,7 @@ namespace Haimen.GUI
             m_account.Checked();
             ShowCheckPayPic();
             tbCheck.Enabled = false;
+            tbUnCheck.Enabled = true;
             m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
         }
 
@@ -949,6 +947,7 @@ namespace Haimen.GUI
             m_account.UnChecked();
             ShowCheckPayPic();
             tbUnCheck.Enabled = false;
+            tbCheck.Enabled = true;
             m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
         }
 
@@ -958,6 +957,8 @@ namespace Haimen.GUI
             m_account.UnPayed();
             ShowCheckPayPic();
             tbUnPay.Enabled = false;
+            tbPay.Enabled = true;
+            tbPrint.Enabled = false;
             m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
         }
 

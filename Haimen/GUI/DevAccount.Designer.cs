@@ -500,7 +500,7 @@
             this.txtMoney.Properties.DisplayFormat.FormatString = "c";
             this.txtMoney.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtMoney.Properties.Mask.EditMask = "c";
-            this.txtMoney.Size = new System.Drawing.Size(611, 20);
+            this.txtMoney.Size = new System.Drawing.Size(260, 20);
             this.txtMoney.StyleController = this.layoutControl1;
             this.txtMoney.TabIndex = 16;
             // 
@@ -508,14 +508,14 @@
             // 
             this.calcAttachCount.EnterMoveNextControl = true;
             this.calcAttachCount.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.calcAttachCount.Location = new System.Drawing.Point(617, 144);
+            this.calcAttachCount.Location = new System.Drawing.Point(440, 192);
             this.calcAttachCount.MenuManager = this.barManager1;
             this.calcAttachCount.Name = "calcAttachCount";
             this.calcAttachCount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.calcAttachCount.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.calcAttachCount.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.calcAttachCount.Size = new System.Drawing.Size(84, 20);
+            this.calcAttachCount.Size = new System.Drawing.Size(261, 20);
             this.calcAttachCount.StyleController = this.layoutControl1;
             this.calcAttachCount.TabIndex = 17;
             // 
@@ -534,6 +534,7 @@
             this.calcPayMoney.Size = new System.Drawing.Size(261, 20);
             this.calcPayMoney.StyleController = this.layoutControl1;
             this.calcPayMoney.TabIndex = 4;
+            this.calcPayMoney.TabStop = false;
             // 
             // lueReviewer
             // 
@@ -591,7 +592,7 @@
             this.chkRelease.MenuManager = this.barManager1;
             this.chkRelease.Name = "chkRelease";
             this.chkRelease.Properties.Caption = "是否正式发票";
-            this.chkRelease.Size = new System.Drawing.Size(169, 19);
+            this.chkRelease.Size = new System.Drawing.Size(343, 19);
             this.chkRelease.StyleController = this.layoutControl1;
             this.chkRelease.TabIndex = 12;
             // 
@@ -689,6 +690,7 @@
             this.lueContractApply.Size = new System.Drawing.Size(260, 20);
             this.lueContractApply.StyleController = this.layoutControl1;
             this.lueContractApply.TabIndex = 3;
+            this.lueContractApply.TabStop = false;
             this.lueContractApply.EditValueChanged += new System.EventHandler(this.lueContractApply_EditValueChanged);
             // 
             // lueContractApplyStatusEnum
@@ -1034,10 +1036,10 @@
             this.layoutControlItem22,
             this.layoutControlItem28,
             this.layoutControlItem11,
-            this.layoutControlItem25,
             this.layoutControlItem24,
             this.layoutControlItem23,
-            this.layoutControlItem12});
+            this.layoutControlItem12,
+            this.layoutControlItem25});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.OptionsItemText.TextToControlDistance = 2;
@@ -1166,7 +1168,7 @@
             this.layoutControlItem19.CustomizationFormText = "layoutControlItem19";
             this.layoutControlItem19.Location = new System.Drawing.Point(354, 140);
             this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(173, 24);
+            this.layoutControlItem19.Size = new System.Drawing.Size(347, 24);
             this.layoutControlItem19.Text = "layoutControlItem19";
             this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem19.TextToControlDistance = 0;
@@ -1208,7 +1210,7 @@
             this.layoutControlItem28.CustomizationFormText = "总金额";
             this.layoutControlItem28.Location = new System.Drawing.Point(0, 188);
             this.layoutControlItem28.Name = "layoutControlItem28";
-            this.layoutControlItem28.Size = new System.Drawing.Size(701, 24);
+            this.layoutControlItem28.Size = new System.Drawing.Size(350, 24);
             this.layoutControlItem28.Text = "总金额";
             this.layoutControlItem28.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -1226,9 +1228,9 @@
             // 
             this.layoutControlItem25.Control = this.calcAttachCount;
             this.layoutControlItem25.CustomizationFormText = "附件张数";
-            this.layoutControlItem25.Location = new System.Drawing.Point(527, 140);
+            this.layoutControlItem25.Location = new System.Drawing.Point(350, 188);
             this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Size = new System.Drawing.Size(174, 24);
+            this.layoutControlItem25.Size = new System.Drawing.Size(351, 24);
             this.layoutControlItem25.Text = "附件张数";
             this.layoutControlItem25.TextSize = new System.Drawing.Size(84, 14);
             // 

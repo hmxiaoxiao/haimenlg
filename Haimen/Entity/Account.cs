@@ -7,6 +7,8 @@ using Haimen.Qy;
 using Haimen.Entity;
 using Haimen.Helper;
 using System.Transactions;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Haimen.Entity
 {
@@ -172,7 +174,66 @@ namespace Haimen.Entity
         // AccountInvoiceEnum的一致
         [Field("invoice")]
         public long Invoice { get; set; }
-        private static List<Dict> m_invoice_enum;
+
+        [Field("project_id")]
+        public long ProjectID { get; set; }
+        private Project m_project;
+        public Project Project
+        {
+            get
+            {
+                if (m_project == null && ProjectID > 0)
+                    m_project = Project.CreateByID(ProjectID);
+                return m_project;
+            }
+        }
+
+        /// <summary>
+        /// 为了效率，重写在列表显示窗口里的列表取得方法
+        /// 直接用SQL语句写
+        /// </summary>
+        /// <returns></returns>
+        public static DataSet GetGUIList()
+        {
+            string mastersql = @"
+                select a.id as id,a.status  as status,a.signed_date as signeddate,a.money as money,
+                    a.project_id as project_id,a.invoice as invoice,a.code as code,a.memo as memo,
+                    out_c.name as outcompanyname,out_d.name as outbankname,out_b.account as outaccount,
+                    in_c.name as incompanyname,in_d.name as inbankname,in_b.account as inaccount
+                from t_account a, m_company_detail out_b, m_company out_c, m_bank out_d, m_company_detail in_b, m_company in_c, m_bank in_d
+                where a.out_companydetail_id = out_b.id and out_b.parent_id = out_c.id and out_b.bank_id = out_d.id and
+                      a.in_companydetail_id = in_b.id and in_b.parent_id = in_c.id and in_b.bank_id = in_d.id and
+                      a.deleted = 0
+                order by id desc;
+            ";
+//            string detailsql = @"
+//                select a.id, a.parent_id, b.name as 性质, a.money as 金额, a.usage as 用途
+//                from t_account_detail a, m_funds b
+//                where a.deleted = 0 and a.funds_id = b.id
+//            ";
+            string detailsql = @"
+                select a.id, a.parent_id, b.name, a.money, a.usage
+                from t_account_detail a, m_funds b
+                where a.deleted = 0 and a.funds_id = b.id
+            ";
+
+            SqlDataAdapter damaster = new SqlDataAdapter(mastersql, DBFunction.Connection);
+            SqlDataAdapter dadetail = new SqlDataAdapter(detailsql, DBFunction.Connection);
+            DataSet ds = new DataSet();
+            damaster.Fill(ds, "master");
+            dadetail.Fill(ds, "detail");
+
+            DataColumn key = ds.Tables["master"].Columns["id"];
+            DataColumn foreignKey = ds.Tables["detail"].Columns["parent_id"];
+            ds.Relations.Add("明细", key, foreignKey);
+
+            return ds;
+        }
+
+
+
+        // 发票状态的枚举
+        private static List<Dict> m_invoice_enum = null;
         public static List<Dict> AccountInvoicList
         {
             get
@@ -190,19 +251,24 @@ namespace Haimen.Entity
         }
 
 
-
-        [Field("project_id")]
-        public long ProjectID { get; set; }
-        private Project m_project;
-        public Project Project
+        /// <summary>
+        /// 资金单据的状态枚举
+        /// </summary>
+        private static List<Dict> m_account_status_list = null;
+        public static List<Dict> AccountStatusList
         {
             get
             {
-                if (m_project == null && ProjectID > 0)
-                    m_project = Project.CreateByID(ProjectID);
-                return m_project;
+                if (m_account_status_list == null)
+                {
+                    m_account_status_list = new List<Dict>();
+                    foreach (long sn in Enum.GetValues(typeof(AccountStatusEnum)))
+                        m_account_status_list.Add(new Dict(Enum.GetName(typeof(AccountStatusEnum), sn), sn));
+                }
+                return m_account_status_list;
             }
         }
+
 
         /// <summary>
         /// 审核通过
@@ -381,6 +447,7 @@ namespace Haimen.Entity
             return;
         }
 
+
         /// <summary>
         /// 非正式发票转换为正式发票
         /// </summary>
@@ -390,22 +457,6 @@ namespace Haimen.Entity
             {
                 Invoice = (long)AccountInvoiceEnum.正式发票;
                 this.Save();
-            }
-        }
-
-
-        private static List<Dict> m_account_status_list;
-        public static List<Dict> AccountStatusList
-        {
-            get
-            {
-                if (m_account_status_list == null)
-                {
-                    m_account_status_list = new List<Dict>();
-                    foreach (long sn in Enum.GetValues(typeof(AccountStatusEnum)))
-                        m_account_status_list.Add(new Dict(Enum.GetName(typeof(AccountStatusEnum), sn), sn));
-                }
-                return m_account_status_list;
             }
         }
 

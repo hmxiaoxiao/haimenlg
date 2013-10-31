@@ -17,12 +17,22 @@ namespace Haimen.Qy
         where T : new()
         where U : MEntityFunction<U>, new()
     {
-        /// <summary>
-        /// 当前对象指定的排序字段
-        /// </summary>
-        //public static new string OrderBy = " Order By ID Desc ";
 
         // 明细列表
+        //private List<U> m_detaillist = null;
+        //public List<U> DetailList
+        //{
+        //    get
+        //    {
+        //        if (m_detaillist == null)
+        //            m_
+        //    }
+        //    set
+        //    {
+        //        m_detaillist = value;
+        //    }
+        //}
+
         public List<U> DetailList = new List<U>();
 
         // 附件列表

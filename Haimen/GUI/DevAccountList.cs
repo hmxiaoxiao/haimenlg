@@ -18,10 +18,7 @@ namespace Haimen.GUI
 {
     public partial class DevAccountList : DevExpress.XtraEditors.XtraForm
     {
-        /// <summary>
-        /// 当前的资金往来列表
-        /// </summary>
-        private List<Account> m_accounts;
+        private List<Project> m_projects = Project.Query();
 
         /// <summary>
         /// 根据用户的权限设置控件的可用与否
@@ -68,16 +65,12 @@ namespace Haimen.GUI
             if (gridView1.FocusedRowHandle < 0)
                 return;
 
-            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
-            foreach (Account a in m_accounts)
-            {
-                if (a.ID == id)
-                {
-                    DevMain main = (DevMain)this.ParentForm;
-                    main.OpenForm(new DevAccount(status, a));
-                    return;
-                }
-            }
+            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
+
+            DevMain main = (DevMain)this.ParentForm;
+            main.OpenForm(new DevAccount(status, Account.CreateByID(id)));
+            return;
+
         }
 
         /// <summary>
@@ -85,28 +78,26 @@ namespace Haimen.GUI
         /// </summary>
         private void MyRefresh()
         {
-            // 取得所有的数据
-            m_accounts = Account.Query();
 
             // 绑定到表格中
-            gridControl1.DataSource = null;
-            gridControl1.DataSource = m_accounts;
-            gridView1.BestFitColumns();
+            DataSet accounts = Account.GetGUIList();
+            gridControl1.DataSource = accounts.Tables[0];
+            gridControl1.ForceInitialize();
 
-            // 显示明细
-            SelectedRow();
-            gridView3.BestFitColumns();
+            gridView1.BestFitColumns();
 
             // 是否正式发票
             lueInvoiceList.DataSource = Account.AccountInvoicList;
             lueInvoiceList.DisplayMember = "Name";
             lueInvoiceList.ValueMember = "ValueInt";
 
-            // 显示数据源
+            // 显示状态
             lueStatus.DataSource = null;
             lueStatus.DataSource = Account.AccountStatusList;
             lueStatus.DisplayMember = "Name";
             lueStatus.ValueMember = "ValueInt";
+
+            SelectedRow();
         }
 
 
@@ -117,24 +108,18 @@ namespace Haimen.GUI
         {
             long id = 0;
             if (gridView1.FocusedRowHandle >= 0)
-                id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
-
-
-            foreach (Account a in m_accounts)
             {
-                if (id == a.ID)
-                {
-                    gridControl2.DataSource = a.DetailList;
+                id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
 
-                    tsbPrint.Enabled = a.CanPrint();
-                    tsbEdit.Enabled = a.CanEdit();
-                    tsbDelete.Enabled = a.CanDelete();
-                    tsbCheck.Enabled = a.CanCheck();
-                    tsbUnCheck.Enabled = a.CanUnCheck();
-                    tsbPay.Enabled = a.CanPay();
-                    tsbUnPay.Enabled = a.CanUnPay();
-                    tsb2Invoice.Enabled = a.CanConvertInvoice();
-                }
+                Account a = Account.CreateByID(id);
+                tsbPrint.Enabled = a.CanPrint();
+                tsbEdit.Enabled = a.CanEdit();
+                tsbDelete.Enabled = a.CanDelete();
+                tsbCheck.Enabled = a.CanCheck();
+                tsbUnCheck.Enabled = a.CanUnCheck();
+                tsbPay.Enabled = a.CanPay();
+                tsbUnPay.Enabled = a.CanUnPay();
+                tsb2Invoice.Enabled = a.CanConvertInvoice();
             }
         }
 
@@ -179,7 +164,7 @@ namespace Haimen.GUI
 
             long id = 0;
             if (gridView1.FocusedRowHandle >= 0)
-                id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
+                id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
             Account acc = Account.CreateByID(id);
             if (acc != null)
             {
@@ -206,11 +191,8 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void DevAccountList_Load(object sender, EventArgs e)
         {
-            (this.gridControl1.MainView as DevExpress.XtraGrid.Views.Base.BaseView).DataController.AllowIEnumerableDetails = true;
-            MyRefresh();
+            //MyRefresh();
             SetControlAccess();
-
-//            DataController.AllowIEnumerableDetails = true;
         }
 
 
@@ -222,16 +204,6 @@ namespace Haimen.GUI
         private void tsbCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             EditAccount(winStatusEnum.审核);
-        }
-
-        /// <summary>
-        /// 双击查看当前资金
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void gridControl1_DoubleClick(object sender, EventArgs e)
-        {
-            EditAccount(winStatusEnum.查看);
         }
 
         /// <summary>
@@ -251,31 +223,30 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tsbQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DevAccountQuery aq = new DevAccountQuery();
-            if (aq.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
-            {
-                // 生成查询SQL
-                List<string> filters = new List<string>();
-                if (aq.Q_Code.Length > 0)
-                    filters.Add(" Code like '%" + aq.Q_Code + "%' ");
-                if (aq.Q_InCompany_ID.Length > 0)
-                    filters.Add(" in_company_id = " + aq.Q_InCompany_ID + " ");
-                if (aq.Q_OutCompany_ID.Length > 0)
-                    filters.Add(" out_company_id = " + aq.Q_OutCompany_ID + " ");
+            //DevAccountQuery aq = new DevAccountQuery();
+            //if (aq.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    // 生成查询SQL
+            //    List<string> filters = new List<string>();
+            //    if (aq.Q_Code.Length > 0)
+            //        filters.Add(" Code like '%" + aq.Q_Code + "%' ");
+            //    if (aq.Q_InCompany_ID.Length > 0)
+            //        filters.Add(" in_company_id = " + aq.Q_InCompany_ID + " ");
+            //    if (aq.Q_OutCompany_ID.Length > 0)
+            //        filters.Add(" out_company_id = " + aq.Q_OutCompany_ID + " ");
 
-                string where = "";
-                foreach (string filter in filters)
-                {
-                    where += filter + " and ";
-                }
-                if (where.Length > 0)
-                    where = where.Substring(0, where.Length - 4);
+            //    string where = "";
+            //    foreach (string filter in filters)
+            //    {
+            //        where += filter + " and ";
+            //    }
+            //    if (where.Length > 0)
+            //        where = where.Substring(0, where.Length - 4);
 
-                m_accounts = Account.Query(where);
-                gridControl1.DataSource = m_accounts;
-                SelectedRow();
-
-            }
+            //    m_accounts = Account.Query(where);
+            //    gridControl1.DataSource = m_accounts;
+            //    SelectedRow();
+            //}
         }
 
         /// <summary>
@@ -315,17 +286,12 @@ namespace Haimen.GUI
             if (gridView1.FocusedRowHandle < 0)
                 return;
 
-            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
-            foreach (Account a in m_accounts)
+            long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
+            Account a = Account.CreateByID(id);
+            if (!a.CanPrint())
             {
-                if (a.ID == id)
-                {
-                    if (!a.CanPrint())
-                    {
-                        MessageBox.Show("该单据尚未审核，无法打印！");
-                        return;
-                    }
-                }
+                MessageBox.Show("该单据尚未支付，无法打印！");
+                return;
             }
             
             // Create a report. 
@@ -359,6 +325,46 @@ namespace Haimen.GUI
         private void DevAccountList_Activated(object sender, EventArgs e)
         {
             MyRefresh();
+        }
+
+        // 显示项目的名称，因为不能从SQL语句里写出（不会left join)
+        private void gridView1_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "project_id")
+            {
+                long id = long.Parse(e.Value.ToString());
+                if (id == 0)
+                {
+                    e.DisplayText = "";
+                    return;
+                }
+                foreach (Project p in m_projects)
+                {
+                    if (p.ID == id)
+                    {
+                        e.DisplayText = p.Name;
+                        return ;
+                    }
+                }
+                e.DisplayText = "";
+            }
+        }
+
+        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            if (e.Info.IsRowIndicator)
+            {
+                if (e.RowHandle >= 0)
+                {
+                    e.Info.DisplayText = (e.RowHandle + 1).ToString();
+                }
+                else if (e.RowHandle < 0 && e.RowHandle > -1000)
+                {
+                    e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
+                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                }
+            }
         }
     }
 }
