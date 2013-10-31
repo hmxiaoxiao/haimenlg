@@ -130,12 +130,21 @@ namespace Haimen.GUI
                 countrow["小计"] = d_sum;
             report.Rows.Add(countrow);
             
-
-
             m_ds.Tables.Add(report);
 
             gridControl1.DataSource = m_ds.Tables["report"];
-            gridView1.BestFitColumns();
+            gridControl1.ForceInitialize();
+            foreach (DataRow dr in m_ds.Tables["company"].Rows)
+            {
+                gridView1.Columns[dr["doc"].ToString()].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                gridView1.Columns[dr["doc"].ToString()].DisplayFormat.FormatString = "c2";
+                gridView1.Columns[dr["doc"].ToString()].Width = 80;
+            }
+            gridView1.Columns["小计"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            gridView1.Columns["小计"].DisplayFormat.FormatString = "c2";
+            gridView1.Columns["小计"].Width = 100;
+            gridView1.Columns["序号"].Width = 30;
+            gridView1.Columns["银行名称"].Width = 150;
         }
 
         public DevQueryBalance3()
