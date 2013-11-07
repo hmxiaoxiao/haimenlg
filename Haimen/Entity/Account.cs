@@ -469,7 +469,13 @@ namespace Haimen.Entity
             if (this.Status > (long)AccountStatusEnum.未审核)
                 return false;
             else
-                return true;
+            {
+                // 如果已经跨月了就不可以修改
+                if (this.SignedDate.Year == DateTime.Now.Year && SignedDate.Month == DateTime.Now.Month)
+                    return true;
+                else
+                    return true;
+            }
         }
 
         /// <summary>

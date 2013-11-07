@@ -471,6 +471,8 @@
             this.calcAttachCount.Size = new System.Drawing.Size(261, 20);
             this.calcAttachCount.StyleController = this.layoutControl1;
             this.calcAttachCount.TabIndex = 17;
+            this.calcAttachCount.Click += new System.EventHandler(this.calcAttachCount_Click);
+            this.calcAttachCount.Enter += new System.EventHandler(this.calcAttachCount_Enter);
             // 
             // calcPayMoney
             // 
@@ -1421,6 +1423,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.calcDetailMoney.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.calcDetailMoney.Name = "calcDetailMoney";
+            this.calcDetailMoney.Click += new System.EventHandler(this.calcDetailMoney_Click);
+            this.calcDetailMoney.Enter += new System.EventHandler(this.calcDetailMoney_Enter);
             // 
             // col_usage
             // 

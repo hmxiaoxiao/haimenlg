@@ -983,5 +983,30 @@ namespace Haimen.GUI
             ReportPrintTool tool = new ReportPrintTool(report);
             tool.ShowPreview();
         }
+
+        private void calcDetailMoney_Enter(object sender, EventArgs e)
+        {
+            this.BeginInvoke(new EditorSelectAllProc(EditorSelectAll), (Control)sender);
+        }
+        delegate void EditorSelectAllProc(Control c);
+        void EditorSelectAll(Control c)
+        {
+            ((TextBox)c.Controls[0]).SelectAll();
+        }
+
+        private void calcAttachCount_Enter(object sender, EventArgs e)
+        {
+            this.BeginInvoke(new EditorSelectAllProc(EditorSelectAll), (Control)sender);
+        }
+
+        private void calcAttachCount_Click(object sender, EventArgs e)
+        {
+            this.BeginInvoke(new EditorSelectAllProc(EditorSelectAll), (Control)sender);
+        }
+
+        private void calcDetailMoney_Click(object sender, EventArgs e)
+        {
+            this.BeginInvoke(new EditorSelectAllProc(EditorSelectAll), (Control)sender);
+        }
     }
 }
