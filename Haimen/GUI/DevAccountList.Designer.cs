@@ -270,7 +270,7 @@
             // 
             // col_outcompany
             // 
-            this.col_outcompany.Caption = "付款单位";
+            this.col_outcompany.Caption = "本单位";
             this.col_outcompany.FieldName = "outcompanyname";
             this.col_outcompany.Name = "col_outcompany";
             this.col_outcompany.Visible = true;
@@ -278,7 +278,7 @@
             // 
             // col_outcompany_bank
             // 
-            this.col_outcompany_bank.Caption = "付款银行";
+            this.col_outcompany_bank.Caption = "本单位银行";
             this.col_outcompany_bank.FieldName = "outbankname";
             this.col_outcompany_bank.Name = "col_outcompany_bank";
             this.col_outcompany_bank.Visible = true;
@@ -286,7 +286,7 @@
             // 
             // col_outcompany_account
             // 
-            this.col_outcompany_account.Caption = "付款帐号";
+            this.col_outcompany_account.Caption = "本单位帐号";
             this.col_outcompany_account.FieldName = "outaccount";
             this.col_outcompany_account.Name = "col_outcompany_account";
             this.col_outcompany_account.Visible = true;
@@ -294,7 +294,7 @@
             // 
             // col_incompany
             // 
-            this.col_incompany.Caption = "收款单位";
+            this.col_incompany.Caption = "外单位";
             this.col_incompany.FieldName = "incompanyname";
             this.col_incompany.Name = "col_incompany";
             this.col_incompany.Visible = true;
@@ -302,7 +302,7 @@
             // 
             // col_incompany_bank
             // 
-            this.col_incompany_bank.Caption = "收款银行";
+            this.col_incompany_bank.Caption = "外单位银行";
             this.col_incompany_bank.FieldName = "inbankname";
             this.col_incompany_bank.Name = "col_incompany_bank";
             this.col_incompany_bank.Visible = true;
@@ -310,7 +310,7 @@
             // 
             // col_incompany_account
             // 
-            this.col_incompany_account.Caption = "收款帐号";
+            this.col_incompany_account.Caption = "外单位帐号";
             this.col_incompany_account.FieldName = "inaccount";
             this.col_incompany_account.Name = "col_incompany_account";
             this.col_incompany_account.Visible = true;

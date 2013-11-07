@@ -45,6 +45,10 @@
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
             this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbBatSetOutput = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbUnSetOutput = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbSetInput = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbUnsetInput = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -54,10 +58,6 @@
             this.tree = new DevExpress.XtraTreeList.TreeList();
             this.tree_id = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tree_name = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.tsbBatSetOutput = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbUnSetOutput = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbSetInput = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbUnsetInput = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -89,6 +89,7 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsDetail.EnableMasterViewMode = false;
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
@@ -221,6 +222,38 @@
             this.tsbRefresh.Name = "tsbRefresh";
             this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
             // 
+            // tsbBatSetOutput
+            // 
+            this.tsbBatSetOutput.Caption = "设为付款单位";
+            this.tsbBatSetOutput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbBatSetOutput.Glyph")));
+            this.tsbBatSetOutput.Id = 6;
+            this.tsbBatSetOutput.Name = "tsbBatSetOutput";
+            this.tsbBatSetOutput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbBatSetOutput_ItemClick);
+            // 
+            // tsbUnSetOutput
+            // 
+            this.tsbUnSetOutput.Caption = "取消付款单位";
+            this.tsbUnSetOutput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnSetOutput.Glyph")));
+            this.tsbUnSetOutput.Id = 7;
+            this.tsbUnSetOutput.Name = "tsbUnSetOutput";
+            this.tsbUnSetOutput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnSetOutput_ItemClick);
+            // 
+            // tsbSetInput
+            // 
+            this.tsbSetInput.Caption = "设为收款单位";
+            this.tsbSetInput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbSetInput.Glyph")));
+            this.tsbSetInput.Id = 8;
+            this.tsbSetInput.Name = "tsbSetInput";
+            this.tsbSetInput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbSetInput_ItemClick);
+            // 
+            // tsbUnsetInput
+            // 
+            this.tsbUnsetInput.Caption = "取消收款单位";
+            this.tsbUnsetInput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnsetInput.Glyph")));
+            this.tsbUnsetInput.Id = 9;
+            this.tsbUnsetInput.Name = "tsbUnsetInput";
+            this.tsbUnsetInput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnsetInput_ItemClick);
+            // 
             // tsbExit
             // 
             this.tsbExit.Caption = "退出";
@@ -302,38 +335,6 @@
             this.tree_name.OptionsColumn.AllowEdit = false;
             this.tree_name.Visible = true;
             this.tree_name.VisibleIndex = 0;
-            // 
-            // tsbBatSetOutput
-            // 
-            this.tsbBatSetOutput.Caption = "设为付款单位";
-            this.tsbBatSetOutput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbBatSetOutput.Glyph")));
-            this.tsbBatSetOutput.Id = 6;
-            this.tsbBatSetOutput.Name = "tsbBatSetOutput";
-            this.tsbBatSetOutput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbBatSetOutput_ItemClick);
-            // 
-            // tsbUnSetOutput
-            // 
-            this.tsbUnSetOutput.Caption = "取消付款单位";
-            this.tsbUnSetOutput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnSetOutput.Glyph")));
-            this.tsbUnSetOutput.Id = 7;
-            this.tsbUnSetOutput.Name = "tsbUnSetOutput";
-            this.tsbUnSetOutput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnSetOutput_ItemClick);
-            // 
-            // tsbSetInput
-            // 
-            this.tsbSetInput.Caption = "设为收款单位";
-            this.tsbSetInput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbSetInput.Glyph")));
-            this.tsbSetInput.Id = 8;
-            this.tsbSetInput.Name = "tsbSetInput";
-            this.tsbSetInput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbSetInput_ItemClick);
-            // 
-            // tsbUnsetInput
-            // 
-            this.tsbUnsetInput.Caption = "取消收款单位";
-            this.tsbUnsetInput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnsetInput.Glyph")));
-            this.tsbUnsetInput.Id = 9;
-            this.tsbUnsetInput.Name = "tsbUnsetInput";
-            this.tsbUnsetInput.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnsetInput_ItemClick);
             // 
             // DevCompanyList
             // 

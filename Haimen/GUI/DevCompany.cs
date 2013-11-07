@@ -121,6 +121,10 @@ namespace Haimen.GUI
                     case "parentid":
                         dxErrorProvider1.SetError(sueCompany, val.Value);
                         break;
+                    case "input":
+                        dxErrorProvider1.SetError(cbInput, val.Value);
+                        dxErrorProvider1.SetError(cbOutput, val.Value);
+                        break;
                 }
             }
         }

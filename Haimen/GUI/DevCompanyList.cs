@@ -188,7 +188,7 @@ namespace Haimen.GUI
                     long id = long.Parse(gridView1.GetRowCellValue(i, col_id).ToString());
                     foreach (Company com in m_companies)
                     {
-                        if (com.ID == id)
+                        if (com.ID == id && com.Input == "X")   // 因为二个标记必须有一个，所以如果INPUT没有的话，就不能更新
                         {
                             com.Output = "";
                             com.Save();
@@ -230,7 +230,7 @@ namespace Haimen.GUI
                     long id = long.Parse(gridView1.GetRowCellValue(i, col_id).ToString());
                     foreach (Company com in m_companies)
                     {
-                        if (com.ID == id)
+                        if (com.ID == id && com.Output == "X") // 因为二个标记必须有一个，所以如果OUTPUT没有的话，就不能更新
                         {
                             com.Input = "";
                             com.Save();

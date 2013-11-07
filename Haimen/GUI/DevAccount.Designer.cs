@@ -38,20 +38,20 @@
             this.tbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.tbDelete = new DevExpress.XtraBars.BarButtonItem();
             this.tbSave = new DevExpress.XtraBars.BarButtonItem();
-            this.tbExit = new DevExpress.XtraBars.BarButtonItem();
+            this.tbCheck = new DevExpress.XtraBars.BarButtonItem();
+            this.tbUnCheck = new DevExpress.XtraBars.BarButtonItem();
             this.tbPay = new DevExpress.XtraBars.BarButtonItem();
             this.tbUnPay = new DevExpress.XtraBars.BarButtonItem();
             this.tbPrint = new DevExpress.XtraBars.BarButtonItem();
-            this.tbExit2 = new DevExpress.XtraBars.BarButtonItem();
-            this.tbCheck = new DevExpress.XtraBars.BarButtonItem();
-            this.tbUnCheck = new DevExpress.XtraBars.BarButtonItem();
-            this.tbExit3 = new DevExpress.XtraBars.BarButtonItem();
             this.tb2Invoice = new DevExpress.XtraBars.BarButtonItem();
-            this.tbExit4 = new DevExpress.XtraBars.BarButtonItem();
+            this.tbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.tbExit2 = new DevExpress.XtraBars.BarButtonItem();
+            this.tbExit3 = new DevExpress.XtraBars.BarButtonItem();
+            this.tbExit4 = new DevExpress.XtraBars.BarButtonItem();
             this.txtMoney = new DevExpress.XtraEditors.CalcEdit();
             this.calcAttachCount = new DevExpress.XtraEditors.CalcEdit();
             this.calcPayMoney = new DevExpress.XtraEditors.CalcEdit();
@@ -336,13 +336,21 @@
             this.tbSave.Name = "tbSave";
             this.tbSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbSave_ItemClick);
             // 
-            // tbExit
+            // tbCheck
             // 
-            this.tbExit.Caption = "退出";
-            this.tbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
-            this.tbExit.Id = 1;
-            this.tbExit.Name = "tbExit";
-            this.tbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbExit_ItemClick);
+            this.tbCheck.Caption = "通过";
+            this.tbCheck.Glyph = global::Haimen.Properties.Resources.Tick_hot;
+            this.tbCheck.Id = 5;
+            this.tbCheck.Name = "tbCheck";
+            this.tbCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbCheckPassed_ItemClick);
+            // 
+            // tbUnCheck
+            // 
+            this.tbUnCheck.Caption = "撤审";
+            this.tbUnCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("tbUnCheck.Glyph")));
+            this.tbUnCheck.Id = 14;
+            this.tbUnCheck.Name = "tbUnCheck";
+            this.tbUnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbUnCheck_ItemClick);
             // 
             // tbPay
             // 
@@ -368,36 +376,6 @@
             this.tbPrint.Name = "tbPrint";
             this.tbPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbPrint_ItemClick);
             // 
-            // tbExit2
-            // 
-            this.tbExit2.Caption = "退出";
-            this.tbExit2.Glyph = global::Haimen.Properties.Resources.Exit_hot;
-            this.tbExit2.Id = 10;
-            this.tbExit2.Name = "tbExit2";
-            // 
-            // tbCheck
-            // 
-            this.tbCheck.Caption = "通过";
-            this.tbCheck.Glyph = global::Haimen.Properties.Resources.Tick_hot;
-            this.tbCheck.Id = 5;
-            this.tbCheck.Name = "tbCheck";
-            this.tbCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbCheckPassed_ItemClick);
-            // 
-            // tbUnCheck
-            // 
-            this.tbUnCheck.Caption = "撤审";
-            this.tbUnCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("tbUnCheck.Glyph")));
-            this.tbUnCheck.Id = 14;
-            this.tbUnCheck.Name = "tbUnCheck";
-            this.tbUnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbUnCheck_ItemClick);
-            // 
-            // tbExit3
-            // 
-            this.tbExit3.Caption = "退出";
-            this.tbExit3.Glyph = global::Haimen.Properties.Resources.Exit_hot;
-            this.tbExit3.Id = 11;
-            this.tbExit3.Name = "tbExit3";
-            // 
             // tb2Invoice
             // 
             this.tb2Invoice.Caption = "转正式发票";
@@ -406,12 +384,13 @@
             this.tb2Invoice.Name = "tb2Invoice";
             this.tb2Invoice.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tb2Invoice_ItemClick);
             // 
-            // tbExit4
+            // tbExit
             // 
-            this.tbExit4.Caption = "退出";
-            this.tbExit4.Glyph = global::Haimen.Properties.Resources.Exit_hot;
-            this.tbExit4.Id = 13;
-            this.tbExit4.Name = "tbExit4";
+            this.tbExit.Caption = "退出";
+            this.tbExit.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.tbExit.Id = 1;
+            this.tbExit.Name = "tbExit";
+            this.tbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbExit_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -440,6 +419,27 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1007, 47);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 538);
+            // 
+            // tbExit2
+            // 
+            this.tbExit2.Caption = "退出";
+            this.tbExit2.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.tbExit2.Id = 10;
+            this.tbExit2.Name = "tbExit2";
+            // 
+            // tbExit3
+            // 
+            this.tbExit3.Caption = "退出";
+            this.tbExit3.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.tbExit3.Id = 11;
+            this.tbExit3.Name = "tbExit3";
+            // 
+            // tbExit4
+            // 
+            this.tbExit4.Caption = "退出";
+            this.tbExit4.Glyph = global::Haimen.Properties.Resources.Exit_hot;
+            this.tbExit4.Id = 13;
+            this.tbExit4.Name = "tbExit4";
             // 
             // txtMoney
             // 
@@ -1031,7 +1031,7 @@
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(354, 116);
-            this.layoutControlGroup2.Text = "付款单位";
+            this.layoutControlGroup2.Text = "本单位";
             // 
             // layoutControlItem3
             // 
@@ -1073,7 +1073,7 @@
             this.layoutControlGroup3.Location = new System.Drawing.Point(354, 24);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.Size = new System.Drawing.Size(347, 116);
-            this.layoutControlGroup3.Text = "收款单位";
+            this.layoutControlGroup3.Text = "外单位";
             // 
             // layoutControlItem4
             // 
@@ -1435,7 +1435,7 @@
             this.xtraTabPage3.Controls.Add(this.lstFiles);
             this.xtraTabPage3.Controls.Add(this.toolStrip2);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1001, 462);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1001, 509);
             this.xtraTabPage3.Text = "附件";
             // 
             // lstFiles
@@ -1447,7 +1447,7 @@
             new DevExpress.XtraEditors.Controls.ImageListBoxItem("asdfasdf", 1)});
             this.lstFiles.Location = new System.Drawing.Point(0, 25);
             this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(1001, 437);
+            this.lstFiles.Size = new System.Drawing.Size(1001, 484);
             this.lstFiles.TabIndex = 65;
             this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
             // 
