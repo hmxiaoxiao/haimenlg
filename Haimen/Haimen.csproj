@@ -171,6 +171,12 @@
     <Compile Include="Entity\Project.cs" />
     <Compile Include="Entity\SystemSet.cs" />
     <Compile Include="Entity\UserGroup.cs" />
+    <Compile Include="GUI\DevAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DevAdmin.Designer.cs">
+      <DependentUpon>DevAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DevBankMerge.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -430,6 +436,9 @@
     <EmbeddedResource Include="GUI\DevAccountQuery.resx">
       <DependentUpon>DevAccountQuery.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DevAdmin.resx">
+      <DependentUpon>DevAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevBalance.resx">
       <DependentUpon>DevBalance.cs</DependentUpon>
     </EmbeddedResource>
@@ -543,6 +552,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Readme\2013-11-08.rtf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PNG\About.png" />

@@ -59,12 +59,16 @@
             this.c_id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lueBanks = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.c_bank = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lueBanks1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.c_account = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_type = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lueType = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.c_obalance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_ocredit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_memo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lue_c_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lue_c_name = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
@@ -83,6 +87,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBanks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueBanks1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueType)).BeginInit();
             this.SuspendLayout();
             // 
@@ -350,7 +356,8 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueBanks,
-            this.lueType});
+            this.lueType,
+            this.lueBanks1});
             this.gridControl1.Size = new System.Drawing.Size(470, 396);
             this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -398,11 +405,30 @@
             // c_bank
             // 
             this.c_bank.Caption = "银行";
-            this.c_bank.ColumnEdit = this.lueBanks;
+            this.c_bank.ColumnEdit = this.lueBanks1;
             this.c_bank.FieldName = "BankID";
             this.c_bank.Name = "c_bank";
             this.c_bank.Visible = true;
             this.c_bank.VisibleIndex = 0;
+            // 
+            // lueBanks1
+            // 
+            this.lueBanks1.AutoHeight = false;
+            this.lueBanks1.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFit;
+            this.lueBanks1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueBanks1.Name = "lueBanks1";
+            this.lueBanks1.View = this.repositoryItemSearchLookUpEdit1View;
+            // 
+            // repositoryItemSearchLookUpEdit1View
+            // 
+            this.repositoryItemSearchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.lue_c_code,
+            this.lue_c_name});
+            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // c_account
             // 
@@ -457,6 +483,22 @@
             this.c_memo.Visible = true;
             this.c_memo.VisibleIndex = 5;
             // 
+            // lue_c_code
+            // 
+            this.lue_c_code.Caption = "代码";
+            this.lue_c_code.FieldName = "Code";
+            this.lue_c_code.Name = "lue_c_code";
+            this.lue_c_code.Visible = true;
+            this.lue_c_code.VisibleIndex = 0;
+            // 
+            // lue_c_name
+            // 
+            this.lue_c_name.Caption = "名称";
+            this.lue_c_name.FieldName = "Name";
+            this.lue_c_name.Name = "lue_c_name";
+            this.lue_c_name.Visible = true;
+            this.lue_c_name.VisibleIndex = 1;
+            // 
             // DevCompanyDetailList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -489,6 +531,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueBanks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueBanks1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueType)).EndInit();
             this.ResumeLayout(false);
 
@@ -532,5 +576,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn c_memo;
         private DevExpress.XtraGrid.Columns.GridColumn col_type;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueType;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit lueBanks1;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
+        private DevExpress.XtraGrid.Columns.GridColumn lue_c_code;
+        private DevExpress.XtraGrid.Columns.GridColumn lue_c_name;
     }
 }

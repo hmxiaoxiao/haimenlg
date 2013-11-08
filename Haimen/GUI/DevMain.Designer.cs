@@ -53,6 +53,7 @@
             this.mnuBCBalance = new DevExpress.XtraBars.BarButtonItem();
             this.mnuCBBalance = new DevExpress.XtraBars.BarButtonItem();
             this.mnuUserGroup = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuReportBalance = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -73,7 +74,8 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.mnuReportBalance = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuAdmin = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -106,9 +108,10 @@
             this.mnuBCBalance,
             this.mnuCBBalance,
             this.mnuUserGroup,
-            this.mnuReportBalance});
+            this.mnuReportBalance,
+            this.mnuAdmin});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 42;
+            this.ribbon.MaxItemId = 43;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -355,6 +358,17 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.mnuUserGroup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuUserGroup_ItemClick);
             // 
+            // mnuReportBalance
+            // 
+            this.mnuReportBalance.Caption = "余额表";
+            this.mnuReportBalance.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuReportBalance.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuReportBalance.Glyph")));
+            this.mnuReportBalance.Id = 41;
+            this.mnuReportBalance.Name = "mnuReportBalance";
+            this.mnuReportBalance.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuReportBalance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuReportBalance_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -444,6 +458,7 @@
             // 
             this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup6,
+            this.ribbonPageGroup13,
             this.ribbonPageGroup7,
             this.ribbonPageGroup10});
             this.ribbonPage3.Name = "ribbonPage3";
@@ -505,16 +520,22 @@
             // 
             this.mdiManager.MdiParent = this;
             // 
-            // mnuReportBalance
+            // mnuAdmin
             // 
-            this.mnuReportBalance.Caption = "余额表";
-            this.mnuReportBalance.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuReportBalance.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuReportBalance.Glyph")));
-            this.mnuReportBalance.Id = 41;
-            this.mnuReportBalance.Name = "mnuReportBalance";
-            this.mnuReportBalance.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            this.mnuAdmin.Caption = "更新管理";
+            this.mnuAdmin.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuAdmin.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuAdmin.Glyph")));
+            this.mnuAdmin.Id = 42;
+            this.mnuAdmin.Name = "mnuAdmin";
+            this.mnuAdmin.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.mnuReportBalance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuReportBalance_ItemClick);
+            this.mnuAdmin.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuAdmin_ItemClick);
+            // 
+            // ribbonPageGroup13
+            // 
+            this.ribbonPageGroup13.ItemLinks.Add(this.mnuAdmin);
+            this.ribbonPageGroup13.Name = "ribbonPageGroup13";
+            this.ribbonPageGroup13.Text = "更新";
             // 
             // DevMain
             // 
@@ -583,5 +604,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
         private DevExpress.XtraBars.BarButtonItem mnuUserGroup;
         private DevExpress.XtraBars.BarButtonItem mnuReportBalance;
+        private DevExpress.XtraBars.BarButtonItem mnuAdmin;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;
     }
 }

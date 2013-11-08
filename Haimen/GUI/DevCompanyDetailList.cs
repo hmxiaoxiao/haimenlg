@@ -136,9 +136,9 @@ namespace Haimen.GUI
             txtDoc.Enabled = false;
             txtName.Enabled = false;
 
-            lueBanks.DataSource = banks;
-            lueBanks.DisplayMember = "Name";
-            lueBanks.ValueMember = "ID";
+            lueBanks1.DataSource = banks;
+            lueBanks1.DisplayMember = "Name";
+            lueBanks1.ValueMember = "ID";
             gridControl1.DataSource = com.DetailList;
 
             m_company = com;

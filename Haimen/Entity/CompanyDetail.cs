@@ -88,6 +88,7 @@ namespace Haimen.Entity
                     m_list = new List<string>();
                     m_list.Add("基本户");
                     m_list.Add("一般户");
+                    m_list.Add("现金户");
                     m_list.Add("贷款户");
                     m_list.Add("一般户");
                     m_list.Add("预算内");

@@ -1407,8 +1407,8 @@
             // 
             this.col_money.Caption = "金额";
             this.col_money.ColumnEdit = this.calcDetailMoney;
-            this.col_money.DisplayFormat.FormatString = "c";
-            this.col_money.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.col_money.DisplayFormat.FormatString = "{0:C2}";
+            this.col_money.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.col_money.FieldName = "Money";
             this.col_money.Name = "col_money";
             this.col_money.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -1421,6 +1421,7 @@
             this.calcDetailMoney.AutoHeight = false;
             this.calcDetailMoney.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcDetailMoney.EditFormat.FormatString = "c";
             this.calcDetailMoney.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.calcDetailMoney.Name = "calcDetailMoney";
             this.calcDetailMoney.Click += new System.EventHandler(this.calcDetailMoney_Click);

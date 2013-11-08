@@ -101,6 +101,12 @@ namespace Haimen.GUI
             mnuCBBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.余额表, (long)ActionEnum.查看);
             mnuReportBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.余额表, (long)ActionEnum.查看);
             mnuUserGroup.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.用户组, (long)ActionEnum.查看);
+
+            // 更新按钮只有超级用户可以用
+            if (GlobalSet.Current_User.Admin == "X")
+                mnuAdmin.Visibility = BarItemVisibility.Always;
+            else
+                mnuAdmin.Visibility = BarItemVisibility.Never;
         }
 
         public DevMain()
@@ -225,6 +231,11 @@ namespace Haimen.GUI
         private void mnuReportBalance_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenForm(new DevQueryBalance3());
+        }
+
+        private void mnuAdmin_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new DevAdmin());
         }
     }
 }
