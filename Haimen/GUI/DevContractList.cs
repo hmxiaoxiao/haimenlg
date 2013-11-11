@@ -139,7 +139,7 @@ namespace Haimen.GUI
         {
             Contract ct = CurrentSelectedObject();
             if (ct != null)
-                m_main.OpenForm(new DevContract(winStatusEnum.审核, ct));
+                m_main.OpenForm(new DevContract(winStatusEnum.复核, ct));
         }
 
         /// <summary>

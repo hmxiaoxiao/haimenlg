@@ -160,7 +160,7 @@ namespace Haimen.GUI
         {
             Balance bal = CurrentSelectObject();
             if (bal != null)
-                m_main_window.OpenForm(new DevBalance(winStatusEnum.审核, bal));
+                m_main_window.OpenForm(new DevBalance(winStatusEnum.复核, bal));
         }
 
         /// <summary>

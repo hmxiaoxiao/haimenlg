@@ -17,8 +17,7 @@ namespace Haimen.GUI
 {
     public partial class DevAdmin : DevExpress.XtraEditors.XtraForm
     {
-        Assembly _assembly;
-        Stream _imageStream;
+        Assembly _assembly;Stream _imageStream;
         StreamReader _textStreamReader;
 
         public DevAdmin()
@@ -29,23 +28,23 @@ namespace Haimen.GUI
 
         private void DevAdmin_Load(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 _assembly = Assembly.GetExecutingAssembly();
                 _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream("Haimen.Readme.2013-08-11.rtf"));
-            }
-            catch
-            {
-                MessageBox.Show("Error accessing resources!");
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Error accessing resources!");
+            //}
         }
 
         // 为所有的外单位加一个现金帐户
         private void update_2013_11_08() {
-            List<Bank> banks = Bank.Query("code = '1' and name = '1'");
+            List<Bank> banks = Bank.Query("code = 'XJ' and name = '现金'");
             if (banks.Count == 0)
             {
-                MessageBox.Show("请增加一个银行，其代码为1，名称为1");
+                MessageBox.Show("请增加一个银行，其代码为‘XJ’，名称为‘现金’");
                 return;
             }
             List<Company> list = Company.Query();

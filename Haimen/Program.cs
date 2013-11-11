@@ -32,13 +32,13 @@ namespace Haimen
             //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CHS");
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN");
 
-            ////初始化用户, 第一次使用时，没有用户时增加用户。
-            User.Init();
+            //////初始化用户, 第一次使用时，没有用户时增加用户。
+            //User.Init();
 
 
-            // 显示登录窗口
-            DevLogin win = new DevLogin();
-            win.ShowDialog();
+            //// 显示登录窗口
+            //DevLogin win = new DevLogin();
+            //win.ShowDialog();
 
             //frmSplash fs = new frmSplash();
             //fs.Show();
@@ -48,7 +48,7 @@ namespace Haimen
             //CustomerINI.WriteDBConfig("r400", "haimen", "sa", "heroes22");
 
             //GlobalSet.Current_User = User.Login("yangxd", "heroes22");
-            //GlobalSet.Current_User = User.Login("admin", "qwer1234");
+            GlobalSet.Current_User = User.Login("admin", "qwer1234");
             if (GlobalSet.Current_User != null)
             {
                 Application.Run(new DevMain());

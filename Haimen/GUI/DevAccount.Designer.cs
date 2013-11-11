@@ -338,7 +338,7 @@
             // 
             // tbCheck
             // 
-            this.tbCheck.Caption = "通过";
+            this.tbCheck.Caption = "复核";
             this.tbCheck.Glyph = global::Haimen.Properties.Resources.Tick_hot;
             this.tbCheck.Id = 5;
             this.tbCheck.Name = "tbCheck";
@@ -346,7 +346,7 @@
             // 
             // tbUnCheck
             // 
-            this.tbUnCheck.Caption = "撤审";
+            this.tbUnCheck.Caption = "撤消";
             this.tbUnCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("tbUnCheck.Glyph")));
             this.tbUnCheck.Id = 14;
             this.tbUnCheck.Name = "tbUnCheck";
@@ -354,7 +354,7 @@
             // 
             // tbPay
             // 
-            this.tbPay.Caption = "支付";
+            this.tbPay.Caption = "审核";
             this.tbPay.Glyph = global::Haimen.Properties.Resources.Portrait_hot;
             this.tbPay.Id = 9;
             this.tbPay.Name = "tbPay";
@@ -362,7 +362,7 @@
             // 
             // tbUnPay
             // 
-            this.tbUnPay.Caption = "撤消支付";
+            this.tbUnPay.Caption = "撤审";
             this.tbUnPay.Glyph = ((System.Drawing.Image)(resources.GetObject("tbUnPay.Glyph")));
             this.tbUnPay.Id = 15;
             this.tbUnPay.Name = "tbUnPay";
@@ -1248,13 +1248,13 @@
             // 
             this.picChecked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picChecked.EditValue = ((object)(resources.GetObject("picChecked.EditValue")));
-            this.picChecked.Location = new System.Drawing.Point(678, 4);
+            this.picChecked.Location = new System.Drawing.Point(649, 5);
             this.picChecked.MenuManager = this.barManager1;
             this.picChecked.Name = "picChecked";
             this.picChecked.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.picChecked.Properties.Appearance.Options.UseBackColor = true;
             this.picChecked.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.picChecked.Size = new System.Drawing.Size(159, 67);
+            this.picChecked.Size = new System.Drawing.Size(188, 61);
             this.picChecked.TabIndex = 63;
             this.picChecked.Visible = false;
             // 
@@ -1262,7 +1262,7 @@
             // 
             this.picPayed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picPayed.EditValue = ((object)(resources.GetObject("picPayed.EditValue")));
-            this.picPayed.Location = new System.Drawing.Point(843, 4);
+            this.picPayed.Location = new System.Drawing.Point(843, 2);
             this.picPayed.MenuManager = this.barManager1;
             this.picPayed.Name = "picPayed";
             this.picPayed.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;

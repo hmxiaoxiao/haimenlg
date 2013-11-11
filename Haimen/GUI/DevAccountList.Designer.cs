@@ -414,7 +414,7 @@
             // 
             // tsbCheck
             // 
-            this.tsbCheck.Caption = "审核";
+            this.tsbCheck.Caption = "复核";
             this.tsbCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbCheck.Glyph")));
             this.tsbCheck.Id = 4;
             this.tsbCheck.Name = "tsbCheck";
@@ -422,7 +422,7 @@
             // 
             // tsbUnCheck
             // 
-            this.tsbUnCheck.Caption = "撤审";
+            this.tsbUnCheck.Caption = "撤消";
             this.tsbUnCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnCheck.Glyph")));
             this.tsbUnCheck.Id = 13;
             this.tsbUnCheck.Name = "tsbUnCheck";
@@ -430,7 +430,7 @@
             // 
             // tsbPay
             // 
-            this.tsbPay.Caption = "支付";
+            this.tsbPay.Caption = "审核";
             this.tsbPay.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbPay.Glyph")));
             this.tsbPay.Id = 9;
             this.tsbPay.Name = "tsbPay";
@@ -438,7 +438,7 @@
             // 
             // tsbUnPay
             // 
-            this.tsbUnPay.Caption = "撤消支付";
+            this.tsbUnPay.Caption = "撤审";
             this.tsbUnPay.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnPay.Glyph")));
             this.tsbUnPay.Id = 14;
             this.tsbUnPay.Name = "tsbUnPay";

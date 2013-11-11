@@ -277,7 +277,7 @@ namespace Haimen.Entity
         {
             // 改标志为已审核
             this.CheckerID = GlobalSet.Current_User.ID;
-            this.Status = (long)AccountStatusEnum.审核通过;
+            this.Status = (long)AccountStatusEnum.已复核;
             this.CheckDate = DateTime.Now;
             this.PayDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
             this.Save();
@@ -289,7 +289,7 @@ namespace Haimen.Entity
         public void UnChecked()
         {
             this.CheckerID = 0;
-            this.Status = (long)AccountStatusEnum.未审核;
+            this.Status = (long)AccountStatusEnum.制成;
             this.Save();
         }
 
@@ -300,7 +300,7 @@ namespace Haimen.Entity
         {
             using (TransactionScope ts = new TransactionScope())
             {
-                this.Status = (long)AccountStatusEnum.已支付;
+                this.Status = (long)AccountStatusEnum.已审核;
                 this.PayerID = GlobalSet.Current_User.ID;
                 this.PayDate = DateTime.Now;
 
@@ -331,7 +331,7 @@ namespace Haimen.Entity
         {
             using (TransactionScope ts = new TransactionScope())
             {
-                this.Status = (long)AccountStatusEnum.审核通过;
+                this.Status = (long)AccountStatusEnum.已复核;
 
                 // 更新二个单位的数据金额
                 CompanyDetail inCD = CompanyDetail.CreateByID(this.In_CompanyDetail_ID);
@@ -466,7 +466,7 @@ namespace Haimen.Entity
         /// <returns></returns>
         public bool CanEdit()
         {
-            if (this.Status > (long)AccountStatusEnum.未审核)
+            if (this.Status > (long)AccountStatusEnum.制成)
                 return false;
             else
             {
@@ -484,7 +484,7 @@ namespace Haimen.Entity
         /// <returns></returns>
         public bool CanPrint()
         {
-            if (this.Status > (long)AccountStatusEnum.审核通过)
+            if (this.Status > (long)AccountStatusEnum.已复核)
                 return true;
             else
                 return false;
@@ -496,7 +496,7 @@ namespace Haimen.Entity
         /// <returns></returns>
         public bool CanDelete()
         {
-            if (this.Status != (long)AccountStatusEnum.未审核)
+            if (this.Status != (long)AccountStatusEnum.制成)
                 return false;
             else
                 return true;
@@ -507,7 +507,7 @@ namespace Haimen.Entity
         /// <returns></returns>
         public bool CanCheck()
         {
-            if (this.Status == (long)AccountStatusEnum.未审核)
+            if (this.Status == (long)AccountStatusEnum.制成)
                 return true;
             else
                 return false;
@@ -519,7 +519,7 @@ namespace Haimen.Entity
         /// <returns></returns>
         public bool CanPay()
         {
-            if (this.Status == (long)AccountStatusEnum.审核通过)
+            if (this.Status == (long)AccountStatusEnum.已复核)
                 return true;
             else
                 return false;
@@ -531,7 +531,7 @@ namespace Haimen.Entity
         /// <returns></returns>
         public bool CanUnCheck()
         {
-            if (this.Status == (long)AccountStatusEnum.审核通过)
+            if (this.Status == (long)AccountStatusEnum.已复核)
                 return true;
             else
                 return false;
@@ -543,7 +543,7 @@ namespace Haimen.Entity
         /// <returns></returns>
         public bool CanUnPay()
         {
-            if (this.Status == (long)AccountStatusEnum.已支付)
+            if (this.Status == (long)AccountStatusEnum.已审核)
                 return true;
             else
                 return false;
@@ -572,9 +572,9 @@ namespace Haimen.Entity
         /// </summary>
         public enum AccountStatusEnum : long
         {
-            未审核 = 0,
-            审核通过,
-            已支付,
+            制成 = 0,
+            已复核,
+            已审核,
         }
     }
 }

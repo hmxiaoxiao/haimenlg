@@ -70,6 +70,7 @@ namespace Haimen.GUI
 
         private void MyRefresh()
         {
+
             if (m_status != winStatusEnum.查看)
             {
                 if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",

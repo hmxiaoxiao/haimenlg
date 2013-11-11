@@ -197,13 +197,13 @@ namespace Haimen.GUI
 
 
         /// <summary>
-        /// 审核当前的资金
+        /// 复核
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void tsbCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            EditAccount(winStatusEnum.审核);
+            EditAccount(winStatusEnum.复核);
         }
 
         /// <summary>
@@ -273,7 +273,7 @@ namespace Haimen.GUI
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            EditAccount(winStatusEnum.支付);
+            EditAccount(winStatusEnum.审核);
         }
 
         private void tsb2Invoice_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -314,12 +314,12 @@ namespace Haimen.GUI
 
         private void tsbUnCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            EditAccount(winStatusEnum.撤审);
+            EditAccount(winStatusEnum.撤消);
         }
 
         private void tsbUnPay_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            EditAccount(winStatusEnum.撤消支付);
+            EditAccount(winStatusEnum.撤审);
         }
 
         private void DevAccountList_Activated(object sender, EventArgs e)

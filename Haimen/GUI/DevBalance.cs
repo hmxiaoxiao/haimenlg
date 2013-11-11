@@ -71,7 +71,7 @@ namespace Haimen.GUI
 
                     SetControlStatus(false);
                     break;
-                case winStatusEnum.审核:
+                case winStatusEnum.复核:
                     barCheck.Visible = true;
                     barNormal.Visible = false;
 

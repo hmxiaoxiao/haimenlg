@@ -110,7 +110,7 @@
             this.ClientSize = new System.Drawing.Size(721, 582);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "DevAdmin";
-            this.Text = "DevAdmin";
+            this.Text = "更新列表";
             this.Load += new System.EventHandler(this.DevAdmin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);

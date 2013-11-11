@@ -77,7 +77,7 @@ namespace Haimen.GUI
                     tsbDelete.Enabled = true;
                     tsbSave.Enabled = false;
                     break;
-                case winStatusEnum.审核:
+                case winStatusEnum.复核:
                     tsbNew.Enabled = false;
                     tsbEdit.Enabled = false;
                     tsbDelete.Enabled = false;

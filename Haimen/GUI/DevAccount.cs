@@ -132,7 +132,7 @@ namespace Haimen.GUI
                     tbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     SetEditorStatus(false);
                     break;
-                case winStatusEnum.审核:
+                case winStatusEnum.复核:
                     tbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     tbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     tbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -145,7 +145,7 @@ namespace Haimen.GUI
                     tbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     SetEditorStatus(false);
                     break;
-                case winStatusEnum.撤审:
+                case winStatusEnum.撤消:
                     tbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     tbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     tbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -170,7 +170,7 @@ namespace Haimen.GUI
                     tb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     tbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     break;
-                case winStatusEnum.支付:
+                case winStatusEnum.审核:
                     tbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     tbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     tbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -183,7 +183,7 @@ namespace Haimen.GUI
                     tbPrint.Enabled = false; //m_account.CanPrint();
                     SetEditorStatus(false);
                     break;
-                case winStatusEnum.撤消支付:
+                case winStatusEnum.撤审:
                     tbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     tbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                     tbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -447,10 +447,10 @@ namespace Haimen.GUI
             if (m_status == winStatusEnum.新增)
                 lueMaker.EditValue = GlobalSet.Current_User.ID;
 
-            if (m_status == winStatusEnum.审核)
+            if (m_status == winStatusEnum.复核)
                 lueReviewer.EditValue = GlobalSet.Current_User.ID;
 
-            if (m_status == winStatusEnum.支付)
+            if (m_status == winStatusEnum.审核)
                 lueCashier.EditValue = GlobalSet.Current_User.ID;
         }
 
@@ -506,15 +506,15 @@ namespace Haimen.GUI
         {
             switch (m_account.Status)
             {
-                case (long)Account.AccountStatusEnum.未审核:
+                case (long)Account.AccountStatusEnum.制成:
                     picChecked.Visible = false;
                     picPayed.Visible = false;
                     break;
-                case (long)Account.AccountStatusEnum.审核通过:
+                case (long)Account.AccountStatusEnum.已复核:
                     picChecked.Visible = true;
                     picPayed.Visible = false;
                     break;
-                case (long)Account.AccountStatusEnum.已支付:
+                case (long)Account.AccountStatusEnum.已审核:
                     picChecked.Visible = true;
                     picPayed.Visible = true;
                     break;
