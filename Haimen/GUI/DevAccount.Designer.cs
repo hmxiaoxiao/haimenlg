@@ -1399,9 +1399,11 @@
             this.luefunds.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.luefunds.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("FullName", "名称", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.luefunds.DisplayMember = "FullName";
             this.luefunds.Name = "luefunds";
             this.luefunds.NullText = "请选择资金性质";
+            this.luefunds.ValueMember = "ID";
             // 
             // col_money
             // 

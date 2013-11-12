@@ -61,7 +61,8 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 14;
             this.listBox1.Items.AddRange(new object[] {
-            "2013-11-08更新"});
+            "2013-11-08更新",
+            "2013-11-12更新"});
             this.listBox1.Location = new System.Drawing.Point(3, 6);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(148, 564);

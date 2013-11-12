@@ -30,8 +30,7 @@ namespace Haimen.GUI
         {
             //try
             //{
-                _assembly = Assembly.GetExecutingAssembly();
-                _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream("Haimen.Readme.2013-08-11.rtf"));
+
             //}
             //catch
             //{
@@ -68,12 +67,21 @@ namespace Haimen.GUI
             }
         }
 
+        // 将资金性质全部+父结点名称
+        private void update_2013_11_12()
+        {
+
+        }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             switch (listBox1.SelectedItem.ToString())
             {
                 case "2013-11-08更新":
                     update_2013_11_08();
+                    break;
+                case "2013-11-12更新":
+                    update_2013_11_12();
                     break;
             }
             MessageBox.Show("更新完成");
@@ -86,6 +94,7 @@ namespace Haimen.GUI
             switch (listBox1.SelectedItem.ToString())
             {
                 case "2013-11-08更新":
+                    _assembly = Assembly.GetExecutingAssembly();
                     _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream("Haimen.Readme.2013-11-08.rtf"));
                     richTextBox1.Rtf = _textStreamReader.ReadToEnd();
                     break;

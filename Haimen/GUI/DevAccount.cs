@@ -19,8 +19,8 @@ namespace Haimen.GUI
     public partial class DevAccount : DevExpress.XtraEditors.XtraForm
     {
 
-        private Account m_account;                  // 当前正在编辑的资金对象
-        private winStatusEnum m_status;             // 当前窗口的状态，象新增之类的
+        private Account _account;                  // 当前正在编辑的资金对象
+        private winStatusEnum _status;             // 当前窗口的状态，象新增之类的
 
         /// <summary>
         /// 计算总金额
@@ -28,7 +28,7 @@ namespace Haimen.GUI
         private void CalcMoney()
         {
             decimal money = 0;
-            foreach (AccountDetail ad in m_account.DetailList)
+            foreach (AccountDetail ad in _account.DetailList)
             {
                 money += ad.Money;
             }
@@ -90,7 +90,7 @@ namespace Haimen.GUI
         /// <param name="status"></param>
         private void SetFormStatus(winStatusEnum status)
         {
-            m_status = status;
+            _status = status;
             switch (status)
             {
                 case winStatusEnum.新增:
@@ -193,7 +193,7 @@ namespace Haimen.GUI
                     tbPay.Enabled = false;
                     tbUnPay.Enabled = true;
                     tb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-                    tbPrint.Enabled = m_account.CanPrint();
+                    tbPrint.Enabled = _account.CanPrint();
                     SetEditorStatus(false);
                     break;
                 case winStatusEnum.转正式发票:
@@ -244,50 +244,50 @@ namespace Haimen.GUI
         /// <summary>
         /// 将窗口的信息保存到编辑的对象里去。
         /// </summary>
-        private void form2object()
+        private void Form2object()
         {
-            m_account.SignedDate = dtSigned.DateTime;       // 日期
-            m_account.Code = txtCode.Text;                  // 代码
+            _account.SignedDate = dtSigned.DateTime;       // 日期
+            _account.Code = txtCode.Text;                  // 代码
 
             // 支出帐号
             if (this.lueOutAccount.EditValue != null)
-                m_account.Out_CompanyDetail_ID = long.Parse(lueOutAccount.EditValue.ToString());
+                _account.Out_CompanyDetail_ID = long.Parse(lueOutAccount.EditValue.ToString());
 
             // 收入帐号
             if (lueInAccount.EditValue != null)
-                m_account.In_CompanyDetail_ID = long.Parse(lueInAccount.EditValue.ToString());
+                _account.In_CompanyDetail_ID = long.Parse(lueInAccount.EditValue.ToString());
 
             // 备注
-            m_account.Memo = txtMemo.Text;
+            _account.Memo = txtMemo.Text;
 
             // 正式发票
             if (chkRelease.Checked)
-                m_account.Invoice = (long)Account.AccountInvoiceEnum.正式发票;
+                _account.Invoice = (long)Account.AccountInvoiceEnum.正式发票;
             else
-                m_account.Invoice = (long)Account.AccountInvoiceEnum.非正式发票;
+                _account.Invoice = (long)Account.AccountInvoiceEnum.非正式发票;
 
             // 总金额
             if (string.IsNullOrEmpty(txtMoney.Text))
-                m_account.Money = 0;
+                _account.Money = 0;
             else
-                m_account.Money = decimal.Parse(txtMoney.Text);
+                _account.Money = decimal.Parse(txtMoney.Text);
 
             // 合同申请号，如果存在的话
             if (!(lueContractApply.EditValue == null || string.IsNullOrEmpty(lueContractApply.EditValue.ToString())))
-                m_account.ContractApplyID = long.Parse(lueContractApply.EditValue.ToString());
+                _account.ContractApplyID = long.Parse(lueContractApply.EditValue.ToString());
 
             // 附件张数
-            m_account.Attachment = (long)calcAttachCount.Value;
+            _account.Attachment = (long)calcAttachCount.Value;
 
             // 项目
             if (!(lueProjects.EditValue == null || string.IsNullOrEmpty(lueProjects.EditValue.ToString())))
-                m_account.ProjectID = long.Parse(lueProjects.EditValue.ToString());
+                _account.ProjectID = long.Parse(lueProjects.EditValue.ToString());
         }
 
         /// <summary>
         /// 将对象印射到窗口上
         /// </summary>
-        private void Object2form()
+        private void Object2Form()
         {
             // 合同申请状态
             lueContractApplyStatusEnum.DataSource = null;
@@ -338,33 +338,31 @@ namespace Haimen.GUI
             lueCashier.Properties.ValueMember = "ID";
 
             // 明细数据中的资金来源
-            List<Funds> fundslist = Funds.GetLevel();
-            luefunds.DataSource = fundslist;
-            luefunds.DisplayMember = "Name";
-            luefunds.ValueMember = "ID";
+            Funds.OrderBy = "Order by parent_id, id";
+            luefunds.DataSource = Funds.Query();
 
             // 初始化明细
-            gridControl1.DataSource = m_account.DetailList;
+            //gridControl1.DataSource = _account.DetailList;
 
             // 初始化附件列表
             lstFiles.Items.Clear();
-            foreach (Attach a in m_account.AttachList)
+            foreach (Attach a in _account.AttachList)
                 lstFiles.Items.Add(a.ID.ToString() + "." + a.FileName, 2);
 
             // 显示数据
-            if (m_account.ID > 0)
+            if (_account.ID > 0)
             {
-                dtSigned.DateTime = m_account.SignedDate;       // 日期
-                txtCode.Text = m_account.Code;                  // 代码
-                txtMoney.Text = m_account.Money.ToString();     // 金额
-                lueProjects.EditValue = m_account.ProjectID;    // 项目
-                lueMaker.EditValue = m_account.MakerID;         // 制作人
-                lueReviewer.EditValue = m_account.CheckerID;   // 审核人
-                lueCashier.EditValue = m_account.PayerID;     // 出纳
-                txtMemo.Text = m_account.Memo;                  // 备注
-                calcAttachCount.EditValue = m_account.Attachment;    // 附件张数
+                dtSigned.DateTime = _account.SignedDate;       // 日期
+                txtCode.Text = _account.Code;                  // 代码
+                txtMoney.Text = _account.Money.ToString();     // 金额
+                lueProjects.EditValue = _account.ProjectID;    // 项目
+                lueMaker.EditValue = _account.MakerID;         // 制作人
+                lueReviewer.EditValue = _account.CheckerID;   // 审核人
+                lueCashier.EditValue = _account.PayerID;     // 出纳
+                txtMemo.Text = _account.Memo;                  // 备注
+                calcAttachCount.EditValue = _account.Attachment;    // 附件张数
                 // 正式发票
-                if (m_account.Invoice == (long)Account.AccountInvoiceEnum.正式发票)
+                if (_account.Invoice == (long)Account.AccountInvoiceEnum.正式发票)
                     chkRelease.Checked = true;
                 else
                     chkRelease.Checked = false;
@@ -376,30 +374,30 @@ namespace Haimen.GUI
                 lueInAccount.Properties.LockEvents();
                 lueOutAccount.Properties.LockEvents();
 
-                lueOutCompany.EditValue = m_account.OutCompanyDetail.ParentID;
-                List<CompanyDetail> out_list = CompanyDetail.Query("parent_id = " + m_account.OutCompanyDetail.ParentID);
+                lueOutCompany.EditValue = _account.OutCompanyDetail.ParentID;
+                List<CompanyDetail> out_list = CompanyDetail.Query("parent_id = " + _account.OutCompanyDetail.ParentID);
                 lueOutAccount.Properties.DataSource = null;
                 lueOutAccount.Properties.DataSource = out_list;
                 lueOutAccount.Properties.DisplayMember = "Account";
                 lueOutAccount.Properties.ValueMember = "ID";
-                lueOutAccount.EditValue = m_account.OutCompanyDetail.ID;
-                txtOutBank.Text = m_account.OutCompanyDetail.Bank.Name;
+                lueOutAccount.EditValue = _account.OutCompanyDetail.ID;
+                txtOutBank.Text = _account.OutCompanyDetail.Bank.Name;
 
-                lueInCompany.EditValue = m_account.InCompanyDetail.ParentID;
-                List<CompanyDetail> in_list = CompanyDetail.Query("parent_id = " + m_account.InCompanyDetail.ParentID);
+                lueInCompany.EditValue = _account.InCompanyDetail.ParentID;
+                List<CompanyDetail> in_list = CompanyDetail.Query("parent_id = " + _account.InCompanyDetail.ParentID);
                 lueInAccount.Properties.DataSource = null;
                 lueInAccount.Properties.DataSource = in_list;
                 lueInAccount.Properties.DisplayMember = "Account";
                 lueInAccount.Properties.ValueMember = "ID";
-                lueInAccount.EditValue = m_account.InCompanyDetail.ID;
-                txtInBank.Text = m_account.InCompanyDetail.Bank.Name;
+                lueInAccount.EditValue = _account.InCompanyDetail.ID;
+                txtInBank.Text = _account.InCompanyDetail.Bank.Name;
 
                 lueOutCompany.Properties.UnLockEvents();
                 lueInCompany.Properties.UnLockEvents();
                 lueInAccount.Properties.UnLockEvents();
                 lueOutAccount.Properties.UnLockEvents();
 
-                calcAttachCount.Value = m_account.Attachment;
+                calcAttachCount.Value = _account.Attachment;
             }
             else
             {
@@ -424,11 +422,11 @@ namespace Haimen.GUI
             }
 
             // 显示合同或者贷款信息
-            if (m_account.ContractApplyID > 0)
+            if (_account.ContractApplyID > 0)
             {
-                lueContractApply.EditValue = m_account.ContractApplyID;         // 合同申请号
-                calcPayMoney.EditValue = m_account.ContractApply.Money;         // 合同申请金额 
-                ShowContractInfo(ContractApply.CreateByID(m_account.ContractApplyID).Contract);
+                lueContractApply.EditValue = _account.ContractApplyID;         // 合同申请号
+                calcPayMoney.EditValue = _account.ContractApply.Money;         // 合同申请金额 
+                ShowContractInfo(ContractApply.CreateByID(_account.ContractApplyID).Contract);
             }
 
             // 显示合同验收带来的信息   
@@ -444,13 +442,13 @@ namespace Haimen.GUI
         // 设置各制作人员
         public void SetAllOperator()
         {
-            if (m_status == winStatusEnum.新增)
+            if (_status == winStatusEnum.新增)
                 lueMaker.EditValue = GlobalSet.Current_User.ID;
 
-            if (m_status == winStatusEnum.复核)
+            if (_status == winStatusEnum.复核)
                 lueReviewer.EditValue = GlobalSet.Current_User.ID;
 
-            if (m_status == winStatusEnum.审核)
+            if (_status == winStatusEnum.审核)
                 lueCashier.EditValue = GlobalSet.Current_User.ID;
         }
 
@@ -460,9 +458,9 @@ namespace Haimen.GUI
         private void ShowAcceptInfo()
         {
             // 只能新增，才显示
-            if (m_account.ID == 0 && m_account.ContractAcceptID > 0)
+            if (_account.ID == 0 && _account.ContractAcceptID > 0)
             {
-                ContractAccept ca = ContractAccept.CreateByID(m_account.ContractAcceptID);
+                ContractAccept ca = ContractAccept.CreateByID(_account.ContractAcceptID);
 
                 Contract c = ca.Contract;
 
@@ -472,8 +470,8 @@ namespace Haimen.GUI
                 lueOutCompany.Enabled = false;
 
                 // 判断新增时，还要给二个单位赋值
-                if (m_account.ID > 0)
-                    txtMemo.Text = m_account.Memo;
+                if (_account.ID > 0)
+                    txtMemo.Text = _account.Memo;
                 else
                 {
                     txtMemo.Text = "本单据通过合同验收生成。";
@@ -504,7 +502,7 @@ namespace Haimen.GUI
         // 显示审核的图片
         private void ShowCheckPayPic()
         {
-            switch (m_account.Status)
+            switch (_account.Status)
             {
                 case (long)Account.AccountStatusEnum.制成:
                     picChecked.Visible = false;
@@ -524,7 +522,7 @@ namespace Haimen.GUI
         // 关闭窗口
         private void MyFormClose()
         {
-            if (!(m_status == winStatusEnum.查看 || m_status == winStatusEnum.纯查看))
+            if (!(_status == winStatusEnum.查看 || _status == winStatusEnum.纯查看))
             {
                 if (MessageBox.Show("现在退出，当前做的工作将会丢失！是否真的退出？",
                                    "警告",
@@ -541,11 +539,11 @@ namespace Haimen.GUI
         /// <returns></returns>
         private bool Verify()
         {
-            form2object();
+            Form2object();
 
             dxErrorProvider1.ClearErrors();
-            m_account.Verify();
-            foreach (KeyValuePair<string, string> kv in m_account.Error_Info)
+            _account.Verify();
+            foreach (KeyValuePair<string, string> kv in _account.Error_Info)
             {
                 switch (kv.Key)
                 {
@@ -563,9 +561,9 @@ namespace Haimen.GUI
                         break;
                 }
             }
-            if (m_account.Error_Info.Count > 0)
-                MessageBox.Show(m_account.ErrorString, "出错了！",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            return m_account.Error_Info.Count == 0;
+            if (_account.Error_Info.Count > 0)
+                MessageBox.Show(_account.ErrorString, "出错了！",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            return _account.Error_Info.Count == 0;
         }
 
         /// <summary>
@@ -578,19 +576,19 @@ namespace Haimen.GUI
             InitializeComponent();
 
             if (account != null)
-                m_account = account;
+                _account = account;
             else
-                m_account = new Account();
+                _account = new Account();
 
             // 保存传过来的对应的贷款或合同ID或者合同验收号
             if (applyid > 0)     
-                m_account.ContractApplyID = applyid;
+                _account.ContractApplyID = applyid;
 
             if (BalanceID > 0)
-                m_account.BalanceID = BalanceID;
+                _account.BalanceID = BalanceID;
 
             if (acceptid > 0)
-                m_account.ContractAcceptID = acceptid;
+                _account.ContractAcceptID = acceptid;
 
             SetFormStatus(status);
         }
@@ -604,7 +602,7 @@ namespace Haimen.GUI
         private void  DevAccount_Load(object sender, EventArgs e)
         {
             DateTime begin = DateTime.Now;
-            Object2form();             // 初始化界面
+            Object2Form();             // 初始化界面
             SetControlAccess();        // 设置访问权限
             Console.WriteLine("#############################################");
             Console.WriteLine("载入总共用了" + Haimen.Helper.Helper.DateDiff(begin,DateTime.Now));
@@ -619,8 +617,8 @@ namespace Haimen.GUI
         {
             if (lueOutCompany.EditValue != null)
             {
-                m_account.Out_CompanyDetail_ID = long.Parse(lueOutCompany.EditValue.ToString());
-                List<CompanyDetail> cd = CompanyDetail.Query("parent_id = " + m_account.Out_CompanyDetail_ID.ToString());
+                _account.Out_CompanyDetail_ID = long.Parse(lueOutCompany.EditValue.ToString());
+                List<CompanyDetail> cd = CompanyDetail.Query("parent_id = " + _account.Out_CompanyDetail_ID.ToString());
                 lueOutAccount.Properties.DataSource = null;
                 lueOutAccount.Properties.DataSource = cd;
                 lueOutAccount.Properties.DisplayMember = "Account";
@@ -637,8 +635,8 @@ namespace Haimen.GUI
         {
             if (lueInCompany.EditValue != null)
             {
-                m_account.In_CompanyDetail_ID = long.Parse(lueInCompany.EditValue.ToString());
-                List<CompanyDetail> cd = CompanyDetail.Query("parent_id = " + m_account.In_CompanyDetail_ID.ToString());
+                _account.In_CompanyDetail_ID = long.Parse(lueInCompany.EditValue.ToString());
+                List<CompanyDetail> cd = CompanyDetail.Query("parent_id = " + _account.In_CompanyDetail_ID.ToString());
                 lueInAccount.Properties.DataSource = null;
                 lueInAccount.Properties.DataSource = cd;
                 lueInAccount.Properties.DisplayMember = "Account";
@@ -656,9 +654,9 @@ namespace Haimen.GUI
             gridView1.CloseEditor();
             gridView1.UpdateCurrentRow();
 
-            m_account.DetailList.Add(new AccountDetail());
+            _account.DetailList.Add(new AccountDetail());
             gridControl1.DataSource = null;
-            gridControl1.DataSource = m_account.DetailList;
+            gridControl1.DataSource = _account.DetailList;
         }
 
         /// <summary>
@@ -686,7 +684,7 @@ namespace Haimen.GUI
             if (!Verify())
                 return;
 
-            if (m_account.Save())
+            if (_account.Save())
             {
                 MessageBox.Show("保存成功！");
                 SetFormStatus(winStatusEnum.查看);
@@ -700,8 +698,8 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            m_account = new Account();
-            Object2form();
+            _account = new Account();
+            Object2Form();
             SetFormStatus(winStatusEnum.新增);
         }
 
@@ -713,16 +711,16 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tbEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!m_account.CanEdit())
+            if (!_account.CanEdit())
             {
                 MessageBox.Show("该单据已经审核，无法再修改!");
                 return;
             }
 
-            if (m_account.ID <= 0)
+            if (_account.ID <= 0)
                 return;
 
-            Object2form();
+            Object2Form();
             SetFormStatus(winStatusEnum.编辑);
         }
 
@@ -733,19 +731,19 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tbDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_account == null)
+            if (_account == null)
                 return;
 
-            if (!m_account.CanDelete())
+            if (!_account.CanDelete())
             {
                 MessageBox.Show("该单据已经审核，无法删除！");
                 return;
             }
 
-            if (m_account.ID > 0)
+            if (_account.ID > 0)
             {
-                m_account.Destory();
-                m_account = null;
+                _account.Destory();
+                _account = null;
 
                 // 这时只能新增，不能再删除和编辑
                 tbEdit.Enabled = false;
@@ -778,7 +776,7 @@ namespace Haimen.GUI
                 FTPClient ftp = CustomerINI.GetFTPClient();
                 ftp.fileUpload(fi, @"\", att.ID.ToString() + fi.Extension);
 
-                m_account.AttachList.Add(att);
+                _account.AttachList.Add(att);
 
                 // 加入列表
                 lstFiles.Items.Add(att.ID.ToString() + "." + fi.Name, 2);
@@ -858,11 +856,11 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tbCheckPassed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            m_account.Checked();
+            _account.Checked();
             ShowCheckPayPic();
             tbCheck.Enabled = false;
             tbUnCheck.Enabled = true;
-            m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
+            _status = winStatusEnum.纯查看;           // 保证退出时不会提示
         }
 
         /// <summary>
@@ -877,12 +875,12 @@ namespace Haimen.GUI
 
             long CD_id = long.Parse(lueOutAccount.EditValue.ToString());
             //CompanyDetail cd = CompanyDetail.CreateByID(CD_id);
-            m_account.Out_CompanyDetail_ID = CD_id;
-            txtOutBank.Text = m_account.OutCompanyDetail.Bank.Name;
+            _account.Out_CompanyDetail_ID = CD_id;
+            txtOutBank.Text = _account.OutCompanyDetail.Bank.Name;
 
             // 生成凭证号
             //if (string.IsNullOrEmpty(txtCode.Text))
-            txtCode.Text = m_account.OutCompanyDetail.Parent.NextDoc();//Company.CreateByID(m_account.OutCompanyDetail.ParentID).NextDoc();
+            txtCode.Text = _account.OutCompanyDetail.Parent.NextDoc();//Company.CreateByID(m_account.OutCompanyDetail.ParentID).NextDoc();
         }
 
         // 收入帐号处理
@@ -892,8 +890,8 @@ namespace Haimen.GUI
                 return;
 
             long id = long.Parse(lueInAccount.EditValue.ToString());
-            m_account.In_CompanyDetail_ID = id;
-            txtInBank.Text = m_account.InCompanyDetail.Bank.Name;
+            _account.In_CompanyDetail_ID = id;
+            txtInBank.Text = _account.InCompanyDetail.Bank.Name;
         }
 
         // 更新金额
@@ -909,12 +907,12 @@ namespace Haimen.GUI
         // 支付通过
         private void tbPay_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            m_account.Payed();
+            _account.Payed();
             tbPay.Enabled = false;
             tbUnPay.Enabled = true;
-            tbPrint.Enabled = m_account.CanPrint();
+            tbPrint.Enabled = _account.CanPrint();
             ShowCheckPayPic();                  // 显示支付信息
-            m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
+            _status = winStatusEnum.纯查看;           // 保证退出时不会提示
         }
 
         // 合同申请变更
@@ -943,41 +941,41 @@ namespace Haimen.GUI
         {
             if (!chkRelease.Checked)
             {
-                m_account.ConverInvoice();
+                _account.ConverInvoice();
                 //SetFormStatus(winStatusEnum.纯查看);      //审核通过后，只能看。
                 ShowCheckPayPic();
                 tb2Invoice.Enabled = false;
                 chkRelease.Checked = true;
-                m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
+                _status = winStatusEnum.纯查看;           // 保证退出时不会提示
             }
         }
 
         // 反审核
         private void tbUnCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            m_account.UnChecked();
+            _account.UnChecked();
             ShowCheckPayPic();
             tbUnCheck.Enabled = false;
             tbCheck.Enabled = true;
-            m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
+            _status = winStatusEnum.纯查看;           // 保证退出时不会提示
         }
 
         // 取消支付
         private void tbUnPay_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            m_account.UnPayed();
+            _account.UnPayed();
             ShowCheckPayPic();
             tbUnPay.Enabled = false;
             tbPay.Enabled = true;
             tbPrint.Enabled = false;
-            m_status = winStatusEnum.纯查看;           // 保证退出时不会提示
+            _status = winStatusEnum.纯查看;           // 保证退出时不会提示
         }
 
         // 打印单据
         private void tbPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // Create a report. 
-            rptAccount report = new rptAccount(m_account.ID);
+            rptAccount report = new rptAccount(_account.ID);
 
             // Show the report's preview. 
             ReportPrintTool tool = new ReportPrintTool(report);

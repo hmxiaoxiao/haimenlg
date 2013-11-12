@@ -18,8 +18,32 @@ namespace Haimen.Entity
         [Field("name")]
         public string Name { get; set; }
 
+        private long _parent_id;
         [Field("parent_id")]
-        public long ParentID { get; set; }
+        public long ParentID
+        { 
+            get
+            {
+                return _parent_id;   
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    Parent= Funds.CreateByID(value);
+                    FullName = Parent.FullName + " - " + Name;
+                }
+                else
+                {
+                    FullName = this.Name;
+                }
+                _parent_id = value;
+            } 
+        }
+
+        public Funds Parent { get; set; }
+        public string FullName { get; set; }
+
 
         public bool CanDelete(long id)
         {
