@@ -15,9 +15,9 @@ namespace Haimen.GUI
     public partial class DevCompanyDetailList : DevExpress.XtraEditors.XtraForm
     {
         private List<Bank> banks = Bank.Query();
-        private Company m_company;
-        private CompanyDetail m_detail;
-        private winStatusEnum m_status;
+        private Company _company;
+        private CompanyDetail _detail;
+        private winStatusEnum _status;
 
         /// <summary>
         /// 根据用户的权限设置控件的可用与否
@@ -40,7 +40,7 @@ namespace Haimen.GUI
 
         private void SetFormStatus(winStatusEnum status)
         {
-            m_status = status;
+            _status = status;
             switch (status)
             {
                 case winStatusEnum.查看:
@@ -71,7 +71,7 @@ namespace Haimen.GUI
         private void MyRefresh()
         {
 
-            if (m_status != winStatusEnum.查看)
+            if (_status != winStatusEnum.查看)
             {
                 if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
                         MessageBoxButtons.YesNo,
@@ -94,9 +94,9 @@ namespace Haimen.GUI
 
         private bool Verify()
         {
-            if (!m_detail.Verify())
+            if (!_detail.Verify())
             {
-                MessageBox.Show(m_detail.ErrorString, "出错了！", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(_detail.ErrorString, "出错了！", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -142,7 +142,7 @@ namespace Haimen.GUI
             lueBanks1.ValueMember = "ID";
             gridControl1.DataSource = com.DetailList;
 
-            m_company = com;
+            _company = com;
         }
 
 
@@ -158,10 +158,10 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            m_detail = new CompanyDetail();
-            m_company.DetailList.Add(m_detail);
+            _detail = new CompanyDetail();
+            _company.DetailList.Add(_detail);
             gridControl1.DataSource = null;
-            gridControl1.DataSource = m_company.DetailList;
+            gridControl1.DataSource = _company.DetailList;
 
             SetFormStatus(winStatusEnum.新增);
         }
@@ -185,7 +185,7 @@ namespace Haimen.GUI
             if (MessageBox.Show(this, "是否要删除指定的单位明细？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
                 gridView1.DeleteRow(gridView1.FocusedRowHandle);
-                m_company.Save();
+                _company.Save();
             }
         }
 
@@ -201,16 +201,16 @@ namespace Haimen.GUI
             gridView1.CloseEditor();
             gridView1.UpdateCurrentRow();
 
-            if (m_company == null || m_company.Code != txtCode.Text)
+            if (_company == null || _company.Code != txtCode.Text)
                 return;
 
             if (!Verify())
                 return;
 
-            if (!m_company.Save())
+            if (!_company.Save())
             {
                 string err = "";
-                foreach (KeyValuePair<string, string> kv in m_company.Error_Info)
+                foreach (KeyValuePair<string, string> kv in _company.Error_Info)
                 {
                     err += kv.Value + Environment.NewLine;
                 }
@@ -225,18 +225,18 @@ namespace Haimen.GUI
 
         private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            if (m_status == winStatusEnum.新增 || m_status == winStatusEnum.编辑)
+            if (_status == winStatusEnum.新增 || _status == winStatusEnum.编辑)
             {
-                if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_detail.ID)
+                if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == _detail.ID)
                     e.Appearance.BackColor = Color.LightSteelBlue;
             }
         }
 
         private void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
         {
-            if (m_status == winStatusEnum.新增 || m_status == winStatusEnum.编辑)
+            if (_status == winStatusEnum.新增 || _status == winStatusEnum.编辑)
             {
-                if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == m_detail.ID)
+                if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == _detail.ID)
                     e.Allow = false;
             }
         }
@@ -248,7 +248,7 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (m_status != winStatusEnum.查看)
+            if (_status != winStatusEnum.查看)
             {
                 if (MessageBox.Show("刷新会导致当前的操作的数据丢失，是否要继续？", "注意",
                         MessageBoxButtons.YesNo,
@@ -273,10 +273,10 @@ namespace Haimen.GUI
 
             // 找到要编辑的银行
             long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
-            foreach (CompanyDetail cd in m_company.DetailList)
+            foreach (CompanyDetail cd in _company.DetailList)
             {
                 if (cd.ID == id)
-                    m_detail = cd;
+                    _detail = cd;
             }
             SetFormStatus(winStatusEnum.编辑);
         }
