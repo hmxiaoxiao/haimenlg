@@ -272,7 +272,7 @@
             this.lueFunds.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueFunds.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.lueFunds.DisplayMember = "Name";
             this.lueFunds.Name = "lueFunds";
             this.lueFunds.NullText = "";

@@ -125,7 +125,7 @@
             this.lueCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueCompany.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Code", "代码", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称")});
             this.lueCompany.Properties.NullText = "请选择单位";
             this.lueCompany.Properties.PopupWidth = 300;
@@ -380,7 +380,7 @@
             this.lueCompanyDetail.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueCompanyDetail.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("BankName", "银行"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("BankName", "银行", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Account", "帐户"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Balance", "余额"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Credit", "贷款")});

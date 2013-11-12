@@ -17,7 +17,7 @@ namespace Haimen.GUI
 {
     public partial class DevAdmin : DevExpress.XtraEditors.XtraForm
     {
-        Assembly _assembly;Stream _imageStream;
+        Assembly _assembly;
         StreamReader _textStreamReader;
 
         public DevAdmin()

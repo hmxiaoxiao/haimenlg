@@ -61,14 +61,14 @@
             this.c_bank = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lueBanks1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.lue_c_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lue_c_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_account = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_type = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lueType = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.c_obalance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_ocredit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_memo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lue_c_code = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lue_c_name = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
@@ -429,6 +429,24 @@
             this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
             this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            this.repositoryItemSearchLookUpEdit1View.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.lue_c_code, DevExpress.Data.ColumnSortOrder.Ascending)});
+            // 
+            // lue_c_code
+            // 
+            this.lue_c_code.Caption = "代码";
+            this.lue_c_code.FieldName = "Code";
+            this.lue_c_code.Name = "lue_c_code";
+            this.lue_c_code.Visible = true;
+            this.lue_c_code.VisibleIndex = 0;
+            // 
+            // lue_c_name
+            // 
+            this.lue_c_name.Caption = "名称";
+            this.lue_c_name.FieldName = "Name";
+            this.lue_c_name.Name = "lue_c_name";
+            this.lue_c_name.Visible = true;
+            this.lue_c_name.VisibleIndex = 1;
             // 
             // c_account
             // 
@@ -482,22 +500,6 @@
             this.c_memo.Name = "c_memo";
             this.c_memo.Visible = true;
             this.c_memo.VisibleIndex = 5;
-            // 
-            // lue_c_code
-            // 
-            this.lue_c_code.Caption = "代码";
-            this.lue_c_code.FieldName = "Code";
-            this.lue_c_code.Name = "lue_c_code";
-            this.lue_c_code.Visible = true;
-            this.lue_c_code.VisibleIndex = 0;
-            // 
-            // lue_c_name
-            // 
-            this.lue_c_name.Caption = "名称";
-            this.lue_c_name.FieldName = "Name";
-            this.lue_c_name.Name = "lue_c_name";
-            this.lue_c_name.Visible = true;
-            this.lue_c_name.VisibleIndex = 1;
             // 
             // DevCompanyDetailList
             // 

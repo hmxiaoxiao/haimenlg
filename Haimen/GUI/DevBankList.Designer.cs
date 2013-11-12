@@ -239,6 +239,8 @@
             this.SearchLookUpEditBanks.OptionsView.ColumnAutoWidth = false;
             this.SearchLookUpEditBanks.OptionsView.EnableAppearanceEvenRow = true;
             this.SearchLookUpEditBanks.OptionsView.ShowGroupPanel = false;
+            this.SearchLookUpEditBanks.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.c_code, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // c_id
             // 
