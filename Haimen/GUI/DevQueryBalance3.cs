@@ -22,7 +22,7 @@ namespace Haimen.GUI
         {
             m_ds = new DataSet();
 
-            // 取得所有的单位(带单据字的)
+            // 取得所有的单位(带凭证号的)
             string sql = @"select doc from m_company where doc <> ''";
             SqlDataAdapter dacompany = new SqlDataAdapter(sql, DBFunction.Connection);
             dacompany.Fill(m_ds, "company");

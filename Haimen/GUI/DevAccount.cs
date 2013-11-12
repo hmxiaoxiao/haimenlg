@@ -880,7 +880,7 @@ namespace Haimen.GUI
             m_account.Out_CompanyDetail_ID = CD_id;
             txtOutBank.Text = m_account.OutCompanyDetail.Bank.Name;
 
-            // 生成单据字
+            // 生成凭证号
             //if (string.IsNullOrEmpty(txtCode.Text))
             txtCode.Text = m_account.OutCompanyDetail.Parent.NextDoc();//Company.CreateByID(m_account.OutCompanyDetail.ParentID).NextDoc();
         }

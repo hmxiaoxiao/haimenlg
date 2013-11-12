@@ -213,12 +213,12 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtCode;
-            this.layoutControlItem2.CustomizationFormText = "单据字：";
+            this.layoutControlItem2.CustomizationFormText = "凭证号：";
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(368, 44);
             this.layoutControlItem2.Spacing = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem2.Text = "单据字：";
+            this.layoutControlItem2.Text = "凭证号：";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 14);
             // 
             // DevContractQuery

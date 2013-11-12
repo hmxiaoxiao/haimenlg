@@ -99,13 +99,13 @@ namespace Haimen.Entity
 
         
         /// <summary>
-        /// 生成单据字
+        /// 生成凭证号
         /// </summary>
         /// <returns></returns>
         public string NextDoc(bool can_save = false)
         {
             string relVal = "";
-            // 如果不需要前缀，则调用通用的单据字生成器（没有前缀）
+            // 如果不需要前缀，则调用通用的凭证号生成器（没有前缀）
             if (string.IsNullOrEmpty(this.Doc))
                 return GenNextDoc(can_save);
 
@@ -141,14 +141,14 @@ namespace Haimen.Entity
         }
 
         /// <summary>
-        /// 生成通用的单据字
+        /// 生成通用的凭证号
         /// </summary>
-        /// <returns>单据字的格式为YYYYMMDD001</returns>
+        /// <returns>凭证号的格式为YYYYMMDD001</returns>
         private string GenNextDoc(bool can_save = false)
         {
             string current_doc = SystemSet.GetValue("Doc");
             string current_date = string.Format("{0:yyyyMMdd}", DateTime.Now);
-            string doc = "";            // 本次生成的单据字
+            string doc = "";            // 本次生成的凭证号
             int num = 0;
             // 如果为空，则直接返回
             if (string.IsNullOrEmpty(current_doc))

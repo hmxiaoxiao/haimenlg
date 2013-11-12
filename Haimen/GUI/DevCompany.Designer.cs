@@ -401,12 +401,12 @@
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.txtDoc;
-            this.layoutControlItem11.CustomizationFormText = "单据字：";
+            this.layoutControlItem11.CustomizationFormText = "凭证号：";
             this.layoutControlItem11.Location = new System.Drawing.Point(0, 80);
             this.layoutControlItem11.Name = "layoutControlItem11";
             this.layoutControlItem11.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
             this.layoutControlItem11.Size = new System.Drawing.Size(437, 40);
-            this.layoutControlItem11.Text = "单据字：";
+            this.layoutControlItem11.Text = "凭证号：";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(60, 14);
             // 
             // layoutControlItem1

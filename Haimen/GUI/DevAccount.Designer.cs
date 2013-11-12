@@ -1016,11 +1016,11 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtCode;
-            this.layoutControlItem2.CustomizationFormText = "单据字";
+            this.layoutControlItem2.CustomizationFormText = "凭证号";
             this.layoutControlItem2.Location = new System.Drawing.Point(354, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(347, 24);
-            this.layoutControlItem2.Text = "单据字";
+            this.layoutControlItem2.Text = "凭证号";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(84, 14);
             // 
             // layoutControlGroup2

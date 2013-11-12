@@ -262,7 +262,7 @@
             // 
             // col_code
             // 
-            this.col_code.Caption = "单据字";
+            this.col_code.Caption = "凭证号";
             this.col_code.FieldName = "code";
             this.col_code.Name = "col_code";
             this.col_code.Visible = true;

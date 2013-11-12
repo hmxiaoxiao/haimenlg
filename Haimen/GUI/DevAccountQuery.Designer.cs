@@ -174,12 +174,12 @@
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.txtCode;
-            this.layoutControlItem3.CustomizationFormText = "单据字";
+            this.layoutControlItem3.CustomizationFormText = "凭证号";
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(371, 44);
             this.layoutControlItem3.Spacing = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem3.Text = "单据字";
+            this.layoutControlItem3.Text = "凭证号";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(60, 14);
             // 
             // btnExit
