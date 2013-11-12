@@ -468,6 +468,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.calcAttachCount.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.calcAttachCount.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.calcAttachCount.Properties.NullValuePrompt = "请输入张数";
+            this.calcAttachCount.Properties.NullValuePromptShowForEmptyValue = true;
             this.calcAttachCount.Size = new System.Drawing.Size(261, 20);
             this.calcAttachCount.StyleController = this.layoutControl1;
             this.calcAttachCount.TabIndex = 17;
@@ -1366,6 +1368,7 @@
             this.gridControl1.TabIndex = 70;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridControl1.Leave += new System.EventHandler(this.gridControl1_Leave);
             // 
             // gridView1
             // 

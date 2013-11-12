@@ -392,7 +392,11 @@ namespace Haimen.Entity
             MakerID = GlobalSet.Current_User.ID;
 
             // 重新生成代码
-            this.Code = this.OutCompanyDetail.Parent.NextDoc(true);
+            // 判断是否为现金
+            if (OutCompanyDetail.Account.Trim() == "现金")
+                this.Code = this.OutCompanyDetail.Parent.NextDoc(true, true);
+            else
+                this.Code = this.OutCompanyDetail.Parent.NextDoc(true);
 
             // 如果是合同申请生成，则返写一个标志进去
             if (ContractApplyID > 0)

@@ -880,7 +880,10 @@ namespace Haimen.GUI
 
             // 生成凭证号
             //if (string.IsNullOrEmpty(txtCode.Text))
-            txtCode.Text = _account.OutCompanyDetail.Parent.NextDoc();//Company.CreateByID(m_account.OutCompanyDetail.ParentID).NextDoc();
+            if (lueOutAccount.Text.Trim() == "现金")
+                txtCode.Text = _account.OutCompanyDetail.Parent.NextDoc(false, true);
+            else
+                txtCode.Text = _account.OutCompanyDetail.Parent.NextDoc();
         }
 
         // 收入帐号处理
@@ -1005,6 +1008,13 @@ namespace Haimen.GUI
         private void calcDetailMoney_Click(object sender, EventArgs e)
         {
             this.BeginInvoke(new EditorSelectAllProc(EditorSelectAll), (Control)sender);
+        }
+
+        // 当表格失去焦点时，更新界面
+        private void gridControl1_Leave(object sender, EventArgs e)
+        {
+            gridView1.CloseEditor();
+            gridView1.UpdateCurrentRow();
         }
     }
 }

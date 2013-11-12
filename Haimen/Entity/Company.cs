@@ -102,13 +102,18 @@ namespace Haimen.Entity
         /// 生成凭证号
         /// </summary>
         /// <returns></returns>
-        public string NextDoc(bool can_save = false)
+        public string NextDoc(bool can_save = false, bool is_cash = false)
         {
             string relVal = "";
+
+            // 如果是现金，有另外的规则
+            if (is_cash)
+                return "现金" + GenNextDoc(can_save);
+
+
             // 如果不需要前缀，则调用通用的凭证号生成器（没有前缀）
             if (string.IsNullOrEmpty(this.Doc))
                 return GenNextDoc(can_save);
-
 
             // 因为在内存的对象可能是很久以前的数据，
             // 所以要重新从数据库里面取一次。
