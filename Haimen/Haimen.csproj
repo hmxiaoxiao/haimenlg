@@ -219,6 +219,12 @@
     <Compile Include="GUI\DevQueryBalance3.Designer.cs">
       <DependentUpon>DevQueryBalance3.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DevQueryIODetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DevQueryIODetail.Designer.cs">
+      <DependentUpon>DevQueryIODetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DevQuerySelectBank.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -501,6 +507,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevQueryBalance3.resx">
       <DependentUpon>DevQueryBalance3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DevQueryIODetail.resx">
+      <DependentUpon>DevQueryIODetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevQuerySelectBank.resx">
       <DependentUpon>DevQuerySelectBank.cs</DependentUpon>

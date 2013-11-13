@@ -224,7 +224,7 @@
             // 
             // tsbBatSetOutput
             // 
-            this.tsbBatSetOutput.Caption = "设为付款单位";
+            this.tsbBatSetOutput.Caption = "本单位";
             this.tsbBatSetOutput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbBatSetOutput.Glyph")));
             this.tsbBatSetOutput.Id = 6;
             this.tsbBatSetOutput.Name = "tsbBatSetOutput";
@@ -232,7 +232,7 @@
             // 
             // tsbUnSetOutput
             // 
-            this.tsbUnSetOutput.Caption = "取消付款单位";
+            this.tsbUnSetOutput.Caption = "非本单位";
             this.tsbUnSetOutput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnSetOutput.Glyph")));
             this.tsbUnSetOutput.Id = 7;
             this.tsbUnSetOutput.Name = "tsbUnSetOutput";
@@ -240,7 +240,7 @@
             // 
             // tsbSetInput
             // 
-            this.tsbSetInput.Caption = "设为收款单位";
+            this.tsbSetInput.Caption = "外单位";
             this.tsbSetInput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbSetInput.Glyph")));
             this.tsbSetInput.Id = 8;
             this.tsbSetInput.Name = "tsbSetInput";
@@ -248,7 +248,7 @@
             // 
             // tsbUnsetInput
             // 
-            this.tsbUnsetInput.Caption = "取消收款单位";
+            this.tsbUnsetInput.Caption = "非外单位";
             this.tsbUnsetInput.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbUnsetInput.Glyph")));
             this.tsbUnsetInput.Id = 9;
             this.tsbUnsetInput.Name = "tsbUnsetInput";

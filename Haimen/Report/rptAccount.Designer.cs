@@ -68,10 +68,10 @@
             this.txtFunds = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow7 = new DevExpress.XtraReports.UI.XRTableRow();
             this.txtChecker = new DevExpress.XtraReports.UI.XRTableCell();
+            this.txtCheckDate = new DevExpress.XtraReports.UI.XRTableCell();
             this.txtPayer = new DevExpress.XtraReports.UI.XRTableCell();
             this.txtMaker = new DevExpress.XtraReports.UI.XRTableCell();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.txtCheckDate = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -431,28 +431,6 @@
             this.txtChecker.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.txtChecker.Weight = 1.0930941258344118D;
             // 
-            // txtPayer
-            // 
-            this.txtPayer.Name = "txtPayer";
-            this.txtPayer.StylePriority.UseTextAlignment = false;
-            this.txtPayer.Text = "支付";
-            this.txtPayer.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.txtPayer.Weight = 0.94198888171044537D;
-            // 
-            // txtMaker
-            // 
-            this.txtMaker.Name = "txtMaker";
-            this.txtMaker.StylePriority.UseTextAlignment = false;
-            this.txtMaker.Text = "申请：";
-            this.txtMaker.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.txtMaker.Weight = 0.85027636017371111D;
-            // 
-            // BottomMargin
-            // 
-            this.BottomMargin.Name = "BottomMargin";
-            this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
             // txtCheckDate
             // 
             this.txtCheckDate.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Top | DevExpress.XtraPrinting.BorderSide.Right) 
@@ -469,6 +447,28 @@
             this.txtCheckDate.Text = "txtCheckDate";
             this.txtCheckDate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.txtCheckDate.Weight = 0.45607718386862262D;
+            // 
+            // txtPayer
+            // 
+            this.txtPayer.Name = "txtPayer";
+            this.txtPayer.StylePriority.UseTextAlignment = false;
+            this.txtPayer.Text = "支付";
+            this.txtPayer.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtPayer.Weight = 0.94198888171044537D;
+            // 
+            // txtMaker
+            // 
+            this.txtMaker.Name = "txtMaker";
+            this.txtMaker.StylePriority.UseTextAlignment = false;
+            this.txtMaker.Text = "录入：";
+            this.txtMaker.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtMaker.Weight = 0.85027636017371111D;
+            // 
+            // BottomMargin
+            // 
+            this.BottomMargin.Name = "BottomMargin";
+            this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // rptAccount
             // 

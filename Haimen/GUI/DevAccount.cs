@@ -32,7 +32,7 @@ namespace Haimen.GUI
             {
                 money += ad.Money;
             }
-            txtMoney.Text = money.ToString();
+            txtMoney.Value = money;
             txtCMoney.Text = Haimen.Helper.Helper.ConvertToChinese((double)money);
         }
 
@@ -267,10 +267,7 @@ namespace Haimen.GUI
                 _account.Invoice = (long)Account.AccountInvoiceEnum.非正式发票;
 
             // 总金额
-            if (string.IsNullOrEmpty(txtMoney.Text))
-                _account.Money = 0;
-            else
-                _account.Money = decimal.Parse(txtMoney.Text);
+            _account.Money = txtMoney.Value;
 
             // 合同申请号，如果存在的话
             if (!(lueContractApply.EditValue == null || string.IsNullOrEmpty(lueContractApply.EditValue.ToString())))
@@ -342,7 +339,7 @@ namespace Haimen.GUI
             luefunds.DataSource = Funds.Query();
 
             // 初始化明细
-            //gridControl1.DataSource = _account.DetailList;
+            gridControl1.DataSource = _account.DetailList;
 
             // 初始化附件列表
             lstFiles.Items.Clear();
@@ -354,13 +351,13 @@ namespace Haimen.GUI
             {
                 dtSigned.DateTime = _account.SignedDate;       // 日期
                 txtCode.Text = _account.Code;                  // 代码
-                txtMoney.Text = _account.Money.ToString();     // 金额
+                txtMoney.Value = _account.Money;     // 金额
                 lueProjects.EditValue = _account.ProjectID;    // 项目
                 lueMaker.EditValue = _account.MakerID;         // 制作人
                 lueReviewer.EditValue = _account.CheckerID;   // 审核人
                 lueCashier.EditValue = _account.PayerID;     // 出纳
                 txtMemo.Text = _account.Memo;                  // 备注
-                calcAttachCount.EditValue = _account.Attachment;    // 附件张数
+                calcAttachCount.Value = _account.Attachment;    // 附件张数
                 // 正式发票
                 if (_account.Invoice == (long)Account.AccountInvoiceEnum.正式发票)
                     chkRelease.Checked = true;
@@ -437,6 +434,9 @@ namespace Haimen.GUI
 
             // 设置各制表人员
             SetAllOperator();
+
+            // 更新金额
+            CalcMoney();
         }
 
         // 设置各制作人员
@@ -780,7 +780,7 @@ namespace Haimen.GUI
 
                 // 加入列表
                 lstFiles.Items.Add(att.ID.ToString() + "." + fi.Name, 2);
-                calcAttachCount.EditValue = lstFiles.ItemCount;
+                calcAttachCount.Value = lstFiles.ItemCount;
             }
         }
 
@@ -816,7 +816,7 @@ namespace Haimen.GUI
                 att.Destory();
 
                 lstFiles.Items.Remove(lstFiles.Items[lstFiles.SelectedIndex]);
-                calcAttachCount.EditValue = lstFiles.ItemCount;
+                calcAttachCount.Value = lstFiles.ItemCount;
             }
         }
 

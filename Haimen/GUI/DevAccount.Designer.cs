@@ -450,9 +450,10 @@
             this.txtMoney.Name = "txtMoney";
             this.txtMoney.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtMoney.Properties.DisplayFormat.FormatString = "c";
-            this.txtMoney.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtMoney.Properties.Mask.EditMask = "c";
+            this.txtMoney.Properties.DisplayFormat.FormatString = "{0:C2}";
+            this.txtMoney.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtMoney.Properties.EditFormat.FormatString = "{0:C2}";
+            this.txtMoney.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtMoney.Size = new System.Drawing.Size(260, 20);
             this.txtMoney.StyleController = this.layoutControl1;
             this.txtMoney.TabIndex = 16;
@@ -466,7 +467,9 @@
             this.calcAttachCount.Name = "calcAttachCount";
             this.calcAttachCount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcAttachCount.Properties.DisplayFormat.FormatString = "{0:N}";
             this.calcAttachCount.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.calcAttachCount.Properties.EditFormat.FormatString = "{0:N}";
             this.calcAttachCount.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.calcAttachCount.Properties.NullValuePrompt = "请输入张数";
             this.calcAttachCount.Properties.NullValuePromptShowForEmptyValue = true;
@@ -497,7 +500,7 @@
             // 
             this.lueReviewer.Enabled = false;
             this.lueReviewer.EnterMoveNextControl = true;
-            this.lueReviewer.Location = new System.Drawing.Point(307, 168);
+            this.lueReviewer.Location = new System.Drawing.Point(341, 168);
             this.lueReviewer.MenuManager = this.barManager1;
             this.lueReviewer.Name = "lueReviewer";
             this.lueReviewer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -505,7 +508,7 @@
             this.lueReviewer.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "姓名")});
             this.lueReviewer.Properties.NullText = "";
-            this.lueReviewer.Size = new System.Drawing.Size(163, 20);
+            this.lueReviewer.Size = new System.Drawing.Size(135, 20);
             this.lueReviewer.StyleController = this.layoutControl1;
             this.lueReviewer.TabIndex = 14;
             // 
@@ -513,7 +516,7 @@
             // 
             this.lueMaker.Enabled = false;
             this.lueMaker.EnterMoveNextControl = true;
-            this.lueMaker.Location = new System.Drawing.Point(90, 168);
+            this.lueMaker.Location = new System.Drawing.Point(566, 168);
             this.lueMaker.MenuManager = this.barManager1;
             this.lueMaker.Name = "lueMaker";
             this.lueMaker.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -521,7 +524,7 @@
             this.lueMaker.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "姓名")});
             this.lueMaker.Properties.NullText = "";
-            this.lueMaker.Size = new System.Drawing.Size(127, 20);
+            this.lueMaker.Size = new System.Drawing.Size(135, 20);
             this.lueMaker.StyleController = this.layoutControl1;
             this.lueMaker.TabIndex = 13;
             // 
@@ -529,7 +532,7 @@
             // 
             this.lueCashier.Enabled = false;
             this.lueCashier.EnterMoveNextControl = true;
-            this.lueCashier.Location = new System.Drawing.Point(560, 168);
+            this.lueCashier.Location = new System.Drawing.Point(90, 168);
             this.lueCashier.MenuManager = this.barManager1;
             this.lueCashier.Name = "lueCashier";
             this.lueCashier.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -537,7 +540,7 @@
             this.lueCashier.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "姓名")});
             this.lueCashier.Properties.NullText = "";
-            this.lueCashier.Size = new System.Drawing.Size(141, 20);
+            this.lueCashier.Size = new System.Drawing.Size(161, 20);
             this.lueCashier.StyleController = this.layoutControl1;
             this.lueCashier.TabIndex = 15;
             // 
@@ -992,15 +995,15 @@
             this.layoutControlGroup3,
             this.layoutControlItem18,
             this.layoutControlItem19,
-            this.layoutControlItem20,
-            this.layoutControlItem21,
             this.layoutControlItem22,
             this.layoutControlItem28,
             this.layoutControlItem11,
             this.layoutControlItem24,
             this.layoutControlItem23,
             this.layoutControlItem12,
-            this.layoutControlItem25});
+            this.layoutControlItem25,
+            this.layoutControlItem20,
+            this.layoutControlItem21});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.OptionsItemText.TextToControlDistance = 2;
@@ -1139,30 +1142,30 @@
             // 
             this.layoutControlItem20.Control = this.lueCashier;
             this.layoutControlItem20.CustomizationFormText = "出纳：";
-            this.layoutControlItem20.Location = new System.Drawing.Point(470, 164);
+            this.layoutControlItem20.Location = new System.Drawing.Point(0, 164);
             this.layoutControlItem20.Name = "layoutControlItem20";
-            this.layoutControlItem20.Size = new System.Drawing.Size(231, 24);
-            this.layoutControlItem20.Text = "出纳：";
+            this.layoutControlItem20.Size = new System.Drawing.Size(251, 24);
+            this.layoutControlItem20.Text = "审核：";
             this.layoutControlItem20.TextSize = new System.Drawing.Size(84, 14);
             // 
             // layoutControlItem21
             // 
             this.layoutControlItem21.Control = this.lueMaker;
             this.layoutControlItem21.CustomizationFormText = "制表：";
-            this.layoutControlItem21.Location = new System.Drawing.Point(0, 164);
+            this.layoutControlItem21.Location = new System.Drawing.Point(476, 164);
             this.layoutControlItem21.Name = "layoutControlItem21";
-            this.layoutControlItem21.Size = new System.Drawing.Size(217, 24);
-            this.layoutControlItem21.Text = "制表：";
+            this.layoutControlItem21.Size = new System.Drawing.Size(225, 24);
+            this.layoutControlItem21.Text = "录入：";
             this.layoutControlItem21.TextSize = new System.Drawing.Size(84, 14);
             // 
             // layoutControlItem22
             // 
             this.layoutControlItem22.Control = this.lueReviewer;
-            this.layoutControlItem22.CustomizationFormText = "审核：";
-            this.layoutControlItem22.Location = new System.Drawing.Point(217, 164);
+            this.layoutControlItem22.CustomizationFormText = "复核：";
+            this.layoutControlItem22.Location = new System.Drawing.Point(251, 164);
             this.layoutControlItem22.Name = "layoutControlItem22";
-            this.layoutControlItem22.Size = new System.Drawing.Size(253, 24);
-            this.layoutControlItem22.Text = "审核：";
+            this.layoutControlItem22.Size = new System.Drawing.Size(225, 24);
+            this.layoutControlItem22.Text = "复核：";
             this.layoutControlItem22.TextSize = new System.Drawing.Size(84, 14);
             // 
             // layoutControlItem28

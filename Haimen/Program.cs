@@ -29,12 +29,8 @@ namespace Haimen
             DevExpress.Skins.SkinManager.EnableFormSkins();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CHS");
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN");
-
             //////初始化用户, 第一次使用时，没有用户时增加用户。
             //User.Init();
-
 
             //// 显示登录窗口
             //DevLogin win = new DevLogin();
@@ -51,8 +47,7 @@ namespace Haimen
             GlobalSet.Current_User = User.Login("admin", "qwer1234");
             if (GlobalSet.Current_User != null)
             {
-                Application.Run(new DevMain());
-            }
+                Application.Run(new DevQueryIODetail());}
         }
     }
 }

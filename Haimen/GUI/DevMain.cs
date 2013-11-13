@@ -237,5 +237,9 @@ namespace Haimen.GUI
         {
             OpenForm(new DevAdmin());
         }
+
+        private void mnuIODetail_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new DevQueryIODetail());}
     }
 }
