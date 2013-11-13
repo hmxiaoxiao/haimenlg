@@ -203,19 +203,26 @@ namespace Haimen.Entity
                 from t_account a, m_company_detail out_b, m_company out_c, m_bank out_d, m_company_detail in_b, m_company in_c, m_bank in_d
                 where a.out_companydetail_id = out_b.id and out_b.parent_id = out_c.id and out_b.bank_id = out_d.id and
                       a.in_companydetail_id = in_b.id and in_b.parent_id = in_c.id and in_b.bank_id = in_d.id and
-                      a.deleted = 0
-                order by id desc;
-            ";
-//            string detailsql = @"
-//                select a.id, a.parent_id, b.name as 性质, a.money as 金额, a.usage as 用途
-//                from t_account_detail a, m_funds b
-//                where a.deleted = 0 and a.funds_id = b.id
-//            ";
+                      a.deleted = 0 ";
+            if (SystemSet.GetAccountYear() != 0)
+            {
+                mastersql += " and signed_date < '" + SystemSet.GetAccountYear().ToString() + "-" + (SystemSet.GetAccountMonth() + 1).ToString() + "-01 0:0:0' ";
+                mastersql += " and signed_date >= '" + SystemSet.GetAccountYear().ToString() + "-" + SystemSet.GetAccountMonth().ToString() + "-01 0:0:0' ";
+            }
+            mastersql += "    order by id desc;";
+
             string detailsql = @"
                 select a.id, a.parent_id, b.name, a.money, a.usage
                 from t_account_detail a, m_funds b
-                where a.deleted = 0 and a.funds_id = b.id
-            ";
+                where a.deleted = 0 and a.funds_id = b.id ";
+            if (SystemSet.GetAccountYear() != 0)
+            {
+                detailsql += " and a.parent_id in (select id from t_account where ";
+                detailsql += " signed_date < '" + SystemSet.GetAccountYear().ToString() + "-" + (SystemSet.GetAccountMonth() + 1).ToString() + "-01 0:0:0' ";
+                detailsql += " and signed_date >= '" + SystemSet.GetAccountYear().ToString() + "-" + SystemSet.GetAccountMonth().ToString() + "-01 0:0:0' ";
+                detailsql += " and deleted = 0)";
+            }
+
 
             SqlDataAdapter damaster = new SqlDataAdapter(mastersql, DBFunction.Connection);
             SqlDataAdapter dadetail = new SqlDataAdapter(detailsql, DBFunction.Connection);

@@ -101,6 +101,7 @@ namespace Haimen.GUI
             mnuCBBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.余额表, (long)ActionEnum.查看);
             mnuReportBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.余额表, (long)ActionEnum.查看);
             mnuUserGroup.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.用户组, (long)ActionEnum.查看);
+            mnuMonthly.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.月结, (long)ActionEnum.查看);
 
             // 更新按钮只有超级用户可以用
             if (GlobalSet.Current_User.Admin == "X")
@@ -241,5 +242,11 @@ namespace Haimen.GUI
         private void mnuIODetail_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenForm(new DevQueryIODetail());}
+
+        private void mnuMonthly_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new DevMonthly());
+            statusCurrentAccount.Caption = "当前帐期为：" + SystemSet.CurrentAccount();
+        }
     }
 }

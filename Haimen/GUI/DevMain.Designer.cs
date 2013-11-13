@@ -56,6 +56,8 @@
             this.mnuReportBalance = new DevExpress.XtraBars.BarButtonItem();
             this.mnuAdmin = new DevExpress.XtraBars.BarButtonItem();
             this.mnuIODetail = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuMonthly = new DevExpress.XtraBars.BarButtonItem();
+            this.statusCurrentAccount = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -78,8 +80,6 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.statusCurrentAccount = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -115,7 +115,7 @@
             this.mnuReportBalance,
             this.mnuAdmin,
             this.mnuIODetail,
-            this.barButtonItem1,
+            this.mnuMonthly,
             this.statusCurrentAccount});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.MaxItemId = 46;
@@ -400,6 +400,27 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.mnuIODetail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuIODetail_ItemClick);
             // 
+            // mnuMonthly
+            // 
+            this.mnuMonthly.Caption = "月结";
+            this.mnuMonthly.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuMonthly.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuMonthly.Glyph")));
+            this.mnuMonthly.Id = 44;
+            this.mnuMonthly.Name = "mnuMonthly";
+            this.mnuMonthly.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuMonthly.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuMonthly_ItemClick);
+            // 
+            // statusCurrentAccount
+            // 
+            this.statusCurrentAccount.Caption = "当前的帐期为";
+            this.statusCurrentAccount.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.statusCurrentAccount.Glyph = ((System.Drawing.Image)(resources.GetObject("statusCurrentAccount.Glyph")));
+            this.statusCurrentAccount.Id = 45;
+            this.statusCurrentAccount.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("statusCurrentAccount.LargeGlyph")));
+            this.statusCurrentAccount.Name = "statusCurrentAccount";
+            this.statusCurrentAccount.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -507,8 +528,9 @@
             // ribbonPageGroup13
             // 
             this.ribbonPageGroup13.ItemLinks.Add(this.mnuAdmin);
+            this.ribbonPageGroup13.ItemLinks.Add(this.mnuMonthly);
             this.ribbonPageGroup13.Name = "ribbonPageGroup13";
-            this.ribbonPageGroup13.Text = "更新";
+            this.ribbonPageGroup13.Text = "系统";
             // 
             // ribbonPageGroup7
             // 
@@ -564,23 +586,6 @@
             // mdiManager
             // 
             this.mdiManager.MdiParent = this;
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.barButtonItem1.Id = 44;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // statusCurrentAccount
-            // 
-            this.statusCurrentAccount.Caption = "当前的帐期为";
-            this.statusCurrentAccount.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.statusCurrentAccount.Glyph = ((System.Drawing.Image)(resources.GetObject("statusCurrentAccount.Glyph")));
-            this.statusCurrentAccount.Id = 45;
-            this.statusCurrentAccount.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("statusCurrentAccount.LargeGlyph")));
-            this.statusCurrentAccount.Name = "statusCurrentAccount";
-            this.statusCurrentAccount.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // DevMain
             // 
@@ -653,7 +658,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;
         private DevExpress.XtraBars.BarButtonItem mnuIODetail;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup14;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem mnuMonthly;
         private DevExpress.XtraBars.BarStaticItem statusCurrentAccount;
     }
 }

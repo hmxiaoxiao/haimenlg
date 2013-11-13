@@ -31,6 +31,7 @@ namespace Haimen.Entity
         通知 = 130,
         权限 = 140,
         余额表 = 150,
+        月结 = 160,
     }
 
     /// <summary>
@@ -331,6 +332,17 @@ namespace Haimen.Entity
                 //m_list.Add(new Access("系统管理", (long)FctionEnum.权限, Enum.GetName(typeof(FctionEnum), FctionEnum.权限), (long)ActionEnum.支付, Enum.GetName(typeof(ActionEnum), ActionEnum.支付)));
                 //m_list.Add(new Access("系统管理", (long)FctionEnum.权限, Enum.GetName(typeof(FctionEnum), FctionEnum.权限), (long)ActionEnum.取消支付, Enum.GetName(typeof(ActionEnum), ActionEnum.取消支付)));
                 //m_list.Add(new Access("系统管理", (long)FctionEnum.权限, Enum.GetName(typeof(FctionEnum), FctionEnum.权限), (long)ActionEnum.打印, Enum.GetName(typeof(ActionEnum), ActionEnum.打印)));
+
+                m_list.Add(new Access("系统管理", (long)FctionEnum.月结, Enum.GetName(typeof(FctionEnum), FctionEnum.月结), (long)ActionEnum.查看, Enum.GetName(typeof(ActionEnum), ActionEnum.查看)));
+                //m_list.Add(new Access("系统管理", (long)FctionEnum.权限, Enum.GetName(typeof(FctionEnum), FctionEnum.权限), (long)ActionEnum.新增, Enum.GetName(typeof(ActionEnum), ActionEnum.新增)));
+                //m_list.Add(new Access("系统管理", (long)FctionEnum.权限, Enum.GetName(typeof(FctionEnum), FctionEnum.权限), (long)ActionEnum.编辑, Enum.GetName(typeof(ActionEnum), ActionEnum.编辑)));
+                //m_list.Add(new Access("系统管理", (long)FctionEnum.权限, Enum.GetName(typeof(FctionEnum), FctionEnum.权限), (long)ActionEnum.删除, Enum.GetName(typeof(ActionEnum), ActionEnum.删除)));
+                //m_list.Add(new Access("系统管理", (long)FctionEnum.权限, Enum.GetName(typeof(FctionEnum), FctionEnum.权限), (long)ActionEnum.审核, Enum.GetName(typeof(ActionEnum), ActionEnum.审核)));
+                //m_list.Add(new Access("系统管理", (long)FctionEnum.权限, Enum.GetName(typeof(FctionEnum), FctionEnum.权限), (long)ActionEnum.撤审, Enum.GetName(typeof(ActionEnum), ActionEnum.撤审)));
+                //m_list.Add(new Access("系统管理", (long)FctionEnum.权限, Enum.GetName(typeof(FctionEnum), FctionEnum.权限), (long)ActionEnum.支付, Enum.GetName(typeof(ActionEnum), ActionEnum.支付)));
+                //m_list.Add(new Access("系统管理", (long)FctionEnum.权限, Enum.GetName(typeof(FctionEnum), FctionEnum.权限), (long)ActionEnum.取消支付, Enum.GetName(typeof(ActionEnum), ActionEnum.取消支付)));
+                //m_list.Add(new Access("系统管理", (long)FctionEnum.权限, Enum.GetName(typeof(FctionEnum), FctionEnum.权限), (long)ActionEnum.打印, Enum.GetName(typeof(ActionEnum), ActionEnum.打印)));
+
 
                 m_list.Add(new Access("报表", (long)FctionEnum.余额表, Enum.GetName(typeof(FctionEnum), FctionEnum.余额表), (long)ActionEnum.查看, Enum.GetName(typeof(ActionEnum), ActionEnum.查看)));
                 //m_list.Add(new Access("报表", (long)FctionEnum.余额表, Enum.GetName(typeof(FctionEnum), FctionEnum.余额表), (long)ActionEnum.新增, Enum.GetName(typeof(ActionEnum), ActionEnum.新增)));

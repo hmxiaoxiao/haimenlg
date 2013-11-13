@@ -18,9 +18,10 @@ namespace Haimen.Entity
 
         private static long _year;
         private static long _month;
-        static SystemSet()
+
+        private static void getYearMonth()
         {
-            if(string.IsNullOrEmpty(GetValue(MONTHLY_YEAR)))
+            if (string.IsNullOrEmpty(GetValue(MONTHLY_YEAR)))
             {
                 _year = 0;
                 _month = 0;
@@ -42,6 +43,11 @@ namespace Haimen.Entity
             }
         }
 
+        static SystemSet()
+        {
+            getYearMonth();
+        }
+
         [Field("name")]
         public string Name { get; set; }
 
@@ -61,6 +67,7 @@ namespace Haimen.Entity
         public static string GetValue(string name)
         {
             //先查找值
+            m_all_list = SystemSet.Query();
             foreach (SystemSet s in m_all_list)
             {
                 if (s.Name == name)
@@ -98,7 +105,8 @@ namespace Haimen.Entity
             ss.Name = name;
             ss.Value = value;
             ss.Save();
-            m_all_list.Add(ss);
+            m_all_list = SystemSet.Query();
+
             return;
         }
 
@@ -108,14 +116,23 @@ namespace Haimen.Entity
         /// <returns>年月，如果没有则显示尚未结过帐</returns>
         public static string CurrentAccount()
         {
+            getYearMonth();
             if (_year == 0)
                 return "尚未结过帐";
             return _year.ToString() + "年" + _month.ToString() + "月";
         }
 
 
-        public static long GetAccountMonth{ get{return _month;}}
+        public static long GetAccountMonth()
+        { 
+            getYearMonth(); 
+            return _month;
+        }
 
-        public static long GetAccountYear{ get { return _year; }}
+        public static long GetAccountYear()
+        {
+            getYearMonth();
+            return _year;
+        }
     }
 }
