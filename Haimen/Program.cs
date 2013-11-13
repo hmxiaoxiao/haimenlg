@@ -27,7 +27,9 @@ namespace Haimen
             Application.EnableVisualStyles();
 
             DevExpress.Skins.SkinManager.EnableFormSkins();
-            Application.SetCompatibleTextRenderingDefault(false);////初始化用户, 第一次使用时，没有用户时增加用户。
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            ////初始化用户, 第一次使用时，没有用户时增加用户。
             User.Init();
 
             // 显示登录窗口

@@ -195,6 +195,12 @@
     <Compile Include="GUI\DevContractAcceptList.Designer.cs">
       <DependentUpon>DevContractAcceptList.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DevMonthly.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DevMonthly.Designer.cs">
+      <DependentUpon>DevMonthly.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DevProjectList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -495,6 +501,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevMain.resx">
       <DependentUpon>DevMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DevMonthly.resx">
+      <DependentUpon>DevMonthly.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevProjectList.resx">
       <DependentUpon>DevProjectList.cs</DependentUpon>
