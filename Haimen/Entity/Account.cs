@@ -193,7 +193,7 @@ namespace Haimen.Entity
         /// 直接用SQL语句写
         /// </summary>
         /// <returns></returns>
-        public static DataSet GetGUIList()
+        public static DataSet GetGUIList(bool all = false)
         {
             string mastersql = @"
                 select a.id as id,a.status  as status,a.signed_date as signeddate,a.money as money,
@@ -204,7 +204,7 @@ namespace Haimen.Entity
                 where a.out_companydetail_id = out_b.id and out_b.parent_id = out_c.id and out_b.bank_id = out_d.id and
                       a.in_companydetail_id = in_b.id and in_b.parent_id = in_c.id and in_b.bank_id = in_d.id and
                       a.deleted = 0 ";
-            if (SystemSet.GetAccountYear() != 0)
+            if (SystemSet.GetAccountYear() != 0 && !all)
             {
                 mastersql += " and signed_date < '" + SystemSet.GetAccountYear().ToString() + "-" + (SystemSet.GetAccountMonth() + 1).ToString() + "-01 0:0:0' ";
                 mastersql += " and signed_date >= '" + SystemSet.GetAccountYear().ToString() + "-" + SystemSet.GetAccountMonth().ToString() + "-01 0:0:0' ";
@@ -215,7 +215,7 @@ namespace Haimen.Entity
                 select a.id, a.parent_id, b.name, a.money, a.usage
                 from t_account_detail a, m_funds b
                 where a.deleted = 0 and a.funds_id = b.id ";
-            if (SystemSet.GetAccountYear() != 0)
+            if (SystemSet.GetAccountYear() != 0 && !all)
             {
                 detailsql += " and a.parent_id in (select id from t_account where ";
                 detailsql += " signed_date < '" + SystemSet.GetAccountYear().ToString() + "-" + (SystemSet.GetAccountMonth() + 1).ToString() + "-01 0:0:0' ";

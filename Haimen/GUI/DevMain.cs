@@ -35,6 +35,8 @@ namespace Haimen.GUI
             }
         }
         
+
+
         /// <summary>
         /// 判断是否已经打开对应的窗口
         /// </summary>
@@ -53,6 +55,11 @@ namespace Haimen.GUI
             return false;
         }
         
+        public void SetAccount(string title)
+        {
+            statusCurrentAccount.Caption = "当前帐期为：" + title;
+        }
+
         // 当前窗口的初始化设置
         private void MyInitialze()
         {
@@ -246,7 +253,6 @@ namespace Haimen.GUI
         private void mnuMonthly_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenForm(new DevMonthly());
-            statusCurrentAccount.Caption = "当前帐期为：" + SystemSet.CurrentAccount();
         }
     }
 }

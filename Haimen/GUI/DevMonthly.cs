@@ -94,6 +94,9 @@ namespace Haimen.GUI
 
             SystemSet.SetValue(SystemSet.MONTHLY_YEAR, cboYear.SelectedItem.ToString());
             SystemSet.SetValue(SystemSet.MONTHLY_MONTH, cboMonth.SelectedItem.ToString());
+            DevMain main = (DevMain)this.ParentForm;
+            main.SetAccount(SystemSet.CurrentAccount());
+
             MessageBox.Show("月结完成");
         }
     }
