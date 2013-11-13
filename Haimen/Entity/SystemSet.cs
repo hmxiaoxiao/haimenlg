@@ -16,6 +16,32 @@ namespace Haimen.Entity
         public static string MONTHLY_YEAR = "MONTHLY_YEAR";
         public static string MONTHLY_MONTH = "MONTHLY_MONTH";
 
+        private static long _year;
+        private static long _month;
+        static SystemSet()
+        {
+            if(string.IsNullOrEmpty(GetValue(MONTHLY_YEAR)))
+            {
+                _year = 0;
+                _month = 0;
+            }
+            else
+            {
+                _year = long.Parse(GetValue(MONTHLY_YEAR));
+                _month = long.Parse(GetValue(MONTHLY_MONTH));
+
+                if (_month == 12)
+                {
+                    _year += 1;
+                    _month = 1;
+                }
+                else
+                {
+                    _month += 1;
+                }
+            }
+        }
+
         [Field("name")]
         public string Name { get; set; }
 
@@ -75,5 +101,21 @@ namespace Haimen.Entity
             m_all_list.Add(ss);
             return;
         }
+
+        /// <summary>
+        /// 取得当前帐期
+        /// </summary>
+        /// <returns>年月，如果没有则显示尚未结过帐</returns>
+        public static string CurrentAccount()
+        {
+            if (_year == 0)
+                return "尚未结过帐";
+            return _year.ToString() + "年" + _month.ToString() + "月";
+        }
+
+
+        public static long GetAccountMonth{ get{return _month;}}
+
+        public static long GetAccountYear{ get { return _year; }}
     }
 }

@@ -52,12 +52,12 @@ namespace Haimen.GUI
             }
             return false;
         }
-
+        
         // 当前窗口的初始化设置
-        private void myInitialze()
+        private void MyInitialze()
         {
-            statusText.Caption = "当前登录用户为：" + GlobalSet.Current_User.Name;
-
+            statusCurrentUser.Caption = "当前登录用户为：" + GlobalSet.Current_User.Name;
+            statusCurrentAccount.Caption = "当前帐期为：" + SystemSet.CurrentAccount();
 
             // 设置皮肤列表
             foreach (SkinContainer cnt in SkinManager.Default.Skins)
@@ -124,7 +124,7 @@ namespace Haimen.GUI
         // 调用时初始化
         private void DevMain_Load(object sender, EventArgs e)
         {
-            myInitialze();
+            MyInitialze();
 
             // 设置标题
             this.Text = GlobalSet.SystemName;

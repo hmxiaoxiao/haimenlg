@@ -43,7 +43,7 @@
             this.mnuBalance = new DevExpress.XtraBars.BarButtonItem();
             this.mnuUserList = new DevExpress.XtraBars.BarButtonItem();
             this.mnuNotify = new DevExpress.XtraBars.BarButtonItem();
-            this.statusText = new DevExpress.XtraBars.BarStaticItem();
+            this.statusCurrentUser = new DevExpress.XtraBars.BarStaticItem();
             this.rbSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
             this.mnuAccess = new DevExpress.XtraBars.BarButtonItem();
             this.mnuAcceptanceBillList = new DevExpress.XtraBars.BarButtonItem();
@@ -55,6 +55,7 @@
             this.mnuUserGroup = new DevExpress.XtraBars.BarButtonItem();
             this.mnuReportBalance = new DevExpress.XtraBars.BarButtonItem();
             this.mnuAdmin = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuIODetail = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -72,12 +73,13 @@
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.mnuComboSkins = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.mnuIODetail = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.statusCurrentAccount = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -100,7 +102,7 @@
             this.mnuBalance,
             this.mnuUserList,
             this.mnuNotify,
-            this.statusText,
+            this.statusCurrentUser,
             this.rbSkins,
             this.mnuAccess,
             this.mnuAcceptanceBillList,
@@ -112,9 +114,11 @@
             this.mnuUserGroup,
             this.mnuReportBalance,
             this.mnuAdmin,
-            this.mnuIODetail});
+            this.mnuIODetail,
+            this.barButtonItem1,
+            this.statusCurrentAccount});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 44;
+            this.ribbon.MaxItemId = 46;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -259,12 +263,14 @@
             this.mnuNotify.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
-            // statusText
+            // statusCurrentUser
             // 
-            this.statusText.Caption = "当前登录用户";
-            this.statusText.Id = 21;
-            this.statusText.Name = "statusText";
-            this.statusText.TextAlignment = System.Drawing.StringAlignment.Near;
+            this.statusCurrentUser.Caption = "当前登录用户";
+            this.statusCurrentUser.Glyph = ((System.Drawing.Image)(resources.GetObject("statusCurrentUser.Glyph")));
+            this.statusCurrentUser.Id = 21;
+            this.statusCurrentUser.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("statusCurrentUser.LargeGlyph")));
+            this.statusCurrentUser.Name = "statusCurrentUser";
+            this.statusCurrentUser.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // rbSkins
             // 
@@ -382,6 +388,17 @@
             this.mnuAdmin.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.mnuAdmin.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuAdmin_ItemClick);
+            // 
+            // mnuIODetail
+            // 
+            this.mnuIODetail.Caption = "明细表";
+            this.mnuIODetail.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuIODetail.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuIODetail.Glyph")));
+            this.mnuIODetail.Id = 43;
+            this.mnuIODetail.Name = "mnuIODetail";
+            this.mnuIODetail.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuIODetail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuIODetail_ItemClick);
             // 
             // ribbonPage2
             // 
@@ -522,6 +539,12 @@
             this.ribbonPageGroup12.Name = "ribbonPageGroup12";
             this.ribbonPageGroup12.Text = "余额表";
             // 
+            // ribbonPageGroup14
+            // 
+            this.ribbonPageGroup14.ItemLinks.Add(this.mnuIODetail);
+            this.ribbonPageGroup14.Name = "ribbonPageGroup14";
+            this.ribbonPageGroup14.Text = "明细表";
+            // 
             // mnuComboSkins
             // 
             this.mnuComboSkins.AutoHeight = false;
@@ -531,7 +554,8 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.ItemLinks.Add(this.statusText);
+            this.ribbonStatusBar.ItemLinks.Add(this.statusCurrentUser);
+            this.ribbonStatusBar.ItemLinks.Add(this.statusCurrentAccount);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 473);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
@@ -541,22 +565,22 @@
             // 
             this.mdiManager.MdiParent = this;
             // 
-            // mnuIODetail
+            // barButtonItem1
             // 
-            this.mnuIODetail.Caption = "明细表";
-            this.mnuIODetail.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuIODetail.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuIODetail.Glyph")));
-            this.mnuIODetail.Id = 43;
-            this.mnuIODetail.Name = "mnuIODetail";
-            this.mnuIODetail.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.mnuIODetail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuIODetail_ItemClick);
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.barButtonItem1.Id = 44;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
-            // ribbonPageGroup14
+            // statusCurrentAccount
             // 
-            this.ribbonPageGroup14.ItemLinks.Add(this.mnuIODetail);
-            this.ribbonPageGroup14.Name = "ribbonPageGroup14";
-            this.ribbonPageGroup14.Text = "明细表";
+            this.statusCurrentAccount.Caption = "当前的帐期为";
+            this.statusCurrentAccount.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.statusCurrentAccount.Glyph = ((System.Drawing.Image)(resources.GetObject("statusCurrentAccount.Glyph")));
+            this.statusCurrentAccount.Id = 45;
+            this.statusCurrentAccount.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("statusCurrentAccount.LargeGlyph")));
+            this.statusCurrentAccount.Name = "statusCurrentAccount";
+            this.statusCurrentAccount.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // DevMain
             // 
@@ -609,7 +633,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
-        private DevExpress.XtraBars.BarStaticItem statusText;
+        private DevExpress.XtraBars.BarStaticItem statusCurrentUser;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox mnuComboSkins;
         private DevExpress.XtraBars.RibbonGalleryBarItem rbSkins;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
@@ -629,5 +653,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;
         private DevExpress.XtraBars.BarButtonItem mnuIODetail;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup14;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarStaticItem statusCurrentAccount;
     }
 }
