@@ -127,7 +127,7 @@
             // 
             // col_output
             // 
-            this.col_output.Caption = "付款单位";
+            this.col_output.Caption = "本单位";
             this.col_output.FieldName = "Output";
             this.col_output.Name = "col_output";
             this.col_output.Visible = true;
@@ -135,7 +135,7 @@
             // 
             // col_input
             // 
-            this.col_input.Caption = "收款单位";
+            this.col_input.Caption = "外单位";
             this.col_input.FieldName = "Input";
             this.col_input.Name = "col_input";
             this.col_input.Visible = true;

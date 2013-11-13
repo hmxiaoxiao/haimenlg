@@ -25,19 +25,6 @@ namespace Haimen.GUI
             InitializeComponent();
         }
 
-
-        private void DevAdmin_Load(object sender, EventArgs e)
-        {
-            //try
-            //{
-
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Error accessing resources!");
-            //}
-        }
-
         // 为所有的外单位加一个现金帐户
         private void update_2013_11_08() {
             List<Bank> banks = Bank.Query("code = 'XJ' and name = '现金'");
@@ -80,9 +67,6 @@ namespace Haimen.GUI
                 case "2013-11-08更新":
                     update_2013_11_08();
                     break;
-                case "2013-11-12更新":
-                    update_2013_11_12();
-                    break;
             }
             MessageBox.Show("更新完成");
         }
@@ -97,6 +81,18 @@ namespace Haimen.GUI
                     _assembly = Assembly.GetExecutingAssembly();
                     _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream("Haimen.Readme.2013-11-08.rtf"));
                     richTextBox1.Rtf = _textStreamReader.ReadToEnd();
+                    break;
+                case "2013-11-12更新":
+                    _assembly = Assembly.GetExecutingAssembly();
+                    _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream("Haimen.Readme.2013-11-12.rtf"));
+                    richTextBox1.Rtf = _textStreamReader.ReadToEnd();
+                    btnUpdate.Enabled = false;
+                    break;
+                case "2013-11-13更新":
+                    _assembly = Assembly.GetExecutingAssembly();
+                    _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream("Haimen.Readme.2013-11-13.rtf"));
+                    richTextBox1.Rtf = _textStreamReader.ReadToEnd();
+                    btnUpdate.Enabled = false;
                     break;
             }
         }
