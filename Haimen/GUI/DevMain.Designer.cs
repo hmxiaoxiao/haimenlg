@@ -80,6 +80,8 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.mnuqueryaccount = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -116,9 +118,10 @@
             this.mnuAdmin,
             this.mnuIODetail,
             this.mnuMonthly,
-            this.statusCurrentAccount});
+            this.statusCurrentAccount,
+            this.mnuqueryaccount});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 46;
+            this.ribbon.MaxItemId = 47;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -549,7 +552,8 @@
             // 
             this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup12,
-            this.ribbonPageGroup14});
+            this.ribbonPageGroup14,
+            this.ribbonPageGroup15});
             this.ribbonPage4.Name = "ribbonPage4";
             this.ribbonPage4.Text = "报表";
             // 
@@ -586,6 +590,23 @@
             // mdiManager
             // 
             this.mdiManager.MdiParent = this;
+            // 
+            // mnuqueryaccount
+            // 
+            this.mnuqueryaccount.Caption = "资金查询";
+            this.mnuqueryaccount.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuqueryaccount.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuqueryaccount.Glyph")));
+            this.mnuqueryaccount.Id = 46;
+            this.mnuqueryaccount.Name = "mnuqueryaccount";
+            this.mnuqueryaccount.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuqueryaccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuqueryaccount_ItemClick);
+            // 
+            // ribbonPageGroup15
+            // 
+            this.ribbonPageGroup15.ItemLinks.Add(this.mnuqueryaccount);
+            this.ribbonPageGroup15.Name = "ribbonPageGroup15";
+            this.ribbonPageGroup15.Text = "资金";
             // 
             // DevMain
             // 
@@ -660,5 +681,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup14;
         private DevExpress.XtraBars.BarButtonItem mnuMonthly;
         private DevExpress.XtraBars.BarStaticItem statusCurrentAccount;
+        private DevExpress.XtraBars.BarButtonItem mnuqueryaccount;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup15;
     }
 }

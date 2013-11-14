@@ -207,6 +207,12 @@
     <Compile Include="GUI\DevProjectList.Designer.cs">
       <DependentUpon>DevProjectList.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DevQueryAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DevQueryAccount.Designer.cs">
+      <DependentUpon>DevQueryAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DevQueryBalance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -399,12 +405,6 @@
     <Compile Include="GUI\DevUserList.Designer.cs">
       <DependentUpon>DevUserList.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmSplash.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\frmSplash.Designer.cs">
-      <DependentUpon>frmSplash.cs</DependentUpon>
-    </Compile>
     <Compile Include="Qy\DataSet2List.cs" />
     <Compile Include="Qy\Field.cs" />
     <Compile Include="Entity\GlobalSet.cs" />
@@ -508,6 +508,9 @@
     <EmbeddedResource Include="GUI\DevProjectList.resx">
       <DependentUpon>DevProjectList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DevQueryAccount.resx">
+      <DependentUpon>DevQueryAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevQueryBalance.resx">
       <DependentUpon>DevQueryBalance.cs</DependentUpon>
     </EmbeddedResource>
@@ -537,9 +540,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevUserList.resx">
       <DependentUpon>DevUserList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\frmSplash.resx">
-      <DependentUpon>frmSplash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
