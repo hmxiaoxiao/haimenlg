@@ -30,7 +30,7 @@ namespace Haimen.GUI
         private void query(long id, long year, long month)
         {
             string sql = @"
-                select d.name as 单位, c.name as 银行, b1.account as 帐号, a.money as 支出, 0 as 收入, a.signed_date as 业务日期
+                select d.name as 单位, c.name as 银行, b1.account as 帐号, a.money as 支出, 0 as 收入, a.signed_date as 业务日期, a.id as id
                 from t_account a,
                      m_company_detail b1,
                      m_bank c,
@@ -39,9 +39,10 @@ namespace Haimen.GUI
 	                signed_date < @nextmonth and 
                     b1.id = a.out_companydetail_id and 
                     b1.parent_id = d.id and 
-                    b1.bank_id = c.id and d.id = @id
+                    b1.bank_id = c.id and d.id = @id and 
+                    a.deleted = 0
                 union
-                select d.name as 单位, c.name as 银行, b1.account as 帐号, 0 as 支出, a.money as 收入, a.signed_date as 业务日期
+                select d.name as 单位, c.name as 银行, b1.account as 帐号, 0 as 支出, a.money as 收入, a.signed_date as 业务日期, a.id as id
                 from t_account a,
                      m_company_detail b1,
                      m_bank c,
@@ -50,9 +51,12 @@ namespace Haimen.GUI
 	                signed_date < @nextmonth and 
                     b1.id = a.in_companydetail_id and 
                     b1.parent_id = d.id and 
-                    b1.bank_id = c.id and d.id = @id
+                    b1.bank_id = c.id and d.id = @id and
+                    a.deleted = 0
                 order by a.signed_date
 ";
+
+
             long nextyear = 0;
             long nextmonth = 0;
             if(month == 12)
@@ -71,9 +75,27 @@ namespace Haimen.GUI
             cmd.Parameters.AddWithValue("@id", id);
             cmd.Parameters.AddWithValue("@month", year.ToString()+"-"+month.ToString()+"-01 0:0:0");
             cmd.Parameters.AddWithValue("@nextmonth", nextyear.ToString() + "-" + nextmonth.ToString() + "-01 0:0:0");
-            
+
             SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(ds);
+            da.Fill(ds, "master");
+
+//            string d_sql = @"
+//                select a.id, a.parent_id, b.name, a.money, a.usage
+//                from t_account_detail a, m_funds b
+//                where a.deleted = 0 and a.funds_id = b.id and
+//                      a.parent_id in (select id from t_account  where signed_date >= @month and signed_date < @nextmonth and deleted = 0 and out_companydetail_id in (
+//                             select id from m_company_detail where parent_id = @id
+//))
+//            ";
+            
+//            SqlCommand dcmd = new SqlCommand(d_sql, DBFunction.Connection);
+//            dcmd.Parameters.AddWithValue("@id", id);
+//            dcmd.Parameters.AddWithValue("@month", year.ToString() + "-" + month.ToString() + "-01 0:0:0");
+//            dcmd.Parameters.AddWithValue("@nextmonth", nextyear.ToString() + "-" + nextmonth.ToString() + "-01 0:0:0");
+//            SqlDataAdapter dda = new SqlDataAdapter(dcmd);
+//            dda.Fill(ds, "detail");DataColumn key = ds.Tables["master"].Columns["id"];
+//            DataColumn foreignKey = ds.Tables["detail"].Columns["parent_id"];
+//            ds.Relations.Add("明细", key, foreignKey);
 
             gridControl1.DataSource = ds.Tables[0];
         }

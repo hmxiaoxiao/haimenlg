@@ -49,6 +49,13 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.c_1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_id = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._out_company_list)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
@@ -248,11 +255,85 @@
             // 
             // gridView1
             // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.c_id,
+            this.c_1,
+            this.c_2,
+            this.c_3,
+            this.c_4,
+            this.c_5,
+            this.c_6});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // c_1
+            // 
+            this.c_1.Caption = "单位";
+            this.c_1.FieldName = "单位";
+            this.c_1.Name = "c_1";
+            this.c_1.Visible = true;
+            this.c_1.VisibleIndex = 0;
+            // 
+            // c_2
+            // 
+            this.c_2.Caption = "银行";
+            this.c_2.FieldName = "银行";
+            this.c_2.Name = "c_2";
+            this.c_2.Visible = true;
+            this.c_2.VisibleIndex = 1;
+            // 
+            // c_3
+            // 
+            this.c_3.Caption = "帐号";
+            this.c_3.FieldName = "帐号";
+            this.c_3.Name = "c_3";
+            this.c_3.Visible = true;
+            this.c_3.VisibleIndex = 2;
+            // 
+            // c_4
+            // 
+            this.c_4.Caption = "支出";
+            this.c_4.DisplayFormat.FormatString = "{0:C2}";
+            this.c_4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.c_4.FieldName = "支出";
+            this.c_4.Name = "c_4";
+            this.c_4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "支出", "支出小计：{0:C2}")});
+            this.c_4.Visible = true;
+            this.c_4.VisibleIndex = 3;
+            // 
+            // c_5
+            // 
+            this.c_5.Caption = "收入";
+            this.c_5.DisplayFormat.FormatString = "{0:C2}";
+            this.c_5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.c_5.FieldName = "收入";
+            this.c_5.Name = "c_5";
+            this.c_5.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "收入", "收入小计：{0:C2}")});
+            this.c_5.Visible = true;
+            this.c_5.VisibleIndex = 4;
+            // 
+            // c_6
+            // 
+            this.c_6.Caption = "业务日期";
+            this.c_6.FieldName = "业务日期";
+            this.c_6.Name = "c_6";
+            this.c_6.Visible = true;
+            this.c_6.VisibleIndex = 5;
+            // 
+            // c_id
+            // 
+            this.c_id.Caption = "ID";
+            this.c_id.FieldName = "id";
+            this.c_id.Name = "c_id";
+            this.c_id.Visible = true;
+            this.c_id.VisibleIndex = 6;
             // 
             // DevQueryIODetail
             // 
@@ -298,5 +379,12 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn col_code;
         private DevExpress.XtraGrid.Columns.GridColumn col_name;
+        private DevExpress.XtraGrid.Columns.GridColumn c_1;
+        private DevExpress.XtraGrid.Columns.GridColumn c_2;
+        private DevExpress.XtraGrid.Columns.GridColumn c_3;
+        private DevExpress.XtraGrid.Columns.GridColumn c_4;
+        private DevExpress.XtraGrid.Columns.GridColumn c_5;
+        private DevExpress.XtraGrid.Columns.GridColumn c_6;
+        private DevExpress.XtraGrid.Columns.GridColumn c_id;
     }
 }
