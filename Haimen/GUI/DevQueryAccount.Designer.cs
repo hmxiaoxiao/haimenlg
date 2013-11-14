@@ -57,11 +57,11 @@
             this.m_memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barRefresh = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -244,6 +244,8 @@
             this.m_money.Caption = "总金额";
             this.m_money.FieldName = "money";
             this.m_money.Name = "m_money";
+            this.m_money.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "money", "总计:{0:C2}")});
             this.m_money.Visible = true;
             this.m_money.VisibleIndex = 8;
             // 
@@ -318,6 +320,15 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
+            // barRefresh
+            // 
+            this.barRefresh.Caption = "刷新";
+            this.barRefresh.Glyph = ((System.Drawing.Image)(resources.GetObject("barRefresh.Glyph")));
+            this.barRefresh.Id = 0;
+            this.barRefresh.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barRefresh.LargeGlyph")));
+            this.barRefresh.Name = "barRefresh";
+            this.barRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barRefresh_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -345,15 +356,6 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(797, 31);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 514);
-            // 
-            // barRefresh
-            // 
-            this.barRefresh.Caption = "刷新";
-            this.barRefresh.Glyph = ((System.Drawing.Image)(resources.GetObject("barRefresh.Glyph")));
-            this.barRefresh.Id = 0;
-            this.barRefresh.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barRefresh.LargeGlyph")));
-            this.barRefresh.Name = "barRefresh";
-            this.barRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barRefresh_ItemClick);
             // 
             // DevQueryAccount
             // 
