@@ -49,13 +49,13 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.c_id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.c_id = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._out_company_list)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
@@ -271,6 +271,12 @@
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
+            // c_id
+            // 
+            this.c_id.Caption = "ID";
+            this.c_id.FieldName = "id";
+            this.c_id.Name = "c_id";
+            // 
             // c_1
             // 
             this.c_1.Caption = "单位";
@@ -326,14 +332,6 @@
             this.c_6.Name = "c_6";
             this.c_6.Visible = true;
             this.c_6.VisibleIndex = 5;
-            // 
-            // c_id
-            // 
-            this.c_id.Caption = "ID";
-            this.c_id.FieldName = "id";
-            this.c_id.Name = "c_id";
-            this.c_id.Visible = true;
-            this.c_id.VisibleIndex = 6;
             // 
             // DevQueryIODetail
             // 

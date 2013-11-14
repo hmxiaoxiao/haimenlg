@@ -76,8 +76,7 @@ namespace Haimen.GUI
             cmd.Parameters.AddWithValue("@month", year.ToString()+"-"+month.ToString()+"-01 0:0:0");
             cmd.Parameters.AddWithValue("@nextmonth", nextyear.ToString() + "-" + nextmonth.ToString() + "-01 0:0:0");
 
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(ds, "master");
+            SqlDataAdapter da = new SqlDataAdapter(cmd);da.Fill(ds, "master");
 
 //            string d_sql = @"
 //                select a.id, a.parent_id, b.name, a.money, a.usage
