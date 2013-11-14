@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevCompanyDetailList));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.txtDoc = new DevExpress.XtraEditors.TextEdit();
@@ -69,6 +70,14 @@
             this.c_obalance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_ocredit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_memo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barFinded = new DevExpress.XtraBars.BarEditItem();
+            this.lueCompany = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnQuery = new DevExpress.XtraBars.BarButtonItem();
+            this.f_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.f_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.f_name = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
@@ -90,6 +99,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.lueBanks1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueCompany)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -182,7 +193,8 @@
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1});
+            this.bar1,
+            this.bar2});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -194,8 +206,12 @@
             this.tsbDelete,
             this.tsbRefresh,
             this.tsbExit,
-            this.tsbSave});
-            this.barManager1.MaxItemId = 6;
+            this.tsbSave,
+            this.barFinded,
+            this.btnQuery});
+            this.barManager1.MaxItemId = 8;
+            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.lueCompany});
             // 
             // bar1
             // 
@@ -265,7 +281,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(829, 39);
+            this.barDockControlTop.Size = new System.Drawing.Size(829, 70);
             // 
             // barDockControlBottom
             // 
@@ -278,26 +294,26 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 39);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 464);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 70);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 433);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(829, 39);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 464);
+            this.barDockControlRight.Location = new System.Drawing.Point(829, 70);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 433);
             // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 39);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 70);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.tree);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.splitContainerControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(829, 464);
+            this.splitContainerControl1.Size = new System.Drawing.Size(829, 433);
             this.splitContainerControl1.SplitterPosition = 354;
             this.splitContainerControl1.TabIndex = 32;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -314,7 +330,7 @@
             this.tree.OptionsView.ShowColumns = false;
             this.tree.OptionsView.ShowIndentAsRowStyle = true;
             this.tree.OptionsView.ShowIndicator = false;
-            this.tree.Size = new System.Drawing.Size(354, 464);
+            this.tree.Size = new System.Drawing.Size(354, 433);
             this.tree.TabIndex = 27;
             this.tree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tree_FocusedNodeChanged);
             this.tree.Click += new System.EventHandler(this.treeList1_Click);
@@ -343,7 +359,7 @@
             this.splitContainerControl2.Panel1.Text = "Panel1";
             this.splitContainerControl2.Panel2.Controls.Add(this.gridControl1);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(470, 464);
+            this.splitContainerControl2.Size = new System.Drawing.Size(470, 433);
             this.splitContainerControl2.SplitterPosition = 63;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -358,7 +374,7 @@
             this.lueBanks,
             this.lueType,
             this.lueBanks1});
-            this.gridControl1.Size = new System.Drawing.Size(470, 396);
+            this.gridControl1.Size = new System.Drawing.Size(470, 365);
             this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -501,6 +517,79 @@
             this.c_memo.Visible = true;
             this.c_memo.VisibleIndex = 5;
             // 
+            // bar2
+            // 
+            this.bar2.BarName = "Custom 3";
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 1;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barFinded),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnQuery)});
+            this.bar2.Text = "Custom 3";
+            // 
+            // barFinded
+            // 
+            this.barFinded.Caption = "查询";
+            this.barFinded.Edit = this.lueCompany;
+            this.barFinded.Id = 6;
+            this.barFinded.Name = "barFinded";
+            this.barFinded.Width = 274;
+            // 
+            // lueCompany
+            // 
+            this.lueCompany.AutoHeight = false;
+            this.lueCompany.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueCompany.DisplayMember = "Name";
+            this.lueCompany.Name = "lueCompany";
+            this.lueCompany.NullText = "请选择要查询的单位";
+            this.lueCompany.ValueMember = "ID";
+            this.lueCompany.View = this.gridView2;
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.f_id,
+            this.f_code,
+            this.f_name});
+            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // btnQuery
+            // 
+            this.btnQuery.Caption = "查询";
+            this.btnQuery.Glyph = ((System.Drawing.Image)(resources.GetObject("btnQuery.Glyph")));
+            this.btnQuery.Id = 7;
+            this.btnQuery.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnQuery.LargeGlyph")));
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQuery_ItemClick);
+            // 
+            // f_id
+            // 
+            this.f_id.Caption = "ID";
+            this.f_id.FieldName = "ID";
+            this.f_id.Name = "f_id";
+            // 
+            // f_code
+            // 
+            this.f_code.Caption = "代码";
+            this.f_code.FieldName = "Code";
+            this.f_code.Name = "f_code";
+            this.f_code.Visible = true;
+            this.f_code.VisibleIndex = 0;
+            // 
+            // f_name
+            // 
+            this.f_name.Caption = "名称";
+            this.f_name.FieldName = "Name";
+            this.f_name.Name = "f_name";
+            this.f_name.Visible = true;
+            this.f_name.VisibleIndex = 1;
+            // 
             // DevCompanyDetailList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -536,6 +625,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.lueBanks1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueCompany)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -582,5 +673,13 @@
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
         private DevExpress.XtraGrid.Columns.GridColumn lue_c_code;
         private DevExpress.XtraGrid.Columns.GridColumn lue_c_name;
+        private DevExpress.XtraBars.Bar bar2;
+        private DevExpress.XtraBars.BarEditItem barFinded;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit lueCompany;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn f_id;
+        private DevExpress.XtraGrid.Columns.GridColumn f_code;
+        private DevExpress.XtraGrid.Columns.GridColumn f_name;
+        private DevExpress.XtraBars.BarButtonItem btnQuery;
     }
 }

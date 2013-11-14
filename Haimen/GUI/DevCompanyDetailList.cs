@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-
+using DevExpress.XtraTreeList.Nodes;
 using Haimen.Entity;
 using Haimen.Helper;
 
@@ -89,6 +89,7 @@ namespace Haimen.GUI
             lueType.DataSource = null;
             lueType.DataSource = CompanyDetail.AccountTypeList;
 
+            lueCompany.DataSource = Company.Query();
             SetFormStatus(winStatusEnum.查看);
         }
 
@@ -123,6 +124,10 @@ namespace Haimen.GUI
         {
             if (tree.FocusedNode == null)
                 return;
+
+            if (tree.FocusedNode.GetValue(node_id) == null)
+                return;
+
 
             long id = long.Parse(tree.FocusedNode.GetValue(node_id).ToString());
             Company com = Company.CreateByID(id);
@@ -296,5 +301,39 @@ namespace Haimen.GUI
         {
             MyRefresh();
         }
-    }
-}
+
+
+        // 查找对应的单位
+        private void btnQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            // 如果没有输入，则不查找
+            if (string.IsNullOrEmpty(barFinded.EditValue.ToString()))
+                return;
+
+            // 在树里面查找
+            tree.ExpandAll();
+            string id = barFinded.EditValue.ToString();
+
+            foreach (TreeListNode node in tree.Nodes){
+                Console.WriteLine(node.GetValue(node_id).ToString() + "," + id + (id==node.GetValue(node_id).ToString()).ToString());
+                if (id == node.GetValue(node_id).ToString())
+                {
+                    tree.SetFocusedNode(node);
+                    return;
+                }
+                if (node.HasChildren)
+                {
+                    foreach (TreeListNode child in node.Nodes)
+                    {Console.WriteLine(child.GetValue(node_id).ToString() + "," + id + (id == child.GetValue(node_id).ToString()).ToString());
+                        if (id == child.GetValue(node_id).ToString())
+                        {
+                            tree.SetFocusedNode(child);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            //tree.MoveFirst();
+        }
+    }}
