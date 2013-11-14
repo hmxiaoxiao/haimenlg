@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevQueryBalance3));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbRefreshAll = new DevExpress.XtraBars.BarButtonItem();
             this.tsbPrint = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -41,6 +41,8 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.barCrash = new DevExpress.XtraBars.BarButtonItem();
+            this.barNoCrash = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -56,10 +58,12 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.tsbRefresh,
+            this.tsbRefreshAll,
             this.tsbExit,
-            this.tsbPrint});
-            this.barManager1.MaxItemId = 3;
+            this.tsbPrint,
+            this.barCrash,
+            this.barNoCrash});
+            this.barManager1.MaxItemId = 5;
             // 
             // bar1
             // 
@@ -68,18 +72,20 @@
             this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barCrash, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barNoCrash, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefreshAll, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPrint, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
-            // tsbRefresh
+            // tsbRefreshAll
             // 
-            this.tsbRefresh.Caption = "刷新";
-            this.tsbRefresh.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbRefresh.Glyph")));
-            this.tsbRefresh.Id = 0;
-            this.tsbRefresh.Name = "tsbRefresh";
-            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
+            this.tsbRefreshAll.Caption = "所有帐户余额";
+            this.tsbRefreshAll.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbRefreshAll.Glyph")));
+            this.tsbRefreshAll.Id = 0;
+            this.tsbRefreshAll.Name = "tsbRefreshAll";
+            this.tsbRefreshAll.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
             // 
             // tsbPrint
             // 
@@ -102,28 +108,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(497, 47);
+            this.barDockControlTop.Size = new System.Drawing.Size(704, 47);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 421);
-            this.barDockControlBottom.Size = new System.Drawing.Size(497, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 427);
+            this.barDockControlBottom.Size = new System.Drawing.Size(704, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 374);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 380);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(497, 47);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 374);
+            this.barDockControlRight.Location = new System.Drawing.Point(704, 47);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 380);
             // 
             // gridControl1
             // 
@@ -132,7 +138,7 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(497, 374);
+            this.gridControl1.Size = new System.Drawing.Size(704, 380);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -146,11 +152,27 @@
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
+            // barCrash
+            // 
+            this.barCrash.Caption = "现金余额";
+            this.barCrash.Glyph = ((System.Drawing.Image)(resources.GetObject("barCrash.Glyph")));
+            this.barCrash.Id = 3;
+            this.barCrash.Name = "barCrash";
+            this.barCrash.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barCrash_ItemClick);
+            // 
+            // barNoCrash
+            // 
+            this.barNoCrash.Caption = "非现金余额";
+            this.barNoCrash.Glyph = ((System.Drawing.Image)(resources.GetObject("barNoCrash.Glyph")));
+            this.barNoCrash.Id = 4;
+            this.barNoCrash.Name = "barNoCrash";
+            this.barNoCrash.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barNoCrash_ItemClick);
+            // 
             // DevQueryBalance3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 421);
+            this.ClientSize = new System.Drawing.Size(704, 427);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -174,10 +196,12 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem tsbRefresh;
+        private DevExpress.XtraBars.BarButtonItem tsbRefreshAll;
         private DevExpress.XtraBars.BarButtonItem tsbExit;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraBars.BarButtonItem tsbPrint;
+        private DevExpress.XtraBars.BarButtonItem barCrash;
+        private DevExpress.XtraBars.BarButtonItem barNoCrash;
     }
 }
