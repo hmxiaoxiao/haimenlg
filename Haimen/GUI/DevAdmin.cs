@@ -54,9 +54,24 @@ namespace Haimen.GUI
             }
         }
 
-        // 将资金性质全部+父结点名称
-        private void update_2013_11_12()
+        // 将更新单位中的单位
+        private void update_2013_11_14()
         {
+            List<Company> coms = Company.Query("name = '收入单位'");
+            if (coms.Count == 1)
+            {
+                coms[0].Code = "WDW001";
+                coms[0].Name = "外单位";
+                coms[0].Save();
+            }
+
+            coms = Company.Query("name='支出单位'");
+            if (coms.Count == 1)
+            {
+                coms[0].Code = "BDW001";
+                coms[0].Name = "本单位";
+                coms[0].Save();
+            }
 
         }
 
@@ -66,6 +81,9 @@ namespace Haimen.GUI
             {
                 case "2013-11-08更新":
                     update_2013_11_08();
+                    break;
+                case "2013-11-14更新":
+                    update_2013_11_14();
                     break;
             }
             MessageBox.Show("更新完成");
@@ -81,6 +99,7 @@ namespace Haimen.GUI
                     _assembly = Assembly.GetExecutingAssembly();
                     _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream("Haimen.Readme.2013-11-08.rtf"));
                     richTextBox1.Rtf = _textStreamReader.ReadToEnd();
+                    btnUpdate.Enabled = true;
                     break;
                 case "2013-11-12更新":
                     _assembly = Assembly.GetExecutingAssembly();
@@ -93,6 +112,12 @@ namespace Haimen.GUI
                     _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream("Haimen.Readme.2013-11-13.rtf"));
                     richTextBox1.Rtf = _textStreamReader.ReadToEnd();
                     btnUpdate.Enabled = false;
+                    break;
+                case "2013-11-14更新":
+                    _assembly = Assembly.GetExecutingAssembly();
+                    _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream("Haimen.Readme.2013-11-14.rtf"));
+                    richTextBox1.Rtf = _textStreamReader.ReadToEnd();
+                    btnUpdate.Enabled = true;
                     break;
             }
         }
