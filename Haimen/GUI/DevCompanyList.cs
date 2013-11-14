@@ -145,6 +145,7 @@ namespace Haimen.GUI
                 // 刷新界面
                 gridControl1.DataSource = null;
                 gridControl1.DataSource = Company.Query(where);
+                gridView1.BestFitColumns();
             }
         }
 
