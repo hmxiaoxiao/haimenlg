@@ -58,6 +58,7 @@
             this.mnuIODetail = new DevExpress.XtraBars.BarButtonItem();
             this.mnuMonthly = new DevExpress.XtraBars.BarButtonItem();
             this.statusCurrentAccount = new DevExpress.XtraBars.BarStaticItem();
+            this.mnuqueryaccount = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -76,12 +77,11 @@
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.mnuComboSkins = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.mnuqueryaccount = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -274,6 +274,7 @@
             this.statusCurrentUser.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("statusCurrentUser.LargeGlyph")));
             this.statusCurrentUser.Name = "statusCurrentUser";
             this.statusCurrentUser.TextAlignment = System.Drawing.StringAlignment.Near;
+            this.statusCurrentUser.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.statusCurrentUser_ItemClick);
             // 
             // rbSkins
             // 
@@ -424,6 +425,17 @@
             this.statusCurrentAccount.Name = "statusCurrentAccount";
             this.statusCurrentAccount.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
+            // mnuqueryaccount
+            // 
+            this.mnuqueryaccount.Caption = "资金查询";
+            this.mnuqueryaccount.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuqueryaccount.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuqueryaccount.Glyph")));
+            this.mnuqueryaccount.Id = 46;
+            this.mnuqueryaccount.Name = "mnuqueryaccount";
+            this.mnuqueryaccount.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuqueryaccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuqueryaccount_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -571,6 +583,12 @@
             this.ribbonPageGroup14.Name = "ribbonPageGroup14";
             this.ribbonPageGroup14.Text = "明细表";
             // 
+            // ribbonPageGroup15
+            // 
+            this.ribbonPageGroup15.ItemLinks.Add(this.mnuqueryaccount);
+            this.ribbonPageGroup15.Name = "ribbonPageGroup15";
+            this.ribbonPageGroup15.Text = "资金";
+            // 
             // mnuComboSkins
             // 
             this.mnuComboSkins.AutoHeight = false;
@@ -590,23 +608,6 @@
             // mdiManager
             // 
             this.mdiManager.MdiParent = this;
-            // 
-            // mnuqueryaccount
-            // 
-            this.mnuqueryaccount.Caption = "资金查询";
-            this.mnuqueryaccount.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuqueryaccount.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuqueryaccount.Glyph")));
-            this.mnuqueryaccount.Id = 46;
-            this.mnuqueryaccount.Name = "mnuqueryaccount";
-            this.mnuqueryaccount.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.mnuqueryaccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuqueryaccount_ItemClick);
-            // 
-            // ribbonPageGroup15
-            // 
-            this.ribbonPageGroup15.ItemLinks.Add(this.mnuqueryaccount);
-            this.ribbonPageGroup15.Name = "ribbonPageGroup15";
-            this.ribbonPageGroup15.Text = "资金";
             // 
             // DevMain
             // 

@@ -52,7 +52,7 @@ namespace Haimen.Entity
         // 这里是唯一不会返回错误原因的地方
         public static User Login(string code, string password)
         {
-            if (code == null || code == "")
+            if (string.IsNullOrEmpty(code))
                 return null;
 
             List<User> list = User.Query("Code = '" + code + "'"); ;
@@ -71,6 +71,13 @@ namespace Haimen.Entity
         {
             Salt = User.getMd5Hash(Code, Password);
             return base.Insert();
+        }
+
+        public override bool Update()
+        {
+            if (!string.IsNullOrEmpty(Password))
+                Salt = User.getMd5Hash(Code, Password);
+            return base.Update();
         }
 
         // 校验

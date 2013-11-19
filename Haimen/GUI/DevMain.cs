@@ -260,5 +260,11 @@ namespace Haimen.GUI
         {
             OpenForm(new DevQueryAccount());    // 资金查询
         }
+
+        private void statusCurrentUser_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            DevChangePassword win = new DevChangePassword();
+            win.ShowDialog();
+        }
     }
 }

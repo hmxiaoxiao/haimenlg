@@ -183,6 +183,12 @@
     <Compile Include="GUI\DevBankMerge.Designer.cs">
       <DependentUpon>DevBankMerge.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DevChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DevChangePassword.Designer.cs">
+      <DependentUpon>DevChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\DevContractAccept.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -465,6 +471,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevBankMerge.resx">
       <DependentUpon>DevBankMerge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DevChangePassword.resx">
+      <DependentUpon>DevChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevCompany.resx">
       <DependentUpon>DevCompany.cs</DependentUpon>
