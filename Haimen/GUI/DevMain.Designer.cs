@@ -82,6 +82,9 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.mnuUnAuthList = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuUnAuth = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -119,9 +122,11 @@
             this.mnuIODetail,
             this.mnuMonthly,
             this.statusCurrentAccount,
-            this.mnuqueryaccount});
+            this.mnuqueryaccount,
+            this.mnuUnAuthList,
+            this.mnuUnAuth});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 47;
+            this.ribbon.MaxItemId = 49;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -183,7 +188,7 @@
             // 
             // mnuAccountList
             // 
-            this.mnuAccountList.Caption = "资金列表";
+            this.mnuAccountList.Caption = "授权资金列表";
             this.mnuAccountList.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
             this.mnuAccountList.Glyph = global::Haimen.Properties.Resources.Air_Brush_hot;
             this.mnuAccountList.Id = 7;
@@ -194,7 +199,7 @@
             // 
             // mnuAccount
             // 
-            this.mnuAccount.Caption = "资金新增";
+            this.mnuAccount.Caption = "授权资金新增";
             this.mnuAccount.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
             this.mnuAccount.Glyph = global::Haimen.Properties.Resources.Bullets_2_hot;
             this.mnuAccount.Id = 8;
@@ -440,6 +445,7 @@
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup5,
+            this.ribbonPageGroup16,
             this.ribbonPageGroup3,
             this.ribbonPageGroup4,
             this.ribbonPageGroup11,
@@ -453,7 +459,7 @@
             this.ribbonPageGroup5.ItemLinks.Add(this.mnuAccount);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.ShowCaptionButton = false;
-            this.ribbonPageGroup5.Text = "资金";
+            this.ribbonPageGroup5.Text = "授权支出";
             // 
             // ribbonPageGroup3
             // 
@@ -609,6 +615,35 @@
             // 
             this.mdiManager.MdiParent = this;
             // 
+            // mnuUnAuthList
+            // 
+            this.mnuUnAuthList.Caption = "非授权列表";
+            this.mnuUnAuthList.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuUnAuthList.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuUnAuthList.Glyph")));
+            this.mnuUnAuthList.Id = 47;
+            this.mnuUnAuthList.Name = "mnuUnAuthList";
+            this.mnuUnAuthList.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuUnAuthList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuUnAuthList_ItemClick);
+            // 
+            // mnuUnAuth
+            // 
+            this.mnuUnAuth.Caption = "非授权新增";
+            this.mnuUnAuth.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuUnAuth.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuUnAuth.Glyph")));
+            this.mnuUnAuth.Id = 48;
+            this.mnuUnAuth.Name = "mnuUnAuth";
+            this.mnuUnAuth.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuUnAuth.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuUnAuth_ItemClick);
+            // 
+            // ribbonPageGroup16
+            // 
+            this.ribbonPageGroup16.ItemLinks.Add(this.mnuUnAuthList);
+            this.ribbonPageGroup16.ItemLinks.Add(this.mnuUnAuth);
+            this.ribbonPageGroup16.Name = "ribbonPageGroup16";
+            this.ribbonPageGroup16.Text = "非授权支出";
+            // 
             // DevMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -684,5 +719,8 @@
         private DevExpress.XtraBars.BarStaticItem statusCurrentAccount;
         private DevExpress.XtraBars.BarButtonItem mnuqueryaccount;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup15;
+        private DevExpress.XtraBars.BarButtonItem mnuUnAuthList;
+        private DevExpress.XtraBars.BarButtonItem mnuUnAuth;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup16;
     }
 }

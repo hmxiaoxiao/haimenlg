@@ -266,5 +266,15 @@ namespace Haimen.GUI
             DevChangePassword win = new DevChangePassword();
             win.ShowDialog();
         }
+
+        private void mnuUnAuthList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new DevUnAuthList());
+        }
+
+        private void mnuUnAuth_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new DevUnAuth());
+        }
     }
 }
