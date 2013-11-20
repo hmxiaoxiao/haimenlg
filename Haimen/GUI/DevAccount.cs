@@ -43,41 +43,41 @@ namespace Haimen.GUI
         private void SetControlAccess()
         {
             // 普通新增，编辑，删除
-            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.资金, (long)ActionEnum.新增))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.授权资金, (long)ActionEnum.新增))
             {
                 tbNew.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.资金, (long)ActionEnum.编辑))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.授权资金, (long)ActionEnum.编辑))
             {
                 tbEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
-            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.资金, (long)ActionEnum.删除))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.授权资金, (long)ActionEnum.删除))
             {
                 tbDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
 
             // 审核
-            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.资金, (long)ActionEnum.审核))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.授权资金, (long)ActionEnum.审核))
             {
                 tbCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 tbUnCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
 
             // 支付
-            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.资金, (long)ActionEnum.支付))
+            if (!Access.getUserAccess(GlobalSet.Current_User,  (long)FctionEnum.授权资金, (long)ActionEnum.支付))
             {
                 tbPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 tbUnPay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
 
             // 打印
-            if (!Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.资金, (long)ActionEnum.打印))
+            if (!Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.授权资金, (long)ActionEnum.打印))
             {
                 tbPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
 
             // 转正式发票
-            if (!Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.资金, (long)ActionEnum.转正式发票))
+            if (!Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.授权资金, (long)ActionEnum.转正式发票))
             {
                 tb2Invoice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }

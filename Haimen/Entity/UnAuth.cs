@@ -29,7 +29,7 @@ namespace Haimen.Entity
             }
         }
 
-        [Field("compandetail_id")]
+        [Field("companydetail_id")]
         public long CompanyDetailID { get; set; }
 
         private CompanyDetail _Detail;
@@ -58,12 +58,24 @@ namespace Haimen.Entity
         [Field("memo")]
         public string Memo { get; set; }
 
+        [Field("signed_date")]
+        public DateTime SignedDate { get; set; }
+
         public override bool Verify()
         {
             Error_Info.Clear();
 
             if (string.IsNullOrEmpty(Code))
                 Error_Info.Add(new KeyValuePair<string, string>("Code", "凭证号不能为空!"));
+
+            if (CompanyID == 0)
+                Error_Info.Add(new KeyValuePair<string, string>("CompanyID","单位必须选择"));
+
+            if (CompanyDetailID == 0)
+                Error_Info.Add(new KeyValuePair<string, string>("CompanyDetailID", "帐号必须选择"));
+
+            if (Money == 0)
+                Error_Info.Add(new KeyValuePair<string, string>("Money","金额不能为0"));
 
             return Error_Info.Count == 0;
         }

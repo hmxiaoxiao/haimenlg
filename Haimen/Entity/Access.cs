@@ -16,7 +16,8 @@ namespace Haimen.Entity
     /// </summary>
     public enum FctionEnum : long
     {
-        资金 = 10,
+        授权资金 = 10,
+        非授权资金 = 11,
         合同 = 20,
         合同验收 = 30, 
         贷款 = 40,
@@ -191,16 +192,28 @@ namespace Haimen.Entity
             {
                 m_list = new List<Access>();
                 //资金
-                m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.查看, Enum.GetName(typeof(ActionEnum), ActionEnum.查看)));
-                m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.新增, Enum.GetName(typeof(ActionEnum), ActionEnum.新增)));
-                m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.编辑, Enum.GetName(typeof(ActionEnum), ActionEnum.编辑)));
-                m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.删除, Enum.GetName(typeof(ActionEnum), ActionEnum.删除)));
-                m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.审核, Enum.GetName(typeof(ActionEnum), ActionEnum.审核)));
-                m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.撤审, Enum.GetName(typeof(ActionEnum), ActionEnum.撤审)));
-                m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.支付, Enum.GetName(typeof(ActionEnum), ActionEnum.支付)));
-                m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.取消支付, Enum.GetName(typeof(ActionEnum), ActionEnum.取消支付)));
-                m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.打印, Enum.GetName(typeof(ActionEnum), ActionEnum.打印)));
-                m_list.Add(new Access("业务", (long)FctionEnum.资金, Enum.GetName(typeof(FctionEnum), FctionEnum.资金), (long)ActionEnum.转正式发票, Enum.GetName(typeof(ActionEnum), ActionEnum.转正式发票)));
+                m_list.Add(new Access("业务", (long)FctionEnum.授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.授权资金), (long)ActionEnum.查看, Enum.GetName(typeof(ActionEnum), ActionEnum.查看)));
+                m_list.Add(new Access("业务", (long)FctionEnum.授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.授权资金), (long)ActionEnum.新增, Enum.GetName(typeof(ActionEnum), ActionEnum.新增)));
+                m_list.Add(new Access("业务", (long)FctionEnum.授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.授权资金), (long)ActionEnum.编辑, Enum.GetName(typeof(ActionEnum), ActionEnum.编辑)));
+                m_list.Add(new Access("业务", (long)FctionEnum.授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.授权资金), (long)ActionEnum.删除, Enum.GetName(typeof(ActionEnum), ActionEnum.删除)));
+                m_list.Add(new Access("业务", (long)FctionEnum.授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.授权资金), (long)ActionEnum.审核, Enum.GetName(typeof(ActionEnum), ActionEnum.审核)));
+                m_list.Add(new Access("业务", (long)FctionEnum.授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.授权资金), (long)ActionEnum.撤审, Enum.GetName(typeof(ActionEnum), ActionEnum.撤审)));
+                m_list.Add(new Access("业务", (long)FctionEnum.授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.授权资金), (long)ActionEnum.支付, Enum.GetName(typeof(ActionEnum), ActionEnum.支付)));
+                m_list.Add(new Access("业务", (long)FctionEnum.授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.授权资金), (long)ActionEnum.取消支付, Enum.GetName(typeof(ActionEnum), ActionEnum.取消支付)));
+                m_list.Add(new Access("业务", (long)FctionEnum.授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.授权资金), (long)ActionEnum.打印, Enum.GetName(typeof(ActionEnum), ActionEnum.打印)));
+                m_list.Add(new Access("业务", (long)FctionEnum.授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.授权资金), (long)ActionEnum.转正式发票, Enum.GetName(typeof(ActionEnum), ActionEnum.转正式发票)));
+
+                m_list.Add(new Access("业务", (long)FctionEnum.非授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.非授权资金), (long)ActionEnum.查看, Enum.GetName(typeof(ActionEnum), ActionEnum.查看)));
+                m_list.Add(new Access("业务", (long)FctionEnum.非授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.非授权资金), (long)ActionEnum.新增, Enum.GetName(typeof(ActionEnum), ActionEnum.新增)));
+                m_list.Add(new Access("业务", (long)FctionEnum.非授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.非授权资金), (long)ActionEnum.编辑, Enum.GetName(typeof(ActionEnum), ActionEnum.编辑)));
+                m_list.Add(new Access("业务", (long)FctionEnum.非授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.非授权资金), (long)ActionEnum.删除, Enum.GetName(typeof(ActionEnum), ActionEnum.删除)));
+                //m_list.Add(new Access("业务", (long)FctionEnum.非授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.非授权资金), (long)ActionEnum.审核, Enum.GetName(typeof(ActionEnum), ActionEnum.审核)));
+                //m_list.Add(new Access("业务", (long)FctionEnum.非授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.非授权资金), (long)ActionEnum.撤审, Enum.GetName(typeof(ActionEnum), ActionEnum.撤审)));
+                //m_list.Add(new Access("业务", (long)FctionEnum.非授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.非授权资金), (long)ActionEnum.支付, Enum.GetName(typeof(ActionEnum), ActionEnum.支付)));
+                //m_list.Add(new Access("业务", (long)FctionEnum.非授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.非授权资金), (long)ActionEnum.取消支付, Enum.GetName(typeof(ActionEnum), ActionEnum.取消支付)));
+                //m_list.Add(new Access("业务", (long)FctionEnum.非授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.非授权资金), (long)ActionEnum.打印, Enum.GetName(typeof(ActionEnum), ActionEnum.打印)));
+                //m_list.Add(new Access("业务", (long)FctionEnum.非授权资金, Enum.GetName(typeof(FctionEnum), FctionEnum.非授权资金), (long)ActionEnum.转正式发票, Enum.GetName(typeof(ActionEnum), ActionEnum.转正式发票)));
+
 
                 m_list.Add(new Access("业务", (long)FctionEnum.合同, Enum.GetName(typeof(FctionEnum), FctionEnum.合同), (long)ActionEnum.查看, Enum.GetName(typeof(ActionEnum), ActionEnum.查看)));
                 m_list.Add(new Access("业务", (long)FctionEnum.合同, Enum.GetName(typeof(FctionEnum), FctionEnum.合同), (long)ActionEnum.新增, Enum.GetName(typeof(ActionEnum), ActionEnum.新增)));

@@ -88,8 +88,10 @@ namespace Haimen.GUI
         private void SetAccess()
         {
             mnuAccess.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.权限, (long)ActionEnum.查看);
-            mnuAccount.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.资金, (long)ActionEnum.新增);
-            mnuAccountList.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.资金, (long)ActionEnum.查看);
+            mnuAccount.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.授权资金, (long)ActionEnum.新增);
+            mnuAccountList.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.授权资金, (long)ActionEnum.查看);
+            mnuUnAuth.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.非授权资金, (long)ActionEnum.新增);
+            mnuUnAuthList.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.非授权资金, (long)ActionEnum.查看);
             mnuBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.贷款, (long)ActionEnum.新增);
             mnuBalanceList.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.贷款, (long)ActionEnum.查看);
             mnuBank.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.银行, (long)ActionEnum.新增);
@@ -109,7 +111,7 @@ namespace Haimen.GUI
             mnuReportBalance.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.余额表, (long)ActionEnum.查看);
             mnuUserGroup.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.用户组, (long)ActionEnum.查看);
             mnuMonthly.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.月结, (long)ActionEnum.查看);
-            mnuqueryaccount.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.资金, (long)ActionEnum.查看);
+            mnuqueryaccount.Enabled = Access.getUserAccess(GlobalSet.Current_User, (long)FctionEnum.授权资金, (long)ActionEnum.查看);
 
             // 更新按钮只有超级用户可以用
             if (GlobalSet.Current_User.Admin == "X")
@@ -274,7 +276,7 @@ namespace Haimen.GUI
 
         private void mnuUnAuth_ItemClick(object sender, ItemClickEventArgs e)
         {
-            OpenForm(new DevUnAuth());
+            OpenForm(new DevUnAuth(winStatusEnum.新增));
         }
     }
 }

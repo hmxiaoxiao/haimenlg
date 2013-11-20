@@ -114,8 +114,6 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -123,6 +121,8 @@
             this.layoutControlItem23 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.picChecked = new DevExpress.XtraEditors.PictureEdit();
             this.picPayed = new DevExpress.XtraEditors.PictureEdit();
@@ -190,8 +190,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
@@ -199,6 +197,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picChecked.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPayed.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
@@ -883,7 +883,7 @@
             // 
             // out_a_credit
             // 
-            this.out_a_credit.Caption = "代款";
+            this.out_a_credit.Caption = "贷款";
             this.out_a_credit.FieldName = "Credit";
             this.out_a_credit.Name = "out_a_credit";
             this.out_a_credit.Visible = true;
@@ -1138,26 +1138,6 @@
             this.layoutControlItem19.TextToControlDistance = 0;
             this.layoutControlItem19.TextVisible = false;
             // 
-            // layoutControlItem20
-            // 
-            this.layoutControlItem20.Control = this.lueCashier;
-            this.layoutControlItem20.CustomizationFormText = "出纳：";
-            this.layoutControlItem20.Location = new System.Drawing.Point(0, 164);
-            this.layoutControlItem20.Name = "layoutControlItem20";
-            this.layoutControlItem20.Size = new System.Drawing.Size(251, 24);
-            this.layoutControlItem20.Text = "审核：";
-            this.layoutControlItem20.TextSize = new System.Drawing.Size(84, 14);
-            // 
-            // layoutControlItem21
-            // 
-            this.layoutControlItem21.Control = this.lueMaker;
-            this.layoutControlItem21.CustomizationFormText = "制表：";
-            this.layoutControlItem21.Location = new System.Drawing.Point(476, 164);
-            this.layoutControlItem21.Name = "layoutControlItem21";
-            this.layoutControlItem21.Size = new System.Drawing.Size(225, 24);
-            this.layoutControlItem21.Text = "录入：";
-            this.layoutControlItem21.TextSize = new System.Drawing.Size(84, 14);
-            // 
             // layoutControlItem22
             // 
             this.layoutControlItem22.Control = this.lueReviewer;
@@ -1227,6 +1207,26 @@
             this.layoutControlItem25.Size = new System.Drawing.Size(351, 24);
             this.layoutControlItem25.Text = "附件张数";
             this.layoutControlItem25.TextSize = new System.Drawing.Size(84, 14);
+            // 
+            // layoutControlItem20
+            // 
+            this.layoutControlItem20.Control = this.lueCashier;
+            this.layoutControlItem20.CustomizationFormText = "出纳：";
+            this.layoutControlItem20.Location = new System.Drawing.Point(0, 164);
+            this.layoutControlItem20.Name = "layoutControlItem20";
+            this.layoutControlItem20.Size = new System.Drawing.Size(251, 24);
+            this.layoutControlItem20.Text = "审核：";
+            this.layoutControlItem20.TextSize = new System.Drawing.Size(84, 14);
+            // 
+            // layoutControlItem21
+            // 
+            this.layoutControlItem21.Control = this.lueMaker;
+            this.layoutControlItem21.CustomizationFormText = "制表：";
+            this.layoutControlItem21.Location = new System.Drawing.Point(476, 164);
+            this.layoutControlItem21.Name = "layoutControlItem21";
+            this.layoutControlItem21.Size = new System.Drawing.Size(225, 24);
+            this.layoutControlItem21.Text = "录入：";
+            this.layoutControlItem21.TextSize = new System.Drawing.Size(84, 14);
             // 
             // imageList1
             // 
@@ -1518,7 +1518,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "DevAccount";
-            this.Text = "资金往来";
+            this.Text = "授权资金往来";
             this.Load += new System.EventHandler(this.DevAccount_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -1562,8 +1562,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
@@ -1571,6 +1569,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picChecked.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPayed.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();

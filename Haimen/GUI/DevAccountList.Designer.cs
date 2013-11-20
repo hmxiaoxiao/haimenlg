@@ -523,7 +523,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "DevAccountList";
-            this.Text = "资金往来列表";
+            this.Text = "授权资金往来列表";
             this.Activated += new System.EventHandler(this.DevAccountList_Activated);
             this.Load += new System.EventHandler(this.DevAccountList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();

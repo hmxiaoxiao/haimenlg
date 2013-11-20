@@ -88,7 +88,7 @@ namespace Haimen.Entity
 
             // 判断代码是否为空
             string err = "";
-            if (Code == null || Code == "")
+            if (string.IsNullOrEmpty(Code))
             {
                 err = "用户代码不能为空！";
                 Error_Info.Add(new KeyValuePair<string, string>("Code", err));
