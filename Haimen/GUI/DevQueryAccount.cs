@@ -84,5 +84,10 @@ namespace Haimen.GUI
                 }
             }
         }
+
+        private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Close();
+        }
     }
 }

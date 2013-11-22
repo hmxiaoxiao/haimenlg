@@ -117,6 +117,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this._out_company_list.DisplayMember = "Name";
             this._out_company_list.Name = "_out_company_list";
+            this._out_company_list.NullText = "请选择单位：";
             this._out_company_list.ValueMember = "ID";
             this._out_company_list.View = this.repositoryItemGridLookUpEdit1View;
             // 

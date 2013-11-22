@@ -42,7 +42,7 @@ namespace Haimen.GUI
 
             // 取得余额
             sql = @"
-                select b.name as b_name, c.doc as c_name, sum(d.balance)/10000 as balance
+                select b.name as b_name, c.doc as c_name, sum(d.balance) as balance
                 from m_company_detail d,
                      m_bank b,
                      m_company c
@@ -56,7 +56,7 @@ namespace Haimen.GUI
 
             // 总计行
             sql = @"
-                select c.doc as doc, sum(balance/10000) as balance
+                select c.doc as doc, sum(balance) as balance
                 from m_company_detail d,
                      m_company c
                 where d.parent_id = c.id and c.output = 'X'
@@ -171,7 +171,7 @@ namespace Haimen.GUI
 
             // 取得现金帐户的余额
             sql = @"
-                select b.name as b_name, c.doc as c_name, sum(d.balance)/10000 as balance
+                select b.name as b_name, c.doc as c_name, sum(d.balance) as balance
                 from m_company_detail d,
                      m_bank b,
                      m_company c
@@ -185,7 +185,7 @@ namespace Haimen.GUI
 
             // 总计行
             sql = @"
-                select c.doc as doc, sum(balance/10000) as balance
+                select c.doc as doc, sum(balance) as balance
                 from m_company_detail d,
                      m_company c
                 where d.parent_id = c.id and c.output = 'X' and d.account = '现金'
@@ -300,7 +300,7 @@ namespace Haimen.GUI
 
             // 取得现金帐户的余额
             sql = @"
-                select b.name as b_name, c.doc as c_name, sum(d.balance)/10000 as balance
+                select b.name as b_name, c.doc as c_name, sum(d.balance) as balance
                 from m_company_detail d,
                      m_bank b,
                      m_company c
@@ -314,7 +314,7 @@ namespace Haimen.GUI
 
             // 总计行
             sql = @"
-                select c.doc as doc, sum(balance/10000) as balance
+                select c.doc as doc, sum(balance) as balance
                 from m_company_detail d,
                      m_company c
                 where d.parent_id = c.id and c.output = 'X' and d.account <> '现金'

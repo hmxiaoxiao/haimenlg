@@ -160,6 +160,13 @@ namespace Haimen.Entity
         {
             init_list();        // 初始化列表
 
+            // 从数据库读取数据，如果需要的话
+            if (m_must_reload)
+            {
+                m_all_list = Access.Query();
+                m_must_reload = false;
+            }
+
             // 针对用户或者用户组进行处理
             if (is_user)
             {
@@ -374,6 +381,13 @@ namespace Haimen.Entity
         /// </summary>
         public static void SaveAccessList()
         {
+            // 从数据库读取数据，如果需要的话
+            if (m_must_reload)
+            {
+                m_all_list = Access.Query();
+                m_must_reload = false;
+            }
+
             // 保存前先删除已经存在的数据
             SqlCommand cmd = DBFunction.Connection.CreateCommand();
             string sql;
@@ -392,8 +406,8 @@ namespace Haimen.Entity
                 foreach (Access a in m_list)
                 {
                     // 只有用户的权限 与 该用户所属的用户组的权限不一致才会保存
-                    if (a.CanAccess != (getUserGroupAccess(u.GroupID, a.FunctionID, a.ActionID) ? (byte)1 : (byte)0))
-                        a.Save();
+                    if (a.CanAccess != (getUserGroupAccess(u.GroupID, a.FunctionID, a.ActionID) ? (byte) 1 : (byte) 0))
+                        a.Insert();
                 }
             }
             else   // 用户组保存
@@ -402,9 +416,11 @@ namespace Haimen.Entity
                 foreach(Access a in m_list)
                 {
                     if (a.CanAccess != 0)
-                        a.Save();
+                        a.Insert();
                 }
             }
+
+
             m_must_reload = true; 
         }
 
@@ -421,6 +437,13 @@ namespace Haimen.Entity
             // 如果是超级用户，可以直接使用
             if (user.Admin == "X")
                 return true;
+
+            // 从数据库读取数据，如果需要的话
+            if (m_must_reload)
+            {
+                m_all_list = Access.Query();
+                m_must_reload = false;
+            }
 
             // 判断权限
             foreach (Access a in m_all_list)
@@ -440,6 +463,13 @@ namespace Haimen.Entity
         /// <returns>可以使用为真，否则为假</returns>
         public static bool getUserGroupAccess(long groupid, long function, long action)
         {
+            // 从数据库读取数据，如果需要的话
+            if (m_must_reload)
+            {
+                m_all_list = Access.Query();
+                m_must_reload = false;
+            }
+
             foreach (Access a in m_all_list)
             {
                 if (a.UserGroupID == groupid && a.FunctionID == function && a.ActionID == action)

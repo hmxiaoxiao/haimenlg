@@ -64,7 +64,8 @@
             "2013-11-08更新",
             "2013-11-12更新",
             "2013-11-13更新",
-            "2013-11-14更新"});
+            "2013-11-14更新",
+            "2013-11-21更新"});
             this.listBox1.Location = new System.Drawing.Point(3, 6);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(148, 564);

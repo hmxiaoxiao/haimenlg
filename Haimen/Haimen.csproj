@@ -602,6 +602,7 @@
     <EmbeddedResource Include="Readme\2013-11-12.rtf" />
     <EmbeddedResource Include="Readme\2013-11-13.rtf" />
     <EmbeddedResource Include="Readme\2013-11-14.rtf" />
+    <EmbeddedResource Include="Readme\2013-11-21.rtf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PNG\About.png" />

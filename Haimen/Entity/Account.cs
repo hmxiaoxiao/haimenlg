@@ -296,7 +296,7 @@ namespace Haimen.Entity
         public void UnChecked()
         {
             this.CheckerID = 0;
-            this.Status = (long)AccountStatusEnum.制成;
+            this.Status = (long)AccountStatusEnum.已录入;
             this.Save();
         }
 
@@ -477,7 +477,7 @@ namespace Haimen.Entity
         /// <returns></returns>
         public bool CanEdit()
         {
-            if (this.Status > (long)AccountStatusEnum.制成)
+            if (this.Status > (long)AccountStatusEnum.已录入)
                 return false;
             else
             {
@@ -507,7 +507,7 @@ namespace Haimen.Entity
         /// <returns></returns>
         public bool CanDelete()
         {
-            if (this.Status != (long)AccountStatusEnum.制成)
+            if (this.Status != (long)AccountStatusEnum.已录入)
                 return false;
             else
                 return true;
@@ -518,7 +518,7 @@ namespace Haimen.Entity
         /// <returns></returns>
         public bool CanCheck()
         {
-            if (this.Status == (long)AccountStatusEnum.制成)
+            if (this.Status == (long)AccountStatusEnum.已录入)
                 return true;
             else
                 return false;
@@ -583,7 +583,7 @@ namespace Haimen.Entity
         /// </summary>
         public enum AccountStatusEnum : long
         {
-            制成 = 0,
+            已录入 = 0,
             已复核,
             已审核,
         }

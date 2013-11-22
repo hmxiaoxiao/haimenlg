@@ -18,10 +18,10 @@ namespace Haimen.GUI
         {
             InitializeComponent();
 
-            Refresh();
+            MyRefresh();
         }
 
-        private void Refresh()
+        private void MyRefresh()
         {
             List<UnAuth> list = UnAuth.Query();
 
@@ -51,7 +51,7 @@ namespace Haimen.GUI
 
         private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Refresh();
+            MyRefresh();
         }
 
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -73,11 +73,16 @@ namespace Haimen.GUI
             long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, a_id).ToString());
             UnAuth.Delete(id);
 
-            Refresh();}
+            MyRefresh();}
 
         private void DevUnAuthList_Activated(object sender, EventArgs e)
         {
-            Refresh();
+            MyRefresh();
+        }
+
+        private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Close();
         }
     }
 }

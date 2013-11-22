@@ -62,6 +62,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -308,8 +309,9 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barRefresh});
-            this.barManager1.MaxItemId = 1;
+            this.barRefresh,
+            this.tsbExit});
+            this.barManager1.MaxItemId = 2;
             // 
             // bar1
             // 
@@ -318,7 +320,8 @@
             this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
             // barRefresh
@@ -357,6 +360,15 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(797, 31);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 514);
+            // 
+            // tsbExit
+            // 
+            this.tsbExit.Caption = "退出";
+            this.tsbExit.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbExit.Glyph")));
+            this.tsbExit.Id = 1;
+            this.tsbExit.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("tsbExit.LargeGlyph")));
+            this.tsbExit.Name = "tsbExit";
+            this.tsbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbExit_ItemClick);
             // 
             // DevQueryAccount
             // 
@@ -413,5 +425,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueStatus;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lueInvoice;
         private DevExpress.XtraBars.BarButtonItem barRefresh;
+        private DevExpress.XtraBars.BarButtonItem tsbExit;
     }
 }

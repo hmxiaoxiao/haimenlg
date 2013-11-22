@@ -406,7 +406,7 @@
             this.xrLabel3.SizeF = new System.Drawing.SizeF(100F, 23F);
             this.xrLabel3.StylePriority.UseFont = false;
             this.xrLabel3.StylePriority.UseTextAlignment = false;
-            this.xrLabel3.Text = "单位：万元";
+            this.xrLabel3.Text = "单位：元";
             this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // txtDate

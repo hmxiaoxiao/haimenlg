@@ -49,7 +49,7 @@ namespace Haimen.GUI
             if (cbAdmin.Checked)
                 m_user.Admin = "X";
             else
-                m_user.Admin = null;
+                m_user.Admin = "";
 
             bool verify = true;
 
@@ -237,7 +237,7 @@ namespace Haimen.GUI
         {
             txtCode.Focus();
             txtName.Focus();
-            
+
             // 如果校验不通过，直接返回
             if (!verifyData())
                 return;

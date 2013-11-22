@@ -153,6 +153,7 @@ namespace Haimen.Qy
             else
                 return Insert();
         }
+
         /// <summary>
         /// 插入新的实体类
         /// 注意，校验由客户端处理，这里不做校验

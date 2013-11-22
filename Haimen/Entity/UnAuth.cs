@@ -79,5 +79,65 @@ namespace Haimen.Entity
 
             return Error_Info.Count == 0;
         }
+
+        // 删除时更新余额
+        public override void Destory()
+        {
+            UnAuth old = UnAuth.CreateByID(ID);
+            if (old == null)
+                return;
+
+            CompanyDetail cd = CompanyDetail.CreateByID(old.CompanyDetailID);
+            if (old.Input == "X") // 如果收入，那么删除时余额要减少
+                cd.Balance -= old.Money;
+            else
+                cd.Balance += old.Money;
+            cd.Save();
+            base.Destory();
+        }
+
+        // 新增时更新余额
+        public override bool Insert()
+        {
+            if (base.Insert() == true)
+            {
+                CompanyDetail cd = CompanyDetail.CreateByID(CompanyDetailID);
+                if (Input == "X")
+                    cd.Balance += Money;
+                else
+                    cd.Balance -= Money;
+                cd.Save();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        // 修改时，更新余额
+        public override bool Update()
+        {
+            UnAuth old = UnAuth.CreateByID(ID);
+            if (old == null)
+                return false;
+
+            CompanyDetail cd = CompanyDetail.CreateByID(old.CompanyDetailID);
+            if (cd == null)
+                return false;
+
+            if (Input == "X")
+                cd.Balance += Money;
+            else
+                cd.Balance -= Money;
+
+            if (old.Input == "X")
+                cd.Balance -= old.Money;
+            else
+                cd.Balance += old.Money;
+
+            cd.Save();
+            return base.Update();
+        }
     }
 }

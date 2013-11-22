@@ -36,6 +36,7 @@
             this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
             this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.txtDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -43,6 +44,9 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.a_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.a_date = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.a_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.a_company = new DevExpress.XtraGrid.Columns.GridColumn();
             this.a_bankname = new DevExpress.XtraGrid.Columns.GridColumn();
             this.a_account = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,10 +54,6 @@
             this.a_input = new DevExpress.XtraGrid.Columns.GridColumn();
             this.a_money = new DevExpress.XtraGrid.Columns.GridColumn();
             this.a_memo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.a_code = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
-            this.a_date = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.a_id = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -128,6 +128,15 @@
             this.txtDelete.Name = "txtDelete";
             this.txtDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.txtDelete_ItemClick);
             // 
+            // tsbRefresh
+            // 
+            this.tsbRefresh.Caption = "刷新";
+            this.tsbRefresh.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbRefresh.Glyph")));
+            this.tsbRefresh.Id = 5;
+            this.tsbRefresh.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("tsbRefresh.LargeGlyph")));
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
+            // 
             // tsbExit
             // 
             this.tsbExit.Caption = "退出";
@@ -135,6 +144,7 @@
             this.tsbExit.Id = 4;
             this.tsbExit.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("tsbExit.LargeGlyph")));
             this.tsbExit.Name = "tsbExit";
+            this.tsbExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbExit_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -197,6 +207,28 @@
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
+            // a_id
+            // 
+            this.a_id.Caption = "ID";
+            this.a_id.FieldName = "ID";
+            this.a_id.Name = "a_id";
+            // 
+            // a_date
+            // 
+            this.a_date.Caption = "日期";
+            this.a_date.FieldName = "SignedDate";
+            this.a_date.Name = "a_date";
+            this.a_date.Visible = true;
+            this.a_date.VisibleIndex = 0;
+            // 
+            // a_code
+            // 
+            this.a_code.Caption = "凭证号";
+            this.a_code.FieldName = "Code";
+            this.a_code.Name = "a_code";
+            this.a_code.Visible = true;
+            this.a_code.VisibleIndex = 1;
+            // 
             // a_company
             // 
             this.a_company.Caption = "本单位";
@@ -256,37 +288,6 @@
             this.a_memo.Name = "a_memo";
             this.a_memo.Visible = true;
             this.a_memo.VisibleIndex = 8;
-            // 
-            // a_code
-            // 
-            this.a_code.Caption = "凭证号";
-            this.a_code.FieldName = "Code";
-            this.a_code.Name = "a_code";
-            this.a_code.Visible = true;
-            this.a_code.VisibleIndex = 1;
-            // 
-            // tsbRefresh
-            // 
-            this.tsbRefresh.Caption = "刷新";
-            this.tsbRefresh.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbRefresh.Glyph")));
-            this.tsbRefresh.Id = 5;
-            this.tsbRefresh.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("tsbRefresh.LargeGlyph")));
-            this.tsbRefresh.Name = "tsbRefresh";
-            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
-            // 
-            // a_date
-            // 
-            this.a_date.Caption = "日期";
-            this.a_date.FieldName = "SignedDate";
-            this.a_date.Name = "a_date";
-            this.a_date.Visible = true;
-            this.a_date.VisibleIndex = 0;
-            // 
-            // a_id
-            // 
-            this.a_id.Caption = "ID";
-            this.a_id.FieldName = "ID";
-            this.a_id.Name = "a_id";
             // 
             // DevUnAuthList
             // 

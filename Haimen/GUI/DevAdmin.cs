@@ -119,6 +119,12 @@ namespace Haimen.GUI
                     richTextBox1.Rtf = _textStreamReader.ReadToEnd();
                     btnUpdate.Enabled = true;
                     break;
+                case "2013-11-21更新":
+                    _assembly = Assembly.GetExecutingAssembly();
+                    _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream("Haimen.Readme.2013-11-21.rtf"));
+                    richTextBox1.Rtf = _textStreamReader.ReadToEnd();
+                    btnUpdate.Enabled = false;
+                    break;
             }
         }
 

@@ -504,7 +504,7 @@ namespace Haimen.GUI
         {
             switch (_account.Status)
             {
-                case (long)Account.AccountStatusEnum.制成:
+                case (long)Account.AccountStatusEnum.已录入:
                     picChecked.Visible = false;
                     picPayed.Visible = false;
                     break;

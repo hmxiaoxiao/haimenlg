@@ -29,9 +29,6 @@ namespace Haimen.GUI
             Object2Form();
         }
 
-        // 当前窗口状态
-        private winStatusEnum m_status;
-
         /// <summary>
         /// 根据用户的权限设置控件的可用与否
         /// </summary>
