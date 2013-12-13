@@ -71,7 +71,11 @@ namespace Haimen.GUI
                 return;
 
             long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, a_id).ToString());
-            UnAuth.Delete(id);
+            if (id <= 0)
+                return;
+
+            UnAuth unauth = UnAuth.CreateByID(id);
+            unauth.Destory();
 
             MyRefresh();}
 
