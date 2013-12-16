@@ -278,5 +278,10 @@ namespace Haimen.GUI
         {
             OpenForm(new DevUnAuth(winStatusEnum.新增));
         }
+
+        private void mnuSystemCheck_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new DevSystemCheck());
+        }
     }
 }

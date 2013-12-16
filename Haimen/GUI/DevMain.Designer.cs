@@ -59,8 +59,11 @@
             this.mnuMonthly = new DevExpress.XtraBars.BarButtonItem();
             this.statusCurrentAccount = new DevExpress.XtraBars.BarStaticItem();
             this.mnuqueryaccount = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuUnAuthList = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuUnAuth = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -82,9 +85,7 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.mnuUnAuthList = new DevExpress.XtraBars.BarButtonItem();
-            this.mnuUnAuth = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.mnuSystemCheck = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -124,9 +125,10 @@
             this.statusCurrentAccount,
             this.mnuqueryaccount,
             this.mnuUnAuthList,
-            this.mnuUnAuth});
+            this.mnuUnAuth,
+            this.mnuSystemCheck});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 49;
+            this.ribbon.MaxItemId = 50;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -441,6 +443,28 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.mnuqueryaccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuqueryaccount_ItemClick);
             // 
+            // mnuUnAuthList
+            // 
+            this.mnuUnAuthList.Caption = "非授权列表";
+            this.mnuUnAuthList.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuUnAuthList.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuUnAuthList.Glyph")));
+            this.mnuUnAuthList.Id = 47;
+            this.mnuUnAuthList.Name = "mnuUnAuthList";
+            this.mnuUnAuthList.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuUnAuthList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuUnAuthList_ItemClick);
+            // 
+            // mnuUnAuth
+            // 
+            this.mnuUnAuth.Caption = "非授权新增";
+            this.mnuUnAuth.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuUnAuth.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuUnAuth.Glyph")));
+            this.mnuUnAuth.Id = 48;
+            this.mnuUnAuth.Name = "mnuUnAuth";
+            this.mnuUnAuth.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuUnAuth.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuUnAuth_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -460,6 +484,13 @@
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.ShowCaptionButton = false;
             this.ribbonPageGroup5.Text = "授权支出";
+            // 
+            // ribbonPageGroup16
+            // 
+            this.ribbonPageGroup16.ItemLinks.Add(this.mnuUnAuthList);
+            this.ribbonPageGroup16.ItemLinks.Add(this.mnuUnAuth);
+            this.ribbonPageGroup16.Name = "ribbonPageGroup16";
+            this.ribbonPageGroup16.Text = "非授权支出";
             // 
             // ribbonPageGroup3
             // 
@@ -550,6 +581,7 @@
             // 
             this.ribbonPageGroup13.ItemLinks.Add(this.mnuAdmin);
             this.ribbonPageGroup13.ItemLinks.Add(this.mnuMonthly);
+            this.ribbonPageGroup13.ItemLinks.Add(this.mnuSystemCheck);
             this.ribbonPageGroup13.Name = "ribbonPageGroup13";
             this.ribbonPageGroup13.Text = "系统";
             // 
@@ -615,34 +647,16 @@
             // 
             this.mdiManager.MdiParent = this;
             // 
-            // mnuUnAuthList
+            // mnuSystemCheck
             // 
-            this.mnuUnAuthList.Caption = "非授权列表";
-            this.mnuUnAuthList.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuUnAuthList.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuUnAuthList.Glyph")));
-            this.mnuUnAuthList.Id = 47;
-            this.mnuUnAuthList.Name = "mnuUnAuthList";
-            this.mnuUnAuthList.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            this.mnuSystemCheck.Caption = "系统检查";
+            this.mnuSystemCheck.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuSystemCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuSystemCheck.Glyph")));
+            this.mnuSystemCheck.Id = 49;
+            this.mnuSystemCheck.Name = "mnuSystemCheck";
+            this.mnuSystemCheck.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.mnuUnAuthList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuUnAuthList_ItemClick);
-            // 
-            // mnuUnAuth
-            // 
-            this.mnuUnAuth.Caption = "非授权新增";
-            this.mnuUnAuth.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuUnAuth.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuUnAuth.Glyph")));
-            this.mnuUnAuth.Id = 48;
-            this.mnuUnAuth.Name = "mnuUnAuth";
-            this.mnuUnAuth.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.mnuUnAuth.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuUnAuth_ItemClick);
-            // 
-            // ribbonPageGroup16
-            // 
-            this.ribbonPageGroup16.ItemLinks.Add(this.mnuUnAuthList);
-            this.ribbonPageGroup16.ItemLinks.Add(this.mnuUnAuth);
-            this.ribbonPageGroup16.Name = "ribbonPageGroup16";
-            this.ribbonPageGroup16.Text = "非授权支出";
+            this.mnuSystemCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuSystemCheck_ItemClick);
             // 
             // DevMain
             // 
@@ -722,5 +736,6 @@
         private DevExpress.XtraBars.BarButtonItem mnuUnAuthList;
         private DevExpress.XtraBars.BarButtonItem mnuUnAuth;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup16;
+        private DevExpress.XtraBars.BarButtonItem mnuSystemCheck;
     }
 }

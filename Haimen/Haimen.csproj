@@ -169,6 +169,7 @@
     <Compile Include="Entity\Dict.cs" />
     <Compile Include="Entity\Funds.cs" />
     <Compile Include="Entity\Project.cs" />
+    <Compile Include="Entity\SystemCheck.cs" />
     <Compile Include="Entity\SystemSet.cs" />
     <Compile Include="Entity\UnAuth.cs" />
     <Compile Include="Entity\UserGroup.cs" />
@@ -255,6 +256,12 @@
     </Compile>
     <Compile Include="GUI\DevQuerySelectCompany.Designer.cs">
       <DependentUpon>DevQuerySelectCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DevSystemCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DevSystemCheck.Designer.cs">
+      <DependentUpon>DevSystemCheck.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DevTest.cs">
       <SubType>Form</SubType>
@@ -550,6 +557,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevQuerySelectCompany.resx">
       <DependentUpon>DevQuerySelectCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DevSystemCheck.resx">
+      <DependentUpon>DevSystemCheck.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DevTest.resx">
       <DependentUpon>DevTest.cs</DependentUpon>
