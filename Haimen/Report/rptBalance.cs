@@ -27,6 +27,7 @@ namespace Haimen.Report
             capDoc4.Text = m_ds.Tables["company"].Rows[3]["doc"].ToString();
             capDoc5.Text = m_ds.Tables["company"].Rows[4]["doc"].ToString();
             capDoc6.Text = m_ds.Tables["company"].Rows[5]["doc"].ToString();
+            capDoc7.Text = m_ds.Tables["company"].Rows[6]["doc"].ToString();
 
             // 绑定数据
             this.DataSource = ds.Tables["report"];
@@ -40,6 +41,7 @@ namespace Haimen.Report
             txtDoc4.DataBindings.Add("Text", this.DataSource, capDoc4.Text, "{0:c}");
             txtDoc5.DataBindings.Add("Text", this.DataSource, capDoc5.Text, "{0:c}");
             txtDoc6.DataBindings.Add("Text", this.DataSource, capDoc6.Text, "{0:c}");
+            txtDoc7.DataBindings.Add("Text", this.DataSource, capDoc7.Text, "{0:c}");
 
 
 

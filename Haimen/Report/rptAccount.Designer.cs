@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptAccount));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
+            this.xrPictureBox2 = new DevExpress.XtraReports.UI.XRPictureBox();
+            this.xrPictureBox3 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow8 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell19 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -71,7 +74,9 @@
             this.txtCheckDate = new DevExpress.XtraReports.UI.XRTableCell();
             this.txtPayer = new DevExpress.XtraReports.UI.XRTableCell();
             this.txtMaker = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+            this.formattingRule1 = new DevExpress.XtraReports.UI.FormattingRule();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -88,11 +93,28 @@
             this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrTable2,
             this.xrLabel1,
-            this.xrTable1});
+            this.xrTable1,
+            this.xrPictureBox1,
+            this.xrPictureBox2,
+            this.xrPictureBox3});
             this.TopMargin.HeightF = 476.0417F;
             this.TopMargin.Name = "TopMargin";
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrPictureBox2
+            // 
+            this.xrPictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("xrPictureBox2.Image")));
+            this.xrPictureBox2.LocationFloat = new DevExpress.Utils.PointFloat(353.125F, 369.4167F);
+            this.xrPictureBox2.Name = "xrPictureBox2";
+            this.xrPictureBox2.SizeF = new System.Drawing.SizeF(100F, 55.62497F);
+            // 
+            // xrPictureBox3
+            // 
+            this.xrPictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("xrPictureBox3.Image")));
+            this.xrPictureBox3.LocationFloat = new DevExpress.Utils.PointFloat(533.2708F, 367.7501F);
+            this.xrPictureBox3.Name = "xrPictureBox3";
+            this.xrPictureBox3.SizeF = new System.Drawing.SizeF(104.1667F, 45.87497F);
             // 
             // xrTable2
             // 
@@ -428,8 +450,8 @@
             this.txtChecker.StylePriority.UseBorders = false;
             this.txtChecker.StylePriority.UseTextAlignment = false;
             this.txtChecker.Text = "审批：";
-            this.txtChecker.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.txtChecker.Weight = 1.0930941258344118D;
+            this.txtChecker.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.txtChecker.Weight = 1.0574586039240508D;
             // 
             // txtCheckDate
             // 
@@ -446,14 +468,14 @@
             this.txtCheckDate.StylePriority.UseTextAlignment = false;
             this.txtCheckDate.Text = "txtCheckDate";
             this.txtCheckDate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.txtCheckDate.Weight = 0.45607718386862262D;
+            this.txtCheckDate.Weight = 0.49171270577898363D;
             // 
             // txtPayer
             // 
             this.txtPayer.Name = "txtPayer";
             this.txtPayer.StylePriority.UseTextAlignment = false;
-            this.txtPayer.Text = "支付";
-            this.txtPayer.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtPayer.Text = "复核：";
+            this.txtPayer.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.txtPayer.Weight = 0.94198888171044537D;
             // 
             // txtMaker
@@ -461,8 +483,15 @@
             this.txtMaker.Name = "txtMaker";
             this.txtMaker.StylePriority.UseTextAlignment = false;
             this.txtMaker.Text = "录入：";
-            this.txtMaker.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtMaker.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.txtMaker.Weight = 0.85027636017371111D;
+            // 
+            // xrPictureBox1
+            // 
+            this.xrPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("xrPictureBox1.Image")));
+            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(87.07819F, 370.8334F);
+            this.xrPictureBox1.Name = "xrPictureBox1";
+            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(131.6667F, 52.54166F);
             // 
             // BottomMargin
             // 
@@ -470,12 +499,18 @@
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
+            // formattingRule1
+            // 
+            this.formattingRule1.Name = "formattingRule1";
+            // 
             // rptAccount
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,
             this.TopMargin,
             this.BottomMargin});
+            this.FormattingRuleSheet.AddRange(new DevExpress.XtraReports.UI.FormattingRule[] {
+            this.formattingRule1});
             this.Margins = new System.Drawing.Printing.Margins(100, 100, 476, 100);
             this.Version = "13.1";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
@@ -530,5 +565,9 @@
         private DevExpress.XtraReports.UI.XRTableCell txtMoney;
         private DevExpress.XtraReports.UI.XRTableCell txtAttach;
         private DevExpress.XtraReports.UI.XRTableCell txtCheckDate;
+        private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox1;
+        private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox3;
+        private DevExpress.XtraReports.UI.FormattingRule formattingRule1;
+        private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox2;
     }
 }

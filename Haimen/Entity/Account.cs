@@ -195,6 +195,18 @@ namespace Haimen.Entity
         /// <returns></returns>
         public static DataSet GetGUIList(bool all = false)
         {
+            long year = SystemSet.GetAccountYear();
+            long month = SystemSet.GetAccountMonth();
+
+            long next_year = year;
+            long next_month = month;
+
+            if (month == 12)
+            {
+                next_year = year + 1;
+                next_month = 1;
+            }
+
             string mastersql = @"
                 select a.id as id,a.status  as status,a.signed_date as signeddate,a.money as money,
                     a.project_id as project_id,a.invoice as invoice,a.code as code,a.memo as memo,
@@ -206,7 +218,7 @@ namespace Haimen.Entity
                       a.deleted = 0 ";
             if (SystemSet.GetAccountYear() != 0 && !all)
             {
-                mastersql += " and signed_date < '" + SystemSet.GetAccountYear().ToString() + "-" + (SystemSet.GetAccountMonth() + 1).ToString() + "-01 0:0:0' ";
+                mastersql += " and signed_date < '" + next_year.ToString() + "-" + next_month.ToString() + "-01 0:0:0' ";
                 mastersql += " and signed_date >= '" + SystemSet.GetAccountYear().ToString() + "-" + SystemSet.GetAccountMonth().ToString() + "-01 0:0:0' ";
             }
             mastersql += "    order by id desc;";
@@ -218,7 +230,7 @@ namespace Haimen.Entity
             if (SystemSet.GetAccountYear() != 0 && !all)
             {
                 detailsql += " and a.parent_id in (select id from t_account where ";
-                detailsql += " signed_date < '" + SystemSet.GetAccountYear().ToString() + "-" + (SystemSet.GetAccountMonth() + 1).ToString() + "-01 0:0:0' ";
+                detailsql += " signed_date < '" + next_year.ToString() + "-" + next_month.ToString() + "-01 0:0:0' ";
                 detailsql += " and signed_date >= '" + SystemSet.GetAccountYear().ToString() + "-" + SystemSet.GetAccountMonth().ToString() + "-01 0:0:0' ";
                 detailsql += " and deleted = 0)";
             }

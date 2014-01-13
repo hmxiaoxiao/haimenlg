@@ -58,6 +58,8 @@
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.xrControlStyle1 = new DevExpress.XtraReports.UI.XRControlStyle();
+            this.capDoc7 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.txtDoc7 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -79,7 +81,7 @@
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(650F, 31.25F);
+            this.xrTable2.SizeF = new System.Drawing.SizeF(737.4584F, 31.25F);
             // 
             // xrTableRow2
             // 
@@ -92,7 +94,8 @@
             this.txtDoc3,
             this.txtDoc4,
             this.txtDoc5,
-            this.txtDoc6});
+            this.txtDoc6,
+            this.txtDoc7});
             this.xrTableRow2.Name = "xrTableRow2";
             this.xrTableRow2.Weight = 1D;
             // 
@@ -118,12 +121,12 @@
             this.txtBank.StylePriority.UseTextAlignment = false;
             this.txtBank.Text = "txtBank";
             this.txtBank.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.txtBank.Weight = 0.64615381238490943D;
+            this.txtBank.Weight = 0.52596158685531214D;
             // 
             // txtCount
             // 
             this.txtCount.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.txtCount.Font = new System.Drawing.Font("Times New Roman", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCount.Font = new System.Drawing.Font("宋体", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCount.Name = "txtCount";
             this.txtCount.Padding = new DevExpress.XtraPrinting.PaddingInfo(1, 1, 1, 1, 100F);
             this.txtCount.StylePriority.UseBorders = false;
@@ -132,12 +135,12 @@
             this.txtCount.StylePriority.UseTextAlignment = false;
             this.txtCount.Text = "txtCount";
             this.txtCount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.txtCount.Weight = 0.31846153435026453D;
+            this.txtCount.Weight = 0.39461534529152054D;
             // 
             // txtDoc1
             // 
             this.txtDoc1.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.txtDoc1.Font = new System.Drawing.Font("Times New Roman", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDoc1.Font = new System.Drawing.Font("宋体", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDoc1.Name = "txtDoc1";
             this.txtDoc1.Padding = new DevExpress.XtraPrinting.PaddingInfo(1, 1, 1, 1, 100F);
             this.txtDoc1.StylePriority.UseBorders = false;
@@ -146,12 +149,12 @@
             this.txtDoc1.StylePriority.UseTextAlignment = false;
             this.txtDoc1.Text = "txtDoc1";
             this.txtDoc1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.txtDoc1.Weight = 0.31846153435026459D;
+            this.txtDoc1.Weight = 0.33692307281180311D;
             // 
             // txtDoc2
             // 
             this.txtDoc2.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.txtDoc2.Font = new System.Drawing.Font("Times New Roman", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDoc2.Font = new System.Drawing.Font("宋体", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDoc2.Name = "txtDoc2";
             this.txtDoc2.Padding = new DevExpress.XtraPrinting.PaddingInfo(1, 1, 1, 1, 100F);
             this.txtDoc2.StylePriority.UseBorders = false;
@@ -160,12 +163,12 @@
             this.txtDoc2.StylePriority.UseTextAlignment = false;
             this.txtDoc2.Text = "txtDoc2";
             this.txtDoc2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.txtDoc2.Weight = 0.31846152760275404D;
+            this.txtDoc2.Weight = 0.33692306606429245D;
             // 
             // txtDoc3
             // 
             this.txtDoc3.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.txtDoc3.Font = new System.Drawing.Font("Times New Roman", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDoc3.Font = new System.Drawing.Font("宋体", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDoc3.Name = "txtDoc3";
             this.txtDoc3.Padding = new DevExpress.XtraPrinting.PaddingInfo(1, 1, 1, 1, 100F);
             this.txtDoc3.StylePriority.UseBorders = false;
@@ -174,12 +177,12 @@
             this.txtDoc3.StylePriority.UseTextAlignment = false;
             this.txtDoc3.Text = "txtDoc3";
             this.txtDoc3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.txtDoc3.Weight = 0.31846152760275415D;
+            this.txtDoc3.Weight = 0.33692306606429268D;
             // 
             // txtDoc4
             // 
             this.txtDoc4.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.txtDoc4.Font = new System.Drawing.Font("Times New Roman", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDoc4.Font = new System.Drawing.Font("宋体", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDoc4.Name = "txtDoc4";
             this.txtDoc4.Padding = new DevExpress.XtraPrinting.PaddingInfo(1, 1, 1, 1, 100F);
             this.txtDoc4.StylePriority.UseBorders = false;
@@ -188,12 +191,12 @@
             this.txtDoc4.StylePriority.UseTextAlignment = false;
             this.txtDoc4.Text = "txtDoc4";
             this.txtDoc4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.txtDoc4.Weight = 0.31846155195655956D;
+            this.txtDoc4.Weight = 0.33692307281180289D;
             // 
             // txtDoc5
             // 
             this.txtDoc5.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.txtDoc5.Font = new System.Drawing.Font("Times New Roman", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDoc5.Font = new System.Drawing.Font("宋体", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDoc5.Name = "txtDoc5";
             this.txtDoc5.Padding = new DevExpress.XtraPrinting.PaddingInfo(1, 1, 1, 1, 100F);
             this.txtDoc5.StylePriority.UseBorders = false;
@@ -202,13 +205,13 @@
             this.txtDoc5.StylePriority.UseTextAlignment = false;
             this.txtDoc5.Text = "txtDoc5";
             this.txtDoc5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.txtDoc5.Weight = 0.31846152672400824D;
+            this.txtDoc5.Weight = 0.3369230827918418D;
             // 
             // txtDoc6
             // 
             this.txtDoc6.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.txtDoc6.Font = new System.Drawing.Font("Times New Roman", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDoc6.Font = new System.Drawing.Font("宋体", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDoc6.Name = "txtDoc6";
             this.txtDoc6.Padding = new DevExpress.XtraPrinting.PaddingInfo(1, 1, 1, 1, 100F);
             this.txtDoc6.StylePriority.UseBorders = false;
@@ -217,7 +220,7 @@
             this.txtDoc6.StylePriority.UseTextAlignment = false;
             this.txtDoc6.Text = "txtDoc6";
             this.txtDoc6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.txtDoc6.Weight = 0.31846159714918887D;
+            this.txtDoc6.Weight = 0.33692307105431196D;
             // 
             // TopMargin
             // 
@@ -236,7 +239,7 @@
             // 
             this.xrLine1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 146.25F);
             this.xrLine1.Name = "xrLine1";
-            this.xrLine1.SizeF = new System.Drawing.SizeF(650.0001F, 2.083332F);
+            this.xrLine1.SizeF = new System.Drawing.SizeF(737.4584F, 3.884933F);
             // 
             // xrTable1
             // 
@@ -244,7 +247,7 @@
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(650F, 36.45834F);
+            this.xrTable1.SizeF = new System.Drawing.SizeF(737.4584F, 36.45834F);
             // 
             // xrTableRow1
             // 
@@ -257,7 +260,8 @@
             this.capDoc3,
             this.capDoc4,
             this.capDoc5,
-            this.capDoc6});
+            this.capDoc6,
+            this.capDoc7});
             this.xrTableRow1.Name = "xrTableRow1";
             this.xrTableRow1.Weight = 1D;
             // 
@@ -289,7 +293,7 @@
             this.capBank.StylePriority.UseTextAlignment = false;
             this.capBank.Text = "银行名称";
             this.capBank.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.capBank.Weight = 0.64615381238490943D;
+            this.capBank.Weight = 0.52596158685531214D;
             // 
             // capCount
             // 
@@ -304,7 +308,7 @@
             this.capCount.StylePriority.UseTextAlignment = false;
             this.capCount.Text = "小计";
             this.capCount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.capCount.Weight = 0.31846153435026453D;
+            this.capCount.Weight = 0.39461534529152054D;
             // 
             // capDoc1
             // 
@@ -319,7 +323,7 @@
             this.capDoc1.StylePriority.UseTextAlignment = false;
             this.capDoc1.Text = "txtDoc1";
             this.capDoc1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.capDoc1.Weight = 0.31846153435026459D;
+            this.capDoc1.Weight = 0.33692307281180311D;
             // 
             // capDoc2
             // 
@@ -334,7 +338,7 @@
             this.capDoc2.StylePriority.UseTextAlignment = false;
             this.capDoc2.Text = "txtDoc2";
             this.capDoc2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.capDoc2.Weight = 0.31846152760275404D;
+            this.capDoc2.Weight = 0.33692306606429245D;
             // 
             // capDoc3
             // 
@@ -349,7 +353,7 @@
             this.capDoc3.StylePriority.UseTextAlignment = false;
             this.capDoc3.Text = "txtDoc3";
             this.capDoc3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.capDoc3.Weight = 0.31846152760275415D;
+            this.capDoc3.Weight = 0.33692306606429268D;
             // 
             // capDoc4
             // 
@@ -364,7 +368,7 @@
             this.capDoc4.StylePriority.UseTextAlignment = false;
             this.capDoc4.Text = "txtDoc4";
             this.capDoc4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.capDoc4.Weight = 0.31846155195655956D;
+            this.capDoc4.Weight = 0.33692307281180289D;
             // 
             // capDoc5
             // 
@@ -379,7 +383,7 @@
             this.capDoc5.StylePriority.UseTextAlignment = false;
             this.capDoc5.Text = "txtDoc5";
             this.capDoc5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.capDoc5.Weight = 0.31846152672400824D;
+            this.capDoc5.Weight = 0.3369230827918418D;
             // 
             // capDoc6
             // 
@@ -395,7 +399,7 @@
             this.capDoc6.StylePriority.UseTextAlignment = false;
             this.capDoc6.Text = "txtDoc6";
             this.capDoc6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.capDoc6.Weight = 0.31846159714918887D;
+            this.capDoc6.Weight = 0.33692307105431196D;
             // 
             // xrLabel3
             // 
@@ -435,7 +439,7 @@
             // 
             // BottomMargin
             // 
-            this.BottomMargin.HeightF = 35.41667F;
+            this.BottomMargin.HeightF = 35F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -446,13 +450,42 @@
             this.xrControlStyle1.Name = "xrControlStyle1";
             this.xrControlStyle1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             // 
+            // capDoc7
+            // 
+            this.capDoc7.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.capDoc7.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.capDoc7.Name = "capDoc7";
+            this.capDoc7.Padding = new DevExpress.XtraPrinting.PaddingInfo(1, 1, 1, 1, 100F);
+            this.capDoc7.StylePriority.UseBorders = false;
+            this.capDoc7.StylePriority.UseFont = false;
+            this.capDoc7.StylePriority.UsePadding = false;
+            this.capDoc7.StylePriority.UseTextAlignment = false;
+            this.capDoc7.Text = "txtDoc7";
+            this.capDoc7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.capDoc7.Weight = 0.33692328232985286D;
+            // 
+            // txtDoc7
+            // 
+            this.txtDoc7.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.txtDoc7.Font = new System.Drawing.Font("宋体", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDoc7.Name = "txtDoc7";
+            this.txtDoc7.StylePriority.UseBorders = false;
+            this.txtDoc7.StylePriority.UseFont = false;
+            this.txtDoc7.StylePriority.UseTextAlignment = false;
+            this.txtDoc7.Text = "txtDoc7";
+            this.txtDoc7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.txtDoc7.Weight = 0.33692328232985286D;
+            // 
             // rptBalance
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,
             this.TopMargin,
             this.BottomMargin});
-            this.Margins = new System.Drawing.Printing.Margins(100, 100, 150, 35);
+            this.Margins = new System.Drawing.Printing.Margins(58, 54, 150, 35);
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.xrControlStyle1});
             this.Version = "13.1";
@@ -494,5 +527,7 @@
         private DevExpress.XtraReports.UI.XRTableCell capDoc6;
         private DevExpress.XtraReports.UI.XRLine xrLine1;
         private DevExpress.XtraReports.UI.XRControlStyle xrControlStyle1;
+        private DevExpress.XtraReports.UI.XRTableCell txtDoc7;
+        private DevExpress.XtraReports.UI.XRTableCell capDoc7;
     }
 }
