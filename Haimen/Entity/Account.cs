@@ -244,7 +244,14 @@ namespace Haimen.Entity
 
             DataColumn key = ds.Tables["master"].Columns["id"];
             DataColumn foreignKey = ds.Tables["detail"].Columns["parent_id"];
-            ds.Relations.Add("明细", key, foreignKey);
+            try
+            {
+                ds.Relations.Add("明细", key, foreignKey,false);
+            }
+            catch (Exception e)
+            {
+                string a = e.Message;
+            }
 
             return ds;
         }
