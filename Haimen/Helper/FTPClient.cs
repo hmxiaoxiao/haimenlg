@@ -8,6 +8,9 @@ using System.ComponentModel;
 
 namespace Haimen.Helper
 {
+    /// <summary>
+    /// FTP的日常操作
+    /// </summary>
     public class FTPClient
     {
         private string ftpServerIP = String.Empty;

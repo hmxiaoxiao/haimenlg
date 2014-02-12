@@ -8,9 +8,12 @@ using System.IO;
 
 namespace Haimen.Helper
 {
-    public class INIFile
+    /// <summary>
+    /// INI文件的基本操作
+    /// </summary>
+    public class INIBaseOper
     {
-        public string inipath;
+        public string m_inipath;
 
         [DllImport("kernel32")]
         private static extern long WritePrivateProfileString(string section, string key, string val, string filePath);
@@ -22,9 +25,9 @@ namespace Haimen.Helper
         /// 构造方法
         /// </summary>
         /// <param name="INIPath">文件路径</param>
-        public INIFile(string INIPath)
+        public INIBaseOper(string INIPath)
         {
-            inipath = INIPath;
+            m_inipath = INIPath;
         }
         /// <summary>
         /// 写入INI文件
@@ -32,10 +35,12 @@ namespace Haimen.Helper
         /// <param name="Section">项目名称(如 [TypeName] )</param>
         /// <param name="Key">键</param>
         /// <param name="Value">值</param>
-        public void IniWriteValue(string Section, string Key, string Value)
+        /// <returns>成功为真，不成功为假</returns>
+        public bool IniWriteValue(string Section, string Key, string Value)
         {
-            WritePrivateProfileString(Section, Key, Value, this.inipath);
+            return WritePrivateProfileString(Section, Key, Value, this.m_inipath) > 0 ;
         }
+
         /// <summary>
         /// 读出INI文件
         /// </summary>
@@ -44,7 +49,7 @@ namespace Haimen.Helper
         public string IniReadValue(string Section, string Key)
         {
             StringBuilder temp = new StringBuilder(500);
-            int i = GetPrivateProfileString(Section, Key, "", temp, 500, this.inipath);
+            int i = GetPrivateProfileString(Section, Key, "", temp, 500, this.m_inipath);
             return temp.ToString();
         }
         /// <summary>
@@ -53,7 +58,7 @@ namespace Haimen.Helper
         /// <returns>布尔值</returns>
         public bool ExistINIFile()
         {
-            return File.Exists(inipath);
+            return File.Exists(m_inipath);
         }
     }
 }

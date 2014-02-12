@@ -78,7 +78,7 @@
     <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
@@ -287,10 +287,11 @@
     <Compile Include="GUI\devUserGroupList.Designer.cs">
       <DependentUpon>devUserGroupList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper\CustomerINI.cs" />
+    <Compile Include="Helper\INICustomer.cs" />
     <Compile Include="Helper\FTPClient.cs" />
     <Compile Include="Helper\Helper.cs" />
-    <Compile Include="Helper\INIFile.cs" />
+    <Compile Include="Helper\HelperException.cs" />
+    <Compile Include="Helper\INIBaseOper.cs" />
     <Compile Include="Helper\PinyinHelper.cs" />
     <Compile Include="Helper\HMEnum.cs" />
     <Compile Include="GUI\DevAcceptanceBill.cs">
@@ -596,7 +597,6 @@
     <EmbeddedResource Include="Report\rptBalance.resx">
       <DependentUpon>rptBalance.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\Haimen.Entity.Account.datasource" />
     <None Include="Properties\Settings.settings">

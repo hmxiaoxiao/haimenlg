@@ -311,7 +311,6 @@ namespace Haimen.Qy
         /// <returns>含实体类的列表</returns>
         public static List<T> Query(string where = "")
         {
-            SqlCommand cmd = DBFunction.Connection.CreateCommand();
             string table_name = GetTableName(typeof(T));
 
             string sql = "Select * from " + table_name;
@@ -335,12 +334,25 @@ namespace Haimen.Qy
             sql += " " + OrderBy;
 
 
-            cmd.CommandText = sql;
-            Console.WriteLine(sql);
-            SqlDataAdapter adap = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            adap.Fill(ds);
-            return ds.toList<T>();
+            //try
+            //{
+                SqlCommand cmd = DBFunction.Connection.CreateCommand();
+                cmd.CommandText = sql;
+                Console.WriteLine(sql);
+                SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+                return ds.toList<T>();
+            //}
+            //catch (INIExceptption ie)
+            //{
+
+            //}
+            //catch (Exception e)
+            //{
+            //    string message = "向数据库查询出错！原因如下：" + Environment.NewLine + e.Message;
+            //    throw new Exception(message, e);
+            //}
         }
 
         /// <summary>

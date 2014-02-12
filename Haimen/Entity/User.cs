@@ -36,15 +36,23 @@ namespace Haimen.Entity
         // 第一次使用时，增加一个超级用户
         public static void Init()
         {
-            List<User> list = Query();
-            if (list.Count == 0)
+            try
             {
-                User admin = new User();
-                admin.Code = "admin";
-                admin.Name = "超级用户";
-                admin.Password = "qwer1234";
-                admin.Admin = "X";
-                admin.Save();
+                List<User> list = Query();
+                if (list.Count == 0)
+                {
+                    User admin = new User();
+                    admin.Code = "admin";
+                    admin.Name = "超级用户";
+                    admin.Password = "qwer1234";
+                    admin.Admin = "X";
+                    admin.Save();
+                }
+            }
+            catch (Exception e)
+            {
+                string message = "取得数据库联接出错！原因如下：" + Environment.NewLine + e.Message;
+                throw new Exception(message, e);
             }
         }
 

@@ -479,7 +479,7 @@ namespace Haimen.GUI
                 att.FileType = fi.Extension;
                 att.Save();
 
-                FTPClient ftp = CustomerINI.GetFTPClient();
+                FTPClient ftp = INICustomer.GetFTPClient();
                 ftp.fileUpload(fi, @"\", att.ID.ToString() + fi.Extension);
 
                 m_contract.AttachList.Add(att);
@@ -497,7 +497,7 @@ namespace Haimen.GUI
                 long id = long.Parse(temp[0]);
                 Attach att = Attach.CreateByID(id);
 
-                FTPClient ftp = CustomerINI.GetFTPClient();
+                FTPClient ftp = INICustomer.GetFTPClient();
                 ftp.fileDelete(@"\", att.FileName);
 
                 att.Destory();
@@ -515,7 +515,7 @@ namespace Haimen.GUI
                 long id = long.Parse(temp[0]);
                 Attach att = Attach.CreateByID(id);
 
-                FTPClient ftp = CustomerINI.GetFTPClient();
+                FTPClient ftp = INICustomer.GetFTPClient();
                 string tempPath = Path.GetTempPath();
                 if (ftp.fileDownload(tempPath, att.FileName, @"\", att.ID.ToString() + att.FileType))
                 {

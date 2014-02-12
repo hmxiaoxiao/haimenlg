@@ -22,16 +22,16 @@ namespace Haimen.DBConfig
 
         private void DevDBConfig_Load(object sender, EventArgs e)
         {
-            CustomerINI.SetFormSkin();
+            INICustomer.SetFormSkin();
 
-            txtHost.Text = CustomerINI.GetDBConfigValue(INIDBKeyEnum.Host);
-            txtDB.Text = CustomerINI.GetDBConfigValue(INIDBKeyEnum.DB);
-            txtUser.Text = CustomerINI.GetDBConfigValue(INIDBKeyEnum.User);
-            txtPassword.Text = CustomerINI.GetDBConfigValue(INIDBKeyEnum.Password);
+            txtHost.Text = INICustomer.GetDBConfigValue(INIDBKeyEnum.Host);
+            txtDB.Text = INICustomer.GetDBConfigValue(INIDBKeyEnum.DB);
+            txtUser.Text = INICustomer.GetDBConfigValue(INIDBKeyEnum.User);
+            txtPassword.Text = INICustomer.GetDBConfigValue(INIDBKeyEnum.Password);
 
-            txtFTPURL.Text = CustomerINI.GetFTPConfigValue(INIFTPKeyEnum.Host);
-            txtFTPName.Text = CustomerINI.GetFTPConfigValue(INIFTPKeyEnum.User);
-            txtFTPPassword.Text = CustomerINI.GetFTPConfigValue(INIFTPKeyEnum.Password);
+            txtFTPURL.Text = INICustomer.GetFTPConfigValue(INIFTPKeyEnum.Host);
+            txtFTPName.Text = INICustomer.GetFTPConfigValue(INIFTPKeyEnum.User);
+            txtFTPPassword.Text = INICustomer.GetFTPConfigValue(INIFTPKeyEnum.Password);
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -54,8 +54,8 @@ namespace Haimen.DBConfig
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CustomerINI.WriteDBConfig(txtHost.Text, txtDB.Text, txtUser.Text, txtPassword.Text);
-            CustomerINI.WriteFTPConfig(txtFTPURL.Text, txtFTPName.Text, txtFTPPassword.Text);
+            INICustomer.WriteDBConfig(txtHost.Text, txtDB.Text, txtUser.Text, txtPassword.Text);
+            INICustomer.WriteFTPConfig(txtFTPURL.Text, txtFTPName.Text, txtFTPPassword.Text);
             MessageBox.Show("参数设置保存成功！", "注意");
         }
 

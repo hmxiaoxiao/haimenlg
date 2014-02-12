@@ -70,7 +70,6 @@
     <StartupObject>Haimen.DBConfig.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="C1.Win.C1Input.4, Version=4.0.20131.33296, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.BonusSkins.v13.1" />
     <Reference Include="DevExpress.Data.v13.1" />
     <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -102,7 +101,6 @@
     <EmbeddedResource Include="DevDBConfig.resx">
       <DependentUpon>DevDBConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

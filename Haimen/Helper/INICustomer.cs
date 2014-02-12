@@ -1,20 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Haimen.Entity;
 
 namespace Haimen.Helper
 {
-    public static class  CustomerINI
+    /// <summary>
+    /// 自定义配置文件
+    /// 含配置文件中的皮肤，数据库，FTP的读取与写入
+    /// </summary>
+    public static class  INICustomer
     {
-        private static INIFile m_ini;
-        private static FTPClient m_ftp;
+        private static INIBaseOper m_ini;       // INI配置文件的文件名
+        private static FTPClient m_ftp;     // FTP的配置
 
-        static CustomerINI()
+        // 构造函数，对配置文件进行初始化
+        static INICustomer()
         {
-            m_ini = new INIFile(GlobalSet.INIFile);
+            m_ini = new INIBaseOper(GlobalSet.INIFile);
         }
 
         /// <summary>
@@ -32,7 +36,10 @@ namespace Haimen.Helper
         /// <returns>皮肤名称</returns>
         public static string ReadSkinName()
         {
-            return m_ini.IniReadValue("skin", "name");
+            if (!m_ini.ExistINIFile())
+                return "";
+            else
+                return m_ini.IniReadValue("skin", "name");
         }
 
         /// <summary>
@@ -40,6 +47,7 @@ namespace Haimen.Helper
         /// </summary>
         public static void SetFormSkin()
         {
+            // TODO: 这个方法放在里面不太好
             string skin_name = ReadSkinName();
             if (!(skin_name == null || skin_name == ""))
                 DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle(skin_name);
@@ -63,14 +71,18 @@ namespace Haimen.Helper
         /// <summary>
         /// 根据配置文件生成数据库的联接字符串
         /// </summary>
-        /// <returns>数据库的联接字符串</returns>
+        /// <returns>数据库的联接字符串，如果字符串为空的话，就说明取值出问题了</returns>
         public static string GetConnectionString()
         {
-            string host = m_ini.IniReadValue("connection", "host");
-            string db = m_ini.IniReadValue("connection", "db");
-            string user = m_ini.IniReadValue("connection", "user");
-            string password = m_ini.IniReadValue("connection", "password");
-            string connStr = @"Data Source=" + host + ";Initial Catalog=" + db + ";User ID=" + user + ";Password=" + password;
+            if (!m_ini.ExistINIFile())
+            {
+                throw new HelperException("配置文件config.ini不存在，无法取得数据库联接参数！");
+            }
+            string host = GetDBConfigValue(INIDBKeyEnum.Host);
+            string db = GetDBConfigValue(INIDBKeyEnum.DB);
+            string user = GetDBConfigValue(INIDBKeyEnum.User);
+            string password = GetDBConfigValue(INIDBKeyEnum.Password);
+            string connStr = String.Format(@"Data Source={0};Initial Catalog={1};User ID={2};Password={3}", host, db, user, password);
             return connStr;
         }
 
@@ -94,13 +106,25 @@ namespace Haimen.Helper
         /// <returns>已经配置好的FTPClient类</returns>
         public static FTPClient GetFTPClient()
         {
-            if (m_ftp == null)
+            if (!m_ini.ExistINIFile())
             {
-                m_ftp = new FTPClient(m_ini.IniReadValue("FTP", "host"),
-                                      m_ini.IniReadValue("FTP", "user"),
-                                      m_ini.IniReadValue("FTP", "password"));
+                throw new HelperException("配置文件config.ini不存在，无法取得FTP的配置。");
             }
-            return m_ftp;
+
+            try
+            {
+                if (m_ftp == null)
+                {
+                    m_ftp = new FTPClient(GetFTPConfigValue(INIFTPKeyEnum.Host),
+                                          GetFTPConfigValue(INIFTPKeyEnum.User),
+                                          GetFTPConfigValue(INIFTPKeyEnum.Password));
+                }
+                return m_ftp;
+            }
+            catch (Exception e)
+            {
+                throw new HelperException("创建FTP出错");
+            }
         }
 
         /// <summary>
@@ -110,6 +134,12 @@ namespace Haimen.Helper
         /// <returns>值</returns>
         public static string GetDBConfigValue(INIDBKeyEnum key)
         {
+            // 判断INI是否存在
+            if (!m_ini.ExistINIFile())
+            {
+                return "";
+            }
+
             string val = "";
             switch (key)
             {
@@ -136,6 +166,11 @@ namespace Haimen.Helper
         /// <returns>值</returns>
         public static string GetFTPConfigValue(INIFTPKeyEnum key)
         {
+            if (!m_ini.ExistINIFile())
+            {
+                return "";
+            }
+
             string val = "";
             switch (key)
             {
@@ -152,4 +187,6 @@ namespace Haimen.Helper
             return val;
         }
     }
+
+
 }

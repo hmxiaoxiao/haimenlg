@@ -21,18 +21,37 @@ namespace Haimen.Qy
             }
         }
 
+        /// <summary>
+        /// 取得数据库联接
+        /// </summary>
+        /// <returns>一个数据库的联接</returns>
         private static SqlConnection getConnection()
         {
-            string connStr = CustomerINI.GetConnectionString();
-                //@"Data Source=R400;Initial Catalog=haimen;User ID=sa;Password=heroes22";
-            if (m_conn == null)
+            try
             {
-                m_conn = new SqlConnection(connStr);
-                m_conn.Open();
+                if (m_conn == null)
+                {
+                    string connStr = INICustomer.GetConnectionString();
+                    m_conn = new SqlConnection(connStr);
+                    m_conn.Open();
+                }
+                return m_conn;
             }
-            return m_conn;
+            catch (HelperException)
+            {
+                throw;
+            }
+            catch (Exception e)
+            {
+                string message = "取得数据库联接出错！原因如下：" + Environment.NewLine + e.Message;
+                throw new Exception(message, e);
+            }
         }
 
+        /// <summary>
+        /// 开始一个事务
+        /// </summary>
+        /// <returns></returns>
         public SqlTransaction BeginTrans()
         {
             return Connection.BeginTransaction();

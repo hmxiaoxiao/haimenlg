@@ -30,22 +30,35 @@ namespace Haimen
             Application.SetCompatibleTextRenderingDefault(false);
 
             //////初始化用户, 第一次使用时，没有用户时增加用户。
-            //User.Init();
-
-            // 显示登录窗口
-            DevLogin win = new DevLogin();
-            win.ShowDialog();
-
-            //DevAccess bank = new DevAccess();
-            //bank.ShowDialog();
-            //CustomerINI.WriteDBConfig("r400", "haimen", "sa", "heroes22");
-
-            //GlobalSet.Current_User = User.Login("yangxd", "heroes22");
-            //GlobalSet.Current_User = User.Login("admin", "qwer1234");
-            if (GlobalSet.Current_User != null)
+            try
             {
-                Application.Run(new DevMain());
+                User.Init();
+
+#if DEBUG
+                GlobalSet.Current_User = User.Login("yangxd", "heroes22");
+                GlobalSet.Current_User = User.Login("admin", "qwer1234");
+#else
+                // 显示登录窗口
+                DevLogin win = new DevLogin();
+                win.ShowDialog();
+#endif
+
+
+                //DevAccess bank = new DevAccess();
+                //bank.ShowDialog();
+                //CustomerINI.WriteDBConfig("r400", "haimen", "sa", "heroes22");
+
+                if (GlobalSet.Current_User != null)
+                {
+                    Application.Run(new DevMain());
+                }
             }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message + Environment.NewLine + e.ToString(), "错误");
+            }
+
+
         }
     }
 }

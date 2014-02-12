@@ -75,7 +75,7 @@ namespace Haimen.GUI
             rbSkins.Gallery.ImageSize = new Size(24, 24);
 
             // 设置皮肤
-            CustomerINI.SetFormSkin();
+            INICustomer.SetFormSkin();
 
             // 根据权限显示可以访问的菜单
             SetAccess();
@@ -160,7 +160,7 @@ namespace Haimen.GUI
         // 选择皮肤的同时，将选择的皮肤记录到文件里，以便下一次使用。
         private void rbSkins_GalleryItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
-            CustomerINI.WriteSkinName(e.Item.Caption);
+            INICustomer.WriteSkinName(e.Item.Caption);
         }
 
         // 打开银行

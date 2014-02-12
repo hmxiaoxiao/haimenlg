@@ -7,8 +7,16 @@ using System.Text.RegularExpressions;
 
 namespace Haimen.Helper
 {
+    /// <summary>
+    /// 常用的函数放在这里
+    /// </summary>
     public class Helper
     {
+        /// <summary>
+        /// 将数字转换为货币大写
+        /// </summary>
+        /// <param name="x">货币</param>
+        /// <returns>大写的货币</returns>
         public static string ConvertToChinese(double x)
         {
             string s = x.ToString("#L#E#D#C#K#E#D#C#J#E#D#C#I#E#D#C#H#E#D#C#G#E#D#C#F#E#D#C#.0B0A");
@@ -19,12 +27,18 @@ namespace Haimen.Helper
             return v;
         }
 
-        public static string DateDiff(DateTime DateTime1, DateTime DateTime2)
+        /// <summary>
+        /// 取得二个时间的差值
+        /// </summary>
+        /// <param name="dtBegin">开始时间</param>
+        /// <param name="dtEnd">结束时间</param>
+        /// <returns>二个时间的跨度，用中文表示</returns>
+        public static string DateDiff(DateTime dtBegin, DateTime dtEnd)
         {
             string dateDiff = null;
-            TimeSpan ts1 = new TimeSpan(DateTime1.Ticks);
-            TimeSpan ts2 = new TimeSpan(DateTime2.Ticks);
-            TimeSpan ts = ts1.Subtract(ts2).Duration();
+            TimeSpan tsBegin = new TimeSpan(dtBegin.Ticks);
+            TimeSpan tsEnd = new TimeSpan(dtEnd.Ticks);
+            TimeSpan ts = tsBegin.Subtract(tsEnd).Duration();
             dateDiff = ts.Days.ToString() + "天" + ts.Hours.ToString() + "小时" + ts.Minutes.ToString() + "分钟" + ts.Seconds.ToString() + "秒" + ts.Milliseconds.ToString() + "毫秒";
             return dateDiff;
         }

@@ -67,7 +67,7 @@ namespace Haimen.GUI
             lueCode.Properties.DisplayMember = "Code";
 
             // 设置皮肤
-            CustomerINI.SetFormSkin();
+            INICustomer.SetFormSkin();
 
             // 设置标题
             this.Text = GlobalSet.SystemName;

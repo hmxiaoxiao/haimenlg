@@ -22,14 +22,14 @@ namespace Haimen.Entity
         public static String SystemName { get; set; }
 
         /// <summary>
-        /// 系统配置文件的名称
+        /// 取得系统配置文件的路径，文件名默认为config.ini
+        /// 在可运行文件的同一个目录下
         /// </summary>
         public static string INIFile 
         { 
             get 
             {
-                string path = System.Environment.CurrentDirectory;
-                return Path.Combine(path, "config.ini");
+                return Path.Combine(System.Environment.CurrentDirectory, "config.ini");
             } 
         }
     }
