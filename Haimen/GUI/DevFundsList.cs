@@ -161,7 +161,7 @@ namespace Haimen.GUI
 
             long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID").ToString());
             Funds fd = Funds.CreateByID(id);
-            if (!fd.CanDelete(id))
+            if (!fd.DeleteVerify())
             {
                 MessageBox.Show(fd.ErrorString, "注意");
                 return;

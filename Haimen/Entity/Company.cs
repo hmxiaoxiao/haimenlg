@@ -40,19 +40,23 @@ namespace Haimen.Entity
         public long ParentID { get; set; }
 
 
-        public bool CanDelete(long id)
+        /// <summary>
+        /// 删除校验
+        /// </summary>
+        /// <returns></returns>
+        public override bool DeleteVerify()
         {
             Error_Info.Clear();
-            if (CompanyDetail.Query("parent_id = " + id.ToString()).Count > 0)
+            if (CompanyDetail.Query("parent_id = " + ID.ToString()).Count > 0)
             {
                 Error_Info.Add(new KeyValuePair<string, string>("删除单位", "该单位已经被单位明细引用，不能删除"));
                 return false;
             }
 
-            if (Contract.Query("out_company_id = " + id.ToString()).Count > 0 ||
-                Contract.Query("in_company_id = " + id.ToString()).Count > 0 ||
-                Contract.Query("partya = " + id.ToString()).Count > 0 ||
-                Contract.Query("partyb = " + id.ToString()).Count > 0)
+            if (Contract.Query("out_company_id = " + ID.ToString()).Count > 0 ||
+                Contract.Query("in_company_id = " + ID.ToString()).Count > 0 ||
+                Contract.Query("partya = " + ID.ToString()).Count > 0 ||
+                Contract.Query("partyb = " + ID.ToString()).Count > 0)
             {
                 Error_Info.Add(new KeyValuePair<string, string>("删除单位", "该单位已经被合同引用，不能删除"));
                 return false;

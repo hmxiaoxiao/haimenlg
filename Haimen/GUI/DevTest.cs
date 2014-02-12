@@ -27,8 +27,8 @@ namespace Haimen.GUI
 
         private void DevTest_Load(object sender, EventArgs e)
         {
-            DataSet ds = Funds.GetLevel_NoUsed();
-            gridControl1.DataSource = ds.Tables[0];
+            //DataSet ds = Funds.GetLevel_NoUsed();
+            //gridControl1.DataSource = ds.Tables[0];
         }
     }
 }

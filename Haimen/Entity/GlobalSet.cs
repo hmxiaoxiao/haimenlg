@@ -7,7 +7,10 @@ using System.IO;
 
 namespace Haimen.Entity
 {
-    // 全局变量的类，可以理解为全局的设置
+    /// <summary>
+    /// 全局变量的类,整个系统的基本,全局的,不变的值在这里处理
+    /// </summary>
+ 
     public static class GlobalSet
     {
         /// <summary>

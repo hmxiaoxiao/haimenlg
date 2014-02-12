@@ -8,6 +8,9 @@ using System.Data.SqlClient;
 
 namespace Haimen.Entity
 {
+    /// <summary>
+    /// 单位银行帐户实体类
+    /// </summary>
     [Table("m_company_detail")]
     public class CompanyDetail : SingleEntity<CompanyDetail>
     {

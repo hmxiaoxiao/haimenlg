@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Haimen.DB;
+using System.Data.SqlClient;
 
 namespace Haimen.Entity
 {
@@ -52,16 +53,16 @@ namespace Haimen.Entity
         // 取得下属银行
         public static List<Bank> GetChildren(int id)
         {
-            List<Bank> list = Bank.Query("parent_id = " + id.ToString());
+            List<Bank> list = Bank.Query("parent_id = " + id);
             return list;
         }
 
 
         // 判断银行是否可以删除
-        public bool CanDelete(long id)
+        public override bool DeleteVerify()
         {
             Error_Info.Clear();
-            if (CompanyDetail.Query("bank_id = " + id.ToString()).Count > 0)
+            if (CompanyDetail.Query("bank_id = " + ID).Count > 0)
             {
                 Error_Info.Add(new KeyValuePair<string,string>("删除银行", "该银行已经被单位明细引用，无法删除！"));
                 return false;
@@ -88,9 +89,9 @@ namespace Haimen.Entity
             else
             {
                 if (ID == 0)
-                    list = Bank.Query("code = '" + Code + "'");
+                    list = Bank.Query(String.Format("code = '{0}'", Code));
                 else
-                    list = Bank.Query("code = '" + Code + "' and id <> " + ID.ToString());
+                    list = Bank.Query(String.Format("code = '{0}' and id <> {1}", Code, ID));
                 if (list.Count > 0)
                     code_errinfo += "您输入的代码已经存在" + Environment.NewLine;
             }
@@ -106,9 +107,9 @@ namespace Haimen.Entity
             else
             {
                 if (ID == 0)
-                    list = Bank.Query("name = '" + Name + "'");
+                    list = Bank.Query(String.Format("name = '{0}'", Name));
                 else
-                    list = Bank.Query("name = '" + Name + "' and id <> " + ID.ToString());
+                    list = Bank.Query(String.Format("name = '{0}' and id <> {1}", Name, ID));
                 if (list.Count > 0)
                     code_errinfo += "您输入的名称已经存在" + Environment.NewLine;
             }
@@ -150,13 +151,26 @@ namespace Haimen.Entity
                 return false;
             }
 
-            string sql = " Update m_company_detail set bank_id = " + new_id.ToString() + " where bank_id = " + old_id.ToString();
-            Haimen.DB.DBConnection.RunQuerySql(sql);
+            SqlTransaction trans = null;
+            try
+            {
+                trans = DBConnection.BeginTrans();
+                string sql = String.Format(" Update m_company_detail set bank_id = {0} where bank_id = {1}", new_id, old_id);
+                Haimen.DB.DBConnection.RunQuerySql(sql);
 
-            sql = " Delete m_bank where id = " + old_id.ToString();
-            Haimen.DB.DBConnection.RunQuerySql(sql);
+                sql = " Delete m_bank where id = " + old_id.ToString();
+                Haimen.DB.DBConnection.RunQuerySql(sql);
+                trans.Commit();
+                return true;
+            }
+            catch (Exception e)
+            {
+                if (trans != null)
+                    trans.Rollback();
 
-            return true;
+                string msg = string.Format("在合并银行时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
         }
 
     }

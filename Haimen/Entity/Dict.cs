@@ -1,30 +1,35 @@
 ﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-using Haimen.DB;
 
 namespace Haimen.Entity
 {
-    // 字典表，用来显示状态
+    // TODO 这个类是否可以用Directory替换？
+    /// <summary>
+    ///  字典表，用来显示状态
+    /// </summary>
     public class Dict
     {
         public Dict()
         {
         }
 
-        public Dict(string name, long value)
+        public Dict(string key, long value)
         {
-            Name = name;
-            ValueInt = value;
+            key = key;
+            Value = value;
         }
 
-        // 状态名称
-        public string Name { get; set; }
+        /// <summary>
+        /// 字典键值
+        /// </summary>
+        public string Key { get; set; }
 
-        // 状态值 
-        public long ValueInt { get; set; }
+        /// <summary>
+        /// 值
+        /// </summary>
+        public long Value { get; set; }
     }
 
 }

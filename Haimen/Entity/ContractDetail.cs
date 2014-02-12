@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Haimen.DB;
 
 namespace Haimen.Entity
 {
+    // 合同明细
     [Table("t_contract_detail")]
     public class ContractDetail : SingleEntity<ContractDetail>
     {

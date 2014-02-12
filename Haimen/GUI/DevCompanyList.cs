@@ -77,7 +77,7 @@ namespace Haimen.GUI
 
             long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
             Company c = Company.CreateByID(id);
-            if (!c.CanDelete(id))
+            if (!c.DeleteVerify())
             {
                 MessageBox.Show(c.ErrorString, "注意");
                 return;

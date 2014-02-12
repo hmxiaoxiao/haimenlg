@@ -271,7 +271,7 @@ namespace Haimen.GUI
 
             long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, col_id).ToString());
             Bank bk = Bank.CreateByID(id);
-            if (!bk.CanDelete(id))  // 如果该银行不能被删除
+            if (!bk.DeleteVerify())  // 如果该银行不能被删除
             {
                 MessageBox.Show(bk.ErrorString, "注意");
                 return;

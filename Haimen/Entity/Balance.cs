@@ -69,10 +69,9 @@ namespace Haimen.Entity
         /// </summary>
         public void CheckPass()
         {
-                // 改标志为已审核
-                this.Status = (long)BalanceStatusEnum.审核通过;   
-                this.Save();        // 保存审核标记
-
+            // 改标志为已审核
+            this.Status = (long)BalanceStatusEnum.审核通过;
+            this.Save();        // 保存审核标记
         }
 
         public override bool SaveVerify()

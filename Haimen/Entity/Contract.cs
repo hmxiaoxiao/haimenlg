@@ -9,6 +9,9 @@ using System.Data.SqlClient;
 
 namespace Haimen.Entity
 {
+    /// <summary>
+    /// 合同实体类
+    /// </summary>
     [Table("t_contract")]
     public class Contract : ComplexEntity<Contract, ContractDetail>
     {

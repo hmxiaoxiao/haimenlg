@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Haimen.DB;
 
@@ -13,10 +12,16 @@ namespace Haimen.Entity
     [Table("t_contract_apply")]
     public class ContractApply : SingleEntity<ContractApply>
     {
+        /// <summary>
+        /// 申请日期
+        /// </summary>
         [Field("apply_date")]
         public DateTime ApplyDate { get; set; }
 
         
+        /// <summary>
+        /// 合同ID
+        /// </summary>
         private long m_contract_id;
         [Field("contract_id")]
         public long ContractID 
@@ -31,6 +36,7 @@ namespace Haimen.Entity
                 m_contract = Contract.CreateByID(m_contract_id);
             }
         }
+
         private Contract m_contract;
         public Contract Contract
         {
@@ -42,6 +48,9 @@ namespace Haimen.Entity
             }
         }
 
+        /// <summary>
+        /// 合同名,因为有时绑定合同后不能显示
+        /// </summary>
         public string ContractName
         {
             get
@@ -50,15 +59,28 @@ namespace Haimen.Entity
             }
         }
 
+        /// <summary>
+        /// 申请金额
+        /// </summary>
         [Field("money")]
         public decimal Money { get; set; }
 
+        /// <summary>
+        /// 备注
+        /// </summary>
         [Field("memo")]
         public string Memo { get; set; }
 
+
+        /// <summary>
+        /// 状态，值请参考ContractApplyStatusEnum
+        /// </summary>
         [Field("status")]
         public long Status { get; set; }
 
+        /// <summary>
+        /// 状态列表
+        /// </summary>
         public static List<Dict> ApplyStatus
         {
             get
@@ -97,7 +119,7 @@ namespace Haimen.Entity
         }
 
         /// <summary>
-        /// 取得指定合同的所以已申请的金额（之和）
+        /// 取得指定合同的所有已申请的金额（之和）
         /// </summary>
         /// <param name="contract_id">合同ID</param>
         /// <returns></returns>

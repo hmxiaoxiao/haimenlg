@@ -262,7 +262,7 @@ namespace Haimen.GUI
         {
             if (m_company.ID > 0)
             {
-                if (!m_company.CanDelete(m_company.ID))
+                if (!m_company.DeleteVerify())
                 {
                     MessageBox.Show(m_company.ErrorString, "注意");
                     return;

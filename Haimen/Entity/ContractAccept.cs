@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Haimen.DB;
 using System.Data.SqlClient;
@@ -31,21 +30,44 @@ namespace Haimen.Entity
             }
         }
 
+        /// <summary>
+        /// 验收单位
+        /// </summary>
         [Field("accept_unit")]
         public string AcceptUnit { get; set; }
 
+
+        /// <summary>
+        /// 验收日期
+        /// </summary>
         [Field("accept_date")]
         public DateTime AcceptDate { get; set; }
 
+
+        /// <summary>
+        /// 通过??
+        /// </summary>
         [Field("pass")]
         public long Pass { get; set; }
 
+
+        /// <summary>
+        /// 金额
+        /// </summary>
         [Field("money")]
         public decimal Money { get; set; }
 
+
+        /// <summary>
+        /// 备注
+        /// </summary>
         [Field("Memo")]
         public string Memo { get; set; }
 
+
+        /// <summary>
+        /// 状态
+        /// </summary>
         [Field("status")]
         public long Status { get; set; }
 
@@ -69,30 +91,84 @@ namespace Haimen.Entity
             return Error_Info.Count == 0;
         }
 
+
+        /// <summary>
+        /// 新增时,更新合同的状态
+        /// </summary>
+        /// <returns></returns>
         public override bool Insert()
         {
-            //  更新状态
-            Contract c = Contract.CreateByID(this.ContractID);
-            if (Pass > 0)
-                c.Status = (long)Contract.ContractStatusEnum.已验收;
-            else
-                c.Status = (long)Contract.ContractStatusEnum.验收未通过;
-            c.Save();
+            SqlTransaction trans = null;
+            try
+            {
+                trans = DBConnection.BeginTrans();
+                //  更新状态
+                Contract c = Contract.CreateByID(this.ContractID);
+                if (Pass > 0)
+                    c.Status = (long)Contract.ContractStatusEnum.已验收;
+                else
+                    c.Status = (long)Contract.ContractStatusEnum.验收未通过;
+                c.Save();
 
-            return base.Insert();
+                if (base.Insert())
+                {
+                    trans.Commit();
+                    return true;
+                }
+                else
+                {
+                    trans.Rollback();
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                if (trans != null)
+                    trans.Rollback();
+
+                string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
         }
 
+        /// <summary>
+        /// 更新时，同样更新合同的状态
+        /// </summary>
+        /// <returns></returns>
         public override bool Update()
         {
-            //  更新状态
-            Contract c = Contract.CreateByID(this.ContractID);
-            if (Pass > 0)
-                c.Status = (long)Contract.ContractStatusEnum.已验收;
-            else
-                c.Status = (long)Contract.ContractStatusEnum.验收未通过;
-            c.Save();
+            SqlTransaction trans = null;
+            try
+            {
+                trans = DBConnection.BeginTrans();
+                //  更新状态
+                Contract c = Contract.CreateByID(this.ContractID);
+                if (Pass > 0)
+                    c.Status = (long)Contract.ContractStatusEnum.已验收;
+                else
+                    c.Status = (long)Contract.ContractStatusEnum.验收未通过;
+                c.Save();
 
-            return base.Update();
+
+                if (base.Update())
+                {
+                    trans.Commit();
+                    return true;
+                }
+                else
+                {
+                    trans.Rollback();
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                if (trans != null)
+                    trans.Rollback();
+
+                string msg = string.Format("在更新数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
         }
 
         private static List<Dict> m_accept_status;
