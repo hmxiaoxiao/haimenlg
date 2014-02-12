@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using Haimen.Helper;
 using System.Data;
 
-namespace Haimen.Qy
+namespace Haimen.DB
 {
     public class DBFunction
     {

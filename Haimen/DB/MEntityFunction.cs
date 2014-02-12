@@ -8,9 +8,7 @@ using System.Reflection;
 using System.Data.SqlClient;
 using System.Transactions;
 
-using Haimen.Qy;
-
-namespace Haimen.Qy
+namespace Haimen.DB
 {
     [Serializable]
     public class MEntityFunction<T> where T : new()

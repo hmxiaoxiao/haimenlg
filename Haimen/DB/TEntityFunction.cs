@@ -10,7 +10,7 @@ using System.Data;
 
 using Haimen.Entity;
 
-namespace Haimen.Qy
+namespace Haimen.DB
 {
     // T为主表类型，U为明细类型
     public class TEntityFunction<T, U> : MEntityFunction<T>

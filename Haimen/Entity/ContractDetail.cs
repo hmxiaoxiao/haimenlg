@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Haimen.Qy;
+using Haimen.DB;
 
 namespace Haimen.Entity
 {

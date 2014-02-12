@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-using Haimen.Qy;
+using Haimen.DB;
 using System.Data.SqlClient;
 using Haimen.Report;
 using DevExpress.XtraReports.UI;

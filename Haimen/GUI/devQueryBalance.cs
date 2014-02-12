@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-using Haimen.Qy;
+using Haimen.DB;
 using DevExpress.XtraPrinting;
 
 namespace Haimen.GUI

@@ -7,7 +7,7 @@ using System.Data;
 using System.Security.Cryptography;
 
 
-using Haimen.Qy;
+using Haimen.DB;
 
 namespace Haimen.Entity
 {

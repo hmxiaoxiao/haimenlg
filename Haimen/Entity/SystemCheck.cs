@@ -6,7 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 
-using Haimen.Qy;
+using Haimen.DB;
 
 namespace Haimen.Entity
 {

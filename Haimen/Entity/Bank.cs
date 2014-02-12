@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Haimen.Qy;
+using Haimen.DB;
 
 namespace Haimen.Entity
 {
@@ -151,10 +151,10 @@ namespace Haimen.Entity
             }
 
             string sql = " Update m_company_detail set bank_id = " + new_id.ToString() + " where bank_id = " + old_id.ToString();
-            Haimen.Qy.DBFunction.RunQuerySql(sql);
+            Haimen.DB.DBFunction.RunQuerySql(sql);
 
             sql = " Delete m_bank where id = " + old_id.ToString();
-            Haimen.Qy.DBFunction.RunQuerySql(sql);
+            Haimen.DB.DBFunction.RunQuerySql(sql);
 
             return true;
         }

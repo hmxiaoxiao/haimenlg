@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Haimen.Helper;
-using Haimen.Qy;
+using Haimen.DB;
 
 namespace Haimen.Entity
 {

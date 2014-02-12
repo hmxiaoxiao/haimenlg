@@ -432,16 +432,16 @@
     <Compile Include="GUI\DevUserList.Designer.cs">
       <DependentUpon>DevUserList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Qy\DataSet2List.cs" />
-    <Compile Include="Qy\Field.cs" />
+    <Compile Include="DB\DataSet2List.cs" />
+    <Compile Include="DB\Field.cs" />
     <Compile Include="Entity\GlobalSet.cs" />
-    <Compile Include="Qy\Table.cs" />
+    <Compile Include="DB\Table.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Qy\DBFunction.cs" />
-    <Compile Include="Qy\MEntityFunction.cs" />
-    <Compile Include="Qy\TEntityFunction.cs" />
+    <Compile Include="DB\DBFunction.cs" />
+    <Compile Include="DB\MEntityFunction.cs" />
+    <Compile Include="DB\TEntityFunction.cs" />
     <Compile Include="Report\rptAccount.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -121,7 +121,7 @@ namespace Haimen.Helper
                 }
                 return m_ftp;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new HelperException("创建FTP出错");
             }
