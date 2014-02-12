@@ -29,7 +29,7 @@ namespace Haimen.GUI
         private void btnVerify_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             SystemCheck sc = new SystemCheck();
-            int eff_row = sc.ModifyData();
+            int eff_row = sc.AutoUpdateData();
             if (eff_row > 0)
                 MessageBox.Show("更新数据成功!");
             else

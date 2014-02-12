@@ -331,7 +331,7 @@ namespace Haimen.GUI
         {
             Form2Object();
             dxErrorProvider1.ClearErrors();
-            m_contract.Verify();
+            m_contract.SaveVerify();
             foreach (KeyValuePair<string, string> kv in m_contract.Error_Info)
             {
                 switch (kv.Key)
@@ -579,7 +579,7 @@ namespace Haimen.GUI
             apply.Memo = txtApplyMemo.Text;
 
             // 判断是否通过校验
-            if (!apply.Verify())
+            if (!apply.SaveVerify())
             {
                 dxErrorProvider1.ClearErrors();
                 dxErrorProvider1.SetError(calcApplyMoney, apply.ErrorString);

@@ -73,7 +73,7 @@ namespace Haimen.Entity
         /// 校验
         /// </summary>
         /// <returns></returns>
-        public override bool Verify()
+        public override bool SaveVerify()
         {
             // 清空以前的错误信息
             Error_Info.Clear();

@@ -168,6 +168,7 @@
     <Compile Include="Entity\ContractApply.cs" />
     <Compile Include="Entity\ContractDetail.cs" />
     <Compile Include="Entity\Dict.cs" />
+    <Compile Include="Entity\EntityException.cs" />
     <Compile Include="Entity\Funds.cs" />
     <Compile Include="Entity\Project.cs" />
     <Compile Include="Entity\SystemCheck.cs" />

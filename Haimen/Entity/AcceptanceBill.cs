@@ -104,7 +104,7 @@ namespace Haimen.Entity
         /// 承兑汇票的校验
         /// </summary>
         /// <returns></returns>
-        public override bool Verify()
+        public override bool SaveVerify()
         {
             Error_Info.Clear();
 

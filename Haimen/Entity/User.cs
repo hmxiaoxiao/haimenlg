@@ -2,37 +2,59 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data;
 
 using System.Security.Cryptography;
-
-
 using Haimen.DB;
-using System.Data.SqlClient;
 
 
 namespace Haimen.Entity
 {
-    // 用户类
+    /// <summary>
+    ///  用户类
+    /// </summary>
     [Table("m_user")]
     public class User : SingleEntity<User>
     {
+        /// <summary>
+        /// 用户代码 
+        /// </summary>
         [Field("code")]
         public string Code { get; set; }
 
+
+        /// <summary>
+        /// 用户名称 
+        /// </summary>
         [Field("name")]
         public string Name { get; set; }
 
+
+        /// <summary>
+        /// 密码的混淆码
+        /// </summary>
         [Field("salt")]
         public string Salt { get; set; }
 
+
+        /// <summary>
+        /// 是否超级用户, 'X'是超级用户(大写)
+        /// </summary>
         [Field("admin")]
         public string Admin { get; set; }
 
+
+        /// <summary>
+        /// 所在的用户组
+        /// </summary>
         [Field("ugroup")]
         public long GroupID { get; set; }
 
+
+        /// <summary>
+        /// 用户密码
+        /// </summary>
         public string Password { get; set; }
+
 
         // 用户初始化
         // 第一次使用时，增加一个超级用户
@@ -43,20 +65,17 @@ namespace Haimen.Entity
                 List<User> list = Query();
                 if (list.Count == 0)
                 {
-                    User admin = new User();
-                    admin.Code = "admin";
-                    admin.Name = "超级用户";
-                    admin.Password = "qwer1234";
-                    admin.Admin = "X";
+                    User admin = new User() { Code = "admin", Name = "超级用户", Password = "qwer1234", Admin = "X" };
                     admin.Save();
                 }
             }
             catch (Exception e)
             {
-                string message = "取得数据库联接出错！原因如下：" + Environment.NewLine + e.Message;
+                string message = String.Format("取得数据库信息出错！原因如下：{0}{1}", Environment.NewLine, e.Message);
                 throw new Exception(message, e);
             }
         }
+
 
         // 传入用户的CODE以及密码，判断是否可以登录
         // 这里是唯一不会返回错误原因的地方
@@ -65,7 +84,7 @@ namespace Haimen.Entity
             if (string.IsNullOrEmpty(code))
                 return null;
 
-            List<User> list = User.Query("Code = '" + code + "'"); ;
+            List<User> list = User.Query(String.Format("Code = '{0}'", code)); ;
 
             if (list.Count != 1)
                 return null;
@@ -76,13 +95,22 @@ namespace Haimen.Entity
                 return null;
         }
 
-        // 用户保存前，要将密码混淆
+        
+        /// <summary>
+        /// 用户保存前，要将密码混淆
+        /// </summary>
+        /// <returns>成功与否</returns>
         public override bool Insert()
         {
             Salt = User.getMd5Hash(Code, Password);
             return base.Insert();
         }
 
+
+        /// <summary>
+        /// 用户更新前，要将密码混淆
+        /// </summary>
+        /// <returns>成功与否</returns>
         public override bool Update()
         {
             if (!string.IsNullOrEmpty(Password))
@@ -91,7 +119,7 @@ namespace Haimen.Entity
         }
 
         // 校验
-        override public bool Verify()
+        override public bool SaveVerify()
         {
             // 初始化错误信息列表
             Error_Info.Clear();
@@ -108,9 +136,9 @@ namespace Haimen.Entity
             // 判断代码是否重复
             List<User> users;
             if (ID > 0)
-                users = User.Query("Code = '" + Code + "' and id <> " + ID.ToString());
+                users = User.Query(String.Format("Code = '{0}' and id <> {1}", Code, ID));
             else
-                users = User.Query("Code = '" + Code + "'");
+                users = User.Query(String.Format("Code = '{0}'", Code));
             if (users.Count > 0)
             {
                 err = "用户代码已经存在，请重新输入。";
@@ -133,7 +161,7 @@ namespace Haimen.Entity
             MD5 md5Hasher = MD5.Create();
 
             // Convert the input string to a byte array and compute the hash.
-            password = password + "hmxiaoxiao@gmail.com" + password + code;
+            password = String.Format("{0}hmxiaoxiao@gmail.com{0}{1}", password, code);
             byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(password));
 
             // Create a new Stringbuilder to collect the bytes

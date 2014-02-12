@@ -95,7 +95,7 @@ namespace Haimen.GUI
 
         private bool Verify()
         {
-            if (!_detail.Verify())
+            if (!_detail.SaveVerify())
             {
                 MessageBox.Show(_detail.ErrorString, "出错了！", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

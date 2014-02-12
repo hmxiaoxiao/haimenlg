@@ -10,9 +10,15 @@ using Haimen.DB;
 
 namespace Haimen.Entity
 {
-    // 系统检查类
+    /// <summary>
+    /// 系统检查类
+    /// 检查一下余额是否等于初期+收入-支出
+    /// </summary>
     public class SystemCheck
     {
+        /// <summary>
+        /// 检查的SQL语句
+        /// </summary>
         private const string checksql = @"
 select a.id, sum(a.q) as q
 from (
@@ -39,40 +45,75 @@ from (
 group by a.id
 ";
 
+        /// <summary>
+        /// 取得出错的帐号
+        /// </summary>
         private const string errsql = "select id, q from (" + checksql + ") b where b.q <> 0";
 
 
+        /// <summary>
+        /// 取得检查的结果,以DataSet返回
+        /// 对所有的单位的每个帐号都进行了检查。
+        /// </summary>
+        /// <returns></returns>
         public DataSet GetCheckResultData()
         {
-            DataSet ds = new DataSet();
-            SqlCommand cmd = new SqlCommand(checksql, DBConnection.Connection);
+            try
+            {
+                DataSet ds = new DataSet();
+                SqlCommand cmd = new SqlCommand(checksql, DBConnection.Connection);
 
-            SqlDataAdapter da = new SqlDataAdapter(cmd); 
-            da.Fill(ds);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
 
-            return ds;
+                return ds;
+            }
+            catch (Exception e)
+            {
+                string msg = string.Format("检查余额时出现错误，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new EntityException(msg, e);
+            }
         }
 
-        public int ModifyData()
+        /// <summary>
+        /// 自动更新错误的数据
+        /// </summary>
+        /// <returns></returns>
+        public int AutoUpdateData()
         {
-            DataSet ds = new DataSet();
-            SqlCommand cmd = new SqlCommand(errsql, DBConnection.Connection);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-            da.Fill(ds);
-            foreach (DataRow row in ds.Tables[0].Rows)
+            SqlTransaction trans = null;
+            try
             {
-                string id = row["id"].ToString();
-                Decimal money = Decimal.Parse(row["q"].ToString());
-                if (!string.IsNullOrEmpty(id))
-                {
-                    CompanyDetail cd = CompanyDetail.CreateByID(long.Parse(id));
-                    cd.Balance += money;
-                    cd.Save();
-                }
-            }
 
-            return ds.Tables[0].Rows.Count;
+                DataSet ds = new DataSet();
+                SqlCommand cmd = new SqlCommand(errsql, DBConnection.Connection);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                da.Fill(ds);
+                trans = DBConnection.BeginTrans();
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    string id = row["id"].ToString();
+                    Decimal money = Decimal.Parse(row["q"].ToString());
+                    if (!string.IsNullOrEmpty(id))
+                    {
+                        CompanyDetail cd = CompanyDetail.CreateByID(long.Parse(id));
+                        cd.Balance += money;
+                        cd.Save();
+                    }
+                }
+                trans.Commit();
+
+                return ds.Tables[0].Rows.Count;
+            }
+            catch (Exception e)
+            {
+                if (trans != null)
+                    trans.Rollback();
+
+                string msg = string.Format("检查余额时出现错误，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new EntityException(msg, e);
+            }
         }
     }
 }

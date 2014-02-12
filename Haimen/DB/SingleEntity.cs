@@ -84,7 +84,17 @@ namespace Haimen.DB
         /// 注意无论是新增还是修改，都视为保存。
         /// </summary>
         /// <returns>true为成功，若失败，可以在Error_Info中查到</returns>
-        public virtual bool Verify()
+        public virtual bool SaveVerify()
+        {
+            return true;
+        }
+
+
+        /// <summary>
+        /// 删除数据时，检验是否可以删除
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool DeleteVerify()
         {
             return true;
         }

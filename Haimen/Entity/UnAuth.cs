@@ -1,19 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Haimen.DB;
 using System.Data.SqlClient;
 
 namespace Haimen.Entity
 {
+    /// <summary>
+    /// 非授权资金列表
+    /// 授权与非授权的区别在于是否需要审核
+    /// 非授权的票据，是不需要审核的
+    /// </summary>
     [Table("t_unauth")]
     public class UnAuth : SingleEntity<UnAuth>
     {
+        /// <summary>
+        /// 票据号
+        /// </summary>
         [Field("code")]
         public string Code { get; set; }
 
+        /// <summary>
+        /// 发生业务的公司
+        /// </summary>
         [Field("company_id")]
         public long CompanyID { get; set; }
 
@@ -30,6 +40,9 @@ namespace Haimen.Entity
             }
         }
 
+        /// <summary>
+        /// 公司帐号
+        /// </summary>
         [Field("companydetail_id")]
         public long CompanyDetailID { get; set; }
 
@@ -46,23 +59,44 @@ namespace Haimen.Entity
             }
         }
 
-
+        /// <summary>
+        /// 是否收入凭证
+        /// </summary>
         [Field("input")]
         public string Input { get; set; }
 
+
+        /// <summary>
+        /// 是否支出凭证
+        /// </summary>
         [Field("output")]
         public string Output { get; set; }
 
+        /// <summary>
+        /// 发生金额
+        /// </summary>
         [Field("money")]
         public decimal Money { get; set; }
 
+
+        /// <summary>
+        /// 备注
+        /// </summary>
         [Field("memo")]
         public string Memo { get; set; }
 
+        /// <summary>
+        /// 发生日期
+        /// </summary>
         [Field("signed_date")]
         public DateTime SignedDate { get; set; }
 
-        public override bool Verify()
+
+        /// <summary>
+        /// 校验
+        /// </summary>
+        /// <returns></returns>
+        public override bool SaveVerify()
         {
             Error_Info.Clear();
 
@@ -81,42 +115,79 @@ namespace Haimen.Entity
             return Error_Info.Count == 0;
         }
 
-        // 删除时更新余额
+        /// <summary>
+        /// 删除时更新余额
+        /// </summary>
         public override void Destory()
         {
             UnAuth old = UnAuth.CreateByID(ID);
             if (old == null)
                 return;
 
-            CompanyDetail cd = CompanyDetail.CreateByID(old.CompanyDetailID);
-            if (old.Input == "X") // 如果收入，那么删除时余额要减少
-                cd.Balance -= old.Money;
-            else
-                cd.Balance += old.Money;
-            cd.Save();
-            base.Destory();
+            SqlTransaction trans = null;
+            try
+            {
+                trans = DBConnection.BeginTrans();
+                CompanyDetail cd = CompanyDetail.CreateByID(old.CompanyDetailID);
+                if (old.Input == "X") // 如果收入，那么删除时余额要减少
+                    cd.Balance -= old.Money;
+                else
+                    cd.Balance += old.Money;
+                cd.SaveNoTrans();
+                base.DestoryNoTrans();
+                trans.Commit();
+            }
+            catch (Exception e)
+            {
+                if (trans != null)
+                    trans.Rollback();
+
+                string msg = string.Format("删除非授权凭证时出现错误，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new EntityException(msg, e);
+            }
         }
 
-        // 新增时更新余额
+
+        /// <summary>
+        /// 新增时更新余额
+        /// </summary>
         public override bool Insert()
         {
-            if (base.Insert() == true)
+            SqlTransaction trans = null;
+            try
             {
+                trans = DBConnection.BeginTrans();
+
+                if (!base.InsertNoTrans())
+                {
+                    trans.Rollback();
+                    return false;
+                }
+
                 CompanyDetail cd = CompanyDetail.CreateByID(CompanyDetailID);
                 if (Input == "X")
                     cd.Balance += Money;
                 else
                     cd.Balance -= Money;
-                cd.Save();
+                cd.SaveNoTrans();
+                trans.Commit();
+
                 return true;
             }
-            else
+            catch (Exception e)
             {
-                return false;
+                if (trans != null)
+                    trans.Rollback();
+
+                string msg = string.Format("新增非授权凭证时出现错误，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new EntityException(msg, e);
             }
         }
 
-        // 修改时，更新余额
+
+        /// <summary>
+        /// 修改时，更新余额
+        /// </summary>
         public override bool Update()
         {
             UnAuth old = UnAuth.CreateByID(ID);
@@ -137,8 +208,31 @@ namespace Haimen.Entity
             else
                 cd.Balance += old.Money;
 
-            cd.Save();
-            return base.Update();
+            SqlTransaction trans = null;
+            try
+            {
+                trans = DBConnection.BeginTrans();
+                cd.Save();
+
+                if (base.Update())
+                {
+                    trans.Commit();
+                    return true;
+                }
+                else
+                {
+                    trans.Rollback();
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                if (trans != null)
+                    trans.Rollback();
+
+                string msg = string.Format("更新非授权凭证时出现错误，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new EntityException(msg, e);
+            }
         }
     }
 }

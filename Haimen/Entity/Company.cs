@@ -64,7 +64,7 @@ namespace Haimen.Entity
         /// 单位的数据校验
         /// </summary>
         /// <returns></returns>
-        public override bool Verify()
+        public override bool SaveVerify()
         {
             Error_Info.Clear();
             List<Company> list;

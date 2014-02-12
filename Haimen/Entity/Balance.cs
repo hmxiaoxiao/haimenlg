@@ -75,7 +75,7 @@ namespace Haimen.Entity
 
         }
 
-        public override bool Verify()
+        public override bool SaveVerify()
         {
             Error_Info.Clear();
 

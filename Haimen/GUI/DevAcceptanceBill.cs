@@ -209,7 +209,7 @@ namespace Haimen.GUI
             dxErrorProvider1.ClearErrors();
 
             Form2Object();
-            m_acceptance_bill.Verify();
+            m_acceptance_bill.SaveVerify();
             foreach (KeyValuePair<string, string> kv in m_acceptance_bill.Error_Info)
             {
                 switch (kv.Key)
