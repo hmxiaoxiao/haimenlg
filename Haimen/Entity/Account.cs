@@ -418,7 +418,7 @@ namespace Haimen.Entity
             MakerID = GlobalSet.Current_User.ID;
 
             // 重新生成代码
-            // 判断是否为现金
+            // 现金与非现金生成的代码不一致（票据号）
             if (OutCompanyDetail.Account.Trim() == "现金")
                 this.Code = this.OutCompanyDetail.Parent.NextDoc(true, true);
             else

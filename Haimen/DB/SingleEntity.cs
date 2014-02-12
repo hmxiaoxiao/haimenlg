@@ -18,11 +18,13 @@ namespace Haimen.DB
         [Field("id")]
         public long ID { get; set; }
 
+
         /// <summary>
         /// 每个实体类都有的创建时间
         /// </summary>
         [Field("created_date")]
         public DateTime CreatedDate { get; set; }
+
 
         /// <summary>
         /// 每个实体类都有的更新时间
@@ -37,6 +39,7 @@ namespace Haimen.DB
         [Field("deleted")]
         public long Deleted { get; set; }
 
+
         /// <summary>
         /// 用于保存错误信息
         /// 如果与字段有关，则key为字段
@@ -44,6 +47,7 @@ namespace Haimen.DB
         /// 另外，每次调用方法后，都可能会清空上次的信息，故需及时处理
         /// </summary>
         public List<KeyValuePair<string, string>> Error_Info = new List<KeyValuePair<string, string>>();
+
 
         /// <summary>
         /// 返回错误原因
@@ -61,16 +65,19 @@ namespace Haimen.DB
             }
         }
 
+
         /// <summary>
         /// 是否显示已经打上删除标记的记录
         /// </summary>
         public static bool ShowDeleteRecord = false;
+
 
         /// <summary>
         /// 当前对象指定的排序字段
         /// 默认是后增加的在前面
         /// </summary>
         public static string OrderBy = " Order By ID Desc";
+
 
         /// <summary>
         /// 保存到数据时，校验数据是否正确
@@ -102,6 +109,7 @@ namespace Haimen.DB
             return list;
         }
 
+
         /// <summary>
         /// 取得属性对应的表的字段
         /// </summary>
@@ -121,6 +129,7 @@ namespace Haimen.DB
             return name;
         }
 
+
         /// <summary>
         /// 取得类对应的表名
         /// </summary>
@@ -139,8 +148,9 @@ namespace Haimen.DB
             return name;
         }
 
+
         /// <summary>
-        /// 保存当前的实体类
+        /// 保存当前的实体类,有事务支持
         /// </summary>
         /// <returns>保存成功为真，否则出错原因可在Error_Info中找到</returns>
         public bool Save()
@@ -151,12 +161,54 @@ namespace Haimen.DB
                 return Insert();
         }
 
+
+        /// <summary>
+        /// 保存当前的实体类,无事务支持
+        /// </summary>
+        /// <returns>保存成功为真，否则出错原因可在Error_Info中找到</returns>
+        public bool SaveNoTrans()
+        {
+            if (this.ID > 0)
+                return UpdateNoTrans();
+            else
+                return InsertNoTrans();
+        }
+
+
+        /// <summary>
+        /// 拥有事务的新增
+        /// </summary>
+        /// <returns>成功与否</returns>
+        public virtual bool Insert()
+        {
+            SqlTransaction trans = null;
+            try
+            {
+                using (trans = DBConnection.BeginTrans())
+                {
+                    bool blnOK = this.InsertNoTrans();
+                    trans.Commit();
+                    return blnOK;
+                }
+            }
+            catch (Exception e)
+            {
+                if (trans != null)
+                    trans.Rollback();
+
+                string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
+        }
+
+
         /// <summary>
         /// 插入新的实体类
         /// 注意，校验由客户端处理，这里不做校验
+        /// 这个方法不做事务处理
         /// </summary>
         /// <returns>成功为真</returns>
-        public virtual bool Insert()
+        public virtual bool InsertNoTrans()
         {
             try
             {
@@ -194,7 +246,6 @@ namespace Haimen.DB
                 sql += String.Format(" values({0})", values.Substring(0, values.Length - 1));
                 sql += "; select @@identity ";
 
-
                 cmd.CommandText = sql;
                 this.ID = long.Parse(cmd.ExecuteScalar().ToString());
 
@@ -210,10 +261,39 @@ namespace Haimen.DB
 
         /// <summary>
         /// 更新实体类
+        /// 有事务支持
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool Update()
+        {
+            SqlTransaction trans = null;
+            try
+            {
+                using (trans = DBConnection.BeginTrans())
+                {
+                    bool blnOK = this.UpdateNoTrans();
+                    trans.Commit();
+                    return blnOK;
+                }
+            }
+            catch (Exception e)
+            {
+                if (trans != null)
+                    trans.Rollback();
+
+                string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
+        }
+
+
+        /// <summary>
+        /// 更新实体类
         /// 注意，校验应由客户端调用，更新里不会去调用
+        /// 无事务支持
         /// </summary>
         /// <returns>true 为成功</returns>
-        public virtual bool Update()
+        public virtual bool UpdateNoTrans()
         {
             try
             {
@@ -265,6 +345,7 @@ namespace Haimen.DB
             }
         }
 
+
         /// <summary>
         /// 查找符合条件的实体类
         /// 其实就是生成SQL语句中的Where语句，所以需要前端调用的人员对数据库有所了解
@@ -311,6 +392,7 @@ namespace Haimen.DB
                 throw new DBException(msg, e);
             }
         }
+
 
         /// <summary>
         /// 查找符合条件的实体类
@@ -360,12 +442,42 @@ namespace Haimen.DB
             }
         }
 
+
         /// <summary>
         /// 删除实体类,这个只能删除一个实体类，如果要删除含明细的实体类，请使用Destory方法
         /// 静态调用,此调用不会判断是否可以删除，需要调用者已经调用判断
+        /// 有事务支持
         /// </summary>
         /// <param name="id">需要删除实体类的ID</param>
         public static void Delete(long id)
+        {
+            SqlTransaction trans = null;
+            try
+            {
+                using (trans = DBConnection.BeginTrans())
+                {
+                    DeleteNoTrans(id);
+                    trans.Commit();
+                }
+            }
+            catch (Exception e)
+            {
+                if (trans != null)
+                    trans.Rollback();
+
+                string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
+        }
+
+
+        /// <summary>
+        /// 删除实体类,这个只能删除一个实体类，如果要删除含明细的实体类，请使用Destory方法
+        /// 静态调用,此调用不会判断是否可以删除，需要调用者已经调用判断
+        /// 无事务支持
+        /// </summary>
+        /// <param name="id">需要删除实体类的ID</param>
+        public static void DeleteNoTrans(long id)
         {
             try
             {
@@ -387,10 +499,36 @@ namespace Haimen.DB
         }
 
         /// <summary>
-        /// 删除实体类
+        /// 删除实体类，有事务
         /// 实例调用
         /// </summary>
         public virtual void Destory()
+        {
+            SqlTransaction trans = null;
+            try
+            {
+                using (trans = DBConnection.BeginTrans())
+                {
+                    this.DestoryNoTrans();
+                    trans.Commit();
+                }
+            }
+            catch (Exception e)
+            {
+                if (trans != null)
+                    trans.Rollback();
+
+                string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
+        }
+
+
+        /// <summary>
+        /// 删除实体类
+        /// 实例调用
+        /// </summary>
+        public virtual void DestoryNoTrans()
         {
             try
             {
@@ -407,6 +545,7 @@ namespace Haimen.DB
                 throw new DBException(msg, e);
             }
         }
+
 
         /// <summary>
         /// 通过ID生成实体类

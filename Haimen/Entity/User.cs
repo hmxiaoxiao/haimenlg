@@ -8,6 +8,8 @@ using System.Security.Cryptography;
 
 
 using Haimen.DB;
+using System.Data.SqlClient;
+
 
 namespace Haimen.Entity
 {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Haimen.DB;
+using System.Data.SqlClient;
 
 namespace Haimen.Entity
 {
@@ -77,7 +78,7 @@ namespace Haimen.Entity
             else
                 c.Status = (long)Contract.ContractStatusEnum.验收未通过;
             c.Save();
-            
+
             return base.Insert();
         }
 

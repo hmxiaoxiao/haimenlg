@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Haimen.DB;
-using System.Transactions;
+using System.Data.SqlClient;
 
 namespace Haimen.Entity
 {
@@ -69,14 +69,10 @@ namespace Haimen.Entity
         /// </summary>
         public void CheckPass()
         {
-            using (TransactionScope ts = new TransactionScope())
-            {
                 // 改标志为已审核
                 this.Status = (long)BalanceStatusEnum.审核通过;   
                 this.Save();        // 保存审核标记
 
-                ts.Complete();
-            }
         }
 
         public override bool Verify()

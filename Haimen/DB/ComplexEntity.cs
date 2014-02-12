@@ -26,6 +26,7 @@ namespace Haimen.DB
         /// </summary>
         public List<U> DetailList = new List<U>();
 
+
         // 附件列表
         private List<Attach> m_attachlist = null;
         public List<Attach> AttachList
@@ -46,14 +47,35 @@ namespace Haimen.DB
 
 
         /// <summary>
-        /// 复杂对象的新增
+        /// 复杂对象的新增,有事务支持
         /// </summary>
         /// <returns></returns>
         public override bool Insert()
         {
             try
             {
-                bool success = base.Insert();
+                SqlTransaction trans = DBConnection.BeginTrans();
+                bool success = this.InsertNoTrans();
+                trans.Commit();
+                return success;
+            }
+            catch (Exception e)
+            {
+                string msg = string.Format("保存数据出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
+        }
+
+
+        /// <summary>
+        /// 复杂对象的新增,无事务
+        /// </summary>
+        /// <returns></returns>
+        public override bool InsertNoTrans()
+        {
+            try
+            {
+                bool success = base.InsertNoTrans();
 
                 // 先保存主数据
                 if (success)
@@ -68,7 +90,7 @@ namespace Haimen.DB
                         info.SetValue(u, this.ID, null);
 
                         // 保存
-                        if (!u.Insert())
+                        if (!u.InsertNoTrans())
                             success = false;
                     }
 
@@ -76,10 +98,11 @@ namespace Haimen.DB
                     foreach (Attach a in AttachList)
                     {
                         a.ParentID = this.ID;
-                        a.Save();
+                        a.SaveNoTrans();
                     }
-                }
+                } 
                 return success;
+
             }
             catch (Exception e)
             {
@@ -88,11 +111,33 @@ namespace Haimen.DB
             }
         }
 
+
         /// <summary>
-        /// 复杂对象的更新
+        /// 复杂对象的更新，有事务支持
         /// </summary>
         /// <returns></returns>
         public override bool Update()
+        {
+            try
+            {
+                SqlTransaction trans = DBConnection.BeginTrans();
+                bool success = this.UpdateNoTrans();
+                trans.Commit();
+                return success;
+            }
+            catch (Exception e)
+            {
+                string msg = string.Format("更新数据出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
+        }
+
+
+        /// <summary>
+        /// 复杂对象的更新，无事务支持
+        /// </summary>
+        /// <returns></returns>
+        public override bool UpdateNoTrans()
         {
             try
             {
@@ -111,7 +156,7 @@ namespace Haimen.DB
                                 finded = true;
                         }
                         if (!finded)
-                            old.Destory();
+                            old.DestoryNoTrans();
                     }
                 }
 
@@ -126,10 +171,10 @@ namespace Haimen.DB
                             finded = true;
                     }
                     if (!finded)
-                        old.Destory();
+                        old.DestoryNoTrans();
                 }
 
-                bool success = base.Update();
+                bool success = base.UpdateNoTrans();
                 foreach (U u in DetailList)
                 {
                     // 明细类必须有parent_id的属性
@@ -139,14 +184,14 @@ namespace Haimen.DB
                     info.SetValue(u, this.ID, null);
 
                     // 保存
-                    if (!u.Save())
+                    if (!u.SaveNoTrans())
                         success = false;
                 }
 
                 foreach (Attach a in AttachList)
                 {
                     a.ParentID = this.ID;
-                    if (!a.Save())
+                    if (!a.SaveNoTrans())
                         success = false;
                 }
 
@@ -159,26 +204,47 @@ namespace Haimen.DB
             }
         }
 
+
         /// <summary>
-        /// 删除对象
+        /// 删除对象,有事务支持
         /// </summary>
         public override void Destory()
+        {
+            try
+            {
+                SqlTransaction trans = DBConnection.BeginTrans();
+                this.DestoryNoTrans();
+                trans.Commit();
+
+            }
+            catch (Exception e)
+            {
+                string msg = string.Format("保存数据出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
+        }
+
+
+        /// <summary>
+        /// 删除对象,无事务支持
+        /// </summary>
+        public override void DestoryNoTrans()
         {
             try
             {
                 // 先删除明细
                 foreach (U u in DetailList)
                 {
-                    u.Destory();
+                    u.DestoryNoTrans();
                 }
 
                 // 删除附件
                 foreach (Attach a in AttachList)
                 {
-                    a.Destory();
+                    a.DestoryNoTrans();
                 }
                 // 再删除主记录
-                base.Destory();
+                base.DestoryNoTrans();
             }
             catch (Exception e)
             {
@@ -186,6 +252,62 @@ namespace Haimen.DB
                 throw new DBException(msg, e);
             }
         }
+
+
+        /// <summary>
+        /// 删除实体类
+        /// 静态调用,无事务支持
+        /// </summary>
+        /// <param name="id">需要删除实体类的ID</param>
+        public static new void Delete(long id)
+        {
+            try
+            {
+                SqlTransaction trans = DBConnection.BeginTrans();
+                DeleteNoTrans(id);
+                trans.Commit();
+
+            }
+            catch (Exception e)
+            {
+                string msg = string.Format("保存数据出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
+        }
+
+
+        /// <summary>
+        /// 删除实体类
+        /// 静态调用,无事务支持
+        /// </summary>
+        /// <param name="id">需要删除实体类的ID</param>
+        public static new void DeleteNoTrans(long id)
+        {
+            SqlCommand cmd = DBConnection.Connection.CreateCommand();
+            string table_name = GetTableName(typeof(T));
+
+            string sql = String.Format("Delete from {0} where id = {1}", table_name, id);
+            string detail_sql = String.Format("Delete from {0} where parent_id = {1}", GetTableName(typeof(U)), id);
+            string attach_sql = string.Format("Delete from m_attach where parent_id = {0}", id);
+            try
+            {
+                cmd.CommandText = detail_sql;
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = attach_sql;
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+                string msg = string.Format("删除对象出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
+        }
+
 
         /// <summary>
         /// 通过ID生成实体类
@@ -196,7 +318,6 @@ namespace Haimen.DB
         {
             try
             {
-
                 string table_name = GetTableName(typeof(T));
                 string sql = String.Format("Select * from {0} where id = {1}", table_name, id);
 
@@ -226,38 +347,6 @@ namespace Haimen.DB
             catch (Exception e)
             {
                 string msg = string.Format("创建对象出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
-            }
-        }
-
-        /// <summary>
-        /// 删除实体类
-        /// 静态调用
-        /// </summary>
-        /// <param name="id">需要删除实体类的ID</param>
-        public static new void Delete(long id)
-        {
-            SqlCommand cmd = DBConnection.Connection.CreateCommand();
-            string table_name = GetTableName(typeof(T));
-
-            string sql = String.Format("Delete from {0} where id = {1}", table_name, id);
-            string detail_sql = String.Format("Delete from {0} where parent_id = {1}", GetTableName(typeof(U)), id);
-            string attach_sql = string.Format("Delete from m_attach where parent_id = {0}", id);
-            try
-            {
-                cmd.CommandText = detail_sql;
-                cmd.ExecuteNonQuery();
-
-                cmd.CommandText = attach_sql;
-                cmd.ExecuteNonQuery();
-
-                cmd.CommandText = sql;
-                cmd.ExecuteNonQuery();
-
-            }
-            catch (Exception e)
-            {
-                string msg = string.Format("删除对象出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
                 throw new DBException(msg, e);
             }
         }

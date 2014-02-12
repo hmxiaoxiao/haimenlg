@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Haimen.DB;
+using System.Data.SqlClient;
 
 namespace Haimen.Entity
 {
@@ -188,6 +189,7 @@ namespace Haimen.Entity
         {
             Balance = OBalance;
             Credit = OCredit;
+
             return base.Insert();
         }
 

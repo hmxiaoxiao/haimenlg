@@ -5,6 +5,7 @@ using System.Text;
 
 using Haimen.DB;
 using Haimen.Entity;
+using System.Data.SqlClient;
 
 namespace Haimen.Entity
 {

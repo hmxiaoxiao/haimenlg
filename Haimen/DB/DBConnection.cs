@@ -51,7 +51,7 @@ namespace Haimen.DB
         /// 开始一个事务
         /// </summary>
         /// <returns></returns>
-        public SqlTransaction BeginTrans()
+        public static SqlTransaction BeginTrans()
         {
             return Connection.BeginTransaction();
         }
