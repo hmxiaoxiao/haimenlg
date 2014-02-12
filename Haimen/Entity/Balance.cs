@@ -9,7 +9,7 @@ using System.Transactions;
 namespace Haimen.Entity
 {
     [Table("t_balance")]
-    public class Balance : TEntityFunction<Balance, BalanceDetail>
+    public class Balance : ComplexEntity<Balance, BalanceDetail>
     {
         [Field("code")]
         public string Code { get; set; }

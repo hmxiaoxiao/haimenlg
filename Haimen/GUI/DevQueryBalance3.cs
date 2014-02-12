@@ -25,7 +25,7 @@ namespace Haimen.GUI
 
             // 取得所有的单位(带凭证号的)
             string sql = @"select doc from m_company where output = 'X'";
-            SqlDataAdapter dacompany = new SqlDataAdapter(sql, DBFunction.Connection);
+            SqlDataAdapter dacompany = new SqlDataAdapter(sql, DBConnection.Connection);
             dacompany.Fill(m_ds, "company");
 
             // 取得所有的银行
@@ -37,7 +37,7 @@ namespace Haimen.GUI
                         from m_company_detail
                         where parent_id in (select id from m_company where output = 'X'))
                     order by parent_id,name";
-            SqlDataAdapter dabank = new SqlDataAdapter(sql, DBFunction.Connection);
+            SqlDataAdapter dabank = new SqlDataAdapter(sql, DBConnection.Connection);
             dabank.Fill(m_ds, "bank");
 
             // 取得余额
@@ -51,7 +51,7 @@ namespace Haimen.GUI
                      d.parent_id = c.id 
                 group by b.name,c.doc
             ";
-            SqlDataAdapter dadetail = new SqlDataAdapter(sql, DBFunction.Connection);
+            SqlDataAdapter dadetail = new SqlDataAdapter(sql, DBConnection.Connection);
             dadetail.Fill(m_ds, "detail");
 
             // 总计行
@@ -62,7 +62,7 @@ namespace Haimen.GUI
                 where d.parent_id = c.id and c.output = 'X'
                 group by c.doc        
             ";
-            SqlDataAdapter dacount = new SqlDataAdapter(sql, DBFunction.Connection);
+            SqlDataAdapter dacount = new SqlDataAdapter(sql, DBConnection.Connection);
             dacount.Fill(m_ds, "count");
 
             // 现在生成table
@@ -154,7 +154,7 @@ namespace Haimen.GUI
 
             // 取得所有的单位(带凭证号的)
             string sql = @"select doc from m_company where output = 'X'";
-            SqlDataAdapter dacompany = new SqlDataAdapter(sql, DBFunction.Connection);
+            SqlDataAdapter dacompany = new SqlDataAdapter(sql, DBConnection.Connection);
             dacompany.Fill(m_ds, "company");
 
             // 取得所有的银行
@@ -166,7 +166,7 @@ namespace Haimen.GUI
                         from m_company_detail
                         where parent_id in (select id from m_company where output = 'X')) and name = '现金'
                     order by parent_id,name";
-            SqlDataAdapter dabank = new SqlDataAdapter(sql, DBFunction.Connection);
+            SqlDataAdapter dabank = new SqlDataAdapter(sql, DBConnection.Connection);
             dabank.Fill(m_ds, "bank");
 
             // 取得现金帐户的余额
@@ -180,7 +180,7 @@ namespace Haimen.GUI
                      d.parent_id = c.id and d.account = '现金'
                 group by b.name,c.doc
             ";
-            SqlDataAdapter dadetail = new SqlDataAdapter(sql, DBFunction.Connection);
+            SqlDataAdapter dadetail = new SqlDataAdapter(sql, DBConnection.Connection);
             dadetail.Fill(m_ds, "detail");
 
             // 总计行
@@ -191,7 +191,7 @@ namespace Haimen.GUI
                 where d.parent_id = c.id and c.output = 'X' and d.account = '现金'
                 group by c.doc        
             ";
-            SqlDataAdapter dacount = new SqlDataAdapter(sql, DBFunction.Connection);
+            SqlDataAdapter dacount = new SqlDataAdapter(sql, DBConnection.Connection);
             dacount.Fill(m_ds, "count");
 
             // 现在生成table
@@ -283,7 +283,7 @@ namespace Haimen.GUI
 
             // 取得所有的单位(带凭证号的)
             string sql = @"select doc from m_company where output = 'X'";
-            SqlDataAdapter dacompany = new SqlDataAdapter(sql, DBFunction.Connection);
+            SqlDataAdapter dacompany = new SqlDataAdapter(sql, DBConnection.Connection);
             dacompany.Fill(m_ds, "company");
 
             // 取得所有的银行
@@ -295,7 +295,7 @@ namespace Haimen.GUI
                         from m_company_detail
                         where parent_id in (select id from m_company where output = 'X')) and name <> '现金'
                     order by parent_id,name";
-            SqlDataAdapter dabank = new SqlDataAdapter(sql, DBFunction.Connection);
+            SqlDataAdapter dabank = new SqlDataAdapter(sql, DBConnection.Connection);
             dabank.Fill(m_ds, "bank");
 
             // 取得现金帐户的余额
@@ -309,7 +309,7 @@ namespace Haimen.GUI
                      d.parent_id = c.id and d.account <> '现金'
                 group by b.name,c.doc
             ";
-            SqlDataAdapter dadetail = new SqlDataAdapter(sql, DBFunction.Connection);
+            SqlDataAdapter dadetail = new SqlDataAdapter(sql, DBConnection.Connection);
             dadetail.Fill(m_ds, "detail");
 
             // 总计行
@@ -320,7 +320,7 @@ namespace Haimen.GUI
                 where d.parent_id = c.id and c.output = 'X' and d.account <> '现金'
                 group by c.doc        
             ";
-            SqlDataAdapter dacount = new SqlDataAdapter(sql, DBFunction.Connection);
+            SqlDataAdapter dacount = new SqlDataAdapter(sql, DBConnection.Connection);
             dacount.Fill(m_ds, "count");
 
             // 现在生成table

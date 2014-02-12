@@ -13,7 +13,7 @@ namespace Haimen.Entity
     /// 资金性质
     /// </summary>
     [Table("m_funds")]
-    public class Funds : MEntityFunction<Funds>
+    public class Funds : SingleEntity<Funds>
     {
         [Field("name")]
         public string Name { get; set; }
@@ -152,9 +152,9 @@ namespace Haimen.Entity
             string sql2 = "Select * from m_funds where parent_id in (select id from m_funds where parent_id = 0);";
             string sql3 = "Select * from m_funds where parent_id in (Select id from m_funds where parent_id in (select id from m_funds where parent_id = 0));";
 
-            SqlDataAdapter d1 = new SqlDataAdapter(sql1, DBFunction.Connection);
-            SqlDataAdapter d2 = new SqlDataAdapter(sql2, DBFunction.Connection);
-            SqlDataAdapter d3 = new SqlDataAdapter(sql3, DBFunction.Connection);
+            SqlDataAdapter d1 = new SqlDataAdapter(sql1, DBConnection.Connection);
+            SqlDataAdapter d2 = new SqlDataAdapter(sql2, DBConnection.Connection);
+            SqlDataAdapter d3 = new SqlDataAdapter(sql3, DBConnection.Connection);
 
             DataSet ds = new DataSet();
             d1.Fill(ds, "one");

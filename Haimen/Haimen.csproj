@@ -152,6 +152,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB\DBException.cs" />
     <Compile Include="Entity\AcceptanceBill.cs" />
     <Compile Include="Entity\Access.cs" />
     <Compile Include="Entity\Account.cs" />
@@ -439,9 +440,9 @@
     <Compile Include="Entity\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DB\DBFunction.cs" />
-    <Compile Include="DB\MEntityFunction.cs" />
-    <Compile Include="DB\TEntityFunction.cs" />
+    <Compile Include="DB\DBConnection.cs" />
+    <Compile Include="DB\SingleEntity.cs" />
+    <Compile Include="DB\ComplexEntity.cs" />
     <Compile Include="Report\rptAccount.cs">
       <SubType>Component</SubType>
     </Compile>

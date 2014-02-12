@@ -8,7 +8,7 @@ using Haimen.DB;
 namespace Haimen.Entity
 {
     [Table("m_bank")]
-    public class Bank : MEntityFunction<Bank>
+    public class Bank : SingleEntity<Bank>
     {
         /// <summary>
         /// 银行代码
@@ -151,10 +151,10 @@ namespace Haimen.Entity
             }
 
             string sql = " Update m_company_detail set bank_id = " + new_id.ToString() + " where bank_id = " + old_id.ToString();
-            Haimen.DB.DBFunction.RunQuerySql(sql);
+            Haimen.DB.DBConnection.RunQuerySql(sql);
 
             sql = " Delete m_bank where id = " + old_id.ToString();
-            Haimen.DB.DBFunction.RunQuerySql(sql);
+            Haimen.DB.DBConnection.RunQuerySql(sql);
 
             return true;
         }

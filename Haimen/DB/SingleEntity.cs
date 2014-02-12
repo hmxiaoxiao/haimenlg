@@ -6,12 +6,11 @@ using System.Text;
 using System.Data;
 using System.Reflection;
 using System.Data.SqlClient;
-using System.Transactions;
 
 namespace Haimen.DB
 {
     [Serializable]
-    public class MEntityFunction<T> where T : new()
+    public class SingleEntity<T> where T : new()
     {
         /// <summary>
         /// 每个实体类都有的ID值
@@ -20,20 +19,20 @@ namespace Haimen.DB
         public long ID { get; set; }
 
         /// <summary>
-        /// 创建时间
+        /// 每个实体类都有的创建时间
         /// </summary>
         [Field("created_date")]
         public DateTime CreatedDate { get; set; }
 
         /// <summary>
-        /// 更新时间
+        /// 每个实体类都有的更新时间
         /// </summary>
         [Field("updated_date")]
         public DateTime UpdatedDate { get; set; }
 
 
         /// <summary>
-        /// 删除标记，0 为正常，1为删除
+        /// 每个实体类都有的删除标记，0 为正常，1为删除
         /// </summary>
         [Field("deleted")]
         public long Deleted { get; set; }
@@ -159,53 +158,55 @@ namespace Haimen.DB
         /// <returns>成功为真</returns>
         public virtual bool Insert()
         {
-            // 清空错误信息
-            Error_Info.Clear();
-
-
-            // 生成插入的SQL语句
-            List<KeyValuePair<string, dynamic>> list_fv = GetFieldsAndValues();
-            SqlCommand cmd = DBFunction.Connection.CreateCommand();
-            string table_name = GetTableName(typeof(T));
-            string sql = "Insert into " + table_name;
-            string fields = "";
-            string values = "";
-
-            foreach (KeyValuePair<string, dynamic> item in list_fv)
+            try
             {
-                switch (item.Key.ToUpper())
+                // 生成插入的SQL语句
+                List<KeyValuePair<string, dynamic>> list_fv = GetFieldsAndValues();
+                SqlCommand cmd = DBConnection.Connection.CreateCommand();
+                string table_name = GetTableName(typeof(T));
+                string sql = "Insert into " + table_name;
+                string fields = "";
+                string values = "";
+
+                foreach (KeyValuePair<string, dynamic> item in list_fv)
                 {
-                    case "ID":  // 不处理,会自动生成！
-                        break;
-                    case "CREATED_DATE":
-                    case "UPDATED_DATE":
-                        fields += item.Key + ",";
-                        values += "@" + item.Key + ",";
-                        cmd.Parameters.AddWithValue("@" + item.Key, DateTime.Now);
-                        break;
-                    default:
-                        if (item.Value != null)
-                        {
+                    switch (item.Key.ToUpper())
+                    {
+                        case "ID":  // 不处理,会自动生成！
+                            break;
+                        case "CREATED_DATE":
+                        case "UPDATED_DATE":
                             fields += item.Key + ",";
-                            values += "@" + item.Key + ",";
-                            cmd.Parameters.AddWithValue("@" + item.Key, item.Value);
-                        }
-                        break;
+                            values += String.Format("@{0},", item.Key);
+                            cmd.Parameters.AddWithValue("@" + item.Key, DateTime.Now);
+                            break;
+                        default:
+                            if (item.Value != null)
+                            {
+                                fields += item.Key + ",";
+                                values += String.Format("@{0},", item.Key);
+                                cmd.Parameters.AddWithValue("@" + item.Key, item.Value);
+                            }
+                            break;
+                    }
                 }
-            }
-            sql += "(" + fields.Substring(0, fields.Length - 1) + ") ";
-            sql += " values(" + values.Substring(0, values.Length - 1) + ")";
-            sql += "; select @@identity ";
+                sql += String.Format("({0}) ", fields.Substring(0, fields.Length - 1));
+                sql += String.Format(" values({0})", values.Substring(0, values.Length - 1));
+                sql += "; select @@identity ";
 
-            using (TransactionScope ts = new TransactionScope())
-            {
+
                 cmd.CommandText = sql;
                 this.ID = long.Parse(cmd.ExecuteScalar().ToString());
 
-                ts.Complete();
+                return true;
             }
-            return true;
+            catch (Exception e)
+            {
+                string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
         }
+
 
         /// <summary>
         /// 更新实体类
@@ -214,50 +215,54 @@ namespace Haimen.DB
         /// <returns>true 为成功</returns>
         public virtual bool Update()
         {
-            List<KeyValuePair<string, dynamic>> list_fv = GetFieldsAndValues();
-            SqlCommand cmd = DBFunction.Connection.CreateCommand();
-
-            string table_name = GetTableName(typeof(T));
-            string sql = "Update " + table_name;
-            string sets = "";
-            foreach (KeyValuePair<string, dynamic> item in list_fv)
+            try
             {
-                switch (item.Key.ToUpper())
+                List<KeyValuePair<string, dynamic>> list_fv = GetFieldsAndValues();
+                SqlCommand cmd = DBConnection.Connection.CreateCommand();
+
+                string table_name = GetTableName(typeof(T));
+                string sql = "Update " + table_name;
+                string sets = "";
+                foreach (KeyValuePair<string, dynamic> item in list_fv)
                 {
-                    case "ID":  // 不处理
-                    case "CREATED_DATE":
-                        break;
-                    case "UPDATED_DATE":
-                        sets += item.Key + "= @" + item.Key + ",";
-                        cmd.Parameters.AddWithValue("@" + item.Key, DateTime.Now);
-                        break;
-                    default:
-                        if (item.Value != null)
-                        {
-                            sets += item.Key + "= @" + item.Key + ",";
-                            cmd.Parameters.AddWithValue("@" + item.Key, item.Value);
-                        }
-                        break;
+                    switch (item.Key.ToUpper())
+                    {
+                        case "ID":  // 不处理
+                        case "CREATED_DATE":
+                            break;
+                        case "UPDATED_DATE":
+                            sets += String.Format("{0}= @{0},", item.Key);
+                            cmd.Parameters.AddWithValue("@" + item.Key, DateTime.Now);
+                            break;
+                        default:
+                            if (item.Value != null)
+                            {
+                                sets += String.Format("{0}= @{0},", item.Key);
+                                cmd.Parameters.AddWithValue("@" + item.Key, item.Value);
+                            }
+                            break;
+                    }
                 }
-            }
 
-            if (sets.Length > 0)
-            {
-                sql += " Set " + sets.Substring(0, sets.Length - 1);
-                // 加上条件
-                sql += " Where id = @id";
-                cmd.Parameters.AddWithValue("@id", this.ID);
-
-                using (TransactionScope ts = new TransactionScope())
+                if (sets.Length > 0)
                 {
+                    sql += " Set " + sets.Substring(0, sets.Length - 1);
+                    // 加上条件
+                    sql += " Where id = @id";
+                    cmd.Parameters.AddWithValue("@id", this.ID);
+
                     cmd.CommandText = sql;
                     cmd.ExecuteNonQuery();
 
-                    ts.Complete();
                 }
-
+                return true;
             }
-            return true;
+            catch (Exception e)
+            {
+                string msg = string.Format("更新数据时出错，请与供应商联系，取得支持！错误原因：{0}{1}",
+                    Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
         }
 
         /// <summary>
@@ -269,35 +274,42 @@ namespace Haimen.DB
         /// <returns>含实体类的列表</returns>
         public virtual List<T> Find(string where = "")
         {
-            SqlCommand cmd = DBFunction.Connection.CreateCommand();
-            string table_name = GetTableName(typeof(T));
-
-            string sql = "Select * from " + table_name;
-            List<string> whereList = new List<string>();
-
-            // 生成SQL语句
-            if (where.Length > 0)
+            try
             {
-                if (!ShowDeleteRecord)
-                    sql += " where " + where + " and deleted = 0 ";
+                string table_name = GetTableName(typeof(T));
+                string sql = string.Format("Select * from {0}", table_name);
+
+                // 生成SQL语句
+                SqlCommand cmd = DBConnection.Connection.CreateCommand();
+                if (where.Length > 0)
+                {
+                    if (!ShowDeleteRecord)
+                        sql += String.Format(" where {0} and deleted = 0 ", where);
+                    else
+                        sql += " where " + where;
+                }
                 else
-                    sql += " where " + where;
+                {
+                    if (!ShowDeleteRecord)
+                        sql += " where deleted = 0 ";
+                }
+
+                // 按生成的ID降序排列
+                sql += " " + OrderBy;
+
+
+                cmd.CommandText = sql;
+                SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+                return ds.toList<T>();
             }
-            else
+            catch (Exception e)
             {
-                if (!ShowDeleteRecord)
-                    sql += " where deleted = 0 ";
+                string msg = string.Format("查找数据时出错，请与供应商联系，取得支持！错误原因：{0}{1}",
+                        Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
             }
-
-            // 按生成的ID降序排列
-            sql += " " + OrderBy;
-
-
-            cmd.CommandText = sql;
-            SqlDataAdapter adap = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            adap.Fill(ds);
-            return ds.toList<T>();
         }
 
         /// <summary>
@@ -312,13 +324,13 @@ namespace Haimen.DB
             string table_name = GetTableName(typeof(T));
 
             string sql = "Select * from " + table_name;
-            List<string> whereList = new List<string>();
+            //List<string> whereList = new List<string>();
 
             // 生成SQL语句
             if (where.Length > 0)
             {
                 if (!ShowDeleteRecord)
-                    sql += " where " + where + " and deleted = 0";
+                    sql += String.Format(" where {0} and deleted = 0", where);
                 else
                     sql += " where " + where;
             }
@@ -331,26 +343,21 @@ namespace Haimen.DB
             // 按生成的ID降序排列
             sql += " " + OrderBy;
 
+            try
+            {
 
-            //try
-            //{
-                SqlCommand cmd = DBFunction.Connection.CreateCommand();
+                SqlCommand cmd = DBConnection.Connection.CreateCommand();
                 cmd.CommandText = sql;
-                Console.WriteLine(sql);
                 SqlDataAdapter adap = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 adap.Fill(ds);
                 return ds.toList<T>();
-            //}
-            //catch (INIExceptption ie)
-            //{
-
-            //}
-            //catch (Exception e)
-            //{
-            //    string message = "向数据库查询出错！原因如下：" + Environment.NewLine + e.Message;
-            //    throw new Exception(message, e);
-            //}
+            }
+            catch (Exception e)
+            {
+                string message = String.Format("向数据库查询出错！原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(message, e);
+            }
         }
 
         /// <summary>
@@ -360,19 +367,22 @@ namespace Haimen.DB
         /// <param name="id">需要删除实体类的ID</param>
         public static void Delete(long id)
         {
-
-
-            SqlCommand cmd = DBFunction.Connection.CreateCommand();
-            string table_name = GetTableName(typeof(T));
-
-            string sql = "Delete from " + table_name + " where id = " + id.ToString();
-
-            using (TransactionScope ts = new TransactionScope())
+            try
             {
+
+                string table_name = GetTableName(typeof(T));
+                string sql = String.Format("Delete from {0} where id = {1}", table_name, id);
+
+                SqlCommand cmd = DBConnection.Connection.CreateCommand();
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
 
-                ts.Complete();
+
+            }
+            catch (Exception e)
+            {
+                string msg = string.Format("删除数据出错，原因如下：", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
             }
         }
 
@@ -382,17 +392,19 @@ namespace Haimen.DB
         /// </summary>
         public virtual void Destory()
         {
-            SqlCommand cmd = DBFunction.Connection.CreateCommand();
-            string table_name = GetTableName(typeof(T));
-
-            string sql = "Delete from " + table_name + " where id = " + this.ID.ToString();
-
-            using (TransactionScope ts = new TransactionScope())
+            try
             {
+                string table_name = GetTableName(typeof(T));
+                string sql = String.Format("Delete from {0} where id = {1}", table_name, this.ID);
+
+                SqlCommand cmd = DBConnection.Connection.CreateCommand();
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
-
-                ts.Complete();
+            }
+            catch (Exception e)
+            {
+                string msg = string.Format("删除数据出错，原因如下：", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
             }
         }
 
@@ -403,24 +415,28 @@ namespace Haimen.DB
         /// <returns>该ID对应的实体类</returns>
         public static T CreateByID(long id)
         {
-            SqlCommand cmd = DBFunction.Connection.CreateCommand();
             string table_name = GetTableName(typeof(T));
+            string sql = String.Format("Select * from {0} where id = {1}", table_name, id);
 
-            string sql = "Select * from " + table_name;
-            List<string> whereList = new List<string>();
+            try
+            {
+                SqlCommand cmd = DBConnection.Connection.CreateCommand();
+                cmd.CommandText = sql;
 
-            sql += " where id = " + id.ToString();
-
-            cmd.CommandText = sql;
-            Console.WriteLine(sql);
-            SqlDataAdapter adap = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            adap.Fill(ds);
-            List<T> list = ds.toList<T>();
-            if (list.Count == 1)
-                return list[0];
-            else
-                return default(T);
+                SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+                List<T> list = ds.toList<T>();
+                if (list.Count == 1)
+                    return list[0];
+                else
+                    return default(T);
+            }
+            catch (Exception e)
+            {
+                string msg = string.Format("生成实体类出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
         }
     }
 }

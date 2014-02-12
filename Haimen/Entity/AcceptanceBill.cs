@@ -9,7 +9,7 @@ using Haimen.DB;
 namespace Haimen.Entity
 {
     [Table("t_acceptance_bill")]
-    public class AcceptanceBill : MEntityFunction<AcceptanceBill>
+    public class AcceptanceBill : SingleEntity<AcceptanceBill>
     {
         /// <summary>
         /// 出票日期

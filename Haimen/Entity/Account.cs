@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 namespace Haimen.Entity
 {
     [Table("t_account")]
-    public class Account : TEntityFunction<Account, AccountDetail>
+    public class Account : ComplexEntity<Account, AccountDetail>
     {
         [Field("code")]
         public string Code { get; set; }
@@ -236,8 +236,8 @@ namespace Haimen.Entity
             }
 
 
-            SqlDataAdapter damaster = new SqlDataAdapter(mastersql, DBFunction.Connection);
-            SqlDataAdapter dadetail = new SqlDataAdapter(detailsql, DBFunction.Connection);
+            SqlDataAdapter damaster = new SqlDataAdapter(mastersql, DBConnection.Connection);
+            SqlDataAdapter dadetail = new SqlDataAdapter(detailsql, DBConnection.Connection);
             DataSet ds = new DataSet();
             damaster.Fill(ds, "master");
             dadetail.Fill(ds, "detail");

@@ -1,38 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using System.Data.SqlClient;
 using System.Reflection;
-using System.Transactions;
 using System.Data;
 
 using Haimen.Entity;
 
 namespace Haimen.DB
 {
-    // T为主表类型，U为明细类型
-    public class TEntityFunction<T, U> : MEntityFunction<T>
+    /// <summary>
+    /// 复杂对象的实体类，
+    /// 复杂即指有主从关系之类的对象
+    /// T为主表类型，U为明细类型
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="U"></typeparam>
+    public class ComplexEntity<T, U> : SingleEntity<T>
         where T : new()
-        where U : MEntityFunction<U>, new()
+        where U : SingleEntity<U>, new()
     {
-
-        // 明细列表
-        //private List<U> m_detaillist = null;
-        //public List<U> DetailList
-        //{
-        //    get
-        //    {
-        //        if (m_detaillist == null)
-        //            m_
-        //    }
-        //    set
-        //    {
-        //        m_detaillist = value;
-        //    }
-        //}
-
+        /// <summary>
+        /// 子对象列表
+        /// </summary>
         public List<U> DetailList = new List<U>();
 
         // 附件列表
@@ -43,7 +34,7 @@ namespace Haimen.DB
             {
                 if (m_attachlist == null)
                 {
-                    m_attachlist = Attach.Query("parent_id = " + ID.ToString());
+                    m_attachlist = Attach.Query("parent_id = " + ID);
                 }
                 return m_attachlist;
             }
@@ -53,16 +44,19 @@ namespace Haimen.DB
             }
         }
 
+
+        /// <summary>
+        /// 复杂对象的新增
+        /// </summary>
+        /// <returns></returns>
         public override bool Insert()
         {
-            bool returnVale;
-
-            // 使用范围事务
-            using (TransactionScope ts = new TransactionScope())
+            try
             {
+                bool success = base.Insert();
+
                 // 先保存主数据
-                returnVale = base.Insert();
-                if (this.ID > 0)
+                if (success)
                 {
                     // 保存明细数据
                     foreach (U u in DetailList)
@@ -75,7 +69,7 @@ namespace Haimen.DB
 
                         // 保存
                         if (!u.Insert())
-                            returnVale = false;
+                            success = false;
                     }
 
                     // 保存附件信息
@@ -85,16 +79,22 @@ namespace Haimen.DB
                         a.Save();
                     }
                 }
-
-                ts.Complete();
+                return success;
             }
-            return returnVale;
+            catch (Exception e)
+            {
+                string msg = string.Format("保存数据出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
         }
 
+        /// <summary>
+        /// 复杂对象的更新
+        /// </summary>
+        /// <returns></returns>
         public override bool Update()
         {
-            bool returnVale;
-            using (TransactionScope ts = new TransactionScope())
+            try
             {
                 // 更新明细不同于新增
                 // 新增可以不用判断，直接插入
@@ -117,7 +117,7 @@ namespace Haimen.DB
 
                 // 附件明细的删除
                 List<Attach> attaches = Attach.Query("parent_id = " + this.ID);
-                foreach(Attach old in attaches)
+                foreach (Attach old in attaches)
                 {
                     bool finded = false;
                     foreach (Attach b in attaches)
@@ -129,7 +129,7 @@ namespace Haimen.DB
                         old.Destory();
                 }
 
-                returnVale = base.Update();
+                bool success = base.Update();
                 foreach (U u in DetailList)
                 {
                     // 明细类必须有parent_id的属性
@@ -140,19 +140,23 @@ namespace Haimen.DB
 
                     // 保存
                     if (!u.Save())
-                        returnVale = false;
+                        success = false;
                 }
 
                 foreach (Attach a in AttachList)
                 {
                     a.ParentID = this.ID;
                     if (!a.Save())
-                        returnVale = false;
+                        success = false;
                 }
 
-                ts.Complete();
+                return success;
             }
-            return returnVale;
+            catch (Exception e)
+            {
+                string msg = string.Format("更新数据时出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
         }
 
         /// <summary>
@@ -160,7 +164,7 @@ namespace Haimen.DB
         /// </summary>
         public override void Destory()
         {
-            using (TransactionScope ts = new TransactionScope())
+            try
             {
                 // 先删除明细
                 foreach (U u in DetailList)
@@ -175,7 +179,11 @@ namespace Haimen.DB
                 }
                 // 再删除主记录
                 base.Destory();
-                ts.Complete();
+            }
+            catch (Exception e)
+            {
+                string msg = string.Format("删除数据出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
             }
         }
 
@@ -186,36 +194,40 @@ namespace Haimen.DB
         /// <returns>该ID对应的实体类</returns>
         public static new T CreateByID(long id)
         {
-            SqlCommand cmd = DBFunction.Connection.CreateCommand();
-            string table_name = GetTableName(typeof(T));
+            try
+            {
 
-            string sql = "Select * from " + table_name;
-            List<string> whereList = new List<string>();
+                string table_name = GetTableName(typeof(T));
+                string sql = String.Format("Select * from {0} where id = {1}", table_name, id);
 
-            sql += " where id = " + id.ToString();
+                SqlCommand cmd = DBConnection.Connection.CreateCommand();
+                cmd.CommandText = sql;
+                SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+                List<T> list = ds.toList<T>();
+                if (list.Count != 1)
+                    return default(T);
 
-            cmd.CommandText = sql;
-            Console.WriteLine(sql);
-            SqlDataAdapter adap = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            adap.Fill(ds);
-            List<T> list = ds.toList<T>();
-            if (list.Count != 1)
-                return default(T);
+                // 取得所有的明细记录
+                T t = list[0];
+                FieldInfo info = t.GetType().GetField("DetailList");
+                List<U> detail = new U().Find("parent_id = " + id);
+                info.SetValue(t, detail);
 
-            // 取得所有的明细记录
-            T t = list[0];
-            FieldInfo info = t.GetType().GetField("DetailList");
-            List<U> detail = new U().Find("parent_id = " + id.ToString());
-            info.SetValue(t, detail);
+                // 取得所有的附件记录
+                PropertyInfo ainfo = t.GetType().GetProperty("AttachList");
+                List<Attach> attaches = Attach.Query("parent_id = " + id);
+                //ainfo.SetValue(t, attaches);
+                ainfo.SetValue(t, attaches, null);
 
-            // 取得所有的附件记录
-            PropertyInfo ainfo = t.GetType().GetProperty("AttachList");
-            List<Attach> attaches = Attach.Query("parent_id = " + id.ToString());
-            //ainfo.SetValue(t, attaches);
-            ainfo.SetValue(t, attaches, null);
-
-            return t;
+                return t;
+            }
+            catch (Exception e)
+            {
+                string msg = string.Format("创建对象出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
         }
 
         /// <summary>
@@ -225,13 +237,13 @@ namespace Haimen.DB
         /// <param name="id">需要删除实体类的ID</param>
         public static new void Delete(long id)
         {
-            SqlCommand cmd = DBFunction.Connection.CreateCommand();
+            SqlCommand cmd = DBConnection.Connection.CreateCommand();
             string table_name = GetTableName(typeof(T));
 
-            string sql = "Delete from " + table_name + " where id = " + id.ToString();
-            string detail_sql = "Delete from " + GetTableName(typeof(U)) + " where parent_id = " + id.ToString();
-            string attach_sql = "Delete from m_attach where parent_id = " + id.ToString();
-            using (TransactionScope ts = new TransactionScope())
+            string sql = String.Format("Delete from {0} where id = {1}", table_name, id);
+            string detail_sql = String.Format("Delete from {0} where parent_id = {1}", GetTableName(typeof(U)), id);
+            string attach_sql = string.Format("Delete from m_attach where parent_id = {0}", id);
+            try
             {
                 cmd.CommandText = detail_sql;
                 cmd.ExecuteNonQuery();
@@ -242,7 +254,11 @@ namespace Haimen.DB
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
 
-                ts.Complete();
+            }
+            catch (Exception e)
+            {
+                string msg = string.Format("删除对象出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
             }
         }
 
@@ -256,19 +272,17 @@ namespace Haimen.DB
         /// <returns>含实体类的列表</returns>
         public override List<T> Find(string where = "")
         {
-            SqlCommand cmd = DBFunction.Connection.CreateCommand();
-            string table_name = GetTableName(typeof(T));
 
+            string table_name = GetTableName(typeof(T));
             string sql = "Select * from " + table_name;
-            List<string> whereList = new List<string>();
 
             // 生成SQL语句
             if (where.Length > 0)
             {
                 if (!ShowDeleteRecord)
-                    sql += " where " + where + " and deleted = 0";
+                    sql += String.Format(" where {0} and deleted = 0", where);
                 else
-                    sql += " where " + where;
+                    sql += string.Format(" where {0}", where);
             }
             else
             {
@@ -279,26 +293,35 @@ namespace Haimen.DB
             // 按生成的ID降序排列
             sql += " " + OrderBy;
 
-            cmd.CommandText = sql;
-            SqlDataAdapter adap = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            adap.Fill(ds);
-            List<T> list = ds.toList<T>();
-
-            // 取得所有的明细记录
-            foreach (T t in list)
+            try
             {
-                FieldInfo info = t.GetType().GetField("DetailList");
-                PropertyInfo pro = t.GetType().GetProperty("ID");
-                long id = (long)pro.GetValue(t, null);
-                List<U> detail = new U().Find("parent_id = " + id.ToString());
-                info.SetValue(t, detail);
+                SqlCommand cmd = DBConnection.Connection.CreateCommand();
+                cmd.CommandText = sql;
+                SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+                List<T> list = ds.toList<T>();
 
-                FieldInfo ainfo = t.GetType().GetField("AttachList");
-                List<Attach> attaches = Attach.Query("parent_id = " + id.ToString());
-                ainfo.SetValue(t, attaches);
+                // 取得所有的明细记录
+                foreach (T t in list)
+                {
+                    FieldInfo info = t.GetType().GetField("DetailList");
+                    PropertyInfo pro = t.GetType().GetProperty("ID");
+                    long id = (long)pro.GetValue(t, null);
+                    List<U> detail = new U().Find("parent_id = " + id);
+                    info.SetValue(t, detail);
+
+                    FieldInfo ainfo = t.GetType().GetField("AttachList");
+                    List<Attach> attaches = Attach.Query("parent_id = " + id);
+                    ainfo.SetValue(t, attaches);
+                }
+                return list;
             }
-            return list;
+            catch (Exception e)
+            {
+                string msg = string.Format("查找对象出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
         }
 
 
@@ -311,17 +334,15 @@ namespace Haimen.DB
         /// <returns>含实体类的列表</returns>
         public static new List<T> Query(string where = "")
         {
-            SqlCommand cmd = DBFunction.Connection.CreateCommand();
             string table_name = GetTableName(typeof(T));
 
             string sql = "Select * from " + table_name;
-            List<string> whereList = new List<string>();
 
             // 生成SQL语句
             if (where.Length > 0)
             {
                 if (!ShowDeleteRecord)
-                    sql += " where " + where + " and deleted = 0 ";
+                    sql += String.Format(" where {0} and deleted = 0 ", where);
                 else
                     sql += " where " + where;
             }
@@ -334,28 +355,36 @@ namespace Haimen.DB
             // 按生成的ID降序排列
             sql += " " + OrderBy;
 
-
-            cmd.CommandText = sql;
-            SqlDataAdapter adap = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            adap.Fill(ds);
-            List<T> list = ds.toList<T>();
-
-            // 取得所有的明细记录
-            foreach (T t in list)
+            try
             {
-                FieldInfo info = t.GetType().GetField("DetailList");
-                PropertyInfo pro = t.GetType().GetProperty("ID");
-                long id = (long)pro.GetValue(t, null);
-                List<U> detail = new U().Find("parent_id = " + id.ToString());
-                info.SetValue(t, detail);
+                SqlCommand cmd = DBConnection.Connection.CreateCommand();
+                cmd.CommandText = sql;
+                SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+                List<T> list = ds.toList<T>();
 
-                //FieldInfo ainfo = t.GetType().GetField("AttachList");
-                //List<Attach> attaches = Attach.Query("parent_id = " + id.ToString());
-                //ainfo.SetValue(t, attaches);
+                // 取得所有的明细记录
+                foreach (T t in list)
+                {
+                    FieldInfo info = t.GetType().GetField("DetailList");
+                    PropertyInfo pro = t.GetType().GetProperty("ID");
+                    long id = (long)pro.GetValue(t, null);
+                    List<U> detail = new U().Find("parent_id = " + id);
+                    info.SetValue(t, detail);
+
+                    //FieldInfo ainfo = t.GetType().GetField("AttachList");
+                    //List<Attach> attaches = Attach.Query("parent_id = " + id.ToString());
+                    //ainfo.SetValue(t, attaches);
+                }
+
+                return list;
             }
-
-            return list;
+            catch (Exception e)
+            {
+                string msg = string.Format("查找对象出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
         }
     }
 }

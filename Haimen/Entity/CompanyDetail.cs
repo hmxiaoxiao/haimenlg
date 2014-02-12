@@ -8,7 +8,7 @@ using Haimen.DB;
 namespace Haimen.Entity
 {
     [Table("m_company_detail")]
-    public class CompanyDetail : MEntityFunction<CompanyDetail>
+    public class CompanyDetail : SingleEntity<CompanyDetail>
     {
         /// <summary>
         /// 父对象

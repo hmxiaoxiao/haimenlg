@@ -9,7 +9,7 @@ using Haimen.Helper;
 namespace Haimen.Entity
 {
     [Table("m_attach")]
-    public class Attach : MEntityFunction<Attach>
+    public class Attach : SingleEntity<Attach>
     {
         [Field("parent_id")]
         public long ParentID { get; set; }

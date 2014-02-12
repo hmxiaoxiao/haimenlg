@@ -11,7 +11,7 @@ namespace Haimen.Entity
     /// 合同付款申请
     /// </summary>
     [Table("t_contract_apply")]
-    public class ContractApply : MEntityFunction<ContractApply>
+    public class ContractApply : SingleEntity<ContractApply>
     {
         [Field("apply_date")]
         public DateTime ApplyDate { get; set; }

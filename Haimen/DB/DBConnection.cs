@@ -9,7 +9,10 @@ using System.Data;
 
 namespace Haimen.DB
 {
-    public class DBFunction
+    /// <summary>
+    /// 数据库的联接及相关操作
+    /// </summary>
+    public class DBConnection
     {
         // 数据库联接
         private static SqlConnection m_conn;
@@ -37,13 +40,9 @@ namespace Haimen.DB
                 }
                 return m_conn;
             }
-            catch (HelperException)
-            {
-                throw;
-            }
             catch (Exception e)
             {
-                string message = "取得数据库联接出错！原因如下：" + Environment.NewLine + e.Message;
+                string message = String.Format("取得数据库联接出错！原因如下：{0}{1}", Environment.NewLine, e.Message);
                 throw new Exception(message, e);
             }
         }
@@ -57,9 +56,15 @@ namespace Haimen.DB
             return Connection.BeginTransaction();
         }
 
+
+        /// <summary>
+        /// 运行一个查询语句，返回DataSet
+        /// </summary>
+        /// <param name="sql">查询语句</param>
+        /// <returns></returns>
         public static DataSet RunQuerySql(string sql)
         {
-            SqlCommand cmd = DBFunction.Connection.CreateCommand();
+            SqlCommand cmd = DBConnection.Connection.CreateCommand();
             cmd.CommandText = sql;
 
             SqlDataAdapter adap = new SqlDataAdapter(cmd);

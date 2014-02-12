@@ -70,7 +70,7 @@ namespace Haimen.GUI
                 nextmonth = month + 1;
             }
             DataSet ds = new DataSet();
-            SqlCommand cmd = new SqlCommand(sql, DBFunction.Connection);
+            SqlCommand cmd = new SqlCommand(sql, DBConnection.Connection);
 
             cmd.Parameters.AddWithValue("@id", id);
             cmd.Parameters.AddWithValue("@month", year.ToString()+"-"+month.ToString()+"-01 0:0:0");

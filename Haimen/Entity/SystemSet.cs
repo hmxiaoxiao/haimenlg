@@ -11,7 +11,7 @@ namespace Haimen.Entity
     /// 系统设置
     /// </summary>
     [Table("m_systemset")]
-    class SystemSet : MEntityFunction<SystemSet>
+    class SystemSet : SingleEntity<SystemSet>
     {
         public static string MONTHLY_YEAR = "MONTHLY_YEAR";
         public static string MONTHLY_MONTH = "MONTHLY_MONTH";

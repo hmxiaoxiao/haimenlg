@@ -8,7 +8,7 @@ using Haimen.DB;
 namespace Haimen.Entity
 {
     [Table("t_balance_detail")]
-    public class BalanceDetail : MEntityFunction<BalanceDetail>
+    public class BalanceDetail : SingleEntity<BalanceDetail>
     {
         [Field("parent_id")]
         public long ParentID { get; set; }

@@ -9,7 +9,7 @@ using Haimen.Entity;
 namespace Haimen.Entity
 {
     [Table("t_contract")]
-    public class Contract : TEntityFunction<Contract, ContractDetail>
+    public class Contract : ComplexEntity<Contract, ContractDetail>
     {
         /// <summary>
         /// 编号

@@ -8,7 +8,7 @@ using Haimen.DB;
 namespace Haimen.Entity
 {
     [Table("t_unauth")]
-    public class UnAuth : MEntityFunction<UnAuth>
+    public class UnAuth : SingleEntity<UnAuth>
     {
         [Field("code")]
         public string Code { get; set; }

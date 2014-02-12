@@ -45,7 +45,7 @@ group by a.id
         public DataSet GetCheckResultData()
         {
             DataSet ds = new DataSet();
-            SqlCommand cmd = new SqlCommand(checksql, DBFunction.Connection);
+            SqlCommand cmd = new SqlCommand(checksql, DBConnection.Connection);
 
             SqlDataAdapter da = new SqlDataAdapter(cmd); 
             da.Fill(ds);
@@ -56,7 +56,7 @@ group by a.id
         public int ModifyData()
         {
             DataSet ds = new DataSet();
-            SqlCommand cmd = new SqlCommand(errsql, DBFunction.Connection);
+            SqlCommand cmd = new SqlCommand(errsql, DBConnection.Connection);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
 
             da.Fill(ds);

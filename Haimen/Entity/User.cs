@@ -13,7 +13,7 @@ namespace Haimen.Entity
 {
     // 用户类
     [Table("m_user")]
-    public class User : MEntityFunction<User>
+    public class User : SingleEntity<User>
     {
         [Field("code")]
         public string Code { get; set; }

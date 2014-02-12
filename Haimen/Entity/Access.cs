@@ -57,7 +57,7 @@ namespace Haimen.Entity
     /// 权限记录
     /// </summary>
     [Table("q_access")]
-    public class Access : MEntityFunction<Access>
+    public class Access : SingleEntity<Access>
     {
         public Access()
         {
@@ -389,7 +389,7 @@ namespace Haimen.Entity
             }
 
             // 保存前先删除已经存在的数据
-            SqlCommand cmd = DBFunction.Connection.CreateCommand();
+            SqlCommand cmd = DBConnection.Connection.CreateCommand();
             string sql;
             if (m_list[0].UserID > 0)
                 sql = "delete from q_access where user_id = " + m_list[0].UserID.ToString();

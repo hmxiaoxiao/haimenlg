@@ -88,7 +88,7 @@ namespace Haimen.GUI
             }
             sql += " order by b.name, c.name ";
 
-            gridControl1.DataSource = DBFunction.RunQuerySql(sql).Tables[0];
+            gridControl1.DataSource = DBConnection.RunQuerySql(sql).Tables[0];
             gridView1.BestFitColumns();
         }
 

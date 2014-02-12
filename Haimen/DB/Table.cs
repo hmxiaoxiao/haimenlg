@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Haimen.DB
 {
+    /// <summary>
+    /// 反射用的，通过此属性取得某类对应的数据库表名
+    /// </summary>
     [System.AttributeUsage(System.AttributeTargets.Class |
                            System.AttributeTargets.Struct,
                            AllowMultiple = true)]

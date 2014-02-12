@@ -30,7 +30,7 @@ namespace Haimen.GUI
                 Select 'Y' as sel, id, code, name from m_company
                 where doc <> ''
             ";
-            gridControl1.DataSource = DBFunction.RunQuerySql(sql).Tables[0];
+            gridControl1.DataSource = DBConnection.RunQuerySql(sql).Tables[0];
             gridView1.BestFitColumns();
         }
 

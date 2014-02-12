@@ -11,7 +11,7 @@ namespace Haimen.Entity
     /// 合同验收
     /// </summary>
     [Table("t_contract_accept")]
-    public class ContractAccept : MEntityFunction<ContractAccept>
+    public class ContractAccept : SingleEntity<ContractAccept>
     {
         /// <summary>
         /// 验收的合同

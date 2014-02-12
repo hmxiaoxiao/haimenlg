@@ -8,7 +8,7 @@ using Haimen.DB;
 namespace Haimen.Entity
 {
     [Table("m_project")]
-    public class Project : MEntityFunction<Project>
+    public class Project : SingleEntity<Project>
     {
         [Field("name")]
         public string Name { get; set; }

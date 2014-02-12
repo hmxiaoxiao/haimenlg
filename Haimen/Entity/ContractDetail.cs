@@ -8,7 +8,7 @@ using Haimen.DB;
 namespace Haimen.Entity
 {
     [Table("t_contract_detail")]
-    public class ContractDetail : MEntityFunction<ContractDetail>
+    public class ContractDetail : SingleEntity<ContractDetail>
     {
         [Field("parent_id")]
         public long ParentID { get; set; }

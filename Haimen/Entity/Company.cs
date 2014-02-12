@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 namespace Haimen.Entity
 {
     [Table("m_company")]
-    public class Company : TEntityFunction<Company, CompanyDetail>
+    public class Company : ComplexEntity<Company, CompanyDetail>
     {
         [Field("code")]
         public string Code { get; set; }
