@@ -12,16 +12,27 @@ using System.Data.SqlClient;
 
 namespace Haimen.Entity
 {
+    /// <summary>
+    /// 授权资金对象实体类
+    /// </summary>
     [Table("t_account")]
     public class Account : ComplexEntity<Account, AccountDetail>
     {
+        /// <summary>
+        /// 凭证号
+        /// </summary>
         [Field("code")]
         public string Code { get; set; }
 
+        /// <summary>
+        /// 金额
+        /// </summary>
         [Field("money")]
         public decimal Money { get; set; }
 
-
+        /// <summary>
+        /// 支出单位帐号ID
+        /// </summary>
         [Field("out_companydetail_id")]
         public long Out_CompanyDetail_ID { get; set; }
         private CompanyDetail m_outCompnay = null;
@@ -38,7 +49,9 @@ namespace Haimen.Entity
             }
         }
 
-
+        /// <summary>
+        /// 收入单位帐号ID
+        /// </summary>
         [Field("in_companydetail_id")]
         public long In_CompanyDetail_ID { get; set; }
         private CompanyDetail m_inComanpy = null;
@@ -55,6 +68,10 @@ namespace Haimen.Entity
             }
         }
 
+
+        /// <summary>
+        /// 相关合同验收单ID
+        /// </summary>
         [Field("contract_accept_id")]
         public long ContractAcceptID { get; set; }
         private ContractAccept m_accept;
@@ -68,7 +85,9 @@ namespace Haimen.Entity
             }
         }
 
-
+        /// <summary>
+        /// ???
+        /// </summary>
         [Field("contract_apply_id")]
         public long ContractApplyID { get; set; }
         private ContractApply m_contract_apply = null;
@@ -85,9 +104,15 @@ namespace Haimen.Entity
             }
         }
 
+        /// <summary>
+        /// 贷款ID
+        /// </summary>
         [Field("balance_id")]
         public long BalanceID { get; set; }
 
+        /// <summary>
+        /// 制作 
+        /// </summary>
         [Field("maker_id")]
         public long MakerID { get; set; }
         private User m_maker = null;
@@ -104,6 +129,9 @@ namespace Haimen.Entity
             }
         }
 
+        /// <summary>
+        /// 审批
+        /// </summary>
         [Field("checker_id")]
         public long CheckerID { get; set; }
         private User m_checker = null;
@@ -126,6 +154,10 @@ namespace Haimen.Entity
         [Field("check_date")]
         public DateTime CheckDate { get; set; }
 
+
+        /// <summary>
+        /// 出纳
+        /// </summary>
         [Field("payer_id")]
         public long PayerID { get; set; }
         private User m_payer = null;
@@ -148,9 +180,15 @@ namespace Haimen.Entity
         [Field("pay_date")]
         public DateTime PayDate { get; set; }
 
+        /// <summary>
+        /// 状态
+        /// </summary>
         [Field("status")]
         public long Status { get; set; }
 
+        /// <summary>
+        /// 附件张数
+        /// </summary>
         [Field("attachment")]
         public long Attachment { get; set; }
 
@@ -175,6 +213,9 @@ namespace Haimen.Entity
         [Field("invoice")]
         public long Invoice { get; set; }
 
+        /// <summary>
+        /// 项目ID
+        /// </summary>
         [Field("project_id")]
         public long ProjectID { get; set; }
         private Project m_project;
@@ -218,8 +259,8 @@ namespace Haimen.Entity
                       a.deleted = 0 ";
             if (SystemSet.GetAccountYear() != 0 && !all)
             {
-                mastersql += " and signed_date < '" + next_year.ToString() + "-" + next_month.ToString() + "-01 0:0:0' ";
-                mastersql += " and signed_date >= '" + SystemSet.GetAccountYear().ToString() + "-" + SystemSet.GetAccountMonth().ToString() + "-01 0:0:0' ";
+                mastersql += String.Format(" and signed_date < '{0}-{1}-01 0:0:0' ", next_year, next_month);
+                mastersql += String.Format(" and signed_date >= '{0}-{1}-01 0:0:0' ", SystemSet.GetAccountYear(), SystemSet.GetAccountMonth());
             }
             mastersql += "    order by id desc;";
 
@@ -230,30 +271,29 @@ namespace Haimen.Entity
             if (SystemSet.GetAccountYear() != 0 && !all)
             {
                 detailsql += " and a.parent_id in (select id from t_account where ";
-                detailsql += " signed_date < '" + next_year.ToString() + "-" + next_month.ToString() + "-01 0:0:0' ";
-                detailsql += " and signed_date >= '" + SystemSet.GetAccountYear().ToString() + "-" + SystemSet.GetAccountMonth().ToString() + "-01 0:0:0' ";
+                detailsql += String.Format(" signed_date < '{0}-{1}-01 0:0:0' ", next_year, next_month);
+                detailsql += String.Format(" and signed_date >= '{0}-{1}-01 0:0:0' ", SystemSet.GetAccountYear(), SystemSet.GetAccountMonth());
                 detailsql += " and deleted = 0)";
             }
 
-
-            SqlDataAdapter damaster = new SqlDataAdapter(mastersql, DBConnection.Connection);
-            SqlDataAdapter dadetail = new SqlDataAdapter(detailsql, DBConnection.Connection);
-            DataSet ds = new DataSet();
-            damaster.Fill(ds, "master");
-            dadetail.Fill(ds, "detail");
-
-            DataColumn key = ds.Tables["master"].Columns["id"];
-            DataColumn foreignKey = ds.Tables["detail"].Columns["parent_id"];
             try
             {
-                ds.Relations.Add("明细", key, foreignKey,false);
+                SqlDataAdapter damaster = new SqlDataAdapter(mastersql, DBConnection.Connection);
+                SqlDataAdapter dadetail = new SqlDataAdapter(detailsql, DBConnection.Connection);
+                DataSet ds = new DataSet();
+                damaster.Fill(ds, "master");
+                dadetail.Fill(ds, "detail");
+
+                DataColumn key = ds.Tables["master"].Columns["id"];
+                DataColumn foreignKey = ds.Tables["detail"].Columns["parent_id"];
+                ds.Relations.Add("明细", key, foreignKey, false);
+                return ds;
             }
             catch (Exception e)
             {
-                string a = e.Message;
+                string msg = string.Format("查询授权资金列表出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new EntityException(msg, e);
             }
-
-            return ds;
         }
 
 
@@ -324,29 +364,39 @@ namespace Haimen.Entity
         /// </summary>
         public void Payed()
         {
-            using (TransactionScope ts = new TransactionScope())
+            this.Status = (long)AccountStatusEnum.已审核;
+            this.PayerID = GlobalSet.Current_User.ID;
+            this.PayDate = DateTime.Now;
+
+            // 更新二个单位的数据金额
+            CompanyDetail inCD = CompanyDetail.CreateByID(this.In_CompanyDetail_ID);
+            CompanyDetail outCD = CompanyDetail.CreateByID(this.Out_CompanyDetail_ID);
+            inCD.Balance += Money;
+            outCD.Balance -= Money;
+
+            // 更新合同申请中对应的合同的状态
+            if (ContractApplyID > 0)
             {
-                this.Status = (long)AccountStatusEnum.已审核;
-                this.PayerID = GlobalSet.Current_User.ID;
-                this.PayDate = DateTime.Now;
+                ContractApply c = ContractApply.CreateByID(ContractApplyID);
+                c.Status = (long)ContractApplyStatusEnum.已支付;
+                c.Save();
+            }
 
-                // 更新二个单位的数据金额
-                CompanyDetail inCD = CompanyDetail.CreateByID(this.In_CompanyDetail_ID);
-                CompanyDetail outCD = CompanyDetail.CreateByID(this.Out_CompanyDetail_ID);
-                inCD.Balance += Money;
-                outCD.Balance -= Money;
-
-                // 更新合同申请中对应的合同的状态
-                if (ContractApplyID > 0)
-                {
-                    ContractApply c = ContractApply.CreateByID(ContractApplyID);
-                    c.Status = (long)ContractApplyStatusEnum.已支付;
-                    c.Save();
-                }
-
-                inCD.Save();        // 保存收入单位帐号余额
-                outCD.Save();       // 保存支出单位的帐号余额
-                this.Save();        // 保存
+            SqlTransaction trans = null;
+            try
+            {
+                trans = DBConnection.BeginTrans();
+                inCD.SaveNoTrans();        // 保存收入单位帐号余额
+                outCD.SaveNoTrans();       // 保存支出单位的帐号余额
+                this.SaveNoTrans();        // 保存
+                trans.Commit();
+            }
+            catch(Exception e)
+            {
+                if (trans != null)
+                    trans.Rollback();
+                string msg = string.Format("授权资金支付时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new EntityException(msg, e);
             }
         }
 
@@ -355,28 +405,38 @@ namespace Haimen.Entity
         /// </summary>
         public void UnPayed()
         {
-            using (TransactionScope ts = new TransactionScope())
+
+            this.Status = (long)AccountStatusEnum.已复核;
+
+            // 更新二个单位的数据金额
+            CompanyDetail inCD = CompanyDetail.CreateByID(this.In_CompanyDetail_ID);
+            CompanyDetail outCD = CompanyDetail.CreateByID(this.Out_CompanyDetail_ID);
+            inCD.Balance -= Money;
+            outCD.Balance += Money;
+
+            // 更新合同的已付金额
+            if (ContractApplyID > 0)
             {
-                this.Status = (long)AccountStatusEnum.已复核;
+                ContractApply c = ContractApply.CreateByID(ContractApplyID);
+                c.Status = (long)ContractApplyStatusEnum.已开票;
+                c.Save();
+            }
 
-                // 更新二个单位的数据金额
-                CompanyDetail inCD = CompanyDetail.CreateByID(this.In_CompanyDetail_ID);
-                CompanyDetail outCD = CompanyDetail.CreateByID(this.Out_CompanyDetail_ID);
-                inCD.Balance -= Money;
-                outCD.Balance += Money;
-
-                // 更新合同的已付金额
-                if (ContractApplyID > 0)
-                {
-                    ContractApply c = ContractApply.CreateByID(ContractApplyID);
-                    c.Status = (long)ContractApplyStatusEnum.已开票;
-                    c.Save();
-                }
-
-
-                inCD.Save();        // 保存收入单位帐号余额
-                outCD.Save();       // 保存支出单位的帐号余额
-                this.Save();        // 保存
+            SqlTransaction trans = null;
+            try
+            {
+                trans = DBConnection.BeginTrans();
+                inCD.SaveNoTrans();        // 保存收入单位帐号余额
+                outCD.SaveNoTrans();       // 保存支出单位的帐号余额
+                this.SaveNoTrans();        // 保存
+                trans.Commit();
+            }
+            catch (Exception e)
+            {
+                if (trans != null)
+                    trans.Rollback();
+                string msg = string.Format("授权资金撤消时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new EntityException(msg, e);
             }
         }
 
@@ -415,40 +475,62 @@ namespace Haimen.Entity
         /// <returns></returns>
         public override bool Insert()
         {
-            MakerID = GlobalSet.Current_User.ID;
-
-            // 重新生成代码
-            // 现金与非现金生成的代码不一致（票据号）
-            if (OutCompanyDetail.Account.Trim() == "现金")
-                this.Code = this.OutCompanyDetail.Parent.NextDoc(true, true);
-            else
-                this.Code = this.OutCompanyDetail.Parent.NextDoc(true);
-
-            // 如果是合同申请生成，则返写一个标志进去
-            if (ContractApplyID > 0)
+            SqlTransaction trans = null;
+            try
             {
-                ContractApply cy = ContractApply.CreateByID(ContractApplyID);
-                cy.Status = (long)ContractApplyStatusEnum.已开票;
-                cy.Save();
-            }
+                trans = DBConnection.BeginTrans();
+                MakerID = GlobalSet.Current_User.ID;
 
-            // 如果是从合同验收生成的，要写到合同验收一个标志
-            if (ContractAcceptID > 0)
+                // 重新生成代码
+                // 现金与非现金生成的代码不一致（票据号）
+                if (OutCompanyDetail.Account.Trim() == "现金")
+                    this.Code = this.OutCompanyDetail.Parent.NextDoc(true, true);
+                else
+                    this.Code = this.OutCompanyDetail.Parent.NextDoc(true);
+
+                // 如果是合同申请生成，则返写一个标志进去
+                if (ContractApplyID > 0)
+                {
+                    ContractApply cy = ContractApply.CreateByID(ContractApplyID);
+                    cy.Status = (long)ContractApplyStatusEnum.已开票;
+                    cy.Save();
+                }
+
+                // 如果是从合同验收生成的，要写到合同验收一个标志
+                if (ContractAcceptID > 0)
+                {
+                    ContractAccept c = ContractAccept.CreateByID(ContractAcceptID);
+                    c.Status = (long)ContractAccept.ContractAcceptStatusEnum.已开票;
+                    c.Save();
+                }
+
+                this.CheckDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+                this.PayDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+
+                if (base.Insert())
+                {
+                    trans.Commit();
+                    return true;
+                }
+                else
+                {
+                    trans.Rollback();
+                    return false;
+                }
+            }
+            catch (Exception e)
             {
-                ContractAccept c = ContractAccept.CreateByID(ContractAcceptID);
-                c.Status = (long)ContractAccept.ContractAcceptStatusEnum.已开票;
-                c.Save();
+                if (trans != null)
+                    trans.Rollback();
+                string msg = string.Format("授权资金新增时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new EntityException(msg, e);
             }
-
-            this.CheckDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
-            this.PayDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
-
-            return base.Insert();
         }
 
         public override bool Update()
         {
             // 如果更新了合同申请，则修改申请的标志
+            // TODO: 这里可能有问题
             if (ContractApplyID > 0)
             {
                 // 先取得老的数据
@@ -467,14 +549,26 @@ namespace Haimen.Entity
         // 只是打上标记，默认不会显示
         public override void Destory()
         {
-            this.Deleted = 1;       // 打上删除标记
-            foreach (AccountDetail ad in DetailList)
+            try
             {
-                ad.Deleted = 1;
-                ad.Save();
+                using (SqlTransaction trans = DBConnection.BeginTrans())
+                {
+                    this.Deleted = 1;       // 打上删除标记
+                    foreach (AccountDetail ad in DetailList)
+                    {
+                        ad.Deleted = 1;
+                        ad.SaveNoTrans();
+                    }
+                    this.SaveNoTrans();
+                    trans.Commit();
+                    return;
+                }
             }
-            this.Save();
-            return;
+            catch (Exception e)
+            {
+                string msg = string.Format("授权资金删除时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new EntityException(msg, e);
+            }
         }
 
 
