@@ -71,11 +71,11 @@ namespace Haimen.DB
         /// 复杂对象的新增,无事务
         /// </summary>
         /// <returns></returns>
-        public override bool InsertNoTrans()
+        public override bool InsertNoTrans(SqlTransaction trans = null)
         {
             try
             {
-                bool success = base.InsertNoTrans();
+                bool success = base.InsertNoTrans(trans);
 
                 // 先保存主数据
                 if (success)
@@ -98,7 +98,7 @@ namespace Haimen.DB
                     foreach (Attach a in AttachList)
                     {
                         a.ParentID = this.ID;
-                        a.SaveNoTrans();
+                        a.SaveNoTrans(trans);
                     }
                 } 
                 return success;
@@ -137,7 +137,7 @@ namespace Haimen.DB
         /// 复杂对象的更新，无事务支持
         /// </summary>
         /// <returns></returns>
-        public override bool UpdateNoTrans()
+        public override bool UpdateNoTrans(SqlTransaction trans = null)
         {
             try
             {
@@ -156,7 +156,7 @@ namespace Haimen.DB
                                 finded = true;
                         }
                         if (!finded)
-                            old.DestoryNoTrans();
+                            old.DestoryNoTrans(trans);
                     }
                 }
 
@@ -171,10 +171,10 @@ namespace Haimen.DB
                             finded = true;
                     }
                     if (!finded)
-                        old.DestoryNoTrans();
+                        old.DestoryNoTrans(trans);
                 }
 
-                bool success = base.UpdateNoTrans();
+                bool success = base.UpdateNoTrans(trans);
                 foreach (U u in DetailList)
                 {
                     // 明细类必须有parent_id的属性
@@ -184,14 +184,14 @@ namespace Haimen.DB
                     info.SetValue(u, this.ID, null);
 
                     // 保存
-                    if (!u.SaveNoTrans())
+                    if (!u.SaveNoTrans(trans))
                         success = false;
                 }
 
                 foreach (Attach a in AttachList)
                 {
                     a.ParentID = this.ID;
-                    if (!a.SaveNoTrans())
+                    if (!a.SaveNoTrans(trans))
                         success = false;
                 }
 
@@ -228,23 +228,23 @@ namespace Haimen.DB
         /// <summary>
         /// 删除对象,无事务支持
         /// </summary>
-        public override void DestoryNoTrans()
+        public override void DestoryNoTrans(SqlTransaction trans = null)
         {
             try
             {
                 // 先删除明细
                 foreach (U u in DetailList)
                 {
-                    u.DestoryNoTrans();
+                    u.DestoryNoTrans(trans);
                 }
 
                 // 删除附件
                 foreach (Attach a in AttachList)
                 {
-                    a.DestoryNoTrans();
+                    a.DestoryNoTrans(trans);
                 }
                 // 再删除主记录
-                base.DestoryNoTrans();
+                base.DestoryNoTrans(trans);
             }
             catch (Exception e)
             {

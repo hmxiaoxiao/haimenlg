@@ -176,12 +176,12 @@ namespace Haimen.DB
         /// 保存当前的实体类,无事务支持
         /// </summary>
         /// <returns>保存成功为真，否则出错原因可在Error_Info中找到</returns>
-        public bool SaveNoTrans()
+        public bool SaveNoTrans(SqlTransaction trans = null)
         {
             if (this.ID > 0)
-                return UpdateNoTrans();
+                return UpdateNoTrans(trans);
             else
-                return InsertNoTrans();
+                return InsertNoTrans(trans);
         }
 
 
@@ -218,13 +218,16 @@ namespace Haimen.DB
         /// 这个方法不做事务处理
         /// </summary>
         /// <returns>成功为真</returns>
-        public virtual bool InsertNoTrans()
+        public virtual bool InsertNoTrans(SqlTransaction trans = null)
         {
             try
             {
                 // 生成插入的SQL语句
                 List<KeyValuePair<string, dynamic>> list_fv = GetFieldsAndValues();
                 SqlCommand cmd = DBConnection.Connection.CreateCommand();
+                if (trans != null)
+                    cmd.Transaction = trans;
+
                 string table_name = GetTableName(typeof(T));
                 string sql = "Insert into " + table_name;
                 string fields = "";
@@ -303,12 +306,14 @@ namespace Haimen.DB
         /// 无事务支持
         /// </summary>
         /// <returns>true 为成功</returns>
-        public virtual bool UpdateNoTrans()
+        public virtual bool UpdateNoTrans(SqlTransaction trans = null)
         {
             try
             {
                 List<KeyValuePair<string, dynamic>> list_fv = GetFieldsAndValues();
                 SqlCommand cmd = DBConnection.Connection.CreateCommand();
+                if (trans != null)
+                    cmd.Transaction = trans;
 
                 string table_name = GetTableName(typeof(T));
                 string sql = "Update " + table_name;
@@ -498,8 +503,6 @@ namespace Haimen.DB
                 SqlCommand cmd = DBConnection.Connection.CreateCommand();
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
-
-
             }
             catch (Exception e)
             {
@@ -538,7 +541,7 @@ namespace Haimen.DB
         /// 删除实体类
         /// 实例调用
         /// </summary>
-        public virtual void DestoryNoTrans()
+        public virtual void DestoryNoTrans(SqlTransaction trans = null)
         {
             try
             {
@@ -546,6 +549,9 @@ namespace Haimen.DB
                 string sql = String.Format("Delete from {0} where id = {1}", table_name, this.ID);
 
                 SqlCommand cmd = DBConnection.Connection.CreateCommand();
+                if (trans != null)
+                    cmd.Transaction = trans;
+
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
             }
