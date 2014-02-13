@@ -80,15 +80,24 @@ namespace Haimen.DB
 
 
         /// <summary>
-        /// 保存到数据时，校验数据是否正确
-        /// 注意无论是新增还是修改，都视为保存。
+        /// 新增校验数据是否正确
         /// </summary>
         /// <returns>true为成功，若失败，可以在Error_Info中查到</returns>
-        public virtual bool SaveVerify()
+        public virtual bool InsertVerify()
         {
             return true;
         }
 
+
+
+        /// <summary>
+        /// 更新校验数据是否正确
+        /// </summary>
+        /// <returns>true为成功，若失败，可以在Error_Info中查到</returns>
+        public virtual bool UpdateVerify()
+        {
+            return true;
+        }
 
         /// <summary>
         /// 删除数据时，检验是否可以删除
@@ -191,6 +200,10 @@ namespace Haimen.DB
         /// <returns>成功与否</returns>
         public virtual bool Insert()
         {
+            //插入前校验
+            if (!InsertVerify())
+                return false;
+
             SqlTransaction trans = null;
             try
             {
@@ -220,6 +233,10 @@ namespace Haimen.DB
         /// <returns>成功为真</returns>
         public virtual bool InsertNoTrans(SqlTransaction trans = null)
         {
+            // 插入前校验
+            if (!InsertVerify())
+                return false;
+
             try
             {
                 // 生成插入的SQL语句

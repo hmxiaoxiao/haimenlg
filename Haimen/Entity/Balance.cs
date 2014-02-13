@@ -74,7 +74,7 @@ namespace Haimen.Entity
             this.Save();        // 保存审核标记
         }
 
-        public override bool SaveVerify()
+        public override bool InsertVerify()
         {
             Error_Info.Clear();
 

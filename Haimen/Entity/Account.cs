@@ -444,7 +444,7 @@ namespace Haimen.Entity
         /// 校对对象
         /// </summary>
         /// <returns></returns>
-        public override bool SaveVerify()
+        public override bool InsertVerify()
         {
             Error_Info.Clear();
             if (this.In_CompanyDetail_ID <= 0)

@@ -98,7 +98,7 @@ namespace Haimen.Entity
         /// 申请校验
         /// </summary>
         /// <returns></returns>
-        public override bool SaveVerify()
+        public override bool InsertVerify()
         {
             Error_Info.Clear();
 

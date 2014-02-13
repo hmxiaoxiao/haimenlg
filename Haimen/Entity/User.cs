@@ -119,7 +119,7 @@ namespace Haimen.Entity
         }
 
         // 校验
-        override public bool SaveVerify()
+        override public bool InsertVerify()
         {
             // 初始化错误信息列表
             Error_Info.Clear();

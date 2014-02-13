@@ -234,7 +234,7 @@ namespace Haimen.Entity
         /// 校验数据是否正确
         /// </summary>
         /// <returns></returns>
-        public override bool SaveVerify()
+        public override bool InsertVerify()
         {
             Error_Info.Clear();
 

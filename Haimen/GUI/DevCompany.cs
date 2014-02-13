@@ -90,7 +90,7 @@ namespace Haimen.GUI
             dxErrorProvider1.ClearErrors();
 
             // 调用校验对象
-            if (m_company.SaveVerify())
+            if (m_company.InsertVerify())
                 return true;
 
             // 错误处理
