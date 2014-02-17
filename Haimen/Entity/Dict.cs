@@ -17,8 +17,8 @@ namespace Haimen.Entity
 
         public Dict(string key, long value)
         {
-            key = key;
-            Value = value;
+            this.Key = key;
+            this.Value = value;
         }
 
         /// <summary>

@@ -301,7 +301,7 @@ namespace Haimen.Entity
         /// 新增时，对最终价进行设置
         /// </summary>
         /// <returns></returns>
-        public override bool Insert()
+        public override bool Insert(bool hasTrans = false)
         {
             FinalMoney = Money;         
             if (Cost > 0)
@@ -316,7 +316,7 @@ namespace Haimen.Entity
         /// 更新时，同样须对最终价进行设置
         /// </summary>
         /// <returns></returns>
-        public override bool Update()
+        public override bool Update(bool hasTrans = false)
         {
             FinalMoney = Money;
             if (Cost > 0)

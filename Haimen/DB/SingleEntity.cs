@@ -172,66 +172,70 @@ namespace Haimen.DB
         /// 保存当前的实体类,有事务支持
         /// </summary>
         /// <returns>保存成功为真，否则出错原因可在Error_Info中找到</returns>
-        public bool Save()
+        public bool Save(bool hasTrans = false)
         {
             if (this.ID > 0)
-                return Update();
+                return Update(hasTrans);
             else
-                return Insert();
+                return Insert(hasTrans);
         }
 
 
-        /// <summary>
-        /// 保存当前的实体类,无事务支持
-        /// </summary>
-        /// <returns>保存成功为真，否则出错原因可在Error_Info中找到</returns>
-        public bool SaveNoTrans(SqlTransaction trans = null)
-        {
-            if (this.ID > 0)
-                return UpdateNoTrans(trans);
-            else
-                return InsertNoTrans(trans);
-        }
+        ///// <summary>
+        ///// 保存当前的实体类,无事务支持
+        ///// </summary>
+        ///// <returns>保存成功为真，否则出错原因可在Error_Info中找到</returns>
+        //public bool SaveNoTrans(SqlTransaction trans = null)
+        //{
+        //    if (this.ID > 0)
+        //        return UpdateNoTrans(trans);
+        //    else
+        //        return Insert(false);
+        //}
 
+
+        //public virtual bool InsertNoTrans(SqlTransaction trans = null)
+        //{
+        //    return true;
+        //}
 
         /// <summary>
         /// 拥有事务的新增
         /// </summary>
         /// <returns>成功与否</returns>
-        public virtual bool Insert()
-        {
-            //插入前校验
-            if (!InsertVerify())
-                return false;
+        //public virtual bool Insert()
+        //{
+        //    //插入前校验
+        //    if (!InsertVerify())
+        //        return false;
 
-            SqlTransaction trans = null;
-            try
-            {
-                using (trans = DBConnection.BeginTrans())
-                {
-                    bool blnOK = this.InsertNoTrans();
-                    trans.Commit();
-                    return blnOK;
-                }
-            }
-            catch (Exception e)
-            {
-                if (trans != null)
-                    trans.Rollback();
+        //    SqlTransaction trans = null;
+        //    try
+        //    {
+        //        using (trans = DBConnection.BeginTrans())
+        //        {
+        //            //bool blnOK = this.InsertNoTrans();
+        //            trans.Commit();
+        //            return true;
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        if (trans != null)
+        //            trans.Rollback();
 
-                string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
-            }
-        }
+        //        string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
+        //        throw new DBException(msg, e);
+        //    }
+        //}
 
 
         /// <summary>
         /// 插入新的实体类
-        /// 注意，校验由客户端处理，这里不做校验
         /// 这个方法不做事务处理
         /// </summary>
         /// <returns>成功为真</returns>
-        public virtual bool InsertNoTrans(SqlTransaction trans = null)
+        public virtual bool Insert(bool hasTrans = false)
         {
             // 插入前校验
             if (!InsertVerify())
@@ -241,9 +245,7 @@ namespace Haimen.DB
             {
                 // 生成插入的SQL语句
                 List<KeyValuePair<string, dynamic>> list_fv = GetFieldsAndValues();
-                SqlCommand cmd = DBConnection.Connection.CreateCommand();
-                if (trans != null)
-                    cmd.Transaction = trans;
+                SqlCommand cmd = DBConnection.getCommand();
 
                 string table_name = GetTableName(typeof(T));
                 string sql = "Insert into " + table_name;
@@ -276,40 +278,25 @@ namespace Haimen.DB
                 sql += String.Format(" values({0})", values.Substring(0, values.Length - 1));
                 sql += "; select @@identity ";
 
+                // 如果不在一个事务里面，就开启一个事务
+                if (!hasTrans)
+                    DBConnection.BeginTrans();  // 开始一个事务
+                
                 cmd.CommandText = sql;
+                cmd.Transaction = DBConnection.Transaction;
                 this.ID = long.Parse(cmd.ExecuteScalar().ToString());
+
+                // 提交事务
+                if (!hasTrans)
+                    DBConnection.CommitTrans();
 
                 return true;
             }
             catch (Exception e)
             {
-                string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
-            }
-        }
-
-
-        /// <summary>
-        /// 更新实体类
-        /// 有事务支持
-        /// </summary>
-        /// <returns></returns>
-        public virtual bool Update()
-        {
-            SqlTransaction trans = null;
-            try
-            {
-                using (trans = DBConnection.BeginTrans())
-                {
-                    bool blnOK = this.UpdateNoTrans();
-                    trans.Commit();
-                    return blnOK;
-                }
-            }
-            catch (Exception e)
-            {
-                if (trans != null)
-                    trans.Rollback();
+                // 如果是发起事务的函数，则需要回滚事务
+                if (!hasTrans)
+                    DBConnection.RollbackTrans();
 
                 string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
                 throw new DBException(msg, e);
@@ -323,14 +310,15 @@ namespace Haimen.DB
         /// 无事务支持
         /// </summary>
         /// <returns>true 为成功</returns>
-        public virtual bool UpdateNoTrans(SqlTransaction trans = null)
+        public virtual bool Update(bool hasTrans = false)
         {
+            if (!UpdateVerify())
+                return false;
+
             try
             {
                 List<KeyValuePair<string, dynamic>> list_fv = GetFieldsAndValues();
-                SqlCommand cmd = DBConnection.Connection.CreateCommand();
-                if (trans != null)
-                    cmd.Transaction = trans;
+                SqlCommand cmd = DBConnection.getCommand();
 
                 string table_name = GetTableName(typeof(T));
                 string sql = "Update " + table_name;
@@ -356,23 +344,102 @@ namespace Haimen.DB
                     }
                 }
 
-                if (sets.Length > 0)
-                {
-                    sql += " Set " + sets.Substring(0, sets.Length - 1);
-                    // 加上条件
-                    sql += " Where id = @id";
-                    cmd.Parameters.AddWithValue("@id", this.ID);
 
-                    cmd.CommandText = sql;
-                    cmd.ExecuteNonQuery();
+                sql += " Set " + sets.Substring(0, sets.Length - 1);
+                // 加上条件
+                sql += " Where id = @id";
+                cmd.Parameters.AddWithValue("@id", this.ID);
 
-                }
+                if (!hasTrans)
+                    DBConnection.BeginTrans();
+                
+                cmd.Transaction = DBConnection.Transaction;
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+
+                if (!hasTrans)
+                    DBConnection.CommitTrans();
+
                 return true;
             }
             catch (Exception e)
             {
+
+                if (!hasTrans && DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
+
                 string msg = string.Format("更新数据时出错，请与供应商联系，取得支持！错误原因：{0}{1}",
                     Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
+        }
+
+
+        /// <summary>
+        /// 删除实体类,这个只能删除一个实体类，如果要删除含明细的实体类，请使用Destory方法
+        /// 静态调用,此调用不会判断是否可以删除，需要调用者已经调用判断
+        /// 事务支持
+        /// </summary>
+        /// <param name="id">需要删除实体类的ID</param>
+        public static bool Delete(long id)
+        {
+            try
+            {
+                DBConnection.BeginTrans();
+
+                string table_name = GetTableName(typeof(T));
+                string sql = String.Format("Delete from {0} where id = {1}", table_name, id);
+
+                SqlCommand cmd = DBConnection.getCommand();
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+
+                DBConnection.CommitTrans();
+                return true;
+            }
+            catch (Exception e)
+            {
+                if (DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
+
+                string msg = string.Format("删除数据出错，原因如下：", Environment.NewLine, e.Message);
+                throw new DBException(msg, e);
+            }
+        }
+
+
+
+        /// <summary>
+        /// 删除实体类
+        /// 实例调用
+        /// </summary>
+        public virtual bool Destory(bool hasTrans = false)
+        {
+            try
+            {
+                string table_name = GetTableName(typeof(T));
+                string sql = String.Format("Delete from {0} where id = {1}", table_name, this.ID);
+
+                SqlCommand cmd = DBConnection.getCommand();
+                if (!hasTrans)
+                    DBConnection.BeginTrans();
+
+                cmd.Transaction = DBConnection.Transaction;
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+
+                if (!hasTrans)
+                    DB.DBConnection.CommitTrans();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                if (!hasTrans && DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
+
+                string msg = string.Format("删除数据出错，原因如下：", Environment.NewLine, e.Message);
                 throw new DBException(msg, e);
             }
         }
@@ -393,7 +460,7 @@ namespace Haimen.DB
                 string sql = string.Format("Select * from {0}", table_name);
 
                 // 生成SQL语句
-                SqlCommand cmd = DBConnection.Connection.CreateCommand();
+                SqlCommand cmd = DBConnection.getCommand();
                 if (where.Length > 0)
                 {
                     if (!ShowDeleteRecord)
@@ -459,8 +526,7 @@ namespace Haimen.DB
 
             try
             {
-
-                SqlCommand cmd = DBConnection.Connection.CreateCommand();
+                SqlCommand cmd = DBConnection.getCommand();
                 cmd.CommandText = sql;
                 SqlDataAdapter adap = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
@@ -475,110 +541,6 @@ namespace Haimen.DB
         }
 
 
-        /// <summary>
-        /// 删除实体类,这个只能删除一个实体类，如果要删除含明细的实体类，请使用Destory方法
-        /// 静态调用,此调用不会判断是否可以删除，需要调用者已经调用判断
-        /// 有事务支持
-        /// </summary>
-        /// <param name="id">需要删除实体类的ID</param>
-        public static void Delete(long id)
-        {
-            SqlTransaction trans = null;
-            try
-            {
-                using (trans = DBConnection.BeginTrans())
-                {
-                    DeleteNoTrans(id);
-                    trans.Commit();
-                }
-            }
-            catch (Exception e)
-            {
-                if (trans != null)
-                    trans.Rollback();
-
-                string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
-            }
-        }
-
-
-        /// <summary>
-        /// 删除实体类,这个只能删除一个实体类，如果要删除含明细的实体类，请使用Destory方法
-        /// 静态调用,此调用不会判断是否可以删除，需要调用者已经调用判断
-        /// 无事务支持
-        /// </summary>
-        /// <param name="id">需要删除实体类的ID</param>
-        public static void DeleteNoTrans(long id)
-        {
-            try
-            {
-
-                string table_name = GetTableName(typeof(T));
-                string sql = String.Format("Delete from {0} where id = {1}", table_name, id);
-
-                SqlCommand cmd = DBConnection.Connection.CreateCommand();
-                cmd.CommandText = sql;
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                string msg = string.Format("删除数据出错，原因如下：", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
-            }
-        }
-
-        /// <summary>
-        /// 删除实体类，有事务
-        /// 实例调用
-        /// </summary>
-        public virtual void Destory()
-        {
-            SqlTransaction trans = null;
-            try
-            {
-                using (trans = DBConnection.BeginTrans())
-                {
-                    this.DestoryNoTrans();
-                    trans.Commit();
-                }
-            }
-            catch (Exception e)
-            {
-                if (trans != null)
-                    trans.Rollback();
-
-                string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
-            }
-        }
-
-
-        /// <summary>
-        /// 删除实体类
-        /// 实例调用
-        /// </summary>
-        public virtual void DestoryNoTrans(SqlTransaction trans = null)
-        {
-            try
-            {
-                string table_name = GetTableName(typeof(T));
-                string sql = String.Format("Delete from {0} where id = {1}", table_name, this.ID);
-
-                SqlCommand cmd = DBConnection.Connection.CreateCommand();
-                if (trans != null)
-                    cmd.Transaction = trans;
-
-                cmd.CommandText = sql;
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                string msg = string.Format("删除数据出错，原因如下：", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
-            }
-        }
-
 
         /// <summary>
         /// 通过ID生成实体类
@@ -592,7 +554,7 @@ namespace Haimen.DB
 
             try
             {
-                SqlCommand cmd = DBConnection.Connection.CreateCommand();
+                SqlCommand cmd = DBConnection.getCommand();
                 cmd.CommandText = sql;
 
                 SqlDataAdapter adap = new SqlDataAdapter(cmd);

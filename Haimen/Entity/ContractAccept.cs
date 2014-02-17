@@ -96,7 +96,7 @@ namespace Haimen.Entity
         /// 新增时,更新合同的状态
         /// </summary>
         /// <returns></returns>
-        public override bool Insert()
+        public override bool Insert(bool hasTrans = false)
         {
             SqlTransaction trans = null;
             try
@@ -135,36 +135,33 @@ namespace Haimen.Entity
         /// 更新时，同样更新合同的状态
         /// </summary>
         /// <returns></returns>
-        public override bool Update()
+        public override bool Update(bool hasTrans = false)
         {
-            SqlTransaction trans = null;
             try
             {
-                trans = DBConnection.BeginTrans();
+                if (!hasTrans)
+                    DBConnection.BeginTrans();
+
                 //  更新状态
                 Contract c = Contract.CreateByID(this.ContractID);
                 if (Pass > 0)
                     c.Status = (long)Contract.ContractStatusEnum.已验收;
                 else
                     c.Status = (long)Contract.ContractStatusEnum.验收未通过;
-                c.Save();
+                bool sucess = c.Save(true) && base.Update(true);
 
-
-                if (base.Update())
-                {
-                    trans.Commit();
-                    return true;
-                }
+                if (sucess)
+                    DBConnection.CommitTrans();
                 else
-                {
-                    trans.Rollback();
-                    return false;
-                }
+                    DBConnection.RollbackTrans();
+
+                return sucess;
+
             }
             catch (Exception e)
             {
-                if (trans != null)
-                    trans.Rollback();
+                if (!hasTrans && DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
 
                 string msg = string.Format("在更新数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
                 throw new DBException(msg, e);

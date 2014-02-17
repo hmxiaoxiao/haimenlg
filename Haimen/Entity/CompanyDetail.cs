@@ -188,7 +188,7 @@ namespace Haimen.Entity
         /// 新增时，将余额，与原始余额保持一致。贷款也一样
         /// </summary>
         /// <returns></returns>
-        public override bool Insert()
+        public override bool Insert(bool hasTrans = false)
         {
             Balance = OBalance;
             Credit = OCredit;
@@ -200,7 +200,7 @@ namespace Haimen.Entity
         /// 修改时，要将原始余额的差异保持到余额上，贷款也一样。
         /// </summary>
         /// <returns></returns>
-        public override bool Update()
+        public override bool Update(bool hasTrans = false)
         {
             // 先取得原始记录
             CompanyDetail ocom = CompanyDetail.CreateByID(ID);

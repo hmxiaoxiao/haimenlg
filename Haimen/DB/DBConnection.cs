@@ -47,13 +47,87 @@ namespace Haimen.DB
             }
         }
 
+
+        /// <summary>
+        /// 取得一个Command
+        /// </summary>
+        /// <returns></returns>
+        public static SqlCommand getCommand()
+        {
+            SqlCommand comm = Connection.CreateCommand();
+            if (m_trans != null)
+                comm.Transaction = m_trans;
+            return comm;
+        }
+
+
+        /// <summary>
+        /// 当前的事务
+        /// </summary>
+        private static SqlTransaction m_trans = null;
+
+        public static SqlTransaction Transaction
+        {
+            get
+            {
+                return m_trans;
+            }
+        }
+
         /// <summary>
         /// 开始一个事务
         /// </summary>
         /// <returns></returns>
         public static SqlTransaction BeginTrans()
         {
-            return Connection.BeginTransaction();
+            try
+            {
+                m_trans = Connection.BeginTransaction();
+                return m_trans;
+            }
+            catch (Exception e)
+            {
+                string message = String.Format("开始一个事务出错！原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new Exception(message, e);
+            }
+        }
+
+
+        /// <summary>
+        /// 提交一个事务
+        /// </summary>
+        /// <returns></returns>
+        public static void CommitTrans()
+        {
+            try
+            {
+                m_trans.Commit();
+                m_trans = null;
+            }
+            catch (Exception e)
+            {
+                string message = String.Format("提交事务出错出错！原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new Exception(message, e);
+            }
+        }
+
+
+        /// <summary>
+        /// 回滚一个事务
+        /// </summary>
+        /// <returns></returns>
+        public static void RollbackTrans()
+        {
+            try
+            {
+                m_trans.Rollback();
+                m_trans = null;
+            }
+            catch (Exception e)
+            {
+                string message = String.Format("回滚事务出错！原因如下：{0}{1}", Environment.NewLine, e.Message);
+                throw new Exception(message, e);
+            }
         }
 
 
@@ -64,7 +138,7 @@ namespace Haimen.DB
         /// <returns></returns>
         public static DataSet RunQuerySql(string sql)
         {
-            SqlCommand cmd = DBConnection.Connection.CreateCommand();
+            SqlCommand cmd = DBConnection.getCommand();
             cmd.CommandText = sql;
 
             SqlDataAdapter adap = new SqlDataAdapter(cmd);

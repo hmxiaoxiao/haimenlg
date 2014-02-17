@@ -100,7 +100,7 @@ namespace Haimen.Entity
         /// 用户保存前，要将密码混淆
         /// </summary>
         /// <returns>成功与否</returns>
-        public override bool Insert()
+        public override bool Insert(bool hasTrans = false)
         {
             Salt = User.getMd5Hash(Code, Password);
             return base.Insert();
@@ -111,7 +111,7 @@ namespace Haimen.Entity
         /// 用户更新前，要将密码混淆
         /// </summary>
         /// <returns>成功与否</returns>
-        public override bool Update()
+        public override bool Update(bool hasTrans = false)
         {
             if (!string.IsNullOrEmpty(Password))
                 Salt = User.getMd5Hash(Code, Password);

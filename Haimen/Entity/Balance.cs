@@ -93,13 +93,13 @@ namespace Haimen.Entity
             return Error_Info.Count == 0;
         }
 
-        public override bool Insert()
+        public override bool Insert(bool hasTrans = false)
         {
             this.Remaining = this.Money;
             return base.Insert();
         }
 
-        public override bool Update()
+        public override bool Update(bool hasTrans = false)
         {
             // 当前已还贷金额
             Balance old_balance = Balance.CreateByID(this.ID);

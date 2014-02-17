@@ -118,29 +118,36 @@ namespace Haimen.Entity
         /// <summary>
         /// 删除时更新余额
         /// </summary>
-        public override void Destory()
+        public override bool Destory(bool hasTrans = false)
         {
             UnAuth old = UnAuth.CreateByID(ID);
             if (old == null)
-                return;
+                return false;
 
-            SqlTransaction trans = null;
             try
             {
-                trans = DBConnection.BeginTrans();
+                if (!hasTrans)
+                    DBConnection.BeginTrans();
+
                 CompanyDetail cd = CompanyDetail.CreateByID(old.CompanyDetailID);
                 if (old.Input == "X") // 如果收入，那么删除时余额要减少
                     cd.Balance -= old.Money;
                 else
                     cd.Balance += old.Money;
-                cd.SaveNoTrans();
-                base.DestoryNoTrans();
-                trans.Commit();
+
+                bool sucess   = cd.Update(true) && base.Destory(true);
+
+
+
+                if (!hasTrans)
+                    DBConnection.CommitTrans();
+
+                return true;
             }
             catch (Exception e)
             {
-                if (trans != null)
-                    trans.Rollback();
+                if (!hasTrans && DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
 
                 string msg = string.Format("删除非授权凭证时出现错误，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
                 throw new EntityException(msg, e);
@@ -151,14 +158,14 @@ namespace Haimen.Entity
         /// <summary>
         /// 新增时更新余额
         /// </summary>
-        public override bool Insert()
+        public override bool Insert(bool hasTrans = false)
         {
             SqlTransaction trans = null;
             try
             {
                 trans = DBConnection.BeginTrans();
 
-                if (!base.InsertNoTrans())
+                if (!base.Insert(false))
                 {
                     trans.Rollback();
                     return false;
@@ -169,7 +176,7 @@ namespace Haimen.Entity
                     cd.Balance += Money;
                 else
                     cd.Balance -= Money;
-                cd.SaveNoTrans();
+                cd.Update(true);
                 trans.Commit();
 
                 return true;
@@ -188,7 +195,7 @@ namespace Haimen.Entity
         /// <summary>
         /// 修改时，更新余额
         /// </summary>
-        public override bool Update()
+        public override bool Update(bool hasTrans = false)
         {
             UnAuth old = UnAuth.CreateByID(ID);
             if (old == null)
@@ -208,27 +215,23 @@ namespace Haimen.Entity
             else
                 cd.Balance += old.Money;
 
-            SqlTransaction trans = null;
             try
             {
-                trans = DBConnection.BeginTrans();
-                cd.Save();
+                if (!hasTrans)
+                    DBConnection.BeginTrans();
 
-                if (base.Update())
-                {
-                    trans.Commit();
-                    return true;
-                }
+                bool sucess = cd.Save(true) && base.Update(true);
+                if(sucess)
+                    DBConnection.CommitTrans();
                 else
-                {
-                    trans.Rollback();
-                    return false;
-                }
+                    DBConnection.RollbackTrans();
+
+                return sucess;
             }
             catch (Exception e)
             {
-                if (trans != null)
-                    trans.Rollback();
+                if (!hasTrans && DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
 
                 string msg = string.Format("更新非授权凭证时出现错误，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
                 throw new EntityException(msg, e);

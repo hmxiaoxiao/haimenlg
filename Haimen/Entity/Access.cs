@@ -389,7 +389,7 @@ namespace Haimen.Entity
             }
 
             // 保存前先删除已经存在的数据
-            SqlCommand cmd = DBConnection.Connection.CreateCommand();
+            SqlCommand cmd = DBConnection.getCommand();
             string sql;
             if (m_list[0].UserID > 0)
                 sql = "delete from q_access where user_id = " + m_list[0].UserID.ToString();

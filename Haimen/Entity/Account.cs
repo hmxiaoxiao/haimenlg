@@ -362,7 +362,7 @@ namespace Haimen.Entity
         /// <summary>
         /// 支付
         /// </summary>
-        public void Payed()
+        public bool Payed()
         {
             this.Status = (long)AccountStatusEnum.已审核;
             this.PayerID = GlobalSet.Current_User.ID;
@@ -374,27 +374,35 @@ namespace Haimen.Entity
             inCD.Balance += Money;
             outCD.Balance -= Money;
 
-            // 更新合同申请中对应的合同的状态
-            if (ContractApplyID > 0)
-            {
-                ContractApply c = ContractApply.CreateByID(ContractApplyID);
-                c.Status = (long)ContractApplyStatusEnum.已支付;
-                c.Save();
-            }
 
-            SqlTransaction trans = null;
             try
             {
-                trans = DBConnection.BeginTrans();
-                inCD.SaveNoTrans();        // 保存收入单位帐号余额
-                outCD.SaveNoTrans();       // 保存支出单位的帐号余额
-                this.SaveNoTrans();        // 保存
-                trans.Commit();
+                DBConnection.BeginTrans();
+
+                bool success =  inCD.Update(true) &&        // 保存收入单位帐号余额
+                                outCD.Update(true) &&       // 保存支出单位的帐号余额
+                                this.Update(true);        // 保存
+                // 更新合同申请中对应的合同的状态
+                if (ContractApplyID > 0)
+                {
+                    ContractApply c = ContractApply.CreateByID(ContractApplyID);
+                    c.Status = (long)ContractApplyStatusEnum.已支付;
+                    success = success && c.Save(true);
+                }
+
+                if (success)
+                    DBConnection.CommitTrans();
+                else
+                    DBConnection.RollbackTrans();
+
+                return success;
+                
             }
             catch(Exception e)
             {
-                if (trans != null)
-                    trans.Rollback();
+                if (DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
+
                 string msg = string.Format("授权资金支付时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
                 throw new EntityException(msg, e);
             }
@@ -403,7 +411,7 @@ namespace Haimen.Entity
         /// <summary>
         /// 撤消支付
         /// </summary>
-        public void UnPayed()
+        public bool UnPayed()
         {
 
             this.Status = (long)AccountStatusEnum.已复核;
@@ -414,27 +422,33 @@ namespace Haimen.Entity
             inCD.Balance -= Money;
             outCD.Balance += Money;
 
-            // 更新合同的已付金额
-            if (ContractApplyID > 0)
-            {
-                ContractApply c = ContractApply.CreateByID(ContractApplyID);
-                c.Status = (long)ContractApplyStatusEnum.已开票;
-                c.Save();
-            }
-
-            SqlTransaction trans = null;
             try
             {
-                trans = DBConnection.BeginTrans();
-                inCD.SaveNoTrans();        // 保存收入单位帐号余额
-                outCD.SaveNoTrans();       // 保存支出单位的帐号余额
-                this.SaveNoTrans();        // 保存
-                trans.Commit();
+                DBConnection.BeginTrans();
+                
+                bool success = inCD.Update(true) &&         // 保存收入单位帐号余额
+                               outCD.Update(true)  &&      // 保存支出单位的帐号余额
+                                this.Update(true);        // 保存
+                // 更新合同的已付金额
+                if (ContractApplyID > 0)
+                {
+                    ContractApply c = ContractApply.CreateByID(ContractApplyID);
+                    c.Status = (long)ContractApplyStatusEnum.已开票;
+                    c.Update(true);
+                }
+
+                if (success)
+                    DBConnection.CommitTrans();
+                else
+                    DBConnection.RollbackTrans();
+
+                return success;
             }
             catch (Exception e)
             {
-                if (trans != null)
-                    trans.Rollback();
+                if (DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
+
                 string msg = string.Format("授权资金撤消时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
                 throw new EntityException(msg, e);
             }
@@ -473,7 +487,7 @@ namespace Haimen.Entity
         /// 新增时，当前用户作为制作 人
         /// </summary>
         /// <returns></returns>
-        public override bool Insert()
+        public override bool Insert(bool hasTrans = false)
         {
             SqlTransaction trans = null;
             try
@@ -527,7 +541,7 @@ namespace Haimen.Entity
             }
         }
 
-        public override bool Update()
+        public override bool Update(bool hasTrans = false)
         {
             // 如果更新了合同申请，则修改申请的标志
             // TODO: 这里可能有问题
@@ -547,25 +561,36 @@ namespace Haimen.Entity
 
         // 资金的删除不是真正的删除
         // 只是打上标记，默认不会显示
-        public override void Destory()
+        public override bool Destory(bool hasTrans = false)
         {
             try
             {
-                using (SqlTransaction trans = DBConnection.BeginTrans())
+                if (!hasTrans)
+                    DBConnection.BeginTrans();
+
+
+                this.Deleted = 1;       // 打上删除标记
+                foreach (AccountDetail ad in DetailList)
                 {
-                    this.Deleted = 1;       // 打上删除标记
-                    foreach (AccountDetail ad in DetailList)
-                    {
-                        ad.Deleted = 1;
-                        ad.SaveNoTrans();
-                    }
-                    this.SaveNoTrans();
-                    trans.Commit();
-                    return;
+                    ad.Deleted = 1;
+                    ad.Update(true);
                 }
+                bool sucess = this.Update(true);
+
+                if (!hasTrans)
+                {
+                    if (sucess)
+                        DBConnection.CommitTrans();
+                    else
+                        DBConnection.RollbackTrans();
+                }
+                return sucess;
             }
             catch (Exception e)
             {
+                if (!hasTrans && DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
+
                 string msg = string.Format("授权资金删除时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
                 throw new EntityException(msg, e);
             }
