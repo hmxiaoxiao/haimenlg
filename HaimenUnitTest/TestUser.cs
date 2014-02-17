@@ -38,7 +38,8 @@ namespace HaimenUnitTest
             User user = new User();
             user.Code = "Hello";
             user.Name = "World";
-            user.Insert();// User.Create<User>(user);
+            user.GroupID = UserGroup.Query()[0].ID;
+            Assert.IsTrue(user.Insert());// User.Create<User>(user);
             Assert.AreNotEqual(0, user.ID);
             //user.Create<User>(user);
 
@@ -65,6 +66,13 @@ namespace HaimenUnitTest
         }
 
         [TestMethod]
+        public void TestUserLogin()
+        {
+            Assert.IsNotNull(User.Login("admin", "qwer1234"));
+            Assert.IsNull(User.Login("admin", "12345678"));
+        }
+
+        [TestMethod]
         public void TestUserSalt()
         {
             List<User> list = User.Query("code = 'test1'");
@@ -77,8 +85,10 @@ namespace HaimenUnitTest
             }
             User u = new User();
             u.Code = "test1";
+            u.Name = "test1";
+            u.GroupID = UserGroup.Query()[0].ID;
             u.Password = "abcde";
-            u.Insert();
+            Assert.IsTrue(u.Insert());
             Assert.IsTrue(u.ID > 0);
 
             User dbUser = User.CreateByID(u.ID);
@@ -86,7 +96,7 @@ namespace HaimenUnitTest
             Assert.IsNotNull(User.Login(u.Code, u.Password));
             Assert.IsTrue(User.Login(u.Code, u.Password) != null);
 
-            User.Delete(u.ID);
+            Assert.IsTrue(User.Delete(u.ID));
         }
     }
 }

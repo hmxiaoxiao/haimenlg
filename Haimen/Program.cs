@@ -35,7 +35,7 @@ namespace Haimen
                 User.Init();
 
 #if DEBUG
-                GlobalSet.Current_User = User.Login("yangxd", "heroes22");
+                //GlobalSet.Current_User = User.Login("yangxd", "heroes22");
                 GlobalSet.Current_User = User.Login("admin", "qwer1234");
 #else
                 // 显示登录窗口

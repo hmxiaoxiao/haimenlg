@@ -67,6 +67,15 @@ namespace Haimen.DB
 
 
         /// <summary>
+        /// 用来在导常时，保存异常信息，以供GUI显示
+        /// </summary>
+        public static string ExceptionString { get; set; }
+
+
+
+
+
+        /// <summary>
         /// 是否显示已经打上删除标记的记录
         /// </summary>
         public static bool ShowDeleteRecord = false;
@@ -85,7 +94,7 @@ namespace Haimen.DB
         /// <returns>true为成功，若失败，可以在Error_Info中查到</returns>
         public virtual bool InsertVerify()
         {
-            return true;
+            return false;
         }
 
 

@@ -58,7 +58,7 @@ namespace Haimen.Entity
 
         // 用户初始化
         // 第一次使用时，增加一个超级用户
-        public static void Init()
+        public static bool Init()
         {
             try
             {
@@ -68,11 +68,12 @@ namespace Haimen.Entity
                     User admin = new User() { Code = "admin", Name = "超级用户", Password = "qwer1234", Admin = "X" };
                     admin.Save();
                 }
+                return true;
             }
             catch (Exception e)
             {
-                string message = String.Format("取得数据库信息出错！原因如下：{0}{1}", Environment.NewLine, e.Message);
-                throw new Exception(message, e);
+                User.ExceptionString = String.Format("取得数据库信息出错！原因如下：{0}{1}", Environment.NewLine, e.Message);
+                return false;
             }
         }
 
@@ -103,7 +104,7 @@ namespace Haimen.Entity
         public override bool Insert(bool hasTrans = false)
         {
             Salt = User.getMd5Hash(Code, Password);
-            return base.Insert();
+            return base.Insert(hasTrans);
         }
 
 
@@ -115,7 +116,7 @@ namespace Haimen.Entity
         {
             if (!string.IsNullOrEmpty(Password))
                 Salt = User.getMd5Hash(Code, Password);
-            return base.Update();
+            return base.Update(hasTrans);
         }
 
         // 校验
@@ -148,7 +149,10 @@ namespace Haimen.Entity
 
             // 判断是否加了用户组
             if (GroupID <= 0)
+            {
                 Error_Info.Add(new KeyValuePair<string, string>("GroupID", "用户组必须选择！"));
+                return false;
+            }
             return true;
         }
 
