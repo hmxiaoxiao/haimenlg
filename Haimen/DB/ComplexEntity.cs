@@ -47,11 +47,15 @@ namespace Haimen.DB
 
 
         /// <summary>
-        /// 复杂对象的新增,无事务
+        /// 复杂对象的新增
         /// </summary>
         /// <returns></returns>
         public override bool Insert(bool hasTrans = false)
         {
+            // 清空错误信息
+            ComplexEntity<T, U>.ExceptionString = "";
+
+            // 先校验是否可以保存
             if (!InsertVerify())
                 return false;
 
@@ -97,8 +101,12 @@ namespace Haimen.DB
             }
             catch (Exception e)
             {
+                if (!hasTrans && DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
+
                 string msg = string.Format("保存数据出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
+                ComplexEntity<T, U>.ExceptionString = msg;
+                return false;
             }
         }
 
@@ -109,6 +117,10 @@ namespace Haimen.DB
         /// <returns></returns>
         public override bool Update(bool hasTrans = false)
         {
+            // 清空错误信息
+            ComplexEntity<T, U>.ExceptionString = "";
+
+            // 更新前校验
             if (!UpdateVerify())
                 return false;
 
@@ -150,8 +162,8 @@ namespace Haimen.DB
                         old.Destory(true);
                 }
 
-                bool success = base.Update(true);
-                foreach (U u in DetailList)
+                bool success = base.Update(true);       // 先更新主对象
+                foreach (U u in DetailList)             // 再更新明细
                 {
                     // 明细类必须有parent_id的属性
                     PropertyInfo info = u.GetType().GetProperty("ParentID");
@@ -164,14 +176,14 @@ namespace Haimen.DB
                         success = false;
                 }
 
-                foreach (Attach a in AttachList)
+                foreach (Attach a in AttachList)        // 更新附件
                 {
                     a.ParentID = this.ID;
                     if (!a.Save(true))
                         success = false;
                 }
 
-                if (!hasTrans)
+                if (!hasTrans)      // 提交事务
                 {
                     if (success)
                         DBConnection.CommitTrans();
@@ -187,16 +199,19 @@ namespace Haimen.DB
                     DBConnection.RollbackTrans();
 
                 string msg = string.Format("更新数据时出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
+                ComplexEntity<T, U>.ExceptionString = msg;
+                return false;
             }
         }
 
 
         /// <summary>
-        /// 删除对象,无事务支持
+        /// 删除对象
         /// </summary>
         public override bool Destory(bool hasTrans = false)
         {
+            // 清空错误信息
+            ComplexEntity<T, U>.ExceptionString = "";
             bool success = true;
 
             try
@@ -236,7 +251,8 @@ namespace Haimen.DB
                     DBConnection.RollbackTrans();
 
                 string msg = string.Format("删除数据出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
+                ComplexEntity<T, U>.ExceptionString = msg;
+                return false;
             }
         }
 
@@ -246,8 +262,9 @@ namespace Haimen.DB
         /// 静态调用,不可以嵌套事务
         /// </summary>
         /// <param name="id">需要删除实体类的ID</param>
-        public static new void Delete(long id)
+        public static new bool Delete(long id)
         {
+            ComplexEntity<T, U>.ExceptionString = "";
             DBConnection.BeginTrans();
             SqlCommand cmd = DBConnection.getCommand();
             string table_name = GetTableName(typeof(T));
@@ -266,6 +283,7 @@ namespace Haimen.DB
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
                 DBConnection.CommitTrans();
+                return true;
 
             }
             catch (Exception e)
@@ -274,7 +292,8 @@ namespace Haimen.DB
                     DBConnection.RollbackTrans();
 
                 string msg = string.Format("删除对象出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
+                ComplexEntity<T, U>.ExceptionString = msg;
+                return false;
             }
         }
 

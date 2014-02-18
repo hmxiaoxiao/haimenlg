@@ -105,7 +105,7 @@ namespace Haimen.DB
         /// <returns>true为成功，若失败，可以在Error_Info中查到</returns>
         public virtual bool UpdateVerify()
         {
-            return true;
+            return false;
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Haimen.DB
         /// <returns></returns>
         public virtual bool DeleteVerify()
         {
-            return true;
+            return false;
         }
 
 
@@ -190,55 +190,6 @@ namespace Haimen.DB
         }
 
 
-        ///// <summary>
-        ///// 保存当前的实体类,无事务支持
-        ///// </summary>
-        ///// <returns>保存成功为真，否则出错原因可在Error_Info中找到</returns>
-        //public bool SaveNoTrans(SqlTransaction trans = null)
-        //{
-        //    if (this.ID > 0)
-        //        return UpdateNoTrans(trans);
-        //    else
-        //        return Insert(false);
-        //}
-
-
-        //public virtual bool InsertNoTrans(SqlTransaction trans = null)
-        //{
-        //    return true;
-        //}
-
-        /// <summary>
-        /// 拥有事务的新增
-        /// </summary>
-        /// <returns>成功与否</returns>
-        //public virtual bool Insert()
-        //{
-        //    //插入前校验
-        //    if (!InsertVerify())
-        //        return false;
-
-        //    SqlTransaction trans = null;
-        //    try
-        //    {
-        //        using (trans = DBConnection.BeginTrans())
-        //        {
-        //            //bool blnOK = this.InsertNoTrans();
-        //            trans.Commit();
-        //            return true;
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        if (trans != null)
-        //            trans.Rollback();
-
-        //        string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
-        //        throw new DBException(msg, e);
-        //    }
-        //}
-
-
         /// <summary>
         /// 插入新的实体类
         /// 这个方法不做事务处理
@@ -252,6 +203,9 @@ namespace Haimen.DB
 
             try
             {
+                // 清空错误信息
+                SingleEntity<T>.ExceptionString = "";
+
                 // 生成插入的SQL语句
                 List<KeyValuePair<string, dynamic>> list_fv = GetFieldsAndValues();
                 SqlCommand cmd = DBConnection.getCommand();
@@ -308,7 +262,9 @@ namespace Haimen.DB
                     DBConnection.RollbackTrans();
 
                 string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
+                SingleEntity<T>.ExceptionString = msg;
+                return false;
+                //throw new DBException(msg, e);
             }
         }
 
@@ -359,6 +315,9 @@ namespace Haimen.DB
                 sql += " Where id = @id";
                 cmd.Parameters.AddWithValue("@id", this.ID);
 
+                // 清空错误信息
+                SingleEntity<T>.ExceptionString = "";
+
                 if (!hasTrans)
                     DBConnection.BeginTrans();
                 
@@ -379,7 +338,9 @@ namespace Haimen.DB
 
                 string msg = string.Format("更新数据时出错，请与供应商联系，取得支持！错误原因：{0}{1}",
                     Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
+                SingleEntity<T>.ExceptionString = msg;
+                return false;
+                //throw new DBException(msg, e);
             }
         }
 
@@ -394,6 +355,9 @@ namespace Haimen.DB
         {
             try
             {
+                // 清空错误信息
+                SingleEntity<T>.ExceptionString = "";
+
                 DBConnection.BeginTrans();
 
                 string table_name = GetTableName(typeof(T));
@@ -411,8 +375,10 @@ namespace Haimen.DB
                 if (DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("删除数据出错，原因如下：", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
+                string msg = string.Format("删除数据出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
+                SingleEntity<T>.ExceptionString = msg;
+                return false;
+                //throw new DBException(msg, e);
             }
         }
 
@@ -426,6 +392,9 @@ namespace Haimen.DB
         {
             try
             {
+                // 清空错误信息
+                SingleEntity<T>.ExceptionString = "";
+
                 string table_name = GetTableName(typeof(T));
                 string sql = String.Format("Delete from {0} where id = {1}", table_name, this.ID);
 
@@ -448,8 +417,9 @@ namespace Haimen.DB
                 if (!hasTrans && DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("删除数据出错，原因如下：", Environment.NewLine, e.Message);
-                throw new DBException(msg, e);
+                string msg = string.Format("删除数据出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
+                SingleEntity<T>.ExceptionString = msg;
+                return false;
             }
         }
 
