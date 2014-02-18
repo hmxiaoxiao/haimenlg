@@ -95,7 +95,7 @@ namespace Haimen.GUI
 
         private bool Verify()
         {
-            if (!_detail.InsertVerify())
+            if (!_detail.InsertUpdateVerify())
             {
                 MessageBox.Show(_detail.ErrorString, "出错了！", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -182,7 +182,7 @@ namespace Haimen.GUI
                 return;
             long id = long.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, c_id).ToString());
             CompanyDetail cd = CompanyDetail.CreateByID(id);
-            if (!cd.CanDelete(id))
+            if (!cd.DeleteVerify())
             {
                 MessageBox.Show(cd.ErrorString, "注意");
                 return;

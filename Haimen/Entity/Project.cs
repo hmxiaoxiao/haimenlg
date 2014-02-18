@@ -26,18 +26,32 @@ namespace Haimen.Entity
         public override bool DeleteVerify()
         {
             Error_Info.Clear();
+
             if (Account.Query("project_id = " + ID.ToString()).Count > 0)
-            {
                 Error_Info.Add(new KeyValuePair<string, string>("删除项目", "该项目已经被资金单据引用，不能删除！"));
-                return false;
-            }
 
             if (Contract.Query("project_id = " + ID.ToString()).Count > 0)
-            {
                 Error_Info.Add(new KeyValuePair<string, string>("删除项目", "该项目已经被合同引用，不能删除！"));
-                return false;
-            }
-            return true;
+
+            return Error_Info.Count == 0;
+        }
+
+        public override bool InsertUpdateVerify()
+        {
+            Error_Info.Clear();
+
+            if (string.IsNullOrEmpty(Name))
+                Error_Info.Add(new KeyValuePair<string, string>("新增项目", "项目名称不能为空"));
+
+            List<Project> list;
+            if (ID == 0)
+                list = Project.Query(string.Format("name = '{0}'", Name));
+            else
+                list = Project.Query(string.Format("name = '{0}' and ID <> {1}", Name, ID));
+            if(list.Count > 0)
+                Error_Info.Add(new KeyValuePair<string, string>("新增项目", "项目名称已经存在，请仔细检查。"));
+
+            return Error_Info.Count == 0;
         }
     }
 }

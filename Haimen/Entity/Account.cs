@@ -86,7 +86,7 @@ namespace Haimen.Entity
         }
 
         /// <summary>
-        /// ???
+        /// 合同ID
         /// </summary>
         [Field("contract_apply_id")]
         public long ContractApplyID { get; set; }
@@ -458,7 +458,7 @@ namespace Haimen.Entity
         /// 校对对象
         /// </summary>
         /// <returns></returns>
-        public override bool InsertVerify()
+        public override bool InsertUpdateVerify()
         {
             Error_Info.Clear();
             if (this.In_CompanyDetail_ID <= 0)

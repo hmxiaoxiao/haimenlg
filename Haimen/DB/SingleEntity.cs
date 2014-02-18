@@ -72,9 +72,6 @@ namespace Haimen.DB
         public static string ExceptionString { get; set; }
 
 
-
-
-
         /// <summary>
         /// 是否显示已经打上删除标记的记录
         /// </summary>
@@ -92,21 +89,11 @@ namespace Haimen.DB
         /// 新增校验数据是否正确
         /// </summary>
         /// <returns>true为成功，若失败，可以在Error_Info中查到</returns>
-        public virtual bool InsertVerify()
+        public virtual bool InsertUpdateVerify()
         {
             return false;
         }
 
-
-
-        /// <summary>
-        /// 更新校验数据是否正确
-        /// </summary>
-        /// <returns>true为成功，若失败，可以在Error_Info中查到</returns>
-        public virtual bool UpdateVerify()
-        {
-            return false;
-        }
 
         /// <summary>
         /// 删除数据时，检验是否可以删除
@@ -198,7 +185,7 @@ namespace Haimen.DB
         public virtual bool Insert(bool hasTrans = false)
         {
             // 插入前校验
-            if (!InsertVerify())
+            if (!InsertUpdateVerify())
                 return false;
 
             try
@@ -277,7 +264,7 @@ namespace Haimen.DB
         /// <returns>true 为成功</returns>
         public virtual bool Update(bool hasTrans = false)
         {
-            if (!UpdateVerify())
+            if (!InsertUpdateVerify())
                 return false;
 
             try
@@ -390,6 +377,9 @@ namespace Haimen.DB
         /// </summary>
         public virtual bool Destory(bool hasTrans = false)
         {
+            if (!DeleteVerify())
+                return false;
+
             try
             {
                 // 清空错误信息

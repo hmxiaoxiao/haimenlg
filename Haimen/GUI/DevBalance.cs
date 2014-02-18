@@ -219,7 +219,7 @@ namespace Haimen.GUI
 
             dxErrorProvider1.ClearErrors();
 
-            m_balance.InsertVerify();
+            m_balance.InsertUpdateVerify();
             foreach (KeyValuePair<string, string> kv in m_balance.Error_Info)
             {
                 switch (kv.Key)

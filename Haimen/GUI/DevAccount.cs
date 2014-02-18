@@ -542,7 +542,7 @@ namespace Haimen.GUI
             Form2object();
 
             dxErrorProvider1.ClearErrors();
-            _account.InsertVerify();
+            _account.InsertUpdateVerify();
             foreach (KeyValuePair<string, string> kv in _account.Error_Info)
             {
                 switch (kv.Key)

@@ -119,20 +119,23 @@ namespace Haimen.Entity
             return base.Update(hasTrans);
         }
 
-        // 校验
-        override public bool InsertVerify()
+        // 插入校验
+        public override bool InsertUpdateVerify()
         {
             // 初始化错误信息列表
             Error_Info.Clear();
 
+            // 判断各字段长度
+            if (System.Text.Encoding.Default.GetBytes(Code.ToCharArray()).Length > 50)
+                Error_Info.Add(new KeyValuePair<string,string>("Code", "用户代码长度不可以超过50个字节"));
+
+            if (System.Text.Encoding.Default.GetBytes(Name.ToCharArray()).Length > 50)
+                Error_Info.Add(new KeyValuePair<string, string>("Code", "用户名称长度不可以超过50个字节"));
+
+
             // 判断代码是否为空
-            string err = "";
             if (string.IsNullOrEmpty(Code))
-            {
-                err = "用户代码不能为空！";
-                Error_Info.Add(new KeyValuePair<string, string>("Code", err));
-                return false;
-            }
+                Error_Info.Add(new KeyValuePair<string, string>("Code", "用户代码不能为空！"));
 
             // 判断代码是否重复
             List<User> users;
@@ -141,19 +144,28 @@ namespace Haimen.Entity
             else
                 users = User.Query(String.Format("Code = '{0}'", Code));
             if (users.Count > 0)
-            {
-                err = "用户代码已经存在，请重新输入。";
-                Error_Info.Add(new KeyValuePair<string, string>("Code", err));
-                return false;
-            }
+                Error_Info.Add(new KeyValuePair<string, string>("Code", "用户代码已经存在，请重新输入。"));
 
             // 判断是否加了用户组
             if (GroupID <= 0)
-            {
                 Error_Info.Add(new KeyValuePair<string, string>("GroupID", "用户组必须选择！"));
-                return false;
-            }
-            return true;
+
+            return Error_Info.Count == 0;
+        }
+
+
+        /// <summary>
+        /// 删除校验 
+        /// </summary>
+        /// <returns></returns>
+        public override bool DeleteVerify()
+        {
+            Error_Info.Clear();
+
+            if (Name.ToUpper() == "ADMIN")
+                Error_Info.Add(new KeyValuePair<string,string>("Delete","系统用户不能被删除"));
+
+            return Error_Info.Count == 0;
         }
 
 

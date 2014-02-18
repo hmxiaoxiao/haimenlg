@@ -33,7 +33,7 @@ namespace Haimen.GUI
             m_contract_accept.Money = decimal.Parse(clMoney.EditValue.ToString());
             m_contract_accept.Memo = txtMemo.Text;
 
-            m_contract_accept.InsertVerify();
+            m_contract_accept.InsertUpdateVerify();
             dxErrorProvider1.ClearErrors();
             foreach (KeyValuePair<string, string> kv in m_contract_accept.Error_Info)
             {

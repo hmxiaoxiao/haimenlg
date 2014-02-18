@@ -47,28 +47,27 @@ namespace Haimen.Entity
         public override bool DeleteVerify()
         {
             Error_Info.Clear();
+
             if (CompanyDetail.Query("parent_id = " + ID.ToString()).Count > 0)
-            {
-                Error_Info.Add(new KeyValuePair<string, string>("删除单位", "该单位已经被单位明细引用，不能删除"));
-                return false;
-            }
+                Error_Info.Add(new KeyValuePair<string, string>("删除单位", "该单位已经有性户信息，不能删除！"));
 
             if (Contract.Query("out_company_id = " + ID.ToString()).Count > 0 ||
                 Contract.Query("in_company_id = " + ID.ToString()).Count > 0 ||
                 Contract.Query("partya = " + ID.ToString()).Count > 0 ||
                 Contract.Query("partyb = " + ID.ToString()).Count > 0)
-            {
-                Error_Info.Add(new KeyValuePair<string, string>("删除单位", "该单位已经被合同引用，不能删除"));
-                return false;
-            }
-            return true;
+                Error_Info.Add(new KeyValuePair<string, string>("删除单位", "该单位已经被合同引用，不能删除！"));
+
+            if (UnAuth.Query(string.Format("company_id = {0}", ID)).Count > 0)
+                Error_Info.Add(new KeyValuePair<string, string>("删除单位", "该单位已经被非授权资金单据使用，不能删除！"));
+
+            return Error_Info.Count == 0;
         }
 
         /// <summary>
         /// 单位的数据校验
         /// </summary>
         /// <returns></returns>
-        public override bool InsertVerify()
+        public override bool InsertUpdateVerify()
         {
             Error_Info.Clear();
             List<Company> list;
@@ -76,10 +75,11 @@ namespace Haimen.Entity
             // 校验代码
             if (string.IsNullOrEmpty(Code))
                 Error_Info.Add(new KeyValuePair<string, string>("Code", "代码不能为空！"));
+
             if (ID == 0)
-                list = Company.Query("code = '" + Code + "'");
+                list = Company.Query(String.Format("code = '{0}'", Code));
             else
-                list = Company.Query("code = '" + Code + "' and id <> " + ID.ToString());
+                list = Company.Query(String.Format("code = '{0}' and id <> {1}", Code, ID));
             if (list.Count > 0)
                 Error_Info.Add(new KeyValuePair<string, string>("Code","您输入的代码已经存在，请重新输入"));
 
@@ -87,7 +87,7 @@ namespace Haimen.Entity
             if (string.IsNullOrEmpty(Name))
                 Error_Info.Add(new KeyValuePair<string, string>("Name", "名称不能为空"));
 
-            list = Company.Query("name = '" + Name + "' and id <> " + ID.ToString()); // 如果ID为0，也没有问题
+            list = Company.Query(String.Format("name = '{0}' and id <> {1}", Name, ID)); // 如果ID为0，也没有问题
             if (list.Count > 0)
                 Error_Info.Add(new KeyValuePair<string, string>("Name", "您输入的名称已经存在，请重新输入"));
 

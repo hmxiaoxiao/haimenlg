@@ -141,25 +141,23 @@ namespace Haimen.Entity
         public string Memo { get; set; }
 
 
-        public bool CanDelete(long id)
+        public override bool DeleteVerify()
         {
             Error_Info.Clear();
-            if (Haimen.Entity.Account.Query(" in_companydetail_id = " + id.ToString()).Count > 0)
-            {
-                Error_Info.Add(new KeyValuePair<string,string>("删除单位明细","该单位明细已经被资金中引用"));
-                return false;
-            }
-            if (Haimen.Entity.Account.Query(" out_companydetail_id = " + id.ToString()).Count > 0)
-            {
-                Error_Info.Add(new KeyValuePair<string,string>("删除单位明细","该单位明细已经被资金中引用"));
-                return false;
-            }
-            if(Haimen.Entity.Balance.Query("companydetail_id = " + id.ToString()).Count > 0)
-            {
-                Error_Info.Add(new KeyValuePair<string,string>("删除单位明细","该单位明细已经被贷款中引用"));
-                return false;
-            }
-            return true;
+
+            if (Haimen.Entity.Account.Query(string.Format("in_companydetail_id = {0}", ID)).Count > 0)
+                Error_Info.Add(new KeyValuePair<string,string>("删除单位帐户","该单位帐户已经被资金中引用。"));
+
+            if (Haimen.Entity.Account.Query(string.Format("out_companydetail_id = {0}", ID)).Count > 0)
+                Error_Info.Add(new KeyValuePair<string, string>("删除单位帐户", "该单位帐户已经被资金中引用。"));
+            
+            if(Haimen.Entity.Balance.Query(string.Format("companydetail_id = {0}", ID)).Count > 0)
+                Error_Info.Add(new KeyValuePair<string, string>("删除单位帐户", "该单位帐户已经被贷款中引用。"));
+
+            if(UnAuth.Query(string.Format("companydetail_id = {0}", ID)).Count > 0)
+                Error_Info.Add(new KeyValuePair<string, string>("删除单位帐户", "该单位帐户已经被非授权资金中引用。"));
+
+            return Error_Info.Count == 0;
         }
 
 
@@ -167,7 +165,7 @@ namespace Haimen.Entity
         /// 校验
         /// </summary>
         /// <returns></returns>
-        public override bool InsertVerify()
+        public override bool InsertUpdateVerify()
         {
             Error_Info.Clear();
 
@@ -176,10 +174,14 @@ namespace Haimen.Entity
 
             if (string.IsNullOrEmpty(Account))
                 Error_Info.Add(new KeyValuePair<string, string>("Account", "帐户不能为空"));
+
             List<CompanyDetail> list;
-            list = CompanyDetail.Query(" account = '" + Account + "' and id <> " + ID.ToString());
-            if (list.Count > 0)
-                Error_Info.Add(new KeyValuePair<string,string>("Account", "您输入的帐户已经存在，请检查后再输入。"));
+            if (ID == 0)
+                list = CompanyDetail.Query(string.Format("account = '{0}'", Account));
+            else
+                list = CompanyDetail.Query(string.Format("account = '{0}' and id <> {1}", Account, ID));
+            if(list.Count > 0)
+                Error_Info.Add(new KeyValuePair<string, string>("Account", "您输入的帐户已经存在，请检查后再输入。"));
 
             return Error_Info.Count == 0;
         }

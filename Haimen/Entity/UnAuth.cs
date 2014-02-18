@@ -96,7 +96,7 @@ namespace Haimen.Entity
         /// 校验
         /// </summary>
         /// <returns></returns>
-        public override bool InsertVerify()
+        public override bool InsertUpdateVerify()
         {
             Error_Info.Clear();
 

@@ -94,7 +94,7 @@ namespace Haimen.GUI
             Form2Object();
 
             dxErrorProvider1.ClearErrors();
-            _unauth.InsertVerify();
+            _unauth.InsertUpdateVerify();
             foreach (KeyValuePair<string, string> kv in _unauth.Error_Info)
             {
                 switch (kv.Key)

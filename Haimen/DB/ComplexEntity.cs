@@ -56,7 +56,7 @@ namespace Haimen.DB
             ComplexEntity<T, U>.ExceptionString = "";
 
             // 先校验是否可以保存
-            if (!InsertVerify())
+            if (!InsertUpdateVerify())
                 return false;
 
             try
@@ -121,7 +121,7 @@ namespace Haimen.DB
             ComplexEntity<T, U>.ExceptionString = "";
 
             // 更新前校验
-            if (!UpdateVerify())
+            if (!InsertUpdateVerify())
                 return false;
 
             try
@@ -212,6 +212,10 @@ namespace Haimen.DB
         {
             // 清空错误信息
             ComplexEntity<T, U>.ExceptionString = "";
+
+            if (!DeleteVerify())
+                return false;
+
             bool success = true;
 
             try

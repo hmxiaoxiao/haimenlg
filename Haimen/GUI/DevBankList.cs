@@ -158,7 +158,7 @@ namespace Haimen.GUI
             gridView1.CloseEditor();
             gridView1.UpdateCurrentRow();
 
-            if (!m_bank.InsertVerify())
+            if (!m_bank.InsertUpdateVerify())
             {
                 MessageBox.Show(m_bank.ErrorString, "出错了！", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
