@@ -93,7 +93,10 @@ namespace Haimen.Entity
             SystemSet ss = new SystemSet();
             ss.Name = key;
             ss.Value = "";
-            ss.Save();
+            if (DBConnection.Transaction != null)
+                ss.Save(true);
+            else
+                ss.Save();
             m_all_list.Add(ss);
             return ss.Value;
         }
@@ -112,16 +115,20 @@ namespace Haimen.Entity
                 if (s.Name == key)
                 {
                     s.Value = value;
-                    s.Save();
+                    if (DBConnection.Transaction != null)
+                        s.Save(true);
+                    else
+                        s.Save();
                     return;
                 }
             }
 
             // 没有找到，则新增
-            SystemSet ss = new SystemSet();
-            ss.Name = key;
-            ss.Value = value;
-            ss.Save();
+            SystemSet ss = new SystemSet() { Name = key, Value = value };
+            if (DBConnection.Transaction != null)
+                ss.Save(true);
+            else
+                ss.Save();
             m_all_list = SystemSet.Query();
         }
 
@@ -156,6 +163,25 @@ namespace Haimen.Entity
         {
             getYearMonth();    // 更新一下。
             return m_year;
+        }
+
+
+        /// <summary>
+        /// 这里删除，不作校验。
+        /// </summary>
+        /// <returns></returns>
+        public override bool DeleteVerify()
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// 这里增加，更新数据不作校验
+        /// </summary>
+        /// <returns></returns>
+        public override bool InsertUpdateVerify()
+        {
+            return true;
         }
     }
 }

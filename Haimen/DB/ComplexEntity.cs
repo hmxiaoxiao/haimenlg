@@ -394,8 +394,11 @@ namespace Haimen.DB
                     info.SetValue(t, detail);
 
                     FieldInfo ainfo = t.GetType().GetField("AttachList");
-                    List<Attach> attaches = Attach.Query("parent_id = " + id);
-                    ainfo.SetValue(t, attaches);
+                    if (ainfo != null)
+                    {
+                        List<Attach> attaches = Attach.Query("parent_id = " + id);
+                        ainfo.SetValue(t, attaches);
+                    }
                 }
                 return list;
             }
@@ -455,9 +458,12 @@ namespace Haimen.DB
                     List<U> detail = new U().Find("parent_id = " + id);
                     info.SetValue(t, detail);
 
-                    //FieldInfo ainfo = t.GetType().GetField("AttachList");
-                    //List<Attach> attaches = Attach.Query("parent_id = " + id.ToString());
-                    //ainfo.SetValue(t, attaches);
+                    FieldInfo ainfo = t.GetType().GetField("AttachList");
+                    if (ainfo != null)
+                    {
+                        List<Attach> attaches = Attach.Query("parent_id = " + id.ToString());
+                        ainfo.SetValue(t, attaches);
+                    }
                 }
 
                 return list;

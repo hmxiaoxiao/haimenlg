@@ -35,5 +35,28 @@ namespace Haimen.Entity
 
         [Field("money")]
         public Decimal Money { get; set; }
+
+
+        /// <summary>
+        /// 删除时不作校验
+        /// </summary>
+        /// <returns></returns>
+        public override bool DeleteVerify()
+        {
+            return true;
+        }
+
+        public override bool InsertUpdateVerify()
+        {
+            Error_Info.Clear();
+
+            if (FundsID == 0)
+                Error_Info.Add(new KeyValuePair<string, string>("FundsID", "资金性质不能为空"));
+
+            if (Money == 0)
+                Error_Info.Add(new KeyValuePair<string, string>("Money", "金额不能为0"));
+
+            return Error_Info.Count == 0;
+        }
     }
 }

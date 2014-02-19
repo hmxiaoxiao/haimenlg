@@ -376,6 +376,27 @@ namespace Haimen.Entity
             }
         }
 
+
+        /// <summary>
+        /// 删除不作校验
+        /// </summary>
+        /// <returns></returns>
+        public override bool DeleteVerify()
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// 增加修改不作校验 
+        /// </summary>
+        /// <returns></returns>
+        public override bool InsertUpdateVerify()
+        {
+            return true;
+        }
+
+
+
         /// <summary>
         /// 保存当前用户权限列表
         /// </summary>
@@ -388,40 +409,60 @@ namespace Haimen.Entity
                 m_must_reload = false;
             }
 
-            // 保存前先删除已经存在的数据
-            SqlCommand cmd = DBConnection.getCommand();
-            string sql;
-            if (m_list[0].UserID > 0)
-                sql = "delete from q_access where user_id = " + m_list[0].UserID.ToString();
-            else
-                sql = "delete from q_access where ugroup_id = " + m_list[0].UserGroupID.ToString();
-            cmd.CommandText = sql;
-            cmd.ExecuteNonQuery();
-
-            // 保存每个权限对象
-
-            if (m_list[0].UserID > 0)       // 如果是用户保存
+            try
             {
-                User u = User.CreateByID(m_list[0].UserID);
-                foreach (Access a in m_list)
+                DBConnection.BeginTrans();
+                bool success = true;
+
+                // 保存前先删除已经存在的数据
+                SqlCommand cmd = DBConnection.getCommand();
+                string sql;
+                if (m_list[0].UserID > 0)
+                    sql = "delete from q_access where user_id = " + m_list[0].UserID.ToString();
+                else
+                    sql = "delete from q_access where ugroup_id = " + m_list[0].UserGroupID.ToString();
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+
+                // 保存每个权限对象
+                if (m_list[0].UserID > 0)       // 如果是用户保存
                 {
-                    // 只有用户的权限 与 该用户所属的用户组的权限不一致才会保存
-                    if (a.CanAccess != (getUserGroupAccess(u.GroupID, a.FunctionID, a.ActionID) ? (byte) 1 : (byte) 0))
-                        a.Insert();
+                    User u = User.CreateByID(m_list[0].UserID);
+                    foreach (Access a in m_list)
+                    {
+                        // 只有用户的权限 与 该用户所属的用户组的权限不一致才会保存
+                        if (a.CanAccess != (getUserGroupAccess(u.GroupID, a.FunctionID, a.ActionID) ? (byte)1 : (byte)0))
+                            if (!a.Insert(true))
+                                success = false;
+                    }
                 }
+                else   // 用户组保存
+                {
+                    // 用户组只保存有权限的
+                    foreach (Access a in m_list)
+                    {
+                        if (a.CanAccess != 0)
+                            if (!a.Insert(true))
+                                success = false;
+                    }
+                }
+
+                // 提交事务
+                if (success)
+                    DBConnection.CommitTrans();
+                else
+                    DBConnection.RollbackTrans();
+
+                // 列表必须要更新了。
+                m_must_reload = true;
             }
-            else   // 用户组保存
+            catch(Exception e)
             {
-                // 用户组只保存有权限的
-                foreach(Access a in m_list)
-                {
-                    if (a.CanAccess != 0)
-                        a.Insert();
-                }
+                if(DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
+                string msg = string.Format("保存权限出现错误，原因如下：{0}{1}", Environment.NewLine, e.ToString());
+                throw new EntityException(msg, e);
             }
-
-
-            m_must_reload = true; 
         }
 
 

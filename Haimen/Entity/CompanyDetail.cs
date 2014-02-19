@@ -175,13 +175,14 @@ namespace Haimen.Entity
             if (string.IsNullOrEmpty(Account))
                 Error_Info.Add(new KeyValuePair<string, string>("Account", "帐户不能为空"));
 
-            List<CompanyDetail> list;
-            if (ID == 0)
-                list = CompanyDetail.Query(string.Format("account = '{0}'", Account));
-            else
-                list = CompanyDetail.Query(string.Format("account = '{0}' and id <> {1}", Account, ID));
-            if(list.Count > 0)
-                Error_Info.Add(new KeyValuePair<string, string>("Account", "您输入的帐户已经存在，请检查后再输入。"));
+            // 个人帐号是可以重复的。
+            //List<CompanyDetail> list;
+            //if (ID == 0)
+            //    list = CompanyDetail.Query(string.Format("account = '{0}'", Account));
+            //else
+            //    list = CompanyDetail.Query(string.Format("account = '{0}' and id <> {1}", Account, ID));
+            //if(list.Count > 0)
+            //    Error_Info.Add(new KeyValuePair<string, string>("Account", "您输入的帐户已经存在，请检查后再输入。"));
 
             return Error_Info.Count == 0;
         }
@@ -195,7 +196,7 @@ namespace Haimen.Entity
             Balance = OBalance;
             Credit = OCredit;
 
-            return base.Insert();
+            return base.Insert(hasTrans);
         }
 
         /// <summary>
@@ -214,7 +215,7 @@ namespace Haimen.Entity
             def = this.OCredit - ocom.OCredit;
             this.Credit += def;
 
-            return base.Update();
+            return base.Update(hasTrans);
         }
 
     }

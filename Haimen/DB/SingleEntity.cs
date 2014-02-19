@@ -245,7 +245,7 @@ namespace Haimen.DB
             catch (Exception e)
             {
                 // 如果是发起事务的函数，则需要回滚事务
-                if (!hasTrans)
+                if (!hasTrans && DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
                 string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);

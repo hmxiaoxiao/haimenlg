@@ -28,16 +28,18 @@ namespace HaimenUnitTest
             com.Doc = "沪";
             com.Input = "X";
             com.Output = "X";
+            com.ParentID = Company.Query("input <> 'X' and output <> 'X'")[0].ID;
 
             for (int i = 0; i < 10; i++)
             {
                 CompanyDetail d = new CompanyDetail();
+                d.BankID = Bank.Query()[0].ID;
                 d.Account = i.ToString();
                 d.Balance = i;
                 d.Credit = i;
                 com.DetailList.Add(d);
             }
-            com.Save();
+            Assert.IsTrue(com.Save());
             Assert.IsTrue(com.ID > 0);
 
             Company q = Company.CreateByID(com.ID);

@@ -20,5 +20,16 @@ namespace Haimen.Entity
         [Field("filetype")]
         public string FileType { get; set; }
 
+
+        public override bool DeleteVerify()
+        {
+            return true;
+        }
+
+
+        public override bool InsertUpdateVerify()
+        {
+            return true;
+        }
     }
 }

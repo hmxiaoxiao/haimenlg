@@ -377,6 +377,7 @@ namespace Haimen.Entity
 
             try
             {
+                Account.ExceptionString = "";
                 DBConnection.BeginTrans();
 
                 bool success =  inCD.Update(true) &&        // 保存收入单位帐号余额
@@ -395,8 +396,7 @@ namespace Haimen.Entity
                 else
                     DBConnection.RollbackTrans();
 
-                return success;
-                
+                return success;  
             }
             catch(Exception e)
             {
@@ -404,7 +404,8 @@ namespace Haimen.Entity
                     DBConnection.RollbackTrans();
 
                 string msg = string.Format("授权资金支付时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
-                throw new EntityException(msg, e);
+                Account.ExceptionString = msg;
+                return true;
             }
         }
 
@@ -424,6 +425,7 @@ namespace Haimen.Entity
 
             try
             {
+                Account.ExceptionString = "";
                 DBConnection.BeginTrans();
                 
                 bool success = inCD.Update(true) &&         // 保存收入单位帐号余额
@@ -449,8 +451,9 @@ namespace Haimen.Entity
                 if (DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("授权资金撤消时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
-                throw new EntityException(msg, e);
+                string msg = string.Format("授权资金撤消支付时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                Account.ExceptionString = msg;
+                return false;
             }
         }
 
@@ -484,16 +487,18 @@ namespace Haimen.Entity
 
 
         /// <summary>
-        /// 新增时，当前用户作为制作 人
+        /// 新增时，当前用户作为制作人
         /// </summary>
         /// <returns></returns>
         public override bool Insert(bool hasTrans = false)
         {
-            SqlTransaction trans = null;
             try
             {
-                trans = DBConnection.BeginTrans();
+                if (!hasTrans)
+                    DBConnection.BeginTrans();
                 MakerID = GlobalSet.Current_User.ID;
+                bool success = true;
+
 
                 // 重新生成代码
                 // 现金与非现金生成的代码不一致（票据号）
@@ -507,7 +512,8 @@ namespace Haimen.Entity
                 {
                     ContractApply cy = ContractApply.CreateByID(ContractApplyID);
                     cy.Status = (long)ContractApplyStatusEnum.已开票;
-                    cy.Save();
+                    if (!cy.Save(true))
+                        success = false;
                 }
 
                 // 如果是从合同验收生成的，要写到合同验收一个标志
@@ -515,48 +521,80 @@ namespace Haimen.Entity
                 {
                     ContractAccept c = ContractAccept.CreateByID(ContractAcceptID);
                     c.Status = (long)ContractAccept.ContractAcceptStatusEnum.已开票;
-                    c.Save();
+                    if (!c.Save(true))
+                        success = false;
                 }
 
                 this.CheckDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
                 this.PayDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+                if (!base.Insert(true))
+                    success = false;
 
-                if (base.Insert())
+                if (!hasTrans)
                 {
-                    trans.Commit();
-                    return true;
+                    if (success)
+                        DBConnection.CommitTrans();
+                    else
+                        DBConnection.RollbackTrans();
                 }
-                else
-                {
-                    trans.Rollback();
-                    return false;
-                }
+
+                return success;
             }
             catch (Exception e)
             {
-                if (trans != null)
-                    trans.Rollback();
+                if (!hasTrans && DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
+
                 string msg = string.Format("授权资金新增时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
-                throw new EntityException(msg, e);
+                Account.ExceptionString = msg;
+                return false;
             }
         }
 
         public override bool Update(bool hasTrans = false)
         {
+            if (!InsertUpdateVerify())
+                return false;
+
             // 如果更新了合同申请，则修改申请的标志
-            // TODO: 这里可能有问题
-            if (ContractApplyID > 0)
+            try
             {
-                // 先取得老的数据
-                ContractApply old_c = ContractApply.CreateByID( Account.CreateByID(ID).ContractApplyID);
-                ContractApply new_c = ContractApply.CreateByID(ContractApplyID);
-                if (old_c.ID != ContractApplyID)  // 如果修改了合同申请
+                bool success = true;
+                DBConnection.BeginTrans();
+
+                if (ContractApplyID > 0)
                 {
-                    old_c.Status = (long)ContractApplyStatusEnum.提交申请;
-                    new_c.Status = (long)ContractApplyStatusEnum.已开票;
+                    // 先取得老的数据
+                    ContractApply old_c = ContractApply.CreateByID(Account.CreateByID(ID).ContractApplyID);
+                    ContractApply new_c = ContractApply.CreateByID(ContractApplyID);
+                    if (old_c.ID != ContractApplyID)  // 如果修改了合同申请
+                    {
+                        old_c.Status = (long)ContractApplyStatusEnum.提交申请;
+                        new_c.Status = (long)ContractApplyStatusEnum.已开票;
+
+                        success = old_c.Update(true) && new_c.Update(true);
+                    }
                 }
+
+                success = success && base.Update(true);
+                if (!hasTrans)
+                {
+                    if (success)
+                        DBConnection.CommitTrans();
+                    else
+                        DBConnection.RollbackTrans();
+                }
+                return success;
             }
-            return base.Update();
+            catch (Exception e)
+            {
+                if (!hasTrans && DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
+
+                string msg = string.Format("授权资金更新时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                Account.ExceptionString = msg;
+                return false;
+            }
         }
 
         // 资金的删除不是真正的删除
@@ -567,24 +605,26 @@ namespace Haimen.Entity
             {
                 if (!hasTrans)
                     DBConnection.BeginTrans();
-
+                bool success = true;
 
                 this.Deleted = 1;       // 打上删除标记
                 foreach (AccountDetail ad in DetailList)
                 {
                     ad.Deleted = 1;
-                    ad.Update(true);
+                    if (!ad.Update(true))
+                        success = false;
                 }
-                bool sucess = this.Update(true);
+
+                success = success && this.Update(true);
 
                 if (!hasTrans)
                 {
-                    if (sucess)
+                    if (success)
                         DBConnection.CommitTrans();
                     else
                         DBConnection.RollbackTrans();
                 }
-                return sucess;
+                return success;
             }
             catch (Exception e)
             {
@@ -592,7 +632,8 @@ namespace Haimen.Entity
                     DBConnection.RollbackTrans();
 
                 string msg = string.Format("授权资金删除时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
-                throw new EntityException(msg, e);
+                Account.ExceptionString = msg;
+                return false;
             }
         }
 
@@ -600,13 +641,14 @@ namespace Haimen.Entity
         /// <summary>
         /// 非正式发票转换为正式发票
         /// </summary>
-        public void ConverInvoice()
+        public bool ConverInvoice()
         {
             if (Invoice != (long)AccountInvoiceEnum.正式发票)
             {
                 Invoice = (long)AccountInvoiceEnum.正式发票;
-                this.Save();
+                return this.Save();
             }
+            return true;
         }
 
         /// <summary>

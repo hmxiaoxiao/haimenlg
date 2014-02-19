@@ -48,9 +48,6 @@ namespace Haimen.Entity
         {
             Error_Info.Clear();
 
-            if (CompanyDetail.Query("parent_id = " + ID.ToString()).Count > 0)
-                Error_Info.Add(new KeyValuePair<string, string>("删除单位", "该单位已经有性户信息，不能删除！"));
-
             if (Contract.Query("out_company_id = " + ID.ToString()).Count > 0 ||
                 Contract.Query("in_company_id = " + ID.ToString()).Count > 0 ||
                 Contract.Query("partya = " + ID.ToString()).Count > 0 ||
@@ -144,7 +141,10 @@ namespace Haimen.Entity
             relVal = com.Doc + com.DocDate + string.Format("{0:000}",com.GenDoc);
             if (can_save)
             {
-                com.Save();
+                if (DBConnection.Transaction != null)   // 如果已经有事务了，就不需要启动事务了。
+                    com.Save(true);
+                else
+                    com.Save();
             }
             return relVal;
         }

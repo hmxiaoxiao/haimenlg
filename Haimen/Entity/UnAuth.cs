@@ -115,6 +115,16 @@ namespace Haimen.Entity
             return Error_Info.Count == 0;
         }
 
+
+        /// <summary>
+        /// 删除时不作判断
+        /// </summary>
+        /// <returns></returns>
+        public override bool DeleteVerify()
+        {
+            return true;
+        }
+
         /// <summary>
         /// 删除时更新余额
         /// </summary>
@@ -220,7 +230,7 @@ namespace Haimen.Entity
                 if (!hasTrans)
                     DBConnection.BeginTrans();
 
-                bool sucess = cd.Save(true) && base.Update(true);
+                bool sucess = cd.Save(true) && base.Update(true);       // 更新余额以及非授权资金
                 if(sucess)
                     DBConnection.CommitTrans();
                 else
