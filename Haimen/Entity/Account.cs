@@ -560,7 +560,8 @@ namespace Haimen.Entity
             try
             {
                 bool success = true;
-                DBConnection.BeginTrans();
+                if(!hasTrans)
+                    DBConnection.BeginTrans();
 
                 if (ContractApplyID > 0)
                 {

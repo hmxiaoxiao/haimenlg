@@ -65,6 +65,7 @@
     <Compile Include="TestAccount.cs" />
     <Compile Include="TestContract.cs" />
     <Compile Include="TestBalance.cs" />
+    <Compile Include="TestUnauth.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Haimen\Haimen.csproj">

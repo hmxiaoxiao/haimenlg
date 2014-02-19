@@ -16,7 +16,7 @@ namespace HaimenUnitTest
             List<Account> list = Account.Query("code = 'testcode'");
             foreach (Account acc in list)
             {
-                acc.Destory();
+                Assert.IsTrue(acc.Destory());
             }
 
             GlobalSet.Current_User = User.Query()[0];
@@ -47,8 +47,8 @@ namespace HaimenUnitTest
             Assert.IsTrue(list[0].DetailList.Count == 9);
 
             // 删除
-            list[0].Destory();
-            list = Account.Query("code = 'testcode'");
+            Assert.IsTrue(list[0].Destory());
+            list = Account.Query(string.Format("id = {0}", list[0].ID));
             Assert.IsTrue(list.Count == 0);
 
         }
