@@ -129,21 +129,7 @@ namespace Haimen.Entity
         /// </summary>
         private static bool m_must_reload = true;
         private static List<Access> m_all_list = Access.Query();
-        /// <summary>
-        /// 所有用户、用户组的权限列表
-        /// </summary>
-        private static List<Access> AllAccess {
-            get {
-                if (m_must_reload)
-                {
-                    m_all_list = Access.Query();
-                    m_must_reload = false;
-                }
-                return m_all_list;
-            }
-        }
 
-        
 
         /// <summary>
         /// 指定用户（用户组）的权限列表
@@ -418,9 +404,9 @@ namespace Haimen.Entity
                 SqlCommand cmd = DBConnection.getCommand();
                 string sql;
                 if (m_list[0].UserID > 0)
-                    sql = "delete from q_access where user_id = " + m_list[0].UserID.ToString();
+                    sql = "delete from q_access where user_id = " + m_list[0].UserID;
                 else
-                    sql = "delete from q_access where ugroup_id = " + m_list[0].UserGroupID.ToString();
+                    sql = "delete from q_access where ugroup_id = " + m_list[0].UserGroupID;
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
 
@@ -460,7 +446,7 @@ namespace Haimen.Entity
             {
                 if(DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
-                string msg = string.Format("保存权限出现错误，原因如下：{0}{1}", Environment.NewLine, e.ToString());
+                string msg = string.Format("保存权限出现错误，原因如下：{0}{1}", Environment.NewLine, e.Message);
                 throw new EntityException(msg, e);
             }
         }

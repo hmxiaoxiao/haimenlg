@@ -403,7 +403,7 @@ namespace Haimen.Entity
                 if (DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("授权资金支付时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("授权资金支付时出错，错误原因如下：{0}{1}", Environment.NewLine, e);
                 Account.ExceptionString = msg;
                 return true;
             }
@@ -451,7 +451,7 @@ namespace Haimen.Entity
                 if (DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("授权资金撤消支付时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("授权资金撤消支付时出错，错误原因如下：{0}{1}", Environment.NewLine, e);
                 Account.ExceptionString = msg;
                 return false;
             }
@@ -545,7 +545,7 @@ namespace Haimen.Entity
                 if (!hasTrans && DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("授权资金新增时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("授权资金新增时出错，错误原因如下：{0}{1}", Environment.NewLine, e);
                 Account.ExceptionString = msg;
                 return false;
             }
@@ -591,7 +591,7 @@ namespace Haimen.Entity
                 if (!hasTrans && DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("授权资金更新时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("授权资金更新时出错，错误原因如下：{0}{1}", Environment.NewLine, e);
                 Account.ExceptionString = msg;
                 return false;
             }
@@ -631,7 +631,7 @@ namespace Haimen.Entity
                 if (!hasTrans && DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("授权资金删除时出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("授权资金删除时出错，错误原因如下：{0}{1}", Environment.NewLine, e);
                 Account.ExceptionString = msg;
                 return false;
             }

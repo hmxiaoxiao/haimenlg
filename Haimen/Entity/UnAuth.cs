@@ -145,14 +145,16 @@ namespace Haimen.Entity
                 else
                     cd.Balance += old.Money;
 
-                bool sucess   = cd.Update(true) && base.Destory(true);
-
-
-
+                bool success = cd.Update(true) && base.Destory(true);
                 if (!hasTrans)
-                    DBConnection.CommitTrans();
+                {
+                    if (success)
+                        DBConnection.CommitTrans();
+                    else
+                        DBConnection.RollbackTrans();
+                }
 
-                return true;
+                return success;
             }
             catch (Exception e)
             {
@@ -170,34 +172,40 @@ namespace Haimen.Entity
         /// </summary>
         public override bool Insert(bool hasTrans = false)
         {
-            SqlTransaction trans = null;
             try
             {
-                trans = DBConnection.BeginTrans();
+                bool success = true;
+                if (!hasTrans)
+                    DBConnection.BeginTrans();
 
-                if (!base.Insert(false))
-                {
-                    trans.Rollback();
-                    return false;
-                }
+                if (!base.Insert(true))
+                    success = false;
 
                 CompanyDetail cd = CompanyDetail.CreateByID(CompanyDetailID);
                 if (Input == "X")
                     cd.Balance += Money;
                 else
                     cd.Balance -= Money;
-                cd.Update(true);
-                trans.Commit();
+                if (!cd.Update(true))
+                    success = false;
 
-                return true;
+                if (!hasTrans)
+                {
+                    if (success)
+                        DBConnection.CommitTrans();
+                    else
+                        DBConnection.RollbackTrans();
+                }
+                return success;
             }
             catch (Exception e)
             {
-                if (trans != null)
-                    trans.Rollback();
+                if (!hasTrans && DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
 
-                string msg = string.Format("新增非授权凭证时出现错误，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
-                throw new EntityException(msg, e);
+                string msg = string.Format("新增非授权凭证时出现错误，错误原因如下：{0}{1}", Environment.NewLine, e);
+                UnAuth.ExceptionString = msg;
+                return false;
             }
         }
 
@@ -231,10 +239,14 @@ namespace Haimen.Entity
                     DBConnection.BeginTrans();
 
                 bool sucess = cd.Save(true) && base.Update(true);       // 更新余额以及非授权资金
-                if(sucess)
-                    DBConnection.CommitTrans();
-                else
-                    DBConnection.RollbackTrans();
+
+                if (!hasTrans)
+                {
+                    if (sucess)
+                        DBConnection.CommitTrans();
+                    else
+                        DBConnection.RollbackTrans();
+                }
 
                 return sucess;
             }
@@ -243,8 +255,9 @@ namespace Haimen.Entity
                 if (!hasTrans && DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("更新非授权凭证时出现错误，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
-                throw new EntityException(msg, e);
+                string msg = string.Format("更新非授权凭证时出现错误，错误原因如下：{0}{1}", Environment.NewLine, e);
+                UnAuth.ExceptionString = msg;
+                return false;
             }
         }
     }

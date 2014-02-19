@@ -104,7 +104,7 @@ namespace Haimen.DB
                 if (!hasTrans && DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("保存数据出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("保存复杂对象出错，原因如下：{0}{1}", Environment.NewLine, e);
                 ComplexEntity<T, U>.ExceptionString = msg;
                 return false;
             }
@@ -198,7 +198,7 @@ namespace Haimen.DB
                 if (!hasTrans && DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("更新数据时出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("更新复杂对象时出错，原因如下：{0}{1}", Environment.NewLine, e);
                 ComplexEntity<T, U>.ExceptionString = msg;
                 return false;
             }
@@ -254,7 +254,7 @@ namespace Haimen.DB
                 if (!hasTrans && DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("删除数据出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("删除复杂对象出错，原因如下： {0}{1}", Environment.NewLine, e);
                 ComplexEntity<T, U>.ExceptionString = msg;
                 return false;
             }
@@ -295,7 +295,7 @@ namespace Haimen.DB
                 if (DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("删除对象出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("删除复杂对象出错，原因如下： {0}{1}", Environment.NewLine, e);
                 ComplexEntity<T, U>.ExceptionString = msg;
                 return false;
             }
@@ -339,7 +339,7 @@ namespace Haimen.DB
             }
             catch (Exception e)
             {
-                string msg = string.Format("创建对象出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("创建复杂对象出错，原因如下： {0}{1}", Environment.NewLine, e);
                 throw new DBException(msg, e);
             }
         }
@@ -404,7 +404,7 @@ namespace Haimen.DB
             }
             catch (Exception e)
             {
-                string msg = string.Format("查找对象出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("查找复杂对象出错，原因如下： {0}{1}", Environment.NewLine, e);
                 throw new DBException(msg, e);
             }
         }
@@ -470,7 +470,7 @@ namespace Haimen.DB
             }
             catch (Exception e)
             {
-                string msg = string.Format("查找对象出错，原因如下： {0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("查找复杂对象出错，原因如下： {0}{1}", Environment.NewLine, e);
                 throw new DBException(msg, e);
             }
         }

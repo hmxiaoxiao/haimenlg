@@ -248,7 +248,7 @@ namespace Haimen.DB
                 if (!hasTrans && DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("在新增数据时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("在新增单对象时出错，请与供应商联系，取得支持，错误原因： {0}{1}", Environment.NewLine, e);
                 SingleEntity<T>.ExceptionString = msg;
                 return false;
                 //throw new DBException(msg, e);
@@ -323,8 +323,8 @@ namespace Haimen.DB
                 if (!hasTrans && DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("更新数据时出错，请与供应商联系，取得支持！错误原因：{0}{1}",
-                    Environment.NewLine, e.Message);
+                string msg = string.Format("更新单对象时出错，请与供应商联系，取得支持！错误原因：{0}{1}",
+                    Environment.NewLine, e);
                 SingleEntity<T>.ExceptionString = msg;
                 return false;
                 //throw new DBException(msg, e);
@@ -362,7 +362,7 @@ namespace Haimen.DB
                 if (DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("删除数据出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("删除单对象出错，原因如下：{0}{1}", Environment.NewLine, e);
                 SingleEntity<T>.ExceptionString = msg;
                 return false;
                 //throw new DBException(msg, e);
@@ -397,7 +397,7 @@ namespace Haimen.DB
                 cmd.ExecuteNonQuery();
 
                 if (!hasTrans)
-                    DB.DBConnection.CommitTrans();
+                    DBConnection.CommitTrans();
 
                 return true;
             }
@@ -407,7 +407,7 @@ namespace Haimen.DB
                 if (!hasTrans && DBConnection.Transaction != null)
                     DBConnection.RollbackTrans();
 
-                string msg = string.Format("删除数据出错，原因如下：{0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("删除单对象出错，原因如下：{0}{1}", Environment.NewLine, e);
                 SingleEntity<T>.ExceptionString = msg;
                 return false;
             }
@@ -455,7 +455,7 @@ namespace Haimen.DB
             }
             catch (Exception e)
             {
-                string msg = string.Format("查找数据时出错，请与供应商联系，取得支持！错误原因：{0}{1}",
+                string msg = string.Format("查找单对象时出错，请与供应商联系，取得支持！错误原因：{0}{1}",
                         Environment.NewLine, e.Message);
                 throw new DBException(msg, e);
             }
@@ -504,7 +504,7 @@ namespace Haimen.DB
             }
             catch (Exception e)
             {
-                string message = String.Format("向数据库查询出错！原因如下：{0}{1}", Environment.NewLine, e.Message);
+                string message = String.Format("查询单对象出错！原因如下：{0}{1}", Environment.NewLine, e.Message);
                 throw new DBException(message, e);
             }
         }
@@ -537,7 +537,7 @@ namespace Haimen.DB
             }
             catch (Exception e)
             {
-                string msg = string.Format("生成实体类出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
+                string msg = string.Format("生成单对象出错，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
                 throw new DBException(msg, e);
             }
         }

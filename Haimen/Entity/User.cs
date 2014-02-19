@@ -72,7 +72,7 @@ namespace Haimen.Entity
             }
             catch (Exception e)
             {
-                User.ExceptionString = String.Format("取得数据库信息出错！原因如下：{0}{1}", Environment.NewLine, e.Message);
+                User.ExceptionString = String.Format("取得数据库信息出错！原因如下：{0}{1}", Environment.NewLine, e);
                 return false;
             }
         }
