@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevQueryBalance3));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barCrash = new DevExpress.XtraBars.BarButtonItem();
+            this.barNoCrash = new DevExpress.XtraBars.BarButtonItem();
             this.tsbRefreshAll = new DevExpress.XtraBars.BarButtonItem();
             this.tsbPrint = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
@@ -41,8 +43,6 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.barCrash = new DevExpress.XtraBars.BarButtonItem();
-            this.barNoCrash = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -79,6 +79,22 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
+            // barCrash
+            // 
+            this.barCrash.Caption = "现金余额";
+            this.barCrash.Glyph = ((System.Drawing.Image)(resources.GetObject("barCrash.Glyph")));
+            this.barCrash.Id = 3;
+            this.barCrash.Name = "barCrash";
+            this.barCrash.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barCrash_ItemClick);
+            // 
+            // barNoCrash
+            // 
+            this.barNoCrash.Caption = "非现金余额";
+            this.barNoCrash.Glyph = ((System.Drawing.Image)(resources.GetObject("barNoCrash.Glyph")));
+            this.barNoCrash.Id = 4;
+            this.barNoCrash.Name = "barNoCrash";
+            this.barNoCrash.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barNoCrash_ItemClick);
+            // 
             // tsbRefreshAll
             // 
             this.tsbRefreshAll.Caption = "所有帐户余额";
@@ -114,7 +130,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 427);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 430);
             this.barDockControlBottom.Size = new System.Drawing.Size(704, 0);
             // 
             // barDockControlLeft
@@ -122,14 +138,14 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 380);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 383);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(704, 47);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 380);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 383);
             // 
             // gridControl1
             // 
@@ -138,7 +154,7 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(704, 380);
+            this.gridControl1.Size = new System.Drawing.Size(704, 383);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -152,27 +168,11 @@
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
-            // barCrash
-            // 
-            this.barCrash.Caption = "现金余额";
-            this.barCrash.Glyph = ((System.Drawing.Image)(resources.GetObject("barCrash.Glyph")));
-            this.barCrash.Id = 3;
-            this.barCrash.Name = "barCrash";
-            this.barCrash.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barCrash_ItemClick);
-            // 
-            // barNoCrash
-            // 
-            this.barNoCrash.Caption = "非现金余额";
-            this.barNoCrash.Glyph = ((System.Drawing.Image)(resources.GetObject("barNoCrash.Glyph")));
-            this.barNoCrash.Id = 4;
-            this.barNoCrash.Name = "barNoCrash";
-            this.barNoCrash.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barNoCrash_ItemClick);
-            // 
             // DevQueryBalance3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 427);
+            this.ClientSize = new System.Drawing.Size(704, 430);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

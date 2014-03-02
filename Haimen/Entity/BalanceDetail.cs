@@ -20,6 +20,16 @@ namespace Haimen.Entity
         public decimal Money { get; set; }
 
         [Field("account_id")]
-        public long AccountID { get; set; }        
+        public long AccountID { get; set; }
+
+        public override bool DeleteVerify()
+        {
+            return true;
+        }
+
+        public override bool InsertUpdateVerify()
+        {
+            return true;
+        }
     }
 }

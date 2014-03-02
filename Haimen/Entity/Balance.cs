@@ -93,6 +93,13 @@ namespace Haimen.Entity
             return Error_Info.Count == 0;
         }
 
+
+        public override bool DeleteVerify()
+        {
+            return true;
+        }
+
+
         public override bool Insert(bool hasTrans = false)
         {
             this.Remaining = this.Money;
