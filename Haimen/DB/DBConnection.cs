@@ -147,5 +147,32 @@ namespace Haimen.DB
             return ds;
         }
 
+
+        /// <summary>
+        /// 测试当前的数据库联接是否正确
+        /// </summary>
+        /// <returns></returns>
+        public static bool TestDBConnection(out string errinfo)
+        {
+            try
+            {
+                if (getConnection() != null)
+                {
+                    errinfo = "";
+                    return true;
+                }
+                else
+                {
+                    errinfo = "";
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                errinfo = e.ToString();
+                return false;
+            }
+        }
+
     }
 }

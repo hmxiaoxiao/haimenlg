@@ -31,17 +31,17 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevSystemCheck));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.btnCheck = new DevExpress.XtraBars.BarButtonItem();
+            this.btnVerify = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bar1 = new DevExpress.XtraBars.Bar();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.btnCheck = new DevExpress.XtraBars.BarButtonItem();
             this.a_id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.a_q = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnVerify = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -60,6 +60,35 @@
             this.btnCheck,
             this.btnVerify});
             this.barManager1.MaxItemId = 2;
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Tools";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCheck, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnVerify, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.bar1.Text = "Tools";
+            // 
+            // btnCheck
+            // 
+            this.btnCheck.Caption = "检查数据";
+            this.btnCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("btnCheck.Glyph")));
+            this.btnCheck.Id = 0;
+            this.btnCheck.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnCheck.LargeGlyph")));
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCheck_ItemClick);
+            // 
+            // btnVerify
+            // 
+            this.btnVerify.Caption = "修正";
+            this.btnVerify.Glyph = ((System.Drawing.Image)(resources.GetObject("btnVerify.Glyph")));
+            this.btnVerify.Id = 1;
+            this.btnVerify.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnVerify.LargeGlyph")));
+            this.btnVerify.Name = "btnVerify";
+            this.btnVerify.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVerify_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -89,16 +118,6 @@
             this.barDockControlRight.Location = new System.Drawing.Point(483, 31);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 423);
             // 
-            // bar1
-            // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCheck, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnVerify, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar1.Text = "Tools";
-            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -117,20 +136,13 @@
             this.a_id,
             this.a_q});
             this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.IndicatorWidth = 40;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            // 
-            // btnCheck
-            // 
-            this.btnCheck.Caption = "检查数据";
-            this.btnCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("btnCheck.Glyph")));
-            this.btnCheck.Id = 0;
-            this.btnCheck.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnCheck.LargeGlyph")));
-            this.btnCheck.Name = "btnCheck";
-            this.btnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCheck_ItemClick);
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
             // 
             // a_id
             // 
@@ -149,15 +161,6 @@
             this.a_q.Name = "a_q";
             this.a_q.Visible = true;
             this.a_q.VisibleIndex = 1;
-            // 
-            // btnVerify
-            // 
-            this.btnVerify.Caption = "修正";
-            this.btnVerify.Glyph = ((System.Drawing.Image)(resources.GetObject("btnVerify.Glyph")));
-            this.btnVerify.Id = 1;
-            this.btnVerify.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnVerify.LargeGlyph")));
-            this.btnVerify.Name = "btnVerify";
-            this.btnVerify.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVerify_ItemClick);
             // 
             // DevSystemCheck
             // 

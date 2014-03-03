@@ -10,6 +10,9 @@ using DevExpress.XtraEditors;
 using Haimen.Entity;
 using Haimen.Helper;
 
+using DevExpress.XtraReports.UI;
+using DevExpress.XtraGrid.Views.Base;
+
 namespace Haimen.GUI
 {
     public partial class DevUserList : DevExpress.XtraEditors.XtraForm
@@ -136,6 +139,23 @@ namespace Haimen.GUI
         private void DevUserList_Activated(object sender, EventArgs e)
         {
             MyRefresh();
+        }
+
+        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            if (e.Info.IsRowIndicator)
+            {
+                if (e.RowHandle >= 0)
+                {
+                    e.Info.DisplayText = (e.RowHandle + 1).ToString();
+                }
+                else if (e.RowHandle < 0 && e.RowHandle > -1000)
+                {
+                    e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
+                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                }
+            }
         }
     }
 }

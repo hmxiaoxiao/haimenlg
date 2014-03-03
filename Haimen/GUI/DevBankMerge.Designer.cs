@@ -30,6 +30,8 @@
         {
             this.sueOldBank = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.s_o_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.s_o_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -41,6 +43,8 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.sueNewBank = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.searchLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.s_n_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.s_n_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -53,10 +57,6 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.btnMerge = new DevExpress.XtraEditors.SimpleButton();
             this.btnExit = new DevExpress.XtraEditors.SimpleButton();
-            this.s_o_code = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.s_o_name = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.s_n_code = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.s_n_name = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.sueOldBank.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -108,6 +108,22 @@
             this.searchLookUpEdit1View.OptionsView.EnableAppearanceEvenRow = true;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
+            // s_o_code
+            // 
+            this.s_o_code.Caption = "代码";
+            this.s_o_code.FieldName = "Code";
+            this.s_o_code.Name = "s_o_code";
+            this.s_o_code.Visible = true;
+            this.s_o_code.VisibleIndex = 0;
+            // 
+            // s_o_name
+            // 
+            this.s_o_name.Caption = "名称";
+            this.s_o_name.FieldName = "Name";
+            this.s_o_name.Name = "s_o_name";
+            this.s_o_name.Visible = true;
+            this.s_o_name.VisibleIndex = 1;
+            // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.gridControl1);
@@ -136,12 +152,14 @@
             this.c_o_name,
             this.c_o_account});
             this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.IndicatorWidth = 40;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.AllowCellMerge = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
             // 
             // c_o_name
             // 
@@ -233,6 +251,22 @@
             this.searchLookUpEdit2View.OptionsView.EnableAppearanceEvenRow = true;
             this.searchLookUpEdit2View.OptionsView.ShowGroupPanel = false;
             // 
+            // s_n_code
+            // 
+            this.s_n_code.Caption = "代码";
+            this.s_n_code.FieldName = "Code";
+            this.s_n_code.Name = "s_n_code";
+            this.s_n_code.Visible = true;
+            this.s_n_code.VisibleIndex = 0;
+            // 
+            // s_n_name
+            // 
+            this.s_n_name.Caption = "名称";
+            this.s_n_name.FieldName = "Name";
+            this.s_n_name.Name = "s_n_name";
+            this.s_n_name.Visible = true;
+            this.s_n_name.VisibleIndex = 1;
+            // 
             // layoutControl2
             // 
             this.layoutControl2.Controls.Add(this.gridControl2);
@@ -261,12 +295,14 @@
             this.c_n_name,
             this.c_n_account});
             this.gridView2.GridControl = this.gridControl2;
+            this.gridView2.IndicatorWidth = 40;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.Editable = false;
             this.gridView2.OptionsView.AllowCellMerge = true;
             this.gridView2.OptionsView.ColumnAutoWidth = false;
             this.gridView2.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView2_CustomDrawRowIndicator);
             // 
             // c_n_name
             // 
@@ -367,38 +403,6 @@
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "取消";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // s_o_code
-            // 
-            this.s_o_code.Caption = "代码";
-            this.s_o_code.FieldName = "Code";
-            this.s_o_code.Name = "s_o_code";
-            this.s_o_code.Visible = true;
-            this.s_o_code.VisibleIndex = 0;
-            // 
-            // s_o_name
-            // 
-            this.s_o_name.Caption = "名称";
-            this.s_o_name.FieldName = "Name";
-            this.s_o_name.Name = "s_o_name";
-            this.s_o_name.Visible = true;
-            this.s_o_name.VisibleIndex = 1;
-            // 
-            // s_n_code
-            // 
-            this.s_n_code.Caption = "代码";
-            this.s_n_code.FieldName = "Code";
-            this.s_n_code.Name = "s_n_code";
-            this.s_n_code.Visible = true;
-            this.s_n_code.VisibleIndex = 0;
-            // 
-            // s_n_name
-            // 
-            this.s_n_name.Caption = "名称";
-            this.s_n_name.FieldName = "Name";
-            this.s_n_name.Name = "s_n_name";
-            this.s_n_name.Visible = true;
-            this.s_n_name.VisibleIndex = 1;
             // 
             // DevBankMerge
             // 

@@ -21,7 +21,7 @@ namespace Haimen
         {
             // 系统初始化
             string version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            GlobalSet.SystemName = "资金管理系统 - (" + version + ")";
+            GlobalSet.SystemName = String.Format("资金管理系统 - ({0})", version);
             DevExpress.UserSkins.BonusSkins.Register();
             DevExpress.UserSkins.BonusSkins.Register();
             Application.EnableVisualStyles();
@@ -29,9 +29,17 @@ namespace Haimen
             DevExpress.Skins.SkinManager.EnableFormSkins();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //////初始化用户, 第一次使用时，没有用户时增加用户。
+
+            string errinfo;
+            if (!Haimen.DB.DBConnection.TestDBConnection(out errinfo))
+            {
+                MessageBox.Show("无法联接数据库服务器，请确认数据库服务器正常运行，网络联接并且配置正确！");
+                return;
+            }
+
             try
             {
+                //////初始化用户, 第一次使用时，没有用户时增加用户。
                 User.Init();
 
 #if DEBUG
