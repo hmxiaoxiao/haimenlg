@@ -61,6 +61,7 @@
             this.mnuqueryaccount = new DevExpress.XtraBars.BarButtonItem();
             this.mnuUnAuthList = new DevExpress.XtraBars.BarButtonItem();
             this.mnuUnAuth = new DevExpress.XtraBars.BarButtonItem();
+            this.mnuSystemCheck = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -85,7 +86,7 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.mnuSystemCheck = new DevExpress.XtraBars.BarButtonItem();
+            this.munBalanceBankCompanyQuery = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -126,9 +127,10 @@
             this.mnuqueryaccount,
             this.mnuUnAuthList,
             this.mnuUnAuth,
-            this.mnuSystemCheck});
+            this.mnuSystemCheck,
+            this.munBalanceBankCompanyQuery});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 50;
+            this.ribbon.MaxItemId = 51;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -465,6 +467,17 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.mnuUnAuth.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuUnAuth_ItemClick);
             // 
+            // mnuSystemCheck
+            // 
+            this.mnuSystemCheck.Caption = "系统检查";
+            this.mnuSystemCheck.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuSystemCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuSystemCheck.Glyph")));
+            this.mnuSystemCheck.Id = 49;
+            this.mnuSystemCheck.Name = "mnuSystemCheck";
+            this.mnuSystemCheck.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuSystemCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuSystemCheck_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -612,6 +625,7 @@
             this.ribbonPageGroup12.ItemLinks.Add(this.mnuReportBalance);
             this.ribbonPageGroup12.ItemLinks.Add(this.mnuBCBalance);
             this.ribbonPageGroup12.ItemLinks.Add(this.mnuCBBalance);
+            this.ribbonPageGroup12.ItemLinks.Add(this.munBalanceBankCompanyQuery);
             this.ribbonPageGroup12.Name = "ribbonPageGroup12";
             this.ribbonPageGroup12.Text = "余额表";
             // 
@@ -647,16 +661,16 @@
             // 
             this.mdiManager.MdiParent = this;
             // 
-            // mnuSystemCheck
+            // munBalanceBankCompanyQuery
             // 
-            this.mnuSystemCheck.Caption = "系统检查";
-            this.mnuSystemCheck.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.mnuSystemCheck.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuSystemCheck.Glyph")));
-            this.mnuSystemCheck.Id = 49;
-            this.mnuSystemCheck.Name = "mnuSystemCheck";
-            this.mnuSystemCheck.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            this.munBalanceBankCompanyQuery.Caption = "余额汇总表";
+            this.munBalanceBankCompanyQuery.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.munBalanceBankCompanyQuery.Glyph = ((System.Drawing.Image)(resources.GetObject("munBalanceBankCompanyQuery.Glyph")));
+            this.munBalanceBankCompanyQuery.Id = 50;
+            this.munBalanceBankCompanyQuery.Name = "munBalanceBankCompanyQuery";
+            this.munBalanceBankCompanyQuery.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.mnuSystemCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuSystemCheck_ItemClick);
+            this.munBalanceBankCompanyQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.munBalanceBankCompanyQuery_ItemClick);
             // 
             // DevMain
             // 
@@ -737,5 +751,6 @@
         private DevExpress.XtraBars.BarButtonItem mnuUnAuth;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup16;
         private DevExpress.XtraBars.BarButtonItem mnuSystemCheck;
+        private DevExpress.XtraBars.BarButtonItem munBalanceBankCompanyQuery;
     }
 }
