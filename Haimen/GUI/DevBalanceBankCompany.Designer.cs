@@ -32,13 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevBalanceBankCompany));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barbtnQuery = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.barbtnQuery = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -61,11 +61,19 @@
             // 
             this.bar1.BarName = "Tools";
             this.bar1.DockCol = 0;
-            this.bar1.DockRow = 1;
+            this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barbtnQuery, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
+            // 
+            // barbtnQuery
+            // 
+            this.barbtnQuery.Caption = "查询";
+            this.barbtnQuery.Glyph = ((System.Drawing.Image)(resources.GetObject("barbtnQuery.Glyph")));
+            this.barbtnQuery.Id = 0;
+            this.barbtnQuery.Name = "barbtnQuery";
+            this.barbtnQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnQuery_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -111,14 +119,9 @@
             // 
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            // 
-            // barbtnQuery
-            // 
-            this.barbtnQuery.Caption = "查询";
-            this.barbtnQuery.Glyph = ((System.Drawing.Image)(resources.GetObject("barbtnQuery.Glyph")));
-            this.barbtnQuery.Id = 0;
-            this.barbtnQuery.Name = "barbtnQuery";
-            this.barbtnQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnQuery_ItemClick);
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.ShowGroupedColumns = true;
             // 
             // DevBalanceBankCompany
             // 

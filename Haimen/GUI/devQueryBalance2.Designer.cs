@@ -70,7 +70,8 @@
             this.col_credit.FieldName = "credit";
             this.col_credit.Name = "col_credit";
             this.col_credit.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "credit", "总计：{0:C2}")});
+            this.col_credit.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.col_credit.Visible = true;
             this.col_credit.VisibleIndex = 4;
             // 
@@ -107,6 +108,10 @@
             this.col_balance,
             this.col_credit});
             this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.GroupCount = 1;
+            this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "balance", this.col_balance, "小计：{0:C2}"),
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "credit", this.col_credit, "小计：{0:C2}")});
             this.gridView1.IndicatorWidth = 40;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -115,7 +120,10 @@
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.OptionsView.ShowGroupedColumns = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.col_company, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView1.CellMerge += new DevExpress.XtraGrid.Views.Grid.CellMergeEventHandler(this.gridView1_CellMerge);
             this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
             // 
@@ -127,7 +135,8 @@
             this.col_balance.FieldName = "balance";
             this.col_balance.Name = "col_balance";
             this.col_balance.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "balance", "总计：{0:C2}")});
+            this.col_balance.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.col_balance.Visible = true;
             this.col_balance.VisibleIndex = 3;
             // 
