@@ -159,6 +159,7 @@
     <Compile Include="Entity\AccountDetail.cs" />
     <Compile Include="Entity\Attach.cs" />
     <Compile Include="Entity\Balance.cs" />
+    <Compile Include="Entity\BalanceBankCompany.cs" />
     <Compile Include="Entity\BalanceDetail.cs" />
     <Compile Include="Entity\Bank.cs" />
     <Compile Include="Entity\Company.cs" />
@@ -180,6 +181,12 @@
     </Compile>
     <Compile Include="GUI\DevAdmin.Designer.cs">
       <DependentUpon>DevAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DevBalanceBankCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DevBalanceBankCompany.Designer.cs">
+      <DependentUpon>DevBalanceBankCompany.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\DevBankMerge.cs">
       <SubType>Form</SubType>

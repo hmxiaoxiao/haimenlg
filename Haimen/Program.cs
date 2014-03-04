@@ -29,7 +29,6 @@ namespace Haimen
             DevExpress.Skins.SkinManager.EnableFormSkins();
             Application.SetCompatibleTextRenderingDefault(false);
 
-
             string errinfo;
             if (!Haimen.DB.DBConnection.TestDBConnection(out errinfo))
             {
