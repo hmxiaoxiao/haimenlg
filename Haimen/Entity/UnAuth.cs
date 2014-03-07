@@ -15,6 +15,12 @@ namespace Haimen.Entity
     [Table("t_unauth")]
     public class UnAuth : SingleEntity<UnAuth>
     {
+
+        public UnAuth()
+        {
+            Code = UnAuth.GenAutoCode();
+        }
+
         /// <summary>
         /// 票据号
         /// </summary>
@@ -178,6 +184,8 @@ namespace Haimen.Entity
                 if (!hasTrans)
                     DBConnection.BeginTrans();
 
+                this.Code = UnAuth.GenAutoCode(true);  // 重新生成凭证编号，以防止可能的重复
+
                 if (!base.Insert(true))
                     success = false;
 
@@ -259,6 +267,36 @@ namespace Haimen.Entity
                 UnAuth.ExceptionString = msg;
                 return false;
             }
+        }
+
+
+        public static string GenAutoCode(bool can_save = false)
+        {
+            string current_doc = SystemSet.GetValue("UnAuthDoc");
+            string current_date = string.Format("{0:yyyyMMdd}", DateTime.Now);
+            string doc = "";            // 本次生成的凭证号
+            int num = 0;
+            // 如果为空，则直接返回
+            if (string.IsNullOrEmpty(current_doc))
+            {
+                doc = current_date + "001";
+            }
+            else
+            {
+                string old_doc_date = current_doc.Substring(0, 8);
+                if (old_doc_date == current_date)
+                {
+                    num = int.Parse(current_doc.Substring(8)) + 1;
+                    doc = current_date + string.Format("{0:000}", num);
+                }
+                else
+                {
+                    doc = current_date + "001";
+                }
+            }
+            if(can_save)
+                SystemSet.SetValue("Doc", doc);
+            return doc;
         }
     }
 }

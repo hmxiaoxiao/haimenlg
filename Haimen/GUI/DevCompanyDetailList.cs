@@ -81,6 +81,10 @@ namespace Haimen.GUI
                     return;
                 }
             }
+
+            _company = null;
+            _detail = null;
+
             Company.OrderBy = "order by code";
             
             List<Company> companies = Company.Query();
@@ -122,6 +126,10 @@ namespace Haimen.GUI
 
         private void ShowCompanyDetail()
         {
+            // 如果当前正在编辑，则不用返回
+            if (_status == winStatusEnum.新增 || _status == winStatusEnum.编辑)
+                return;
+
             if (tree.FocusedNode == null)
                 return;
 
@@ -145,6 +153,7 @@ namespace Haimen.GUI
             lueBanks1.DataSource = banks;
             lueBanks1.DisplayMember = "Name";
             lueBanks1.ValueMember = "ID";
+            gridControl1.DataSource = null;
             gridControl1.DataSource = com.DetailList;
 
             _company = com;
@@ -239,6 +248,9 @@ namespace Haimen.GUI
 
         private void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
         {
+            if (e.RowHandle <= 0)
+                return;
+
             if (_status == winStatusEnum.新增 || _status == winStatusEnum.编辑)
             {
                 if (long.Parse(gridView1.GetRowCellValue(e.RowHandle, "ID").ToString()) == _detail.ID)

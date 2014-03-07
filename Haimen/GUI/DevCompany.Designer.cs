@@ -90,7 +90,7 @@
             this.cbOutput.EnterMoveNextControl = true;
             this.cbOutput.Location = new System.Drawing.Point(82, 219);
             this.cbOutput.Name = "cbOutput";
-            this.cbOutput.Properties.Caption = "外单位";
+            this.cbOutput.Properties.Caption = "本单位";
             this.cbOutput.Size = new System.Drawing.Size(355, 19);
             this.cbOutput.StyleController = this.layoutControl1;
             this.cbOutput.TabIndex = 6;
@@ -123,6 +123,7 @@
             this.sueCompany.Size = new System.Drawing.Size(355, 20);
             this.sueCompany.StyleController = this.layoutControl1;
             this.sueCompany.TabIndex = 7;
+            this.sueCompany.EditValueChanged += new System.EventHandler(this.sueCompany_EditValueChanged);
             // 
             // barManager1
             // 
@@ -331,7 +332,7 @@
             this.cbInput.EnterMoveNextControl = true;
             this.cbInput.Location = new System.Drawing.Point(82, 180);
             this.cbInput.Name = "cbInput";
-            this.cbInput.Properties.Caption = "本单位";
+            this.cbInput.Properties.Caption = "外单位";
             this.cbInput.Size = new System.Drawing.Size(355, 19);
             this.cbInput.StyleController = this.layoutControl1;
             this.cbInput.TabIndex = 5;

@@ -173,7 +173,7 @@ namespace Haimen.GUI
             else
                 m_company.Input = "";
 
-            if (cbInput.Checked)
+            if (cbOutput.Checked)
                 m_company.Output = "X";
             else
                 m_company.Output = "";
@@ -205,8 +205,10 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void DevCompany_Load(object sender, EventArgs e)
         {
+            sueCompany.Properties.LockEvents();
             Object2Form();
             SetControlAccess();
+            sueCompany.Properties.UnLockEvents();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
@@ -276,6 +278,21 @@ namespace Haimen.GUI
         {
             if (!string.IsNullOrEmpty(txtName.Text))
                 txtCode.Text = Haimen.Helper.PinyinHelper.GetShortPinyin(txtName.Text);
+        }
+
+        private void sueCompany_EditValueChanged(object sender, EventArgs e)
+        {
+            switch (sueCompany.Text)
+            {
+                case "本单位":
+                    cbInput.Checked = true;
+                    cbOutput.Checked = true;
+                    break;
+                case "外单位":
+                    cbInput.Checked = true;
+                    cbOutput.Checked = false;
+                    break;
+            }
         }
     }
 }
