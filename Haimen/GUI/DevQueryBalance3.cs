@@ -11,6 +11,8 @@ using Haimen.DB;
 using System.Data.SqlClient;
 using Haimen.Report;
 using DevExpress.XtraReports.UI;
+using Haimen.Entity;
+
 
 namespace Haimen.GUI
 {
@@ -18,9 +20,26 @@ namespace Haimen.GUI
     {
         private DataSet m_ds;
 
+
+        /// <summary>
+        /// 判断是否有支出单位（即本单位）没有设置凭证号的。
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckCompany()
+        {
+            List<Company> list = Company.Query("doc = '' and output <> ''");
+            return list.Count == 0;
+        }
+
         // 取得所有的银行帐号余额
         private void GetAllBalance()
         {
+            if (!CheckCompany())
+            {
+                MessageBox.Show("请确认所有的支出单位的凭证号都已经设置，本表格将凭证号作为简称，必须填写！");
+                return;
+            }
+
             m_ds = new DataSet();
 
             // 取得所有的单位(带凭证号的)
@@ -150,6 +169,13 @@ namespace Haimen.GUI
 
         private void GetCrashBalance()
         {
+
+            if (!CheckCompany())
+            {
+                MessageBox.Show("请确认所有的支出单位的凭证号都已经设置，本表格将凭证号作为简称，必须填写！");
+                return;
+            }
+
             m_ds = new DataSet();
 
             // 取得所有的单位(带凭证号的)
@@ -279,6 +305,12 @@ namespace Haimen.GUI
 
         private void GetNoCrashBalance()
         {
+            if (!CheckCompany())
+            {
+                MessageBox.Show("请确认所有的支出单位的凭证号都已经设置，本表格将凭证号作为简称，必须填写！");
+                return;
+            }
+
             m_ds = new DataSet();
 
             // 取得所有的单位(带凭证号的)

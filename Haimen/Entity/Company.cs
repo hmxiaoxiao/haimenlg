@@ -93,7 +93,10 @@ namespace Haimen.Entity
 
             // 如果收入单位，支出单位没有选 ，则也不行
             if (this.Input == "" && this.Output == "")
-                Error_Info.Add(new KeyValuePair<string, string>("Input", "请选中本单位，还是外单位！"));
+                Error_Info.Add(new KeyValuePair<string, string>("Input", "请选中收入单位，还是支出单位！"));
+
+            if (!string.IsNullOrEmpty(this.Output ) && string.IsNullOrEmpty(this.Doc))
+                Error_Info.Add(new KeyValuePair<string,string>("Doc", "支出单位的凭证号不能为空！"));
 
             return Error_Info.Count == 0;
         }
