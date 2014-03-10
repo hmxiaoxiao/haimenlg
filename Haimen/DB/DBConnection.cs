@@ -148,6 +148,14 @@ namespace Haimen.DB
         }
 
 
+        public static int RunNoQuerySql(string sql)
+        {
+            SqlCommand cmd = DBConnection.getCommand();
+            cmd.CommandText = sql;
+            return cmd.ExecuteNonQuery();
+        }
+
+
         /// <summary>
         /// 测试当前的数据库联接是否正确
         /// </summary>

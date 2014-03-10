@@ -229,6 +229,17 @@ namespace Haimen.Entity
             }
         }
 
+
+        private static void SetNoUsedDetail2Deleted()
+        {
+            string sql = @"
+Update t_account set deleted = 1 
+where id in (select id from t_account where in_companydetail_id not in(select id from m_company_detail) and deleted = 0)
+";
+
+            DBConnection.RunNoQuerySql(sql);
+        }
+
         /// <summary>
         /// 为了效率，重写在列表显示窗口里的列表取得方法
         /// 直接用SQL语句写
@@ -236,6 +247,9 @@ namespace Haimen.Entity
         /// <returns></returns>
         public static DataSet GetGUIList(bool all = false)
         {
+            // 将支出单位明细已经不存在的数据设置为删除
+            SetNoUsedDetail2Deleted();
+
             long year = SystemSet.GetAccountYear();
             long month = SystemSet.GetAccountMonth();
 
