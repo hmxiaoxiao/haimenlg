@@ -81,7 +81,6 @@ group by a.id
         /// <returns></returns>
         public int AutoUpdateData()
         {
-            SqlTransaction trans = null;
             try
             {
 
@@ -90,7 +89,7 @@ group by a.id
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
 
                 da.Fill(ds);
-                trans = DBConnection.BeginTrans();
+                DBConnection.BeginTrans();
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     string id = row["id"].ToString();
@@ -99,17 +98,16 @@ group by a.id
                     {
                         CompanyDetail cd = CompanyDetail.CreateByID(long.Parse(id));
                         cd.Balance += money;
-                        cd.Save();
+                        cd.Save(true);
                     }
                 }
-                trans.Commit();
-
+                DBConnection.CommitTrans();
                 return ds.Tables[0].Rows.Count;
             }
             catch (Exception e)
             {
-                if (trans != null)
-                    trans.Rollback();
+                if (DBConnection.Transaction != null)
+                    DBConnection.RollbackTrans();
 
                 string msg = string.Format("检查余额时出现错误，错误原因如下：{0}{1}", Environment.NewLine, e.Message);
                 throw new EntityException(msg, e);
