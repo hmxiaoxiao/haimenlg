@@ -19,6 +19,7 @@ namespace Haimen.GUI
     public partial class DevAccountList : DevExpress.XtraEditors.XtraForm
     {
         private List<Project> m_projects = Project.Query();
+        private Account.ShowStatus m_status = Account.ShowStatus.R500;      // 默认显示500条记录
 
         /// <summary>
         /// 根据用户的权限设置控件的可用与否
@@ -80,7 +81,7 @@ namespace Haimen.GUI
         {
 
             // 绑定到表格中
-            DataSet accounts = Account.GetGUIList();
+            DataSet accounts = Account.GetGUIList(m_status);
             gridControl1.DataSource = accounts.Tables[0];
             gridControl1.ForceInitialize();
 
@@ -88,14 +89,14 @@ namespace Haimen.GUI
 
             // 是否正式发票
             lueInvoiceList.DataSource = Account.AccountInvoicList;
-            lueInvoiceList.DisplayMember = "Name";
-            lueInvoiceList.ValueMember = "ValueInt";
+            lueInvoiceList.DisplayMember = "Key";
+            lueInvoiceList.ValueMember = "Value";
 
             // 显示状态
             lueStatus.DataSource = null;
             lueStatus.DataSource = Account.AccountStatusList;
-            lueStatus.DisplayMember = "Name";
-            lueStatus.ValueMember = "ValueInt";
+            lueStatus.DisplayMember = "Key";
+            lueStatus.ValueMember = "Value";
 
             SelectedRow();
         }
@@ -268,6 +269,7 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tsbRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            m_status = Account.ShowStatus.All;
             MyRefresh();
         }
 
@@ -365,6 +367,18 @@ namespace Haimen.GUI
                     e.Info.DisplayText = "G" + e.RowHandle.ToString();
                 }
             }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            m_status = Account.ShowStatus.R500;
+            MyRefresh();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            m_status = Account.ShowStatus.R100;
+            MyRefresh();
         }
     }
 }

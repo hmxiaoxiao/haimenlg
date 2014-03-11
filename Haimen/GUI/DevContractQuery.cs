@@ -31,8 +31,8 @@ namespace Haimen.GUI
             lueCompany.Properties.ValueMember = "ID";
 
             lueCheck.Properties.DataSource = Account.AccountStatusList;
-            lueCheck.Properties.DisplayMember = "Name";
-            lueCheck.Properties.ValueMember = "ValueInt";
+            lueCheck.Properties.DisplayMember = "Key";
+            lueCheck.Properties.ValueMember = "Value";
         }
 
         private void btnQuery_Click(object sender, EventArgs e)

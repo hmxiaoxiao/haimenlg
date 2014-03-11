@@ -22,8 +22,8 @@ namespace Haimen.GUI
             m_lists = ContractAccept.Query();
             lueStatus.DataSource = null;
             lueStatus.DataSource = ContractAccept.AcceptStatus;
-            lueStatus.DisplayMember = "Name";
-            lueStatus.ValueMember = "ValueInt";
+            lueStatus.DisplayMember = "Key";
+            lueStatus.ValueMember = "Value";
 
             gridControl1.DataSource = m_lists;
             gridView1.BestFitColumns();

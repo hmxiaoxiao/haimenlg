@@ -57,24 +57,31 @@
             this.col_memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.tsbView = new DevExpress.XtraBars.BarButtonItem();
             this.tsbNew = new DevExpress.XtraBars.BarButtonItem();
             this.tsbEdit = new DevExpress.XtraBars.BarButtonItem();
             this.tsbDelete = new DevExpress.XtraBars.BarButtonItem();
-            this.tsb2Invoice = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.tsbCheck = new DevExpress.XtraBars.BarButtonItem();
             this.tsbUnCheck = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.tsbPay = new DevExpress.XtraBars.BarButtonItem();
             this.tsbUnPay = new DevExpress.XtraBars.BarButtonItem();
+            this.tsb2Invoice = new DevExpress.XtraBars.BarButtonItem();
             this.tsbPrint = new DevExpress.XtraBars.BarButtonItem();
-            this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.tsbRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.tsbQuery = new DevExpress.XtraBars.BarButtonItem();
             this.tsbExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.tsbNewInput = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -156,8 +163,9 @@
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lueStatus,
             this.lueInvoiceList});
-            this.gridControl1.Size = new System.Drawing.Size(809, 499);
+            this.gridControl1.Size = new System.Drawing.Size(733, 439);
             this.gridControl1.TabIndex = 23;
+            this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
             this.gridView2});
@@ -350,8 +358,15 @@
             this.tsbPrint,
             this.tsbView,
             this.tsbUnCheck,
-            this.tsbUnPay});
-            this.barManager1.MaxItemId = 17;
+            this.tsbUnPay,
+            this.barSubItem1,
+            this.barSubItem2,
+            this.barSubItem3,
+            this.barButtonItem1,
+            this.barSubItem4,
+            this.barButtonItem3,
+            this.barButtonItem2});
+            this.barManager1.MaxItemId = 27;
             // 
             // bar1
             // 
@@ -360,20 +375,27 @@
             this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbView, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbNew, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem3, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem1, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem2, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsb2Invoice, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheck, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbUnCheck, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPay, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbUnPay, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPrint, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", true, true, false, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem4, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbQuery, "", false, true, false, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbExit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
+            // 
+            // barSubItem3
+            // 
+            this.barSubItem3.Caption = "编辑";
+            this.barSubItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barSubItem3.Glyph")));
+            this.barSubItem3.Id = 19;
+            this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbView, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbNew, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbEdit, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbDelete, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.barSubItem3.Name = "barSubItem3";
             // 
             // tsbView
             // 
@@ -407,13 +429,15 @@
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbDelete_ItemClick);
             // 
-            // tsb2Invoice
+            // barSubItem1
             // 
-            this.tsb2Invoice.Caption = " 转正式发票";
-            this.tsb2Invoice.Glyph = ((System.Drawing.Image)(resources.GetObject("tsb2Invoice.Glyph")));
-            this.tsb2Invoice.Id = 10;
-            this.tsb2Invoice.Name = "tsb2Invoice";
-            this.tsb2Invoice.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsb2Invoice_ItemClick);
+            this.barSubItem1.Caption = "复核";
+            this.barSubItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barSubItem1.Glyph")));
+            this.barSubItem1.Id = 17;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbCheck, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbUnCheck, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.barSubItem1.Name = "barSubItem1";
             // 
             // tsbCheck
             // 
@@ -431,6 +455,16 @@
             this.tsbUnCheck.Name = "tsbUnCheck";
             this.tsbUnCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnCheck_ItemClick);
             // 
+            // barSubItem2
+            // 
+            this.barSubItem2.Caption = "审核";
+            this.barSubItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barSubItem2.Glyph")));
+            this.barSubItem2.Id = 18;
+            this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbPay, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbUnPay, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.barSubItem2.Name = "barSubItem2";
+            // 
             // tsbPay
             // 
             this.tsbPay.Caption = "审核";
@@ -447,6 +481,14 @@
             this.tsbUnPay.Name = "tsbUnPay";
             this.tsbUnPay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbUnPay_ItemClick);
             // 
+            // tsb2Invoice
+            // 
+            this.tsb2Invoice.Caption = " 转正式发票";
+            this.tsb2Invoice.Glyph = ((System.Drawing.Image)(resources.GetObject("tsb2Invoice.Glyph")));
+            this.tsb2Invoice.Id = 10;
+            this.tsb2Invoice.Name = "tsb2Invoice";
+            this.tsb2Invoice.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsb2Invoice_ItemClick);
+            // 
             // tsbPrint
             // 
             this.tsbPrint.Caption = "打印";
@@ -455,6 +497,41 @@
             this.tsbPrint.Name = "tsbPrint";
             this.tsbPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbPrint_ItemClick);
             // 
+            // barSubItem4
+            // 
+            this.barSubItem4.Caption = "刷新";
+            this.barSubItem4.Glyph = ((System.Drawing.Image)(resources.GetObject("barSubItem4.Glyph")));
+            this.barSubItem4.Id = 23;
+            this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem3, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.tsbRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.barSubItem4.Name = "barSubItem4";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "最近100条记录";
+            this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
+            this.barButtonItem2.Id = 26;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "最近500条记录";
+            this.barButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.Glyph")));
+            this.barButtonItem3.Id = 25;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
+            // tsbRefresh
+            // 
+            this.tsbRefresh.Caption = "全部";
+            this.tsbRefresh.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbRefresh.Glyph")));
+            this.tsbRefresh.Id = 8;
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
+            // 
             // tsbQuery
             // 
             this.tsbQuery.Caption = "查询";
@@ -462,14 +539,6 @@
             this.tsbQuery.Id = 5;
             this.tsbQuery.Name = "tsbQuery";
             this.tsbQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbQuery_ItemClick);
-            // 
-            // tsbRefresh
-            // 
-            this.tsbRefresh.Caption = "刷新";
-            this.tsbRefresh.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbRefresh.Glyph")));
-            this.tsbRefresh.Id = 8;
-            this.tsbRefresh.Name = "tsbRefresh";
-            this.tsbRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbRefresh_ItemClick);
             // 
             // tsbExit
             // 
@@ -484,39 +553,45 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(809, 47);
+            this.barDockControlTop.Size = new System.Drawing.Size(733, 47);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 546);
-            this.barDockControlBottom.Size = new System.Drawing.Size(809, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 486);
+            this.barDockControlBottom.Size = new System.Drawing.Size(733, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 499);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 439);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(809, 47);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 499);
+            this.barDockControlRight.Location = new System.Drawing.Point(733, 47);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 439);
             // 
             // tsbNewInput
             // 
             this.tsbNewInput.Id = 7;
             this.tsbNewInput.Name = "tsbNewInput";
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "本日";
+            this.barButtonItem1.Id = 21;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // DevAccountList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 546);
+            this.ClientSize = new System.Drawing.Size(733, 486);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -582,5 +657,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn d_fundsname;
         private DevExpress.XtraGrid.Columns.GridColumn d_money;
         private DevExpress.XtraGrid.Columns.GridColumn d_usage;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarSubItem barSubItem2;
+        private DevExpress.XtraBars.BarSubItem barSubItem3;
+        private DevExpress.XtraBars.BarSubItem barSubItem4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

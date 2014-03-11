@@ -25,21 +25,21 @@ namespace Haimen.GUI
         private void MyRefresh()
         {
             // 绑定到表格中
-            DataSet accounts = Account.GetGUIList(true);
+            DataSet accounts = Account.GetGUIList(Account.ShowStatus.All);
             gridControl1.DataSource = accounts.Tables[0];
 
             gridView1.BestFitColumns();
 
             // 是否正式发票
             lueInvoice.DataSource = Account.AccountInvoicList;
-            lueInvoice.DisplayMember = "Name";
-            lueInvoice.ValueMember = "ValueInt";
+            lueInvoice.DisplayMember = "Key";
+            lueInvoice.ValueMember = "Value";
 
             // 显示状态
             lueStatus.DataSource = null;
             lueStatus.DataSource = Account.AccountStatusList;
-            lueStatus.DisplayMember = "Name";
-            lueStatus.ValueMember = "ValueInt";
+            lueStatus.DisplayMember = "Key";
+            lueStatus.ValueMember = "Value";
         }
 
         private void barRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

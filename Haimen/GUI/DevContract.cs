@@ -279,8 +279,8 @@ namespace Haimen.GUI
             if (m_contract.ID > 0)
             {
                 lueApplyStatus.DataSource = ContractApply.ApplyStatus;
-                lueApplyStatus.DisplayMember = "Name";
-                lueApplyStatus.ValueMember = "ValueInt";
+                lueApplyStatus.DisplayMember = "Key";
+                lueApplyStatus.ValueMember = "Value";
 
                 List<ContractApply> m_applies = ContractApply.Query();
                 gridControl2.DataSource = null;

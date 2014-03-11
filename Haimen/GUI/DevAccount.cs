@@ -289,8 +289,8 @@ namespace Haimen.GUI
             // 合同申请状态
             lueContractApplyStatusEnum.DataSource = null;
             lueContractApplyStatusEnum.DataSource = ContractApply.ApplyStatus;
-            lueContractApplyStatusEnum.DisplayMember = "Name";
-            lueContractApplyStatusEnum.ValueMember = "ValueInt";
+            lueContractApplyStatusEnum.DisplayMember = "Key";
+            lueContractApplyStatusEnum.ValueMember = "Value";
 
             // 合同申请
             lueContractApply.Properties.DataSource = null;

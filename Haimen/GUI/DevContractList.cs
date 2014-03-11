@@ -75,8 +75,8 @@ namespace Haimen.GUI
 
             lueStatus.DataSource = null;
             lueStatus.DataSource = Contract.ContractStatus;
-            lueStatus.DisplayMember = "Name";
-            lueStatus.ValueMember = "ValueInt";
+            lueStatus.DisplayMember = "Key";
+            lueStatus.ValueMember = "Value";
 
             gridView1.BestFitColumns();
             // 显示数据源

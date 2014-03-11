@@ -240,30 +240,41 @@ where id in (select id from t_account where in_companydetail_id not in(select id
             DBConnection.RunNoQuerySql(sql);
         }
 
+        public enum ShowStatus : long
+        {
+            R100 = 1,       // 只显示最近一百条 
+            R500,          // 只显示最近五百条
+            All             // 显示全部
+        }
+
         /// <summary>
         /// 为了效率，重写在列表显示窗口里的列表取得方法
         /// 直接用SQL语句写
+        /// 根据传入的参数，显示本日，本月以及全部的数据
         /// </summary>
         /// <returns></returns>
-        public static DataSet GetGUIList(bool all = false)
+        public static DataSet GetGUIList(ShowStatus status = ShowStatus.R500)
         {
             // 将支出单位明细已经不存在的数据设置为删除
             SetNoUsedDetail2Deleted();
 
-            long year = SystemSet.GetAccountYear();
-            long month = SystemSet.GetAccountMonth();
+            string mastersql = "";
 
-            long next_year = year;
-            long next_month = month;
-
-            if (month == 12)
+            switch (status)
             {
-                next_year = year + 1;
-                next_month = 1;
+                case ShowStatus.R100:
+                    mastersql = "Select top 100 ";
+                    break;
+                case ShowStatus.R500:
+                    mastersql = "Select top 500 ";
+                    break;
+                case ShowStatus.All:
+                    mastersql = "Select  ";
+                    break;
             }
 
-            string mastersql = @"
-                select a.id as id,a.status  as status,a.signed_date as signeddate,a.money as money,
+            mastersql += @"
+                    a.id as id,a.status  as status,a.signed_date as signeddate,a.money as money,
                     a.project_id as project_id,a.invoice as invoice,a.code as code,a.memo as memo,
                     out_c.name as outcompanyname,out_d.name as outbankname,out_b.account as outaccount,
                     in_c.name as incompanyname,in_d.name as inbankname,in_b.account as inaccount
@@ -271,23 +282,23 @@ where id in (select id from t_account where in_companydetail_id not in(select id
                 where a.out_companydetail_id = out_b.id and out_b.parent_id = out_c.id and out_b.bank_id = out_d.id and
                       a.in_companydetail_id = in_b.id and in_b.parent_id = in_c.id and in_b.bank_id = in_d.id and
                       a.deleted = 0 ";
-            if (SystemSet.GetAccountYear() != 0 && !all)
-            {
-                mastersql += String.Format(" and signed_date < '{0}-{1}-01 0:0:0' ", next_year, next_month);
-                mastersql += String.Format(" and signed_date >= '{0}-{1}-01 0:0:0' ", SystemSet.GetAccountYear(), SystemSet.GetAccountMonth());
-            }
+
             mastersql += "    order by id desc;";
 
             string detailsql = @"
                 select a.id, a.parent_id, b.name, a.money, a.usage
                 from t_account_detail a, m_funds b
                 where a.deleted = 0 and a.funds_id = b.id ";
-            if (SystemSet.GetAccountYear() != 0 && !all)
+            switch (status)
             {
-                detailsql += " and a.parent_id in (select id from t_account where ";
-                detailsql += String.Format(" signed_date < '{0}-{1}-01 0:0:0' ", next_year, next_month);
-                detailsql += String.Format(" and signed_date >= '{0}-{1}-01 0:0:0' ", SystemSet.GetAccountYear(), SystemSet.GetAccountMonth());
-                detailsql += " and deleted = 0)";
+                case ShowStatus.R100:
+                    detailsql += " and a.parent_id in (select top 100 id from t_account where deleted = 0 order by id desc)";
+                    break;
+                case ShowStatus.R500:
+                    detailsql += " and a.parent_id in (select top 500 id from t_account where deleted = 0 order by id desc)";
+                    break;
+                case ShowStatus.All:
+                    break;
             }
 
             try
