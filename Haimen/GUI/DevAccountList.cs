@@ -174,7 +174,7 @@ namespace Haimen.GUI
                     MessageBox.Show("该单据已经审核，不能删除！");
                     return;
                 }
-                if (MessageBox.Show(this, "是否要删除指定的资金凭证？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+                if (MessageBox.Show(this, "是否要删除指定的授权资金凭证？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
                     acc.Destory();
                     MessageBox.Show(this, "删除资金凭证成功!", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);

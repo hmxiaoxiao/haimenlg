@@ -4,6 +4,7 @@ using System.Linq;
 
 using Haimen.DB;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Haimen.Entity
 {
@@ -295,8 +296,29 @@ namespace Haimen.Entity
                 }
             }
             if(can_save)
-                SystemSet.SetValue("Doc", doc);
+                SystemSet.SetValue("UnAuthDoc", doc);
             return doc;
+        }
+
+        /// <summary>
+        /// 取得列表界面显示数据
+        /// 如果通过ORM来做的话，速度太慢，
+        /// 200多条记录要15秒，不是读数据的问题，读数据大概只要1~2秒的时间，是绑定的显示非常慢。
+        /// </summary>
+        /// <returns></returns>
+        public static DataSet GetGUIList()
+        {
+            string sql = @"
+select a.id, a.signed_date, a.code, b.name as companyname, d.name as bankname, c.account, a.output, a.input, a.money, a.memo
+from t_unauth a,
+     m_company b,
+     m_company_detail c,
+     m_bank d
+where a.company_id = b.id and a.companydetail_id = c.id and
+      c.bank_id = d.id
+";
+
+            return DBConnection.RunQuerySql(sql);
         }
     }
 }

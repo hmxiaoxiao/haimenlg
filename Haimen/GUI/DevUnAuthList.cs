@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 using Haimen.Helper;
@@ -17,16 +12,15 @@ namespace Haimen.GUI
         public DevUnAuthList()
         {
             InitializeComponent();
-
             MyRefresh();
         }
 
         private void MyRefresh()
         {
-            List<UnAuth> list = UnAuth.Query();
+            //List<UnAuth> list = UnAuth.Query();
 
             gridControl1.DataSource = null;
-            gridControl1.DataSource = list;
+            gridControl1.DataSource = UnAuth.GetGUIList().Tables[0];
 
             gridView1.BestFitColumns();
         }
@@ -74,10 +68,17 @@ namespace Haimen.GUI
             if (id <= 0)
                 return;
 
-            UnAuth unauth = UnAuth.CreateByID(id);
-            unauth.Destory();
+            if (MessageBox.Show(this, "是否要删除指定的非授权资金凭证？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            {
+                UnAuth unauth = UnAuth.CreateByID(id);
+                unauth.Destory();
 
-            MyRefresh();}
+                MessageBox.Show(this, "删除非授权资金凭证成功!", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 去掉当前行
+                gridView1.DeleteRow(gridView1.FocusedRowHandle);
+            }
+        }
 
         private void DevUnAuthList_Activated(object sender, EventArgs e)
         {
@@ -101,7 +102,7 @@ namespace Haimen.GUI
                 else if (e.RowHandle < 0 && e.RowHandle > -1000)
                 {
                     e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
-                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                    e.Info.DisplayText = "G" + e.RowHandle;
                 }
             }
         }

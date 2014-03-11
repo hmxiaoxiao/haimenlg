@@ -42,6 +42,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.dtSignedDate = new DevExpress.XtraEditors.DateEdit();
             this.txtBank = new DevExpress.XtraEditors.TextEdit();
             this.txtMoney = new DevExpress.XtraEditors.CalcEdit();
             this.chkOutput = new DevExpress.XtraEditors.CheckEdit();
@@ -68,12 +69,13 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.dtSignedDate = new DevExpress.XtraEditors.DateEdit();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtSignedDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtSignedDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMoney.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOutput.Properties)).BeginInit();
@@ -91,10 +93,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtSignedDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtSignedDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -178,7 +178,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(728, 31);
+            this.barDockControlTop.Size = new System.Drawing.Size(728, 47);
             // 
             // barDockControlBottom
             // 
@@ -191,15 +191,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 500);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 484);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(728, 31);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 500);
+            this.barDockControlRight.Location = new System.Drawing.Point(728, 47);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 484);
             // 
             // layoutControl1
             // 
@@ -211,12 +211,28 @@
             this.layoutControl1.Controls.Add(this.txtMemo);
             this.layoutControl1.Controls.Add(this.lueCompany);
             this.layoutControl1.Controls.Add(this.lueAccount);
-            this.layoutControl1.Location = new System.Drawing.Point(0, 31);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 46);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(491, 323);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // dtSignedDate
+            // 
+            this.dtSignedDate.EditValue = null;
+            this.dtSignedDate.Location = new System.Drawing.Point(67, 16);
+            this.dtSignedDate.MenuManager = this.barManager1;
+            this.dtSignedDate.Name = "dtSignedDate";
+            this.dtSignedDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtSignedDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtSignedDate.Properties.CalendarTimeProperties.CloseUpKey = new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F4);
+            this.dtSignedDate.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.Default;
+            this.dtSignedDate.Size = new System.Drawing.Size(408, 20);
+            this.dtSignedDate.StyleController = this.layoutControl1;
+            this.dtSignedDate.TabIndex = 10;
             // 
             // txtBank
             // 
@@ -276,7 +292,7 @@
             // 
             // lueCompany
             // 
-            this.lueCompany.EditValue = "请选择单位";
+            this.lueCompany.EditValue = "";
             this.lueCompany.Location = new System.Drawing.Point(67, 80);
             this.lueCompany.MenuManager = this.barManager1;
             this.lueCompany.Name = "lueCompany";
@@ -284,7 +300,8 @@
             this.lueCompany.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueCompany.Properties.DisplayMember = "Name";
-            this.lueCompany.Properties.NullText = "请选择单位";
+            this.lueCompany.Properties.NullText = "";
+            this.lueCompany.Properties.NullValuePromptShowForEmptyValue = true;
             this.lueCompany.Properties.ValueMember = "ID";
             this.lueCompany.Properties.View = this.searchLookUpEdit1View;
             this.lueCompany.Size = new System.Drawing.Size(408, 20);
@@ -336,7 +353,7 @@
             this.lueAccount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueAccount.Properties.DisplayMember = "Account";
-            this.lueAccount.Properties.NullText = "请选择帐号";
+            this.lueAccount.Properties.NullText = "";
             this.lueAccount.Properties.ValueMember = "ID";
             this.lueAccount.Properties.View = this.gridView1;
             this.lueAccount.Size = new System.Drawing.Size(408, 20);
@@ -505,26 +522,6 @@
             this.layoutControlItem7.Text = "银行：";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // dxErrorProvider1
-            // 
-            this.dxErrorProvider1.ContainerControl = this;
-            // 
-            // dtSignedDate
-            // 
-            this.dtSignedDate.EditValue = null;
-            this.dtSignedDate.Location = new System.Drawing.Point(67, 16);
-            this.dtSignedDate.MenuManager = this.barManager1;
-            this.dtSignedDate.Name = "dtSignedDate";
-            this.dtSignedDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtSignedDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtSignedDate.Properties.CalendarTimeProperties.CloseUpKey = new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F4);
-            this.dtSignedDate.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.Default;
-            this.dtSignedDate.Size = new System.Drawing.Size(408, 20);
-            this.dtSignedDate.StyleController = this.layoutControl1;
-            this.dtSignedDate.TabIndex = 10;
-            // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.dtSignedDate;
@@ -535,6 +532,10 @@
             this.layoutControlItem8.Size = new System.Drawing.Size(471, 32);
             this.layoutControlItem8.Text = "日期：";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // dxErrorProvider1
+            // 
+            this.dxErrorProvider1.ContainerControl = this;
             // 
             // DevUnAuth
             // 
@@ -552,6 +553,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtSignedDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtSignedDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMoney.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOutput.Properties)).EndInit();
@@ -569,10 +572,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtSignedDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtSignedDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -151,38 +151,39 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(599, 31);
+            this.barDockControlTop.Size = new System.Drawing.Size(787, 47);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 526);
-            this.barDockControlBottom.Size = new System.Drawing.Size(599, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 528);
+            this.barDockControlBottom.Size = new System.Drawing.Size(787, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 495);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 481);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(599, 31);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 495);
+            this.barDockControlRight.Location = new System.Drawing.Point(787, 47);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 481);
             // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 31);
+            this.gridControl1.Location = new System.Drawing.Point(0, 47);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(599, 495);
+            this.gridControl1.Size = new System.Drawing.Size(787, 481);
             this.gridControl1.TabIndex = 4;
+            this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
@@ -212,13 +213,13 @@
             // a_id
             // 
             this.a_id.Caption = "ID";
-            this.a_id.FieldName = "ID";
+            this.a_id.FieldName = "id";
             this.a_id.Name = "a_id";
             // 
             // a_date
             // 
             this.a_date.Caption = "日期";
-            this.a_date.FieldName = "SignedDate";
+            this.a_date.FieldName = "signed_date";
             this.a_date.Name = "a_date";
             this.a_date.Visible = true;
             this.a_date.VisibleIndex = 0;
@@ -226,7 +227,7 @@
             // a_code
             // 
             this.a_code.Caption = "凭证号";
-            this.a_code.FieldName = "Code";
+            this.a_code.FieldName = "code";
             this.a_code.Name = "a_code";
             this.a_code.Visible = true;
             this.a_code.VisibleIndex = 1;
@@ -234,7 +235,7 @@
             // a_company
             // 
             this.a_company.Caption = "本单位";
-            this.a_company.FieldName = "Company.Name";
+            this.a_company.FieldName = "companyname";
             this.a_company.Name = "a_company";
             this.a_company.Visible = true;
             this.a_company.VisibleIndex = 2;
@@ -242,7 +243,7 @@
             // a_bankname
             // 
             this.a_bankname.Caption = "银行";
-            this.a_bankname.FieldName = "CompanyDetail.Bank.Name";
+            this.a_bankname.FieldName = "bankname";
             this.a_bankname.Name = "a_bankname";
             this.a_bankname.Visible = true;
             this.a_bankname.VisibleIndex = 3;
@@ -250,7 +251,7 @@
             // a_account
             // 
             this.a_account.Caption = "帐号";
-            this.a_account.FieldName = "CompanyDetail.Account";
+            this.a_account.FieldName = "account";
             this.a_account.Name = "a_account";
             this.a_account.Visible = true;
             this.a_account.VisibleIndex = 4;
@@ -258,7 +259,7 @@
             // a_output
             // 
             this.a_output.Caption = "支出";
-            this.a_output.FieldName = "Output";
+            this.a_output.FieldName = "output";
             this.a_output.Name = "a_output";
             this.a_output.Visible = true;
             this.a_output.VisibleIndex = 5;
@@ -266,7 +267,7 @@
             // a_input
             // 
             this.a_input.Caption = "收入";
-            this.a_input.FieldName = "Input";
+            this.a_input.FieldName = "input";
             this.a_input.Name = "a_input";
             this.a_input.Visible = true;
             this.a_input.VisibleIndex = 6;
@@ -276,7 +277,7 @@
             this.a_money.Caption = "金额";
             this.a_money.DisplayFormat.FormatString = "C";
             this.a_money.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.a_money.FieldName = "Money";
+            this.a_money.FieldName = "money";
             this.a_money.Name = "a_money";
             this.a_money.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
@@ -286,7 +287,7 @@
             // a_memo
             // 
             this.a_memo.Caption = "备注";
-            this.a_memo.FieldName = "Memo";
+            this.a_memo.FieldName = "memo";
             this.a_memo.Name = "a_memo";
             this.a_memo.Visible = true;
             this.a_memo.VisibleIndex = 8;
@@ -295,7 +296,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 526);
+            this.ClientSize = new System.Drawing.Size(787, 528);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
