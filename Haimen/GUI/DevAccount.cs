@@ -252,10 +252,14 @@ namespace Haimen.GUI
             // 支出帐号
             if (this.lueOutAccount.EditValue != null)
                 _account.Out_CompanyDetail_ID = long.Parse(lueOutAccount.EditValue.ToString());
+            else
+                _account.Out_CompanyDetail_ID = 0;
 
             // 收入帐号
             if (lueInAccount.EditValue != null)
                 _account.In_CompanyDetail_ID = long.Parse(lueInAccount.EditValue.ToString());
+            else
+                _account.In_CompanyDetail_ID = 0;
 
             // 备注
             _account.Memo = txtMemo.Text;
