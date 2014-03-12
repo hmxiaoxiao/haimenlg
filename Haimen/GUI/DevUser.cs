@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 using Haimen.Helper;
@@ -75,7 +70,7 @@ namespace Haimen.GUI
             {
                 if (m_user != null)
                 {
-                    if (User.Query("Code = '" + txtCode.Text + "' and id <> " + m_user.ID.ToString()).Count > 0)
+                    if (User.Query(String.Format("Code = '{0}' and id <> {1}", txtCode.Text, m_user.ID)).Count > 0)
                     {
                         dxErrorProvider1.SetError(txtCode, "用户代码已经存在");
                         verify = false;
@@ -86,7 +81,7 @@ namespace Haimen.GUI
                 else
                 {
                     //  新增用户时的判断
-                    if (User.Query("Code = '" + txtCode.Text + "'").Count > 0)
+                    if (User.Query(String.Format("Code = '{0}'", txtCode.Text)).Count > 0)
                     {
                         dxErrorProvider1.SetError(txtCode, "用户代码已经存在");
                         verify = false;

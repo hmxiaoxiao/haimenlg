@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Helper;
 using Haimen.Entity;
@@ -172,6 +167,8 @@ namespace Haimen.GUI
         {
             if(_unauth != null)
                 Object2Form();
+            SetControlAccess();
+
         }
 
         private void tsbNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 using Haimen.Entity;
-using Haimen.Helper;
 
 namespace Haimen.GUI
 {
-    public partial class DevAcceptanceBillFinish : DevExpress.XtraEditors.XtraForm
+    public partial class DevAcceptanceBillFinish : XtraForm
     {
         private AcceptanceBill m_acceptance_bill;
 
@@ -129,8 +123,7 @@ namespace Haimen.GUI
                 return;
 
             // 取得当前选的单位ID
-            long id = 0;
-            id = long.Parse(lueMoveCompany.EditValue.ToString());
+            long id = long.Parse(lueMoveCompany.EditValue.ToString());
             Company com = Company.CreateByID(id);
 
 

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
@@ -16,7 +12,7 @@ using Haimen.Report;
 
 namespace Haimen.GUI
 {
-    public partial class DevAccount : DevExpress.XtraEditors.XtraForm
+    public partial class DevAccount : XtraForm
     {
 
         private Account _account;                  // 当前正在编辑的资金对象
@@ -298,7 +294,7 @@ namespace Haimen.GUI
 
             // 合同申请
             lueContractApply.Properties.DataSource = null;
-            lueContractApply.Properties.DataSource = ContractApply.Query("status = " + ((long)ContractApplyStatusEnum.提交申请).ToString() + " or status = " + ((long)ContractApplyStatusEnum.已开票).ToString());
+            lueContractApply.Properties.DataSource = ContractApply.Query(String.Format("status = {0} or status = {1}", (long)ContractApplyStatusEnum.提交申请, (long)ContractApplyStatusEnum.已开票));
             lueContractApply.Properties.DisplayMember = "ContractName";
             lueContractApply.Properties.ValueMember = "ID";
 
@@ -348,7 +344,7 @@ namespace Haimen.GUI
             // 初始化附件列表
             lstFiles.Items.Clear();
             foreach (Attach a in _account.AttachList)
-                lstFiles.Items.Add(a.ID.ToString() + "." + a.FileName, 2);
+                lstFiles.Items.Add(String.Format("{0}.{1}", a.ID, a.FileName), 2);
 
             // 显示数据
             if (_account.ID > 0)
@@ -454,35 +450,6 @@ namespace Haimen.GUI
 
             if (_status == winStatusEnum.审核)
                 lueCashier.EditValue = GlobalSet.Current_User.ID;
-        }
-
-        /// <summary>
-        /// 显示从合同验收里带来的信息
-        /// </summary>
-        private void ShowAcceptInfo()
-        {
-            // 只能新增，才显示
-            if (_account.ID == 0 && _account.ContractAcceptID > 0)
-            {
-                ContractAccept ca = ContractAccept.CreateByID(_account.ContractAcceptID);
-
-                Contract c = ca.Contract;
-
-                lueInCompany.EditValue = c.InCompanyID;
-                lueOutCompany.EditValue = c.OutCompanyID;
-                lueInCompany.Enabled = false;
-                lueOutCompany.Enabled = false;
-
-                // 判断新增时，还要给二个单位赋值
-                if (_account.ID > 0)
-                    txtMemo.Text = _account.Memo;
-                else
-                {
-                    txtMemo.Text = "本单据通过合同验收生成。";
-                    lueInCompany.EditValue = c.InCompanyID;
-                    lueOutCompany.EditValue = c.OutCompanyID;
-                }
-            }
         }
 
         /// <summary>
@@ -622,7 +589,7 @@ namespace Haimen.GUI
             if (lueOutCompany.EditValue != null)
             {
                 _account.Out_CompanyDetail_ID = long.Parse(lueOutCompany.EditValue.ToString());
-                List<CompanyDetail> cd = CompanyDetail.Query("parent_id = " + _account.Out_CompanyDetail_ID.ToString());
+                List<CompanyDetail> cd = CompanyDetail.Query("parent_id = " + _account.Out_CompanyDetail_ID);
                 lueOutAccount.Properties.DataSource = null;
                 lueOutAccount.Properties.DataSource = cd;
                 lueOutAccount.Properties.DisplayMember = "Account";
@@ -640,7 +607,7 @@ namespace Haimen.GUI
             if (lueInCompany.EditValue != null)
             {
                 _account.In_CompanyDetail_ID = long.Parse(lueInCompany.EditValue.ToString());
-                List<CompanyDetail> cd = CompanyDetail.Query("parent_id = " + _account.In_CompanyDetail_ID.ToString());
+                List<CompanyDetail> cd = CompanyDetail.Query("parent_id = " + _account.In_CompanyDetail_ID);
                 lueInAccount.Properties.DataSource = null;
                 lueInAccount.Properties.DataSource = cd;
                 lueInAccount.Properties.DisplayMember = "Account";
@@ -762,28 +729,22 @@ namespace Haimen.GUI
         /// <param name="e"></param>
         private void tsbAttachNew_Click(object sender, EventArgs e)
         {
-            OpenFileDialog fd = new OpenFileDialog();
-            fd.Title = "请选择需要上传的文件";
-            fd.ValidateNames = true;
-            fd.CheckFileExists = true;
-            fd.CheckPathExists = true;
+            OpenFileDialog fd = new OpenFileDialog() { Title = "请选择需要上传的文件", ValidateNames = true, CheckFileExists = true, CheckPathExists = true };
 
             if (fd.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(fd.FileName);
                 // 先保存到数据库里
-                Attach att = new Attach();
-                att.FileName = fi.Name;
-                att.FileType = fi.Extension;
+                Attach att = new Attach() { FileName = fi.Name, FileType = fi.Extension };
                 att.Save();
 
                 FTPClient ftp = INICustomer.GetFTPClient();
-                ftp.fileUpload(fi, @"\", att.ID.ToString() + fi.Extension);
+                ftp.fileUpload(fi, @"\", att.ID + fi.Extension);
 
                 _account.AttachList.Add(att);
 
                 // 加入列表
-                lstFiles.Items.Add(att.ID.ToString() + "." + fi.Name, 2);
+                lstFiles.Items.Add(String.Format("{0}.{1}", att.ID, fi.Name), 2);
                 calcAttachCount.Value = lstFiles.ItemCount;
             }
         }
@@ -840,7 +801,7 @@ namespace Haimen.GUI
 
                 FTPClient ftp = INICustomer.GetFTPClient();
                 string tempPath = Path.GetTempPath();
-                if (ftp.fileDownload(tempPath, att.FileName, @"\", att.ID.ToString() + att.FileType))
+                if (ftp.fileDownload(tempPath, att.FileName, @"\", att.ID + att.FileType))
                 {
                     Process.Start(Path.Combine(tempPath, att.FileName));
                 }

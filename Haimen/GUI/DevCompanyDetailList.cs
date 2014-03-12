@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList.Nodes;
 using Haimen.Entity;
 using Haimen.Helper;
@@ -327,7 +323,7 @@ namespace Haimen.GUI
             string id = barFinded.EditValue.ToString();
 
             foreach (TreeListNode node in tree.Nodes){
-                Console.WriteLine(node.GetValue(node_id).ToString() + "," + id + (id==node.GetValue(node_id).ToString()).ToString());
+                Console.WriteLine(String.Format("{0},{1}{2}", node.GetValue(node_id), id, id == node.GetValue(node_id).ToString()));
                 if (id == node.GetValue(node_id).ToString())
                 {
                     tree.SetFocusedNode(node);
@@ -336,7 +332,8 @@ namespace Haimen.GUI
                 if (node.HasChildren)
                 {
                     foreach (TreeListNode child in node.Nodes)
-                    {Console.WriteLine(child.GetValue(node_id).ToString() + "," + id + (id == child.GetValue(node_id).ToString()).ToString());
+                    {
+                        Console.WriteLine(String.Format("{0},{1}{2}", child.GetValue(node_id), id, id == child.GetValue(node_id).ToString()));
                         if (id == child.GetValue(node_id).ToString())
                         {
                             tree.SetFocusedNode(child);
@@ -360,8 +357,8 @@ namespace Haimen.GUI
                 }
                 else if (e.RowHandle < 0 && e.RowHandle > -1000)
                 {
-                    e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
-                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                    e.Info.Appearance.BackColor = Color.AntiqueWhite;
+                    e.Info.DisplayText = "G" + e.RowHandle;
                 }
             }
         }

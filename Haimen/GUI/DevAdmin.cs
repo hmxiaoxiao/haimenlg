@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-using Haimen.DB;
 using Haimen.Entity;
 
 using System.IO;
@@ -15,7 +10,7 @@ using System.Reflection;
 
 namespace Haimen.GUI
 {
-    public partial class DevAdmin : DevExpress.XtraEditors.XtraForm
+    public partial class DevAdmin : XtraForm
     {
         Assembly _assembly;
         StreamReader _textStreamReader;
@@ -44,11 +39,10 @@ namespace Haimen.GUI
                 }
                 if (!finded)        //没有找到现金户的话，就直接处理
                 {
-                    CompanyDetail newcd = new CompanyDetail();
-                    newcd.Account = "现金";
-                    newcd.AccountType = "现金户";
-                    newcd.ParentID = cp.ID;
-                    newcd.BankID = banks[0].ID;
+                    CompanyDetail newcd = new CompanyDetail() { Account = "现金", 
+                                                                AccountType = "现金户", 
+                                                                ParentID = cp.ID, 
+                                                                BankID = banks[0].ID };
                     newcd.Save();
                 }
             }

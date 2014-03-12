@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
@@ -16,7 +14,7 @@ using DevExpress.XtraGrid.Views.Base;
 
 namespace Haimen.GUI
 {
-    public partial class DevAccountList : DevExpress.XtraEditors.XtraForm
+    public partial class DevAccountList : XtraForm
     {
         private List<Project> m_projects = Project.Query();
         private Account.ShowStatus m_status = Account.ShowStatus.R500;      // 默认显示500条记录
@@ -217,38 +215,6 @@ namespace Haimen.GUI
             SelectedRow();
         }
 
-        /// <summary>
-        /// 查询
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tsbQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //DevAccountQuery aq = new DevAccountQuery();
-            //if (aq.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
-            //{
-            //    // 生成查询SQL
-            //    List<string> filters = new List<string>();
-            //    if (aq.Q_Code.Length > 0)
-            //        filters.Add(" Code like '%" + aq.Q_Code + "%' ");
-            //    if (aq.Q_InCompany_ID.Length > 0)
-            //        filters.Add(" in_company_id = " + aq.Q_InCompany_ID + " ");
-            //    if (aq.Q_OutCompany_ID.Length > 0)
-            //        filters.Add(" out_company_id = " + aq.Q_OutCompany_ID + " ");
-
-            //    string where = "";
-            //    foreach (string filter in filters)
-            //    {
-            //        where += filter + " and ";
-            //    }
-            //    if (where.Length > 0)
-            //        where = where.Substring(0, where.Length - 4);
-
-            //    m_accounts = Account.Query(where);
-            //    gridControl1.DataSource = m_accounts;
-            //    SelectedRow();
-            //}
-        }
 
         /// <summary>
         /// 新增资金收入
@@ -363,8 +329,8 @@ namespace Haimen.GUI
                 }
                 else if (e.RowHandle < 0 && e.RowHandle > -1000)
                 {
-                    e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
-                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                    e.Info.Appearance.BackColor = Color.AntiqueWhite;
+                    e.Info.DisplayText = "G" + e.RowHandle;
                 }
             }
         }

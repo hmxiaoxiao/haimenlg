@@ -1,21 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using DevExpress.XtraBars;
 using DevExpress.Skins;
 
 using Haimen.Entity;
 using Haimen.Helper;
-using Haimen.GUI;
-using Haimen.Report;
 
 using DevExpress.XtraBars.Helpers;
 using DevExpress.XtraEditors;
-using DevExpress.XtraReports.UI;
 
 namespace Haimen.GUI
 {

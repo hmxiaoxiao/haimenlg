@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 using Haimen.Helper;
+using DevExpress.XtraEditors;
 
 namespace Haimen.GUI
 {
     /// <summary>
     /// 银行列表
     /// </summary>
-    public partial class DevBankList : DevExpress.XtraEditors.XtraForm
+    public partial class DevBankList : XtraForm
     {
         // 当前表格中的银行列表
         private List<Bank> m_banks = new List<Bank>();
@@ -131,7 +128,7 @@ namespace Haimen.GUI
             Bank bank = Bank.CreateByID(id);
             m_banks.Add(bank);
 
-            List<Bank> banks = Bank.Query("parent_id = " + id.ToString());
+            List<Bank> banks = Bank.Query("parent_id = " + id);
             foreach (Bank bk in banks)
             {
                 AddBank2List(bk.ID);
@@ -313,7 +310,7 @@ namespace Haimen.GUI
                 }
                 else if (e.RowHandle < 0 && e.RowHandle > -1000)
                 {
-                    e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
+                    e.Info.Appearance.BackColor = Color.AntiqueWhite;
                     e.Info.DisplayText = "G" + e.RowHandle.ToString();
                 }
             }

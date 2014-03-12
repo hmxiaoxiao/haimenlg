@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 
@@ -56,7 +51,7 @@ namespace Haimen.GUI
                 return;
 
             long id = long.Parse(sueOldBank.EditValue.ToString());
-            List<CompanyDetail> list = CompanyDetail.Query("bank_id = " + id.ToString());
+            List<CompanyDetail> list = CompanyDetail.Query("bank_id = " + id);
             gridControl1.DataSource = null;
             gridControl1.DataSource = list;
             gridView1.BestFitColumns();
@@ -69,7 +64,7 @@ namespace Haimen.GUI
                 return;
 
             long id = long.Parse(sueNewBank.EditValue.ToString());
-            List<CompanyDetail> list = CompanyDetail.Query("bank_id = " + id.ToString());
+            List<CompanyDetail> list = CompanyDetail.Query("bank_id = " + id);
             gridControl2.DataSource = null;
             gridControl2.DataSource = list;
             gridView2.BestFitColumns();
@@ -112,7 +107,7 @@ namespace Haimen.GUI
                 else if (e.RowHandle < 0 && e.RowHandle > -1000)
                 {
                     e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
-                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                    e.Info.DisplayText = "G" + e.RowHandle;
                 }
             }
         }
@@ -129,7 +124,7 @@ namespace Haimen.GUI
                 else if (e.RowHandle < 0 && e.RowHandle > -1000)
                 {
                     e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
-                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                    e.Info.DisplayText = "G" + e.RowHandle;
                 }
             }
         }

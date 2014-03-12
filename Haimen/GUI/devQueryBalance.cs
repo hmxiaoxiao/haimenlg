@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.DB;
 using DevExpress.XtraPrinting;
@@ -66,7 +61,7 @@ namespace Haimen.GUI
                 if (ids.Length > 0)
                     ids = ids.Substring(0, ids.Length - 1);
                 if (bankid_list.Count > 0)
-                    sql += " and d.bank_id in (" + ids + ")";
+                    sql += String.Format(" and d.bank_id in ({0})", ids);
                 else
                     sql += " and d.bank_id in ( 0 )";
             }
@@ -82,7 +77,7 @@ namespace Haimen.GUI
                 if (ids.Length > 0)
                     ids = ids.Substring(0, ids.Length - 1);
                 if (companyid_list.Count > 0)
-                    sql += " and d.parent_id in (" + ids + ")";
+                    sql += String.Format(" and d.parent_id in ({0})", ids);
                 else
                     sql += " and d.parent_id in ( 0 )";
             }
@@ -108,14 +103,6 @@ namespace Haimen.GUI
         // 处理合并
         private void gridView1_CellMerge(object sender, DevExpress.XtraGrid.Views.Grid.CellMergeEventArgs e)
         {
-            //if (e.Column.FieldName == "Order Date")
-            //{
-            //    GridView view = sender as GridView;
-            //    DateTime val1 = (DateTime)view.GetRowCellValue(e.RowHandle1, e.Column);
-            //    DateTime val2 = (DateTime)view.GetRowCellValue(e.RowHandle2, e.Column);
-            //    e.Merge = val1.Date == val2.Date;
-            //    e.Handled = true;
-            //}
             if (e.Column.Name == col_account.Name ||
                 e.Column.Name == col_balance.Name ||
                 e.Column.Name == col_credit.Name)
@@ -127,10 +114,7 @@ namespace Haimen.GUI
 
         private void tsbPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            PrintableComponentLink link = new PrintableComponentLink(new PrintingSystem());
-            link.Component = this.gridControl1;
-            link.Landscape = true;
-            link.PaperKind = System.Drawing.Printing.PaperKind.A3;
+            PrintableComponentLink link = new PrintableComponentLink(new PrintingSystem()) { Component = this.gridControl1, Landscape = true, PaperKind = System.Drawing.Printing.PaperKind.A3 };
             link.CreateMarginalHeaderArea += new CreateAreaEventHandler(Link_CreateMarginalHeaderArea);
             link.CreateDocument();
             link.ShowPreview();
@@ -138,14 +122,16 @@ namespace Haimen.GUI
 
         private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
         {
-            string title = "单位余额明细";
-            PageInfoBrick brick = e.Graph.DrawPageInfo(PageInfo.None, title, Color.DarkBlue,
-               new RectangleF(0, 0, 100, 21), BorderSide.None);
+            PageInfoBrick brick = e.Graph.DrawPageInfo(PageInfo.None,
+                                                        "单位余额明细",
+                                                        Color.DarkBlue,
+                                                        new RectangleF(0, 0, 100, 21),
+                                                        BorderSide.None);
 
             brick.LineAlignment = BrickAlignment.Center;
             brick.Alignment = BrickAlignment.Center;
             brick.AutoWidth = true;
-            brick.Font = new System.Drawing.Font("宋体", 11f, FontStyle.Bold);
+            brick.Font = new Font("宋体", 11f, FontStyle.Bold);
         }
 
         private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -159,8 +145,8 @@ namespace Haimen.GUI
                 }
                 else if (e.RowHandle < 0 && e.RowHandle > -1000)
                 {
-                    e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
-                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                    e.Info.Appearance.BackColor = Color.AntiqueWhite;
+                    e.Info.DisplayText = "G" + e.RowHandle;
                 }
             }
         }

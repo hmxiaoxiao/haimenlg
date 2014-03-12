@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 using Haimen.Helper;
@@ -140,16 +135,6 @@ namespace Haimen.GUI
             }
         }
 
-        /// <summary>
-        /// 生成凭证
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tsbGene_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
         
         /// <summary>
         /// 审核
@@ -176,11 +161,11 @@ namespace Haimen.GUI
                 //生成查询
                 List<string> filters = new List<string>();
                 if (query.Q_Code.Length > 0)
-                    filters.Add(" Code = '%" + query.Q_Code + "%' ");
+                    filters.Add(String.Format(" Code = '%{0}%' ", query.Q_Code));
                 if (query.Q_Bank_ID.Length > 0)
-                    filters.Add(" bank_id = " + query.Q_Bank_ID + " ");
+                    filters.Add(String.Format(" bank_id = {0} ", query.Q_Bank_ID));
                 if (query.Q_Company_ID.Length > 0)
-                    filters.Add(" Company_id = " + query.Q_Company_ID + " ");
+                    filters.Add(String.Format(" Company_id = {0} ", query.Q_Company_ID));
                 if (query.Q_Status.Length > 0)
                     filters.Add(" status = " + query.Q_Status);
 
@@ -229,8 +214,8 @@ namespace Haimen.GUI
                 }
                 else if (e.RowHandle < 0 && e.RowHandle > -1000)
                 {
-                    e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
-                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                    e.Info.Appearance.BackColor = Color.AntiqueWhite;
+                    e.Info.DisplayText = "G" + e.RowHandle;
                 }
             }
         }

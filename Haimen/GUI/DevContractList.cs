@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 using Haimen.Helper;
-using Haimen.GUI;
 
 namespace Haimen.GUI
 {
@@ -155,9 +149,9 @@ namespace Haimen.GUI
                 // 生成SQL语句
                 List<string> filters = new List<string>();
                 if (bq.Q_Code.Length > 0)
-                    filters.Add(" code like '%" + bq.Q_Code + "%' ");
+                    filters.Add(String.Format(" code like '%{0}%' ", bq.Q_Code));
                 if (bq.Q_company_ID.Length > 0)
-                    filters.Add(" company_id = " + bq.Q_company_ID + " ");
+                    filters.Add(String.Format(" company_id = {0} ", bq.Q_company_ID));
                 if (bq.Q_Check.Length > 0)
                     filters.Add(" status = " + bq.Q_Check);
 
@@ -257,8 +251,8 @@ namespace Haimen.GUI
                 }
                 else if (e.RowHandle < 0 && e.RowHandle > -1000)
                 {
-                    e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
-                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                    e.Info.Appearance.BackColor = Color.AntiqueWhite;
+                    e.Info.DisplayText = "G" + e.RowHandle;
                 }
             }
         }

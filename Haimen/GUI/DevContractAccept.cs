@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 
@@ -68,8 +63,7 @@ namespace Haimen.GUI
             clMoney.EditValue = m_contract.Money - m_contract.Pay;
             chkPass.Checked = true;
 
-            m_contract_accept = new ContractAccept();
-            m_contract_accept.ContractID = m_contract.ID;
+            m_contract_accept = new ContractAccept() { ContractID = m_contract.ID };
         }
 
         private void tsbExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

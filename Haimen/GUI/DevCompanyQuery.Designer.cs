@@ -191,7 +191,6 @@
             this.Name = "DevCompanyQuery";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "单位查询";
-            this.Load += new System.EventHandler(this.DevCompanyQuery_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();

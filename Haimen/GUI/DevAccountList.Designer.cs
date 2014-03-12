@@ -538,7 +538,6 @@
             this.tsbQuery.Glyph = ((System.Drawing.Image)(resources.GetObject("tsbQuery.Glyph")));
             this.tsbQuery.Id = 5;
             this.tsbQuery.Name = "tsbQuery";
-            this.tsbQuery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbQuery_ItemClick);
             // 
             // tsbExit
             // 

@@ -126,7 +126,6 @@
             this.tsbGene.Glyph = global::Haimen.Properties.Resources.Note_Add_hot;
             this.tsbGene.Id = 3;
             this.tsbGene.Name = "tsbGene";
-            this.tsbGene.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tsbGene_ItemClick);
             // 
             // tsbCheck
             // 

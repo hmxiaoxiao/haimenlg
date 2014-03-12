@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
-using Haimen.Helper;
 
 namespace Haimen.GUI
 {
@@ -42,7 +36,7 @@ namespace Haimen.GUI
                 return;
 
             long id = long.Parse(tree.FocusedNode.GetValue(tree_id).ToString());
-            m_companies = Company.Query("parent_id = " + id.ToString());
+            m_companies = Company.Query("parent_id = " + id);
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_companies;
             gridView1.BestFitColumns();
@@ -124,14 +118,13 @@ namespace Haimen.GUI
                 // 生成查询字符串
                 string qcode = query_win.Q_Code;
                 string qname = query_win.Q_Name;
-                string qaccount = query_win.Q_Account;
-                string qbankid = query_win.Q_BankID;
+
 
                 List<string> filters = new List<string>();
                 if (qcode.Length > 0)
-                    filters.Add(" Code like '%" + qcode + "%' ");
+                    filters.Add(String.Format(" Code like '%{0}%' ", qcode));
                 if (qname.Length > 0)
-                    filters.Add(" Name like '%" + qname + "%' ");
+                    filters.Add(String.Format(" Name like '%{0}%' ", qname));
 
                 string where = "";
                 foreach (string filter in filters)
@@ -255,7 +248,7 @@ namespace Haimen.GUI
                 else if (e.RowHandle < 0 && e.RowHandle > -1000)
                 {
                     e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
-                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                    e.Info.DisplayText = "G" + e.RowHandle;
                 }
             }
         }

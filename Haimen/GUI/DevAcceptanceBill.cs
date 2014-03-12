@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
@@ -15,7 +11,7 @@ namespace Haimen.GUI
     /// <summary>
     /// 承况汇票
     /// </summary>
-    public partial class DevAcceptanceBill : DevExpress.XtraEditors.XtraForm
+    public partial class DevAcceptanceBill : XtraForm
     {
 
         /// <summary>
@@ -275,8 +271,7 @@ namespace Haimen.GUI
                 return;
 
             // 取得当前选的单位ID
-            long id = 0;
-            id = long.Parse(lueOutCompany.EditValue.ToString());
+            long id = long.Parse(lueOutCompany.EditValue.ToString());
             Company com = Company.CreateByID(id);
 
 
@@ -340,8 +335,7 @@ namespace Haimen.GUI
                 return;
 
             // 取得当前选的单位ID
-            long id = 0;
-            id = long.Parse(lueInCompany.EditValue.ToString());
+            long id = long.Parse(lueInCompany.EditValue.ToString());
             Company com = Company.CreateByID(id);
 
 

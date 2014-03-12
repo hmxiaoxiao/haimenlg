@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 using Haimen.Helper;
@@ -211,10 +206,16 @@ namespace Haimen.GUI
             sueCompany.Properties.UnLockEvents();
         }
 
-        private void txtName_TextChanged(object sender, EventArgs e)
+        //private void txtName_TextChanged(object sender, EventArgs e)
+        //{
+        //    // 代码以简拼为准
+        //    txtCode.Text = PinyinHelper.GetShortPinyin(txtName.Text).ToUpper();
+        //}
+
+        private void txtName_EditValueChanged(object sender, EventArgs e)
         {
-            // 代码以简拼为准
-            txtCode.Text = PinyinHelper.GetShortPinyin(txtName.Text).ToUpper();
+            if (!string.IsNullOrEmpty(txtName.Text))
+                txtCode.Text = PinyinHelper.GetShortPinyin(txtName.Text);
         }
 
         private void tsbSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -274,11 +275,7 @@ namespace Haimen.GUI
             }
         }
 
-        private void txtName_EditValueChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtName.Text))
-                txtCode.Text = Haimen.Helper.PinyinHelper.GetShortPinyin(txtName.Text);
-        }
+
 
         private void sueCompany_EditValueChanged(object sender, EventArgs e)
         {

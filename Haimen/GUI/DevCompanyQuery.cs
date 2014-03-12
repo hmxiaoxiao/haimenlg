@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
-using Haimen.Entity;
 
 namespace Haimen.GUI
 {
@@ -33,10 +26,6 @@ namespace Haimen.GUI
             Q_Code = txtCode.Text;
             Q_Name = txtName.Text;
             this.Close();
-        }
-
-        private void DevCompanyQuery_Load(object sender, EventArgs e)
-        {
         }
     }
 }

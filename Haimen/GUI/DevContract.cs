@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 using Haimen.Helper;
@@ -301,7 +296,7 @@ namespace Haimen.GUI
             lstFiles.Items.Clear();
             foreach (Attach a in m_contract.AttachList)
             {
-                lstFiles.Items.Add(a.ID.ToString() + "." + a.FileName, 2);
+                lstFiles.Items.Add(String.Format("{0}.{1}", a.ID, a.FileName), 2);
             }
 
             switch (m_contract.Status)
@@ -395,8 +390,7 @@ namespace Haimen.GUI
         // 增加明细
         private void tsbNew_Click(object sender, EventArgs e)
         {
-            ContractDetail cd = new ContractDetail();
-            cd.PayDate = DateTime.Now;
+            ContractDetail cd = new ContractDetail() { PayDate = DateTime.Now };
             m_contract.DetailList.Add(cd);
             gridControl1.DataSource = null;
             gridControl1.DataSource = m_contract.DetailList;
@@ -464,28 +458,25 @@ namespace Haimen.GUI
 
         private void tsbAttachNew_Click(object sender, EventArgs e)
         {
-            OpenFileDialog fd = new OpenFileDialog();
-            fd.Title = "请选择需要上传的文件";
-            fd.ValidateNames = true;
-            fd.CheckFileExists = true;
-            fd.CheckPathExists = true;
+            OpenFileDialog fd = new OpenFileDialog() { Title = "请选择需要上传的文件", 
+                                                       ValidateNames = true, 
+                                                       CheckFileExists = true, 
+                                                       CheckPathExists = true };
 
             if (fd.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(fd.FileName);
                 // 先保存到数据库里
-                Attach att = new Attach();
-                att.FileName = fi.Name;
-                att.FileType = fi.Extension;
+                Attach att = new Attach() { FileName = fi.Name, FileType = fi.Extension };
                 att.Save();
 
                 FTPClient ftp = INICustomer.GetFTPClient();
-                ftp.fileUpload(fi, @"\", att.ID.ToString() + fi.Extension);
+                ftp.fileUpload(fi, @"\", att.ID + fi.Extension);
 
                 m_contract.AttachList.Add(att);
 
                 // 加入列表
-                lstFiles.Items.Add(att.ID.ToString() + "." + fi.Name, 2);
+                lstFiles.Items.Add(String.Format("{0}.{1}", att.ID, fi.Name), 2);
             }
         }
 
@@ -517,7 +508,7 @@ namespace Haimen.GUI
 
                 FTPClient ftp = INICustomer.GetFTPClient();
                 string tempPath = Path.GetTempPath();
-                if (ftp.fileDownload(tempPath, att.FileName, @"\", att.ID.ToString() + att.FileType))
+                if (ftp.fileDownload(tempPath, att.FileName, @"\", att.ID + att.FileType))
                 {
                     Process.Start(Path.Combine(tempPath, att.FileName));
                 }
@@ -571,9 +562,8 @@ namespace Haimen.GUI
         private void tbApplySave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // 先将界面的数据保存到对象里
-            ContractApply apply = new ContractApply();
-            apply.ContractID = m_contract.ID;
-            apply.ApplyDate = DateTime.Parse(dtApplyDate.EditValue.ToString());
+            ContractApply apply = new ContractApply() { ContractID = m_contract.ID, 
+                                                        ApplyDate = DateTime.Parse(dtApplyDate.EditValue.ToString()) };
             if (calcApplyMoney.EditValue != null)
                 apply.Money = decimal.Parse(calcApplyMoney.EditValue.ToString());
             apply.Memo = txtApplyMemo.Text;

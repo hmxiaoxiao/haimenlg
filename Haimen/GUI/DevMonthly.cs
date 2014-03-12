@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 
@@ -83,8 +78,8 @@ namespace Haimen.GUI
             {
                 month += 1;
             }
-            string filter = "status <> " + ((long)Account.AccountStatusEnum.已审核).ToString() + " and signed_date < ";
-            filter += "'" + year.ToString() + "-" + month.ToString() + "-01 0:0:0'";
+            string filter = String.Format("status <> {0} and signed_date < ", (long)Account.AccountStatusEnum.已审核);
+            filter += String.Format("'{0}-{1}-01 0:0:0'", year, month);
             List<Account> lists = Account.Query(filter);
             if (lists.Count > 0)
             {

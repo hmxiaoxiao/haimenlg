@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 
 namespace Haimen.GUI
 {
-    public partial class DevAccountQuery : DevExpress.XtraEditors.XtraForm
+    public partial class DevAccountQuery : XtraForm
     {
         public string Q_Code = "";
         public string Q_InCompany_ID = "";

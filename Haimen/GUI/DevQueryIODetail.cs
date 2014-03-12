@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 using Haimen.DB;
@@ -29,7 +25,20 @@ namespace Haimen.GUI
 
         private void query(long id, long year, long month)
         {
-            string sql = @"
+            long nextyear = 0;
+            long nextmonth = 0;
+            if(month == 12)
+            {
+                nextyear = year + 1;
+                nextmonth = 1;
+            }
+            else
+            {
+                nextyear = year;
+                nextmonth = month + 1;
+            }
+            DataSet ds = new DataSet();
+            SqlCommand cmd = new SqlCommand(@"
                 select d.name as 单位, c.name as 银行, b1.account as 帐号, a.money as 支出, 0 as 收入, a.signed_date as 业务日期, a.id as id
                 from t_account a,
                      m_company_detail b1,
@@ -54,27 +63,11 @@ namespace Haimen.GUI
                     b1.bank_id = c.id and d.id = @id and
                     a.deleted = 0
                 order by a.signed_date
-";
-
-
-            long nextyear = 0;
-            long nextmonth = 0;
-            if(month == 12)
-            {
-                nextyear = year + 1;
-                nextmonth = 1;
-            }
-            else
-            {
-                nextyear = year;
-                nextmonth = month + 1;
-            }
-            DataSet ds = new DataSet();
-            SqlCommand cmd = new SqlCommand(sql, DBConnection.Connection);
+", DBConnection.Connection);
 
             cmd.Parameters.AddWithValue("@id", id);
-            cmd.Parameters.AddWithValue("@month", year.ToString()+"-"+month.ToString()+"-01 0:0:0");
-            cmd.Parameters.AddWithValue("@nextmonth", nextyear.ToString() + "-" + nextmonth.ToString() + "-01 0:0:0");
+            cmd.Parameters.AddWithValue("@month", String.Format("{0}-{1}-01 0:0:0", year, month));
+            cmd.Parameters.AddWithValue("@nextmonth", String.Format("{0}-{1}-01 0:0:0", nextyear, nextmonth));
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);da.Fill(ds, "master");
 
@@ -120,10 +113,7 @@ namespace Haimen.GUI
 
         private void barPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            PrintableComponentLink link = new PrintableComponentLink(new PrintingSystem());
-            link.Component = this.gridControl1;
-            link.Landscape = true;
-            link.PaperKind = System.Drawing.Printing.PaperKind.A3;
+            PrintableComponentLink link = new PrintableComponentLink(new PrintingSystem()) { Component = this.gridControl1, Landscape = true, PaperKind = System.Drawing.Printing.PaperKind.A3 };
             link.CreateMarginalHeaderArea += new CreateAreaEventHandler(Link_CreateMarginalHeaderArea);
             link.CreateDocument();
             link.ShowPreview();
@@ -131,14 +121,13 @@ namespace Haimen.GUI
 
         private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
         {
-            string title = "授权支付明细表";
-            PageInfoBrick brick = e.Graph.DrawPageInfo(PageInfo.None, title, Color.DarkBlue,
+            PageInfoBrick brick = e.Graph.DrawPageInfo(PageInfo.None, "授权支付明细表", Color.DarkBlue,
                new RectangleF(0, 0, 100, 30), BorderSide.None);
 
             brick.LineAlignment = BrickAlignment.Center;
             brick.Alignment = BrickAlignment.Center;
             brick.AutoWidth = true;
-            brick.Font = new System.Drawing.Font("宋体", 11f, FontStyle.Bold);
+            brick.Font = new Font("宋体", 11f, FontStyle.Bold);
         }
 
         private void barExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -157,8 +146,8 @@ namespace Haimen.GUI
                 }
                 else if (e.RowHandle < 0 && e.RowHandle > -1000)
                 {
-                    e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
-                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                    e.Info.Appearance.BackColor = Color.AntiqueWhite;
+                    e.Info.DisplayText = "G" + e.RowHandle;
                 }
             }
         }

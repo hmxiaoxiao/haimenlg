@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 using Haimen.Helper;
@@ -21,6 +16,7 @@ namespace Haimen.GUI
         public DevLogin()
         {
             InitializeComponent();
+            myInitialize();
         }
 
         // 更多非设置性的初始化

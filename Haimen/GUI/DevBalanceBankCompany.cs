@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.Entity;
 using DevExpress.XtraGrid.Columns;
@@ -25,10 +21,7 @@ namespace Haimen.GUI
             DataTable dt = BalanceBankCompany.GetDataTable();
             foreach (DataColumn a in dt.Columns)
             {
-                GridColumn col = new GridColumn();
-                col.Caption = a.ColumnName;
-                col.FieldName = a.ColumnName;
-                col.Visible = true;
+                GridColumn col = new GridColumn() { Caption = a.ColumnName, FieldName = a.ColumnName, Visible = true };
                 if (col.Caption == "银行")
                 {
                     col.GroupIndex = 0;

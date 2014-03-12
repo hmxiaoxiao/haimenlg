@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 using Haimen.DB;
-using Haimen.Entity;
 
-using DevExpress.XtraTreeList.Nodes;
 
 namespace Haimen.GUI
 {
@@ -26,7 +19,7 @@ namespace Haimen.GUI
 
         private void devQuerySelectCompany_Load(object sender, EventArgs e)
         {
-            string sql = @"
+            const string sql = @"
                 Select 'Y' as sel, id, code, name from m_company
                 where doc <> ''
             ";
@@ -105,7 +98,7 @@ namespace Haimen.GUI
                 else if (e.RowHandle < 0 && e.RowHandle > -1000)
                 {
                     e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
-                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                    e.Info.DisplayText = "G" + e.RowHandle;
                 }
             }
         }
