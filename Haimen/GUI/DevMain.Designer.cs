@@ -87,6 +87,7 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.mdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.mnuBalanceBankCompany = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mnuComboSkins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdiManager)).BeginInit();
@@ -128,9 +129,10 @@
             this.mnuUnAuthList,
             this.mnuUnAuth,
             this.mnuSystemCheck,
-            this.munBalanceBankCompanyQuery});
+            this.munBalanceBankCompanyQuery,
+            this.mnuBalanceBankCompany});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 51;
+            this.ribbon.MaxItemId = 52;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -638,6 +640,7 @@
             this.ribbonPageGroup12.ItemLinks.Add(this.mnuBCBalance);
             this.ribbonPageGroup12.ItemLinks.Add(this.mnuCBBalance);
             this.ribbonPageGroup12.ItemLinks.Add(this.munBalanceBankCompanyQuery);
+            this.ribbonPageGroup12.ItemLinks.Add(this.mnuBalanceBankCompany);
             this.ribbonPageGroup12.Name = "ribbonPageGroup12";
             this.ribbonPageGroup12.Text = "余额表";
             // 
@@ -672,6 +675,17 @@
             // mdiManager
             // 
             this.mdiManager.MdiParent = this;
+            // 
+            // mnuBalanceBankCompany
+            // 
+            this.mnuBalanceBankCompany.Caption = "银行余额表";
+            this.mnuBalanceBankCompany.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.mnuBalanceBankCompany.Glyph = ((System.Drawing.Image)(resources.GetObject("mnuBalanceBankCompany.Glyph")));
+            this.mnuBalanceBankCompany.Id = 51;
+            this.mnuBalanceBankCompany.Name = "mnuBalanceBankCompany";
+            this.mnuBalanceBankCompany.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.mnuBalanceBankCompany.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnuBalanceBankCompany_ItemClick);
             // 
             // DevMain
             // 
@@ -753,5 +767,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup16;
         private DevExpress.XtraBars.BarButtonItem mnuSystemCheck;
         private DevExpress.XtraBars.BarButtonItem munBalanceBankCompanyQuery;
+        private DevExpress.XtraBars.BarButtonItem mnuBalanceBankCompany;
     }
 }

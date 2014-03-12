@@ -281,5 +281,10 @@ namespace Haimen.GUI
         {
             OpenForm(new DevBalanceBankCompany());
         }
+
+        private void mnuBalanceBankCompany_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new DevBalanceBankCompany());
+        }
     }
 }

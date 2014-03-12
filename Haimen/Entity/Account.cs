@@ -232,12 +232,10 @@ namespace Haimen.Entity
 
         private static void SetNoUsedDetail2Deleted()
         {
-            string sql = @"
+            DBConnection.RunNoQuerySql(@"
 Update t_account set deleted = 1 
 where id in (select id from t_account where in_companydetail_id not in(select id from m_company_detail) and deleted = 0)
-";
-
-            DBConnection.RunNoQuerySql(sql);
+");
         }
 
         public enum ShowStatus : long
