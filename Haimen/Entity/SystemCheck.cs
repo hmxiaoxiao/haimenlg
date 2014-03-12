@@ -20,35 +20,35 @@ namespace Haimen.Entity
         /// 检查的SQL语句
         /// </summary>
         private const string checksql = @"
-select a.id, sum(a.q) as q
+select a.sn, sum(a.q) as q
 from (
-	select id, obalance as q from m_company_detail where parent_id in (select id from m_company where output = 'X')
+	select '期初金额' as memo, id as sn, obalance as q from m_company_detail where parent_id in (select id from m_company where output = 'X')
 	union
-	select id, -balance as q from m_company_detail where parent_id in (select id from m_company where output = 'X')
+	select '期末金额' as memo, id as sn, -balance as q from m_company_detail where parent_id in (select id from m_company where output = 'X')
 	union
-	select companydetail_id as id, sum(money) as q from t_unauth
+	select '非授权收入' as memo, companydetail_id as sn, sum(money) as q from t_unauth
 		where input = 'X'
 		group by companydetail_id
 	union
-	select companydetail_id as id, -sum(money) as q from t_unauth
+	select '非授权支出' as memo, companydetail_id as sn, -sum(money) as q from t_unauth
 		where output = 'X'
 		group by companydetail_id
 	union
-	select out_companydetail_id as id, -sum(money) as q from t_account where out_companydetail_id in (select id from m_company_detail where parent_id in (
+	select '授权支出' as memo, out_companydetail_id as sn, -sum(money) as q from t_account where out_companydetail_id in (select id from m_company_detail where parent_id in (
 	  select id from m_company where output = 'X')) and deleted = 0 and status = 2
 	group by out_companydetail_id
 	union
-	select in_companydetail_id as id, sum(money) as q from t_account where in_companydetail_id in (select id from m_company_detail where parent_id in (
+	select '授权收入' as memo, in_companydetail_id as sn, sum(money) as q from t_account where in_companydetail_id in (select id from m_company_detail where parent_id in (
 	  select id from m_company where output = 'X')) and deleted = 0 and status = 2
 	group by in_companydetail_id
 	) as a
-group by a.id
+group by a.sn
 ";
 
         /// <summary>
         /// 取得出错的帐号
         /// </summary>
-        private const string errsql = "select id, q from (" + checksql + ") b where b.q <> 0";
+        private const string errsql = "select sn, q from (" + checksql + ") b where b.q <> 0";
 
 
         /// <summary>
@@ -92,7 +92,7 @@ group by a.id
                 DBConnection.BeginTrans();
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    string id = row["id"].ToString();
+                    string id = row["sn"].ToString();
                     Decimal money = Decimal.Parse(row["q"].ToString());
                     if (!string.IsNullOrEmpty(id))
                     {

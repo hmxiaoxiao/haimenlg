@@ -147,7 +147,7 @@
             // a_id
             // 
             this.a_id.Caption = "ID";
-            this.a_id.FieldName = "id";
+            this.a_id.FieldName = "sn";
             this.a_id.Name = "a_id";
             this.a_id.Visible = true;
             this.a_id.VisibleIndex = 0;
