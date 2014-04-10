@@ -184,5 +184,10 @@ namespace Haimen.Entity
             }
         }
 
+
+        public override string ToString()
+        {
+            return string.Format("id:{0}, code:{1}, name:{2}, parentid:{3}", ID, Code, Name);
+        }
     }
 }

@@ -791,5 +791,14 @@ where id in (select id from t_account where in_companydetail_id not in(select id
             已复核,
             已审核,
         }
+
+        public override string ToString()
+        {
+            return string.Format("id:{0}, code:{1}, money:{2}, outcompanydetailid:{3}, incompanydetailid:{4}," +
+                                 "makerid{5}, checkerid:{6}, payerid:{7}, paydate:{8}, status:{9}, signeddate:{10}" +
+                                 "memo:{11}, projectid:{12}",
+                                 ID, Code, Money, Out_CompanyDetail_ID, In_CompanyDetail_ID,
+                                 MakerID, CheckerID, PayerID, PayDate, Status, SignedDate, Money, ProjectID);
+        }
     }
 }

@@ -213,5 +213,11 @@ namespace Haimen.Entity
                 return false;
             }
         }
+
+        public override string ToString()
+        {
+            return string.Format("id:{0}, code:{1}, name:{2}, salt:{3}, admin:{4}, groupid:{5}, password:{6}",
+                                  ID, Code, Name, Salt, Admin, GroupID, Password);
+        }
     }
 }

@@ -153,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB\DBException.cs" />
+    <Compile Include="DB\DBMigrate.cs" />
     <Compile Include="Entity\AcceptanceBill.cs" />
     <Compile Include="Entity\Access.cs" />
     <Compile Include="Entity\Account.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Entity\Dict.cs" />
     <Compile Include="Entity\EntityException.cs" />
     <Compile Include="Entity\Funds.cs" />
+    <Compile Include="DB\Log.cs" />
     <Compile Include="Entity\Project.cs" />
     <Compile Include="Entity\SystemCheck.cs" />
     <Compile Include="Entity\SystemSet.cs" />
@@ -618,6 +620,7 @@
     <EmbeddedResource Include="Report\rptBalance.resx">
       <DependentUpon>rptBalance.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\Haimen.Entity.Account.datasource" />
     <None Include="Properties\Settings.settings">

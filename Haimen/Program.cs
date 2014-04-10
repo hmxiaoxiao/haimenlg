@@ -8,6 +8,7 @@ using Haimen.Entity;
 using Haimen.Helper;
 
 using Haimen.GUI;
+using Haimen.DB;
 
 namespace Haimen
 {
@@ -36,13 +37,16 @@ namespace Haimen
                 return;
             }
 
-                //////初始化用户, 第一次使用时，没有用户时增加用户。
-                //User.Init();
+            // 自动更新表
+            DBMigrate.RunDBMigrate();
+
+            //////初始化用户, 第一次使用时，没有用户时增加用户。
+            //User.Init();
 
 #if DEBUG
-                //GlobalSet.Current_User = User.Login("yangxd", "heroes22");
-                GlobalSet.Current_User = User.Login("admin", "qwer1234");
-                Application.Run(new DevMain());
+            //GlobalSet.Current_User = User.Login("yangxd", "heroes22");
+            GlobalSet.Current_User = User.Login("admin", "qwer1234");
+            Application.Run(new DevMain());
 #else
             try
             {

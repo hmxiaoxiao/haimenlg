@@ -68,7 +68,7 @@ namespace Haimen.GUI
             if (id <= 0)
                 return;
 
-            if (MessageBox.Show(this, "是否要删除指定的非授权资金凭证？", "警告", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            if (MessageBox.Show(this, "是否要删除指定的非授权资金凭证？", "警告", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 UnAuth unauth = UnAuth.CreateByID(id);
                 unauth.Destory();
