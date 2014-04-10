@@ -39,7 +39,7 @@ namespace Haimen.GUI
             }
             DataSet ds = new DataSet();
             SqlCommand cmd = new SqlCommand(@"
-                select d.name as 单位, c.name as 银行, b1.account as 帐号, a.money as 支出, 0 as 收入, a.signed_date as 业务日期, a.id as id
+                select d.name as 单位, c.name as 银行, b1.account as 帐号, a.money as 支出, 0 as 收入, a.signed_date as 业务日期, '授权支出' as 说明, a.id as id
                 from t_account a,
                      m_company_detail b1,
                      m_bank c,
@@ -51,7 +51,7 @@ namespace Haimen.GUI
                     b1.bank_id = c.id and d.id = @id and 
                     a.deleted = 0
                 union
-                select d.name as 单位, c.name as 银行, b1.account as 帐号, 0 as 支出, a.money as 收入, a.signed_date as 业务日期, a.id as id
+                select d.name as 单位, c.name as 银行, b1.account as 帐号, 0 as 支出, a.money as 收入, a.signed_date as 业务日期, '授权收入' as 说明, a.id as id
                 from t_account a,
                      m_company_detail b1,
                      m_bank c,
@@ -62,6 +62,24 @@ namespace Haimen.GUI
                     b1.parent_id = d.id and 
                     b1.bank_id = c.id and d.id = @id and
                     a.deleted = 0
+                union
+                select b.name as 单位, d.name as 银行, c.account as 帐号, a.money as 支出, 0 as 收入, signed_date as 业务日期, '非授权支出' as 说明, a.id as id
+                from t_unauth a,
+                    m_company b,
+                    m_company_detail c,
+                    m_bank d
+                where a.company_id = b.id and c.id = a.companydetail_id and c.bank_id = d.id and 
+                    a.output = 'X' and signed_date >= @month and 
+                    signed_date < @nextmonth 
+                union
+                select b.name as 单位, d.name as 银行, c.account as 帐号, 0 as 支出, a.money as 收入, signed_date as 业务日期, '非授权收入' as 说明, a.id as id
+                from t_unauth a,
+                    m_company b,
+                    m_company_detail c,
+                    m_bank d
+                where a.company_id = b.id and c.id = a.companydetail_id and c.bank_id = d.id and 
+                    a.input = 'X' and signed_date >= @month and 
+                    signed_date < @nextmonth 
                 order by a.signed_date
 ", DBConnection.Connection);
 
