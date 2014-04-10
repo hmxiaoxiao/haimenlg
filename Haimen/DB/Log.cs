@@ -46,10 +46,7 @@ namespace Haimen.DB
                               DateTime.Now.ToString(),
                               DateTime.Now.ToString());
                 com.CommandText = sql;
-                DBConnection.BeginTrans();
-                com.Transaction = DBConnection.Transaction;
                 com.ExecuteNonQuery();
-                DBConnection.CommitTrans();
             }
             catch (Exception e)
             {
