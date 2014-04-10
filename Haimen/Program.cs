@@ -71,3 +71,56 @@ namespace Haimen
         }
     }
 }
+
+// 以下为计算每个月所有的发生总金额
+
+//select company_name, bank_name, account, y, m, sum(money)
+//from(
+//    select b.name as company_name, c.name as bank_name, a.account, 
+//            datepart(yyyy, a.created_date)as y, datepart(mm, a.created_date)as m, 
+//            balance as money, '初始化' as memo
+//        from m_company_detail a,
+//            m_company b,
+//            m_bank c
+//        where a.parent_id = b.id and a.bank_id = c.id and b.output = 'X'
+//    union
+//    select c.name as company_name, d.name as bank_name, b.account, a.y, a.m, -sum(a.money) as money, '授权支出' as memo
+//        from(
+//            select datepart(yyyy, signed_date) as y, datepart(mm, signed_date) as m,* from t_account
+//            where deleted <> '1' and status = '2') a,
+//            m_company_detail b,
+//            m_company c,
+//            m_bank d
+//        where a.out_companydetail_id = b.id and b.parent_id = c.id and b.bank_id = d.id and c.output = 'X'
+//        group by c.name, d.name, b.account, a.y, a.m
+//    union
+//    select c.name as company_name, d.name as bank_name, b.account, a.y, a.m, sum(a.money) as money, '授权收入' as memo
+//        from(
+//            select datepart(yyyy, signed_date) as y, datepart(mm, signed_date) as m,* from t_account
+//            where deleted <> '1' and status = '2') a,
+//            m_company_detail b,
+//            m_company c,
+//            m_bank d
+//        where a.in_companydetail_id = b.id and b.parent_id = c.id and b.bank_id = d.id and c.output = 'X'
+//        group by c.name, d.name, b.account, a.y, a.m
+//    union
+//    select c.name as company_name, d.name as bank_name, b.account, a.y, a.m, -sum(a.money) as money, '非授权支出' as memo
+//        from(
+//            select datepart(yyyy, signed_date) as y, datepart(mm, signed_date) as m,*  
+//            from t_unauth where deleted <> '1' and output = 'X') a,
+//            m_company_detail b,
+//            m_company c,
+//            m_bank d
+//        where a.company_id = c.id and a.companydetail_id = b.id and b.bank_id = d.id
+//        group by c.name, d.name, b.account, a.y, a.m
+//    union
+//    select c.name as company_name, d.name as bank_name, b.account, a.y, a.m, sum(a.money) as money, '非授权收入' as memo
+//        from(
+//            select datepart(yyyy, signed_date) as y, datepart(mm, signed_date) as m,*  
+//            from t_unauth where deleted <> '1' and output = 'X') a,
+//            m_company_detail b,
+//            m_company c,
+//            m_bank d
+//        where a.company_id = c.id and a.companydetail_id = b.id and b.bank_id = d.id
+//        group by c.name, d.name, b.account, a.y, a.m) a
+//group by company_name, bank_name, account,y,m
