@@ -47,8 +47,8 @@ namespace HaimenUnitTest
             // 增加一个用户
             user.Code = "Hello";
             user.Name = "World!";
-            int id = DBFactory.Save<User>(user);// User.Create<User>(user);
-            Assert.AreNotEqual<int>(0, id);
+            ulong id = DBFactory.Save<User>(user);// User.Create<User>(user);
+            Assert.AreNotEqual<ulong>(0, id);
             //user.Create<User>(user);
 
             // 已经在数据库里面
@@ -82,7 +82,7 @@ namespace HaimenUnitTest
             User u = new User();
             u.Code = "test1";
             u.Password = "test1";
-            int id = DBFactory.Save<User>(u);
+            ulong id = DBFactory.Save<User>(u);
             Assert.IsTrue(id > 0);
 
             User q = DBFactory.CreateQueryEntity<User>();

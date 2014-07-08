@@ -68,7 +68,6 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(153, 21);
             this.txtPassword.TabIndex = 3;
-            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
             // btnLogin
             // 

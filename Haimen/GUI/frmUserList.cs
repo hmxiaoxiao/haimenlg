@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Haimen.Entity;
+
 namespace Haimen.GUI
 {
     public partial class frmUserList : Form
@@ -21,8 +23,6 @@ namespace Haimen.GUI
         private void tsbNew_Click(object sender, EventArgs e)
         {
             frmUser win = new frmUser();
-            //win.MdiParent = this.ParentForm;
-            //win.WindowState = FormWindowState.Maximized;
             win.ShowDialog(this);
         }
 
@@ -53,5 +53,36 @@ namespace Haimen.GUI
             }
         }
 
+        private void frmUserList_Load(object sender, EventArgs e)
+        {
+            tsbDelete.Enabled = false;
+        }
+
+        private void btnQuery_Click(object sender, EventArgs e)
+        {
+            User q = DBFactory.CreateQueryEntity<User>();
+            List<User> list = new List<User>();
+            if (txtCode.Text == "" && txtName.Text == "")
+            {
+                list = DBFactory.Query<User>().toList<User>();
+                List2Grid(list);
+            }
+        }
+
+        private void List2Grid(List<User> list)
+        {
+            dataGridView1.RowCount = 0;
+            foreach (User user in list)
+            {
+                dataGridView1.RowCount += 1;
+                dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value = user.ID;
+                dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[1].Value = user.Code;
+                dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[2].Value = user.Name;
+                if (user.IsAdmin == "X")
+                    dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[3].Value = true;
+
+                //dataGridView1.Rows.Add(["1", "2", "3", "4"]);
+            }
+        }
     }
 }

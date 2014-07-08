@@ -17,7 +17,7 @@ namespace Haimen.Entity
 
         // 表的ID
         [Field("ID")]
-        public long ID { get; set; }
+        public ulong ID { get; set; }
 
         // 用来返回错误信息
         // 字段放在key里面，错误信息value里面

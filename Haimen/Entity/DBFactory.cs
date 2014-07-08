@@ -48,6 +48,21 @@ namespace Haimen.Entity
             return t;
         }
 
+        //public static List<string> getFieldsName<T>()
+        //{
+        //    List<string> list = new List<string>();
+        //    foreach (PropertyInfo info in typeof(T).GetProperties())
+        //    {
+        //        string field = GetFieldName(info);
+        //        if (field != null && field != "")
+        //        {
+        //            list.Add(field);
+        //        }
+        //    }
+        //    return list;
+        //}
+
+
         // 返回当前对象对应数据库的字段以及值
         private static List<KeyValuePair<string,dynamic>> getFieldsAndValues<T>(T t)
         {
@@ -88,7 +103,7 @@ namespace Haimen.Entity
         }
 
         // 创建保存
-        public static int Save<T>(T t) where T : BaseEntity
+        public static ulong Save<T>(T t) where T : BaseEntity
         {
             if (! t.BeforeCreate())
                 return 0;
@@ -139,7 +154,7 @@ namespace Haimen.Entity
                 MySqlDataAdapter dp = new MySqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 dp.Fill(ds);
-                int id = int.Parse( ds.Tables[0].Rows[0].ItemArray[0].ToString());
+                ulong id = ulong.Parse( ds.Tables[0].Rows[0].ItemArray[0].ToString());
                 
                 return id;
             }

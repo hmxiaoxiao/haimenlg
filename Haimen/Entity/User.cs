@@ -25,6 +25,9 @@ namespace Haimen.Entity
         [Field("salt")]
         public string Salt { get; set; }
 
+        [Field("admin")]
+        public string IsAdmin { get; set; }
+
         public string Password { get; set; }
 
         // 用户初始化
