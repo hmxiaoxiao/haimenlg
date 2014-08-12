@@ -44,6 +44,15 @@ namespace Haimen.Report
             else
                 txtMaker.Text = "录入：";
 
+            // 加入对制作人的判断
+            xrPictureBox3.Visible = false;
+            xrPictureBox4.Visible = false;
+            //if (m_account.Maker.Name != "董小云")
+            if (Convert.ToDateTime("2014/08/01").CompareTo(m_account.CreatedDate) > 0)
+                xrPictureBox3.Visible = true;
+            else
+                xrPictureBox4.Visible = true;
+
             txtUsage.Text = "";
             txtFunds.Text = "";
             foreach (AccountDetail ad in m_account.DetailList)
