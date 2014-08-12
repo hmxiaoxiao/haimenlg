@@ -218,5 +218,13 @@ namespace Haimen.Entity
             return base.Update(hasTrans);
         }
 
+        public override string ToString()
+        {
+            return string.Format("id:{0}, parentid:{1}, bankid:{2}, account:{3}, accounttype:{4}, " +
+                                 "balance:{5}, credit:{6}, obalance{7}, ocredit:{8}, memo:{9}",
+                                 ID, ParentID, BankID, Account, AccountType, Balance,Credit,
+                                 OBalance, OCredit, Memo);
+        }
+
     }
 }

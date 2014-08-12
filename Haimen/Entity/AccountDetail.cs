@@ -58,5 +58,11 @@ namespace Haimen.Entity
 
             return Error_Info.Count == 0;
         }
+
+        public override string ToString()
+        {
+            return string.Format("id:{0}, parentid:{1}, fundsid:{2}, usage:{3}, money:{4}",
+                                  ID, ParentID, FundsID, Usage, Money);
+        }
     }
 }

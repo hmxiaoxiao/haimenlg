@@ -56,6 +56,7 @@
             this.c_4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.c_6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.c_7 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._out_company_list)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
@@ -263,7 +264,8 @@
             this.c_3,
             this.c_4,
             this.c_5,
-            this.c_6});
+            this.c_6,
+            this.c_7});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.IndicatorWidth = 40;
             this.gridView1.Name = "gridView1";
@@ -336,6 +338,14 @@
             this.c_6.Visible = true;
             this.c_6.VisibleIndex = 5;
             // 
+            // c_7
+            // 
+            this.c_7.Caption = "说明";
+            this.c_7.FieldName = "说明";
+            this.c_7.Name = "c_7";
+            this.c_7.Visible = true;
+            this.c_7.VisibleIndex = 6;
+            // 
             // DevQueryIODetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -387,5 +397,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn c_5;
         private DevExpress.XtraGrid.Columns.GridColumn c_6;
         private DevExpress.XtraGrid.Columns.GridColumn c_id;
+        private DevExpress.XtraGrid.Columns.GridColumn c_7;
     }
 }

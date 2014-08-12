@@ -44,5 +44,10 @@ namespace Haimen.Entity
             return Error_Info.Count == 0;
 
         }
+
+        public override string ToString()
+        {
+            return string.Format("id:{0}, name:{1}", ID, Name);
+        }
     }
 }

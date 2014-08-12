@@ -6,6 +6,7 @@ using System.Text;
 using System.Data;
 using System.Reflection;
 using System.Data.SqlClient;
+using Haimen.Entity;
 
 namespace Haimen.DB
 {
@@ -231,14 +232,18 @@ namespace Haimen.DB
                 // 如果不在一个事务里面，就开启一个事务
                 if (!hasTrans)
                     DBConnection.BeginTrans();  // 开始一个事务
-                
+
                 cmd.CommandText = sql;
                 cmd.Transaction = DBConnection.Transaction;
                 this.ID = long.Parse(cmd.ExecuteScalar().ToString());
+                
 
                 // 提交事务
                 if (!hasTrans)
                     DBConnection.CommitTrans();
+
+                // 保存日志
+                Log.log(this, GlobalSet.Current_User.Name, "新增");
 
                 return true;
             }
@@ -314,6 +319,9 @@ namespace Haimen.DB
 
                 if (!hasTrans)
                     DBConnection.CommitTrans();
+
+                // 日志记录,必须放在事务后面
+                Log.log(this, GlobalSet.Current_User.Name, "修改");
 
                 return true;
             }
@@ -398,6 +406,10 @@ namespace Haimen.DB
 
                 if (!hasTrans)
                     DBConnection.CommitTrans();
+
+                // 日志记录,必须放在事务后面
+                Log.log(this, GlobalSet.Current_User.Name, "删除");
+
 
                 return true;
             }

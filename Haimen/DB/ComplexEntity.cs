@@ -97,6 +97,10 @@ namespace Haimen.DB
                     else
                         DBConnection.RollbackTrans();
                 }
+
+                // 保存日志
+                Log.log(this, GlobalSet.Current_User.Name, "新增");
+
                 return success;
             }
             catch (Exception e)
@@ -191,6 +195,9 @@ namespace Haimen.DB
                         DBConnection.RollbackTrans();
                 }
 
+                // 保存日志
+                Log.log(this, GlobalSet.Current_User.Name, "更新");
+
                 return success;
             }
             catch (Exception e)
@@ -247,6 +254,10 @@ namespace Haimen.DB
                         DBConnection.RollbackTrans();
                 }
 
+
+                // 保存日志
+                Log.log(this, GlobalSet.Current_User.Name, "删除");
+
                 return success;
             }
             catch (Exception e)
@@ -287,6 +298,7 @@ namespace Haimen.DB
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
                 DBConnection.CommitTrans();
+
                 return true;
 
             }

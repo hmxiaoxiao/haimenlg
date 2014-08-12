@@ -270,6 +270,12 @@ namespace Haimen.Entity
             }
         }
 
+        public override string ToString()
+        {
+            return string.Format("id:{0}, code:{1}, companyid:{2}, companydetailid:{3}, input:{4}, output:{5}, money:{6}, memo:{7}, signeddate: {8}",
+                                  ID, Code, CompanyID, CompanyDetailID, Input, Output, Money, Memo, SignedDate);
+        }
+
 
         public static string GenAutoCode(bool can_save = false)
         {
